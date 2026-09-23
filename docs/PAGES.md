@@ -1,4 +1,4 @@
-# Career Skills Solutions — Inner Page Specifications
+# Career Skills Center — Inner Page Specifications
 
 **Status: all pages below are built.** This file is now both the spec and the
 record of what each page contains. Update it when a page changes.
@@ -40,7 +40,7 @@ Sitemap (all built):
 /wioa.html                WIOA (nav item is called "WIOA")
 /student-financing.html   Student Financing
 /financial-aid.html       ORPHAN — superseded by wioa.html, no inbound links
-/about.html               About Career Skills Solutions
+/about.html               About Career Skills Center
 /team.html                Meet the Team
 /career-services.html     Career Services
 /faq.html                 FAQ
@@ -127,7 +127,7 @@ Linked from: header Admissions, "Easy Enrollment" feature.
 
 **Purpose:** the workforce-grant page. This is the nav item under Admissions,
 labelled "WIOA". Its section order and layout follow the reference site's WIOA
-page; the copy is written for Career Skills Solutions and Massachusetts, since
+page; the copy is written for Career Skills Center and Massachusetts, since
 the reference is a Texas school working through the Texas Workforce Commission
 while we work through MassHire.
 
@@ -137,7 +137,7 @@ image yet — the hero is solid navy until a photo is chosen.
 **Sections, in order:**
 1. **WIOA Program Grants / Career Training at No Cost to You** — what the act is, who created it, and that MassHire administers it locally. Carries the ETPL verification note.
 2. **WIOA Funding / The Basics** — image placeholder left, four-item accordion right: who funds it, how to check eligibility, how much is available, how long until training starts.
-3. **Career Skills Solutions WIOA Programs / Get Started on Your Journey** — image placeholder, copy about short credential programs, "Explore Programs" button.
+3. **Career Skills Center WIOA Programs / Get Started on Your Journey** — image placeholder, copy about short credential programs, "Explore Programs" button.
 4. **WIOA Eligibility / You May Be Eligible If…** — seven-item `.check-list` (age, work authorization, diploma or GED, benefits eligibility, dislocated worker, terminated or laid off, self-employed but not working), plus a note that the career center makes the final call.
 5. **Find Your Fit / Talk With an Enrollment Advisor** — image placeholder, phone number, "Talk to an Advisor" button.
 6. **WIOA Approved Programs / Career Opportunities for a Better Future** — stackable-credentials argument plus the three program-area cards.
@@ -187,7 +187,7 @@ covers in its "Additional Funding Sources" section.
 
 ---
 
-## about.html — About Career Skills Solutions
+## about.html — About Career Skills Center
 
 **Purpose:** story, mission, values, facility.
 Linked from: header About Us, "Learn more." in What We Do, footer.
@@ -211,7 +211,7 @@ Linked from: header About Us, "Learn more." in What We Do, footer.
 **Sections:**
 1. **Leadership** — grid of cards: photo (placeholder), name, title, 2-line bio.
 2. **Instructors** — same grid, grouped by Trades / IT / Medical.
-3. **Join our team** — short paragraph + "Email us" link to info@careerskillssolutions.com.
+3. **Join our team** — short paragraph + "Email us" link to info@careerskillscenter.com.
 
 **Data needed:** names, titles, bios, headshots.
 
@@ -325,7 +325,7 @@ Linked from: header Contact, footer.
 **Page hero:** H1 "Contact Us." Intro: "You're moments away from a new career and a brighter future."
 
 **Sections:**
-1. **Two-column** — left: contact form (same fields as dialog: name, phone, email, program, message). Right: Address (placeholder street, Quincy, MA 02169), Office hours, Phone (617) 315-4323, Email info@careerskillssolutions.com, social icons.
+1. **Two-column** — left: contact form (same fields as dialog: name, phone, email, program, message). Right: Address (placeholder street, Quincy, MA 02169), Office hours, Phone (617) 315-4323, Email info@careerskillscenter.com, social icons.
 2. **Map** — embed placeholder (Google Maps iframe once address is final).
 3. **Directions / parking / public transit** — Quincy Center MBTA Red Line mention (verify once address is known).
 

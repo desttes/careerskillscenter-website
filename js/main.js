@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Career Skills Solutions — site behaviour
+   Career Skills Center — site behaviour
    Plain JS, no dependencies. Loaded with `defer` on every page.
    ========================================================================== */
 (function () {

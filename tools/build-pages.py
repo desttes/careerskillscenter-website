@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the Career Skills Solutions inner pages.
+"""Generate the Career Skills Center inner pages.
 
 Reads index.html, lifts the shared <header>, <footer> and <dialog> out of it so
 every page stays byte-identical to the home page, then writes each inner page.
@@ -30,13 +30,13 @@ PAGE = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@@TITLE@@</title>
   <meta name="description" content="@@DESC@@">
-  <link rel="canonical" href="https://careerskillssolutions.com/@@SLUG@@">
+  <link rel="canonical" href="https://careerskillscenter.com/@@SLUG@@">
 
   <!-- Open Graph / social -->
   <meta property="og:title" content="@@OGTITLE@@">
   <meta property="og:description" content="@@DESC@@">
-  <meta property="og:url" content="https://careerskillssolutions.com/@@SLUG@@">
-  <meta property="og:image" content="https://careerskillssolutions.com/images/Hero.webp">
+  <meta property="og:url" content="https://careerskillscenter.com/@@SLUG@@">
+  <meta property="og:image" content="https://careerskillscenter.com/images/Hero.webp">
   <meta property="og:type" content="website">
 
   <!-- Fonts: Poppins (display) + Roboto (everything else) -->
@@ -101,17 +101,17 @@ def program_cards():
     """The three navy program cards, same markup/behaviour as the home page.
     NOTE: the hover-reveal effect is still deferred (see index.html)."""
     return f"""        <div class="program-grid">
-          <a class="program-card" href="programs.html#trades" data-hover-image="images/Todaybanner2.webp">
+          <a class="program-card" href="our-programs.html#trades" data-hover-image="images/Todaybanner2.webp">
             <span class="program-icon" aria-hidden="true">{ICON_TRADES}</span>
             <span class="program-name">Skilled Trades</span>
             <span class="program-more">Read more</span>
           </a>
-          <a class="program-card" href="programs.html#it" data-hover-image="">
+          <a class="program-card" href="it-support-specialist.html" data-hover-image="">
             <span class="program-icon" aria-hidden="true">{ICON_IT}</span>
             <span class="program-name">Information Technology</span>
             <span class="program-more">Read more</span>
           </a>
-          <a class="program-card" href="programs.html#medical" data-hover-image="">
+          <a class="program-card" href="our-programs.html#medical" data-hover-image="">
             <span class="program-icon" aria-hidden="true">{ICON_MED}</span>
             <span class="program-name">Medical</span>
             <span class="program-more">Read more</span>
@@ -119,7 +119,7 @@ def program_cards():
         </div>"""
 
 
-def hero(label, title, lede, img="images/Hero.webp", btn2=("Our Programs", "programs.html")):
+def hero(label, title, lede, img="images/Hero.webp", btn2=("Our Programs", "our-programs.html")):
     bg = (f'\n      <div class="page-hero-bg"><img src="{img}" alt="" fetchpriority="high" decoding="async"></div>'
           if img else "")
     return f"""    <section class="page-hero">{bg}
@@ -200,13 +200,21 @@ DRAFT_NOTE = ('<p class="note"><strong>Draft content.</strong> Program names, cr
 # ---------------------------------------------------------------------------
 PAGES = []
 
+# Pages defined below but withheld from the live site until certification is in
+# hand. Their definitions stay intact so they can be restored by removing the
+# slug here; the last-built copies are kept in _archive/. WIOA and the
+# superseded financial-aid page advertise WIOA funding, which must not be
+# published until Career Skills Center is an approved Eligible Training
+# Provider on the Massachusetts ETPL.
+ARCHIVED = {"wioa.html", "financial-aid.html"}
+
 
 # ---- programs.html --------------------------------------------------------
 PAGES.append(dict(
-    slug="programs.html", nav="programs.html",
-    title="Programs | Career Skills Solutions — Trade, IT &amp; Medical Training in Quincy, MA",
+    slug="programs.html", nav="our-programs.html",
+    title="Programs | Career Skills Center — Trade, IT &amp; Medical Training in Massachusetts",
     ogtitle="Our Programs",
-    desc="Career-focused training programs in the skilled trades, information technology and the medical field at Career Skills Solutions in Quincy, MA.",
+    desc="Career-focused training programs in the skilled trades, information technology and the medical field at Career Skills Center in Massachusetts.",
     main=hero("Programs", "Our Programs",
               "The right training program sets you on a pathway to success with the certifications and "
               "credentials that open doors to new jobs and greater earning potential.",
@@ -217,8 +225,7 @@ PAGES.append(dict(
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Find Your Program</p>
         <h2 class="section-title left">Three Fields. One Future.</h2>
         <div class="section-intro">
-          <p>Career Skills Solutions trains students for three of the strongest hiring markets in Greater
-          Boston. Every program is built around hands-on practice, a recognized credential, and the job
+          <p>Career Skills Center trains students for three of the strongest hiring markets in Massachusetts. Every program is built around hands-on practice, a recognized credential, and the job
           search that follows. Pick the field that fits you and we will walk you through the rest.</p>
         </div>
 {program_cards()}
@@ -236,7 +243,7 @@ PAGES.append(dict(
             <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Skilled Trades</p>
             <h2 class="section-title left">Build a Hands-On Career</h2>
             <p>The trades are hiring. Electricians, HVAC technicians and plumbers are retiring faster than
-            they are being replaced, and contractors across the South Shore are competing for trained help.
+            they are being replaced, and contractors across Massachusetts are competing for trained help.
             Our trade programs put tools in your hands early and prepare you for the credentials employers
             and licensing boards ask for.</p>
             <ul class="arrow-list">
@@ -297,8 +304,8 @@ PAGES.append(dict(
           <div class="split-copy">
             <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Medical</p>
             <h2 class="section-title left">Care for Your Community</h2>
-            <p>Greater Boston is one of the largest healthcare employment markets in the country. Clinics,
-            hospitals and long-term care facilities across Quincy and the South Shore need trained support
+            <p>Massachusetts is one of the largest healthcare employment markets in the country. Clinics,
+            hospitals and long-term care facilities across the state need trained support
             staff now. These programs prepare you for entry-level clinical and administrative roles and the
             certification exams that go with them.</p>
             <ul class="arrow-list">
@@ -350,12 +357,481 @@ PAGES.append(dict(
 """ + cta("Not sure which program is right for you?", "Talk to an Advisor")))
 
 
+# ---- our-programs.html ----------------------------------------------------
+# Card-grid overview linked from the homepage "Our Programs" button. The image
+# areas are intentional placeholders until program photos are chosen.
+PAGES.append(dict(
+    slug="our-programs.html", nav="our-programs.html",
+    title="Our Programs | Career Skills Center — Massachusetts",
+    ogtitle="Our Programs",
+    desc="Explore Career Skills Center training in the skilled trades, information technology and the medical field in Massachusetts.",
+    main=hero("Our Programs", "Our Programs",
+              "Explore the fields we train for. Pick a path and we will walk you through the programs, "
+              "credentials and the steps to enroll.",
+              "images/programs-hero.webp", ("How to Enroll", "admissions.html")) + """
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Explore Our Programs</p>
+        <h2 class="section-title left">Choose Your Field</h2>
+        <div class="pcard-grid">
+
+          <article class="pcard" id="trades">
+            <img src="images/electrician.webp" alt="Electrician at work" class="pcard-media" loading="lazy" decoding="async">
+            <div class="pcard-body">
+              <h3 class="pcard-title">Skilled Trades</h3>
+              <span class="pcard-rule" aria-hidden="true"></span>
+              <p>Hands-on training for electrical, HVAC/R, plumbing, welding and carpentry, built around the credentials employers and licensing boards ask for.</p>
+              <a class="btn btn-outline-navy" href="our-programs.html#trades">Read more</a>
+            </div>
+          </article>
+
+          <article class="pcard" id="it">
+            <img src="images/comptia.webp" alt="CompTIA certification training" class="pcard-media" loading="lazy" decoding="async">
+            <div class="pcard-body">
+              <h3 class="pcard-title">Information Technology</h3>
+              <span class="pcard-rule" aria-hidden="true"></span>
+              <p>Stack industry certifications from help-desk fundamentals through networking, security and cloud. No four-year degree required.</p>
+              <a class="btn btn-outline-navy" href="it-support-specialist.html">Read more</a>
+            </div>
+          </article>
+
+          <article class="pcard" id="medical">
+            <img src="images/medicalbilling.webp" alt="Medical billing and coding specialist" class="pcard-media" loading="lazy" decoding="async">
+            <div class="pcard-body">
+              <h3 class="pcard-title">Medical</h3>
+              <span class="pcard-rule" aria-hidden="true"></span>
+              <p>Train for in-demand clinical and administrative roles in healthcare, with certification exam preparation built into every program.</p>
+              <a class="btn btn-outline-navy" href="medical-billing-coding.html">Read more</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+""" + cta("Not sure which program is right for you?", "Talk to an Advisor")))
+
+
+# ---- it-support-specialist.html -------------------------------------------
+# Detailed IT course page (equivalent of NTI's per-program pages), built around
+# the entry-level CompTIA Tech+ (FC0-U71) certification. Students earn a Career
+# Skills Center certificate; the CompTIA exam is scheduled and paid separately.
+PAGES.append(dict(
+    slug="it-support-specialist.html", nav="our-programs.html",
+    title="IT Support Specialist &mdash; CompTIA Tech+ Training | Career Skills Center",
+    ogtitle="IT Support Specialist",
+    desc="Online IT Support Specialist training that prepares you for the CompTIA Tech+ (FC0-U71) certification. About 8 weeks, no experience required, at Career Skills Center in Massachusetts.",
+    main=hero("Information Technology", "IT Support Specialist",
+              "If you are a problem-solver who likes technology, a career in IT support may be perfect for "
+              "you. Build the foundation employers look for, 100% online, in about eight weeks.",
+              "images/comptia.webp", ("How to Enroll", "admissions.html")) + """
+
+    <section class="section">
+      <div class="container">
+        <div class="split-grid">
+          <div class="split-copy">
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>100% Online Training</p>
+            <h2 class="section-title left">Foundational IT Skills, Fully Online</h2>
+            <p>Train on your own schedule and build the core knowledge every support role depends on:
+            computers and devices, operating systems and applications, basic networking, data and security.
+            You will be ready to sit for the CompTIA Tech+ (FC0-U71) certification exam, and no prior
+            experience is required to start.</p>
+            <button class="btn btn-navy js-open-contact" type="button">Get in Touch</button>
+          </div>
+          <div class="split-media">
+            <img src="images/hero2.webp" alt="Student learning IT online at a laptop" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-card"><div class="spec-value">8 Weeks</div><div class="spec-label">Program Length</div></div>
+          <div class="spec-card"><div class="spec-value">CompTIA Tech+ (FC0-U71)</div><div class="spec-label">Certification</div></div>
+          <div class="spec-card"><div class="spec-value">CompTIA</div><div class="spec-label">Issuing Authority</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="split-grid reverse">
+          <div class="split-media">
+            <img src="images/programs-hero.webp" alt="IT support technician at work" loading="lazy" decoding="async">
+          </div>
+          <div class="split-copy">
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Career Insight</p>
+            <h2 class="section-title left">What does an IT Support Specialist do?</h2>
+            <p>IT support specialists keep people and technology working together. They set up and fix the
+            devices, software and accounts a business runs on, and they are usually the first person a user
+            turns to when something stops working. It is a role built on curiosity, patience and clear
+            communication. Day to day, you might:</p>
+            <ul class="arrow-list">
+              <li>Set up and configure computers, peripherals and mobile devices</li>
+              <li>Install and update operating systems and applications</li>
+              <li>Diagnose and resolve common hardware and software problems</li>
+              <li>Support users by phone, chat or in person and document tickets</li>
+              <li>Apply everyday security best practices to protect devices and data</li>
+              <li>Recognize when to solve an issue and when to escalate it</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Job Outlook</p>
+        <div class="split-grid split-grid--top">
+          <div class="split-copy">
+            <h2 class="section-title left">Potential Career Paths</h2>
+            <p>IT support specialists keep people and technology working together, and demand for them is
+            steady as businesses of every kind rely on computers, software and networks. Entry-level IT
+            support is one of the most common ways into a technology career.</p>
+            <p>This program prepares you to find an entry-level support role and to keep stacking
+            credentials, such as CompTIA A+, Network+ or Security+, as you decide where to specialize.</p>
+            <p>Individuals who complete this program and earn the certification have the skills to find jobs
+            as:</p>
+            <ul class="arrow-list">
+              <li>IT Support Specialist</li>
+              <li>Help Desk Technician</li>
+              <li>Technical Support Technician</li>
+              <li>IT Operations Associate</li>
+              <li>Desktop Support Assistant</li>
+              <li>Junior Service Desk Analyst</li>
+            </ul>
+          </div>
+          <div class="outlook-panel">
+            <div class="outlook-value">48,700</div>
+            <p class="outlook-caption">IT SUPPORT OPENINGS EACH YEAR IN THE U.S.</p>
+            <p class="outlook-body">Entry-level IT support is an in-demand field with room to grow. Support
+            specialists typically start around $21 to $25 per hour, and as you add certifications and
+            experience you can move into higher-paying networking, security and systems roles.</p>
+            <p class="outlook-note">Note: The U.S. Bureau of Labor Statistics projects about 48,700 job
+            openings each year for computer support specialists, a field of roughly 903,100 jobs in 2025.
+            Pay varies by education, experience, employer and location.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Soft Skills Check</p>
+        <h2 class="section-title left">Do You Have What It Takes to Succeed?</h2>
+        <div class="split-grid split-grid--top">
+          <div class="split-copy">
+            <p class="soft-subtitle">Common Attributes of Successful IT Support Specialists</p>
+            <img class="soft-icon" src="images/comptia-logo.webp" alt="CompTIA" width="558" height="120" loading="lazy" decoding="async">
+          </div>
+          <ul class="check-list">
+            <li><strong>Problem-Solving</strong>Break a problem into symptoms, likely causes and next steps instead of guessing.</li>
+            <li><strong>Clear Communication</strong>Explain technical issues in plain language that users and coworkers trust.</li>
+            <li><strong>Attention to Detail</strong>Small settings and skipped steps are often the difference between fixed and broken.</li>
+            <li><strong>Patience</strong>Stay calm and methodical under pressure, even when a user is frustrated.</li>
+            <li><strong>Curiosity and a Willingness to Learn</strong>Technology keeps changing, and the best techs keep learning with it.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How You Learn</p>
+        <h2 class="section-title left">Learn Online, Get Certified</h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3 class="feature-title">Learn on Your Schedule</h3>
+            <p>Self-paced video lessons, interactive exercises and hands-on practice scenarios, with closed
+            captions, that you can work through anywhere. No commute, and no prior experience required.</p>
+          </article>
+          <article class="feature">
+            <h3 class="feature-title">Train and Get Certified</h3>
+            <p>Prepare for the CompTIA Tech+ (FC0-U71) exam as you move through the curriculum, and earn a
+            Career Skills Center Certificate of Completion so you can show employers the skills you have
+            built.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt course-overview">
+      <div class="deco-dots deco-dots--left" aria-hidden="true"></div>
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Course Overview</p>
+        <h2 class="section-title left">IT Support Specialist &middot; CompTIA Tech+</h2>
+        <div class="split-grid split-grid--top">
+          <div class="split-copy">
+            <p>This program builds entry-level technical fluency across the six areas the <strong>CompTIA
+            Tech+ (FC0-U71)</strong> exam measures. In about eight weeks of online training you will be
+            prepared to sit for the certification exam and to step into a help desk or support role. You earn
+            a <strong>Career Skills Center Certificate of Completion</strong>; the CompTIA Tech+ exam is
+            scheduled and paid separately through CompTIA.</p>
+          </div>
+          <div class="faq">
+          <details class="faq-item">
+            <summary>Scheduling details</summary>
+            <div class="faq-body"><p>About 8 weeks, 89 program hours, delivered 100% online and self-paced
+            within the term. <span class="tbd">Start dates TBD &mdash; call to confirm the next available
+            cohort.</span></p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Instruction &amp; evaluation</summary>
+            <div class="faq-body"><p>Guided video lessons, interactive exercises and hands-on practice
+            scenarios, with knowledge checks and exam-style practice questions to prepare you for the
+            certification exam.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Books &amp; materials</summary>
+            <div class="faq-body"><p>All courseware is included in your tuition: online video lessons,
+            interactive labs and exercises, practice questions and closed captions. No separate textbook
+            purchase is required.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Course outline</summary>
+            <div class="faq-body">
+              <ul class="arrow-list">
+                <li>IT concepts &amp; terminology, and troubleshooting logic</li>
+                <li>Hardware, peripherals and device setup</li>
+                <li>Operating systems and application software</li>
+                <li>Programming and software development fundamentals</li>
+                <li>Database concepts and data fundamentals</li>
+                <li>Security principles and safe computing practices</li>
+              </ul>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>Upon completion, students will be able to&hellip;</summary>
+            <div class="faq-body">
+              <ul class="arrow-list">
+                <li>Explain core computing concepts using the right technical vocabulary</li>
+                <li>Identify hardware components and set up common peripherals and devices</li>
+                <li>Describe how operating systems and applications work and are managed</li>
+                <li>Understand basic programming logic and database concepts</li>
+                <li>Apply confidentiality, integrity and availability to everyday security</li>
+                <li>Troubleshoot common problems methodically and be ready for the CompTIA Tech+ exam</li>
+              </ul>
+            </div>
+          </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+""" + cta("Ready to start your IT career?", "Get in Touch")))
+
+
+# ---- medical-billing-coding.html ------------------------------------------
+# Detailed Medical program page. Online medical billing & coding built around
+# the AAPC CPC and CPB certifications. Students earn a Career Skills Center
+# certificate; AAPC exams are scheduled and paid separately through AAPC.
+PAGES.append(dict(
+    slug="medical-billing-coding.html", nav="our-programs.html",
+    title="Medical Billing &amp; Coding &mdash; AAPC CPC &amp; CPB Training | Career Skills Center",
+    ogtitle="Medical Billing & Coding",
+    desc="Online Medical Billing & Coding training that prepares you for the AAPC CPC and CPB certifications. About 11 weeks, 100% online, at Career Skills Center in Massachusetts.",
+    main=hero("Medical", "Medical Billing &amp; Coding",
+              "If you are detail-oriented and want a healthcare career without years of school, medical "
+              "billing and coding could be your path. Train 100% online in about eleven weeks.",
+              "images/medicalbilling.webp", ("How to Enroll", "admissions.html")) + """
+
+    <section class="section">
+      <div class="container">
+        <div class="split-grid">
+          <div class="split-copy">
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>100% Online Training</p>
+            <h2 class="section-title left">Job-Ready Skills, Fully Online</h2>
+            <p>Learn how documentation becomes codes, how those codes drive reimbursement, and how to keep
+            claims clean, complete and compliant. You will train on current ICD-10-CM standards with ICD-11
+            awareness, and be ready to sit for the AAPC CPC and CPB certification exams. No prior experience
+            required.</p>
+            <button class="btn btn-navy js-open-contact" type="button">Get in Touch</button>
+          </div>
+          <div class="split-media">
+            <img class="align-top" src="images/medical.webp" alt="Medical billing and coding specialist reviewing records" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-card"><div class="spec-value">11 Weeks</div><div class="spec-label">Program Length</div></div>
+          <div class="spec-card"><div class="spec-value">AAPC CPC &amp; CPB</div><div class="spec-label">Certification</div></div>
+          <div class="spec-card"><div class="spec-value">AAPC</div><div class="spec-label">Issuing Authority</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="split-grid reverse">
+          <div class="split-media">
+            <img src="images/medicalbilling.webp" alt="Medical coder working at a computer" loading="lazy" decoding="async">
+          </div>
+          <div class="split-copy">
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Career Insight</p>
+            <h2 class="section-title left">What does a medical biller and coder do?</h2>
+            <p>Medical billers and coders turn a patient visit into an accurate, payable claim. They read the
+            clinical documentation, assign the right codes, and make sure the paperwork holds up so providers
+            get reimbursed and patients are billed correctly. It is careful, behind-the-scenes work that keeps
+            a healthcare practice running. Day to day, you might:</p>
+            <ul class="arrow-list">
+              <li>Read clinical notes and assign accurate ICD-10-CM diagnosis and procedure codes</li>
+              <li>Translate visits into clean, complete insurance claims</li>
+              <li>Apply payer rules and billing guidelines so claims get paid</li>
+              <li>Review and correct documentation issues that cause denials</li>
+              <li>Protect patient information under HIPAA privacy rules</li>
+              <li>Follow up on claims, denials and reimbursements</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Job Outlook</p>
+        <div class="split-grid split-grid--top">
+          <div class="split-copy">
+            <h2 class="section-title left">Potential Career Paths</h2>
+            <p>Medical records and coding is one of the steadier ways into healthcare, and it does not require
+            hands-on patient care. Demand is projected to grow much faster than average as the healthcare
+            system expands and every visit has to be documented, coded and billed.</p>
+            <p>This program prepares you to work in a provider office, hospital, clinic or remote coding role,
+            and to keep building credentials through AAPC as you specialize.</p>
+            <p>Individuals who complete this program and earn certification have the skills to find jobs as:</p>
+            <ul class="arrow-list">
+              <li>Medical Coder</li>
+              <li>Medical Biller</li>
+              <li>Medical Records Specialist</li>
+              <li>Coding Specialist</li>
+              <li>Billing / Claims Specialist</li>
+              <li>Health Information Clerk</li>
+            </ul>
+          </div>
+          <div class="outlook-panel">
+            <div class="outlook-value">14,000</div>
+            <p class="outlook-caption">MEDICAL RECORDS &amp; CODING OPENINGS EACH YEAR IN THE U.S.</p>
+            <p class="outlook-body">The field is projected to grow 8% through 2035, much faster than average.
+            Median pay is about $48,000 a year (roughly $23 an hour), and it climbs as you add certifications
+            and experience.</p>
+            <p class="outlook-note">Note: The U.S. Bureau of Labor Statistics projects about 14,000 openings
+            each year for medical records specialists, a field of roughly 200,700 jobs in 2025. Pay varies by
+            education, experience, employer and location.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Soft Skills Check</p>
+        <h2 class="section-title left">Do You Have What It Takes to Succeed?</h2>
+        <div class="split-grid split-grid--top">
+          <div class="split-copy">
+            <p class="soft-subtitle">Common Attributes of Successful Medical Billers &amp; Coders</p>
+            <img class="soft-icon" src="images/aapc-logo.svg" alt="AAPC" width="146" height="51" loading="lazy" decoding="async">
+          </div>
+          <ul class="check-list">
+            <li><strong>Attention to Detail</strong>A single wrong digit can deny a claim, so precision matters on every record.</li>
+            <li><strong>Analytical Thinking</strong>Read the documentation and choose the most accurate, specific code.</li>
+            <li><strong>Integrity and Discretion</strong>You handle protected health information every day and must keep it private.</li>
+            <li><strong>Persistence</strong>Follow up on denials and unpaid claims until they are resolved.</li>
+            <li><strong>Continuous Learning</strong>Code sets and payer rules change every year, and good coders keep up.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How You Learn</p>
+        <h2 class="section-title left">Learn Online, Get Certified</h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3 class="feature-title">Learn on Your Schedule</h3>
+            <p>Self-paced video lessons and real-world coding examples, with closed captions, that you can
+            work through anywhere. No commute, and no prior experience required.</p>
+          </article>
+          <article class="feature">
+            <h3 class="feature-title">Train and Get Certified</h3>
+            <p>Prepare for the AAPC CPC (Certified Professional Coder) and CPB (Certified Professional Biller)
+            exams, and earn a Career Skills Center Certificate of Completion to show employers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt course-overview">
+      <div class="deco-dots deco-dots--left" aria-hidden="true"></div>
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Course Overview</p>
+        <h2 class="section-title left">Medical Billing &amp; Coding</h2>
+        <div class="split-grid split-grid--top">
+          <div class="split-copy">
+            <p>This program builds job-ready medical billing and coding skills using current ICD-10-CM
+            standards, with ICD-11 awareness, plus the billing, claims and HIPAA compliance knowledge every
+            healthcare office depends on. In about eleven weeks of online training you graduate with a
+            <strong>Career Skills Center Certificate of Completion</strong>, included in your tuition. To
+            stand out to employers, you can also add a nationally recognized <strong>AAPC certification (CPC
+            or CPB)</strong> &mdash; we prepare you for the exam, which you schedule and pay for directly with
+            AAPC.</p>
+          </div>
+          <div class="faq">
+          <details class="faq-item">
+            <summary>Scheduling details</summary>
+            <div class="faq-body"><p>About 11 weeks, 117 program hours, delivered 100% online and self-paced
+            within the term. <span class="tbd">Start dates TBD &mdash; call to confirm the next available
+            cohort.</span></p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Instruction &amp; evaluation</summary>
+            <div class="faq-body"><p>Guided video lessons and real-world coding examples, with knowledge
+            checks and practice to prepare you for the certification exams.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Books &amp; materials</summary>
+            <div class="faq-body"><p>All courseware is included in your tuition: online video lessons, coding
+            practice and closed captions. No separate textbook purchase is required. <span class="tbd">Official
+            AAPC code books for the exam are confirmed separately &mdash; ask an advisor.</span></p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Course outline</summary>
+            <div class="faq-body">
+              <ul class="arrow-list">
+                <li>Medical terminology and anatomy</li>
+                <li>ICD-10-CM foundations and ICD-11 awareness</li>
+                <li>Diagnosis coding and documentation support</li>
+                <li>Procedure coding and claim alignment</li>
+                <li>Billing rules, claim workflow and reimbursement</li>
+                <li>HIPAA, compliance and avoiding denials</li>
+              </ul>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>Upon completion, students will be able to&hellip;</summary>
+            <div class="faq-body">
+              <ul class="arrow-list">
+                <li>Read clinical documentation and assign accurate diagnosis and procedure codes</li>
+                <li>Build clean, complete insurance claims</li>
+                <li>Apply payer rules and billing guidelines to support reimbursement</li>
+                <li>Identify documentation errors that lead to denials</li>
+                <li>Apply HIPAA privacy and compliance basics</li>
+                <li>Be prepared to sit for the AAPC CPC and CPB exams</li>
+              </ul>
+            </div>
+          </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+""" + cta("Ready to start your healthcare career?", "Get in Touch")))
+
+
 # ---- admissions.html ------------------------------------------------------
 PAGES.append(dict(
     slug="admissions.html", nav="admissions.html",
-    title="Admissions | Career Skills Solutions — Quincy, MA",
+    title="Admissions | Career Skills Center — Massachusetts",
     ogtitle="Admissions",
-    desc="How to enroll at Career Skills Solutions in Quincy, MA. Requirements, documents, funding options and start dates.",
+    desc="How to enroll at Career Skills Center in Massachusetts. Requirements, documents, funding options and start dates.",
     main=hero("Admissions", "Admissions",
               "Getting started is simple. Call, get qualified, enroll. Our team walks you through every "
               "step, including how to pay for it.",
@@ -381,7 +857,7 @@ PAGES.append(dict(
             </ul>
           </div>
           <div class="split-media">
-            <img src="images/person2.webp" alt="Career Skills Solutions student" loading="lazy" decoding="async">
+            <img src="images/person2.webp" alt="Career Skills Center student" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -400,11 +876,6 @@ PAGES.append(dict(
             <h3 class="feature-title">Tuition</h3>
             <p>Clear, upfront pricing per program with no hidden fees.</p>
             <a class="read-more" href="tuition.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
-          </article>
-          <article class="feature">
-            <h3 class="feature-title">WIOA</h3>
-            <p>Workforce grants that may cover part or all of the cost of your training.</p>
-            <a class="read-more" href="wioa.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
           </article>
           <article class="feature">
             <h3 class="feature-title">Student Financing</h3>
@@ -447,13 +918,13 @@ PAGES.append(dict(
 # ---- tuition.html ---------------------------------------------------------
 PAGES.append(dict(
     slug="tuition.html", nav="tuition.html",
-    title="Tuition | Career Skills Solutions — Quincy, MA",
+    title="Tuition | Career Skills Center — Massachusetts",
     ogtitle="Tuition",
-    desc="Affordable, upfront tuition for trade, IT and medical training at Career Skills Solutions in Quincy, MA.",
+    desc="Affordable, upfront tuition for trade, IT and medical training at Career Skills Center in Massachusetts.",
     main=hero("Tuition", "Tuition",
               "Clear, upfront pricing with no surprises, plus help finding every funding source you "
               "qualify for.",
-              "images/aboutus.webp") + f"""
+              "images/tuition-hero.webp") + f"""
 
     <section class="section">
       <div class="container">
@@ -462,7 +933,7 @@ PAGES.append(dict(
         <div class="section-intro">
           <p>With student loan debt in the United States now measured in the trillions, more people are
           questioning the price of a traditional degree. Affordability drives how we price every course at
-          Career Skills Solutions. Our tuition is lower than most career schools, and we work to connect
+          Career Skills Center. Our tuition is lower than most career schools, and we work to connect
           students with every available funding source so training does not leave you buried in debt.</p>
           <p>Short programs also mean you stop paying sooner and start earning sooner. That combination,
           lower cost and less time out of the workforce, is what makes career training a strong return.</p>
@@ -486,17 +957,10 @@ PAGES.append(dict(
               <tr><th scope="row">Carpentry &amp; Construction</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
 
               <tr class="group"><td colspan="6">Information Technology</td></tr>
-              <tr><th scope="row">IT Support Specialist</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">Network Technician</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">Cybersecurity Fundamentals</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">Cloud Fundamentals</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
+              <tr><th scope="row">IT Support Specialist</th><td>89 hours</td><td>$299</td><td>Yes</td><td>Free</td><td>$299</td></tr>
 
               <tr class="group"><td colspan="6">Medical</td></tr>
-              <tr><th scope="row">Medical Assistant</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">Phlebotomy Technician</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">EKG Technician</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">Certified Nursing Assistant</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">Medical Billing &amp; Coding</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
+              <tr><th scope="row">Medical Billing &amp; Coding</th><td>117 hours</td><td>$329</td><td>Yes</td><td>Free</td><td>$329</td></tr>
             </tbody>
           </table>
         </div>
@@ -521,7 +985,7 @@ PAGES.append(dict(
             </ul>
           </div>
           <div class="split-media">
-            <img src="images/person1.webp" alt="Career Skills Solutions graduate" loading="lazy" decoding="async">
+            <img src="images/person1.webp" alt="Career Skills Center graduate" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -538,11 +1002,6 @@ PAGES.append(dict(
             <a class="read-more" href="contact.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
           </article>
           <article class="feature">
-            <h3 class="feature-title">Workforce Grants</h3>
-            <p>Workforce Innovation and Opportunity Act funding may cover part or all of your training.</p>
-            <a class="read-more" href="wioa.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
-          </article>
-          <article class="feature">
             <h3 class="feature-title">Payment Plans</h3>
             <p>Split your tuition into monthly payments, or apply through a financing partner.</p>
             <a class="read-more" href="student-financing.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
@@ -551,18 +1010,44 @@ PAGES.append(dict(
       </div>
     </section>
 
+    <section class="section section--alt">
+      <div class="container">
+        <h2 class="section-title">A Great Return on Your Investment</h2>
+        <div class="table-wrap">
+          <table class="data-table compare-table">
+            <thead>
+              <tr>
+                <th scope="col" class="compare-corner"></th>
+                <th scope="col" class="compare-us">Career Skills Center</th>
+                <th scope="col">Four-Year University</th>
+                <th scope="col">Two-Year College</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Average time to complete</th><td class="compare-us-cell">3 months</td><td>5.2 years</td><td>3.4 years</td></tr>
+              <tr><th scope="row">Average tuition and fees</th><td class="compare-us-cell">$299 to $329</td><td>$103,000</td><td>$39,000</td></tr>
+              <tr><th scope="row">Education cost + lost income</th><td class="compare-us-cell">$36,000</td><td>$261,120</td><td>$141,461</td></tr>
+              <tr><th scope="row">Median compensation</th><td class="compare-us-cell">$42,000</td><td>$47,000</td><td>$38,600</td></tr>
+              <tr><th scope="row">Time to recover investment</th><td class="compare-us-cell">1 year</td><td>4.7 years</td><td>3.7 years</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note"><strong>Placeholder comparison.</strong> Confirm and source every figure before publishing. The tuition range shown here does not yet match the program catalog above.</p>
+      </div>
+    </section>
+
 """ + cta("Call today to see how you may qualify.")))
 
 
 # ---- wioa.html ------------------------------------------------------------
 # Section order and layout follow the reference site's WIOA page; the copy is
-# written for Career Skills Solutions and Massachusetts (MassHire, not Texas).
+# written for Career Skills Center and Massachusetts (MassHire, not Texas).
 # Images are intentionally left as empty placeholders for now.
 PAGES.append(dict(
     slug="wioa.html", nav="wioa.html",
-    title="WIOA Program | Career Skills Solutions — Quincy, MA",
+    title="WIOA Program | Career Skills Center — Massachusetts",
     ogtitle="WIOA Program: Free Career Training",
-    desc="A Workforce Innovation and Opportunity Act grant may cover the full cost of trade, IT or medical training at Career Skills Solutions in Quincy, MA.",
+    desc="A Workforce Innovation and Opportunity Act grant may cover the full cost of trade, IT or medical training at Career Skills Center in Massachusetts.",
     main=hero("WIOA Program", "Free Career Training",
               "A Workforce Innovation and Opportunity Act grant can cover the cost of short-term training "
               "that leads to a recognized certification in the skilled trades, information technology or "
@@ -587,7 +1072,7 @@ PAGES.append(dict(
             <p>In Massachusetts the money is administered locally. MassHire career centers take applications,
             decide who qualifies, and set how much each approved applicant receives. The school does not make
             that determination, but we help you prepare for it and we know what the career centers ask for.</p>
-            <p class="note"><strong>Before publishing:</strong> confirm that Career Skills Solutions is listed
+            <p class="note"><strong>Before publishing:</strong> confirm that Career Skills Center is listed
             as an Eligible Training Provider on the Massachusetts ETPL. Advertising WIOA-funded training,
             including the phrase “free career training,” requires that approval in writing first.</p>
           </div>
@@ -643,7 +1128,7 @@ PAGES.append(dict(
             <div class="img-placeholder">Image placeholder</div>
           </div>
           <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Career Skills Solutions WIOA Programs</p>
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Career Skills Center WIOA Programs</p>
             <h2 class="section-title left">Get Started on Your Journey</h2>
             <p>Our certificate programs are built around entry-level roles in fields that are still growing:
             the skilled trades, information technology and allied health. Each one is short, hands-on, and
@@ -651,7 +1136,7 @@ PAGES.append(dict(
             <p>For students whose training is covered by a workforce grant, that credential comes without
             out-of-pocket tuition. You finish with the certification, the practice hours and the job search
             support, and without the debt.</p>
-            <p><a class="btn btn-navy" href="programs.html">Explore Programs</a></p>
+            <p><a class="btn btn-navy" href="our-programs.html">Explore Programs</a></p>
           </div>
         </div>
       </div>
@@ -725,19 +1210,19 @@ PAGES.append(dict(
             <h3 class="feature-title">Skilled Trades</h3>
             <p>Electrical, HVAC/R, plumbing, welding and construction roles that contractors across the South
             Shore are hiring for now.</p>
-            <a class="read-more" href="programs.html#trades"><span class="arrow" aria-hidden="true"></span> Read more</a>
+            <a class="read-more" href="our-programs.html#trades"><span class="arrow" aria-hidden="true"></span> Read more</a>
           </article>
           <article class="feature">
             <h3 class="feature-title">Information Technology</h3>
             <p>Help desk, networking, security and cloud roles where employers hire on certification rather
             than a four-year degree.</p>
-            <a class="read-more" href="programs.html#it"><span class="arrow" aria-hidden="true"></span> Read more</a>
+            <a class="read-more" href="it-support-specialist.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
           </article>
           <article class="feature">
             <h3 class="feature-title">Medical</h3>
             <p>Clinical and administrative support roles across one of the largest healthcare employment
             markets in the country.</p>
-            <a class="read-more" href="programs.html#medical"><span class="arrow" aria-hidden="true"></span> Read more</a>
+            <a class="read-more" href="our-programs.html#medical"><span class="arrow" aria-hidden="true"></span> Read more</a>
           </article>
         </div>
       </div>
@@ -761,9 +1246,9 @@ PAGES.append(dict(
 # ---- financial-aid.html ---------------------------------------------------
 PAGES.append(dict(
     slug="financial-aid.html", nav="financial-aid.html",
-    title="Financial Aid &amp; WIOA Grants | Career Skills Solutions — Quincy, MA",
+    title="Financial Aid &amp; WIOA Grants | Career Skills Center — Massachusetts",
     ogtitle="Financial Aid",
-    desc="Workforce grants, veterans benefits and other funding that may cover your training at Career Skills Solutions in Quincy, MA.",
+    desc="Workforce grants, veterans benefits and other funding that may cover your training at Career Skills Center in Massachusetts.",
     main=hero("Financial Aid", "Financial Aid",
               "You may qualify for funding that covers some or all of your training. Find out in a single "
               "phone call.",
@@ -783,7 +1268,7 @@ PAGES.append(dict(
           approved program lists are set by the career center, not by the school.</p>
         </div>
 
-        <p class="note"><strong>Before publishing:</strong> confirm whether Career Skills Solutions is an
+        <p class="note"><strong>Before publishing:</strong> confirm whether Career Skills Center is an
         approved Eligible Training Provider on the Massachusetts ETPL. Do not advertise WIOA funding for our
         programs until that approval is in writing.</p>
       </div>
@@ -805,7 +1290,7 @@ PAGES.append(dict(
             </ul>
           </div>
           <div class="split-media">
-            <img src="images/hero3.webp" alt="Adult learners in a Career Skills Solutions classroom" loading="lazy" decoding="async">
+            <img src="images/hero3.webp" alt="Adult learners in a Career Skills Center classroom" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -908,9 +1393,9 @@ PAGES.append(dict(
 # ---- student-financing.html -----------------------------------------------
 PAGES.append(dict(
     slug="student-financing.html", nav="student-financing.html",
-    title="Student Financing | Career Skills Solutions — Quincy, MA",
+    title="Student Financing | Career Skills Center — Massachusetts",
     ogtitle="Student Financing",
-    desc="Monthly payment plans and lending partners that make Career Skills Solutions training affordable.",
+    desc="Monthly payment plans and lending partners that make Career Skills Center training affordable.",
     main=hero("Student Financing", "Student Financing",
               "Funding made simple. Invest in your future with a payment plan that fits your budget.",
               "images/hero2.webp") + f"""
@@ -946,7 +1431,7 @@ PAGES.append(dict(
             </ul>
           </div>
           <div class="split-media">
-            <img src="images/aboutus.webp" alt="Career Skills Solutions office" loading="lazy" decoding="async">
+            <img src="images/aboutus.webp" alt="Career Skills Center office" loading="lazy" decoding="async">
           </div>
         </div>
         <p class="note"><strong>Placeholder terms.</strong> Payment plan amounts, term lengths and any
@@ -971,7 +1456,7 @@ PAGES.append(dict(
           <div class="logo-slot">Lender logo</div>
         </div>
         <p class="note"><strong>Placeholder.</strong> Add lending partners once agreements are in place, along
-        with this required style of disclosure: Career Skills Solutions does not endorse any particular
+        with this required style of disclosure: Career Skills Center does not endorse any particular
         lender and is not affiliated with them. Check rates and terms directly with the lender.</p>
       </div>
     </section>
@@ -982,11 +1467,11 @@ PAGES.append(dict(
 # ---- about.html -----------------------------------------------------------
 PAGES.append(dict(
     slug="about.html", nav="about.html",
-    title="About Us | Career Skills Solutions — Quincy, MA",
-    ogtitle="About Career Skills Solutions",
-    desc="Career Skills Solutions is a career school in Quincy, MA training students for the skilled trades, IT and the medical field.",
+    title="About Us | Career Skills Center — Massachusetts",
+    ogtitle="About Career Skills Center",
+    desc="Career Skills Center is a career school in Massachusetts training students for the skilled trades, IT and the medical field.",
     main=hero("About Us", "About Us",
-              "A career school built for Quincy, the South Shore and Greater Boston. Our focus is your "
+              "A career school built for Massachusetts. Our focus is your "
               "potential.",
               "images/aboutus.webp") + f"""
 
@@ -994,7 +1479,7 @@ PAGES.append(dict(
       <div class="container narrow text-center">
         <h2 class="section-title">Our Focus: Your Potential</h2>
         <p class="lede">Our goal isn’t just to help you achieve your potential. It’s to <strong>activate your
-        potential</strong>. Career Skills Solutions prepares committed students for rewarding careers through
+        potential</strong>. Career Skills Center prepares committed students for rewarding careers through
         high-caliber training, hands-on experience and student-focused support.</p>
         <p class="lede">Employers today expect more than knowledge and technical skill. They look for
         discipline, integrity, teamwork and the professionalism that defines someone worth hiring. We take on
@@ -1013,13 +1498,13 @@ PAGES.append(dict(
       <div class="container about-grid">
         <div class="about-media">
           <div class="deco-dots deco-dots--about" aria-hidden="true"></div>
-          <img src="images/aboutus.webp" alt="Training and meeting space at Career Skills Solutions" loading="lazy" decoding="async">
+          <img src="images/aboutus.webp" alt="Training and meeting space at Career Skills Center" loading="lazy" decoding="async">
         </div>
         <div class="about-copy">
           <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Our Mission</p>
           <h2 class="section-title left">Our Mission</h2>
-          <p>We believe that a well-trained workforce contributes to the economic and social vibrancy of
-          Quincy, the South Shore, and the Greater Boston communities in which our students, instructors, and
+          <p>We believe that a well-trained workforce contributes to the economic and social vibrancy of the
+          Massachusetts communities in which our students, instructors, and
           staff live. To accomplish our mission, we are committed to providing a <strong>caring learning
           environment</strong> where a <strong>technically rich, hands-on, quality education</strong> is
           delivered by professionals who have worked in the field.</p>
@@ -1129,9 +1614,9 @@ def team_card(name, role, bio):
 
 PAGES.append(dict(
     slug="team.html", nav="team.html",
-    title="Meet the Team | Career Skills Solutions — Quincy, MA",
+    title="Meet the Team | Career Skills Center — Massachusetts",
     ogtitle="Meet the Team",
-    desc="The leadership and instructors behind Career Skills Solutions in Quincy, MA.",
+    desc="The leadership and instructors behind Career Skills Center in Massachusetts.",
     main=hero("Leadership", "Meet the Team",
               "The people behind the programs. Our instructors have worked in the fields they teach, and our "
               "staff is here from your first call through your first job.",
@@ -1146,10 +1631,10 @@ PAGES.append(dict(
           team member before publishing.</p>
         </div>
         <div class="team-grid">
-{team_card("[Name]", "Chief Executive Officer", "Two to four sentences on background, years of experience, and what they are responsible for at Career Skills Solutions.")}
-{team_card("[Name]", "Director of Operations", "Two to four sentences on background, years of experience, and what they are responsible for at Career Skills Solutions.")}
-{team_card("[Name]", "Director of Admissions", "Two to four sentences on background, years of experience, and what they are responsible for at Career Skills Solutions.")}
-{team_card("[Name]", "Director of Career Services", "Two to four sentences on background, years of experience, and what they are responsible for at Career Skills Solutions.")}
+{team_card("[Name]", "Chief Executive Officer", "Two to four sentences on background, years of experience, and what they are responsible for at Career Skills Center.")}
+{team_card("[Name]", "Director of Operations", "Two to four sentences on background, years of experience, and what they are responsible for at Career Skills Center.")}
+{team_card("[Name]", "Director of Admissions", "Two to four sentences on background, years of experience, and what they are responsible for at Career Skills Center.")}
+{team_card("[Name]", "Director of Career Services", "Two to four sentences on background, years of experience, and what they are responsible for at Career Skills Center.")}
         </div>
       </div>
     </section>
@@ -1184,7 +1669,7 @@ PAGES.append(dict(
         <p class="lede">We are always interested in hearing from experienced tradespeople, IT professionals
         and clinicians who want to teach. If that is you, send us a note and tell us what you would want to
         teach.</p>
-        <p><a class="btn btn-navy" href="mailto:info@careerskillssolutions.com">Email Us</a></p>
+        <p><a class="btn btn-navy" href="mailto:info@careerskillscenter.com">Email Us</a></p>
       </div>
     </section>
 
@@ -1194,9 +1679,9 @@ PAGES.append(dict(
 # ---- career-services.html -------------------------------------------------
 PAGES.append(dict(
     slug="career-services.html", nav="career-services.html",
-    title="Career Services | Career Skills Solutions — Quincy, MA",
+    title="Career Services | Career Skills Center — Massachusetts",
     ogtitle="Career Services",
-    desc="Resume help, interview preparation, employer connections and job search support for Career Skills Solutions students and graduates.",
+    desc="Resume help, interview preparation, employer connections and job search support for Career Skills Center students and graduates.",
     main=hero("Career Services", "Career Services",
               "Get certified. Begin your career. Our work does not stop when the course does.",
               "images/person1.webp") + f"""
@@ -1204,7 +1689,7 @@ PAGES.append(dict(
     <section class="section">
       <div class="container narrow text-center">
         <h2 class="section-title">Beyond the Classroom</h2>
-        <p class="lede">At Career Skills Solutions we want to see our students reach their goals, not just in
+        <p class="lede">At Career Skills Center we want to see our students reach their goals, not just in
         the curriculum but in the industry they trained for. Career Services works with every student through
         completion and stays available afterward.</p>
       </div>
@@ -1250,7 +1735,7 @@ PAGES.append(dict(
       <div class="container">
         <div class="split-grid">
           <div class="split-media">
-            <img src="images/person2.webp" alt="Career Skills Solutions graduate" loading="lazy" decoding="async">
+            <img src="images/person2.webp" alt="Career Skills Center graduate" loading="lazy" decoding="async">
           </div>
           <div class="split-copy">
             <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Every Student</p>
@@ -1340,9 +1825,9 @@ def faq(q, a):
 
 PAGES.append(dict(
     slug="faq.html", nav="faq.html",
-    title="FAQ | Career Skills Solutions — Quincy, MA",
+    title="FAQ | Career Skills Center — Massachusetts",
     ogtitle="Frequently Asked Questions",
-    desc="Answers about programs, admissions, tuition, schedules and career services at Career Skills Solutions in Quincy, MA.",
+    desc="Answers about programs, admissions, tuition, schedules and career services at Career Skills Center in Massachusetts.",
     main=hero("FAQ", "Find Answers",
               "The questions we hear most, answered plainly. If yours is not here, call us at "
               "(617) 315-4323.",
@@ -1366,9 +1851,9 @@ PAGES.append(dict(
 
           <p class="faq-group-title">Tuition &amp; funding</p>
 {faq("How much does it cost?", 'Tuition varies by program. <span class="tbd">Pricing is TBD until the catalog is final.</span> We price for affordability and we will tell you the full cost, including books and exam fees, before you enroll.')}
-{faq("What if I cannot afford the tuition?", 'Most students combine sources. Workforce grants may cover part or all of your training, and we offer payment plans and financing partners. Start with <a class="link-yellow" href="wioa.html">WIOA</a>.')}
+{faq("What if I cannot afford the tuition?", 'Most students combine sources. We offer payment plans and third-party financing partners, and our enrollment team will help you find every option you qualify for. See <a class="link-yellow" href="student-financing.html">Student Financing</a>.')}
 {faq("Do you accept VA benefits?", '<span class="tbd">TBD.</span> Approval to accept veterans education benefits must be granted before we can advertise it. Call us and we will tell you our current status.')}
-{faq("Is financial aid available?", 'Workforce Innovation and Opportunity Act funding through MassHire may be available to those who qualify. Eligibility is determined by the career center. See <a class="link-yellow" href="wioa.html">WIOA</a>.')}
+{faq("Is financial aid available?", 'We will walk you through every funding option you may qualify for, including payment plans and third-party financing partners. Call us and we will tell you what is currently available.')}
 
           <p class="faq-group-title">Career services</p>
 {faq("Do you help with job placement?", 'Yes. Resume help, mock interviews, employer introductions and job search support are included in your tuition, during the program and after you graduate. See <a class="link-yellow" href="career-services.html">Career Services</a>.')}
@@ -1400,11 +1885,11 @@ def media_card(date, title, body):
 
 PAGES.append(dict(
     slug="media.html", nav="media.html",
-    title="Media | Career Skills Solutions — Quincy, MA",
+    title="Media | Career Skills Center — Massachusetts",
     ogtitle="Media",
-    desc="News, press and media resources from Career Skills Solutions in Quincy, MA.",
+    desc="News, press and media resources from Career Skills Center in Massachusetts.",
     main=hero("Media", "In the News",
-              "Announcements, student stories and press resources from Career Skills Solutions.",
+              "Announcements, student stories and press resources from Career Skills Center.",
               "images/Todaybanner2.webp") + f"""
 
     <section class="section">
@@ -1444,11 +1929,11 @@ PAGES.append(dict(
           <div class="split-copy">
             <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Press Kit</p>
             <h2 class="section-title left">For Journalists</h2>
-            <p>Career Skills Solutions is a career training school based in Quincy, Massachusetts, offering
+            <p>Career Skills Center is a career training school based in Quincy, Massachusetts, offering
             hands-on programs in the skilled trades, information technology and the medical field for
-            students across the South Shore and Greater Boston.</p>
+            students across Massachusetts.</p>
             <p>For interviews, campus visits or media requests, contact
-            <a class="link-yellow" href="mailto:info@careerskillssolutions.com">info@careerskillssolutions.com</a>
+            <a class="link-yellow" href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a>
             or call <a class="link-yellow" href="tel:+16173154323">(617) 315-4323</a>.</p>
             <ul class="arrow-list">
               <li>Logo files <span class="tbd">(TBD)</span></li>
@@ -1457,7 +1942,7 @@ PAGES.append(dict(
             </ul>
           </div>
           <div class="split-media">
-            <img src="images/aboutus.webp" alt="Career Skills Solutions campus" loading="lazy" decoding="async">
+            <img src="images/aboutus.webp" alt="Career Skills Center campus" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -1482,7 +1967,7 @@ def post_card(tag, date, read, title, excerpt, href="#"):
 BLOG_POSTS = [
     ("Skilled Trades", "Sep 8, 2026", "6 min read",
      "Electrician, HVAC, or Plumbing: Which Trade Pays Off Fastest?",
-     "The three biggest trades in Greater Boston all pay well, but they differ in training length, "
+     "The three biggest trades in Massachusetts all pay well, but they differ in training length, "
      "licensing, and day-to-day work. Here is how to choose."),
     ("Information Technology", "Sep 2, 2026", "5 min read",
      "The Fastest Way Into an IT Career Without a Degree",
@@ -1508,13 +1993,13 @@ BLOG_POSTS = [
 
 PAGES.append(dict(
     slug="blog.html", nav="blog.html",
-    title="Blog | Career Skills Solutions — Quincy, MA",
-    ogtitle="Career Skills Solutions Blog",
-    desc="Guidance on training, careers, and funding in the skilled trades, IT, and healthcare from the team at Career Skills Solutions.",
+    title="Blog | Career Skills Center — Massachusetts",
+    ogtitle="Career Skills Center Blog",
+    desc="Guidance on training, careers, and funding in the skilled trades, IT, and healthcare from the team at Career Skills Center.",
     main=hero("Blog", "Career Insights",
               "Straight talk on training, careers, and how to pay for it, in the skilled trades, information "
-              "technology, and the medical field. Written by the team at Career Skills Solutions.",
-              None) + f"""
+              "technology, and the medical field. Written by the team at Career Skills Center.",
+              "images/aboutus.webp") + f"""
 
     <section class="section">
       <div class="container">
@@ -1538,12 +2023,12 @@ PAGES.append(dict(
 
         <!-- Featured / most recent article -->
         <a class="post-featured" href="#">
-          <p class="post-meta"><span class="post-tag">Admissions &amp; Funding</span></p>
+          <p class="post-meta"><span class="post-tag">Career Advice</span></p>
           <p class="post-meta">Sep 16, 2026<span class="dot-sep"></span>8 min read</p>
-          <h2>How to Get Free Career Training Through WIOA in Massachusetts</h2>
-          <p>A step-by-step walkthrough of the Workforce Innovation and Opportunity Act: who qualifies, how
-          MassHire career centers award funding, and exactly what to bring to your first appointment so you
-          can start training sooner.</p>
+          <h2>How to Choose a Career Training Program That Actually Leads to a Job</h2>
+          <p>What separates real, job-focused training from an expensive detour: the credentials that matter,
+          the questions to ask before you enroll, and how to tell whether a program's graduates are actually
+          getting hired.</p>
           <span class="read-link">Read article</span>
         </a>
 
@@ -1557,7 +2042,7 @@ PAGES.append(dict(
         </div>
 
         <p class="note"><strong>Placeholder content.</strong> The headlines and summaries above are drafts to
-        show the layout. Real articles replace them one at a time, starting with the featured WIOA piece.</p>
+        show the layout. Real articles replace them one at a time as they are written.</p>
       </div>
     </section>
 
@@ -1567,9 +2052,9 @@ PAGES.append(dict(
 # ---- contact.html ---------------------------------------------------------
 PAGES.append(dict(
     slug="contact.html", nav="contact.html",
-    title="Contact | Career Skills Solutions — Quincy, MA",
+    title="Contact | Career Skills Center — Massachusetts",
     ogtitle="Contact Us",
-    desc="Contact Career Skills Solutions in Quincy, MA. Call (617) 315-4323 or email info@careerskillssolutions.com.",
+    desc="Contact Career Skills Center in Massachusetts. Call (617) 315-4323 or email info@careerskillscenter.com.",
     main=hero("Contact", "Contact Us",
               "You’re moments away from a new career and a brighter future. Tell us a little about yourself "
               "and we’ll take it from there.",
@@ -1609,7 +2094,7 @@ PAGES.append(dict(
             <p class="form-status" role="status" aria-live="polite"></p>
           </form>
           <p style="font-size:13px; opacity:.8; margin-top:18px;">By submitting this form you give Career
-          Skills Solutions permission to contact you by phone, text and email.</p>
+          Skills Center permission to contact you by phone, text and email.</p>
         </div>
 
         <div class="contact-details">
@@ -1624,7 +2109,7 @@ PAGES.append(dict(
           </div>
           <div>
             <h3>Email</h3>
-            <p><a href="mailto:info@careerskillssolutions.com">info@careerskillssolutions.com</a></p>
+            <p><a href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a></p>
           </div>
           <div>
             <h3>Office hours</h3>
@@ -1673,9 +2158,9 @@ PAGES.append(dict(
 # ---- privacy-policy.html --------------------------------------------------
 PAGES.append(dict(
     slug="privacy-policy.html", nav=None,
-    title="Privacy Policy | Career Skills Solutions",
+    title="Privacy Policy | Career Skills Center",
     ogtitle="Privacy Policy",
-    desc="How Career Skills Solutions collects, uses and protects personal information.",
+    desc="How Career Skills Center collects, uses and protects personal information.",
     main=hero("Legal", "Privacy Policy",
               "How we collect, use and protect the information you share with us.",
               None) + """
@@ -1703,7 +2188,7 @@ PAGES.append(dict(
         </ul>
 
         <h2>Communications consent</h2>
-        <p>By submitting a form on this site you give Career Skills Solutions permission to contact you by
+        <p>By submitting a form on this site you give Career Skills Center permission to contact you by
         phone, text message and email. Message and data rates may apply. You can opt out at any time by
         replying STOP to a text, using the unsubscribe link in an email, or calling us at
         <a href="tel:+16173154323">(617) 315-4323</a>.</p>
@@ -1723,7 +2208,7 @@ PAGES.append(dict(
         <h2>Your choices</h2>
         <p>You may request access to, correction of, or deletion of the personal information we hold about
         you by contacting
-        <a href="mailto:info@careerskillssolutions.com">info@careerskillssolutions.com</a>. Some records must
+        <a href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a>. Some records must
         be retained to meet legal and accreditation requirements.</p>
 
         <h2>Children’s privacy</h2>
@@ -1734,11 +2219,11 @@ PAGES.append(dict(
         most recent version.</p>
 
         <h2>Contact us</h2>
-        <p>Career Skills Solutions<br>
+        <p>Career Skills Center<br>
         [Street Address], [Suite]<br>
         Quincy, MA 02169<br>
         <a href="tel:+16173154323">(617) 315-4323</a><br>
-        <a href="mailto:info@careerskillssolutions.com">info@careerskillssolutions.com</a></p>
+        <a href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a></p>
       </div>
     </section>
 """))
@@ -1747,9 +2232,9 @@ PAGES.append(dict(
 # ---- terms-of-use.html ----------------------------------------------------
 PAGES.append(dict(
     slug="terms-of-use.html", nav=None,
-    title="Terms of Use | Career Skills Solutions",
+    title="Terms of Use | Career Skills Center",
     ogtitle="Terms of Use",
-    desc="The terms that govern your use of the Career Skills Solutions website.",
+    desc="The terms that govern your use of the Career Skills Center website.",
     main=hero("Legal", "Terms of Use",
               "The terms that govern your use of this website.",
               None) + """
@@ -1762,7 +2247,7 @@ PAGES.append(dict(
         Have counsel review and finalize it before publishing.</p>
 
         <h2>Acceptance of terms</h2>
-        <p>By accessing careerskillssolutions.com you agree to these terms. If you do not agree, please do not
+        <p>By accessing careerskillscenter.com you agree to these terms. If you do not agree, please do not
         use the site.</p>
 
         <h2>Use of the site</h2>
@@ -1775,7 +2260,7 @@ PAGES.append(dict(
         enrollment agreement you sign governs the terms of your training.</p>
 
         <h2>Intellectual property</h2>
-        <p>The content, design, logos and materials on this site are owned by Career Skills Solutions or its
+        <p>The content, design, logos and materials on this site are owned by Career Skills Center or its
         licensors and may not be reproduced without permission.</p>
 
         <h2>Third-party links</h2>
@@ -1787,7 +2272,7 @@ PAGES.append(dict(
         fullest extent permitted by law.</p>
 
         <h2>Limitation of liability</h2>
-        <p>To the fullest extent permitted by law, Career Skills Solutions is not liable for any indirect,
+        <p>To the fullest extent permitted by law, Career Skills Center is not liable for any indirect,
         incidental or consequential damages arising from your use of this site.</p>
 
         <h2>Governing law</h2>
@@ -1796,7 +2281,7 @@ PAGES.append(dict(
 
         <h2>Contact us</h2>
         <p>Questions about these terms? Email
-        <a href="mailto:info@careerskillssolutions.com">info@careerskillssolutions.com</a> or call
+        <a href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a> or call
         <a href="tel:+16173154323">(617) 315-4323</a>.</p>
       </div>
     </section>
@@ -1806,7 +2291,11 @@ PAGES.append(dict(
 # ---------------------------------------------------------------------------
 # WRITE
 # ---------------------------------------------------------------------------
+written = 0
 for page in PAGES:
+    if page["slug"] in ARCHIVED:
+        print("skipped (archived)", page["slug"])
+        continue
     header = HEADER
     footer = FOOTER
     if page["nav"]:
@@ -1826,5 +2315,6 @@ for page in PAGES:
 
     (ROOT / page["slug"]).write_text(html, encoding="utf-8")
     print("wrote", page["slug"], len(html), "bytes")
+    written += 1
 
-print("\n%d pages written." % len(PAGES))
+print("\n%d pages written." % written)

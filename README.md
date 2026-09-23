@@ -1,6 +1,6 @@
-# Career Skills Solutions — website
+# Career Skills Center — website
 
-Static site for https://careerskillssolutions.com (Quincy, MA). Trade, IT, and
+Static site for https://careerskillscenter.com (Quincy, MA). Trade, IT, and
 medical career training.
 
 - `index.html` — landing page

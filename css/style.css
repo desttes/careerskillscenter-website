@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Career Skills Solutions — global stylesheet
+   Career Skills Center — global stylesheet
    Design tokens mirror the reference site (navy / yellow / Roboto / Poppins).
    Shared by every page; page-specific rules go at the bottom under "PAGES".
    ========================================================================== */
@@ -11,6 +11,7 @@
   --navy-deep:   #043A6D;   /* buttons, gradients */
   --yellow:      #FAB814;   /* accent / CTA */
   --yellow-dark: #E0A50F;
+  --accent-blue: #1163A2;   /* NTI-style accent line & stat numbers */
   --ink:         #343434;   /* body text */
   --ink-light:   #4E4E4E;
   --muted:       #8A8A8A;
@@ -73,7 +74,7 @@ strong { font-weight: 700; }
 
 /* ---------- Typography ---------- */
 .section-title {
-  font-size: clamp(34px, 5vw, 60px);
+  font-size: clamp(28px, 3vw, 36px);
   font-weight: 700;
   color: var(--ink);
   letter-spacing: -0.01em;
@@ -85,9 +86,10 @@ strong { font-weight: 700; }
 .eyebrow {
   display: flex; align-items: center; gap: 14px;
   font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--ink-light); margin-bottom: 18px;
+  color: var(--muted); margin-bottom: 18px;
 }
-.eyebrow-line { width: 60px; height: 3px; background: var(--navy); margin-left: calc(-60px - 14px); }
+.eyebrow-line { width: 60px; height: 3px; background: var(--accent-blue); margin-left: calc(-60px - 14px); }
+p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .eyebrow--light { color: rgba(255,255,255,0.8); }
 @media (max-width: 1320px) { .eyebrow-line { margin-left: 0; width: 34px; } }
 /* Desktop: drop the accent dash below its label, shifted left so it sits half
@@ -405,7 +407,7 @@ strong { font-weight: 700; }
 .footer-links a { color: #fff; font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
 .footer-links a:hover { color: var(--yellow); }
 
-.footer-main { background: linear-gradient(180deg, #0b4d8c 0%, var(--navy) 100%); color: #fff; padding-block: clamp(40px, 6vw, 72px); }
+.footer-main { background: radial-gradient(70% 140% at 50% 50%, #1c81c6 0%, #1371b7 55%, #0e5c93 100%); color: #fff; padding-block: clamp(40px, 6vw, 72px); }
 .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: clamp(28px, 4vw, 56px); }
 .brand--footer .brand-mark { width: 54px; height: 54px; font-size: 17px; }
 .brand--footer .brand-text { font-size: 12px; }
@@ -502,15 +504,19 @@ strong { font-weight: 700; }
 
 /* ---------- Section helpers ---------- */
 .section--alt { background: var(--surface-alt); }
+.course-overview { overflow: hidden; }
+.course-overview .container { position: relative; z-index: 1; }
 .section--tight { padding-block: clamp(48px, 6vw, 84px); }
 .section-intro { max-width: 780px; }
 .section-intro p { color: var(--ink-light); font-size: 17px; }
 
 /* ---------- Two-column photo + copy ---------- */
-.split-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.split-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
 /* For a split section whose copy column is tall (e.g. a long list), align the
    media to the top instead of centring it so it doesn't float in the gap. */
 .split-grid--top { align-items: start; }
+/* Keep two-column content flush at the top */
+.split-grid > .check-list, .split-grid > .faq { margin-top: 0; }
 .split-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; box-shadow: var(--shadow); }
 /* Anchor a cover image to the top of its frame (crop from the bottom). */
 .split-media img.align-top { object-position: top; }
@@ -567,6 +573,42 @@ strong { font-weight: 700; }
 .data-table tbody th { font-weight: 700; color: var(--ink); }
 .data-table .group td { background: var(--surface-alt); color: var(--navy); font-weight: 700; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
 .data-table .tbd { color: var(--muted); font-style: italic; }
+
+/* Comparison table (tuition ROI) */
+.compare-table thead th { text-transform: none; font-size: 14px; text-align: left; }
+.compare-table thead .compare-corner { background: #dcebf7; }
+.compare-table thead .compare-us { background: var(--yellow); color: var(--navy); }
+.compare-table .compare-us-cell { font-weight: 700; color: var(--navy); }
+
+/* Programs card grid (our-programs) */
+.pcard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 32px); margin-top: 40px; }
+.pcard { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.05); scroll-margin-top: 110px; }
+.pcard .pcard-media { aspect-ratio: 16 / 10; width: 100%; object-fit: cover; display: block; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+.pcard-body { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: clamp(20px, 2.4vw, 28px); }
+.pcard-title { font-family: var(--font-display); font-size: 22px; color: var(--navy); }
+.pcard-rule { width: 64px; height: 3px; background: var(--accent-blue); border-radius: 2px; }
+.pcard-body p { font-size: 15px; color: var(--ink-light); }
+.btn-outline-navy { background: transparent; color: var(--navy); border-color: var(--line); }
+.btn-outline-navy:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+@media (max-width: 900px) { .pcard-grid { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; } }
+
+/* Spec cards: Program Length / Certification / Issuing Authority */
+.spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+.spec-card { background: var(--surface-alt); padding: clamp(28px, 4vw, 44px) 24px; text-align: center; }
+.spec-value { color: var(--accent-blue); font-size: clamp(19px, 2vw, 24px); font-weight: 700; line-height: 1.25; }
+.spec-label { color: var(--muted); font-size: 13px; letter-spacing: .06em; margin-top: 14px; }
+@media (max-width: 720px) { .spec-grid { grid-template-columns: 1fr; } }
+
+/* Job-outlook two-column stat panel */
+.outlook-panel { background: var(--surface-alt); padding: clamp(32px, 4vw, 56px); text-align: center; }
+.outlook-value { color: var(--accent-blue); font-family: var(--font-body); font-size: clamp(48px, 6vw, 72px); font-weight: 500; line-height: 1; }
+.outlook-caption { font-weight: 700; font-size: 13px; letter-spacing: .08em; color: var(--ink); margin-top: 14px; }
+.outlook-body { color: var(--ink-light); font-size: 15px; margin-top: 20px; line-height: 1.7; }
+.outlook-note { font-size: 12px; color: var(--muted); margin-top: 20px; line-height: 1.6; }
+
+/* Soft skills: two-column with subtitle + logo */
+.soft-subtitle { font-weight: 700; font-size: 18px; color: var(--ink); }
+.soft-icon { display: block; width: 100%; max-width: 300px; height: auto; margin: 40px auto 0; }
 
 /* ---------- Team cards ---------- */
 .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 28px; margin-top: 36px; }

@@ -1,7 +1,7 @@
-# Career Skills Solutions — Site Structure & Design System
+# Career Skills Center — Site Structure & Design System
 
 This document is the single source of truth for building every page of
-careerskillssolutions.com. Anyone (or any AI assistant) should be able to
+careerskillscenter.com. Anyone (or any AI assistant) should be able to
 build a new page from this file plus `PAGES.md` without seeing the reference
 site again.
 
@@ -14,13 +14,13 @@ language only; all copy, branding, and images are ours).
 
 | Item | Value |
 |---|---|
-| Company name | Career Skills Solutions |
+| Company name | Career Skills Center |
 | Short form / logo mark | CSS (text mark until a logo file is supplied) |
 | Location | Quincy, MA 02169 (street address and suite **still needed**) |
 | Service area wording | "Quincy, the South Shore, and Greater Boston" |
 | Phone | (617) 315-4323 — `tel:+16173154323` |
-| Email | info@careerskillssolutions.com |
-| Domain | https://careerskillssolutions.com |
+| Email | info@careerskillscenter.com |
+| Domain | https://careerskillscenter.com |
 | Office hours (placeholder) | Monday–Friday, 9:00am–5:00pm |
 | Program areas | Skilled Trades · Information Technology · Medical |
 | Tagline (footer) | "Our goal isn't just to help you achieve your potential. *It's to activate your potential.*" |
@@ -123,7 +123,7 @@ Google Fonts import (in every page `<head>`):
 - Dropdown contents:
   - Programs → Skilled Trades, Information Technology, Medical
   - Admissions → Tuition, WIOA, Student Financing
-  - About Us → About Career Skills Solutions, Meet the Team, Career Services, FAQ, Media
+  - About Us → About Career Skills Center, Meet the Team, Career Services, FAQ, Media
 - ≤1024px: hamburger, full-width navy panel, dropdowns become accordions.
 
 ### Buttons
@@ -152,7 +152,7 @@ TODO in `main.js`.
 ### Footer (`.site-footer`)
 1. Link row (navy-dark): Programs · Tuition · Career Services · About Us · Contact · Catalog.
 2. Main (navy gradient), four columns: brand + tagline · Address · Contact us · Follow Us (+ accreditation badge placeholder).
-3. Bottom bar: © year · Career Skills Solutions · Privacy Policy · Terms of Use.
+3. Bottom bar: © year · Career Skills Center · Privacy Policy · Terms of Use.
 
 ### Decorations
 - `.deco-dots` — dotted triangle patterns in section corners (navy dots; yellow variant on the About photo).

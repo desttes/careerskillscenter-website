@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(NPM_CONFIG_CACHE=/tmp/npm-cache npx -y modern-web-guidance@latest search \"modal dialog popup contact form\" --skill-version 2026_09_04-7de96777)",
-      "Bash(NPM_CONFIG_CACHE=/tmp/npm-cache npx -y modern-web-guidance@latest search \"mobile navigation menu hamburger dropdown\" --skill-version 2026_09_04-7de96777)"
+      "Bash(NPM_CONFIG_CACHE=/tmp/npm-cache npx -y modern-web-guidance@latest search \"mobile navigation menu hamburger dropdown\" --skill-version 2026_09_04-7de96777)",
+      "WebFetch(domain:www.bls.gov)"
     ]
   }
 }
