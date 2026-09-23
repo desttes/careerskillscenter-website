@@ -1901,7 +1901,7 @@ PAGES.append(dict(
 {faq("What happens after I finish?", "You sit for your certification exam, work with Career Services on your search, and stay connected to us afterward. Graduates come back years later for help with their next move.")}
 
           <p class="faq-group-title">Location &amp; schedule</p>
-{faq("Where are you located?", '<span class="tbd">[Street Address], Quincy, MA 02169.</span> The campus is convenient to the South Shore and reachable from Boston on the MBTA Red Line.')}
+{faq("Where are you located?", 'Quincy, MA 02171. The campus is convenient to the South Shore and reachable on the MBTA Red Line.')}
 {faq("Is parking available?", '<span class="tbd">TBD — confirm parking and transit details once the campus address is final.</span>')}
 
         </div>
@@ -2140,8 +2140,7 @@ PAGES.append(dict(
         <div class="contact-details">
           <div>
             <h3>Address</h3>
-            <!-- PLACEHOLDER: street address and suite still needed -->
-            <p>[Street Address]<br>[Suite]<br>Quincy, MA 02169</p>
+            <p>Quincy, MA 02171</p>
           </div>
           <div>
             <h3>Phone</h3>
@@ -2260,8 +2259,7 @@ PAGES.append(dict(
 
         <h2>Contact us</h2>
         <p>Career Skills Center<br>
-        [Street Address], [Suite]<br>
-        Quincy, MA 02169<br>
+        Quincy, MA 02171<br>
         <a href="tel:+16175447155">(617) 544-7155</a><br>
         <a href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a></p>
       </div>
