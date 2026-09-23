@@ -1511,7 +1511,7 @@ PAGES.append(dict(
     ogtitle="About Career Skills Center",
     desc="Career Skills Center is a career school in Massachusetts training students for the skilled trades, IT and the medical field.",
     main=hero("About Us", "About Us",
-              "A career school built for Massachusetts, with courses you take online. "
+              "A career school built for Massachusetts, with online and hands-on training options. "
               "Our focus is your potential.",
               "images/aboutus.webp") + f"""
 
