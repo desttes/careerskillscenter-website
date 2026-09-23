@@ -101,7 +101,7 @@ def program_cards():
     """The three navy program cards, same markup/behaviour as the home page.
     NOTE: the hover-reveal effect is still deferred (see index.html)."""
     return f"""        <div class="program-grid">
-          <a class="program-card" href="our-programs.html#trades" data-hover-image="images/Todaybanner2.webp">
+          <a class="program-card" href="skilled-trades.html" data-hover-image="images/Todaybanner2.webp">
             <span class="program-icon" aria-hidden="true">{ICON_TRADES}</span>
             <span class="program-name">Skilled Trades</span>
             <span class="program-more">Read more</span>
@@ -382,7 +382,7 @@ PAGES.append(dict(
               <h3 class="pcard-title">Skilled Trades</h3>
               <span class="pcard-rule" aria-hidden="true"></span>
               <p>Hands-on training for electrical, HVAC/R, plumbing, welding and carpentry, built around the credentials employers and licensing boards ask for.</p>
-              <a class="btn btn-outline-navy" href="our-programs.html#trades">Read more</a>
+              <a class="btn btn-outline-navy" href="skilled-trades.html">Read more</a>
             </div>
           </article>
 
@@ -647,7 +647,7 @@ PAGES.append(dict(
             <button class="btn btn-navy js-open-contact" type="button">Get in Touch</button>
           </div>
           <div class="split-media">
-            <img class="align-top" src="images/medical.webp" alt="Medical billing and coding specialist reviewing records" loading="lazy" decoding="async">
+            <img class="align-top" src="images/billing-coding.webp" alt="Medical billing and coding specialist reviewing records" loading="lazy" decoding="async">
           </div>
         </div>
 
@@ -727,7 +727,7 @@ PAGES.append(dict(
         <div class="split-grid split-grid--top">
           <div class="split-copy">
             <p class="soft-subtitle">Common Attributes of Successful Medical Billers &amp; Coders</p>
-            <img class="soft-icon" src="images/aapc-logo.svg" alt="AAPC" width="146" height="51" loading="lazy" decoding="async">
+            <img class="soft-icon soft-photo" src="images/billing.webp" alt="Medical billing and coding professional reviewing records on a tablet" width="500" height="750" loading="lazy" decoding="async">
           </div>
           <ul class="check-list">
             <li><strong>Attention to Detail</strong>A single wrong digit can deny a claim, so precision matters on every record.</li>
@@ -826,6 +826,31 @@ PAGES.append(dict(
 """ + cta("Ready to start your healthcare career?", "Get in Touch")))
 
 
+# ---- skilled-trades.html --------------------------------------------------
+PAGES.append(dict(
+    slug="skilled-trades.html", nav="our-programs.html",
+    title="Skilled Trades Training | Career Skills Center",
+    ogtitle="Skilled Trades",
+    desc="Hands-on skilled trades training &mdash; electrical, HVAC/R, plumbing, welding and carpentry &mdash; at Career Skills Center in Massachusetts. Program details coming soon.",
+    main=hero("Skilled Trades", "Skilled Trades",
+              "The trades are hiring. Electricians, HVAC technicians, welders and plumbers are in demand "
+              "across Massachusetts. Get the hands-on training and safety credentials employers and "
+              "licensing boards ask for.",
+              "images/trades.webp", ("How to Enroll", "admissions.html")) + """
+
+    <section class="section section--alt">
+      <div class="container coming-soon">
+        <p class="cs-badge">Skilled Trades</p>
+        <h2 class="section-title">Coming Soon</h2>
+        <p class="lede">Our hands-on skilled trades programs &mdash; Electrical, HVAC/R, Plumbing, Welding and
+        Carpentry &mdash; are being finalized. Check back soon for program details, start dates and
+        enrollment. Want to be the first to know when they launch? Get in touch and we&rsquo;ll reach out.</p>
+      </div>
+    </section>
+
+""" + cta("Ready to start your career?", "Get in Touch")))
+
+
 # ---- admissions.html ------------------------------------------------------
 PAGES.append(dict(
     slug="admissions.html", nav="admissions.html",
@@ -846,7 +871,7 @@ PAGES.append(dict(
             <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Requirements</p>
             <h2 class="section-title left">Who Can Enroll</h2>
             <p>We keep requirements straightforward. If you are unsure whether you qualify, call us at
-            <a class="link-yellow" href="tel:+16173154323">(617) 315-4323</a> and we will tell you in a few
+            <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> and we will tell you in a few
             minutes.</p>
             <ul class="check-list">
               <li><strong>Be 18 or older</strong>Applicants who are 17 may enroll with a parent or guardian signature.</li>
@@ -1101,7 +1126,7 @@ PAGES.append(dict(
                 <summary>How do I find out if I am eligible?</summary>
                 <div class="faq-body"><p>Eligibility is decided by your local career center rather than by
                 the school. Begin an intake with MassHire, or call us at
-                <a class="link-yellow" href="tel:+16173154323">(617) 315-4323</a> and we will point you to
+                <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> and we will point you to
                 the right office and tell you what to bring.</p></div>
               </details>
               <details class="faq-item">
@@ -1184,7 +1209,7 @@ PAGES.append(dict(
             program, funding you actually qualify for, and enough support to finish what you start.</p>
             <p>Our advisors know how the funding process works and what the career centers ask for, and our
             schedules are built around people who are working or raising a family while they train. Call
-            <a class="link-yellow" href="tel:+16173154323">(617) 315-4323</a> to talk it through. There is no
+            <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> to talk it through. There is no
             cost and no obligation.</p>
             <p><button class="btn btn-navy js-open-contact" type="button">Talk to an Advisor</button></p>
           </div>
@@ -1210,7 +1235,7 @@ PAGES.append(dict(
             <h3 class="feature-title">Skilled Trades</h3>
             <p>Electrical, HVAC/R, plumbing, welding and construction roles that contractors across the South
             Shore are hiring for now.</p>
-            <a class="read-more" href="our-programs.html#trades"><span class="arrow" aria-hidden="true"></span> Read more</a>
+            <a class="read-more" href="skilled-trades.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
           </article>
           <article class="feature">
             <h3 class="feature-title">Information Technology</h3>
@@ -1310,7 +1335,7 @@ PAGES.append(dict(
             <summary>How do I find out if I am eligible?</summary>
             <div class="faq-body"><p>Eligibility is determined by your local career center, not by the
             school. Contact the MassHire South Shore Career Center, or call us at
-            <a class="link-yellow" href="tel:+16173154323">(617) 315-4323</a> and we will point you to the
+            <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> and we will point you to the
             right intake process.</p></div>
           </details>
           <details class="faq-item">
@@ -1830,7 +1855,7 @@ PAGES.append(dict(
     desc="Answers about programs, admissions, tuition, schedules and career services at Career Skills Center in Massachusetts.",
     main=hero("FAQ", "Find Answers",
               "The questions we hear most, answered plainly. If yours is not here, call us at "
-              "(617) 315-4323.",
+              "(617) 544-7155.",
               "images/hero3.webp") + f"""
 
     <section class="section">
@@ -1847,7 +1872,7 @@ PAGES.append(dict(
           <p class="faq-group-title">Admissions</p>
 {faq("What do I need to enroll?", 'Generally you need to be 18 or older, have a high school diploma or GED, and bring a valid photo ID. Some medical programs also require immunization records and a background check. See <a class="link-yellow" href="admissions.html">Admissions</a> for the full list.')}
 {faq("What if I was not great at school?", "Career training is different from traditional academics. It is practical, short, and focused on one skill set at a time, with instructors who work the trade. Plenty of our students did not enjoy high school and do well here.")}
-{faq("How do I get started?", 'Call <a class="link-yellow" href="tel:+16173154323">(617) 315-4323</a> or use the Get in Touch button. The first conversation takes a few minutes and costs nothing.')}
+{faq("How do I get started?", 'Call <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> or use the Get in Touch button. The first conversation takes a few minutes and costs nothing.')}
 
           <p class="faq-group-title">Tuition &amp; funding</p>
 {faq("How much does it cost?", 'Tuition varies by program. <span class="tbd">Pricing is TBD until the catalog is final.</span> We price for affordability and we will tell you the full cost, including books and exam fees, before you enroll.')}
@@ -1868,7 +1893,7 @@ PAGES.append(dict(
       </div>
     </section>
 
-""" + cta("Still have questions? Call (617) 315-4323.")))
+""" + cta("Still have questions? Call (617) 544-7155.")))
 
 
 # ---- media.html -----------------------------------------------------------
@@ -1934,7 +1959,7 @@ PAGES.append(dict(
             students across Massachusetts.</p>
             <p>For interviews, campus visits or media requests, contact
             <a class="link-yellow" href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a>
-            or call <a class="link-yellow" href="tel:+16173154323">(617) 315-4323</a>.</p>
+            or call <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a>.</p>
             <ul class="arrow-list">
               <li>Logo files <span class="tbd">(TBD)</span></li>
               <li>Campus photography <span class="tbd">(TBD)</span></li>
@@ -2054,7 +2079,7 @@ PAGES.append(dict(
     slug="contact.html", nav="contact.html",
     title="Contact | Career Skills Center — Massachusetts",
     ogtitle="Contact Us",
-    desc="Contact Career Skills Center in Massachusetts. Call (617) 315-4323 or email info@careerskillscenter.com.",
+    desc="Contact Career Skills Center in Massachusetts. Call (617) 544-7155 or email info@careerskillscenter.com.",
     main=hero("Contact", "Contact Us",
               "You’re moments away from a new career and a brighter future. Tell us a little about yourself "
               "and we’ll take it from there.",
@@ -2105,7 +2130,7 @@ PAGES.append(dict(
           </div>
           <div>
             <h3>Phone</h3>
-            <p><a href="tel:+16173154323">(617) 315-4323</a></p>
+            <p><a href="tel:+16175447155">(617) 544-7155</a></p>
           </div>
           <div>
             <h3>Email</h3>
@@ -2191,7 +2216,7 @@ PAGES.append(dict(
         <p>By submitting a form on this site you give Career Skills Center permission to contact you by
         phone, text message and email. Message and data rates may apply. You can opt out at any time by
         replying STOP to a text, using the unsubscribe link in an email, or calling us at
-        <a href="tel:+16173154323">(617) 315-4323</a>.</p>
+        <a href="tel:+16175447155">(617) 544-7155</a>.</p>
 
         <h2>Sharing your information</h2>
         <p>We do not sell your personal information. We share it only with service providers who help us
@@ -2222,7 +2247,7 @@ PAGES.append(dict(
         <p>Career Skills Center<br>
         [Street Address], [Suite]<br>
         Quincy, MA 02169<br>
-        <a href="tel:+16173154323">(617) 315-4323</a><br>
+        <a href="tel:+16175447155">(617) 544-7155</a><br>
         <a href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a></p>
       </div>
     </section>
@@ -2282,7 +2307,7 @@ PAGES.append(dict(
         <h2>Contact us</h2>
         <p>Questions about these terms? Email
         <a href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a> or call
-        <a href="tel:+16173154323">(617) 315-4323</a>.</p>
+        <a href="tel:+16175447155">(617) 544-7155</a>.</p>
       </div>
     </section>
 """))
