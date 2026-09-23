@@ -1511,8 +1511,8 @@ PAGES.append(dict(
     ogtitle="About Career Skills Center",
     desc="Career Skills Center is a career school in Massachusetts training students for the skilled trades, IT and the medical field.",
     main=hero("About Us", "About Us",
-              "A career school built for Massachusetts. Our focus is your "
-              "potential.",
+              "A career school built for Massachusetts, with courses you take online. "
+              "Our focus is your potential.",
               "images/aboutus.webp") + f"""
 
     <section class="section">
@@ -1595,45 +1595,6 @@ PAGES.append(dict(
             <p>We train people who stay and work here, strengthening the neighborhoods we all live in.</p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="section section--alt" id="campus">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Our Campus</p>
-        <h2 class="section-title left">Visit Us in Quincy</h2>
-        <div class="section-intro">
-          <p>Our campus is in Quincy, Massachusetts, convenient to the South Shore and to Boston by car or by
-          the MBTA Red Line. Come see the labs before you enroll — we would rather you make the decision with
-          your own eyes.</p>
-        </div>
-        <div class="gallery-grid">
-          <div class="gallery-slot">Campus photo</div>
-          <div class="gallery-slot">Campus photo</div>
-          <div class="gallery-slot">Campus photo</div>
-          <div class="gallery-slot">Campus photo</div>
-        </div>
-        <div class="map-placeholder">Map embed placeholder — add a Google Maps iframe once the street address is final</div>
-        <p class="note"><strong>Placeholder.</strong> Street address, suite number, campus photos and the map
-        embed are still needed.</p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Credentials</p>
-        <h2 class="section-title left">Accreditation &amp; Approvals</h2>
-        <div class="section-intro">
-          <p><span class="tbd">Placeholder — list licensure, accreditation and approvals here once they are
-          granted, exactly as the granting body words them.</span></p>
-        </div>
-        <div class="logo-strip">
-          <div class="logo-slot">Accreditation badge</div>
-          <div class="logo-slot">State approval</div>
-          <div class="logo-slot">Partner badge</div>
-        </div>
-        <p class="note"><strong>Do not publish claims of accreditation or state approval until they are
-        granted in writing.</strong> Misstating approval status is a regulatory problem, not just a marketing one.</p>
       </div>
     </section>
 
