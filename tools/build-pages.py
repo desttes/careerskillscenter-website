@@ -23,6 +23,21 @@ HEADER = block(r'<header class="site-header".*?</header>')
 FOOTER = block(r'<footer class="site-footer".*?</footer>')
 DIALOG = block(r'<dialog class="contact-dialog".*?</dialog>')
 
+# Cache-busting: stamp css/js links with each asset's mtime so browsers always
+# fetch the current version after a change (no hard-refresh needed).
+CSS_VER = str(int((ROOT / "css" / "style.css").stat().st_mtime))
+JS_VER = str(int((ROOT / "js" / "main.js").stat().st_mtime))
+
+# index.html isn't regenerated, so keep its own asset links stamped here.
+_stamped = re.sub(r'(href="css/style\.css)(\?v=\d+)?"', r'\1?v=%s"' % CSS_VER, home)
+_stamped = re.sub(r'(src="js/main\.js)(\?v=\d+)?"', r'\1?v=%s"' % JS_VER, _stamped)
+if _stamped != home:
+    (ROOT / "index.html").write_text(_stamped, encoding="utf-8")
+    home = _stamped
+    HEADER = block(r'<header class="site-header".*?</header>')
+    FOOTER = block(r'<footer class="site-footer".*?</footer>')
+    DIALOG = block(r'<dialog class="contact-dialog".*?</dialog>')
+
 PAGE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +59,7 @@ PAGE = """<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=@@CSSVER@@">
 </head>
 <body>
 
@@ -62,7 +77,7 @@ PAGE = """<!DOCTYPE html>
 
 @@DIALOG@@
 
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=@@JSVER@@" defer></script>
 </body>
 </html>
 """
@@ -2336,7 +2351,9 @@ for page in PAGES:
             .replace("@@HEADER@@", header)
             .replace("@@FOOTER@@", footer)
             .replace("@@DIALOG@@", DIALOG)
-            .replace("@@MAIN@@", page["main"]))
+            .replace("@@MAIN@@", page["main"])
+            .replace("@@CSSVER@@", CSS_VER)
+            .replace("@@JSVER@@", JS_VER))
 
     (ROOT / page["slug"]).write_text(html, encoding="utf-8")
     print("wrote", page["slug"], len(html), "bytes")
