@@ -10,6 +10,14 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-24 (later) — Pillar post expanded from docs/content/ (brief v1.1)
+Picked up the strategy-side handoff (commit `9aee0c0`: brief bumped to v1.1 + `docs/content/` pack). Expanded **post #1 only** this pass, per request.
+- **`/blog/free-job-training-massachusetts.html`** rewritten from `docs/content/01-...md`: now **~2,004 words** (target 2,000–2,500). Added: the "5 main ways to pay" comparison table; "How the system is organized" (16 regions → boards → centers → ETPL); dedicated sections for **WIOA/ITA, Section 30/TOP** (get paid while training, 20-hr/wk, 26 extra weeks, 20th-week deadline), **Donnelly grants**, **Express (employer-paid)**, and payment plans; a "Which option fits you?" mapping; a 6–8 week timeline box; a "What to bring" checklist (with a placeholder for the future PDF download); JobQuest-first "honest first step"; a bottom-line close; and an **expanded 9-question FAQ** (visible + FAQPage schema kept in sync). Read time bumped to 12 min.
+- Government sources linked inline: mass.gov (Section 30, MassHire locator), jobquest.mass.gov, commcorp.org (Donnelly).
+- `[VERIFY]` markers left where the pack asked: career-center count, Donnelly totals, locator URL; plus the checklist-download `[TODO]`.
+- Verified: builds clean; JSON-LD valid (BlogPosting + 9-Q FAQPage); no console errors; no page overflow; table scrolls within its wrapper on narrow screens.
+- **Still at original draft length (not yet expanded):** posts #2–#8. Next pass. Post #5 salary numbers: per your call, I'll **fetch BLS OEWS May 2025 MA** medians (SOC codes in `docs/content/05`) when I expand it.
+
 ### 2026-09-24 — Blog cleanup + 8 launch drafts (§2, §5)
 **Built (local only, all DRAFTS marked with `<!-- DRAFT – facts to verify: … -->`):**
 - Rewrote `blog.html` index: removed the 6 placeholder cards + the "Placeholder content" notice + the disabled "More articles coming soon" button. Featured post is now the funding pillar. Category filter pills updated to the final 5 (Paying for Training · Medical · Information Technology · Skilled Trades · Career Advice) — still **visual-only** (not wired to filtering yet).

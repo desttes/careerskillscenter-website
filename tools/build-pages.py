@@ -2163,52 +2163,100 @@ FUNDING_NOTE = """        <div class="note"><strong>About Career Skills Center a
 
 
 # ---- 1. Pillar: Free Job Training in Massachusetts ------------------------
-_p1_body = """        <!-- DRAFT – facts to verify: (1) current WIOA/MassHire program names and that MassHire
-             administers WIOA locally in MA; (2) that eligibility and award amounts are decided by the local
-             career center and vary; (3) Workforce Training Fund Express Program is employer-side (CommCorp);
-             (4) links to mass.gov / dol.gov / careeronestop.org still resolve; (5) do NOT state specific ITA
-             dollar caps until verified — they vary by career center. -->
-        <p class="lead">Yes, there are real ways to get career training paid for in Massachusetts. Most of them
-        run through your local <strong>MassHire career center</strong> and a federal law called WIOA. This guide
-        explains the main options in plain language: what they are, who they are for, and the first step to
-        take.</p>
+_p1_body = """        <!-- DRAFT – facts to verify: (1) number of MassHire career centers (~29) and the mass.gov
+             locator URL [VERIFY count]; (2) that MDCS maintains the ETPL and only ETPL-listed programs are
+             payable with an ITA; (3) Section 30/TOP rules — at least 20 classroom hours/week, up to 26 extra
+             weeks, apply to DUA by the 20th compensable week; (4) Donnelly grant award totals ($7.4M May 2026,
+             $5.9M Aug 2026) and that funds go to partner organizations, not individuals; (5) MassHire Central
+             income-threshold example ($15,960–$60,124+) is regional, present as example only; (6) all mass.gov /
+             commcorp.org / jobquest.mass.gov links resolve. Do NOT state ITA dollar caps — they vary by region. -->
+        <p class="lead">Yes — Massachusetts has several real ways to get career training paid for, and most run
+        through your local <strong>MassHire career center</strong>. This guide covers the five main options in
+        plain language: what each one is, who it is for, and where to start.</p>
 
-        <p>There is no single "free training" button. Funding comes from a few different programs, and each one
-        has its own rules. Many people combine more than one. Below, we walk through each option so you can see
-        where you might fit.</p>
+        <p>There is no single "free training" button. The money comes from a few different programs, each with
+        its own rules. Many people combine more than one. Here is the whole picture in one place.</p>
 
-        <h2>The big one: WIOA and MassHire</h2>
+        <h2>The 5 main ways to get training paid for in Massachusetts</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Program</th><th>Who it's for</th><th>What it pays</th><th>Where to start</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>WIOA training voucher (ITA)</strong></td><td>Laid-off workers, lower-income adults, youth</td><td>Tuition at an approved program (amount set by your career center)</td><td>MassHire career center</td></tr>
+              <tr><td><strong>Section 30 / TOP</strong></td><td>People collecting unemployment</td><td>Keeps your unemployment checks coming during full-time training (not tuition)</td><td>DUA (apply by the 20th paid week)</td></tr>
+              <tr><td><strong>Donnelly Workforce Success programs</strong></td><td>Unemployed and underemployed residents</td><td>Free training run by grant-funded partners</td><td>Program partners across MA (changes by year)</td></tr>
+              <tr><td><strong>Employer-paid (Workforce Training Fund &ndash; Express)</strong></td><td>People already working</td><td>Your employer gets reimbursed for training staff</td><td>Your employer or HR</td></tr>
+              <tr><td><strong>Payment plans &amp; other options</strong></td><td>Anyone</td><td>Spreads the cost out over time</td><td>The school</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The rest of this guide explains each one, then shows you the honest first step.</p>
+
+        <h2>How the system is organized</h2>
+        <p>Massachusetts is divided into <strong>16 workforce regions</strong>. Each region has a MassHire
+        Workforce Board and one or more <strong>MassHire career centers</strong> &mdash; about 29 across the
+        state <span class="tbd">[VERIFY count]</span>. These centers are free, state-run offices that help
+        residents find jobs and pay for training. You may still hear the older name, "One-Stop Career Centers."</p>
+        <p>One word you will see a lot is <strong>ETPL</strong>. It stands for the Eligible Training Provider
+        List &mdash; the state's list of approved programs. A training voucher can only pay for a program that
+        is on that list. Keep that in mind when you choose a school.</p>
+
+        <h2>1. WIOA training vouchers (the ITA)</h2>
         <p>WIOA stands for the <strong>Workforce Innovation and Opportunity Act</strong>. It is a federal law
         that sends money to each state to help people train for in-demand jobs. In Massachusetts, that money is
-        handled locally by <strong>MassHire career centers</strong> (you may still hear the older name, "One-Stop
-        Career Centers"). There is a MassHire center near most cities and towns.</p>
-        <p>If you qualify, WIOA can pay for approved training through something called an
-        <strong>Individual Training Account (ITA)</strong> — think of it as a voucher for tuition at an approved
-        school. The career center decides who qualifies and how much they can offer, so amounts vary. We cover
-        the steps in a separate guide: <a href="blog/masshire-training-voucher.html">How to get a MassHire
-        training voucher (ITA)</a>.</p>
+        handled locally by MassHire career centers.</p>
+        <p>If you qualify, WIOA can pay for approved training through an <strong>Individual Training Account
+        (ITA)</strong> &mdash; think of it as a voucher for tuition at an ETPL-approved school. Your career
+        center decides who qualifies and how much they can offer, so amounts vary by region. We do not list a
+        dollar cap here because it is different from place to place.</p>
+        <p>Career centers do not fund just any training. They look for programs that lead to jobs that are
+        actually hiring in Massachusetts &mdash; health care, IT, skilled trades, and similar fields. Short,
+        job-focused programs that end in a recognized credential tend to be the easiest to get approved.</p>
+        <p>Two guides go deeper: <a href="blog/wioa-eligibility-massachusetts.html">Who qualifies for WIOA
+        training in Massachusetts?</a> and <a href="blog/masshire-training-voucher.html">How to get a MassHire
+        training voucher (ITA), step by step</a>. And for the honest answer on cost, see
+        <a href="blog/is-wioa-training-free.html">Is WIOA training really free?</a></p>
 
-        <h2>Who WIOA is for</h2>
-        <p>WIOA generally serves three groups: adults (with a focus on people with lower incomes), dislocated
-        workers (people laid off or whose job ended through no fault of their own), and young people. You do not
-        have to be on unemployment to ask. The career center looks at your work history, income, and goals.</p>
-        <p>Want the details? Read <a href="blog/wioa-eligibility-massachusetts.html">Who qualifies for WIOA
-        training in Massachusetts?</a> The short version: your local career center makes the final call, so the
-        best move is to go in and ask.</p>
+        <h2>2. Section 30 / TOP: get paid while you train</h2>
+        <p>Here is one many people miss. If you are collecting unemployment, the
+        <strong>Training Opportunities Program (TOP)</strong>, also called <strong>Section 30</strong>, can let
+        you keep getting your unemployment checks while you go to full-time approved training.</p>
+        <p>The basics:</p>
+        <ul>
+          <li>Your training must be full-time &mdash; at least 20 classroom hours a week.</li>
+          <li>It can add <strong>up to 26 extra weeks</strong> of benefits so you can finish.</li>
+          <li>You usually must apply to the Department of Unemployment Assistance (DUA)
+          <strong>by the 20th paid week</strong> of your claim, so do not wait.</li>
+          <li>Section 30 does <em>not</em> pay tuition &mdash; it protects your income while you study. You can
+          use it together with a WIOA voucher.</li>
+        </ul>
+        <p>Here is what that looks like in real life. Say you were laid off and started collecting unemployment.
+        Instead of job-searching part-time, you enroll full-time in an approved program. With Section 30, your
+        weekly checks keep coming while you study, and you may get extra weeks so your benefits do not run out
+        before you finish.</p>
+        <p>Read the state's page: <a href="https://www.mass.gov/info-details/training-opportunities-program-section-30">Training
+        Opportunities Program (Section 30)</a>.</p>
 
-        <h2>What "free" really means</h2>
-        <p>WIOA can cover tuition for an approved program, and sometimes other costs. But "free" is not always
-        100%. Some supplies, exam fees, or fees may not be covered, and funding is limited. We explain this
-        honestly in <a href="blog/is-wioa-training-free.html">Is WIOA training really free? What's covered and
-        what isn't</a>.</p>
+        <h2>3. Donnelly Workforce Success programs</h2>
+        <p>The <strong>Senator Kenneth J. Donnelly Workforce Success Grants</strong> (once called the Workforce
+        Competitiveness Trust Fund) pay for training partnerships that serve unemployed and underemployed
+        residents. Here is the key point: the money goes to <em>organizations</em>, not to individuals. Those
+        organizations then offer training free to the people they serve.</p>
+        <p>So you do not apply for a Donnelly grant yourself &mdash; you look for a local program that is funded
+        by one. These change from year to year. To show this is real money: recent rounds awarded about
+        <strong>$7.4 million (May 2026)</strong> and <strong>$5.9 million (August 2026)</strong>.
+        <span class="tbd">[VERIFY totals]</span> Learn more at
+        <a href="https://commcorp.org/program/senatordonnellygrants/">commcorp.org</a>.</p>
 
-        <h2>If your employer might pay</h2>
+        <h2>4. Employer-paid training (Workforce Training Fund &ndash; Express)</h2>
         <p>If you already have a job, your employer may be able to get part of your training cost reimbursed by
         the state through the <strong>Workforce Training Fund Express Program</strong>, run by Commonwealth
-        Corporation. This is money employers pay into, and it is meant to train current staff. If that could be
-        you, ask your manager, and point them to our information for employers when we publish it.</p>
+        Corporation. This is money employers pay into, meant to train current staff. If that could be you, ask
+        your manager or HR &mdash; and point them to our information for employers when we publish it.</p>
 
-        <h2>Other ways people pay</h2>
+        <h2>5. Payment plans and other options</h2>
         <ul>
           <li><strong>Payment plans.</strong> Many schools, including us, offer a monthly plan so you can spread
           the cost out. See <a href="student-financing.html">Ways to Pay</a>.</li>
@@ -2218,20 +2266,64 @@ _p1_body = """        <!-- DRAFT – facts to verify: (1) current WIOA/MassHire 
           sometimes offer help. Your career center can point you to these.</li>
         </ul>
 
-        <h2>How to start (the honest first step)</h2>
+        <h2>Which option fits your situation?</h2>
+        <ul>
+          <li><strong>Just laid off?</strong> Start with a WIOA voucher as a dislocated worker, and ask about
+          Section 30 to keep your unemployment while you train.</li>
+          <li><strong>Working, but low pay?</strong> You may still qualify for a WIOA voucher as an adult. Ask
+          your career center, and check whether your employer would use the Express Program.</li>
+          <li><strong>On unemployment and want to keep your checks?</strong> Section 30 is built for you &mdash;
+          just watch the 20th-week deadline.</li>
+          <li><strong>Not eligible right now, or the funds are gone?</strong> Look for a Donnelly-funded free
+          program, ask about veterans benefits if you served, or use a monthly payment plan to start now.</li>
+          <li><strong>Already employed and your boss is open to it?</strong> The Express Program can reimburse
+          your employer for training you.</li>
+        </ul>
+        <p>Most people mix and match. Your career center will help you build a plan that fits.</p>
+
+        <h2>How long does it take?</h2>
+        <div class="note"><strong>Plan on about 6&ndash;8 weeks</strong> from your first call to your first
+        class. That covers an information meeting, an assessment, paperwork, and approval. One warning:
+        <strong>funds can run out mid-year</strong>, so the earlier in the year you start, the better.</div>
+
+        <h2>What to bring to your career center</h2>
+        <p>Centers ask for different things, but most want to see:</p>
+        <ul>
+          <li>Proof you are allowed to work in the U.S.</li>
+          <li>Proof of your age (a photo ID works).</li>
+          <li>Selective Service registration, if you are a man born after January 1, 1960.</li>
+          <li>Your household income for about the last 6 months.</li>
+          <li>Proof of your family size.</li>
+          <li>Layoff paperwork, if you were laid off.</li>
+        </ul>
+        <div class="note"><strong>Coming soon:</strong> a printable "Paying for Training in Massachusetts"
+        checklist you can download and bring with you. <span class="tbd">[TODO: wire up the checklist download
+        (needs the form backend + PDF from Emilio).]</span></div>
+
+        <h2>The honest first step</h2>
         <ol>
-          <li>Find your local MassHire career center. You can search on the state site,
-          <a href="https://www.mass.gov/masshire-career-centers">mass.gov/masshire-career-centers</a>.</li>
-          <li>Call or visit and say you want to train for a new career and want to know what funding you might
-          qualify for.</li>
-          <li>Ask about WIOA and an Individual Training Account (ITA), and bring ID, income information, and
-          any layoff paperwork.</li>
+          <li>Register in <strong>MassHire JobQuest</strong> at
+          <a href="https://jobquest.mass.gov">jobquest.mass.gov</a> (you will also set up a MyMassGov account).</li>
+          <li>Find your local MassHire career center &mdash; it is based on where you live or last worked. Search
+          at <a href="https://www.mass.gov/masshire-career-centers">mass.gov/masshire-career-centers</a>
+          <span class="tbd">[VERIFY URL]</span>.</li>
+          <li>Call or visit and say: "I want to train for a new career, and I want to know what funding I might
+          qualify for."</li>
+          <li>Ask about WIOA and an ITA &mdash; and if you are on unemployment, ask about Section 30 at the same
+          time.</li>
           <li>Pick an approved program that fits your goals. Browse <a href="our-programs.html">our
           programs</a> to see what we offer.</li>
         </ol>
-
         <p>You do not have to figure this out alone. Career centers exist to help, and they do not charge you to
         walk in and ask.</p>
+
+        <h2>The bottom line</h2>
+        <p>Free or low-cost training in Massachusetts is real, but it takes a few steps and a little patience.
+        The single best move is to register in JobQuest and talk to your local MassHire career center early
+        &mdash; before funds run low for the year. Bring your documents, ask about every option above, and pick
+        an approved program that leads to a job you actually want.</p>
+        <p>And if funding does not come through right away, that does not have to stop you. A payment plan can
+        get you started now, and you can keep working on funding in the background.</p>
 
 """ + FUNDING_NOTE + """
 
@@ -2245,18 +2337,32 @@ _p1_body = """        <!-- DRAFT – facts to verify: (1) current WIOA/MassHire 
         <div class="faq">
           <details class="faq-item"><summary>Is job training really free in Massachusetts?</summary>
           <div><p>It can be, for people who qualify. Programs like WIOA, handled through MassHire career centers,
-          can pay for approved training. It is not automatic — your local career center decides — and "free" may
-          not cover 100% of every cost. Ask your career center what you qualify for.</p></div></details>
-          <details class="faq-item"><summary>What is a MassHire career center?</summary>
-          <div><p>MassHire career centers are free, state-run offices that help residents find jobs and pay for
-          training. They handle WIOA funding locally. You can visit one without an appointment to ask questions.</p></div></details>
+          can pay for approved training. It is not automatic &mdash; your local career center decides &mdash; and
+          "free" may not cover 100% of every cost. Ask your career center what you qualify for.</p></div></details>
+          <details class="faq-item"><summary>Can I get paid while I'm in training?</summary>
+          <div><p>You may be able to. If you are collecting unemployment, Section 30 (the Training Opportunities
+          Program) can let you keep your benefits during full-time approved training &mdash; at least 20 classroom
+          hours a week, for up to 26 extra weeks. You usually must apply by the 20th paid week of your claim.</p></div></details>
           <details class="faq-item"><summary>Do I have to be unemployed to get WIOA funding?</summary>
           <div><p>No. WIOA serves adults, dislocated workers, and youth. People who are working but earning low
           wages may also qualify. Your career center reviews your situation.</p></div></details>
+          <details class="faq-item"><summary>Do I need to be a U.S. citizen?</summary>
+          <div><p>Not necessarily, but you generally must be authorized to work in the United States, and centers
+          will ask for proof. Rules can vary, so ask your career center about your situation.</p></div></details>
+          <details class="faq-item"><summary>Can I choose any school?</summary>
+          <div><p>No. To use a training voucher, the program must be on the state's approved list (the ETPL). You
+          can search approved programs in MassHire JobQuest.</p></div></details>
+          <details class="faq-item"><summary>Can I train online?</summary>
+          <div><p>Yes, as long as the online program is approved. Online training can be a great fit for fields
+          like medical billing and coding or IT support.</p></div></details>
+          <details class="faq-item"><summary>What if my career center says the funds are gone?</summary>
+          <div><p>It happens, because funding is limited each year. Ask about the next program year, look for a
+          Donnelly-funded free program, or use a payment plan to start now. See
+          <a href="student-financing.html">Ways to Pay</a>.</p></div></details>
           <details class="faq-item"><summary>How long does it take to get approved?</summary>
-          <div><p>It varies by career center and by how quickly you complete the steps (an orientation, an
-          assessment, and paperwork). Start early, because funding is limited and training must be approved
-          before it begins.</p></div></details>
+          <div><p>Plan on about 6 to 8 weeks, though it varies by career center and by how quickly you complete
+          the steps. Start early, because funds can run out mid-year and training must be approved before it
+          begins.</p></div></details>
           <details class="faq-item"><summary>Does Career Skills Center accept WIOA funding?</summary>
           <div><p>We are working toward approval to accept state training funds. Until then, we will help you
           check what you may qualify for and show you other ways to pay, like a monthly payment plan. Only your
@@ -2280,12 +2386,20 @@ PAGES.append(dict(
                          "2026-09-24", "2026-09-24") + "\n" + faq_ld([
         ("Is job training really free in Massachusetts?",
          "It can be, for people who qualify. Programs like WIOA, handled through MassHire career centers, can pay for approved training. It is not automatic and may not cover 100% of every cost. Ask your local career center what you qualify for."),
-        ("What is a MassHire career center?",
-         "MassHire career centers are free, state-run offices that help residents find jobs and pay for training. They handle WIOA funding locally and you can visit without an appointment."),
+        ("Can I get paid while I'm in training?",
+         "You may be able to. If you are collecting unemployment, Section 30 (the Training Opportunities Program) can let you keep your benefits during full-time approved training — at least 20 classroom hours a week, for up to 26 extra weeks. You usually must apply by the 20th paid week of your claim."),
         ("Do I have to be unemployed to get WIOA funding?",
          "No. WIOA serves adults, dislocated workers, and youth. People who are working but earning low wages may also qualify. Your career center reviews your situation."),
+        ("Do I need to be a U.S. citizen to get WIOA training funds?",
+         "Not necessarily, but you generally must be authorized to work in the United States, and centers will ask for proof. Rules can vary, so ask your career center about your situation."),
+        ("Can I choose any school for a WIOA training voucher?",
+         "No. To use a training voucher, the program must be on the state's approved list (the Eligible Training Provider List, or ETPL). You can search approved programs in MassHire JobQuest."),
+        ("Can I train online with WIOA funding?",
+         "Yes, as long as the online program is approved. Online training can be a great fit for fields like medical billing and coding or IT support."),
+        ("What if my career center says the funds are gone?",
+         "It happens, because funding is limited each year. Ask about the next program year, look for a Donnelly-funded free program, or use a payment plan to start now."),
         ("How long does it take to get approved?",
-         "It varies by career center and how quickly you complete an orientation, assessment, and paperwork. Start early because funding is limited and training must be approved before it begins."),
+         "Plan on about 6 to 8 weeks, though it varies by career center and how quickly you complete the steps. Start early because funds can run out mid-year and training must be approved before it begins."),
         ("Does Career Skills Center accept WIOA funding?",
          "Career Skills Center is working toward approval to accept state training funds. Until then, it will help you check what you may qualify for and show other ways to pay. Only your MassHire career center can approve funding."),
     ]),
@@ -2294,7 +2408,7 @@ PAGES.append(dict(
         "Free Job Training in Massachusetts: WIOA, MassHire and State Grants Explained",
         "Everything you need to know about the state and federal programs that can help pay for career "
         "training in Massachusetts — in plain language.",
-        "September 24, 2026", "September 24, 2026", "11 min read", _p1_body)))
+        "September 24, 2026", "September 24, 2026", "12 min read", _p1_body)))
 
 
 # ---- 2. Who Qualifies for WIOA Training in Massachusetts ------------------
