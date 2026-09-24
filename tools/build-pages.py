@@ -44,6 +44,16 @@ PAGE = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0XDE7E7RGQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0XDE7E7RGQ');
+  </script>
+
   <title>@@TITLE@@</title>
   <meta name="description" content="@@DESC@@">
   <link rel="canonical" href="https://careerskillscenter.com/@@SLUG@@">
