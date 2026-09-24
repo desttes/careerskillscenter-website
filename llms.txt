@@ -1,0 +1,23 @@
+# Career Skills Center
+
+> Career Skills Center is a career school in Massachusetts offering career-focused training in the skilled trades, information technology, and the medical field. Programs are short, hands-on where it matters, and built around the credentials employers actually hire for, with online and hands-on training options. Located in Quincy, MA. Phone: (617) 544-7155. Email: info@careerskillscenter.com.
+
+## Programs
+- [Our Programs](https://careerskillscenter.com/our-programs.html): Overview of all training programs.
+- [Skilled Trades](https://careerskillscenter.com/skilled-trades.html): Hands-on trades training (electrical, HVAC/R, plumbing, welding, carpentry) — program details coming soon.
+- [IT Support Specialist](https://careerskillscenter.com/it-support-specialist.html): Online IT support training preparing students for the CompTIA Tech+ (FC0-U71) certification, about 8 weeks, no experience required.
+- [Medical Billing & Coding](https://careerskillscenter.com/medical-billing-coding.html): Online medical billing and coding training preparing students for the AAPC CPC and CPB certifications, about 11 weeks.
+
+## Admissions & Cost
+- [Admissions](https://careerskillscenter.com/admissions.html): How to apply and enroll.
+- [Tuition](https://careerskillscenter.com/tuition.html): Program tuition and value.
+- [Student Financing](https://careerskillscenter.com/student-financing.html): Payment and financing options.
+
+## About
+- [About](https://careerskillscenter.com/about.html): Mission, focus, and approach.
+- [Career Services](https://careerskillscenter.com/career-services.html): Job-readiness and placement support.
+- [FAQ](https://careerskillscenter.com/faq.html): Common questions about programs, cost, and enrollment.
+- [Contact](https://careerskillscenter.com/contact.html): Get in touch with the school.
+
+## Blog
+- [Blog](https://careerskillscenter.com/blog.html): Guidance on training, careers, and funding.

@@ -7,6 +7,7 @@ Re-run after changing the header/footer/dialog on index.html.
 """
 import re
 import pathlib
+import datetime
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 home = (ROOT / "index.html").read_text(encoding="utf-8")
@@ -2319,3 +2320,24 @@ for page in PAGES:
     written += 1
 
 print("\n%d pages written." % written)
+
+# ---------------------------------------------------------------------------
+# SITEMAP  (auto-lists live public pages so search engines / AI can crawl)
+# ---------------------------------------------------------------------------
+SITE = "https://careerskillscenter.com/"
+# Unlinked / deprecated pages kept on disk but left out of the sitemap.
+SITEMAP_EXCLUDE = {"programs.html", "team.html", "media.html"}
+_today = datetime.date.today().isoformat()
+_urls = ['  <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>'
+         % (SITE, _today)]
+for page in PAGES:
+    slug = page["slug"]
+    if slug in ARCHIVED or slug in SITEMAP_EXCLUDE:
+        continue
+    _urls.append('  <url><loc>%s%s</loc><lastmod>%s</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>'
+                 % (SITE, slug, _today))
+_sitemap = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + "\n".join(_urls) + "\n</urlset>\n")
+(ROOT / "sitemap.xml").write_text(_sitemap, encoding="utf-8")
+print("wrote sitemap.xml (%d urls)" % len(_urls))
