@@ -2,7 +2,7 @@
 
 **For:** Claude Code (or any developer) working in the careerskillscenter.com repository
 **From:** Emilio / strategy work in the "ETPL Massachusetts" Claude Project
-**Version:** 1.0 — Sept 24, 2026
+**Version:** 1.1 — Sept 24, 2026 (adds docs/content/ pack)
 **Source of truth for strategy:** Project docs `11`, `13`, `18`. This file is the build spec derived from them.
 
 ---
@@ -194,6 +194,9 @@ Client-side JavaScript; no backend. **All caps and rates come from the config in
 ---
 
 ## 5. Blog — 8 launch posts (drafts)
+
+> **Update (Sept 24, 2026, v1.1):** The 8 drafts exist. Next step is to **expand them using `docs/content/`**, one file per post with Massachusetts facts, sources, target lengths and competitor angles. Start with `docs/content/README.md`. Answers to BUILD_STATUS questions: salary figures come from BLS OEWS May 2025 Massachusetts using the SOC codes in `docs/content/05-...md`; the form backend is the cPanel PHP mailer (already decided); the checklist PDF is still pending from Emilio.
+
 
 URL pattern `/blog/<slug>.html`. Each post: H1, byline "Career Skills Center Team" (or a named author), publish date, last-updated date, 900–2,000 words, 1 internal link to a program page, 1 to Ways to Pay or qualify.html, a CTA box at the end, FAQ section with FAQPage schema where noted. **Mark facts to verify.**
 
