@@ -6,6 +6,7 @@ every page stays byte-identical to the home page, then writes each inner page.
 Re-run after changing the header/footer/dialog on index.html.
 """
 import re
+import json
 import pathlib
 import datetime
 
@@ -71,6 +72,7 @@ PAGE = """<!DOCTYPE html>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css?v=@@CSSVER@@">
+@@EXTRAHEAD@@
 </head>
 <body>
 
@@ -168,6 +170,82 @@ def cta(title, label="Yes, Let’s Get in Touch"):
         <button class="btn btn-yellow js-open-contact" type="button">{label}</button>
       </div>
     </section>"""
+
+
+SITE_URL = "https://careerskillscenter.com/"
+
+
+def article(category, title, dek, date, updated, read, body, author="Career Skills Center Team"):
+    """Blog article: navy hero (category eyebrow, H1, meta line) + prose body.
+    `body` is the inner HTML of the .prose container. Image-free by design."""
+    return f"""    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>{category}</p>
+        <h1 class="article-title">{title}</h1>
+        <p class="page-hero-lede">{dek}</p>
+        <p class="article-meta">Published {date}<span class="dot-sep"></span>Updated {updated}<span class="dot-sep"></span>{read}<span class="dot-sep"></span>By {author}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container prose">
+{body}
+      </div>
+    </section>"""
+
+
+def post_cta(title, lede, label, href):
+    """In-article call-to-action box (link version, not the dialog band)."""
+    return f"""        <div class="post-cta">
+          <h2>{title}</h2>
+          <p>{lede}</p>
+          <a class="btn btn-yellow" href="{href}">{label}</a>
+        </div>"""
+
+
+def related(*cards):
+    """`cards` are (title, href) tuples rendered as a small related-articles grid."""
+    items = "\n".join(
+        f'          <a class="post-card" href="{href}"><h3>{t}</h3><span class="read-link">Read article</span></a>'
+        for t, href in cards)
+    return f"""        <h2 class="related-title">Related articles</h2>
+        <div class="post-grid post-grid--related">
+{items}
+        </div>"""
+
+
+def faq_ld(pairs):
+    """FAQPage JSON-LD from a list of (question, answer-plaintext) tuples."""
+    data = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": a}}
+            for q, a in pairs
+        ],
+    }
+    return ('  <script type="application/ld+json">\n  '
+            + json.dumps(data, ensure_ascii=False, indent=2).replace("\n", "\n  ")
+            + "\n  </script>")
+
+
+def article_ld(slug, title, desc, date, updated, author="Career Skills Center Team"):
+    """BlogPosting JSON-LD for a blog article."""
+    data = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": title,
+        "description": desc,
+        "datePublished": date,
+        "dateModified": updated,
+        "author": {"@type": "Organization", "name": author},
+        "publisher": {"@type": "Organization", "name": "Career Skills Center"},
+        "mainEntityOfPage": {"@type": "WebPage", "@id": SITE_URL + slug},
+    }
+    return ('  <script type="application/ld+json">\n  '
+            + json.dumps(data, ensure_ascii=False, indent=2).replace("\n", "\n  ")
+            + "\n  </script>")
 
 
 def prog_item(name, desc, credential, length="TBD"):
@@ -1976,38 +2054,51 @@ def post_card(tag, date, read, title, excerpt, href="#"):
             <span class="read-link">Read article</span>
           </a>"""
 
+# Real launch posts. Order = newest first in the grid (the pillar is featured
+# above the grid, so it is not repeated here). href points into /blog/.
 BLOG_POSTS = [
-    ("Skilled Trades", "Sep 8, 2026", "6 min read",
-     "Electrician, HVAC, or Plumbing: Which Trade Pays Off Fastest?",
-     "The three biggest trades in Massachusetts all pay well, but they differ in training length, "
-     "licensing, and day-to-day work. Here is how to choose."),
-    ("Information Technology", "Sep 2, 2026", "5 min read",
-     "The Fastest Way Into an IT Career Without a Degree",
-     "Employers in tech hire on certifications and demonstrated skill. Here is the shortest honest path "
-     "from zero to your first help-desk role."),
-    ("Medical", "Aug 26, 2026", "4 min read",
-     "What a Medical Assistant Actually Does All Day",
-     "Vitals, patient intake, scheduling, and a lot of people skills. A realistic look at the role before "
-     "you commit to the training."),
-    ("Admissions", "Aug 19, 2026", "5 min read",
-     "Day Classes vs. Evening Classes: Picking a Schedule That Sticks",
-     "The best schedule is the one you can actually finish. How to weigh work, family, and focus before "
-     "you enroll."),
-    ("Career Advice", "Aug 12, 2026", "7 min read",
-     "5 Questions to Ask Before You Enroll in Any Career Program",
-     "Not every program is worth the time or money. These five questions separate real career training "
-     "from an expensive detour."),
-    ("Financial Aid", "Aug 5, 2026", "6 min read",
-     "Paying for Training: Grants, Plans, and What Actually Works",
-     "Between workforce grants, payment plans, and employer help, most students combine sources. Here is "
-     "how to stack them."),
+    ("Paying for Training", "Sep 22, 2026", "8 min read",
+     "Who Qualifies for WIOA Training in Massachusetts?",
+     "WIOA training is for adults, dislocated workers, and low-income residents. Your local MassHire "
+     "career center makes the final call. Here is how eligibility works.",
+     "blog/wioa-eligibility-massachusetts.html"),
+    ("Paying for Training", "Sep 18, 2026", "7 min read",
+     "How to Get a MassHire Training Voucher (ITA): Step by Step",
+     "An Individual Training Account (ITA) can pay for approved courses. Here is the step-by-step path, "
+     "from your first career-center visit to an approved voucher.",
+     "blog/masshire-training-voucher.html"),
+    ("Paying for Training", "Sep 12, 2026", "6 min read",
+     "Is WIOA Training Really Free? What's Covered and What Isn't",
+     "WIOA can cover tuition and some costs, but not always everything. Here is an honest look at what a "
+     "grant usually pays for and what you may still owe.",
+     "blog/is-wioa-training-free.html"),
+    ("Paying for Training", "Sep 5, 2026", "8 min read",
+     "Highest-Paying Certifications You Can Train For in Massachusetts (2027)",
+     "Short certificate programs can lead to solid pay in healthcare, IT, and the trades. Here are the "
+     "credentials worth looking at and how to check the real wages.",
+     "blog/highest-paying-certifications-massachusetts.html"),
+    ("Medical", "Aug 28, 2026", "6 min read",
+     "Can Medical Billing and Coding Be Learned Online?",
+     "Yes. Medical billing and coding is one of the healthcare fields you can learn fully online. Here is "
+     "what the training covers and what employers want to see.",
+     "blog/can-medical-billing-coding-be-learned-online.html"),
+    ("Information Technology", "Aug 21, 2026", "6 min read",
+     "Can You Learn IT Support Online? What Employers Actually Look For",
+     "You can learn IT support online, and many people do. What matters most is a recognized "
+     "certification and hands-on practice. Here is how to build both.",
+     "blog/can-you-learn-it-support-online.html"),
+    ("Skilled Trades", "Aug 14, 2026", "6 min read",
+     "Can You Learn a Skilled Trade Online? What Works and What Needs Hands-On Time",
+     "Some of a trade can be learned online: theory, codes, and safety. But the hands-on hours still "
+     "matter. Here is what works online and what does not.",
+     "blog/can-you-learn-a-trade-online.html"),
 ]
 
 PAGES.append(dict(
     slug="blog.html", nav="blog.html",
     title="Blog | Career Skills Center — Massachusetts",
     ogtitle="Career Skills Center Blog",
-    desc="Guidance on training, careers, and funding in the skilled trades, IT, and healthcare from the team at Career Skills Center.",
+    desc="Plain-language guides to career training and how to pay for it in Massachusetts, in the medical field, IT, and the skilled trades.",
     main=hero("Blog", "Career Insights",
               "Straight talk on training, careers, and how to pay for it, in the skilled trades, information "
               "technology, and the medical field. Written by the team at Career Skills Center.",
@@ -2026,39 +2117,755 @@ PAGES.append(dict(
              or per-category pages once the article set grows. -->
         <div class="blog-filters" role="list" aria-label="Filter by topic">
           <a class="filter-pill is-active" href="blog.html" role="listitem">All</a>
-          <a class="filter-pill" href="#" role="listitem">Skilled Trades</a>
-          <a class="filter-pill" href="#" role="listitem">Information Technology</a>
+          <a class="filter-pill" href="#" role="listitem">Paying for Training</a>
           <a class="filter-pill" href="#" role="listitem">Medical</a>
-          <a class="filter-pill" href="#" role="listitem">Admissions &amp; Funding</a>
+          <a class="filter-pill" href="#" role="listitem">Information Technology</a>
+          <a class="filter-pill" href="#" role="listitem">Skilled Trades</a>
           <a class="filter-pill" href="#" role="listitem">Career Advice</a>
         </div>
 
-        <!-- Featured / most recent article -->
-        <a class="post-featured" href="#">
-          <p class="post-meta"><span class="post-tag">Career Advice</span></p>
-          <p class="post-meta">Sep 16, 2026<span class="dot-sep"></span>8 min read</p>
-          <h2>How to Choose a Career Training Program That Actually Leads to a Job</h2>
-          <p>What separates real, job-focused training from an expensive detour: the credentials that matter,
-          the questions to ask before you enroll, and how to tell whether a program's graduates are actually
-          getting hired.</p>
+        <!-- Featured: the funding pillar post -->
+        <a class="post-featured" href="blog/free-job-training-massachusetts.html">
+          <p class="post-meta"><span class="post-tag">Paying for Training</span></p>
+          <p class="post-meta">Sep 24, 2026<span class="dot-sep"></span>11 min read</p>
+          <h2>Free Job Training in Massachusetts: WIOA, MassHire and State Grants Explained</h2>
+          <p>The complete, plain-language guide to the state and federal programs that can help pay for
+          career training in Massachusetts &mdash; what they are, who they are for, and how to start.</p>
           <span class="read-link">Read article</span>
         </a>
 
         <div class="post-grid">
 {chr(10).join(post_card(*p) for p in BLOG_POSTS)}
         </div>
-
-        <div class="blog-more">
-          <!-- Static for now; becomes pagination or "load more" when the archive grows. -->
-          <button class="btn btn-navy" type="button" disabled>More articles coming soon</button>
-        </div>
-
-        <p class="note"><strong>Placeholder content.</strong> The headlines and summaries above are drafts to
-        show the layout. Real articles replace them one at a time as they are written.</p>
       </div>
     </section>
 
 """ + cta("Have a topic you want us to cover?", "Get in Touch")))
+
+
+# ===========================================================================
+# BLOG ARTICLES  (/blog/<slug>.html)
+# ---------------------------------------------------------------------------
+# All eight are DRAFTS for Emilio's review (see the <!-- DRAFT --> note at the
+# top of each body). Compliance: no post claims Career Skills Center is
+# ETPL-approved, WIOA-funded, or an approved/listed Express provider. Funding
+# posts use the "we're working toward approval / here are options now" wording
+# while FUNDING_ETPL_APPROVED is false. No invented statistics or salary
+# figures — anything unverified is marked [VERIFY ...] for Emilio.
+# ===========================================================================
+
+# Reused funding disclosure box (matches FUNDING_ETPL_APPROVED = false wording).
+FUNDING_NOTE = """        <div class="note"><strong>About Career Skills Center and state funding:</strong> Massachusetts offers
+        free training to eligible residents through MassHire Career Centers. We are working toward approval to
+        accept these funds. In the meantime, <a href="student-financing.html">see your options to pay for
+        training now</a>, and we will keep you posted as our status changes. We will help you check what you
+        may qualify for — but only your MassHire career center can approve funding.</div>"""
+
+
+# ---- 1. Pillar: Free Job Training in Massachusetts ------------------------
+_p1_body = """        <!-- DRAFT – facts to verify: (1) current WIOA/MassHire program names and that MassHire
+             administers WIOA locally in MA; (2) that eligibility and award amounts are decided by the local
+             career center and vary; (3) Workforce Training Fund Express Program is employer-side (CommCorp);
+             (4) links to mass.gov / dol.gov / careeronestop.org still resolve; (5) do NOT state specific ITA
+             dollar caps until verified — they vary by career center. -->
+        <p class="lead">Yes, there are real ways to get career training paid for in Massachusetts. Most of them
+        run through your local <strong>MassHire career center</strong> and a federal law called WIOA. This guide
+        explains the main options in plain language: what they are, who they are for, and the first step to
+        take.</p>
+
+        <p>There is no single "free training" button. Funding comes from a few different programs, and each one
+        has its own rules. Many people combine more than one. Below, we walk through each option so you can see
+        where you might fit.</p>
+
+        <h2>The big one: WIOA and MassHire</h2>
+        <p>WIOA stands for the <strong>Workforce Innovation and Opportunity Act</strong>. It is a federal law
+        that sends money to each state to help people train for in-demand jobs. In Massachusetts, that money is
+        handled locally by <strong>MassHire career centers</strong> (you may still hear the older name, "One-Stop
+        Career Centers"). There is a MassHire center near most cities and towns.</p>
+        <p>If you qualify, WIOA can pay for approved training through something called an
+        <strong>Individual Training Account (ITA)</strong> — think of it as a voucher for tuition at an approved
+        school. The career center decides who qualifies and how much they can offer, so amounts vary. We cover
+        the steps in a separate guide: <a href="blog/masshire-training-voucher.html">How to get a MassHire
+        training voucher (ITA)</a>.</p>
+
+        <h2>Who WIOA is for</h2>
+        <p>WIOA generally serves three groups: adults (with a focus on people with lower incomes), dislocated
+        workers (people laid off or whose job ended through no fault of their own), and young people. You do not
+        have to be on unemployment to ask. The career center looks at your work history, income, and goals.</p>
+        <p>Want the details? Read <a href="blog/wioa-eligibility-massachusetts.html">Who qualifies for WIOA
+        training in Massachusetts?</a> The short version: your local career center makes the final call, so the
+        best move is to go in and ask.</p>
+
+        <h2>What "free" really means</h2>
+        <p>WIOA can cover tuition for an approved program, and sometimes other costs. But "free" is not always
+        100%. Some supplies, exam fees, or fees may not be covered, and funding is limited. We explain this
+        honestly in <a href="blog/is-wioa-training-free.html">Is WIOA training really free? What's covered and
+        what isn't</a>.</p>
+
+        <h2>If your employer might pay</h2>
+        <p>If you already have a job, your employer may be able to get part of your training cost reimbursed by
+        the state through the <strong>Workforce Training Fund Express Program</strong>, run by Commonwealth
+        Corporation. This is money employers pay into, and it is meant to train current staff. If that could be
+        you, ask your manager, and point them to our information for employers when we publish it.</p>
+
+        <h2>Other ways people pay</h2>
+        <ul>
+          <li><strong>Payment plans.</strong> Many schools, including us, offer a monthly plan so you can spread
+          the cost out. See <a href="student-financing.html">Ways to Pay</a>.</li>
+          <li><strong>Veterans benefits.</strong> If you served, you may have education benefits. Confirm with
+          the VA and the school. <span class="tbd">[VERIFY: CSC's VA benefit approval status before advertising.]</span></li>
+          <li><strong>Scholarships and community programs.</strong> Local nonprofits and workforce boards
+          sometimes offer help. Your career center can point you to these.</li>
+        </ul>
+
+        <h2>How to start (the honest first step)</h2>
+        <ol>
+          <li>Find your local MassHire career center. You can search on the state site,
+          <a href="https://www.mass.gov/masshire-career-centers">mass.gov/masshire-career-centers</a>.</li>
+          <li>Call or visit and say you want to train for a new career and want to know what funding you might
+          qualify for.</li>
+          <li>Ask about WIOA and an Individual Training Account (ITA), and bring ID, income information, and
+          any layoff paperwork.</li>
+          <li>Pick an approved program that fits your goals. Browse <a href="our-programs.html">our
+          programs</a> to see what we offer.</li>
+        </ol>
+
+        <p>You do not have to figure this out alone. Career centers exist to help, and they do not charge you to
+        walk in and ask.</p>
+
+""" + FUNDING_NOTE + """
+
+""" + post_cta(
+    "Want help figuring out how to pay?",
+    "Tell us your goal and we will walk you through the options — payment plans now, and the funding you may "
+    "qualify for. No pressure.",
+    "See Ways to Pay", "student-financing.html") + """
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+          <details class="faq-item"><summary>Is job training really free in Massachusetts?</summary>
+          <div><p>It can be, for people who qualify. Programs like WIOA, handled through MassHire career centers,
+          can pay for approved training. It is not automatic — your local career center decides — and "free" may
+          not cover 100% of every cost. Ask your career center what you qualify for.</p></div></details>
+          <details class="faq-item"><summary>What is a MassHire career center?</summary>
+          <div><p>MassHire career centers are free, state-run offices that help residents find jobs and pay for
+          training. They handle WIOA funding locally. You can visit one without an appointment to ask questions.</p></div></details>
+          <details class="faq-item"><summary>Do I have to be unemployed to get WIOA funding?</summary>
+          <div><p>No. WIOA serves adults, dislocated workers, and youth. People who are working but earning low
+          wages may also qualify. Your career center reviews your situation.</p></div></details>
+          <details class="faq-item"><summary>How long does it take to get approved?</summary>
+          <div><p>It varies by career center and by how quickly you complete the steps (an orientation, an
+          assessment, and paperwork). Start early, because funding is limited and training must be approved
+          before it begins.</p></div></details>
+          <details class="faq-item"><summary>Does Career Skills Center accept WIOA funding?</summary>
+          <div><p>We are working toward approval to accept state training funds. Until then, we will help you
+          check what you may qualify for and show you other ways to pay, like a monthly payment plan. Only your
+          MassHire career center can approve funding.</p></div></details>
+        </div>
+
+""" + related(
+    ("Who Qualifies for WIOA Training in Massachusetts?", "blog/wioa-eligibility-massachusetts.html"),
+    ("How to Get a MassHire Training Voucher (ITA)", "blog/masshire-training-voucher.html"),
+    ("Is WIOA Training Really Free?", "blog/is-wioa-training-free.html"),
+)
+
+PAGES.append(dict(
+    slug="blog/free-job-training-massachusetts.html", nav="blog.html",
+    title="Free Job Training in Massachusetts: WIOA, MassHire & State Grants | Career Skills Center",
+    ogtitle="Free Job Training in Massachusetts: WIOA, MassHire & State Grants Explained",
+    desc="A plain-language guide to free and low-cost career training in Massachusetts: WIOA, MassHire career centers, Individual Training Accounts, and other ways to pay.",
+    extrahead=article_ld("blog/free-job-training-massachusetts.html",
+                         "Free Job Training in Massachusetts: WIOA, MassHire and State Grants Explained",
+                         "A plain-language guide to free and low-cost career training in Massachusetts.",
+                         "2026-09-24", "2026-09-24") + "\n" + faq_ld([
+        ("Is job training really free in Massachusetts?",
+         "It can be, for people who qualify. Programs like WIOA, handled through MassHire career centers, can pay for approved training. It is not automatic and may not cover 100% of every cost. Ask your local career center what you qualify for."),
+        ("What is a MassHire career center?",
+         "MassHire career centers are free, state-run offices that help residents find jobs and pay for training. They handle WIOA funding locally and you can visit without an appointment."),
+        ("Do I have to be unemployed to get WIOA funding?",
+         "No. WIOA serves adults, dislocated workers, and youth. People who are working but earning low wages may also qualify. Your career center reviews your situation."),
+        ("How long does it take to get approved?",
+         "It varies by career center and how quickly you complete an orientation, assessment, and paperwork. Start early because funding is limited and training must be approved before it begins."),
+        ("Does Career Skills Center accept WIOA funding?",
+         "Career Skills Center is working toward approval to accept state training funds. Until then, it will help you check what you may qualify for and show other ways to pay. Only your MassHire career center can approve funding."),
+    ]),
+    main=article(
+        "Paying for Training",
+        "Free Job Training in Massachusetts: WIOA, MassHire and State Grants Explained",
+        "Everything you need to know about the state and federal programs that can help pay for career "
+        "training in Massachusetts — in plain language.",
+        "September 24, 2026", "September 24, 2026", "11 min read", _p1_body)))
+
+
+# ---- 2. Who Qualifies for WIOA Training in Massachusetts ------------------
+_p2_body = """        <!-- DRAFT – facts to verify: WIOA priority-of-service groups (adults, dislocated workers, youth);
+             that low-income and public-assistance status can affect priority; that the local career center
+             makes the final eligibility decision; current mass.gov links. Do not promise approval. -->
+        <p class="lead">WIOA training in Massachusetts is mainly for three groups: adults (with priority for
+        people with lower incomes), dislocated workers, and young people aged 16&ndash;24. But there is an
+        important catch: your local <strong>MassHire career center</strong> makes the final decision, based on
+        your situation and the funding available.</p>
+
+        <p>That means the honest answer to "do I qualify?" is: maybe — and the only way to know for sure is to
+        ask your career center. Here is what they generally look at.</p>
+
+        <h2>The three main groups</h2>
+        <h3>1. Adults</h3>
+        <p>This is the broadest group. If you are 18 or older and want to train for a better job, you can ask.
+        Career centers often give priority to people who earn low wages, receive public assistance (like SNAP
+        or TAFDC), or have barriers to employment. You do not have to be jobless to apply.</p>
+        <h3>2. Dislocated workers</h3>
+        <p>A "dislocated worker" is usually someone who lost a job through no fault of their own — a layoff, a
+        plant or business closing, or the end of a contract. It can also include people who were self-employed
+        but are now out of work, and some homemakers who need to return to work. If your job ended recently,
+        mention it.</p>
+        <h3>3. Youth (16&ndash;24)</h3>
+        <p>There are separate WIOA services for young people, especially those who are out of school, out of
+        work, or facing challenges. If this is you or your child, ask about youth programs specifically.</p>
+
+        <h2>What the career center will look at</h2>
+        <ul>
+          <li><strong>Your work authorization.</strong> You generally need to be legally allowed to work in the
+          U.S.</li>
+          <li><strong>Your income and household size.</strong> Lower income can raise your priority.</li>
+          <li><strong>Your work history.</strong> Recent layoff? That matters for the dislocated-worker path.</li>
+          <li><strong>Your goal.</strong> Training should point toward an in-demand job. Short, job-focused
+          programs — like <a href="medical-billing-coding.html">medical billing and coding</a> or
+          <a href="it-support-specialist.html">IT support</a> — fit this well.</li>
+          <li><strong>Funding available.</strong> Budgets are limited and can run low late in the year, so
+          earlier is better.</li>
+        </ul>
+
+        <p>None of these is a simple yes/no test. The career center weighs them together. That is why we say
+        "you may qualify" — never that you are guaranteed.</p>
+
+        <h2>What to bring when you ask</h2>
+        <ol>
+          <li>Photo ID and proof you can work in the U.S.</li>
+          <li>Proof of income (recent pay stubs, benefit letters) and household size.</li>
+          <li>Any layoff or separation paperwork.</li>
+          <li>A rough idea of the career you want to train for.</li>
+        </ol>
+
+        <h2>Not sure if it is worth asking?</h2>
+        <p>It is. Walking into a MassHire career center and asking costs nothing. Even if WIOA is not a fit,
+        they can point you to other help. And if funding is not available right now, you still have options —
+        see <a href="student-financing.html">Ways to Pay</a>.</p>
+
+""" + FUNDING_NOTE + """
+
+""" + post_cta(
+    "Think you might qualify?",
+    "We will help you understand your options and get ready to talk to your career center. Reach out and we "
+    "will point you in the right direction.",
+    "See Ways to Pay", "student-financing.html") + """
+
+""" + related(
+    ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
+    ("How to Get a MassHire Training Voucher (ITA)", "blog/masshire-training-voucher.html"),
+    ("Is WIOA Training Really Free?", "blog/is-wioa-training-free.html"),
+)
+
+PAGES.append(dict(
+    slug="blog/wioa-eligibility-massachusetts.html", nav="blog.html",
+    title="Who Qualifies for WIOA Training in Massachusetts? | Career Skills Center",
+    ogtitle="Who Qualifies for WIOA Training in Massachusetts?",
+    desc="WIOA training in Massachusetts serves adults, dislocated workers, and youth. Learn what your MassHire career center looks at and how to check if you may qualify.",
+    extrahead=article_ld("blog/wioa-eligibility-massachusetts.html",
+                         "Who Qualifies for WIOA Training in Massachusetts?",
+                         "Who WIOA training serves in Massachusetts and how eligibility is decided.",
+                         "2026-09-22", "2026-09-24"),
+    main=article(
+        "Paying for Training",
+        "Who Qualifies for WIOA Training in Massachusetts?",
+        "The three groups WIOA serves, what your career center looks at, and how to check if you may qualify.",
+        "September 22, 2026", "September 24, 2026", "8 min read", _p2_body)))
+
+
+# ---- 3. How to Get a MassHire Training Voucher (ITA) ----------------------
+_p3_body = """        <!-- DRAFT – facts to verify: the ITA process steps and their order (orientation/enrollment,
+             assessment, eligibility determination, choosing an ETPL-listed program, voucher issued); that the
+             chosen program must be on the state's Eligible Training Provider List; current mass.gov / CareerOneStop
+             links. Steps vary by career center — keep language general. -->
+        <p class="lead">A MassHire training voucher — officially an <strong>Individual Training Account
+        (ITA)</strong> — is money the state can put toward tuition at an approved school. Getting one is a
+        step-by-step process at your local career center. Here is the path, start to finish.</p>
+
+        <p>Every MassHire center runs things a little differently, so treat this as the general map, not the
+        exact turn-by-turn. When in doubt, ask your career-center advisor.</p>
+
+        <h2>Step 1: Connect with a MassHire career center</h2>
+        <p>Find your nearest center at <a href="https://www.mass.gov/masshire-career-centers">mass.gov/masshire-career-centers</a>
+        and get started. Many centers ask you to attend a short orientation or create an account first. Tell
+        them your goal: "I want to train for a new career and want to see what funding I qualify for."</p>
+
+        <h2>Step 2: Meet with a career advisor</h2>
+        <p>You will talk with an advisor about your work history, your goals, and your situation. This is also
+        where they check whether you fit a WIOA group (adult, dislocated worker, or youth). Bring ID, proof of
+        income, and any layoff paperwork. See <a href="blog/wioa-eligibility-massachusetts.html">who qualifies
+        for WIOA</a> for what to expect.</p>
+
+        <h2>Step 3: Complete an assessment</h2>
+        <p>The center may ask you to do a short assessment of your skills and interests. This helps confirm that
+        the training you want is a good match and points to an in-demand job. It is not a pass/fail test.</p>
+
+        <h2>Step 4: Choose an approved program</h2>
+        <p>Here is a key rule: the training you pick usually has to be on the state's approved list (the
+        Eligible Training Provider List). Your advisor can show you approved programs. Look for short,
+        job-focused options that lead to a recognized credential — for example
+        <a href="it-support-specialist.html">IT support</a> or
+        <a href="medical-billing-coding.html">medical billing and coding</a>.</p>
+        <div class="note"><strong>Note:</strong> Career Skills Center is working toward being listed as an
+        approved provider. If a program you want is not yet on the list, ask your advisor about approved
+        alternatives, and check back with us — we will update our status as it changes.</div>
+
+        <h2>Step 5: Get the voucher (ITA) issued</h2>
+        <p>If you are approved and funding is available, the career center issues the ITA to cover approved
+        training costs, up to their limit. Amounts vary by center and by your situation, so ask exactly what
+        yours covers and what it does not. For the honest picture, read
+        <a href="blog/is-wioa-training-free.html">is WIOA training really free?</a></p>
+
+        <h2>Step 6: Enroll and start training</h2>
+        <p>Once the voucher is in place, you enroll and begin. Important: training usually must be approved
+        <em>before</em> it starts, so do not pay and enroll on your own first and expect to be repaid.</p>
+
+        <h2>Tips to keep things moving</h2>
+        <ul>
+          <li>Start early. Funding is limited and can run low later in the year.</li>
+          <li>Keep copies of everything you submit.</li>
+          <li>Be ready to explain how the training leads to a job.</li>
+          <li>Ask your advisor about support services (like help with transportation) if you need them.</li>
+        </ul>
+
+""" + FUNDING_NOTE + """
+
+""" + post_cta(
+    "Getting ready to apply?",
+    "We can help you pick a job-focused program and understand your ways to pay while you work with your "
+    "career center.",
+    "Explore Our Programs", "our-programs.html") + """
+
+""" + related(
+    ("Who Qualifies for WIOA Training in Massachusetts?", "blog/wioa-eligibility-massachusetts.html"),
+    ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
+    ("Is WIOA Training Really Free?", "blog/is-wioa-training-free.html"),
+)
+
+PAGES.append(dict(
+    slug="blog/masshire-training-voucher.html", nav="blog.html",
+    title="How to Get a MassHire Training Voucher (ITA): Step by Step | Career Skills Center",
+    ogtitle="How to Get a MassHire Training Voucher (ITA): Step by Step",
+    desc="A step-by-step guide to getting an Individual Training Account (ITA) voucher from a MassHire career center in Massachusetts, from your first visit to enrollment.",
+    extrahead=article_ld("blog/masshire-training-voucher.html",
+                         "How to Get a MassHire Training Voucher (ITA): Step by Step",
+                         "Step-by-step guide to getting an ITA training voucher from a MassHire career center.",
+                         "2026-09-18", "2026-09-24"),
+    main=article(
+        "Paying for Training",
+        "How to Get a MassHire Training Voucher (ITA): Step by Step",
+        "The Individual Training Account process at a MassHire career center, from first visit to enrollment.",
+        "September 18, 2026", "September 24, 2026", "7 min read", _p3_body)))
+
+
+# ---- 4. Is WIOA Training Really Free --------------------------------------
+_p4_body = """        <!-- DRAFT – facts to verify: what ITAs typically cover (tuition, sometimes exam fees, books,
+             supplies) vs. what they may not; that award caps and covered items vary by career center; that some
+             support services (transportation, childcare) may be available separately. Avoid stating dollar caps. -->
+        <p class="lead">Mostly, yes — but not always 100%. WIOA funding, given out as an Individual Training
+        Account (ITA) through MassHire, can cover tuition for an approved program and sometimes more. But there
+        are limits, and a few costs may still land on you. Here is the honest breakdown.</p>
+
+        <h2>What WIOA usually covers</h2>
+        <ul>
+          <li><strong>Tuition</strong> for an approved training program (this is the main thing).</li>
+          <li><strong>Exam or certification fees</strong>, in some cases.</li>
+          <li><strong>Books and required supplies</strong>, in some cases.</li>
+        </ul>
+        <p>What is included depends on your career center and the size of your award. Always ask for the details
+        in writing: "What exactly does my ITA pay for?"</p>
+
+        <h2>What it may not cover</h2>
+        <ul>
+          <li><strong>Costs above the award cap.</strong> ITAs have a limit. If a program costs more, you may
+          need to cover the difference or pick a program within the cap.</li>
+          <li><strong>Some supplies or optional add-ons</strong>, like an extra certification exam you choose to
+          take.</li>
+          <li><strong>Everyday costs</strong> like gas, parking, or childcare — though some of these may be
+          available through separate <em>support services</em>. Ask your advisor.</li>
+        </ul>
+
+        <h2>Why "free" is the wrong word to plan around</h2>
+        <p>WIOA is real, valuable help, and for many people it covers the biggest cost: tuition. But treating it
+        as "totally free, no matter what" can lead to surprises. Plan for the possibility of small out-of-pocket
+        costs, and you will not be caught off guard.</p>
+
+        <h2>How to get the most out of your funding</h2>
+        <ol>
+          <li>Choose a program that fits within the award cap when possible.</li>
+          <li>Ask what is covered and what is not — in writing.</li>
+          <li>Ask about support services for transportation or childcare.</li>
+          <li>Pick a short, job-focused program so more of your funding goes to what matters. Browse
+          <a href="our-programs.html">our programs</a>.</li>
+        </ol>
+
+        <h2>If funding falls short</h2>
+        <p>If your award does not cover everything, or if you do not qualify right now, you still have paths
+        forward. A monthly payment plan can spread out the rest. See <a href="student-financing.html">Ways to
+        Pay</a> for the options we offer.</p>
+
+""" + FUNDING_NOTE + """
+
+""" + post_cta(
+    "Worried about the gap?",
+    "Tell us your situation. We will show you how a payment plan and the funding you may qualify for can fit "
+    "together, so cost is not the thing that stops you.",
+    "See Ways to Pay", "student-financing.html") + """
+
+""" + related(
+    ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
+    ("Who Qualifies for WIOA Training in Massachusetts?", "blog/wioa-eligibility-massachusetts.html"),
+    ("How to Get a MassHire Training Voucher (ITA)", "blog/masshire-training-voucher.html"),
+)
+
+PAGES.append(dict(
+    slug="blog/is-wioa-training-free.html", nav="blog.html",
+    title="Is WIOA Training Really Free? What's Covered and What Isn't | Career Skills Center",
+    ogtitle="Is WIOA Training Really Free? What's Covered and What Isn't",
+    desc="WIOA can cover tuition and some costs for approved training in Massachusetts, but not always everything. An honest look at what a grant pays for and what you may still owe.",
+    extrahead=article_ld("blog/is-wioa-training-free.html",
+                         "Is WIOA Training Really Free? What's Covered and What Isn't",
+                         "An honest look at what WIOA funding covers and what it may not.",
+                         "2026-09-12", "2026-09-24"),
+    main=article(
+        "Paying for Training",
+        "Is WIOA Training Really Free? What's Covered and What Isn't",
+        "An honest look at what a WIOA grant usually pays for, where the limits are, and how to plan.",
+        "September 12, 2026", "September 24, 2026", "6 min read", _p4_body)))
+
+
+# ---- 5. Highest-Paying Certifications in Massachusetts --------------------
+_p5_body = """        <!-- DRAFT – facts to verify: ALL wage figures must come from BLS OES Massachusetts (bls.gov/oes)
+             before publishing — none are stated here on purpose. Confirm current credential names (CompTIA,
+             AAPC CPC/CPB) and typical program lengths. Trades licensing is state-regulated; verify MA rules.
+             Do not imply guaranteed pay. -->
+        <p class="lead">You do not always need a four-year degree to earn a good living in Massachusetts. Some
+        of the best returns come from short certificate programs that lead to a recognized credential. Below are
+        fields worth a look — and, just as important, how to check the real pay for yourself.</p>
+
+        <div class="note"><strong>On the numbers:</strong> We do not print salary figures we cannot back up. For
+        real, local wages, use the U.S. Bureau of Labor Statistics for Massachusetts:
+        <a href="https://www.bls.gov/oes/current/oes_ma.htm">bls.gov/oes (Massachusetts)</a>. Pay depends on
+        experience, employer, and location. <span class="tbd">[VERIFY: add current BLS OES MA median wages for
+        each role below before publishing.]</span></div>
+
+        <h2>How to judge a certification (before the pay)</h2>
+        <p>A credential is worth more when: employers actually ask for it, it is recognized nationally, and it
+        leads to jobs that are hiring near you. Pay matters, but so does whether you can get hired. Keep both in
+        mind as you read.</p>
+
+        <h2>Healthcare (non-clinical): Medical Billing &amp; Coding</h2>
+        <p>Medical billing and coding is the paperwork engine behind healthcare — turning visits into correct
+        codes and claims. It is office-based, can be learned online, and leads to nationally recognized
+        credentials like the AAPC's CPC (Certified Professional Coder) or CPB (Certified Professional Biller).
+        <span class="tbd">[VERIFY: BLS OES MA median wage for medical records/health information specialists.]</span></p>
+        <p>Learn more: <a href="medical-billing-coding.html">Medical Billing &amp; Coding at Career Skills
+        Center</a>, and our post on <a href="blog/can-medical-billing-coding-be-learned-online.html">learning
+        it online</a>.</p>
+
+        <h2>Information Technology: IT Support</h2>
+        <p>IT support is a common first step into a tech career. Employers hire on skills and certifications more
+        than degrees. A well-known starting credential is CompTIA (for example, the Tech+ / A+ level), which
+        signals you can handle real help-desk work.
+        <span class="tbd">[VERIFY: BLS OES MA median wage for computer user support specialists.]</span></p>
+        <p>Learn more: <a href="it-support-specialist.html">IT Support Specialist</a>, and
+        <a href="blog/can-you-learn-it-support-online.html">can you learn IT support online?</a></p>
+
+        <h2>Skilled Trades: Electrical, HVAC/R, Plumbing and more</h2>
+        <p>Licensed trades can pay very well in Massachusetts, and the work cannot be shipped overseas. The
+        trade-off is that trades are hands-on and usually require in-person hours, apprenticeship, and a state
+        license. That is a feature, not a bug — the barrier is part of why they pay.
+        <span class="tbd">[VERIFY: BLS OES MA median wages for electricians, HVAC mechanics, plumbers; and MA
+        licensing steps.]</span></p>
+        <p>Learn more: <a href="skilled-trades.html">Skilled Trades</a> (programs coming soon), and
+        <a href="blog/can-you-learn-a-trade-online.html">can you learn a trade online?</a></p>
+
+        <h2>How to check the real pay in your area</h2>
+        <ol>
+          <li>Go to <a href="https://www.bls.gov/oes/current/oes_ma.htm">bls.gov/oes for Massachusetts</a>.</li>
+          <li>Search the job title (for example, "computer user support specialists").</li>
+          <li>Look at the median wage for Massachusetts, and for your metro area if listed.</li>
+          <li>Cross-check current job postings near you to see what employers are really offering.</li>
+        </ol>
+
+        <h2>The bottom line</h2>
+        <p>The "highest-paying" certificate is the one that fits a job that is hiring near you, that you can
+        finish, and that you can pay for. Start with a field that interests you, verify the local pay, and check
+        how to fund it.</p>
+
+""" + FUNDING_NOTE + """
+
+""" + post_cta(
+    "Not sure which field fits?",
+    "Tell us what you are good at and what you want out of work. We will help you compare programs and figure "
+    "out how to pay.",
+    "Explore Our Programs", "our-programs.html") + """
+
+""" + related(
+    ("Can Medical Billing and Coding Be Learned Online?", "blog/can-medical-billing-coding-be-learned-online.html"),
+    ("Can You Learn IT Support Online?", "blog/can-you-learn-it-support-online.html"),
+    ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
+)
+
+PAGES.append(dict(
+    slug="blog/highest-paying-certifications-massachusetts.html", nav="blog.html",
+    title="Highest-Paying Certifications You Can Train For in Massachusetts (2027) | Career Skills Center",
+    ogtitle="Highest-Paying Certifications You Can Train For in Massachusetts (2027)",
+    desc="Short certificate programs can lead to good pay in Massachusetts healthcare, IT, and the trades. The credentials worth considering and how to check real local wages.",
+    extrahead=article_ld("blog/highest-paying-certifications-massachusetts.html",
+                         "Highest-Paying Certifications You Can Train For in Massachusetts (2027)",
+                         "Certificate programs with strong pay in Massachusetts and how to verify local wages.",
+                         "2026-09-05", "2026-09-24"),
+    main=article(
+        "Paying for Training",
+        "Highest-Paying Certifications You Can Train For in Massachusetts (2027)",
+        "Short credentials with strong earning potential in healthcare, IT, and the trades — and how to check "
+        "the real local pay yourself.",
+        "September 5, 2026", "September 24, 2026", "8 min read", _p5_body)))
+
+
+# ---- 6. Can Medical Billing and Coding Be Learned Online -----------------
+_p6_body = """        <!-- DRAFT – facts to verify: AAPC CPC/CPB credential names and that exams can be taken after
+             training; that CSC's program is online and issues a CSC certificate with optional paid AAPC exam
+             (see medical-billing-coding.html Course Overview); typical program length. Do not state pass rates
+             or placement rates. -->
+        <p class="lead">Yes — medical billing and coding is one of the best healthcare fields to learn online.
+        The work itself is done on a computer, so training on a computer makes sense. What matters most is that
+        you learn the codes well and earn a credential employers recognize.</p>
+
+        <p>If you like detail, organization, and steady office work, this is a field worth a serious look. Here
+        is how online learning works for it, and what to aim for.</p>
+
+        <h2>Why this field fits online learning</h2>
+        <p>Medical coders and billers translate doctor visits into standard codes, then prepare and follow up on
+        insurance claims. It is screen-and-software work. So the skills you build in an online course — reading
+        records, applying code sets, using billing software — are the same skills you use on the job.</p>
+
+        <h2>What good training covers</h2>
+        <ul>
+          <li><strong>Medical terminology and anatomy</strong> — enough to understand records.</li>
+          <li><strong>Code sets</strong> — ICD-10-CM (diagnoses), CPT (procedures), and HCPCS.</li>
+          <li><strong>The claims process</strong> — from a visit to a paid claim, including denials and
+          appeals.</li>
+          <li><strong>Compliance basics</strong> — rules like HIPAA that protect patient information.</li>
+          <li><strong>Exam prep</strong> — practice for a recognized credential.</li>
+        </ul>
+
+        <h2>The credential is the goal</h2>
+        <p>Employers want proof you can do the work. The best-known credentials come from the AAPC: the
+        <strong>CPC</strong> (Certified Professional Coder) and <strong>CPB</strong> (Certified Professional
+        Biller). Passing one of these tells an employer you are ready.</p>
+        <p>At Career Skills Center, our <a href="medical-billing-coding.html">Medical Billing &amp; Coding
+        program</a> is delivered online, and students earn a Career Skills Center certificate. You can also
+        choose to add the paid AAPC certification exam. <span class="tbd">[VERIFY: program length and exam
+        details before publishing.]</span></p>
+
+        <h2>What you need to succeed online</h2>
+        <ul>
+          <li>A computer and steady internet.</li>
+          <li>Discipline to keep a study schedule (online means flexible, not effortless).</li>
+          <li>Attention to detail — a wrong code means a rejected claim.</li>
+          <li>Patience for practice; coding gets easier with reps.</li>
+        </ul>
+
+        <h2>Is it right for you?</h2>
+        <p>If you want a healthcare career without hands-on patient care, prefer office work, and are careful
+        with details, medical billing and coding is a strong fit. It is also friendly to people changing careers
+        or returning to work.</p>
+
+""" + FUNDING_NOTE + """
+
+""" + post_cta(
+    "Ready to learn more?",
+    "See what our online Medical Billing & Coding program covers, how long it takes, and how to pay for it.",
+    "See the Medical Billing & Coding Program", "medical-billing-coding.html") + """
+
+""" + related(
+    ("Highest-Paying Certifications in Massachusetts (2027)", "blog/highest-paying-certifications-massachusetts.html"),
+    ("Can You Learn IT Support Online?", "blog/can-you-learn-it-support-online.html"),
+    ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
+)
+
+PAGES.append(dict(
+    slug="blog/can-medical-billing-coding-be-learned-online.html", nav="blog.html",
+    title="Can Medical Billing and Coding Be Learned Online? | Career Skills Center",
+    ogtitle="Can Medical Billing and Coding Be Learned Online?",
+    desc="Yes — medical billing and coding can be learned fully online. What the training covers, which credentials employers want (AAPC CPC/CPB), and what it takes to succeed.",
+    extrahead=article_ld("blog/can-medical-billing-coding-be-learned-online.html",
+                         "Can Medical Billing and Coding Be Learned Online?",
+                         "How online medical billing and coding training works and what employers look for.",
+                         "2026-08-28", "2026-09-24"),
+    main=article(
+        "Medical",
+        "Can Medical Billing and Coding Be Learned Online?",
+        "Why this healthcare field fits online learning, what good training covers, and the credentials that "
+        "matter.",
+        "August 28, 2026", "September 24, 2026", "6 min read", _p6_body)))
+
+
+# ---- 7. Can You Learn IT Support Online ----------------------------------
+_p7_body = """        <!-- DRAFT – facts to verify: CompTIA credential names/levels (Tech+, A+); that employers hire
+             help-desk roles on certs + demonstrated skill; that CSC's IT program is online (see
+             it-support-specialist.html). Do not state placement rates or guaranteed jobs. -->
+        <p class="lead">Yes, you can learn IT support online, and plenty of people break into tech this way. The
+        two things that matter most are a recognized <strong>certification</strong> and real
+        <strong>hands-on practice</strong>. Online training can give you both — if you put in the reps.</p>
+
+        <p>IT support (the help desk) is the most common on-ramp to a technology career. Here is what employers
+        actually look for, and how to build it from home.</p>
+
+        <h2>What IT support work looks like</h2>
+        <p>Support technicians solve everyday tech problems: setting up computers, fixing login issues,
+        troubleshooting networks and printers, and helping people use software. It is part technical skill, part
+        people skill. If you are the person friends call when their laptop breaks, you already have the
+        instinct.</p>
+
+        <h2>What employers actually look for</h2>
+        <ul>
+          <li><strong>A recognized certification.</strong> CompTIA is the common starting point — for example
+          Tech+ or A+. It tells an employer you know the fundamentals.</li>
+          <li><strong>Hands-on ability.</strong> Can you actually fix things? Practice matters more than
+          memorizing.</li>
+          <li><strong>Communication.</strong> Explaining a fix in plain words is half the job.</li>
+          <li><strong>Reliability and problem-solving.</strong> Employers want someone who stays calm and
+          works the problem.</li>
+        </ul>
+
+        <h2>How online training builds real skill</h2>
+        <p>Good online IT training is not just videos. Look for hands-on labs and simulations where you practice
+        setting up systems and fixing problems. You can also build a home lab cheaply — an old computer, some
+        free software, and time — to practice what you learn.</p>
+        <p>Our <a href="it-support-specialist.html">IT Support Specialist program</a> is built around a
+        recognized CompTIA credential and hands-on practice, delivered online.
+        <span class="tbd">[VERIFY: program length and exact credential level before publishing.]</span></p>
+
+        <h2>Do you need a degree?</h2>
+        <p>Usually not for a first support role. Tech is one of the more skills-first fields: a certification
+        plus demonstrated ability can get you in the door. A degree can help later, but it is not the starting
+        requirement it is in some careers.</p>
+
+        <h2>How to stand out for that first job</h2>
+        <ol>
+          <li>Earn the certification employers ask for.</li>
+          <li>Build a small home lab and practice, practice, practice.</li>
+          <li>Learn to explain fixes simply — it shows in interviews.</li>
+          <li>Apply widely for help-desk and support roles; the first job is the hardest to get.</li>
+        </ol>
+
+""" + FUNDING_NOTE + """
+
+""" + post_cta(
+    "Thinking about a tech career?",
+    "See how our online IT Support program works, what certification you train for, and how to pay for it.",
+    "See the IT Support Program", "it-support-specialist.html") + """
+
+""" + related(
+    ("Highest-Paying Certifications in Massachusetts (2027)", "blog/highest-paying-certifications-massachusetts.html"),
+    ("Can Medical Billing and Coding Be Learned Online?", "blog/can-medical-billing-coding-be-learned-online.html"),
+    ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
+)
+
+PAGES.append(dict(
+    slug="blog/can-you-learn-it-support-online.html", nav="blog.html",
+    title="Can You Learn IT Support Online? What Employers Actually Look For | Career Skills Center",
+    ogtitle="Can You Learn IT Support Online? What Employers Actually Look For",
+    desc="You can learn IT support online. What matters most is a recognized certification and hands-on practice. What employers look for and how to build both from home.",
+    extrahead=article_ld("blog/can-you-learn-it-support-online.html",
+                         "Can You Learn IT Support Online? What Employers Actually Look For",
+                         "How to learn IT support online and what employers look for in a first support role.",
+                         "2026-08-21", "2026-09-24"),
+    main=article(
+        "Information Technology",
+        "Can You Learn IT Support Online? What Employers Actually Look For",
+        "The certification and hands-on skills that get you hired for a first help-desk job — and how to build "
+        "them online.",
+        "August 21, 2026", "September 24, 2026", "6 min read", _p7_body)))
+
+
+# ---- 8. Can You Learn a Skilled Trade Online -----------------------------
+_p8_body = """        <!-- DRAFT – facts to verify: which parts of trades training can be online (theory, code, safety)
+             vs. required hands-on/apprenticeship hours; MA licensing requirements per trade; that CSC's Skilled
+             Trades offering is "coming soon" (skilled-trades.html). Be honest about hands-on limits. -->
+        <p class="lead">Some of a skilled trade can be learned online — the theory, the code books, the safety
+        rules, and the math. But the hands-on hours are the heart of a trade, and those still have to happen in
+        person. The honest answer is: online helps, but it is only part of the path.</p>
+
+        <p>Do not trust anyone who says you can become a licensed electrician or plumber entirely from your
+        couch. Here is what really works online, and what does not.</p>
+
+        <h2>What works well online</h2>
+        <ul>
+          <li><strong>Theory and fundamentals.</strong> How electricity, HVAC systems, or plumbing work.</li>
+          <li><strong>Code and standards.</strong> Reading and understanding the codes your work must meet.</li>
+          <li><strong>Safety training.</strong> Much of this is knowledge you can learn and be tested on.</li>
+          <li><strong>Math and blueprint basics.</strong> Measuring, load calculations, and reading plans.</li>
+          <li><strong>Test prep</strong> for licensing exams.</li>
+        </ul>
+
+        <h2>What needs hands-on time</h2>
+        <p>You cannot learn to bend conduit, sweat a copper joint, or troubleshoot a live system from a video
+        alone. Trades require supervised, hands-on hours — often through an apprenticeship — where you build
+        muscle memory and judgment under someone experienced. In most trades, this is also required for
+        licensing.</p>
+
+        <h2>How licensing usually works in Massachusetts</h2>
+        <p>Licensed trades are regulated by the state. The typical path combines classroom hours (some of which
+        can be online) with a set number of supervised on-the-job hours, and then a licensing exam. The exact
+        rules depend on the trade. <span class="tbd">[VERIFY: current Massachusetts licensing requirements for
+        each trade before publishing.]</span></p>
+
+        <h2>A realistic hybrid path</h2>
+        <ol>
+          <li>Learn the theory, code, and safety — online is great for this.</li>
+          <li>Get into an apprenticeship or hands-on program for supervised hours.</li>
+          <li>Log the required hours while you earn.</li>
+          <li>Prepare for and pass your licensing exam.</li>
+        </ol>
+        <p>So online is a smart way to start and to study — just plan for the in-person hours too.</p>
+
+        <h2>What we are building</h2>
+        <p>Career Skills Center is developing skilled trades training. Our <a href="skilled-trades.html">Skilled
+        Trades page</a> shows what is coming. If you want to be first to know when programs open, reach out and
+        we will keep you posted.</p>
+
+""" + FUNDING_NOTE + """
+
+""" + post_cta(
+    "Interested in the trades?",
+    "Tell us which trade you are curious about. We will share what is coming and how the training and licensing "
+    "path works.",
+    "See Skilled Trades", "skilled-trades.html") + """
+
+""" + related(
+    ("Highest-Paying Certifications in Massachusetts (2027)", "blog/highest-paying-certifications-massachusetts.html"),
+    ("Can You Learn IT Support Online?", "blog/can-you-learn-it-support-online.html"),
+    ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
+)
+
+PAGES.append(dict(
+    slug="blog/can-you-learn-a-trade-online.html", nav="blog.html",
+    title="Can You Learn a Skilled Trade Online? What Works and What Needs Hands-On Time | Career Skills Center",
+    ogtitle="Can You Learn a Skilled Trade Online? What Works and What Needs Hands-On Time",
+    desc="Some of a skilled trade can be learned online — theory, code, and safety — but the hands-on hours still matter. An honest look at what works online and what does not.",
+    extrahead=article_ld("blog/can-you-learn-a-trade-online.html",
+                         "Can You Learn a Skilled Trade Online? What Works and What Needs Hands-On Time",
+                         "What parts of skilled-trades training work online and what still needs hands-on hours.",
+                         "2026-08-14", "2026-09-24"),
+    main=article(
+        "Skilled Trades",
+        "Can You Learn a Skilled Trade Online? What Works and What Needs Hands-On Time",
+        "The theory can be online; the hands-on hours cannot. An honest map of the hybrid path into a licensed "
+        "trade.",
+        "August 14, 2026", "September 24, 2026", "6 min read", _p8_body)))
 
 
 # ---- contact.html ---------------------------------------------------------
@@ -2318,6 +3125,7 @@ for page in PAGES:
             .replace("@@OGTITLE@@", page["ogtitle"])
             .replace("@@DESC@@", page["desc"])
             .replace("@@SLUG@@", page["slug"])
+            .replace("@@EXTRAHEAD@@", page.get("extrahead", ""))
             .replace("@@HEADER@@", header)
             .replace("@@FOOTER@@", footer)
             .replace("@@DIALOG@@", DIALOG)
@@ -2325,7 +3133,18 @@ for page in PAGES:
             .replace("@@CSSVER@@", CSS_VER)
             .replace("@@JSVER@@", JS_VER))
 
-    (ROOT / page["slug"]).write_text(html, encoding="utf-8")
+    # Pages in a subdirectory (e.g. blog/<slug>.html) need every relative link in
+    # the shared chrome and body rewritten one level up so it still resolves.
+    depth = page["slug"].count("/")
+    if depth:
+        prefix = "../" * depth
+        html = re.sub(
+            r'(href|src|action)="(?!https?:|//|/|#|mailto:|tel:|data:|javascript:)',
+            lambda m: '%s="%s' % (m.group(1), prefix), html)
+
+    dest = ROOT / page["slug"]
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(html, encoding="utf-8")
     print("wrote", page["slug"], len(html), "bytes")
     written += 1
 
