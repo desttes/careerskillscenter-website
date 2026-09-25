@@ -10,6 +10,14 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-25 (later) — DEPLOYED to live site (Emilio's OK)
+Emilio authorized the live deploy and confirmed the `vcanal@careerskillscenter.com` mailbox exists. Pushed over SFTP:
+- **Deployed:** all root `*.html` (form wiring in the shared dialog + testimonials removed from `index.html`), **`submit.php`** (the PHP mailer), `css/style.css`, `js/main.js`.
+- **Excluded on purpose:** the 8 `blog/` drafts (still `<!-- DRAFT -->`, awaiting approval) and `sitemap.xml` (the local one now lists the not-yet-deployed blog URLs, which would 404 for crawlers — the live sitemap keeps the 15 public pages).
+- **Verified live:** homepage HTTP 200; no `Marcus`/testimonial-quote content remains (only the removal comment); the contact form is wired to `submit.php`; `submit.php` GET → 405 and a honeypot POST → `{"ok":true}` (PHP executes, no stray email); `css`/`js` return 200.
+- **Not yet tested live:** one real end-to-end lead email to `vcanal@` — recommend Emilio submit the live contact form once and confirm the email arrives.
+- **Still live-but-unchanged (Option A backlog):** program/tuition pages keep their placeholder prices/hours/credentials; `llms.txt` still references old specifics; blog not published.
+
 ### 2026-09-25 (later) — Built the cPanel PHP mailer (form backend)
 The form backend Emilio chose (cPanel PHP mailer) is built and wired. Local only — **not deployed**.
 - **`submit.php`** (new, at docroot) — plain-PHP mailer, no database. Emails submissions to `vcanal@careerskillscenter.com` (`CSC_RECIPIENT`); visitors only ever see the public `info@careerskillscenter.com`. Features: POST-only, honeypot (`company_website`) that silently drops bots, required name + valid email, per-field length caps, mail-header-injection protection (strips CR/LF), a friendly body with human labels, and the hidden **`source`** field + JS-added **`page`** in every email. Returns JSON for the AJAX path and supports a `_redirect` no-JS fallback. Core logic is a pure, testable function (`csc_process`).
