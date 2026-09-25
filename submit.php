@@ -157,7 +157,9 @@ function csc_main(): void
 
     if ($result['action'] === 'send') {
         $m  = $result['mail'];
-        $ok = @mail($m['to'], $m['subject'], $m['body'], $m['headers']);
+        // 5th arg sets the envelope sender (-f). cPanel/Exim needs this for reliable
+        // delivery and so bounces have a home; without it mail is often dropped.
+        $ok = @mail($m['to'], $m['subject'], $m['body'], $m['headers'], '-f' . CSC_FROM);
 
         if (!empty($result['redirect'])) {
             $sep = str_contains($result['redirect'], '?') ? '&' : '?';

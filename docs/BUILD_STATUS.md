@@ -10,6 +10,12 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-25 (later) — Fixed live email delivery (mail routing)
+The live form submitted OK but no email arrived. Diagnosis: `mail()` returned success (server accepted), but the domain's mailboxes are on **Namecheap Private Email** (MX = `mx1/mx2.privateemail.com`), while cPanel's **Email Routing** was delivering locally — so mail went to a non-existent local mailbox and was lost.
+- **Fix (Emilio, in cPanel):** set Email Routing for `careerskillscenter.com` to **Remote Mail Exchanger** — confirmed working, the form now delivers to `vcanal@careerskillscenter.com`.
+- **Code:** added the `-f` envelope sender to `mail()` (deliverability best practice). A temporary server-side diagnostic log was used to confirm `mail()` returned true, then removed; the mailer is back to its clean form.
+- **Contact form is now fully working end to end, live.**
+
 ### 2026-09-25 (later) — DEPLOYED to live site (Emilio's OK)
 Emilio authorized the live deploy and confirmed the `vcanal@careerskillscenter.com` mailbox exists. Pushed over SFTP:
 - **Deployed:** all root `*.html` (form wiring in the shared dialog + testimonials removed from `index.html`), **`submit.php`** (the PHP mailer), `css/style.css`, `js/main.js`.
