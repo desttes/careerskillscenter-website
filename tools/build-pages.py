@@ -2577,60 +2577,121 @@ PAGES.append(dict(
 
 
 # ---- 3. How to Get a MassHire Training Voucher (ITA) ----------------------
-_p3_body = """        <!-- DRAFT – facts to verify: the ITA process steps and their order (orientation/enrollment,
-             assessment, eligibility determination, choosing an ETPL-listed program, voucher issued); that the
-             chosen program must be on the state's Eligible Training Provider List; current mass.gov / CareerOneStop
-             links. Steps vary by career center — keep language general. -->
+_p3_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (9/25/2026): the ITA step flow — MyMassGov +
+             JobQuest, Training Information Meeting (or required video), TABE, career plan, documents, ETPL
+             program, ITA/training proposal, approval; ~6–8 weeks (B8). "Don't start before approval" softened
+             (B9). Keep the CSC "working toward listing" disclosure; do not list CSC as searchable in JobQuest. -->
         <p class="lead">A MassHire training voucher — officially an <strong>Individual Training Account
         (ITA)</strong> — is money the state can put toward tuition at an approved school. Getting one is a
-        step-by-step process at your local career center. Here is the path, start to finish.</p>
+        step-by-step process at your local career center. Here is the whole path, start to finish.</p>
 
         <p>Every MassHire center runs things a little differently, so treat this as the general map, not the
-        exact turn-by-turn. When in doubt, ask your career-center advisor.</p>
+        exact turn-by-turn. When in doubt, ask your career-center advisor. Plan on the whole process taking
+        <strong>about 6 to 8 weeks</strong>.</p>
 
-        <h2>Step 1: Connect with a MassHire career center</h2>
-        <p>Find your nearest center at <a href="https://www.mass.gov/info-details/masshire-career-center-locations">mass.gov
-        (MassHire career center locations)</a> and get started. Many centers ask you to attend a short
-        orientation or create an account first. Tell them your goal: "I want to train for a new career and want
-        to see what funding I qualify for."</p>
+        <h2>First, what is an ITA?</h2>
+        <p>An Individual Training Account, or ITA, is not a check that lands in your bank account. It is an
+        approval from your career center that says the state will pay an approved school directly for your
+        training, up to a set amount. You pick the program (from an approved list), the center approves it, and
+        the money goes to the school. Your job is to qualify, choose well, and finish. Now, the steps.</p>
 
-        <h2>Step 2: Meet with a career advisor</h2>
-        <p>You will talk with an advisor about your work history, your goals, and your situation. This is also
-        where they check whether you fit a WIOA group (adult, dislocated worker, or youth). Bring ID, proof of
-        income, and any layoff paperwork. See <a href="blog/wioa-eligibility-massachusetts.html">who qualifies
-        for WIOA</a> for what to expect.</p>
+        <h2>Step 1: Register in MassHire JobQuest</h2>
+        <p>Start online. Create a <strong>MyMassGov</strong> account and register in
+        <strong>MassHire JobQuest</strong> at <a href="https://jobquest.mass.gov">jobquest.mass.gov</a>. This is
+        the state's job and training system, and your career center will expect you to be in it. Save your
+        Jobseeker ID somewhere safe — you will use it again.</p>
 
-        <h2>Step 3: Complete an assessment</h2>
-        <p>The center may ask you to do a short assessment of your skills and interests. This helps confirm that
-        the training you want is a good match and points to an in-demand job. It is not a pass/fail test.</p>
+        <h2>Step 2: Find your MassHire career center</h2>
+        <p>Your center is based on where you live or last worked. Find it at
+        <a href="https://www.mass.gov/info-details/masshire-career-center-locations">mass.gov (MassHire career
+        center locations)</a>. Call or visit and say: "I want to train for a new career, and I want to see what
+        funding I qualify for."</p>
 
-        <h2>Step 4: Choose an approved program</h2>
-        <p>Here is a key rule: the training you pick usually has to be on the state's approved list (the
-        Eligible Training Provider List). Your advisor can show you approved programs. Look for short,
-        job-focused options that lead to a recognized credential — for example
-        <a href="blog/can-you-learn-it-support-online.html">IT support</a> or
-        <a href="blog/can-medical-billing-coding-be-learned-online.html">medical billing and coding</a>.</p>
+        <h2>Step 3: Attend the Training Information Meeting</h2>
+        <p>Most centers ask you to attend a short <strong>Training Information Meeting</strong> before they will
+        talk about funding. Some hold it in person; others (like Downtown Boston) ask you to watch a training-
+        grants video and fill out a screening form first. This is where you learn how the local process works.</p>
+
+        <h2>Step 4: Take the TABE assessment (if asked)</h2>
+        <p>Many centers ask you to take the <strong>TABE</strong>, a short reading and math assessment. It is
+        not a pass/fail test — it helps the center confirm the training is a good fit and meets any basic-skills
+        requirements. Ask ahead of time whether yours requires it.</p>
+
+        <h2>Step 5: Meet a career counselor and make a plan</h2>
+        <p>You will sit down with a counselor to talk through your work history, your goals, and which jobs are
+        hiring. Together you build a simple career plan. Some centers ask you to sign an engagement letter that
+        spells out what you both agree to do.</p>
+
+        <h2>Step 6: Gather your documents</h2>
+        <p>Bring proof you can work in the U.S., proof of age, your income for the last few months, proof of
+        family size, Selective Service registration (for men born after January 1, 1960), and any layoff
+        paperwork. Our guide to <a href="blog/wioa-eligibility-massachusetts.html">who qualifies for WIOA</a>
+        has the full checklist.</p>
+
+        <h2>Step 7: Choose an approved program</h2>
+        <p>Here is a key rule: the training you pick usually has to be on the state's approved list, the
+        <strong>Eligible Training Provider List (ETPL)</strong>. You can search approved programs inside
+        JobQuest, under "Locate Training." Look for short, job-focused options that lead to a recognized
+        credential — for example <a href="blog/can-you-learn-it-support-online.html">IT support</a> or
+        <a href="blog/can-medical-billing-coding-be-learned-online.html">medical billing and coding</a>. Bring
+        the school's program details, cost, and schedule to your counselor.</p>
         <div class="note"><strong>Note:</strong> Career Skills Center is working toward being listed as an
-        approved provider. If a program you want is not yet on the list, ask your advisor about approved
-        alternatives, and check back with us — we will update our status as it changes.</div>
+        approved provider, so we are not yet searchable in JobQuest. If a program you want is not on the list,
+        ask your counselor about approved alternatives, and <a href="contact.html">join our interest list</a> —
+        we will update our status as it changes.</div>
 
-        <h2>Step 5: Get the voucher (ITA) issued</h2>
-        <p>If you are approved and funding is available, the career center issues the ITA to cover approved
-        training costs, up to their limit. Amounts vary by center and by your situation, so ask exactly what
-        yours covers and what it does not. For the honest picture, read
-        <a href="blog/is-wioa-training-free.html">is WIOA training really free?</a></p>
+        <h2>Step 8: Submit the ITA (training proposal)</h2>
+        <p>With a program chosen, your counselor helps you submit the ITA, sometimes called a training proposal.
+        The center reviews it based on three things: whether you are eligible, whether the training leads to a
+        job that is in demand, and whether funding is available. If everything lines up, they approve it and set
+        the amount, up to their limit.</p>
 
-        <h2>Step 6: Enroll and start training</h2>
-        <p>Once the voucher is in place, you enroll and begin. Important: don't start class until your career
-        center approves your training in writing. Ask them first.</p>
+        <h2>Step 9: Wait for written approval, then start</h2>
+        <p>This is the one step people get wrong. <strong>Don't start class until your career center approves
+        your training in writing.</strong> Ask them first. Training that begins before approval usually cannot be
+        paid for. Once you have the approval, you enroll and begin. For the honest picture on what the money
+        covers, read <a href="blog/is-wioa-training-free.html">is WIOA training really free?</a></p>
+
+        <div class="post-cta" style="background:var(--surface-alt); color:var(--ink);">
+          <h2 style="color:var(--navy);">On unemployment? Ask about Section 30</h2>
+          <p style="color:var(--ink-light);">If you are collecting unemployment, ask about Section 30 at the same
+          time. It can let you keep your benefits while you train full-time. See the
+          <a href="blog/free-job-training-massachusetts.html">full funding guide</a> for how it works.</p>
+        </div>
+
+        <h2>Common mistakes to avoid</h2>
+        <ul>
+          <li><strong>Starting class before approval.</strong> The most common and costly mistake. Wait for the
+          written OK.</li>
+          <li><strong>Skipping the information meeting.</strong> Many centers will not move forward until you
+          have attended it.</li>
+          <li><strong>Picking a program that is not on the ETPL.</strong> If it is not approved, the voucher
+          cannot pay for it.</li>
+          <li><strong>Waiting until late in the year.</strong> Funds can run out, so start while money is
+          available.</li>
+          <li><strong>Showing up without documents.</strong> Missing paperwork slows everything down.</li>
+        </ul>
 
         <h2>Tips to keep things moving</h2>
         <ul>
-          <li>Start early. Funding is limited and can run low later in the year.</li>
-          <li>Keep copies of everything you submit.</li>
-          <li>Be ready to explain how the training leads to a job.</li>
-          <li>Ask your advisor about support services (like help with transportation) if you need them.</li>
+          <li><strong>Start early.</strong> Funding is limited and can run low later in the program year.</li>
+          <li><strong>Keep copies</strong> of everything you submit.</li>
+          <li><strong>Be ready to explain</strong> how the training leads to a job — that is what approval turns
+          on.</li>
+          <li><strong>Ask about support services</strong> (like help with transportation or childcare) if you
+          need them.</li>
         </ul>
+
+        <h2>After you're approved</h2>
+        <p>Once your training is approved, the center works with the school to set up payment, and you enroll and
+        start. Keep in touch with your counselor while you are in class — they may check on your progress, and
+        they are the person to call if your schedule or plans change. Finishing the program is part of the deal,
+        so treat attendance and completion as seriously as the funding.</p>
+
+        <h2>The bottom line</h2>
+        <p>Getting a MassHire voucher takes a few weeks and some paperwork, but the payoff — training paid for
+        and pointed at a real job — is worth it. Register in JobQuest, call your career center, and start the
+        clock early.</p>
 
 """ + FUNDING_NOTE + """
 
@@ -2639,6 +2700,24 @@ _p3_body = """        <!-- DRAFT – facts to verify: the ITA process steps and 
     "We can help you pick a job-focused program and understand your ways to pay while you work with your "
     "career center.",
     "Join Our Interest List", "contact.html") + """
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+          <details class="faq-item"><summary>How long does the whole process take?</summary>
+          <div><p>Plan on about 6 to 8 weeks from your first visit to your first class, though it varies by
+          center and by how quickly you finish each step. Start early, because funds can run low later in the
+          year.</p></div></details>
+          <details class="faq-item"><summary>Can I choose any school?</summary>
+          <div><p>No. To use the voucher, the program must be on the state's approved list (the ETPL). You can
+          search approved programs in JobQuest under "Locate Training."</p></div></details>
+          <details class="faq-item"><summary>Do I have to pay anything up front?</summary>
+          <div><p>Usually the ITA pays the approved school directly, up to its limit, so you are not fronting
+          tuition. If the program costs more than the cap, you cover the difference. Ask exactly what yours
+          covers.</p></div></details>
+          <details class="faq-item"><summary>What if I already started a class?</summary>
+          <div><p>Training that begins before your center approves it usually cannot be paid for. If you are
+          already enrolled, talk to a counselor right away rather than assuming it will be covered.</p></div></details>
+        </div>
 
 """ + related(
     ("Who Qualifies for WIOA Training in Massachusetts?", "blog/wioa-eligibility-massachusetts.html"),
@@ -2654,12 +2733,21 @@ PAGES.append(dict(
     extrahead=article_ld("blog/masshire-training-voucher.html",
                          "How to Get a MassHire Training Voucher (ITA): Step by Step",
                          "Step-by-step guide to getting an ITA training voucher from a MassHire career center.",
-                         "2026-09-25", "2026-09-25"),
+                         "2026-09-25", "2026-09-25") + "\n" + faq_ld([
+        ("How long does it take to get a MassHire training voucher?",
+         "Plan on about 6 to 8 weeks from your first visit to your first class, though it varies by center and by how quickly you finish each step. Start early, because funds can run low later in the year."),
+        ("Can I choose any school with a MassHire voucher?",
+         "No. To use the voucher, the program must be on the state's approved list (the ETPL). You can search approved programs in JobQuest under Locate Training."),
+        ("Do I have to pay anything up front?",
+         "Usually the ITA pays the approved school directly, up to its limit, so you are not fronting tuition. If the program costs more than the cap, you cover the difference. Ask exactly what yours covers."),
+        ("What if I already started a class?",
+         "Training that begins before your center approves it usually cannot be paid for. If you are already enrolled, talk to a counselor right away rather than assuming it will be covered."),
+    ]),
     main=article(
         "Paying for Training",
         "How to Get a MassHire Training Voucher (ITA): Step by Step",
         "The Individual Training Account process at a MassHire career center, from first visit to enrollment.",
-        "September 25, 2026", "7 min read", _p3_body)))
+        "September 25, 2026", "9 min read", _p3_body)))
 
 
 # ---- 4. Is WIOA Training Really Free --------------------------------------
@@ -2673,6 +2761,10 @@ _p4_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
         <p>An ITA pays for approved training. Some career centers also cover related costs like books or exam
         fees, but this varies. Always ask your counselor exactly what yours covers &mdash; in writing:
         "What exactly does my ITA pay for?"</p>
+        <p>Here is the rough shape of it, without the dollar amounts (those vary by region): the center sets a
+        cap, your program has a price, and the ITA covers the price up to that cap. If your program costs less
+        than the cap, it can be fully covered. If it costs more, you cover the difference or choose a program
+        that fits. That is why picking an approved program within the cap matters so much.</p>
 
         <h2>What it may not cover</h2>
         <ul>
@@ -2689,6 +2781,18 @@ _p4_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
         as "totally free, no matter what" can lead to surprises. Plan for the possibility of small out-of-pocket
         costs, and you will not be caught off guard.</p>
 
+        <h2>What if I still need income while I train?</h2>
+        <p>This is the real blocker for most people: the bills do not stop while you study. If you are collecting
+        unemployment, <strong>Section 30</strong> (the Training Opportunities Program) can let you keep your
+        benefits during full-time approved training — at least 20 classroom hours a week, for up to 26 extra
+        weeks. You usually have to apply by the 20th paid week of your claim, so ask early. Section 30 does not
+        pay tuition, but keeping your income coming is often what makes finishing possible.</p>
+
+        <div class="note"><strong>"Free to you" vs. "free with conditions."</strong> WIOA can make training free
+        to you out of pocket — but not with no strings. You have to be eligible, keep attending, and finish, and
+        many centers follow up on whether you land a job afterward. Think of it as an investment the state makes
+        in you, not a no-questions handout.</div>
+
         <h2>How to get the most out of your funding</h2>
         <ol>
           <li>Choose a program that fits within the award cap when possible.</li>
@@ -2698,10 +2802,54 @@ _p4_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
           <a href="contact.html">Join our interest list</a> to hear about ours.</li>
         </ol>
 
-        <h2>If funding falls short</h2>
-        <p>If your award does not cover everything, or if you do not qualify right now, you still have paths
-        forward. A monthly payment plan can spread out the rest. See <a href="student-financing.html">Ways to
-        Pay</a> for your options.</p>
+        <h2>Does everyone who qualifies get funded?</h2>
+        <p>Not automatically. Being eligible and getting funded are two different things. Career centers work
+        within a yearly budget, and popular programs and busy times of year can use it up. That is why advisors
+        push you to apply early and to have a backup plan. Qualifying puts you in line; it does not guarantee a
+        check.</p>
+
+        <h2>Beyond tuition: help you might not expect</h2>
+        <p>Money for tuition is not the only support a career center can offer. Depending on local funding, some
+        can help with transportation, childcare, or work clothes and tools, and all of them offer free help with
+        resumes, interviews, and the job search after you finish. When you ask about training funds, ask what
+        else is available &mdash; it is often more than people expect.</p>
+
+        <h2>If WIOA doesn't cover you</h2>
+        <p>If your award falls short, or you do not qualify right now, you still have options:</p>
+        <ul>
+          <li><strong>Donnelly-funded programs.</strong> Some free training is paid for by state Donnelly
+          grants. You look for a local program funded by one, not an application. See the
+          <a href="blog/free-job-training-massachusetts.html">funding guide</a>.</li>
+          <li><strong>Employer-paid training.</strong> If you have a job, your employer may be reimbursed
+          through the Workforce Training Fund Express Program.</li>
+          <li><strong>Payment plans.</strong> A monthly plan can spread the cost out. See
+          <a href="student-financing.html">Ways to Pay</a>.</li>
+        </ul>
+        <p>Most people combine more than one. Cost does not have to be the thing that stops you.</p>
+
+        <h2>The honest bottom line</h2>
+        <p>For many people in Massachusetts, WIOA covers the biggest cost of training — tuition — and that is a
+        real head start. Just go in with clear eyes: ask what is covered, plan for small extras, and line up a
+        backup like a payment plan. That way, whatever the answer turns out to be, cost is not the thing that
+        stops you from starting.</p>
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+          <details class="faq-item"><summary>Does WIOA pay for books and exams?</summary>
+          <div><p>Sometimes. An ITA pays for approved training, and some career centers also cover related costs
+          like books or exam fees, but this varies by center. Ask your counselor exactly what yours covers.</p></div></details>
+          <details class="faq-item"><summary>Will I have any out-of-pocket costs?</summary>
+          <div><p>Maybe small ones. Awards have a limit, so a program that costs more than the cap, or optional
+          add-ons, could leave a gap. Everyday costs like gas or childcare may be helped by support services —
+          ask.</p></div></details>
+          <details class="faq-item"><summary>Can I get paid while I train?</summary>
+          <div><p>If you are on unemployment, Section 30 can keep your benefits going during full-time approved
+          training (at least 20 classroom hours a week, up to 26 extra weeks). Apply by the 20th paid week of
+          your claim.</p></div></details>
+          <details class="faq-item"><summary>What if the funds run out?</summary>
+          <div><p>It happens, because funding is limited each year. Ask about the next program year, look for a
+          Donnelly-funded free program, or use a payment plan to start now.</p></div></details>
+        </div>
 
 """ + FUNDING_NOTE + """
 
@@ -2725,12 +2873,21 @@ PAGES.append(dict(
     extrahead=article_ld("blog/is-wioa-training-free.html",
                          "Is WIOA Training Really Free? What's Covered and What Isn't",
                          "An honest look at what WIOA funding covers and what it may not.",
-                         "2026-09-25", "2026-09-25"),
+                         "2026-09-25", "2026-09-25") + "\n" + faq_ld([
+        ("Does WIOA pay for books and exams?",
+         "Sometimes. An ITA pays for approved training, and some career centers also cover related costs like books or exam fees, but this varies by center. Ask your counselor exactly what yours covers."),
+        ("Will I have any out-of-pocket costs with WIOA training?",
+         "Maybe small ones. Awards have a limit, so a program that costs more than the cap, or optional add-ons, could leave a gap. Everyday costs like gas or childcare may be helped by support services — ask."),
+        ("Can I get paid while I train?",
+         "If you are on unemployment, Section 30 can keep your benefits going during full-time approved training (at least 20 classroom hours a week, up to 26 extra weeks). Apply by the 20th paid week of your claim."),
+        ("What if the WIOA funds run out?",
+         "It happens, because funding is limited each year. Ask about the next program year, look for a Donnelly-funded free program, or use a payment plan to start now."),
+    ]),
     main=article(
         "Paying for Training",
         "Is WIOA Training Really Free? What's Covered and What Isn't",
         "An honest look at what a WIOA grant usually pays for, where the limits are, and how to plan.",
-        "September 25, 2026", "6 min read", _p4_body)))
+        "September 25, 2026", "8 min read", _p4_body)))
 
 
 # ---- 5. Highest-Paying Certifications in Massachusetts --------------------
@@ -2853,6 +3010,18 @@ _p6_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
         insurance claims. It is screen-and-software work. So the skills you build in an online course — reading
         records, applying code sets, using billing software — are the same skills you use on the job.</p>
 
+        <h2>Coding vs. billing: what's the difference?</h2>
+        <p>People say "billing and coding" as one phrase, but they are two jobs that often overlap. A
+        <strong>coder</strong> translates the visit into standard codes. A <strong>biller</strong> uses those
+        codes to prepare claims, send them to insurers, and chase down payment. Small offices often have one
+        person do both; larger ones split the roles. Training that covers both keeps your options open.</p>
+
+        <h2>What the day-to-day looks like</h2>
+        <p>A biller or coder spends the day reading clinical notes, assigning the right codes, preparing claims,
+        and following up on the ones that get denied. It is quiet, focused, detail-heavy work — often in an
+        office, a clinic's back room, or from home. If you like solving small puzzles and getting the details
+        exactly right, the work tends to be satisfying rather than boring.</p>
+
         <h2>What good training covers</h2>
         <ul>
           <li><strong>Medical terminology and anatomy</strong> — enough to understand records.</li>
@@ -2886,6 +3055,31 @@ _p6_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
         with details, medical billing and coding is a strong fit. It is also friendly to people changing careers
         or returning to work.</p>
 
+        <h2>Is online training respected by employers?</h2>
+        <p>Yes. In this field, employers hire on the credential and what you can do, not on where you studied. A
+        recognized certification like the AAPC's CPC or CPB carries the same weight whether you earned it online
+        or in a classroom. What matters is that you can code accurately and understand the claims process.</p>
+
+        <h2>Can you work from home as a coder?</h2>
+        <p>Often, yes — but be realistic about the timeline. Many billing and coding jobs are remote or hybrid,
+        which is part of the appeal. That said, plenty of employers want new coders to start on-site, or to have
+        a year or two of experience, before they go fully remote. A good first move is any coding role that gets
+        you real reps; remote options open up as you build a track record.</p>
+
+        <h2>Who does well learning it online</h2>
+        <p>You do not need a science background, but you do need to be self-directed. If you can keep a study
+        schedule, you are comfortable using a computer, and you like detailed, rule-based work, you are a good
+        fit. English-language learners can do well too — the vocabulary is specific and learnable, and you can
+        review lessons at your own pace. The learners who struggle are usually the ones who treat "online" as
+        "no schedule"; the ones who succeed set aside regular study time and stick to it.</p>
+
+        <h2>What it pays, and how to pay for it</h2>
+        <p>In Massachusetts, medical records specialists earn a median of about <strong>$60,350</strong> a year
+        (BLS, May 2025). For the full picture across healthcare, IT, and the trades, see our
+        <a href="blog/highest-paying-certifications-massachusetts.html">highest-paying certifications</a> guide.
+        And if cost is a concern, state funding may help — start with our
+        <a href="blog/free-job-training-massachusetts.html">guide to free job training in Massachusetts</a>.</p>
+
 """ + FUNDING_NOTE + """
 
 """ + post_cta(
@@ -2893,6 +3087,25 @@ _p6_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
     "Career Skills Center is planning an online Medical Billing & Coding program. Join our interest list and "
     "we'll let you know when it opens.",
     "Join Our Interest List", "contact.html") + """
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+          <details class="faq-item"><summary>Can medical billing and coding really be learned online?</summary>
+          <div><p>Yes. The work is done on a computer, so online training maps directly to the job. What matters
+          is learning the code sets well and earning a recognized credential.</p></div></details>
+          <details class="faq-item"><summary>Do I need a medical background?</summary>
+          <div><p>No. Good training starts with the medical terminology and anatomy you need. You need attention
+          to detail and the discipline to practice, not a science degree.</p></div></details>
+          <details class="faq-item"><summary>What certification should I aim for?</summary>
+          <div><p>The best-known are the AAPC's CPC (coder) and CPB (biller). Employers recognize them
+          nationally. The exam is taken after training and, as of 2026, costs about $425 for one attempt.</p></div></details>
+          <details class="faq-item"><summary>Can I work from home as a coder?</summary>
+          <div><p>Many jobs are remote or hybrid, but new coders often start on-site or need a year or two of
+          experience first. Remote options open up as you build a track record.</p></div></details>
+          <details class="faq-item"><summary>How long does training take?</summary>
+          <div><p>It varies by program and your pace. Focused certificate programs commonly run a few months.
+          Details for our program will be shared before enrollment opens.</p></div></details>
+        </div>
 
 """ + related(
     ("Highest-Paying Certifications in Massachusetts (2026)", "blog/highest-paying-certifications-massachusetts.html"),
@@ -2908,13 +3121,24 @@ PAGES.append(dict(
     extrahead=article_ld("blog/can-medical-billing-coding-be-learned-online.html",
                          "Can Medical Billing and Coding Be Learned Online?",
                          "How online medical billing and coding training works and what employers look for.",
-                         "2026-09-25", "2026-09-25"),
+                         "2026-09-25", "2026-09-25") + "\n" + faq_ld([
+        ("Can medical billing and coding really be learned online?",
+         "Yes. The work is done on a computer, so online training maps directly to the job. What matters is learning the code sets well and earning a recognized credential."),
+        ("Do I need a medical background to learn medical billing and coding?",
+         "No. Good training starts with the medical terminology and anatomy you need. You need attention to detail and the discipline to practice, not a science degree."),
+        ("What certification should I aim for?",
+         "The best-known are the AAPC's CPC (coder) and CPB (biller), recognized nationally. The exam is taken after training and, as of 2026, costs about $425 for one attempt."),
+        ("Can I work from home as a medical coder?",
+         "Many jobs are remote or hybrid, but new coders often start on-site or need a year or two of experience first. Remote options open up as you build a track record."),
+        ("How long does medical billing and coding training take?",
+         "It varies by program and your pace. Focused certificate programs commonly run a few months."),
+    ]),
     main=article(
         "Medical",
         "Can Medical Billing and Coding Be Learned Online?",
         "Why this healthcare field fits online learning, what good training covers, and the credentials that "
         "matter.",
-        "September 25, 2026", "6 min read", _p6_body)))
+        "September 25, 2026", "8 min read", _p6_body)))
 
 
 # ---- 7. Can You Learn IT Support Online ----------------------------------
@@ -2940,10 +3164,23 @@ _p7_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
           Tech+ or A+. It tells an employer you know the fundamentals.</li>
           <li><strong>Hands-on ability.</strong> Can you actually fix things? Practice matters more than
           memorizing.</li>
-          <li><strong>Communication.</strong> Explaining a fix in plain words is half the job.</li>
-          <li><strong>Reliability and problem-solving.</strong> Employers want someone who stays calm and
-          works the problem.</li>
+          <li><strong>Customer service.</strong> Ticketing systems, patience, and explaining a fix in plain
+          words are half the job.</li>
+          <li><strong>Everyday tech.</strong> Windows and Microsoft 365, basic networking, and a home lab or
+          small project you can point to.</li>
         </ul>
+
+        <h2>The certification ladder</h2>
+        <p>CompTIA is the most common credential path for support roles, and it builds in steps:</p>
+        <ul>
+          <li><strong>CompTIA Tech+</strong> — the entry-level cert (it replaced ITF+). A good first proof that
+          you know the fundamentals.</li>
+          <li><strong>CompTIA A+</strong> — the standard help-desk credential most employers recognize.</li>
+          <li><strong>Network+ and Security+</strong> — the next steps when you want to move up into networking
+          or security.</li>
+        </ul>
+        <p>You do not need all of them to start. Many people get hired at the Tech+ or A+ level and add the
+        others as they grow.</p>
 
         <h2>How online training builds real skill</h2>
         <p>Good online IT training is not just videos. Look for hands-on labs and simulations where you practice
@@ -2965,6 +3202,37 @@ _p7_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
           <li>Apply widely for help-desk and support roles; the first job is the hardest to get.</li>
         </ol>
 
+        <h2>How to build a home lab (for almost nothing)</h2>
+        <p>The fastest way to turn study into skill is to practice on real gear. You do not need much: an old
+        laptop or desktop, free operating systems and virtual-machine software, and time. Set things up and
+        break them on purpose, then fix them. Reinstall Windows. Build a small network. Try free virtual labs and
+        practice tickets. When an interviewer asks "have you actually done this?", a home lab is your answer.</p>
+
+        <h2>Where the jobs are in Massachusetts</h2>
+        <p>Demand is strong across the state. Hospitals, universities, and biotech and tech companies all run
+        help desks and IT support teams, and someone has to keep those systems running. Entry-level support is
+        often the doorway into those organizations.</p>
+
+        <h2>What to expect in your first job</h2>
+        <p>Most people start on a help desk, answering tickets and phone calls. It can be busy, but it is where
+        you learn fastest — every ticket is a small lesson. Do it well for a year, keep earning certifications,
+        and doors open to networking, security, and systems roles. Very few people stay on the help desk
+        forever; it is a launch pad, not a ceiling.</p>
+
+        <h2>Will AI replace IT support?</h2>
+        <p>It is a fair question. AI tools are changing the work, but people still need help when things break,
+        and someone has to set up, secure, and troubleshoot the systems AI runs on. The honest picture:
+        help-desk roles are expected to hold steady rather than boom, and the people who do best keep learning.
+        Treat your first support job as a starting point, not the finish line.</p>
+
+        <h2>What it pays, and how to pay for it</h2>
+        <p>In Massachusetts, computer user support specialists earn a median of about <strong>$75,070</strong> a
+        year (BLS, May 2025). One honest note: nationally, help-desk roles are expected to hold steady rather
+        than grow fast, but there are still thousands of openings each year as people move up or retire. For
+        more, see our <a href="blog/highest-paying-certifications-massachusetts.html">highest-paying
+        certifications</a> guide — and if cost is a worry, our
+        <a href="blog/free-job-training-massachusetts.html">guide to free job training in Massachusetts</a>.</p>
+
 """ + FUNDING_NOTE + """
 
 """ + post_cta(
@@ -2972,6 +3240,25 @@ _p7_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
     "Career Skills Center is planning an online IT Support program. Join our interest list and we'll let you "
     "know when it opens.",
     "Join Our Interest List", "contact.html") + """
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+          <details class="faq-item"><summary>Can you really learn IT support online?</summary>
+          <div><p>Yes. IT support is learned and practiced on computers, and employers hire on certifications and
+          demonstrated skill. Look for training with hands-on labs, and build a home lab to practice.</p></div></details>
+          <details class="faq-item"><summary>Do I need a degree?</summary>
+          <div><p>Usually not for a first support role. Many employers hire based on skills and certifications,
+          not only degrees. A degree can help later, but it is often not the starting requirement.</p></div></details>
+          <details class="faq-item"><summary>How long until I'm job-ready?</summary>
+          <div><p>It varies by your pace, but a focused path — a starter certification plus real hands-on
+          practice — can take a few months. The practice is what turns a cert into a job offer.</p></div></details>
+          <details class="faq-item"><summary>Is CompTIA A+ hard?</summary>
+          <div><p>It is challenging but very doable. It covers a lot of ground, so steady study and hands-on
+          practice matter more than cramming. Many people pass it as their first real IT credential.</p></div></details>
+          <details class="faq-item"><summary>Does Career Skills Center offer IT training?</summary>
+          <div><p>Not yet. An IT Support program is in development. Join the interest list and we will let you
+          know when it opens.</p></div></details>
+        </div>
 
 """ + related(
     ("Highest-Paying Certifications in Massachusetts (2026)", "blog/highest-paying-certifications-massachusetts.html"),
@@ -2987,13 +3274,24 @@ PAGES.append(dict(
     extrahead=article_ld("blog/can-you-learn-it-support-online.html",
                          "Can You Learn IT Support Online? What Employers Actually Look For",
                          "How to learn IT support online and what employers look for in a first support role.",
-                         "2026-09-25", "2026-09-25"),
+                         "2026-09-25", "2026-09-25") + "\n" + faq_ld([
+        ("Can you really learn IT support online?",
+         "Yes. IT support is learned and practiced on computers, and employers hire on certifications and demonstrated skill. Look for training with hands-on labs, and build a home lab to practice."),
+        ("Do I need a degree for an IT support job?",
+         "Usually not for a first support role. Many employers hire based on skills and certifications, not only degrees. A degree can help later, but it is often not the starting requirement."),
+        ("How long until I'm job-ready for IT support?",
+         "It varies by your pace, but a focused path — a starter certification plus real hands-on practice — can take a few months. The practice is what turns a cert into a job offer."),
+        ("Is CompTIA A+ hard?",
+         "It is challenging but very doable. It covers a lot of ground, so steady study and hands-on practice matter more than cramming. Many people pass it as their first real IT credential."),
+        ("Does Career Skills Center offer IT training?",
+         "Not yet. An IT Support program is in development. Join the interest list and Career Skills Center will let you know when it opens."),
+    ]),
     main=article(
         "Information Technology",
         "Can You Learn IT Support Online? What Employers Actually Look For",
         "The certification and hands-on skills that get you hired for a first help-desk job — and how to build "
         "them online.",
-        "September 25, 2026", "6 min read", _p7_body)))
+        "September 25, 2026", "8 min read", _p7_body)))
 
 
 # ---- 8. Can You Learn a Skilled Trade Online -----------------------------

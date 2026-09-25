@@ -10,6 +10,14 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-25 (later) — Expanded posts #3, #4, #6, #7 to target length
+All 8 blog drafts are now at their content-pack target lengths. Local only.
+- **#3 `masshire-training-voucher`** — 805 → **1,312 words** (target 1,300–1,600). Rebuilt into the full 9-step JobQuest→TABE→ITA→approval flow, plus "what is an ITA," a Section 30 callout, "common mistakes," "after you're approved," and a 4-Q FAQ (schema).
+- **#4 `is-wioa-training-free`** — 680 → **1,108 words** (target 1,100–1,300). Added the Section 30 income angle, a "free to you vs. free with conditions" box, the rough cap-vs-price math (no dollar amounts), "does everyone get funded," "beyond tuition," an "if WIOA doesn't cover you" list, and a 4-Q FAQ (schema).
+- **#6 `can-medical-billing-coding-be-learned-online`** — 680 → **1,109 words** (target 1,100–1,400). Added coding-vs-billing, day-to-day, employer-respect, work-from-home honesty, pay pointer (#5), funding pointer (#1), and a 5-Q FAQ (schema).
+- **#7 `can-you-learn-it-support-online`** — 700 → **1,104 words** (target 1,100–1,400). Added the CompTIA ladder (Tech+→A+→Network+/Security+), home-lab how-to, MA demand, pay pointer (#5), an AI-future honesty section, and a 5-Q FAQ (schema).
+- Verified: builds clean; all JSON-LD valid; no visible `[VERIFY]`; no program-facts leakage; no page overflow. **All 8 posts now expanded and compliant.**
+
 ### 2026-09-25 (later) — Expanded posts #2 and #8 to target length
 - **#2 `wioa-eligibility-massachusetts`** — 785 → **1,218 words** (target 1,200–1,500). Added: basic requirements + Selective Service (B7); priority-of-service explainer (B5); "training has to point to a real job"; income example framed as regional-only (B3); "you might qualify even if…"; a 5-question self-check (interim link to the ITA guide until `qualify.html` exists); a 4-question FAQ **with FAQPage schema**.
 - **#8 `can-you-learn-a-trade-online`** — 685 → **1,101 words** (target 1,100–1,400). Added: OSHA 10/30 + EPA 608 online prep; the "HVAC is not one license" note; a Registered Apprenticeship section (Division of Apprentice Standards, earn-while-you-learn); an overpromising honesty callout; "do the trades pay off?" (links to #5); a "which trade fits you?" comparison; a 5-question FAQ **with FAQPage schema**. CTA switched to the interest list.
