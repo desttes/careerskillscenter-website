@@ -23,4 +23,5 @@ Career Skills Center (Quincy, MA): online career training in Medical Billing & C
 - Never invent statistics, outcomes, testimonials or salary figures. Use a marked placeholder plus a TODO.
 - Blog posts are drafts until Emilio approves: add `<!-- DRAFT – facts to verify: ... -->` at the top.
 - Don't deploy to the live server without Emilio's explicit OK. Commit locally as restore points.
+- **Pre-deploy check (mandatory):** before any upload to the live server, run `grep -rn -e '\[VERIFY' -e 'DRAFT' --include='*.html' .` on the files being deployed. If anything matches, do not deploy those files; list them in `docs/BUILD_STATUS.md`. Fact decisions live in `docs/VERIFICATION_LOG.md`.
 - Audience reads at roughly an 8th-grade level; many read English as a second language. Keep copy plain.
