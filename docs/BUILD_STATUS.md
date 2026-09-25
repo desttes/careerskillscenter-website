@@ -10,6 +10,13 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-25 (later) — Removed fake homepage testimonials (Option A, spec §7)
+- **`index.html`** — deleted the entire Testimonials section (the fabricated "Marcus, Electrical Technician graduate" and "David, IT Support Specialist graduate" quotes, including the "helped me earn my CompTIA A+ and Network+" program specifics). Left an HTML comment noting why and that only real, consenting-student testimonials may replace it. The homepage now closes on the "Ready to Start?" steps band → footer (no gap).
+- Not replaced with any quotes (per spec). Did **not** add the optional "Why we're building Career Skills Center" section — that can be added later if wanted.
+- Career Services (`career-services.html`) has **no** fabricated quote testimonials; its alumni-network / TBD-outcomes / "Hire Our Graduates" claims are part of the broader §9 rework, left for that task. The `person1/person2` images stay as decorative photos (not presented as graduate quotes).
+- Verified: no JS/CSS depends on `#testimonials`; rebuild clean; grep confirms no `Marcus`/`David`/graduate-quote text remains in any shipped HTML; homepage renders with no console errors, no overflow.
+- **Still open in Option A:** program/tuition pages → "in development"; interest-list form (needs the cPanel PHP mailer); `career-services.html` §9 rework; `llms.txt` fixes; drop `outcomes.html`; `our-programs.html`, `faq.html`, `about.html`, `admissions.html`, `student-financing.html` reframes.
+
 ### 2026-09-25 (later) — Expanded posts #3, #4, #6, #7 to target length
 All 8 blog drafts are now at their content-pack target lengths. Local only.
 - **#3 `masshire-training-voucher`** — 805 → **1,312 words** (target 1,300–1,600). Rebuilt into the full 9-step JobQuest→TABE→ITA→approval flow, plus "what is an ITA," a Section 30 callout, "common mistakes," "after you're approved," and a 4-Q FAQ (schema).
