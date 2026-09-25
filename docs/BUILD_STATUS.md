@@ -2,10 +2,20 @@
 
 Claude Code updates this file at the end of every session. The strategy side (Cowork + the "ETPL Massachusetts" Project) reads it.
 
-## Current state
-- Brief version being built: `docs/BUILD_BRIEF.md` v1.0 (Sept 24, 2026)
-- **Blog rebuilt (§2 + §5):** placeholder posts removed; 8 real launch drafts written and live locally. Everything else in the brief (nav/footer restructure, `js/site-config.js`, For Employers pages, qualify.html, Ways to Pay rewrite, Outcomes, MA landing pages, calculator) is **not started yet**.
-- Status: **local only — NOT deployed.** Awaiting Emilio's review of the 8 drafts before anything goes live.
+## Current state (as of 2026-09-25)
+- Brief being built: `docs/BUILD_BRIEF.md` v1.1, plus `docs/PRE_LAUNCH_SITE_SPEC.md` (Option A) and `docs/VERIFICATION_LOG.md`.
+
+**LIVE on careerskillscenter.com:**
+- The **contact-form backend** (`submit.php`, cPanel PHP mailer) — leads deliver to `vcanal@careerskillscenter.com`, confirmed working after fixing cPanel Email Routing to Remote (mailboxes are on Namecheap Private Email). GA4 `form_submit` fires.
+- **Fake homepage testimonials removed.**
+
+**Done LOCALLY, NOT deployed (awaiting Emilio's review + OK):**
+- **Blog:** 8 launch posts, all expanded to target length, fact-checked against `VERIFICATION_LOG.md`, program-facts-compliant, real Sept 25 dates. Still marked `<!-- DRAFT -->`. Excluded from deploy until approved.
+- **Option A pre-launch rework** (the whole site): program/tuition/careers/faq/admissions/Ways-to-Pay/about/homepage reworked to "program in development"; site-wide **interest-list form** (routes to the live mailer with `source=interest-list`); `programs.html` → redirect; `llms.txt` updated. Spec acceptance grep clean.
+
+**Not started (later brief work):** nav/footer restructure (§1), `js/site-config.js`, the For Employers pages + reimbursement calculator (§4), `qualify.html` (§3.2), the 4 MA landing pages (§3.4). `outcomes.html` withdrawn (no real graduates).
+
+**Immediate next step:** decide whether to deploy the Option A rework + interest form (blog stays excluded). Everything is committed on `main`.
 
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
@@ -128,11 +138,16 @@ Picked up the strategy-side handoff (commit `9aee0c0`: brief bumped to v1.1 + `d
 
 ## Questions for strategy
 <!-- Anything unclear or anything you disagree with in the brief. Emilio brings these to the Cowork session. -->
-- **Form backend: DECIDED → cPanel PHP mailer** (Emilio, this session). Next build session will implement a small PHP mailer on the Namecheap host that emails submissions to info@careerskillscenter.com, with a hidden `source` field on every form, before building `qualify.html` and the employer forms.
-- Checklist PDF ("Paying for Training in Massachusetts"): Emilio to provide the content so the pillar post's email-capture download can be wired up.
-- Salary/wage figures for post #5 and the MA landing pages: confirm the plan is to pull from BLS OES Massachusetts and cite the source (no invented numbers).
+- **Form backend: DONE →** cPanel PHP mailer (`submit.php`) is built and **live**, delivering to `vcanal@careerskillscenter.com`. Every form posts a hidden `source`. Confirmed working after switching cPanel Email Routing to Remote (mailboxes are on Namecheap Private Email).
+- **Deploy decision needed:** the Option A rework + interest-list form are built and reviewed locally. OK to deploy? (Blog stays excluded until the drafts are approved.)
+- **Blog approval:** the 8 drafts are ready for Emilio's review. Approve to publish (then add `put -r blog` to the deploy).
+- **Checklist PDF** ("Paying for Training in Massachusetts"): still needed from Emilio to wire up the pillar post's email-capture download (placeholder in place).
+- Confirm the `vcanal@` inbox is the right destination (unusual spelling — corrected from `vcanl@` this session).
 
 ## Decisions that differ from the brief
 <!-- What you changed and why -->
-- **Blog post URLs = real `/blog/<slug>.html` subdirectory** (per brief §2), which required teaching `build-pages.py` to handle nested pages (relative-link rewriting). The older `docs/PAGES.md` article template suggested flat `blog-<slug>.html` filenames; the brief supersedes it. `PAGES.md` should be updated to match if this approach is approved.
-- Pillar post CTA points to **Ways to Pay** instead of the checklist download, because the download depends on the (not-yet-built) form backend + PDF. Will switch once those exist.
+- **Blog post URLs = real `/blog/<slug>.html` subdirectory** (per brief §2); required teaching `build-pages.py` to handle nested pages (relative-link rewriting). Older `docs/PAGES.md` flat-filename note is superseded — update it if approved.
+- **Program-facts policy (v1.1 / spec) supersedes brief §3.3 program detail:** no CSC program length/hours/price/credential/certificate/VA/outcomes anywhere; pages say "in development" + join the interest list. `outcomes.html` withdrawn (no real graduates).
+- **BLS wages** pulled from the OEWS Query System (`data.bls.gov`) rather than the zip (bls.gov blocks curl; per-state HTML retired). MA medians used and cited (May 2025).
+- Pillar post CTA points to **Ways to Pay** instead of the checklist download until the PDF exists.
+- Blog/interest-form CTAs point to `contact.html`/`#interest` (the interest list) as the interim for `qualify.html` until it's built.
