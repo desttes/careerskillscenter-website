@@ -10,6 +10,20 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-25 — Applied VERIFICATION_LOG fixes to all 8 posts + fetched BLS wages
+Picked up three more strategy commits (`643a20d` verification log + pre-deploy check, `a2bd448` program-facts-are-placeholders policy, `4ed64d4` pre-launch site spec). Applied every fact fix and the program-facts policy to the blog. **Local only.**
+
+- **BLS wages (VERIFICATION_LOG §C):** bls.gov blocks curl (403) and the old per-state HTML tables are retired, so I pulled the data from the BLS OEWS Query System in the in-app browser (`data.bls.gov/oes/#/area/2500000/2025`). Got all 8 **Massachusetts** median annual wages (May 2025) and put them in **post #5** as a sourced table (no national fallback needed). Recorded in `docs/VERIFICATION_LOG.md` §G1. Post #5 title year corrected (2027) → **(2026)**.
+- **Fact fixes (A/B):** center count "more than 25" (A1); Donnelly totals/dates → $7.4M **Oct 2025** + $5.9M Aug 2026 (A2); MassHire locator URL (A3); MA trade-license hours added (A8); softened B9/B10/B11/B14/B16; added AAPC exam cost $425/$499 as general info (B15).
+- **Program-facts policy (§F1):** removed **every** CSC program specific from the blog (no more "11 weeks/117 hours," AAPC certificate, "our CompTIA program," "browse our programs"). Replaced with the sanctioned "Career Skills Center is planning… join our interest list" wording. Program-page CTAs re-pointed to the interest list (interim target: `contact.html`, until the mailer + form exist). VA line now points to the VA GI Bill Comparison Tool, no CSC VA claim.
+- **Publish dates (§F2):** de-backdated — all 8 posts and the blog index cards now show **September 25, 2026**; the "Updated" line was removed from article meta (the `article()` helper no longer renders it) until a real update exists.
+- **Verified:** builds clean (25 pages); all JSON-LD valid; **mandatory pre-deploy grep clean** — no visible `[VERIFY]` markers (only the checklist `[TODO]` placeholder kept per A9, and the intentional `<!-- DRAFT -->` notes); program-facts leakage scan clean (no prices/hours/credentials/fake grads); no page overflow; #5 wage table renders with all 8 MA medians.
+
+**Still open / not done this session:**
+- Checklist PDF (A9) — pillar keeps the placeholder; needs Emilio's content + the mailer.
+- Posts #2–#8 are still at original draft **length** (this was a fact/compliance pass, not the length expansion the content pack also asks for).
+- **Pre-launch site spec (Option A)** — not started: program/tuition pages → "in development," remove the fake homepage testimonials, interest-list form (needs the PHP mailer), `llms.txt` fixes, drop `outcomes.html`. Separate task.
+
 ### 2026-09-24 (later) — Pillar post expanded from docs/content/ (brief v1.1)
 Picked up the strategy-side handoff (commit `9aee0c0`: brief bumped to v1.1 + `docs/content/` pack). Expanded **post #1 only** this pass, per request.
 - **`/blog/free-job-training-massachusetts.html`** rewritten from `docs/content/01-...md`: now **~2,004 words** (target 2,000–2,500). Added: the "5 main ways to pay" comparison table; "How the system is organized" (16 regions → boards → centers → ETPL); dedicated sections for **WIOA/ITA, Section 30/TOP** (get paid while training, 20-hr/wk, 26 extra weeks, 20th-week deadline), **Donnelly grants**, **Express (employer-paid)**, and payment plans; a "Which option fits you?" mapping; a 6–8 week timeline box; a "What to bring" checklist (with a placeholder for the future PDF download); JobQuest-first "honest first step"; a bottom-line close; and an **expanded 9-question FAQ** (visible + FAQPage schema kept in sync). Read time bumped to 12 min.

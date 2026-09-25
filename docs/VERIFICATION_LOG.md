@@ -131,3 +131,42 @@ The live pages currently state specific prices ($299/$329), lengths (8/11 weeks)
 - **(a) Recommended:** convert each program page to a "Program in development" page: what the career is, what the planned program will generally cover, "details coming soon," and a join-the-interest-list form. Hide the tuition table (or show "Pricing coming soon").
 - **(b)** Keep the pages but add a visible banner: "Planned program. Length, price and credentials are not final and may change."
 Code should not change these pages until Emilio picks (a) or (b).
+
+---
+
+## G. APPLIED by Code — Sept 25, 2026
+
+### G1. BLS salary data (section C) — pulled successfully
+Downloaded from the BLS OEWS Query System (data.bls.gov) rather than the zip (bls.gov blocks curl with 403; the old per-state HTML tables are retired and now redirect to the interactive tool). Read via the in-app browser at `data.bls.gov/oes/#/area/2500000/2025` (Massachusetts, May 2025), column "Annual median wage."
+
+**Massachusetts median annual wages — BLS OEWS, May 2025:**
+
+| SOC | Occupation | MA median |
+|---|---|---|
+| 29-2072 | Medical records specialists | **$60,350** |
+| 43-3021 | Billing and posting clerks | **$56,110** |
+| 43-6013 | Medical secretaries & administrative assistants | **$50,290** |
+| 15-1232 | Computer user support specialists (IT help desk) | **$75,070** |
+| 15-1231 | Computer network support specialists | **$88,650** |
+| 47-2111 | Electricians | **$79,420** |
+| 47-2152 | Plumbers, pipefitters & steamfitters | **$93,880** |
+| 49-9021 | HVAC & refrigeration mechanics & installers | **$77,300** |
+
+These MA figures are used in post #5 (cited "BLS OEWS, May 2025, Massachusetts"), so the national fallback in section C was not needed. Title changed from "(2027)" to "(2026)" to match the data year.
+
+### G2. Fixes applied to the 8 blog posts
+- **A1** ✏️ "about 29" → "more than 25 MassHire career centers."
+- **A2** ✏️ Donnelly dates corrected → "$7.4 million (October 2025) and $5.9 million (August 2026)."
+- **A3** ✏️ locator link → mass.gov/info-details/masshire-career-center-locations.
+- **A8** ✏️ trade-licensing examples inserted (electrician 600 classroom + 8,000 work hrs; refrigeration 6,000 apprentice hrs or 450 study hrs + CFC/EPA 608).
+- **B9, B10, B11, B14, B16** 🔻 softened to the given wording.
+- **B15** exam cost ($425 / $499) added as general industry info.
+- **F1** all CSC-program specifics removed from the blog and replaced with the "planning / join the interest list" wording; program-page CTAs re-pointed to the interest-list (interim: contact page, until the mailer + form exist).
+- **F2** publish dates de-backdated (all set to the real drafting date) and the "Updated" line removed from article meta until a real update exists.
+- **A4/VA** now: "you may have education benefits (like the GI Bill). The VA's GI Bill Comparison Tool shows which schools are approved." No CSC VA claim.
+- Every inline `[VERIFY]` marker resolved and removed **except** the checklist-download `[TODO]` (A9, still pending Emilio's PDF). DRAFT notes kept (posts remain drafts).
+
+### G3. Still blocked on Emilio (Bucket 1 / F4)
+- Checklist PDF content (A9) — pillar keeps a placeholder.
+- Optional: mention Workforce Pell? (left out for now.)
+- Program-page rework (F5) and the pre-launch site spec (Option A) — not started; separate task.
