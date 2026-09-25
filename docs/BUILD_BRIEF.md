@@ -2,11 +2,13 @@
 
 **For:** Claude Code (or any developer) working in the careerskillscenter.com repository
 **From:** Emilio / strategy work in the "ETPL Massachusetts" Claude Project
-**Version:** 1.2 — Sept 25, 2026 (program facts policy)
+**Version:** 1.3 — Sept 25, 2026 (pre-launch site mode)
 **Source of truth for strategy:** Project docs `11`, `13`, `18`. This file is the build spec derived from them.
 
 ---
 
+
+> **Update v1.3 (Sept 25, 2026):** Pre-launch site mode, Option A (Emilio's decision). Implement `docs/PRE_LAUNCH_SITE_SPEC.md` **before** the rest of this brief: program pages become "Program in development," fake testimonials are removed, and an interest-list form is the main CTA.
 
 > **Update v1.2 (Sept 25, 2026): program facts policy.** The program pages are placeholders. No page built from this brief may state CSC program length, hours, price, credential, format or VA status. §3.4 landing pages: replace "program length/format" with "what the planned program will cover (in general) + join the interest list." See the "Program facts policy" in `CLAUDE.md` and section F of `docs/VERIFICATION_LOG.md`.
 
@@ -124,6 +126,7 @@ A 60-second, 5–6 step form. **It captures a lead; it does not make an eligibil
 - **Title:** Student Outcomes & Graduate Stories | Career Skills Center
 - **H1:** Where our graduates go
 - **Sections:** outcome stats (config; hide until real numbers exist, and never invent numbers), graduate story cards (name, program, employer, quote, photo; reuse the 2 existing homepage testimonials — Marcus and David — as the first cards), video embed slots, employer logos (TODO), CTA.
+- **WITHDRAWN (Sept 25, 2026): do not reuse the Marcus/David testimonials; they are not real. Do not build outcomes.html until real graduates exist. See docs/PRE_LAUNCH_SITE_SPEC.md.**
 - Build story cards from a simple data file (e.g., `data/stories.json`) so new stories can be added without editing HTML.
 
 ### 3.4 Massachusetts landing pages (NEW ×4; footer only, not in the top nav)

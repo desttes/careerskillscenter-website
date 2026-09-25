@@ -32,3 +32,4 @@ The program pages (`it-support-specialist.html`, `medical-billing-coding.html`, 
 - The only allowed statement: Career Skills Center **plans to offer** training in Information Technology and Medical Billing & Coding, and likely Skilled Trades. Details are coming, and readers can join the interest list.
 - Talking about industry credentials in general (for example, what CompTIA Tech+ or AAPC CPC is) is fine, as long as it doesn't imply CSC teaches toward it.
 - Publish dates must be real: use the actual publish date, never a backdated one.
+- **Never publish testimonials, reviews, quotes or outcome stats unless they come from real, consenting students.** The pre-launch plan is in `docs/PRE_LAUNCH_SITE_SPEC.md`; do it first.
