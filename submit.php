@@ -19,8 +19,9 @@
  */
 declare(strict_types=1);
 
-const CSC_RECIPIENT = 'info@careerskillscenter.com';
-const CSC_FROM      = 'info@careerskillscenter.com';
+const CSC_RECIPIENT    = 'vcanal@careerskillscenter.com'; // where lead notifications are delivered
+const CSC_FROM         = 'info@careerskillscenter.com';  // on-domain sender so SPF/DKIM pass (keep as an address on this domain)
+const CSC_PUBLIC_EMAIL = 'info@careerskillscenter.com';  // address shown to visitors (never expose the internal recipient)
 const CSC_SITE      = 'Career Skills Center';
 const CSC_MAX_LEN   = 5000; // per-field cap, to blunt abuse
 
@@ -170,7 +171,7 @@ function csc_main(): void
         } else {
             http_response_code(500);
             echo json_encode(['ok' => false,
-                'error' => 'Sorry, we could not send that just now. Please email ' . CSC_RECIPIENT . '.']);
+                'error' => 'Sorry, we could not send that just now. Please email ' . CSC_PUBLIC_EMAIL . '.']);
         }
         return;
     }

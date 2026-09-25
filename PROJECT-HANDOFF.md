@@ -128,7 +128,8 @@ EOF
 ```
 (For a small change, `put` only the specific files instead of everything.)
 
-**Form backend (`submit.php`).** The contact forms POST to `submit.php`, a plain-PHP mailer that emails submissions to `info@careerskillscenter.com` (no database). cPanel runs PHP, so no extra setup is needed beyond uploading the file. Notes:
+**Form backend (`submit.php`).** The contact forms POST to `submit.php`, a plain-PHP mailer that emails submissions to `vcanal@careerskillscenter.com` (no database). cPanel runs PHP, so no extra setup is needed beyond uploading the file. Notes:
+- Delivery vs. display: leads are sent to `vcanal@careerskillscenter.com` (`CSC_RECIPIENT`), while visitors only ever see the public `info@careerskillscenter.com` (`CSC_PUBLIC_EMAIL`). Make sure the `vcanal@` mailbox/alias exists in cPanel.
 - It sends `From: info@careerskillscenter.com` (an address on the domain, so SPF/DKIM pass) with `Reply-To` set to the visitor. Change `CSC_FROM` in the file if you make a dedicated `no-reply@` alias.
 - Every form posts a hidden `source` field (e.g. `contact-dialog`, `contact-page`) and a JS-added `page`, both shown in the email; a hidden honeypot (`company_website`) drops bots.
 - If a submission ever fails, the form shows a fallback asking the visitor to email/call, so no lead is lost.
@@ -160,7 +161,7 @@ curl -sS -o /dev/null -w "%{http_code}\n" https://careerskillscenter.com/       
 - **Skilled Trades image credit** — `images/billing.webp` (used on the Medical page's "Soft Skills Check" section) shows a "Boston General Hospital" lanyard badge; a cleaner image is preferable given the Massachusetts-not-Boston geography rule.
 
 **Functional:**
-- **Contact form** — ✅ **wired up (2026-09-25).** The dialog and contact-page forms POST to `submit.php` (cPanel PHP mailer) and email `info@careerskillscenter.com` with a hidden `source` field; a GA4 `form_submit` event fires on success. Tested end-to-end locally (validation, honeypot, header-injection safety, success email). Deploy `submit.php` (see §5) for it to work live; then send one real test submission and confirm the email arrives.
+- **Contact form** — ✅ **wired up (2026-09-25).** The dialog and contact-page forms POST to `submit.php` (cPanel PHP mailer) and email `vcanal@careerskillscenter.com` with a hidden `source` field; a GA4 `form_submit` event fires on success. Tested end-to-end locally (validation, honeypot, header-injection safety, success email). Deploy `submit.php` (see §5) for it to work live; then send one real test submission and confirm the email arrives.
 - **Logo** — header uses a text "CSC" mark. A real logo image was tested but rejected (files had spelling errors and were low-quality JPGs). When a correct **transparent PNG/SVG** of "Career Skills Center" is provided, wire it into the header + footer (replace the `.brand-mark`/`.brand-text` spans).
 - **`images/logo.svg`** — referenced only inside an HTML comment (not a live broken image), so nothing is broken; ignore unless adding a real logo.
 
