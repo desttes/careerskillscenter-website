@@ -106,13 +106,21 @@
         const json = await res.json().catch(() => ({}));
         if (!res.ok || !json.ok) throw new Error(json.error || 'Submission failed');
 
+        const source = data.get('source') || 'contact';
         if (status) {
-          status.textContent = 'Thanks! We’ll be in touch soon.';
+          status.textContent = form.dataset.success || 'Thanks! We’ll be in touch soon.';
           status.classList.add('is-success');
         }
         form.reset();
         if (typeof gtag === 'function') {
-          gtag('event', 'form_submit', { source: data.get('source') || 'contact' });
+          if (source === 'interest-list') {
+            gtag('event', 'interest_list_signup', {
+              program: data.get('program') || '',
+              pay_method: data.get('pay_method') || '',
+            });
+          } else {
+            gtag('event', 'form_submit', { source: source });
+          }
         }
       } catch (err) {
         if (status) {

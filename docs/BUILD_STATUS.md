@@ -10,6 +10,22 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-25 (later) — Option A pre-launch rework across the site (LOCAL, not deployed)
+Implemented the full "Program in development" rework from `docs/PRE_LAUNCH_SITE_SPEC.md`, now that the mailer works.
+- **New shared pieces** (`build-pages.py`): `DEV_STATUS` line, `dev_hero()`, and `interest_form()` — the site-wide interest-list form (first name, email, mobile optional, program [preselected], preferred language, "how would you likely pay", SMS consent; hidden `source=interest-list` + honeypot; JS adds `page`). `main.js` fires a GA4 **`interest_list_signup`** event (program + pay_method) and shows the form's `data-success` message. `css`: light-background `.interest-form` overrides, `.consent-row`, `.pcard-badge`.
+- **Program pages → "in development" template:** `it-support-specialist.html`, `medical-billing-coding.html`, `skilled-trades.html` rebuilt — status line, "about the career" with **BLS Massachusetts** median pay (IT $75,070; medical $60,350), "what we're planning" (general topics, "plan to align with an industry-recognized certification"), "what we'll tell you before enrollment," the interest form, and related blog posts. Removed all length/hours/price/credential/"Course Overview"/"How to Enroll".
+- **`our-programs.html`:** "In development"/"Coming soon" badges, career-focused card text, cert-stacking claims removed, interest form.
+- **`tuition.html`:** replaced the fake price table + invented ROI comparison with "Pricing coming soon" + ways-we-plan-to-help + interest form.
+- **`career-services.html`:** reframed to future tense; removed the Alumni Network, TBD outcomes box, "Hire Our Graduates," graduate photos and "included in your tuition."
+- **`faq.html`:** rewrote program/credential/cost/VA/campus answers to "in development / join the interest list" wording.
+- **`admissions.html`:** "enrollment isn't open yet," future-tense steps + requirements, dropped the start-dates table; interest form.
+- **`student-financing.html` → "Ways to Pay":** planned options only (no terms), funding-guide links, working-toward-approval disclosure, interest form.
+- **`about.html` + homepage:** softened instructor/lab/campus/"graduates" claims to planned tense; homepage "What We Do" + Step-by-Step reframed to the interest list; testimonials already gone.
+- **`programs.html`** (deprecated, unlinked): converted to a redirect to `our-programs.html` so it can't ship stale specifics.
+- **`llms.txt`:** rewritten to "in development," removed Tech+/FC0-U71/CPC/CPB/8-11 weeks, "offering" → "developing".
+- **Verified:** builds clean; **spec acceptance grep clean** (no $299/$329, hours, weeks, FC0-U71, graduate/alumni/Marcus/David in root HTML; llms.txt clean); no `[VERIFY]`/`DRAFT` in root HTML; 9 interest forms placed; interest form renders correctly on light sections; `programs.html` redirects; homepage/our-programs/IT page render with no console errors or overflow.
+- **TODOs:** `contact.html` still says "campus"/parking TBD and `team.html`/`media.html` remain unlinked placeholders (out of this pass — convert or redirect later). Not deployed — awaiting review. When deploying, the `put *.html` list already covers these; consider adding an `.htaccess` 301 for `programs.html` too.
+
 ### 2026-09-25 (later) — Fixed live email delivery (mail routing)
 The live form submitted OK but no email arrived. Diagnosis: `mail()` returned success (server accepted), but the domain's mailboxes are on **Namecheap Private Email** (MX = `mx1/mx2.privateemail.com`), while cPanel's **Email Routing** was delivering locally — so mail went to a non-existent local mailbox and was lost.
 - **Fix (Emilio, in cPanel):** set Email Routing for `careerskillscenter.com` to **Remote Mail Exchanger** — confirmed working, the form now delivers to `vcanal@careerskillscenter.com`.

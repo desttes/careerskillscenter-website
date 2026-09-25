@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=1790361349">
+  <link rel="stylesheet" href="css/style.css?v=1790363606">
 
 </head>
 <body>
@@ -98,36 +98,27 @@
       <div class="container">
         <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>Our Programs</p>
         <h1>Our Programs<span class="dot">.</span></h1>
-        <p class="page-hero-lede">Explore the fields we train for. Pick a path and we will walk you through the programs, credentials and the steps to enroll.</p>
+        <p class="page-hero-lede">We&rsquo;re building online career training for Massachusetts adults. Explore the fields below and join the interest list for the program you want.</p>
         <div class="hero-actions">
           <button class="btn btn-yellow js-open-contact" type="button">Get in Touch</button>
-          <a class="btn btn-outline" href="admissions.html">How to Enroll</a>
+          <a class="btn btn-outline" href="#interest">Join the Interest List</a>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Explore Our Programs</p>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Explore the fields</p>
         <h2 class="section-title left">Choose Your Field</h2>
         <div class="pcard-grid">
 
-          <article class="pcard" id="trades">
-            <img src="images/electrician.webp" alt="Electrician at work" class="pcard-media" loading="lazy" decoding="async">
-            <div class="pcard-body">
-              <h3 class="pcard-title">Skilled Trades</h3>
-              <span class="pcard-rule" aria-hidden="true"></span>
-              <p>Hands-on training for electrical, HVAC/R, plumbing, welding and carpentry, built around the credentials employers and licensing boards ask for.</p>
-              <a class="btn btn-outline-navy" href="skilled-trades.html">Read more</a>
-            </div>
-          </article>
-
           <article class="pcard" id="it">
-            <img src="images/comptia.webp" alt="CompTIA certification training" class="pcard-media" loading="lazy" decoding="async">
+            <img src="images/comptia.webp" alt="IT support technician at work" class="pcard-media" loading="lazy" decoding="async">
             <div class="pcard-body">
+              <span class="pcard-badge">In development</span>
               <h3 class="pcard-title">Information Technology</h3>
               <span class="pcard-rule" aria-hidden="true"></span>
-              <p>Stack industry certifications from help-desk fundamentals through networking, security and cloud. No four-year degree required.</p>
+              <p>Help-desk and IT support &mdash; the most common way into a tech career, hiring across Massachusetts. No four-year degree required.</p>
               <a class="btn btn-outline-navy" href="it-support-specialist.html">Read more</a>
             </div>
           </article>
@@ -135,10 +126,22 @@
           <article class="pcard" id="medical">
             <img src="images/medicalbilling.webp" alt="Medical billing and coding specialist" class="pcard-media" loading="lazy" decoding="async">
             <div class="pcard-body">
-              <h3 class="pcard-title">Medical</h3>
+              <span class="pcard-badge">In development</span>
+              <h3 class="pcard-title">Medical Billing &amp; Coding</h3>
               <span class="pcard-rule" aria-hidden="true"></span>
-              <p>Train for in-demand clinical and administrative roles in healthcare, with certification exam preparation built into every program.</p>
+              <p>Turn doctor visits into codes and claims &mdash; detailed, office-based healthcare work, often remote once you have experience.</p>
               <a class="btn btn-outline-navy" href="medical-billing-coding.html">Read more</a>
+            </div>
+          </article>
+
+          <article class="pcard" id="trades">
+            <img src="images/electrician.webp" alt="Electrician at work" class="pcard-media" loading="lazy" decoding="async">
+            <div class="pcard-body">
+              <span class="pcard-badge">Coming soon</span>
+              <h3 class="pcard-title">Skilled Trades</h3>
+              <span class="pcard-rule" aria-hidden="true"></span>
+              <p>Electrical, HVAC/R and plumbing &mdash; licensed trades that pay well in Massachusetts and can&rsquo;t be shipped overseas.</p>
+              <a class="btn btn-outline-navy" href="skilled-trades.html">Read more</a>
             </div>
           </article>
 
@@ -146,10 +149,49 @@
       </div>
     </section>
 
-    <section class="cta-band" aria-labelledby="cta-title">
-      <div class="container text-center">
-        <h2 class="cta-title" id="cta-title">Not sure which program is right for you?</h2>
-        <button class="btn btn-yellow js-open-contact" type="button">Talk to an Advisor</button>
+    <section class="section section--alt" id="interest">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Join the interest list</p>
+        <h2 class="section-title left">Be first to know</h2>
+        <div class="section-intro"><p>Enrollment isn’t open yet. Leave your details and we’ll email you the
+        moment our programs details, dates and pricing are ready. No spam, no pressure.</p></div>
+        <form class="contact-form interest-form" action="submit.php" method="post" novalidate
+              data-success="You’re on the list. We’ll email you when the details are ready.">
+          <input type="hidden" name="source" value="interest-list">
+          <input type="text" class="hp-field" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="sr-only" for="il-name">First name</label>
+          <input id="il-name" name="name" type="text" placeholder="First name" autocomplete="given-name" required>
+          <label class="sr-only" for="il-email">Email address</label>
+          <input id="il-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+          <label class="sr-only" for="il-phone">Mobile phone (optional)</label>
+          <input id="il-phone" name="phone" type="tel" placeholder="Mobile phone (optional)" autocomplete="tel">
+          <label class="sr-only" for="il-program">Program of interest</label>
+          <select id="il-program" name="program" required>
+              <option value="it">Information Technology</option>
+              <option value="medical">Medical Billing &amp; Coding</option>
+              <option value="trades">Skilled Trades</option>
+              <option value="unsure" selected>Not sure yet</option>
+          </select>
+          <label class="sr-only" for="il-language">Preferred language</label>
+          <select id="il-language" name="language">
+            <option value="" selected disabled>Preferred language</option>
+            <option value="English">English</option>
+            <option value="Español">Español</option>
+            <option value="Português">Português</option>
+          </select>
+          <label class="sr-only" for="il-pay">How would you likely pay?</label>
+          <select id="il-pay" name="pay_method">
+            <option value="" selected disabled>How would you likely pay?</option>
+            <option value="self">Self-pay</option>
+            <option value="employer">My employer</option>
+            <option value="state">State or grant funding</option>
+            <option value="unsure">Not sure</option>
+          </select>
+          <label class="consent-row"><input type="checkbox" name="consent" value="yes"> It’s OK to text me about
+          programs. Message and data rates may apply.</label>
+          <button class="btn btn-yellow" type="submit">Join the interest list</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
 
@@ -278,6 +320,6 @@
     </div>
   </dialog>
 
-  <script src="js/main.js?v=1790361371" defer></script>
+  <script src="js/main.js?v=1790363344" defer></script>
 </body>
 </html>

@@ -172,6 +172,89 @@ def cta(title, label="Yes, Let’s Get in Touch"):
     </section>"""
 
 
+# --- Pre-launch ("Program in development") building blocks -------------------
+# The school has no programs, students or graduates live yet, so pages must not
+# state program length, hours, price, credential/exam, certificate, start date,
+# VA status or any outcome. See docs/PRE_LAUNCH_SITE_SPEC.md and CLAUDE.md.
+
+DEV_STATUS = ('    <section class="section section--tight">\n'
+              '      <div class="container">\n'
+              '        <p class="note"><strong>Program in development.</strong> Details, pricing and start '
+              'dates will be announced before enrollment opens. Join the interest list below and we will email '
+              'you first.</p>\n'
+              '      </div>\n'
+              '    </section>')
+
+
+def dev_hero(label, title, lede):
+    """Hero for a pre-launch page: 'Join the interest list' as the primary CTA."""
+    return f"""    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>{label}</p>
+        <h1>{title}<span class="dot">.</span></h1>
+        <p class="page-hero-lede">{lede}</p>
+        <div class="hero-actions">
+          <a class="btn btn-yellow" href="#interest">Join the interest list</a>
+          <a class="btn btn-outline" href="our-programs.html">All programs</a>
+        </div>
+      </div>
+    </section>"""
+
+
+def interest_form(preselect="unsure", program_label="our programs"):
+    """Site-wide interest-list form (spec §16). Reuses the .contact-form fetch
+    handler; posts to submit.php with source=interest-list. `preselect` is one of
+    it / medical / trades / unsure. Doubles as market research (pay method)."""
+    opts = [("it", "Information Technology"), ("medical", "Medical Billing &amp; Coding"),
+            ("trades", "Skilled Trades"), ("unsure", "Not sure yet")]
+    sel = preselect or "unsure"
+    options = "\n".join(
+        f'              <option value="{v}"{" selected" if v == sel else ""}>{label}</option>'
+        for v, label in opts)
+    return f"""    <section class="section section--alt" id="interest">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Join the interest list</p>
+        <h2 class="section-title left">Be first to know</h2>
+        <div class="section-intro"><p>Enrollment isn’t open yet. Leave your details and we’ll email you the
+        moment {program_label} details, dates and pricing are ready. No spam, no pressure.</p></div>
+        <form class="contact-form interest-form" action="submit.php" method="post" novalidate
+              data-success="You’re on the list. We’ll email you when the details are ready.">
+          <input type="hidden" name="source" value="interest-list">
+          <input type="text" class="hp-field" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="sr-only" for="il-name">First name</label>
+          <input id="il-name" name="name" type="text" placeholder="First name" autocomplete="given-name" required>
+          <label class="sr-only" for="il-email">Email address</label>
+          <input id="il-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+          <label class="sr-only" for="il-phone">Mobile phone (optional)</label>
+          <input id="il-phone" name="phone" type="tel" placeholder="Mobile phone (optional)" autocomplete="tel">
+          <label class="sr-only" for="il-program">Program of interest</label>
+          <select id="il-program" name="program" required>
+{options}
+          </select>
+          <label class="sr-only" for="il-language">Preferred language</label>
+          <select id="il-language" name="language">
+            <option value="" selected disabled>Preferred language</option>
+            <option value="English">English</option>
+            <option value="Español">Español</option>
+            <option value="Português">Português</option>
+          </select>
+          <label class="sr-only" for="il-pay">How would you likely pay?</label>
+          <select id="il-pay" name="pay_method">
+            <option value="" selected disabled>How would you likely pay?</option>
+            <option value="self">Self-pay</option>
+            <option value="employer">My employer</option>
+            <option value="state">State or grant funding</option>
+            <option value="unsure">Not sure</option>
+          </select>
+          <label class="consent-row"><input type="checkbox" name="consent" value="yes"> It’s OK to text me about
+          programs. Message and data rates may apply.</label>
+          <button class="btn btn-yellow" type="submit">Join the interest list</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>"""
+
+
 SITE_URL = "https://careerskillscenter.com/"
 
 
@@ -315,151 +398,23 @@ ARCHIVED = {"wioa.html", "financial-aid.html"}
 
 
 # ---- programs.html --------------------------------------------------------
+# Deprecated and unlinked. Redirects to our-programs.html so it carries no
+# stale program details (see docs/PRE_LAUNCH_SITE_SPEC.md §6).
 PAGES.append(dict(
     slug="programs.html", nav="our-programs.html",
-    title="Programs | Career Skills Center — Trade, IT &amp; Medical Training in Massachusetts",
+    title="Our Programs | Career Skills Center — Massachusetts",
     ogtitle="Our Programs",
-    desc="Career-focused training programs in the skilled trades, information technology and the medical field at Career Skills Center in Massachusetts.",
-    main=hero("Programs", "Our Programs",
-              "The right training program sets you on a pathway to success with the certifications and "
-              "credentials that open doors to new jobs and greater earning potential.",
-              "images/programs-hero.webp", ("How to Enroll", "admissions.html")) + f"""
+    desc="This page has moved to Our Programs.",
+    extrahead='  <meta http-equiv="refresh" content="0; url=our-programs.html">',
+    main=hero("Our Programs", "Our Programs", "This page has moved.", None) + """
 
     <section class="section">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Find Your Program</p>
-        <h2 class="section-title left">Three Fields. One Future.</h2>
-        <div class="section-intro">
-          <p>Career Skills Center trains students for three of the strongest hiring markets in Massachusetts. Every program is built around hands-on practice, a recognized credential, and the job
-          search that follows. Pick the field that fits you and we will walk you through the rest.</p>
-        </div>
-{program_cards()}
-        {DRAFT_NOTE}
+      <div class="container narrow text-center">
+        <p class="lede">This page has moved to
+        <a class="link-yellow" href="our-programs.html">Our Programs</a>.</p>
       </div>
     </section>
-
-    <section class="section section--alt" id="trades">
-      <div class="container">
-        <div class="split-grid">
-          <div class="split-media">
-            <img src="images/trades.webp" alt="Technician in a hard hat servicing pipes and valves" loading="lazy" decoding="async">
-          </div>
-          <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Skilled Trades</p>
-            <h2 class="section-title left">Build a Hands-On Career</h2>
-            <p>The trades are hiring. Electricians, HVAC technicians and plumbers are retiring faster than
-            they are being replaced, and contractors across Massachusetts are competing for trained help.
-            Our trade programs put tools in your hands early and prepare you for the credentials employers
-            and licensing boards ask for.</p>
-            <ul class="arrow-list">
-              <li>Shop and lab time, not just lecture</li>
-              <li>Safety credentials employers expect</li>
-              <li>Apprenticeship and licensure preparation</li>
-              <li>Day and evening options</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="program-items">
-{prog_item("Electrical Technician", "Wiring, circuits, load calculations, and safe installation practice for residential and light commercial work.", "OSHA 10 &middot; apprenticeship prep")}
-{prog_item("HVAC/R Technician", "Heating, ventilation, air conditioning and refrigeration service, diagnostics and installation.", "EPA Section 608 &middot; OSHA 10")}
-{prog_item("Plumbing Technician", "Pipefitting, fixture installation, venting, drainage and water supply systems.", "OSHA 10 &middot; apprenticeship prep")}
-{prog_item("Welding", "SMAW, MIG and TIG fundamentals with booth time, blueprint reading and weld inspection basics.", "AWS entry-level welder prep")}
-{prog_item("Carpentry &amp; Construction", "Framing, finish carpentry, blueprint reading, materials and jobsite safety.", "OSHA 10 &middot; NCCER Core prep")}
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="it">
-      <div class="container">
-        <div class="split-grid reverse">
-          <div class="split-media">
-            <img src="images/hero2.webp" alt="Student working at a laptop" loading="lazy" decoding="async">
-          </div>
-          <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Information Technology</p>
-            <h2 class="section-title left">Launch Your Tech Career</h2>
-            <p>You do not need a four-year degree to work in IT. Employers hire on certifications and
-            demonstrated skill. Our IT track moves from the help desk fundamentals every employer tests for
-            up through networking, security and cloud, so you can stack credentials as you go.</p>
-            <ul class="arrow-list">
-              <li>Hands-on labs and real hardware</li>
-              <li>Industry certification exam preparation</li>
-              <li>Stackable credentials you can build on</li>
-              <li>Resume and interview coaching included</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="program-items">
-{prog_item("IT Support Specialist", "Hardware, operating systems, troubleshooting and ticketing — the core help desk skill set.", "CompTIA A+ prep")}
-{prog_item("Network Technician", "Routing, switching, cabling, wireless and network troubleshooting.", "CompTIA Network+ prep")}
-{prog_item("Cybersecurity Fundamentals", "Threats, access control, encryption basics and incident response fundamentals.", "CompTIA Security+ prep")}
-{prog_item("Cloud Fundamentals", "Core cloud concepts, services, billing and security across major providers.", "AWS Cloud Practitioner or AZ-900 prep")}
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--alt" id="medical">
-      <div class="container">
-        <div class="split-grid">
-          <div class="split-media">
-            <img class="align-top" src="images/medical.webp" alt="Smiling medical assistant with clinical colleagues in a hospital corridor" loading="lazy" decoding="async">
-          </div>
-          <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Medical</p>
-            <h2 class="section-title left">Care for Your Community</h2>
-            <p>Massachusetts is one of the largest healthcare employment markets in the country. Clinics,
-            hospitals and long-term care facilities across the state need trained support
-            staff now. These programs prepare you for entry-level clinical and administrative roles and the
-            certification exams that go with them.</p>
-            <ul class="arrow-list">
-              <li>Clinical skills practice in a lab setting</li>
-              <li>Certification exam preparation</li>
-              <li>Externship placement support</li>
-              <li>Pathways into further nursing and allied health study</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="program-items">
-{prog_item("Medical Assistant", "Clinical and administrative duties: vitals, patient intake, injections, scheduling and records.", "CCMA prep")}
-{prog_item("Phlebotomy Technician", "Venipuncture technique, specimen handling, safety and patient care.", "CPT prep")}
-{prog_item("EKG Technician", "Electrocardiogram setup, lead placement, rhythm recognition and reporting.", "CET prep")}
-{prog_item("Certified Nursing Assistant", "Direct patient care, mobility, hygiene, vitals and documentation.", "MA Nurse Aide Registry prep")}
-{prog_item("Medical Billing &amp; Coding", "ICD-10 and CPT coding, claims, insurance workflows and compliance.", "CBCS prep")}
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How It Works</p>
-        <h2 class="section-title left">What Every Program Includes</h2>
-        <div class="feature-grid">
-          <article class="feature">
-            <h3 class="feature-title">Hands-On Labs</h3>
-            <p>You learn by doing. Every program pairs instruction with lab and shop time so you practice the
-            work before you are hired to do it.</p>
-            <a class="read-more" href="about.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
-          </article>
-          <article class="feature">
-            <h3 class="feature-title">Industry Certifications</h3>
-            <p>Programs are built around the credentials employers screen for, with exam preparation built
-            into the course.</p>
-            <a class="read-more" href="faq.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
-          </article>
-          <article class="feature">
-            <h3 class="feature-title">Job Placement Support</h3>
-            <p>Resume help, mock interviews and employer connections. Career Services works with every
-            student through completion and beyond.</p>
-            <a class="read-more" href="career-services.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-""" + cta("Not sure which program is right for you?", "Talk to an Advisor")))
+"""))
 
 
 # ---- our-programs.html ----------------------------------------------------
@@ -471,32 +426,23 @@ PAGES.append(dict(
     ogtitle="Our Programs",
     desc="Explore Career Skills Center training in the skilled trades, information technology and the medical field in Massachusetts.",
     main=hero("Our Programs", "Our Programs",
-              "Explore the fields we train for. Pick a path and we will walk you through the programs, "
-              "credentials and the steps to enroll.",
-              "images/programs-hero.webp", ("How to Enroll", "admissions.html")) + """
+              "We&rsquo;re building online career training for Massachusetts adults. Explore the fields below "
+              "and join the interest list for the program you want.",
+              "images/programs-hero.webp", ("Join the Interest List", "#interest")) + """
 
     <section class="section">
       <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Explore Our Programs</p>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Explore the fields</p>
         <h2 class="section-title left">Choose Your Field</h2>
         <div class="pcard-grid">
 
-          <article class="pcard" id="trades">
-            <img src="images/electrician.webp" alt="Electrician at work" class="pcard-media" loading="lazy" decoding="async">
-            <div class="pcard-body">
-              <h3 class="pcard-title">Skilled Trades</h3>
-              <span class="pcard-rule" aria-hidden="true"></span>
-              <p>Hands-on training for electrical, HVAC/R, plumbing, welding and carpentry, built around the credentials employers and licensing boards ask for.</p>
-              <a class="btn btn-outline-navy" href="skilled-trades.html">Read more</a>
-            </div>
-          </article>
-
           <article class="pcard" id="it">
-            <img src="images/comptia.webp" alt="CompTIA certification training" class="pcard-media" loading="lazy" decoding="async">
+            <img src="images/comptia.webp" alt="IT support technician at work" class="pcard-media" loading="lazy" decoding="async">
             <div class="pcard-body">
+              <span class="pcard-badge">In development</span>
               <h3 class="pcard-title">Information Technology</h3>
               <span class="pcard-rule" aria-hidden="true"></span>
-              <p>Stack industry certifications from help-desk fundamentals through networking, security and cloud. No four-year degree required.</p>
+              <p>Help-desk and IT support &mdash; the most common way into a tech career, hiring across Massachusetts. No four-year degree required.</p>
               <a class="btn btn-outline-navy" href="it-support-specialist.html">Read more</a>
             </div>
           </article>
@@ -504,456 +450,224 @@ PAGES.append(dict(
           <article class="pcard" id="medical">
             <img src="images/medicalbilling.webp" alt="Medical billing and coding specialist" class="pcard-media" loading="lazy" decoding="async">
             <div class="pcard-body">
-              <h3 class="pcard-title">Medical</h3>
+              <span class="pcard-badge">In development</span>
+              <h3 class="pcard-title">Medical Billing &amp; Coding</h3>
               <span class="pcard-rule" aria-hidden="true"></span>
-              <p>Train for in-demand clinical and administrative roles in healthcare, with certification exam preparation built into every program.</p>
+              <p>Turn doctor visits into codes and claims &mdash; detailed, office-based healthcare work, often remote once you have experience.</p>
               <a class="btn btn-outline-navy" href="medical-billing-coding.html">Read more</a>
             </div>
           </article>
 
+          <article class="pcard" id="trades">
+            <img src="images/electrician.webp" alt="Electrician at work" class="pcard-media" loading="lazy" decoding="async">
+            <div class="pcard-body">
+              <span class="pcard-badge">Coming soon</span>
+              <h3 class="pcard-title">Skilled Trades</h3>
+              <span class="pcard-rule" aria-hidden="true"></span>
+              <p>Electrical, HVAC/R and plumbing &mdash; licensed trades that pay well in Massachusetts and can&rsquo;t be shipped overseas.</p>
+              <a class="btn btn-outline-navy" href="skilled-trades.html">Read more</a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-""" + cta("Not sure which program is right for you?", "Talk to an Advisor")))
+""" + interest_form("unsure", "our programs")))
 
 
-# ---- it-support-specialist.html -------------------------------------------
-# Detailed IT course page (equivalent of NTI's per-program pages), built around
-# the entry-level CompTIA Tech+ (FC0-U71) certification. Students earn a Career
-# Skills Center certificate; the CompTIA exam is scheduled and paid separately.
+# ---- it-support-specialist.html (pre-launch: program in development) --------
 PAGES.append(dict(
     slug="it-support-specialist.html", nav="our-programs.html",
-    title="IT Support Specialist &mdash; CompTIA Tech+ Training | Career Skills Center",
-    ogtitle="IT Support Specialist",
-    desc="Online IT Support Specialist training that prepares you for the CompTIA Tech+ (FC0-U71) certification. About 8 weeks, no experience required, at Career Skills Center in Massachusetts.",
-    main=hero("Information Technology", "IT Support Specialist",
-              "If you are a problem-solver who likes technology, a career in IT support may be perfect for "
-              "you. Build the foundation employers look for, 100% online, in about eight weeks.",
-              "images/comptia.webp", ("How to Enroll", "admissions.html")) + """
+    title="IT Support Training in Massachusetts (Coming Soon) | Career Skills Center",
+    ogtitle="IT Support Training in Massachusetts (Coming Soon)",
+    desc="Career Skills Center is developing an online IT support program for Massachusetts adults. Learn about the career and join the interest list to hear when it opens.",
+    main=dev_hero("Information Technology", "IT Support Training, Coming Soon",
+              "We&rsquo;re building an online IT support program for Massachusetts adults. Get on the list and "
+              "we&rsquo;ll tell you the moment it&rsquo;s ready.") + DEV_STATUS + """
 
     <section class="section">
-      <div class="container">
-        <div class="split-grid">
-          <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>100% Online Training</p>
-            <h2 class="section-title left">Foundational IT Skills, Fully Online</h2>
-            <p>Train on your own schedule and build the core knowledge every support role depends on:
-            computers and devices, operating systems and applications, basic networking, data and security.
-            You will be ready to sit for the CompTIA Tech+ (FC0-U71) certification exam, and no prior
-            experience is required to start.</p>
-            <button class="btn btn-navy js-open-contact" type="button">Get in Touch</button>
-          </div>
-          <div class="split-media">
-            <img src="images/hero2.webp" alt="Student learning IT online at a laptop" loading="lazy" decoding="async">
-          </div>
-        </div>
-
-        <div class="spec-grid">
-          <div class="spec-card"><div class="spec-value">8 Weeks</div><div class="spec-label">Program Length</div></div>
-          <div class="spec-card"><div class="spec-value">CompTIA Tech+ (FC0-U71)</div><div class="spec-label">Certification</div></div>
-          <div class="spec-card"><div class="spec-value">CompTIA</div><div class="spec-label">Issuing Authority</div></div>
-        </div>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>About the career</p>
+        <h2 class="section-title left">What IT support is</h2>
+        <p class="lede">IT support (the help desk) is the most common way into a technology career. Support
+        technicians set up computers, fix everyday problems, and help people use software and networks. It is
+        part technical skill, part customer service.</p>
+        <p>In Massachusetts, computer user support specialists earn a median of about <strong>$75,070</strong> a
+        year (U.S. Bureau of Labor Statistics, OEWS, May 2025). Nationally, these roles are expected to hold
+        steady, with thousands of openings each year as people move up or retire.</p>
       </div>
     </section>
 
     <section class="section section--alt">
-      <div class="container">
-        <div class="split-grid reverse">
-          <div class="split-media">
-            <img src="images/programs-hero.webp" alt="IT support technician at work" loading="lazy" decoding="async">
-          </div>
-          <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Career Insight</p>
-            <h2 class="section-title left">What does an IT Support Specialist do?</h2>
-            <p>IT support specialists keep people and technology working together. They set up and fix the
-            devices, software and accounts a business runs on, and they are usually the first person a user
-            turns to when something stops working. It is a role built on curiosity, patience and clear
-            communication. Day to day, you might:</p>
-            <ul class="arrow-list">
-              <li>Set up and configure computers, peripherals and mobile devices</li>
-              <li>Install and update operating systems and applications</li>
-              <li>Diagnose and resolve common hardware and software problems</li>
-              <li>Support users by phone, chat or in person and document tickets</li>
-              <li>Apply everyday security best practices to protect devices and data</li>
-              <li>Recognize when to solve an issue and when to escalate it</li>
-            </ul>
-          </div>
-        </div>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What we&rsquo;re planning</p>
+        <h2 class="section-title left">An online program for Massachusetts adults</h2>
+        <p>We&rsquo;re designing a beginner-friendly, online IT support program. The plan is to cover the
+        fundamentals employers look for:</p>
+        <ul class="check-list">
+          <li>Computer hardware and operating systems</li>
+          <li>Networking basics</li>
+          <li>Security basics</li>
+          <li>Troubleshooting and customer support</li>
+        </ul>
+        <p>We plan to align the program with an industry-recognized certification. The exact credential, length,
+        schedule and cost will be confirmed before enrollment opens.</p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Job Outlook</p>
-        <div class="split-grid split-grid--top">
-          <div class="split-copy">
-            <h2 class="section-title left">Potential Career Paths</h2>
-            <p>IT support specialists keep people and technology working together, and demand for them is
-            steady as businesses of every kind rely on computers, software and networks. Entry-level IT
-            support is one of the most common ways into a technology career.</p>
-            <p>This program prepares you to find an entry-level support role and to keep stacking
-            credentials, such as CompTIA A+, Network+ or Security+, as you decide where to specialize.</p>
-            <p>Individuals who complete this program and earn the certification have the skills to find jobs
-            as:</p>
-            <ul class="arrow-list">
-              <li>IT Support Specialist</li>
-              <li>Help Desk Technician</li>
-              <li>Technical Support Technician</li>
-              <li>IT Operations Associate</li>
-              <li>Desktop Support Assistant</li>
-              <li>Junior Service Desk Analyst</li>
-            </ul>
-          </div>
-          <div class="outlook-panel">
-            <div class="outlook-value">48,700</div>
-            <p class="outlook-caption">IT SUPPORT OPENINGS EACH YEAR IN THE U.S.</p>
-            <p class="outlook-body">Entry-level IT support is an in-demand field with room to grow. Support
-            specialists typically start around $21 to $25 per hour, and as you add certifications and
-            experience you can move into higher-paying networking, security and systems roles.</p>
-            <p class="outlook-note">Note: The U.S. Bureau of Labor Statistics projects about 48,700 job
-            openings each year for computer support specialists, a field of roughly 903,100 jobs in 2025.
-            Pay varies by education, experience, employer and location.</p>
-          </div>
-        </div>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Before enrollment opens</p>
+        <h2 class="section-title left">What we&rsquo;ll tell you</h2>
+        <ul class="check-list">
+          <li>Length and schedule</li>
+          <li>Cost and payment options</li>
+          <li>Which certification it prepares you for</li>
+          <li>Whether state or employer funding can be used</li>
+        </ul>
+        <p>Curious whether this path fits you? Read
+        <a class="link-yellow" href="blog/can-you-learn-it-support-online.html">Can you learn IT support
+        online?</a> and our guide to
+        <a class="link-yellow" href="blog/free-job-training-massachusetts.html">free job training in
+        Massachusetts</a>.</p>
       </div>
     </section>
 
-    <section class="section section--alt">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Soft Skills Check</p>
-        <h2 class="section-title left">Do You Have What It Takes to Succeed?</h2>
-        <div class="split-grid split-grid--top">
-          <div class="split-copy">
-            <p class="soft-subtitle">Common Attributes of Successful IT Support Specialists</p>
-            <img class="soft-icon" src="images/comptia-logo.webp" alt="CompTIA" width="558" height="120" loading="lazy" decoding="async">
-          </div>
-          <ul class="check-list">
-            <li><strong>Problem-Solving</strong>Break a problem into symptoms, likely causes and next steps instead of guessing.</li>
-            <li><strong>Clear Communication</strong>Explain technical issues in plain language that users and coworkers trust.</li>
-            <li><strong>Attention to Detail</strong>Small settings and skipped steps are often the difference between fixed and broken.</li>
-            <li><strong>Patience</strong>Stay calm and methodical under pressure, even when a user is frustrated.</li>
-            <li><strong>Curiosity and a Willingness to Learn</strong>Technology keeps changing, and the best techs keep learning with it.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+""" + interest_form("it", "IT support program") + """
 
     <section class="section">
       <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How You Learn</p>
-        <h2 class="section-title left">Learn Online, Get Certified</h2>
-        <div class="feature-grid">
-          <article class="feature">
-            <h3 class="feature-title">Learn on Your Schedule</h3>
-            <p>Self-paced video lessons, interactive exercises and hands-on practice scenarios, with closed
-            captions, that you can work through anywhere. No commute, and no prior experience required.</p>
-          </article>
-          <article class="feature">
-            <h3 class="feature-title">Train and Get Certified</h3>
-            <p>Prepare for the CompTIA Tech+ (FC0-U71) exam as you move through the curriculum, and earn a
-            Career Skills Center Certificate of Completion so you can show employers the skills you have
-            built.</p>
-          </article>
+        <h2 class="related-title">Learn more</h2>
+        <div class="post-grid post-grid--related">
+          <a class="post-card" href="blog/can-you-learn-it-support-online.html"><h3>Can You Learn IT Support Online?</h3><span class="read-link">Read article</span></a>
+          <a class="post-card" href="blog/highest-paying-certifications-massachusetts.html"><h3>Highest-Paying Certifications in Massachusetts</h3><span class="read-link">Read article</span></a>
+          <a class="post-card" href="blog/free-job-training-massachusetts.html"><h3>Free Job Training in Massachusetts</h3><span class="read-link">Read article</span></a>
         </div>
       </div>
     </section>
-
-    <section class="section section--alt course-overview">
-      <div class="deco-dots deco-dots--left" aria-hidden="true"></div>
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Course Overview</p>
-        <h2 class="section-title left">IT Support Specialist &middot; CompTIA Tech+</h2>
-        <div class="split-grid split-grid--top">
-          <div class="split-copy">
-            <p>This program builds entry-level technical fluency across the six areas the <strong>CompTIA
-            Tech+ (FC0-U71)</strong> exam measures. In about eight weeks of online training you will be
-            prepared to sit for the certification exam and to step into a help desk or support role. You earn
-            a <strong>Career Skills Center Certificate of Completion</strong>; the CompTIA Tech+ exam is
-            scheduled and paid separately through CompTIA.</p>
-          </div>
-          <div class="faq">
-          <details class="faq-item">
-            <summary>Scheduling details</summary>
-            <div class="faq-body"><p>About 8 weeks, 89 program hours, delivered 100% online and self-paced
-            within the term. <span class="tbd">Start dates TBD &mdash; call to confirm the next available
-            cohort.</span></p></div>
-          </details>
-          <details class="faq-item">
-            <summary>Instruction &amp; evaluation</summary>
-            <div class="faq-body"><p>Guided video lessons, interactive exercises and hands-on practice
-            scenarios, with knowledge checks and exam-style practice questions to prepare you for the
-            certification exam.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary>Books &amp; materials</summary>
-            <div class="faq-body"><p>All courseware is included in your tuition: online video lessons,
-            interactive labs and exercises, practice questions and closed captions. No separate textbook
-            purchase is required.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary>Course outline</summary>
-            <div class="faq-body">
-              <ul class="arrow-list">
-                <li>IT concepts &amp; terminology, and troubleshooting logic</li>
-                <li>Hardware, peripherals and device setup</li>
-                <li>Operating systems and application software</li>
-                <li>Programming and software development fundamentals</li>
-                <li>Database concepts and data fundamentals</li>
-                <li>Security principles and safe computing practices</li>
-              </ul>
-            </div>
-          </details>
-          <details class="faq-item">
-            <summary>Upon completion, students will be able to&hellip;</summary>
-            <div class="faq-body">
-              <ul class="arrow-list">
-                <li>Explain core computing concepts using the right technical vocabulary</li>
-                <li>Identify hardware components and set up common peripherals and devices</li>
-                <li>Describe how operating systems and applications work and are managed</li>
-                <li>Understand basic programming logic and database concepts</li>
-                <li>Apply confidentiality, integrity and availability to everyday security</li>
-                <li>Troubleshoot common problems methodically and be ready for the CompTIA Tech+ exam</li>
-              </ul>
-            </div>
-          </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
-""" + cta("Ready to start your IT career?", "Get in Touch")))
+"""))
 
 
-# ---- medical-billing-coding.html ------------------------------------------
-# Detailed Medical program page. Online medical billing & coding built around
-# the AAPC CPC and CPB certifications. Students earn a Career Skills Center
-# certificate; AAPC exams are scheduled and paid separately through AAPC.
+# ---- medical-billing-coding.html (pre-launch: program in development) -------
 PAGES.append(dict(
     slug="medical-billing-coding.html", nav="our-programs.html",
-    title="Medical Billing &amp; Coding &mdash; AAPC CPC &amp; CPB Training | Career Skills Center",
-    ogtitle="Medical Billing & Coding",
-    desc="Online Medical Billing & Coding training that prepares you for the AAPC CPC and CPB certifications. About 11 weeks, 100% online, at Career Skills Center in Massachusetts.",
-    main=hero("Medical", "Medical Billing &amp; Coding",
-              "If you are detail-oriented and want a healthcare career without years of school, medical "
-              "billing and coding could be your path. Train 100% online in about eleven weeks.",
-              "images/medicalbilling.webp", ("How to Enroll", "admissions.html")) + """
+    title="Medical Billing &amp; Coding Training in Massachusetts (Coming Soon) | Career Skills Center",
+    ogtitle="Medical Billing & Coding Training in Massachusetts (Coming Soon)",
+    desc="Career Skills Center is developing an online Medical Billing & Coding program for Massachusetts adults. Learn about the career and join the interest list to hear when it opens.",
+    main=dev_hero("Medical", "Medical Billing &amp; Coding Training, Coming Soon",
+              "We&rsquo;re building an online medical billing and coding program for Massachusetts adults. Join "
+              "the list and we&rsquo;ll tell you when it opens.") + DEV_STATUS + """
 
     <section class="section">
-      <div class="container">
-        <div class="split-grid">
-          <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>100% Online Training</p>
-            <h2 class="section-title left">Job-Ready Skills, Fully Online</h2>
-            <p>Learn how documentation becomes codes, how those codes drive reimbursement, and how to keep
-            claims clean, complete and compliant. You will train on current ICD-10-CM standards with ICD-11
-            awareness, and be ready to sit for the AAPC CPC and CPB certification exams. No prior experience
-            required.</p>
-            <button class="btn btn-navy js-open-contact" type="button">Get in Touch</button>
-          </div>
-          <div class="split-media">
-            <img class="align-top" src="images/billing-coding.webp" alt="Medical billing and coding specialist reviewing records" loading="lazy" decoding="async">
-          </div>
-        </div>
-
-        <div class="spec-grid">
-          <div class="spec-card"><div class="spec-value">11 Weeks</div><div class="spec-label">Program Length</div></div>
-          <div class="spec-card"><div class="spec-value">AAPC CPC &amp; CPB</div><div class="spec-label">Certification</div></div>
-          <div class="spec-card"><div class="spec-value">AAPC</div><div class="spec-label">Issuing Authority</div></div>
-        </div>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>About the career</p>
+        <h2 class="section-title left">What medical billing and coding is</h2>
+        <p class="lede">Medical coders and billers turn doctor visits into standard codes and insurance claims.
+        It is detailed, office-based work &mdash; often remote or hybrid once you have experience &mdash; and a
+        common way into healthcare without hands-on patient care.</p>
+        <p>In Massachusetts, medical records specialists earn a median of about <strong>$60,350</strong> a year
+        (U.S. Bureau of Labor Statistics, OEWS, May 2025).</p>
       </div>
     </section>
 
     <section class="section section--alt">
-      <div class="container">
-        <div class="split-grid reverse">
-          <div class="split-media">
-            <img src="images/medicalbilling.webp" alt="Medical coder working at a computer" loading="lazy" decoding="async">
-          </div>
-          <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Career Insight</p>
-            <h2 class="section-title left">What does a medical biller and coder do?</h2>
-            <p>Medical billers and coders turn a patient visit into an accurate, payable claim. They read the
-            clinical documentation, assign the right codes, and make sure the paperwork holds up so providers
-            get reimbursed and patients are billed correctly. It is careful, behind-the-scenes work that keeps
-            a healthcare practice running. Day to day, you might:</p>
-            <ul class="arrow-list">
-              <li>Read clinical notes and assign accurate ICD-10-CM diagnosis and procedure codes</li>
-              <li>Translate visits into clean, complete insurance claims</li>
-              <li>Apply payer rules and billing guidelines so claims get paid</li>
-              <li>Review and correct documentation issues that cause denials</li>
-              <li>Protect patient information under HIPAA privacy rules</li>
-              <li>Follow up on claims, denials and reimbursements</li>
-            </ul>
-          </div>
-        </div>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What we&rsquo;re planning</p>
+        <h2 class="section-title left">An online program for Massachusetts adults</h2>
+        <p>We&rsquo;re designing an online medical billing and coding program. The plan is to cover:</p>
+        <ul class="check-list">
+          <li>Medical terminology and anatomy basics</li>
+          <li>Coding systems like ICD-10-CM and CPT</li>
+          <li>The claims and billing process</li>
+          <li>Privacy and compliance (HIPAA)</li>
+        </ul>
+        <p>We plan to align the program with an industry-recognized certification. The exact credential, length,
+        schedule and cost will be confirmed before enrollment opens.</p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Job Outlook</p>
-        <div class="split-grid split-grid--top">
-          <div class="split-copy">
-            <h2 class="section-title left">Potential Career Paths</h2>
-            <p>Medical records and coding is one of the steadier ways into healthcare, and it does not require
-            hands-on patient care. Demand is projected to grow much faster than average as the healthcare
-            system expands and every visit has to be documented, coded and billed.</p>
-            <p>This program prepares you to work in a provider office, hospital, clinic or remote coding role,
-            and to keep building credentials through AAPC as you specialize.</p>
-            <p>Individuals who complete this program and earn certification have the skills to find jobs as:</p>
-            <ul class="arrow-list">
-              <li>Medical Coder</li>
-              <li>Medical Biller</li>
-              <li>Medical Records Specialist</li>
-              <li>Coding Specialist</li>
-              <li>Billing / Claims Specialist</li>
-              <li>Health Information Clerk</li>
-            </ul>
-          </div>
-          <div class="outlook-panel">
-            <div class="outlook-value">14,000</div>
-            <p class="outlook-caption">MEDICAL RECORDS &amp; CODING OPENINGS EACH YEAR IN THE U.S.</p>
-            <p class="outlook-body">The field is projected to grow 8% through 2035, much faster than average.
-            Median pay is about $48,000 a year (roughly $23 an hour), and it climbs as you add certifications
-            and experience.</p>
-            <p class="outlook-note">Note: The U.S. Bureau of Labor Statistics projects about 14,000 openings
-            each year for medical records specialists, a field of roughly 200,700 jobs in 2025. Pay varies by
-            education, experience, employer and location.</p>
-          </div>
-        </div>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Before enrollment opens</p>
+        <h2 class="section-title left">What we&rsquo;ll tell you</h2>
+        <ul class="check-list">
+          <li>Length and schedule</li>
+          <li>Cost and payment options</li>
+          <li>Which certification it prepares you for</li>
+          <li>Whether state or employer funding can be used</li>
+        </ul>
+        <p>Wondering if you can learn it online? Read
+        <a class="link-yellow" href="blog/can-medical-billing-coding-be-learned-online.html">Can medical billing
+        and coding be learned online?</a></p>
       </div>
     </section>
 
-    <section class="section section--alt">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Soft Skills Check</p>
-        <h2 class="section-title left">Do You Have What It Takes to Succeed?</h2>
-        <div class="split-grid split-grid--top">
-          <div class="split-copy">
-            <p class="soft-subtitle">Common Attributes of Successful Medical Billers &amp; Coders</p>
-            <img class="soft-icon soft-photo" src="images/billing.webp" alt="Medical billing and coding professional reviewing records on a tablet" width="500" height="750" loading="lazy" decoding="async">
-          </div>
-          <ul class="check-list">
-            <li><strong>Attention to Detail</strong>A single wrong digit can deny a claim, so precision matters on every record.</li>
-            <li><strong>Analytical Thinking</strong>Read the documentation and choose the most accurate, specific code.</li>
-            <li><strong>Integrity and Discretion</strong>You handle protected health information every day and must keep it private.</li>
-            <li><strong>Persistence</strong>Follow up on denials and unpaid claims until they are resolved.</li>
-            <li><strong>Continuous Learning</strong>Code sets and payer rules change every year, and good coders keep up.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+""" + interest_form("medical", "Medical Billing & Coding program") + """
 
     <section class="section">
       <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How You Learn</p>
-        <h2 class="section-title left">Learn Online, Get Certified</h2>
-        <div class="feature-grid">
-          <article class="feature">
-            <h3 class="feature-title">Learn on Your Schedule</h3>
-            <p>Self-paced video lessons and real-world coding examples, with closed captions, that you can
-            work through anywhere. No commute, and no prior experience required.</p>
-          </article>
-          <article class="feature">
-            <h3 class="feature-title">Train and Get Certified</h3>
-            <p>Prepare for the AAPC CPC (Certified Professional Coder) and CPB (Certified Professional Biller)
-            exams, and earn a Career Skills Center Certificate of Completion to show employers.</p>
-          </article>
+        <h2 class="related-title">Learn more</h2>
+        <div class="post-grid post-grid--related">
+          <a class="post-card" href="blog/can-medical-billing-coding-be-learned-online.html"><h3>Can Medical Billing &amp; Coding Be Learned Online?</h3><span class="read-link">Read article</span></a>
+          <a class="post-card" href="blog/highest-paying-certifications-massachusetts.html"><h3>Highest-Paying Certifications in Massachusetts</h3><span class="read-link">Read article</span></a>
+          <a class="post-card" href="blog/free-job-training-massachusetts.html"><h3>Free Job Training in Massachusetts</h3><span class="read-link">Read article</span></a>
         </div>
       </div>
     </section>
-
-    <section class="section section--alt course-overview">
-      <div class="deco-dots deco-dots--left" aria-hidden="true"></div>
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Course Overview</p>
-        <h2 class="section-title left">Medical Billing &amp; Coding</h2>
-        <div class="split-grid split-grid--top">
-          <div class="split-copy">
-            <p>This program builds job-ready medical billing and coding skills using current ICD-10-CM
-            standards, with ICD-11 awareness, plus the billing, claims and HIPAA compliance knowledge every
-            healthcare office depends on. In about eleven weeks of online training you graduate with a
-            <strong>Career Skills Center Certificate of Completion</strong>, included in your tuition. To
-            stand out to employers, you can also add a nationally recognized <strong>AAPC certification (CPC
-            or CPB)</strong> &mdash; we prepare you for the exam, which you schedule and pay for directly with
-            AAPC.</p>
-          </div>
-          <div class="faq">
-          <details class="faq-item">
-            <summary>Scheduling details</summary>
-            <div class="faq-body"><p>About 11 weeks, 117 program hours, delivered 100% online and self-paced
-            within the term. <span class="tbd">Start dates TBD &mdash; call to confirm the next available
-            cohort.</span></p></div>
-          </details>
-          <details class="faq-item">
-            <summary>Instruction &amp; evaluation</summary>
-            <div class="faq-body"><p>Guided video lessons and real-world coding examples, with knowledge
-            checks and practice to prepare you for the certification exams.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary>Books &amp; materials</summary>
-            <div class="faq-body"><p>All courseware is included in your tuition: online video lessons, coding
-            practice and closed captions. No separate textbook purchase is required. <span class="tbd">Official
-            AAPC code books for the exam are confirmed separately &mdash; ask an advisor.</span></p></div>
-          </details>
-          <details class="faq-item">
-            <summary>Course outline</summary>
-            <div class="faq-body">
-              <ul class="arrow-list">
-                <li>Medical terminology and anatomy</li>
-                <li>ICD-10-CM foundations and ICD-11 awareness</li>
-                <li>Diagnosis coding and documentation support</li>
-                <li>Procedure coding and claim alignment</li>
-                <li>Billing rules, claim workflow and reimbursement</li>
-                <li>HIPAA, compliance and avoiding denials</li>
-              </ul>
-            </div>
-          </details>
-          <details class="faq-item">
-            <summary>Upon completion, students will be able to&hellip;</summary>
-            <div class="faq-body">
-              <ul class="arrow-list">
-                <li>Read clinical documentation and assign accurate diagnosis and procedure codes</li>
-                <li>Build clean, complete insurance claims</li>
-                <li>Apply payer rules and billing guidelines to support reimbursement</li>
-                <li>Identify documentation errors that lead to denials</li>
-                <li>Apply HIPAA privacy and compliance basics</li>
-                <li>Be prepared to sit for the AAPC CPC and CPB exams</li>
-              </ul>
-            </div>
-          </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
-""" + cta("Ready to start your healthcare career?", "Get in Touch")))
+"""))
 
 
-# ---- skilled-trades.html --------------------------------------------------
+# ---- skilled-trades.html (pre-launch: program in development) ---------------
 PAGES.append(dict(
     slug="skilled-trades.html", nav="our-programs.html",
-    title="Skilled Trades Training | Career Skills Center",
-    ogtitle="Skilled Trades",
-    desc="Hands-on skilled trades training &mdash; electrical, HVAC/R, plumbing, welding and carpentry &mdash; at Career Skills Center in Massachusetts. Program details coming soon.",
-    main=hero("Skilled Trades", "Skilled Trades",
-              "The trades are hiring. Electricians, HVAC technicians, welders and plumbers are in demand "
-              "across Massachusetts. Get the hands-on training and safety credentials employers and "
-              "licensing boards ask for.",
-              "images/trades.webp", ("How to Enroll", "admissions.html")) + """
+    title="Skilled Trades Training in Massachusetts (Coming Soon) | Career Skills Center",
+    ogtitle="Skilled Trades Training in Massachusetts (Coming Soon)",
+    desc="Career Skills Center plans to add skilled trades training in Massachusetts. Learn how the trades and licensing work, and join the interest list.",
+    main=dev_hero("Skilled Trades", "Skilled Trades Training, Coming Soon",
+              "The trades are hiring across Massachusetts. We plan to add skilled trades training &mdash; join "
+              "the list and we&rsquo;ll tell you when it opens.") + DEV_STATUS + """
 
-    <section class="section section--alt">
-      <div class="container coming-soon">
-        <p class="cs-badge">Skilled Trades</p>
-        <h2 class="section-title">Coming Soon</h2>
-        <p class="lede">Our hands-on skilled trades programs &mdash; Electrical, HVAC/R, Plumbing, Welding and
-        Carpentry &mdash; are being finalized. Check back soon for program details, start dates and
-        enrollment. Want to be the first to know when they launch? Get in touch and we&rsquo;ll reach out.</p>
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>About the careers</p>
+        <h2 class="section-title left">Trades that pay, close to home</h2>
+        <p class="lede">Electricians, plumbers, and HVAC and refrigeration technicians do work that cannot be
+        shipped overseas, and they earn solid middle-class wages in Massachusetts. The trade-off: the trades are
+        hands-on and licensed by the state.</p>
+        <p>Licensing takes classroom hours (some can be online) plus supervised on-the-job hours. For example, a
+        Massachusetts journeyman electrician needs 600 classroom hours and 8,000 hours of supervised work over
+        at least four years. HVAC work with refrigerant also needs federal EPA 608 certification.</p>
       </div>
     </section>
 
-""" + cta("Ready to start your career?", "Get in Touch")))
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What we&rsquo;re planning</p>
+        <h2 class="section-title left">Training built around the real path</h2>
+        <p>We&rsquo;re developing skilled trades training for Massachusetts. Because a license needs supervised,
+        in-person hours, the honest path pairs online coursework (theory, code, safety, exam prep) with an
+        apprenticeship or hands-on hours. Program details, format, length and cost will be announced before
+        enrollment opens.</p>
+        <p>Want the full picture first? Read
+        <a class="link-yellow" href="blog/can-you-learn-a-trade-online.html">Can you learn a skilled trade
+        online?</a></p>
+      </div>
+    </section>
+
+""" + interest_form("trades", "skilled trades training") + """
+
+    <section class="section">
+      <div class="container">
+        <h2 class="related-title">Learn more</h2>
+        <div class="post-grid post-grid--related">
+          <a class="post-card" href="blog/can-you-learn-a-trade-online.html"><h3>Can You Learn a Skilled Trade Online?</h3><span class="read-link">Read article</span></a>
+          <a class="post-card" href="blog/highest-paying-certifications-massachusetts.html"><h3>Highest-Paying Certifications in Massachusetts</h3><span class="read-link">Read article</span></a>
+          <a class="post-card" href="blog/free-job-training-massachusetts.html"><h3>Free Job Training in Massachusetts</h3><span class="read-link">Read article</span></a>
+        </div>
+      </div>
+    </section>
+"""))
 
 
 # ---- admissions.html ------------------------------------------------------
@@ -961,88 +675,51 @@ PAGES.append(dict(
     slug="admissions.html", nav="admissions.html",
     title="Admissions | Career Skills Center — Massachusetts",
     ogtitle="Admissions",
-    desc="How to enroll at Career Skills Center in Massachusetts. Requirements, documents, funding options and start dates.",
+    desc="Enrollment isn't open yet at Career Skills Center. Here's how admissions will work and how to join the interest list to hear first.",
     main=hero("Admissions", "Admissions",
-              "Getting started is simple. Call, get qualified, enroll. Our team walks you through every "
-              "step, including how to pay for it.",
-              "images/hero3.webp") + f"""
-
-{STEPS}
+              "Enrollment isn&rsquo;t open yet. Here&rsquo;s how it will work &mdash; and how to get on the "
+              "list so you&rsquo;re first to know.",
+              None) + """
 
     <section class="section">
-      <div class="container">
-        <div class="split-grid">
-          <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Requirements</p>
-            <h2 class="section-title left">Who Can Enroll</h2>
-            <p>We keep requirements straightforward. If you are unsure whether you qualify, call us at
-            <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> and we will tell you in a few
-            minutes.</p>
-            <ul class="check-list">
-              <li><strong>Be 18 or older</strong>Applicants who are 17 may enroll with a parent or guardian signature.</li>
-              <li><strong>High school diploma or GED</strong>Required for most programs. Ask us about options if you do not have one yet.</li>
-              <li><strong>Valid government-issued photo ID</strong>Driver’s license, state ID or passport.</li>
-              <li><strong>Enrollment interview</strong>A short conversation about your goals, schedule and funding.</li>
-              <li><strong>Program prerequisites</strong>Some medical programs require immunization records and a background check.</li>
-            </ul>
-          </div>
-          <div class="split-media">
-            <img src="images/person2.webp" alt="Career Skills Center student" loading="lazy" decoding="async">
-          </div>
-        </div>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How it will work</p>
+        <h2 class="section-title left">Three simple steps</h2>
+        <ul class="check-list">
+          <li><strong>Join the interest list</strong>Tell us the program you want, and we&rsquo;ll email you the moment enrollment opens.</li>
+          <li><strong>Talk with us</strong>A short conversation about your goals, schedule and how you&rsquo;ll pay &mdash; no pressure.</li>
+          <li><strong>Enroll</strong>Once programs launch, we&rsquo;ll walk you through signing up and getting started.</li>
+        </ul>
       </div>
     </section>
 
     <section class="section section--alt">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Paying For It</p>
-        <h2 class="section-title left">Funding Your Training</h2>
-        <div class="section-intro">
-          <p>Most students use more than one source. Our enrollment team will help you find every option you
-          qualify for before you commit to anything.</p>
-        </div>
-        <div class="feature-grid">
-          <article class="feature">
-            <h3 class="feature-title">Tuition</h3>
-            <p>Clear, upfront pricing per program with no hidden fees.</p>
-            <a class="read-more" href="tuition.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
-          </article>
-          <article class="feature">
-            <h3 class="feature-title">Student Financing</h3>
-            <p>Monthly payment plans and third-party lending partners.</p>
-            <a class="read-more" href="student-financing.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
-          </article>
-        </div>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Requirements</p>
+        <h2 class="section-title left">Who will be able to enroll</h2>
+        <p>We&rsquo;re keeping requirements straightforward. When enrollment opens, we expect you&rsquo;ll need:</p>
+        <ul class="check-list">
+          <li><strong>To be 18 or older</strong>(17 with a parent or guardian signature).</li>
+          <li><strong>A high school diploma or GED</strong>for most programs &mdash; ask us about options if you don&rsquo;t have one yet.</li>
+          <li><strong>A valid photo ID</strong>(driver&rsquo;s license, state ID or passport).</li>
+          <li><strong>A short enrollment conversation</strong>about your goals, schedule and funding.</li>
+        </ul>
+        <p>Final requirements will be confirmed before enrollment opens.</p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Start Dates</p>
-        <h2 class="section-title left">When You Can Begin</h2>
-        <div class="section-intro">
-          <p>New cohorts start on a rolling basis. Seats are limited, so the earlier you qualify the more
-          choice you have over your schedule.</p>
-        </div>
-        <div class="table-wrap">
-          <table class="data-table">
-            <caption class="sr-only">Upcoming program start dates</caption>
-            <thead>
-              <tr><th scope="col">Program area</th><th scope="col">Next start</th><th scope="col">Schedule</th><th scope="col">Seats</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Skilled Trades</th><td class="tbd">TBD</td><td class="tbd">Day / Evening — TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">Information Technology</th><td class="tbd">TBD</td><td class="tbd">Day / Evening — TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">Medical</th><td class="tbd">TBD</td><td class="tbd">Day / Evening — TBD</td><td class="tbd">TBD</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note"><strong>Placeholder.</strong> Replace the TBD cells with the real term calendar once
-        cohort dates and class schedules are set.</p>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Paying for it</p>
+        <h2 class="section-title left">How you might pay</h2>
+        <p>Most people combine sources. We plan to offer payment plans, and you may qualify for state or
+        employer funding. Start with our
+        <a class="link-yellow" href="blog/free-job-training-massachusetts.html">guide to free job training in
+        Massachusetts</a>, and see <a class="link-yellow" href="student-financing.html">Ways to Pay</a>.</p>
       </div>
     </section>
 
-""" + cta("Ready to apply?")))
+""" + interest_form("unsure", "program")))
 
 
 # ---- tuition.html ---------------------------------------------------------
@@ -1050,123 +727,47 @@ PAGES.append(dict(
     slug="tuition.html", nav="tuition.html",
     title="Tuition | Career Skills Center — Massachusetts",
     ogtitle="Tuition",
-    desc="Affordable, upfront tuition for trade, IT and medical training at Career Skills Center in Massachusetts.",
+    desc="Pricing for Career Skills Center programs will be published before enrollment opens, including books and exam fees, with no hidden fees. Join the interest list.",
     main=hero("Tuition", "Tuition",
-              "Clear, upfront pricing with no surprises, plus help finding every funding source you "
-              "qualify for.",
-              "images/tuition-hero.webp") + f"""
+              "Clear, upfront pricing is coming. We&rsquo;ll publish full costs before enrollment opens, and "
+              "help you find every funding source you may qualify for.",
+              "images/tuition-hero.webp") + """
 
     <section class="section">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Competitive Pricing</p>
-        <h2 class="section-title left">An Education You Can Afford</h2>
-        <div class="section-intro">
-          <p>With student loan debt in the United States now measured in the trillions, more people are
-          questioning the price of a traditional degree. Affordability drives how we price every course at
-          Career Skills Center. Our tuition is lower than most career schools, and we work to connect
-          students with every available funding source so training does not leave you buried in debt.</p>
-          <p>Short programs also mean you stop paying sooner and start earning sooner. That combination,
-          lower cost and less time out of the workforce, is what makes career training a strong return.</p>
-        </div>
-
-        <div class="table-wrap">
-          <table class="data-table">
-            <caption class="sr-only">Tuition and fees by program</caption>
-            <thead>
-              <tr>
-                <th scope="col">Program</th><th scope="col">Length</th><th scope="col">Tuition</th>
-                <th scope="col">Books &amp; supplies</th><th scope="col">Exam fees</th><th scope="col">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="group"><td colspan="6">Skilled Trades</td></tr>
-              <tr><th scope="row">Electrical Technician</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">HVAC/R Technician</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">Plumbing Technician</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">Welding</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-              <tr><th scope="row">Carpentry &amp; Construction</th><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-
-              <tr class="group"><td colspan="6">Information Technology</td></tr>
-              <tr><th scope="row">IT Support Specialist</th><td>89 hours</td><td>$299</td><td>Yes</td><td>Free</td><td>$299</td></tr>
-
-              <tr class="group"><td colspan="6">Medical</td></tr>
-              <tr><th scope="row">Medical Billing &amp; Coding</th><td>117 hours</td><td>$329</td><td>Yes</td><td>Free</td><td>$329</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note"><strong>Placeholder pricing.</strong> Every figure above is marked TBD on purpose. Do
-        not publish this page until real tuition, fees and program lengths are confirmed — advertised prices
-        are a regulated disclosure.</p>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Pricing</p>
+        <h2 class="section-title left">Pricing coming soon</h2>
+        <p class="lede">Career Skills Center&rsquo;s programs are in development, so we haven&rsquo;t set final
+        tuition yet. When we do, we&rsquo;ll publish the full cost of each program &mdash; including books and
+        exam fees &mdash; right here, with no hidden fees.</p>
+        <p>Affordability is a core goal: short, focused programs mean you stop paying sooner and start earning
+        sooner. Join the interest list and we&rsquo;ll send pricing the moment it&rsquo;s ready.</p>
       </div>
     </section>
 
     <section class="section section--alt">
-      <div class="container">
-        <div class="split-grid">
-          <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What You Get</p>
-            <h2 class="section-title left">What’s Included</h2>
-            <ul class="check-list">
-              <li><strong>Instruction and lab time</strong>All classroom hours, shop and lab sessions with your instructor.</li>
-              <li><strong>Course materials</strong>Textbooks, workbooks and consumable lab materials for your program.</li>
-              <li><strong>Certification exam preparation</strong>Practice exams and review built into the course.</li>
-              <li><strong>Career services</strong>Resume help, mock interviews and employer introductions, before and after you finish.</li>
-              <li><strong>Ongoing support</strong>Access to Career Services after graduation at no additional cost.</li>
-            </ul>
-          </div>
-          <div class="split-media">
-            <img src="images/person1.webp" alt="Career Skills Center graduate" loading="lazy" decoding="async">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Find Your Fit</p>
-        <h2 class="section-title left">Ways to Pay</h2>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Find your fit</p>
+        <h2 class="section-title left">Ways we plan to help you pay</h2>
         <div class="feature-grid">
           <article class="feature">
-            <h3 class="feature-title">Self Pay</h3>
-            <p>We accept credit card and ACH payments. Call us or use the Get in Touch button for details.</p>
-            <a class="read-more" href="contact.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
+            <h3 class="feature-title">Payment plans</h3>
+            <p>We plan to offer a monthly payment option so you can spread the cost out. Terms will be published with pricing.</p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">Payment Plans</h3>
-            <p>Split your tuition into monthly payments, or apply through a financing partner.</p>
-            <a class="read-more" href="student-financing.html"><span class="arrow" aria-hidden="true"></span> Read more</a>
+            <h3 class="feature-title">Employer-paid</h3>
+            <p>Massachusetts employers may be reimbursed for training their staff through the state Workforce Training Fund.</p>
+          </article>
+          <article class="feature">
+            <h3 class="feature-title">State &amp; grant funding</h3>
+            <p>You may qualify for funded training. See our <a class="link-yellow" href="blog/free-job-training-massachusetts.html">guide to free job training in Massachusetts</a>.</p>
           </article>
         </div>
+        <p class="note">Career Skills Center is working toward approval to accept state training funds. We&rsquo;ll help you check what you may qualify for &mdash; but only your MassHire career center can approve funding.</p>
       </div>
     </section>
 
-    <section class="section section--alt">
-      <div class="container">
-        <h2 class="section-title">A Great Return on Your Investment</h2>
-        <div class="table-wrap">
-          <table class="data-table compare-table">
-            <thead>
-              <tr>
-                <th scope="col" class="compare-corner"></th>
-                <th scope="col" class="compare-us">Career Skills Center</th>
-                <th scope="col">Four-Year University</th>
-                <th scope="col">Two-Year College</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Average time to complete</th><td class="compare-us-cell">3 months</td><td>5.2 years</td><td>3.4 years</td></tr>
-              <tr><th scope="row">Average tuition and fees</th><td class="compare-us-cell">$299 to $329</td><td>$103,000</td><td>$39,000</td></tr>
-              <tr><th scope="row">Education cost + lost income</th><td class="compare-us-cell">$36,000</td><td>$261,120</td><td>$141,461</td></tr>
-              <tr><th scope="row">Median compensation</th><td class="compare-us-cell">$42,000</td><td>$47,000</td><td>$38,600</td></tr>
-              <tr><th scope="row">Time to recover investment</th><td class="compare-us-cell">1 year</td><td>4.7 years</td><td>3.7 years</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note"><strong>Placeholder comparison.</strong> Confirm and source every figure before publishing. The tuition range shown here does not yet match the program catalog above.</p>
-      </div>
-    </section>
-
-""" + cta("Call today to see how you may qualify.")))
+""" + interest_form("unsure", "pricing and program")))
 
 
 # ---- wioa.html ------------------------------------------------------------
@@ -1523,75 +1124,53 @@ PAGES.append(dict(
 # ---- student-financing.html -----------------------------------------------
 PAGES.append(dict(
     slug="student-financing.html", nav="student-financing.html",
-    title="Student Financing | Career Skills Center — Massachusetts",
-    ogtitle="Student Financing",
-    desc="Monthly payment plans and lending partners that make Career Skills Center training affordable.",
-    main=hero("Student Financing", "Student Financing",
-              "Funding made simple. Invest in your future with a payment plan that fits your budget.",
-              "images/hero2.webp") + f"""
+    title="Ways to Pay | Career Skills Center — Massachusetts",
+    ogtitle="Ways to Pay",
+    desc="How you'll be able to pay for Career Skills Center training: payment plans, employer-paid options, and Massachusetts state funding you may qualify for. Details before enrollment opens.",
+    main=hero("Ways to Pay", "Ways to Pay",
+              "Cost shouldn&rsquo;t be the thing that stops you. Here are the ways we plan to help you pay "
+              "&mdash; and the funding you may qualify for right now.",
+              None) + """
 
     <section class="section">
-      <div class="container">
+      <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Overview</p>
-        <h2 class="section-title left">Financing for Your Future</h2>
-        <div class="section-intro">
-          <p>Now is a good time to start a career with in-demand skills. If paying tuition up front is not
-          realistic, financing lets you spread the cost over time and start training sooner.</p>
-          <p>We offer an in-house payment plan, and we can refer you to lending partners who specialize in
-          career-focused programs. Our enrollment team will walk you through the numbers before you sign
-          anything, so you know exactly what you are committing to.</p>
-        </div>
+        <h2 class="section-title left">Most people combine sources</h2>
+        <p class="lede">Our programs are in development, so payment terms aren&rsquo;t final yet. Here&rsquo;s the
+        shape of what we plan to offer, plus funding that already exists in Massachusetts. We&rsquo;ll publish
+        full terms before enrollment opens.</p>
       </div>
     </section>
 
     <section class="section section--alt">
       <div class="container">
-        <div class="split-grid">
-          <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Payment Plans</p>
-            <h2 class="section-title left">Pay Monthly, Start Now</h2>
-            <p>Our in-house plan splits your balance into monthly installments across the length of your
-            program. There is no credit check for the standard plan and no prepayment penalty if you decide
-            to pay it off early.</p>
-            <ul class="check-list">
-              <li><strong>Deposit to reserve your seat</strong><span class="tbd">Amount: TBD</span></li>
-              <li><strong>Monthly installments</strong><span class="tbd">Term length and amount: TBD</span></li>
-              <li><strong>No prepayment penalty</strong>Pay ahead or pay off in full at any time.</li>
-              <li><strong>Interest terms</strong><span class="tbd">TBD — confirm before publishing.</span></li>
-            </ul>
-          </div>
-          <div class="split-media">
-            <img src="images/aboutus.webp" alt="Career Skills Center office" loading="lazy" decoding="async">
-          </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3 class="feature-title">Payment plans</h3>
+            <p>We plan to offer a monthly payment option so you can spread tuition out. Terms will be published with pricing, before you commit to anything.</p>
+          </article>
+          <article class="feature">
+            <h3 class="feature-title">Employer-paid training</h3>
+            <p>Ask your employer. Massachusetts employers may be reimbursed for training their staff through the state Workforce Training Fund.</p>
+          </article>
+          <article class="feature">
+            <h3 class="feature-title">State &amp; grant funding</h3>
+            <p>You may qualify for free or low-cost training through a MassHire career center. See our <a class="link-yellow" href="blog/free-job-training-massachusetts.html">funding guide</a>.</p>
+          </article>
         </div>
-        <p class="note"><strong>Placeholder terms.</strong> Payment plan amounts, term lengths and any
-        interest or finance charges must be confirmed and disclosed accurately before this page goes live.
-        Consumer lending disclosures are regulated.</p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Lending Partners</p>
-        <h2 class="section-title left">Third-Party Financing</h2>
-        <div class="section-intro">
-          <p>For students who prefer a longer term, outside lenders offer loans built for career training
-          rather than four-year degrees. Applications are typically short and many lenders can pre-qualify
-          you with a soft credit check that does not affect your score.</p>
-        </div>
-        <div class="logo-strip">
-          <div class="logo-slot">Lender logo</div>
-          <div class="logo-slot">Lender logo</div>
-          <div class="logo-slot">Lender logo</div>
-          <div class="logo-slot">Lender logo</div>
-        </div>
-        <p class="note"><strong>Placeholder.</strong> Add lending partners once agreements are in place, along
-        with this required style of disclosure: Career Skills Center does not endorse any particular
-        lender and is not affiliated with them. Check rates and terms directly with the lender.</p>
+      <div class="container narrow">
+        <p class="note"><strong>About Career Skills Center and state funding:</strong> Massachusetts offers free
+        training to eligible residents through MassHire career centers. Career Skills Center is working toward
+        approval to accept these funds. We&rsquo;ll help you check what you may qualify for &mdash; but only your
+        MassHire career center can approve funding.</p>
       </div>
     </section>
 
-""" + cta("Ready to see if you qualify?", "Talk to an Advisor")))
+""" + interest_form("unsure", "pricing and funding")))
 
 
 # ---- about.html -----------------------------------------------------------
@@ -1599,9 +1178,9 @@ PAGES.append(dict(
     slug="about.html", nav="about.html",
     title="About Us | Career Skills Center — Massachusetts",
     ogtitle="About Career Skills Center",
-    desc="Career Skills Center is a career school in Massachusetts training students for the skilled trades, IT and the medical field.",
+    desc="Career Skills Center is building online career training for Massachusetts adults in IT, medical billing and coding, and the skilled trades.",
     main=hero("About Us", "About Us",
-              "A career school built for Massachusetts, with online and hands-on training options. "
+              "A career school being built for Massachusetts, with online training designed around real jobs. "
               "Our focus is your potential.",
               "images/aboutus.webp") + f"""
 
@@ -1609,11 +1188,10 @@ PAGES.append(dict(
       <div class="container narrow text-center">
         <h2 class="section-title">Our Focus: Your Potential</h2>
         <p class="lede">Our goal isn’t just to help you achieve your potential. It’s to <strong>activate your
-        potential</strong>. Career Skills Center prepares committed students for rewarding careers through
-        high-caliber training, hands-on experience and student-focused support.</p>
-        <p class="lede">Employers today expect more than knowledge and technical skill. They look for
-        discipline, integrity, teamwork and the professionalism that defines someone worth hiring. We take on
-        the work of building those habits alongside the trade itself.</p>
+        potential</strong>. Career Skills Center is being built to prepare committed Massachusetts adults for
+        rewarding careers through practical, job-focused training and real support.</p>
+        <p class="lede">Employers today expect more than technical skill. They look for discipline, integrity,
+        teamwork and professionalism. We intend to build those habits alongside the skills themselves.</p>
       </div>
       <div class="container narrow">
         <blockquote class="quote-block">
@@ -1628,22 +1206,21 @@ PAGES.append(dict(
       <div class="container about-grid">
         <div class="about-media">
           <div class="deco-dots deco-dots--about" aria-hidden="true"></div>
-          <img src="images/aboutus.webp" alt="Training and meeting space at Career Skills Center" loading="lazy" decoding="async">
+          <img src="images/aboutus.webp" alt="" loading="lazy" decoding="async">
         </div>
         <div class="about-copy">
           <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Our Mission</p>
           <h2 class="section-title left">Our Mission</h2>
-          <p>We believe that a well-trained workforce contributes to the economic and social vibrancy of the
-          Massachusetts communities in which our students, instructors, and
-          staff live. To accomplish our mission, we are committed to providing a <strong>caring learning
-          environment</strong> where a <strong>technically rich, hands-on, quality education</strong> is
-          delivered by professionals who have worked in the field.</p>
+          <p>We believe a well-trained workforce strengthens the economic and social vibrancy of the
+          Massachusetts communities we serve. To do that, we are committed to building a <strong>caring
+          learning environment</strong> where <strong>practical, job-focused training</strong> is delivered by
+          instructors with real industry experience.</p>
           <ul class="arrow-list">
-            <li>Flexible schedules to help you reach your potential</li>
-            <li>Knowledgeable instructors to support you along the way</li>
-            <li>In-demand trade, IT, and medical programs to keep you motivated</li>
-            <li>Structured courses to facilitate your success</li>
-            <li>Ongoing partnership to assist in your career journey</li>
+            <li>Flexible, online-first learning that fits around a job</li>
+            <li>Instructors with real industry experience</li>
+            <li>Programs aimed at in-demand IT, medical and skilled-trades careers</li>
+            <li>Clear, honest information about cost and outcomes</li>
+            <li>Career support that continues after you finish</li>
           </ul>
         </div>
       </div>
@@ -1651,24 +1228,23 @@ PAGES.append(dict(
 
     <section class="section">
       <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Your Success Is</p>
-        <h2 class="section-title left">Our Purpose</h2>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What We Stand For</p>
+        <h2 class="section-title left">Our Values</h2>
         <div class="section-intro">
-          <p>Our reason for existing is to support and advance people through meaningful education and real
-          relationships. These are the values we hold ourselves to.</p>
+          <p>We&rsquo;re building this school around a few simple commitments.</p>
         </div>
         <div class="feature-grid">
           <article class="feature">
-            <h3 class="feature-title">Hands-On Learning</h3>
-            <p>You learn the work by doing the work. Lab and shop time is not an add-on, it is the course.</p>
+            <h3 class="feature-title">Practical, skills-first</h3>
+            <p>You learn by doing, not just watching. Training is built around what the job actually requires.</p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">Student Support</h3>
-            <p>Small cohorts, accessible instructors, and staff who know your name and your goals.</p>
+            <h3 class="feature-title">Student support</h3>
+            <p>Accessible instructors and staff focused on your goals, from your first question to your first job.</p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">Industry Relevance</h3>
-            <p>Programs built around the credentials and skills local employers actually hire for.</p>
+            <h3 class="feature-title">Industry relevance</h3>
+            <p>Programs designed around the credentials and skills Massachusetts employers actually hire for.</p>
           </article>
         </div>
         <div class="feature-grid" style="margin-top: 40px;">
@@ -1677,20 +1253,21 @@ PAGES.append(dict(
             <p>Straight answers about cost, length and outcomes. No pressure and no surprises.</p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">Growth Mindset</h3>
-            <p>Every student starts somewhere. Effort and coaching close the gap faster than talent alone.</p>
+            <h3 class="feature-title">Growth mindset</h3>
+            <p>Everyone starts somewhere. Effort and coaching close the gap faster than talent alone.</p>
           </article>
           <article class="feature">
             <h3 class="feature-title">Community</h3>
-            <p>We train people who stay and work here, strengthening the neighborhoods we all live in.</p>
+            <p>We want to train people who live and work in Massachusetts, strengthening the communities we share.</p>
           </article>
         </div>
       </div>
     </section>
 
-""" + cta("Want to know what we can do for you?")))
+""" + interest_form("unsure", "our programs")))
 
 
+# ---- team.html ------------------------------------------------------------
 # ---- team.html ------------------------------------------------------------
 def team_card(name, role, bio):
     return f"""          <article class="team-card">
@@ -1772,17 +1349,17 @@ PAGES.append(dict(
     slug="career-services.html", nav="career-services.html",
     title="Career Services | Career Skills Center — Massachusetts",
     ogtitle="Career Services",
-    desc="Resume help, interview preparation, employer connections and job search support for Career Skills Center students and graduates.",
+    desc="The career support Career Skills Center is building into every program: resume help, interview practice and employer connections for Massachusetts students.",
     main=hero("Career Services", "Career Services",
-              "Get certified. Begin your career. Our work does not stop when the course does.",
-              "images/person1.webp") + f"""
+              "Training is only worth it if it leads to a job. Career support will be built into every program "
+              "we offer.",
+              None) + """
 
     <section class="section">
       <div class="container narrow text-center">
-        <h2 class="section-title">Beyond the Classroom</h2>
-        <p class="lede">At Career Skills Center we want to see our students reach their goals, not just in
-        the curriculum but in the industry they trained for. Career Services works with every student through
-        completion and stays available afterward.</p>
+        <h2 class="section-title">Support we&rsquo;re building in</h2>
+        <p class="lede">Career Skills Center&rsquo;s programs are in development, and career support is part of
+        the plan from day one &mdash; not an afterthought. Here&rsquo;s what we intend to offer every student.</p>
       </div>
     </section>
 
@@ -1790,120 +1367,36 @@ PAGES.append(dict(
       <div class="container">
         <div class="feature-grid">
           <article class="feature">
-            <h3 class="feature-title">Resume Assistance</h3>
-            <p>We help you design and write a resume that puts your new credentials first, and we review
-            employment applications with you before you send them.</p>
+            <h3 class="feature-title">Resume &amp; application help</h3>
+            <p>Help writing a resume that puts your new credential first, and a review of applications before you send them.</p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">Interview Preparation</h3>
-            <p>Mock interviews, advice on professional appearance, and guidance on how to follow up after an
-            interview.</p>
+            <h3 class="feature-title">Interview practice</h3>
+            <p>Mock interviews, tips on presentation, and guidance on following up after an interview.</p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">Employer Connections</h3>
-            <p>Introductions to local contractors, clinics and IT departments who hire from our programs.</p>
-          </article>
-        </div>
-        <div class="feature-grid" style="margin-top: 40px;">
-          <article class="feature">
-            <h3 class="feature-title">Certification Exam Prep</h3>
-            <p>Practice exams, review sessions and scheduling help so you sit for your credential while the
-            material is fresh.</p>
+            <h3 class="feature-title">Employer connections</h3>
+            <p>Introductions to Massachusetts employers &mdash; clinics, IT departments and contractors &mdash; who hire for these roles.</p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">Job Fairs</h3>
-            <p>On-site and regional hiring events where you meet employers face to face.</p>
-          </article>
-          <article class="feature">
-            <h3 class="feature-title">Alumni Network</h3>
-            <p>Graduates stay connected, refer openings, and often come back to hire the next cohort.</p>
+            <h3 class="feature-title">Certification exam prep</h3>
+            <p>Practice and review so you&rsquo;re ready to sit for your credential while the material is fresh.</p>
           </article>
         </div>
       </div>
     </section>
 
     <section class="section section--alt">
-      <div class="container">
-        <div class="split-grid">
-          <div class="split-media">
-            <img src="images/person2.webp" alt="Career Skills Center graduate" loading="lazy" decoding="async">
-          </div>
-          <div class="split-copy">
-            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Every Student</p>
-            <h2 class="section-title left">Support for Everyone, Not a Waiting List</h2>
-            <p>Our Career Services department is staffed to work with every student upon completion. You are
-            not a number here and you will not wait in a queue to speak with someone. In many cases we reach
-            out to you first.</p>
-            <p>The goal is simple: that you feel supported, prepared and part of something that changes your
-            situation for the better.</p>
-          </div>
-        </div>
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Our approach</p>
+        <h2 class="section-title left">Real support, not a waiting list</h2>
+        <p>The plan is simple: work with every student through completion and stay available afterward, so you
+        feel supported, prepared, and ready for the next step. As programs launch, we&rsquo;ll share exactly how
+        career services works and what it includes.</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Outcomes</p>
-        <h2 class="section-title left">By the Numbers</h2>
-        <div class="stat-grid">
-          <div class="stat-tile"><div class="stat-value">TBD</div><div class="stat-label">Placement rate</div></div>
-          <div class="stat-tile"><div class="stat-value">TBD</div><div class="stat-label">Certification pass rate</div></div>
-          <div class="stat-tile"><div class="stat-value">TBD</div><div class="stat-label">Employer partners</div></div>
-          <div class="stat-tile"><div class="stat-value">TBD</div><div class="stat-label">Graduates to date</div></div>
-        </div>
-        <p class="note"><strong>Publish verified numbers only.</strong> Placement and completion rates are
-        regulated disclosures. Leave these as TBD until the figures are documented and you can show the
-        methodology behind them.</p>
-      </div>
-    </section>
-
-    <section class="section section--alt">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Common Questions</p>
-        <h2 class="section-title left">Career Services FAQ</h2>
-        <div class="faq">
-          <p class="faq-group-title">General questions</p>
-          <details class="faq-item">
-            <summary>When should I start contacting a Career Services representative?</summary>
-            <div class="faq-body"><p>Earlier than most students think. Reach out as soon as you are partway
-            through your program so your resume and interview prep are ready the week you finish.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary>Do I have to contact Career Services, or will they contact me?</summary>
-            <div class="faq-body"><p>Both. We reach out to students as they approach completion, and you are
-            welcome to come to us at any point before that.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary>Do I have to pay for help from Career Services?</summary>
-            <div class="faq-body"><p>No. Career Services is included in your tuition, during your program and
-            after you graduate.</p></div>
-          </details>
-
-          <p class="faq-group-title">After you finish</p>
-          <details class="faq-item">
-            <summary>How will Career Services help me find work in my field?</summary>
-            <div class="faq-body"><p>We help target your search to employers hiring for your credential, refer
-            you into openings we know about, prepare you for the interview, and coach you through offers.</p></div>
-          </details>
-          <details class="faq-item">
-            <summary>How many times can I come back for help?</summary>
-            <div class="faq-body"><p>As many as you need. Graduates use us again years later when they are
-            ready for the next move, and that is exactly what we are here for.</p></div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container narrow text-center">
-        <h2 class="section-title">For Employers</h2>
-        <p class="lede">Hiring? Our graduates arrive with current credentials, safety training and hands-on
-        practice. Tell us what you need and we will connect you with candidates from the next cohort.</p>
-        <p><button class="btn btn-navy js-open-contact" type="button">Hire Our Graduates</button></p>
-      </div>
-    </section>
-
-""" + cta("Ready to start your career?")))
+""" + interest_form("unsure", "career services and program")))
 
 
 # ---- faq.html -------------------------------------------------------------
@@ -1918,42 +1411,41 @@ PAGES.append(dict(
     slug="faq.html", nav="faq.html",
     title="FAQ | Career Skills Center — Massachusetts",
     ogtitle="Frequently Asked Questions",
-    desc="Answers about programs, admissions, tuition, schedules and career services at Career Skills Center in Massachusetts.",
+    desc="Answers about Career Skills Center's programs in development, how enrollment will work, funding options, and career support in Massachusetts.",
     main=hero("FAQ", "Find Answers",
               "The questions we hear most, answered plainly. If yours is not here, call us at "
               "(617) 544-7155.",
-              "images/hero3.webp") + f"""
+              None) + f"""
 
     <section class="section">
       <div class="container">
         <div class="faq">
 
           <p class="faq-group-title">Programs</p>
-{faq("How long are your programs?", 'Program lengths vary by field. <span class="tbd">Exact lengths are TBD until the course catalog is final.</span> Career training is measured in weeks and months rather than years, which is the point: you finish sooner and start earning sooner.')}
-{faq("Are classes in person?", "Yes. Trade, medical and IT programs all include hands-on lab or shop time at our Quincy campus, because the skills employers test for cannot be learned from video alone.")}
-{faq("Do you offer evening or weekend classes?", 'We plan to offer schedules that work around a job. <span class="tbd">Final day, evening and weekend options are TBD.</span> Ask your enrollment advisor which cohorts fit your availability.')}
-{faq("Do I need experience to start?", "No. Our programs are built for people starting from zero, including career changers who have been out of school for years. Every skilled tradesperson started exactly where you are.")}
-{faq("What certifications will I earn?", "It depends on the program: EPA 608 and OSHA 10 for trades, CompTIA A+, Network+ or Security+ for IT, and CCMA, CPT, CET or CBCS preparation for medical. Your advisor will confirm which credential your program prepares you for.")}
+{faq("How long are your programs?", "Our programs are still in development, so lengths are not final. Career training is measured in weeks and months rather than years &mdash; you finish sooner and start earning sooner. We will announce exact lengths before enrollment opens.")}
+{faq("Are classes online or in person?", "We are building online programs for Massachusetts adults. Some fields, like the skilled trades, also require hands-on hours you complete in person through an apprenticeship or shop.")}
+{faq("Do you offer evening or weekend classes?", "We plan to offer schedules that work around a job. Final day, evening and weekend options will be announced before enrollment opens.")}
+{faq("Do I need experience to start?", "No. Our programs are being built for people starting from zero, including career changers who have been out of school for years.")}
+{faq("What certifications will I earn?", "We plan to align each program with an industry-recognized certification. We will confirm which one before enrollment opens.")}
 
           <p class="faq-group-title">Admissions</p>
-{faq("What do I need to enroll?", 'Generally you need to be 18 or older, have a high school diploma or GED, and bring a valid photo ID. Some medical programs also require immunization records and a background check. See <a class="link-yellow" href="admissions.html">Admissions</a> for the full list.')}
-{faq("What if I was not great at school?", "Career training is different from traditional academics. It is practical, short, and focused on one skill set at a time, with instructors who work the trade. Plenty of our students did not enjoy high school and do well here.")}
-{faq("How do I get started?", 'Call <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> or use the Get in Touch button. The first conversation takes a few minutes and costs nothing.')}
+{faq("Can I enroll now?", 'Not yet &mdash; enrollment is not open. Our programs are in development. <a class="link-yellow" href="#">Join the interest list</a> on any program page and we will email you the requirements and dates the moment they are set.')}
+{faq("What if I was not great at school?", "Career training is different from traditional academics. It is practical, short, and focused on one skill set at a time. Plenty of people who did not enjoy high school do well in career training.")}
+{faq("How do I get started?", 'Join the interest list for the program you want, or call <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a>. We will let you know the moment enrollment opens.')}
 
           <p class="faq-group-title">Tuition &amp; funding</p>
-{faq("How much does it cost?", 'Tuition varies by program. <span class="tbd">Pricing is TBD until the catalog is final.</span> We price for affordability and we will tell you the full cost, including books and exam fees, before you enroll.')}
-{faq("What if I cannot afford the tuition?", 'Most students combine sources. We offer payment plans and third-party financing partners, and our enrollment team will help you find every option you qualify for. See <a class="link-yellow" href="student-financing.html">Student Financing</a>.')}
-{faq("Do you accept VA benefits?", '<span class="tbd">TBD.</span> Approval to accept veterans education benefits must be granted before we can advertise it. Call us and we will tell you our current status.')}
-{faq("Is financial aid available?", 'We will walk you through every funding option you may qualify for, including payment plans and third-party financing partners. Call us and we will tell you what is currently available.')}
+{faq("How much does it cost?", 'Pricing is in development. We will publish the full cost of each program, including books and exam fees, before enrollment opens. See <a class="link-yellow" href="tuition.html">Tuition</a>.')}
+{faq("What if I cannot afford the tuition?", 'Most people combine sources. We plan to offer payment plans, and you may qualify for state or employer funding. See our guide to <a class="link-yellow" href="blog/free-job-training-massachusetts.html">free job training in Massachusetts</a>.')}
+{faq("Do you accept VA benefits?", "Not at this time. We will update this page if that changes.")}
+{faq("Can I use state or grant funding?", 'You may qualify for funded training through a MassHire career center. Career Skills Center is working toward approval to accept these funds; only your career center can approve funding. Start with our <a class="link-yellow" href="blog/wioa-eligibility-massachusetts.html">WIOA eligibility guide</a>.')}
 
-          <p class="faq-group-title">Career services</p>
-{faq("Do you help with job placement?", 'Yes. Resume help, mock interviews, employer introductions and job search support are included in your tuition, during the program and after you graduate. See <a class="link-yellow" href="career-services.html">Career Services</a>.')}
-{faq("Will employers hire me with a certificate instead of a degree?", "In the trades, IT and allied health, employers hire on credentials and demonstrated skill. A current certification plus hands-on training is what gets you through the door for these roles.")}
-{faq("What happens after I finish?", "You sit for your certification exam, work with Career Services on your search, and stay connected to us afterward. Graduates come back years later for help with their next move.")}
+          <p class="faq-group-title">Career support</p>
+{faq("Will you help me find a job?", 'Career support &mdash; resume help, interview practice and employer connections &mdash; is part of the plan for every program. We will share the details as programs launch. See <a class="link-yellow" href="career-services.html">Career Services</a>.')}
+{faq("Will employers hire me with a certificate instead of a degree?", "In fields like IT and allied health, employers hire on credentials and demonstrated skill. A current certification plus hands-on practice is often what gets you through the door.")}
 
-          <p class="faq-group-title">Location &amp; schedule</p>
-{faq("Where are you located?", 'Quincy, MA 02171. The campus is convenient to the South Shore and reachable on the MBTA Red Line.')}
-{faq("Is parking available?", '<span class="tbd">TBD — confirm parking and transit details once the campus address is final.</span>')}
+          <p class="faq-group-title">About us</p>
+{faq("Where are you located?", "Career Skills Center is based in Quincy, MA, and our training is designed to be delivered online across Massachusetts.")}
+{faq("How can I reach you?", 'Call <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> or email <a class="link-yellow" href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a>.')}
 
         </div>
       </div>
@@ -1962,6 +1454,7 @@ PAGES.append(dict(
 """ + cta("Still have questions? Call (617) 544-7155.")))
 
 
+# ---- media.html -----------------------------------------------------------
 # ---- media.html -----------------------------------------------------------
 def media_card(date, title, body):
     return f"""          <article class="media-card">
