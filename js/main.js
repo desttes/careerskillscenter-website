@@ -74,11 +74,13 @@
   }
 
   /* ---------- Contact forms (dialog + contact page) ----------
-     Demo submit handler. TODO: replace with a real POST to the form backend.
-     Until then each form validates client-side and shows a confirmation. */
+     Real submit: POST to submit.php (the cPanel PHP mailer). Every form carries
+     a hidden `source` field; we add `page` here. On failure we show a fallback
+     with the phone/email so a lead is never silently lost. */
   document.querySelectorAll('.contact-form').forEach((form) => {
     const status = form.querySelector('.form-status');
-    form.addEventListener('submit', (event) => {
+    const submitBtn = form.querySelector('[type="submit"]');
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       if (status) status.className = 'form-status';
       if (!form.checkValidity()) {
@@ -89,11 +91,37 @@
         }
         return;
       }
-      if (status) {
-        status.textContent = 'Thanks! Our enrollment team will reach out shortly.';
-        status.classList.add('is-success');
+
+      const data = new FormData(form);
+      data.set('page', window.location.pathname);
+      if (submitBtn) submitBtn.disabled = true;
+      if (status) status.textContent = 'Sending…';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || !json.ok) throw new Error(json.error || 'Submission failed');
+
+        if (status) {
+          status.textContent = 'Thanks! We’ll be in touch soon.';
+          status.classList.add('is-success');
+        }
+        form.reset();
+        if (typeof gtag === 'function') {
+          gtag('event', 'form_submit', { source: data.get('source') || 'contact' });
+        }
+      } catch (err) {
+        if (status) {
+          status.textContent = 'Sorry, that didn’t send. Please email info@careerskillscenter.com or call (617) 544-7155.';
+          status.classList.add('is-error');
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
-      form.reset();
     });
   });
 

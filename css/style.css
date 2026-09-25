@@ -467,6 +467,8 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .form-status { min-height: 1.5em; font-size: 14px; margin: 6px 0 0; }
 .form-status.is-error { color: #ffb4b4; }
 .form-status.is-success { color: var(--yellow); }
+/* Honeypot: hidden from people, tempting to bots. Not display:none (some bots skip those). */
+.hp-field { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
 
 .dialog-info { background: var(--navy-dark); padding: clamp(28px, 4vw, 48px); font-size: 15px; }
 .dialog-info h3 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--yellow); margin-bottom: 6px; }

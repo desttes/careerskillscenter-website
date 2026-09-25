@@ -10,6 +10,16 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-25 (later) — Built the cPanel PHP mailer (form backend)
+The form backend Emilio chose (cPanel PHP mailer) is built and wired. Local only — **not deployed**.
+- **`submit.php`** (new, at docroot) — plain-PHP mailer, no database. Emails submissions to `info@careerskillscenter.com`. Features: POST-only, honeypot (`company_website`) that silently drops bots, required name + valid email, per-field length caps, mail-header-injection protection (strips CR/LF), a friendly body with human labels, and the hidden **`source`** field + JS-added **`page`** in every email. Returns JSON for the AJAX path and supports a `_redirect` no-JS fallback. Core logic is a pure, testable function (`csc_process`).
+- **Wired both contact forms** (`contact-dialog` in `index.html`, `contact-page` in `build-pages.py`): `action="submit.php"`, hidden `source`, honeypot field. On blog subdir pages the action correctly relativizes to `../submit.php`.
+- **`js/main.js`** — replaced the demo handler with a real `fetch` POST: client validation, "Sending…" state, success/error messages, a failure fallback ("email/call us"), and a GA4 **`form_submit`** event with the `source` parameter (brief §2).
+- **`css/style.css`** — added `.hp-field` (visually-hidden honeypot).
+- **Verified** (PHP 8.5 CLI + `php -S` + the in-app browser): GET→405, honeypot→drop, bad email→422, valid→200 with a correct logged email (subject `[source] …`, Reply-To = visitor, all fields + source + page), header-injection neutralized; browser dialog submit → 200, success message shown, GA event, no console errors.
+- **Deploy notes** added to `PROJECT-HANDOFF.md` §5/§6 (upload `submit.php`, `chmod 644`, on-domain `From` for deliverability; `blog/` still excluded as drafts).
+- **TODO for Emilio:** after deploy, send one real test submission and confirm the email arrives; optionally create a `no-reply@` alias and set `CSC_FROM`.
+
 ### 2026-09-25 (later) — Removed fake homepage testimonials (Option A, spec §7)
 - **`index.html`** — deleted the entire Testimonials section (the fabricated "Marcus, Electrical Technician graduate" and "David, IT Support Specialist graduate" quotes, including the "helped me earn my CompTIA A+ and Network+" program specifics). Left an HTML comment noting why and that only real, consenting-student testimonials may replace it. The homepage now closes on the "Ready to Start?" steps band → footer (no gap).
 - Not replaced with any quotes (per spec). Did **not** add the optional "Why we're building Career Skills Center" section — that can be added later if wanted.

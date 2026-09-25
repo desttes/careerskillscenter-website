@@ -3462,8 +3462,9 @@ PAGES.append(dict(
           <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>Let’s get connected</p>
           <h2>Send us a message</h2>
 
-          <!-- TODO: point action at the form backend and remove the demo handler in js/main.js. -->
-          <form class="contact-form" id="contact-page-form" action="#" method="post" novalidate>
+          <form class="contact-form" id="contact-page-form" action="submit.php" method="post" novalidate>
+            <input type="hidden" name="source" value="contact-page">
+            <input type="text" class="hp-field" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
             <label class="sr-only" for="cp-name">First and Last Name</label>
             <input id="cp-name" name="name" type="text" placeholder="First and Last Name" autocomplete="name" required>
 
