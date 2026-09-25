@@ -10,6 +10,12 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-25 (later) — Expanded posts #2 and #8 to target length
+- **#2 `wioa-eligibility-massachusetts`** — 785 → **1,218 words** (target 1,200–1,500). Added: basic requirements + Selective Service (B7); priority-of-service explainer (B5); "training has to point to a real job"; income example framed as regional-only (B3); "you might qualify even if…"; a 5-question self-check (interim link to the ITA guide until `qualify.html` exists); a 4-question FAQ **with FAQPage schema**.
+- **#8 `can-you-learn-a-trade-online`** — 685 → **1,101 words** (target 1,100–1,400). Added: OSHA 10/30 + EPA 608 online prep; the "HVAC is not one license" note; a Registered Apprenticeship section (Division of Apprentice Standards, earn-while-you-learn); an overpromising honesty callout; "do the trades pay off?" (links to #5); a "which trade fits you?" comparison; a 5-question FAQ **with FAQPage schema**. CTA switched to the interest list.
+- Verified: builds clean; JSON-LD valid; no visible `[VERIFY]`; no program-facts leakage; no page overflow; both render with FAQ + tables. Compliance held (industry facts sourced, no CSC program specifics, dates real).
+- **Remaining at draft length:** #3, #4, #6, #7 (pillar #1 and #5 already done; #2, #8 done this pass).
+
 ### 2026-09-25 — Applied VERIFICATION_LOG fixes to all 8 posts + fetched BLS wages
 Picked up three more strategy commits (`643a20d` verification log + pre-deploy check, `a2bd448` program-facts-are-placeholders policy, `4ed64d4` pre-launch site spec). Applied every fact fix and the program-facts policy to the blog. **Local only.**
 

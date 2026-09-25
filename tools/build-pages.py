@@ -2411,9 +2411,10 @@ PAGES.append(dict(
 
 
 # ---- 2. Who Qualifies for WIOA Training in Massachusetts ------------------
-_p2_body = """        <!-- DRAFT – facts to verify: WIOA priority-of-service groups (adults, dislocated workers, youth);
-             that low-income and public-assistance status can affect priority; that the local career center
-             makes the final eligibility decision; current mass.gov links. Do not promise approval. -->
+_p2_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (9/25/2026): priority of service (B5),
+             final decision is the local center's (B6), basic requirements incl. Selective Service (B7), income
+             example $15,960–$60,124+ is a regional example only (B3). Dislocated-worker timing left soft
+             ("varies, so ask"). No CSC program details (F1). Do not promise approval. -->
         <p class="lead">WIOA training in Massachusetts is mainly for three groups: adults (with priority for
         people with lower incomes), dislocated workers, and young people aged 16&ndash;24. But there is an
         important catch: your local <strong>MassHire career center</strong> makes the final decision, based on
@@ -2425,16 +2426,39 @@ _p2_body = """        <!-- DRAFT – facts to verify: WIOA priority-of-service g
         <h2>The three main groups</h2>
         <h3>1. Adults</h3>
         <p>This is the broadest group. If you are 18 or older and want to train for a better job, you can ask.
-        Career centers often give priority to people who earn low wages, receive public assistance (like SNAP
-        or TAFDC), or have barriers to employment. You do not have to be jobless to apply.</p>
+        Career centers give priority to people who receive public assistance (like SNAP or TAFDC), earn low
+        wages, or need to build basic reading or math skills. You do not have to be jobless to apply.</p>
         <h3>2. Dislocated workers</h3>
         <p>A "dislocated worker" is usually someone who lost a job through no fault of their own — a layoff, a
-        plant or business closing, or the end of a contract. It can also include people who were self-employed
-        but are now out of work, and some homemakers who need to return to work. If your job ended recently,
-        mention it.</p>
+        plant or business closing, or the end of a contract. Often it means you are getting (or have used up)
+        unemployment and are unlikely to return to the same kind of work. It can also include people who were
+        self-employed but are now out of work, and some homemakers returning to the workforce. If your job
+        ended, mention it.</p>
         <h3>3. Youth (16&ndash;24)</h3>
         <p>There are separate WIOA services for young people, especially those who are out of school, out of
         work, or facing challenges. If this is you or your child, ask about youth programs specifically.</p>
+
+        <h2>The basic requirements most centers share</h2>
+        <p>The rules vary by center, but most ask that you:</p>
+        <ul>
+          <li>Are 18 or older (for Adult and Dislocated Worker funds).</li>
+          <li>Live in, or have worked in, that center's service area.</li>
+          <li>Are legally authorized to work in the United States.</li>
+          <li>If you are a man born after January 1, 1960, are registered with Selective Service.</li>
+        </ul>
+        <p><strong>Veterans and their eligible spouses get priority of service</strong> in these programs, so
+        be sure to say so if it applies to you.</p>
+
+        <h2>Priority of service: who gets served first</h2>
+        <p>Funding is limited, so the law tells career centers who to help first. For Adult funds, priority
+        goes to people who receive public assistance, other people with low incomes, and people who need to
+        build basic reading or math skills. Veterans and their eligible spouses come first of all. This does
+        not mean everyone else is turned away — it means these groups move to the front of the line.</p>
+
+        <h2>Training has to point to a real job</h2>
+        <p>Career centers fund training that leads to work that is actually hiring in Massachusetts, like health
+        care, IT, and the skilled trades. Short programs that end in a recognized credential are usually the
+        easiest to get approved. Come ready to explain how your training leads to a job.</p>
 
         <h2>What the career center will look at</h2>
         <ul>
@@ -2452,18 +2476,66 @@ _p2_body = """        <!-- DRAFT – facts to verify: WIOA priority-of-service g
         <p>None of these is a simple yes/no test. The career center weighs them together. That is why we say
         "you may qualify" — never that you are guaranteed.</p>
 
+        <h2>What about income limits?</h2>
+        <p>There is no single income cutoff. Lower income can raise your priority, especially for Adult funds.
+        As an example, one region (MassHire Central) listed 2026 "economic disadvantage" limits ranging from
+        about <strong>$15,960</strong> for a single person to <strong>$60,124 or more</strong> for a larger
+        family. Every region sets its own table, so treat this as an example only, and ask your center for the
+        current numbers where you live.</p>
+
+        <h2>You might qualify even if&hellip;</h2>
+        <ul>
+          <li>You are working — but part-time or at low wages.</li>
+          <li>You receive SNAP, TAFDC, or other public assistance.</li>
+          <li>You were laid off a while ago, not just last week. (The timing rules vary, so ask.)</li>
+          <li>You have never used a career center before.</li>
+        </ul>
+        <p>The worst thing that happens when you ask is a "not right now" — and even then, they can point you
+        to other help.</p>
+
         <h2>What to bring when you ask</h2>
         <ol>
           <li>Photo ID and proof you can work in the U.S.</li>
-          <li>Proof of income (recent pay stubs, benefit letters) and household size.</li>
+          <li>Proof of income for the last few months (pay stubs, benefit letters).</li>
+          <li>Proof of your family size.</li>
+          <li>If you are a man born after January 1, 1960, your Selective Service registration.</li>
           <li>Any layoff or separation paperwork.</li>
           <li>A rough idea of the career you want to train for.</li>
         </ol>
+
+        <h2>A quick self-check</h2>
+        <p>Answer yes or no:</p>
+        <ol>
+          <li>Do you live in Massachusetts and are you allowed to work in the U.S.?</li>
+          <li>Were you laid off, or are you out of work?</li>
+          <li>Are you working but earning low wages?</li>
+          <li>Do you receive SNAP, TAFDC, or other public assistance?</li>
+          <li>Do you want to train for a specific in-demand job?</li>
+        </ol>
+        <p>If you answered yes to <strong>two or more</strong>, it is worth asking your career center. Not sure
+        what to do first? Read our step-by-step guide to
+        <a href="blog/masshire-training-voucher.html">getting a MassHire training voucher (ITA)</a>.</p>
 
         <h2>Not sure if it is worth asking?</h2>
         <p>It is. Walking into a MassHire career center and asking costs nothing. Even if WIOA is not a fit,
         they can point you to other help. And if funding is not available right now, you still have options —
         see <a href="student-financing.html">Ways to Pay</a>.</p>
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+          <details class="faq-item"><summary>Do I have to be on unemployment to qualify?</summary>
+          <div><p>No. WIOA serves adults, dislocated workers, and youth. You can be working — but at low wages —
+          and still ask. Being on unemployment is not required.</p></div></details>
+          <details class="faq-item"><summary>Is there an income limit?</summary>
+          <div><p>There is no single cutoff. Lower income can raise your priority, especially for Adult funds,
+          and each region publishes its own guidelines. Ask your career center for the numbers where you live.</p></div></details>
+          <details class="faq-item"><summary>Can I qualify if I am not a U.S. citizen?</summary>
+          <div><p>You do not have to be a citizen, but you generally must be authorized to work in the United
+          States, and the center will ask for proof. Ask about your specific situation.</p></div></details>
+          <details class="faq-item"><summary>Who makes the final decision?</summary>
+          <div><p>Your local MassHire career center. No school, including us, can decide your eligibility or
+          promise you funding. Only the career center can.</p></div></details>
+        </div>
 
 """ + FUNDING_NOTE + """
 
@@ -2487,12 +2559,21 @@ PAGES.append(dict(
     extrahead=article_ld("blog/wioa-eligibility-massachusetts.html",
                          "Who Qualifies for WIOA Training in Massachusetts?",
                          "Who WIOA training serves in Massachusetts and how eligibility is decided.",
-                         "2026-09-25", "2026-09-25"),
+                         "2026-09-25", "2026-09-25") + "\n" + faq_ld([
+        ("Do I have to be on unemployment to qualify for WIOA training?",
+         "No. WIOA serves adults, dislocated workers, and youth. You can be working but at low wages and still ask. Being on unemployment is not required."),
+        ("Is there an income limit for WIOA training in Massachusetts?",
+         "There is no single cutoff. Lower income can raise your priority, especially for Adult funds, and each region publishes its own guidelines. Ask your career center for the numbers where you live."),
+        ("Can I qualify if I am not a U.S. citizen?",
+         "You do not have to be a citizen, but you generally must be authorized to work in the United States, and the center will ask for proof. Ask about your specific situation."),
+        ("Who makes the final decision on WIOA eligibility?",
+         "Your local MassHire career center. No school can decide your eligibility or promise you funding — only the career center can."),
+    ]),
     main=article(
         "Paying for Training",
         "Who Qualifies for WIOA Training in Massachusetts?",
         "The three groups WIOA serves, what your career center looks at, and how to check if you may qualify.",
-        "September 25, 2026", "8 min read", _p2_body)))
+        "September 25, 2026", "9 min read", _p2_body)))
 
 
 # ---- 3. How to Get a MassHire Training Voucher (ITA) ----------------------
@@ -2924,29 +3005,71 @@ _p8_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
         person. The honest answer is: online helps, but it is only part of the path.</p>
 
         <p>Do not trust anyone who says you can become a licensed electrician or plumber entirely from your
-        couch. Here is what really works online, and what does not.</p>
+        couch. The good news: the classroom side of a trade — which used to mean night classes across town — is
+        now something you can do from home, on your own schedule. Here is what really works online, and what
+        still does not.</p>
 
         <h2>What works well online</h2>
         <ul>
           <li><strong>Theory and fundamentals.</strong> How electricity, HVAC systems, or plumbing work.</li>
           <li><strong>Code and standards.</strong> Reading and understanding the codes your work must meet.</li>
-          <li><strong>Safety training.</strong> Much of this is knowledge you can learn and be tested on.</li>
           <li><strong>Math and blueprint basics.</strong> Measuring, load calculations, and reading plans.</li>
-          <li><strong>Test prep</strong> for licensing exams.</li>
+          <li><strong>Safety certificates.</strong> OSHA 10 and OSHA 30 safety courses are widely available
+          online.</li>
+          <li><strong>EPA 608 exam prep.</strong> The federal certification you need to handle refrigerants can
+          be studied for online (the exam itself is proctored).</li>
+          <li><strong>Test prep</strong> for state licensing exams.</li>
         </ul>
 
         <h2>What needs hands-on time</h2>
-        <p>You cannot learn to bend conduit, sweat a copper joint, or troubleshoot a live system from a video
-        alone. Trades require supervised, hands-on hours — often through an apprenticeship — where you build
-        muscle memory and judgment under someone experienced. In most trades, this is also required for
-        licensing.</p>
+        <p>You cannot learn to bend conduit, sweat a copper joint, wire a panel, or troubleshoot a live system
+        from a video alone. Trades require supervised, hands-on hours — often through an apprenticeship — where
+        you build muscle memory and judgment under someone experienced. In most trades, this is also required
+        for licensing. It is also how you learn to work safely around real voltage, gas, and pressure.</p>
 
-        <h2>How licensing usually works in Massachusetts</h2>
+        <div class="note"><strong>Watch out for overpromising.</strong> Some online "trade schools" suggest you
+        can finish entirely online and walk into a licensed job. In Massachusetts, that is not how licensing
+        works. Honest programs are clear that online coursework is one part of the path, not the whole thing.</div>
+
+        <h2>How licensing works in Massachusetts</h2>
         <p>Licensed trades are regulated by the state, and the exact rules depend on the trade. For example, a
         Massachusetts journeyman electrician needs 600 hours of classroom instruction and 8,000 hours of
         supervised work over at least four years. A refrigeration technician needs either 6,000 hours as a
         licensed apprentice, or 450 hours of approved study, plus universal CFC (EPA 608) certification.
         Plumbing and gas fitting have their own rules set by the state board.</p>
+        <p>One thing that surprises people: in Massachusetts, "HVAC" is not a single license. Depending on the
+        work, it can fall under refrigeration technician, sheet metal, and gas fitting licenses. If HVAC is your
+        goal, ask which license fits the jobs you actually want.</p>
+
+        <h2>Registered apprenticeship: earn while you learn</h2>
+        <p>For most trades, the smartest path is a <strong>registered apprenticeship</strong>. You work for a
+        licensed employer, earn a paycheck, and build the supervised hours you need for your license — while
+        taking the required classroom hours, which can often be done online. In Massachusetts, apprenticeships
+        are overseen by the state's Division of Apprentice Standards.</p>
+        <p>So "learn a trade online" really means: study the theory and safety online, and log your hands-on
+        hours on the job.</p>
+        <p>To find one, ask local employers and unions, check the state's apprenticeship listings, or ask a
+        MassHire career center. Some apprenticeship programs may even connect to the funding options in our
+        <a href="blog/free-job-training-massachusetts.html">guide to free job training in Massachusetts</a>.</p>
+
+        <h2>Do the trades pay off?</h2>
+        <p>Yes — and the work cannot be shipped overseas. In Massachusetts, electricians, plumbers, and HVAC and
+        refrigeration mechanics all earn solid middle-class wages. For the actual numbers, see our roundup of the
+        <a href="blog/highest-paying-certifications-massachusetts.html">highest-paying certifications you can
+        train for in Massachusetts</a>.</p>
+
+        <h2>Which trade might fit you?</h2>
+        <p>Each trade has a different day-to-day. A few quick contrasts to help you think it through:</p>
+        <ul>
+          <li><strong>Electrician.</strong> Detailed, code-heavy work, indoors and out. Steady demand and a
+          clear license ladder from apprentice to journeyman to master.</li>
+          <li><strong>Plumbing and pipefitting.</strong> Problem-solving and physical work, often on service
+          calls. Licensed in stages, much like electrical.</li>
+          <li><strong>HVAC and refrigeration.</strong> A mix of electrical, mechanical, and airflow work, with
+          busy seasons. Remember it can span more than one license.</li>
+        </ul>
+        <p>You do not have to decide today. Learning the fundamentals online is a low-cost way to test which one
+        holds your interest before you commit to an apprenticeship.</p>
 
         <h2>A realistic hybrid path</h2>
         <ol>
@@ -2958,17 +3081,36 @@ _p8_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
         <p>So online is a smart way to start and to study — just plan for the in-person hours too.</p>
 
         <h2>What we are building</h2>
-        <p>Career Skills Center is developing skilled trades training. Our <a href="skilled-trades.html">Skilled
-        Trades page</a> shows what is coming. If you want to be first to know when programs open, reach out and
-        we will keep you posted.</p>
+        <p>Career Skills Center is developing skilled trades training for Massachusetts. Details are not final
+        yet. <a href="contact.html">Join our interest list</a> to be first to know when programs open.</p>
 
 """ + FUNDING_NOTE + """
 
 """ + post_cta(
     "Interested in the trades?",
-    "Tell us which trade you are curious about. We will share what is coming and how the training and licensing "
-    "path works.",
-    "See Skilled Trades", "skilled-trades.html") + """
+    "Career Skills Center is developing skilled trades training. Join our interest list and we'll let you know "
+    "when it opens.",
+    "Join Our Interest List", "contact.html") + """
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+          <details class="faq-item"><summary>Can I get a trade license fully online?</summary>
+          <div><p>No. Massachusetts trade licenses require supervised, hands-on hours that cannot be done online.
+          You can study the theory, code, and safety online, but you still need real on-the-job hours.</p></div></details>
+          <details class="faq-item"><summary>What parts of a trade can I actually learn online?</summary>
+          <div><p>The classroom side: theory and fundamentals, code, math and blueprint reading, OSHA safety, EPA
+          608 exam prep, and licensing-exam prep. The hands-on skills come from an apprenticeship or shop.</p></div></details>
+          <details class="faq-item"><summary>Do I need EPA 608 for HVAC?</summary>
+          <div><p>Yes, if you handle refrigerants. EPA 608 is a federal certification, and you can study for it
+          online. In Massachusetts, refrigeration work also needs a state license.</p></div></details>
+          <details class="faq-item"><summary>How long does it take to get licensed?</summary>
+          <div><p>It varies by trade. As one example, becoming a journeyman electrician in Massachusetts takes
+          about four years — 600 classroom hours and 8,000 hours of supervised work — before you sit for the
+          licensing exam.</p></div></details>
+          <details class="faq-item"><summary>Does Career Skills Center offer trades training?</summary>
+          <div><p>Not yet. Skilled trades training is in development. Join our interest list and we will let you
+          know when it opens.</p></div></details>
+        </div>
 
 """ + related(
     ("Highest-Paying Certifications in Massachusetts (2026)", "blog/highest-paying-certifications-massachusetts.html"),
@@ -2984,13 +3126,24 @@ PAGES.append(dict(
     extrahead=article_ld("blog/can-you-learn-a-trade-online.html",
                          "Can You Learn a Skilled Trade Online? What Works and What Needs Hands-On Time",
                          "What parts of skilled-trades training work online and what still needs hands-on hours.",
-                         "2026-09-25", "2026-09-25"),
+                         "2026-09-25", "2026-09-25") + "\n" + faq_ld([
+        ("Can I get a trade license fully online?",
+         "No. Massachusetts trade licenses require supervised, hands-on hours that cannot be done online. You can study the theory, code, and safety online, but you still need real on-the-job hours."),
+        ("What parts of a trade can I actually learn online?",
+         "The classroom side: theory and fundamentals, code, math and blueprint reading, OSHA safety, EPA 608 exam prep, and licensing-exam prep. The hands-on skills come from an apprenticeship or shop."),
+        ("Do I need EPA 608 for HVAC?",
+         "Yes, if you handle refrigerants. EPA 608 is a federal certification, and you can study for it online. In Massachusetts, refrigeration work also needs a state license."),
+        ("How long does it take to get licensed in a trade?",
+         "It varies by trade. As one example, becoming a journeyman electrician in Massachusetts takes about four years — 600 classroom hours and 8,000 hours of supervised work — before you sit for the licensing exam."),
+        ("Does Career Skills Center offer trades training?",
+         "Not yet. Skilled trades training is in development. Join the interest list and Career Skills Center will let you know when it opens."),
+    ]),
     main=article(
         "Skilled Trades",
         "Can You Learn a Skilled Trade Online? What Works and What Needs Hands-On Time",
         "The theory can be online; the hands-on hours cannot. An honest map of the hybrid path into a licensed "
         "trade.",
-        "September 25, 2026", "6 min read", _p8_body)))
+        "September 25, 2026", "8 min read", _p8_body)))
 
 
 # ---- contact.html ---------------------------------------------------------
