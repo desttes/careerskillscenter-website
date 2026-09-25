@@ -25,3 +25,10 @@ Career Skills Center (Quincy, MA): online career training in Medical Billing & C
 - Don't deploy to the live server without Emilio's explicit OK. Commit locally as restore points.
 - **Pre-deploy check (mandatory):** before any upload to the live server, run `grep -rn -e '\[VERIFY' -e 'DRAFT' --include='*.html' .` on the files being deployed. If anything matches, do not deploy those files; list them in `docs/BUILD_STATUS.md`. Fact decisions live in `docs/VERIFICATION_LOG.md`.
 - Audience reads at roughly an 8th-grade level; many read English as a second language. Keep copy plain.
+
+## Program facts policy (IMPORTANT)
+The program pages (`it-support-specialist.html`, `medical-billing-coding.html`, `skilled-trades.html`, `tuition.html`, `our-programs.html`, `programs.html`, and program answers in `faq.html`) contain **placeholder content**. Lengths, hours, prices, credentials, formats and exam details there are NOT decided and are NOT a source of truth.
+- In the blog, landing pages, emails or any new content, **never state Career Skills Center program details** (length, hours, cost, credential/exam, format, certificate, start dates, VA status).
+- The only allowed statement: Career Skills Center **plans to offer** training in Information Technology and Medical Billing & Coding, and likely Skilled Trades. Details are coming, and readers can join the interest list.
+- Talking about industry credentials in general (for example, what CompTIA Tech+ or AAPC CPC is) is fine, as long as it doesn't imply CSC teaches toward it.
+- Publish dates must be real: use the actual publish date, never a backdated one.

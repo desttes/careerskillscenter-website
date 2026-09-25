@@ -2,10 +2,13 @@
 
 **For:** Claude Code (or any developer) working in the careerskillscenter.com repository
 **From:** Emilio / strategy work in the "ETPL Massachusetts" Claude Project
-**Version:** 1.1 — Sept 24, 2026 (adds docs/content/ pack)
+**Version:** 1.2 — Sept 25, 2026 (program facts policy)
 **Source of truth for strategy:** Project docs `11`, `13`, `18`. This file is the build spec derived from them.
 
 ---
+
+
+> **Update v1.2 (Sept 25, 2026): program facts policy.** The program pages are placeholders. No page built from this brief may state CSC program length, hours, price, credential, format or VA status. §3.4 landing pages: replace "program length/format" with "what the planned program will cover (in general) + join the interest list." See the "Program facts policy" in `CLAUDE.md` and section F of `docs/VERIFICATION_LOG.md`.
 
 ## 0. Read this first — rules for the builder
 

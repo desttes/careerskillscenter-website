@@ -31,8 +31,6 @@
 | **Workforce Training Fund – Express Program:** employer-side. Businesses get reimbursed for training current employees. Administered by Commonwealth Corporation. | commcorp.org/subprogram/wtfp-express-program-guidelines/ |
 | Veterans and eligible spouses get **priority of service** in WIOA programs. | WIOA / U.S. DOL (federal rule) |
 
-## Career Skills Center facts to use (from the site)
-- Medical Billing & Coding: ~11 weeks / 117 hours, 100% online, prepares for AAPC CPC and CPB exams; CSC certificate included, AAPC certification optional and paid separately. (medical-billing-coding.html)
-- IT Support Specialist: online, aligned to CompTIA (see it-support-specialist.html for the exact credential).
-- Skilled Trades: "coming soon."
+## Career Skills Center facts to use
+**None, except this:** Career Skills Center plans to offer training in Information Technology and Medical Billing & Coding, and likely Skilled Trades. Program details (length, cost, credentials, format) are not decided. **Do not use anything from the program pages; they are placeholders.** Point readers to the interest list / contact form instead of program specifics. (Supersedes the earlier version of this section and any program-length or credential notes in files 06–08.)
 - Funding disclosure: CSC is **working toward** approval to accept state training funds (`FUNDING_ETPL_APPROVED = false`).

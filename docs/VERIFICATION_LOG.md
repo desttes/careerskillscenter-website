@@ -92,3 +92,42 @@ The FY27 MA ETPL policy (100 DCS 14.106.2, 9/2/2026) says registered apprentices
 - Do section C. Record the numbers you insert in a new "Applied" section at the bottom of this file.
 - Leave section D edits until Emilio approves (except D1, which is a sourced factual update).
 - Commit, and update `docs/BUILD_STATUS.md`.
+
+---
+
+## F. UPDATE Sept 25, 2026: program facts are placeholders (supersedes A4, A6, A7, D3, D4 and Bucket 1 items 1–3)
+
+Emilio confirmed that the program pages are **fillers**. Nothing about CSC's own programs (length, hours, price, credential, format, certificate, exam fees, VA status) is decided. **The blog must not state any CSC program detail.** The only allowed claim: *CSC plans to offer training in Information Technology and Medical Billing & Coding, and likely Skilled Trades. Details are coming.*
+
+### F1. Sentences to change in the blog
+| Post | Current text | Replace with |
+|---|---|---|
+| can-medical-billing-coding-be-learned-online | "At Career Skills Center, our Medical Billing & Coding program is delivered online, and students earn a Career Skills Center certificate. You can also choose to add the paid AAPC certification exam. [VERIFY…]" | "Career Skills Center is planning a Medical Billing & Coding program. Join our interest list to hear first when details are ready." |
+| can-medical-billing-coding-be-learned-online | CTA "See what our online Medical Billing & Coding program covers, how long it takes, and how to pay for it." | "Interested in training for medical billing and coding? Join our interest list, and we'll let you know when our program opens." (CTA → contact dialog, program = Medical) |
+| can-you-learn-it-support-online | "Our IT Support Specialist program is built around a recognized CompTIA credential and hands-on practice, delivered online. [VERIFY…]" | "Career Skills Center is planning an IT Support program. Join our interest list to hear first when details are ready." |
+| can-you-learn-it-support-online | CTA "See how our online IT Support program works, what certification you train for, and how to pay for it." | "Interested in IT support training? Join our interest list, and we'll let you know when our program opens." (program = Information Technology) |
+| can-you-learn-a-trade-online | "What we are building: Career Skills Center is developing skilled trades training." | OK as is. Make sure nothing after it gives trade names, lengths or dates. |
+| free-job-training-massachusetts | "Veterans benefits… [VERIFY: CSC's VA benefit approval status before advertising.]" | "Veterans benefits. If you served, you may have education benefits (like the GI Bill). The VA's GI Bill Comparison Tool shows which schools are approved." Say nothing about CSC's VA status. |
+| free-job-training-massachusetts, is-wioa-training-free | "Browse our programs to see what we offer." | "Career Skills Center is preparing programs in IT, Medical Billing & Coding and Skilled Trades. Join our interest list." |
+| highest-paying-certifications-massachusetts | "Learn more: Medical Billing & Coding at Career Skills Center…" (and the IT and Trades equivalents); "Explore Our Programs" button | Link to the relevant **blog post** instead (e.g., "Can medical billing and coding be learned online?"). Button → "Join our interest list." |
+| masshire-training-voucher | "Explore Our Programs" button | "Join our interest list" |
+| all 8 posts, disclosure box | "…see your options to pay for training now…" | "…join our interest list, and we'll keep you posted as our programs and funding status develop." (Ways to Pay describes plans that aren't final either.) |
+
+### F2. Publish dates
+Several posts show backdated publish dates (Aug 14, Aug 21, Aug 28, Sept 18, Sept 22) although they were written Sept 24–25. Set **Published** to the real publish date when each post goes live, and remove "Updated" until there's a real update.
+
+### F3. General-industry content is fine
+Explaining CompTIA Tech+/A+, AAPC CPC/CPB, exam prices (AAPC $425/$499), BLS wages and MA license hours stays. That's industry information, not a CSC claim. Just don't write "our program prepares you for…"
+
+### F4. Bucket 1 remaining (Emilio)
+- ~~VA status~~ → not mentioned (F1)
+- ~~IT/Medical program facts~~ → not mentioned (F1)
+- ~~Exam fees included?~~ → not needed for the blog. Still matters for the program pages (see F5).
+- Checklist PDF content (still open)
+- Optional: mention Workforce Pell? (still open)
+
+### F5. Program pages on the LIVE site (Emilio decides)
+The live pages currently state specific prices ($299/$329), lengths (8/11 weeks), hours and credentials that are placeholders. Publishing concrete prices and credentials for programs that don't exist yet is a consumer-protection and credibility risk (and it contradicts itself, e.g., "Exam fees: Free" vs "paid AAPC exam"). Options:
+- **(a) Recommended:** convert each program page to a "Program in development" page: what the career is, what the planned program will generally cover, "details coming soon," and a join-the-interest-list form. Hide the tuition table (or show "Pricing coming soon").
+- **(b)** Keep the pages but add a visible banner: "Planned program. Length, price and credentials are not final and may change."
+Code should not change these pages until Emilio picks (a) or (b).
