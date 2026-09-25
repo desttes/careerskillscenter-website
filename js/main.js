@@ -133,6 +133,118 @@
     });
   });
 
+  /* ---------- "See if you qualify" wizard (qualify.html) ----------
+     Multi-step lead form. One question per screen with a progress bar. It
+     CAPTURES A LEAD and shows a soft-routing message — it never renders a
+     yes/no eligibility verdict (only a MassHire career center can decide that).
+     Self-contained: the form is `.qualify-form` (not `.contact-form`) so the
+     generic handler above ignores it. Posts to submit.php with source=qualify. */
+  const qForm = document.querySelector('.qualify-form');
+  if (qForm) {
+    const steps = Array.from(qForm.querySelectorAll('.qualify-step'));
+    const result = qForm.querySelector('.qualify-result');
+    const fill = qForm.querySelector('.qualify-progress-fill');
+    const label = qForm.querySelector('.qualify-progress-label');
+    const backBtn = qForm.querySelector('.qualify-back');
+    const status = qForm.querySelector('.form-status');
+    const submitBtn = qForm.querySelector('[type="submit"]');
+    let idx = 0;
+
+    const show = (n) => {
+      idx = Math.max(0, Math.min(n, steps.length - 1));
+      steps.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+      const pct = Math.round(((idx + 1) / steps.length) * 100);
+      if (fill) fill.style.width = pct + '%';
+      if (label) label.textContent = 'Step ' + (idx + 1) + ' of ' + steps.length;
+      if (backBtn) backBtn.hidden = idx === 0;
+      const focusable = steps[idx].querySelector('input, select, button');
+      if (focusable) focusable.focus();
+    };
+
+    // Choice steps auto-advance when an option is picked.
+    steps.forEach((step) => {
+      if (!step.dataset.autoadvance) return;
+      step.querySelectorAll('input[type="radio"]').forEach((radio) => {
+        radio.addEventListener('change', () => { if (idx < steps.length - 1) show(idx + 1); });
+      });
+    });
+
+    if (backBtn) backBtn.addEventListener('click', () => show(idx - 1));
+
+    qForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (status) { status.className = 'form-status'; status.textContent = ''; }
+      // Final step holds the required contact fields; let the browser validate them.
+      if (!qForm.checkValidity()) {
+        qForm.reportValidity();
+        return;
+      }
+
+      const data = new FormData(qForm);
+      data.set('page', window.location.pathname);
+      if (submitBtn) submitBtn.disabled = true;
+      if (status) status.textContent = 'Sending…';
+
+      try {
+        const res = await fetch(qForm.action, {
+          method: 'POST', body: data, headers: { Accept: 'application/json' },
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || !json.ok) throw new Error(json.error || 'Submission failed');
+        if (typeof gtag === 'function') gtag('event', 'form_submit', { source: 'qualify' });
+        routeResult(data);
+      } catch (err) {
+        if (status) {
+          status.textContent = 'Sorry, that didn’t send. Please email info@careerskillscenter.com or call (617) 544-7155.';
+          status.classList.add('is-error');
+        }
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+
+    // Soft routing per docs/BUILD_BRIEF.md §3.2. Never a yes/no verdict.
+    function routeResult(data) {
+      const inMA = data.get('live_ma') === 'yes';
+      const situation = data.get('situation');
+      const fundedSituations = ['unemployed', 'laid-off', 'part-low'];
+      const assistance = data.get('assistance') === 'yes';
+      const employer = data.get('employer');
+
+      const fundedFit = inMA && (fundedSituations.indexOf(situation) !== -1 || assistance);
+      const employerFit = employer === 'yes' || employer === 'maybe';
+
+      let head, body;
+      if (fundedFit) {
+        head = 'You may be a good fit for state-funded training.';
+        // FUNDING_ETPL_APPROVED is false: promise the follow-up + start-now options.
+        body = 'An advisor will text you within 1 business day. We’ll also show you options to start now.';
+      } else {
+        head = 'Let’s find the best way for you to pay.';
+        body = 'An advisor will text you within 1 business day.';
+      }
+
+      const setText = (sel, text) => { const el = result.querySelector(sel); if (el) el.textContent = text; };
+      setText('.result-head', head);
+      setText('.result-body', body);
+
+      // Employer line (shown only when relevant). Interim link → Ways to Pay
+      // until employers.html (brief §4) exists.
+      const empLine = result.querySelector('.result-employer');
+      if (empLine) empLine.hidden = !employerFit;
+
+      steps.forEach((s) => s.classList.remove('is-active'));
+      if (fill) fill.style.width = '100%';
+      if (label) label.textContent = '';
+      if (backBtn) backBtn.hidden = true;
+      result.classList.add('is-active');
+      result.setAttribute('tabindex', '-1');
+      result.focus();
+      result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    show(0);
+  }
+
   /* ---------- Footer year ---------- */
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());

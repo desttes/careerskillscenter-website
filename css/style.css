@@ -481,6 +481,52 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 /* Honeypot: hidden from people, tempting to bots. Not display:none (some bots skip those). */
 .hp-field { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
 
+/* ---------- "See if you qualify" wizard (qualify.html) ----------
+   One question per screen, big tap targets, a progress bar. The JS in main.js
+   (feature-detected by .qualify-form) drives step navigation and the result. */
+.qualify-wrap { max-width: 620px; margin-inline: auto; }
+.qualify-progress { margin-bottom: 26px; }
+.qualify-progress-track { height: 8px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.qualify-progress-fill { height: 100%; width: 0; background: var(--yellow); border-radius: 999px; transition: width .3s ease; }
+.qualify-progress-label { font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: .04em; margin: 10px 0 0; }
+.qualify-step { display: none; border: 0; padding: 0; margin: 0; min-inline-size: 0; }
+.qualify-step.is-active { display: block; animation: qfade .25s ease; }
+@keyframes qfade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .qualify-step.is-active { animation: none; } }
+.qualify-step legend, .qualify-q { font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(22px, 3vw, 28px); line-height: 1.25; color: var(--navy); margin: 0 0 6px; padding: 0; border: 0; }
+.qualify-help { color: var(--ink-light); font-size: 15px; margin: 0 0 20px; }
+.qualify-options { display: grid; gap: 12px; border: 0; padding: 0; margin: 0; }
+.qualify-option { position: relative; }
+.qualify-option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.qualify-option label {
+  display: block; padding: 16px 20px; border: 2px solid var(--line); border-radius: var(--radius);
+  background: #fff; color: var(--ink); font-size: 16px; font-weight: 500; cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.qualify-option label:hover { border-color: var(--navy); }
+.qualify-option input:checked + label { border-color: var(--navy); background: rgba(0,59,105,.05); font-weight: 700; }
+.qualify-option input:focus-visible + label { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.qualify-fields { display: grid; gap: 12px; }
+.qualify-fields input, .qualify-fields select {
+  width: 100%; padding: 14px 16px; font: inherit; font-size: 15px;
+  border: 1px solid var(--line); border-radius: var(--radius); background: #fff; color: var(--ink);
+}
+.qualify-fields select { appearance: none; color: var(--muted); }
+.qualify-fields select:valid { color: var(--ink); }
+.qualify-fields input:focus, .qualify-fields select:focus { outline: 2px solid var(--yellow); outline-offset: 1px; }
+.qualify-nav { display: flex; gap: 12px; align-items: center; margin-top: 22px; flex-wrap: wrap; }
+.qualify-back { background: none; border: 0; color: var(--navy); font-weight: 700; font-size: 15px; cursor: pointer; padding: 8px 4px; }
+.qualify-back:hover { color: var(--yellow-dark); }
+.qualify-back[hidden] { display: none; }
+.qualify-result { display: none; }
+.qualify-result.is-active { display: block; }
+.qualify-result .result-icon { width: 56px; height: 56px; color: var(--yellow); margin-bottom: 12px; }
+.qualify-result h2 { font-size: clamp(24px, 3.4vw, 32px); color: var(--navy); margin: 0 0 14px; }
+.qualify-result p { color: var(--ink-light); font-size: 17px; line-height: 1.7; margin: 0 0 16px; }
+.qualify-result .btn { margin-top: 8px; margin-right: 10px; }
+.qualify-disclaimer { font-size: 13px; color: var(--muted); margin-top: 22px; }
+
 .dialog-info { background: var(--navy-dark); padding: clamp(28px, 4vw, 48px); font-size: 15px; }
 .dialog-info h3 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--yellow); margin-bottom: 6px; }
 .dialog-info p { margin-bottom: 22px; }

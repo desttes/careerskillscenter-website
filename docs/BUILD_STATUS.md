@@ -13,12 +13,30 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 - **Blog:** 8 launch posts, all expanded to target length, fact-checked against `VERIFICATION_LOG.md`, program-facts-compliant, real Sept 25 dates. Still marked `<!-- DRAFT -->`. Excluded from deploy until approved.
 - **Option A pre-launch rework** (the whole site): program/tuition/careers/faq/admissions/Ways-to-Pay/about/homepage reworked to "program in development"; site-wide **interest-list form** (routes to the live mailer with `source=interest-list`); `programs.html` → redirect; `llms.txt` updated. Spec acceptance grep clean.
 
-**Not started (later brief work):** nav/footer restructure (§1), `js/site-config.js`, the For Employers pages + reimbursement calculator (§4), `qualify.html` (§3.2), the 4 MA landing pages (§3.4). `outcomes.html` withdrawn (no real graduates).
+- **`qualify.html` (§3.2)** — the "See If You Qualify" 60-second wizard. Built and verified locally, posts to the live mailer with `source=qualify`. **Not yet linked in the nav** (nav restructure §1 is a separate task).
+
+**Not started (later brief work):** nav/footer restructure (§1), `js/site-config.js`, the For Employers pages + reimbursement calculator (§4), the 4 MA landing pages (§3.4). `outcomes.html` withdrawn (no real graduates).
 
 **Immediate next step:** decide whether to deploy the Option A rework + interest form (blog stays excluded). Everything is committed on `main`.
 
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
+
+### 2026-09-25 (later) — Built `qualify.html` — "See If You Qualify" wizard (§3.2) (LOCAL, not deployed)
+Built the first lead magnet: a 6-step, one-question-per-screen wizard with a progress bar. **It captures a lead; it never renders a yes/no eligibility verdict** (only a MassHire career center decides).
+- **`tools/build-pages.py`** — new `qualify.html` page block (title/H1 per brief §3.2) + a small `_q_opts()` helper for the radio option-cards. 6 steps: program · live in MA · work situation · public assistance · would employer pay · contact (first name/mobile/email required, preferred language, SMS consent). Hidden `source=qualify` + honeypot. Steps 1–5 auto-advance on selection.
+- **`js/main.js`** — self-contained wizard module, feature-detected by `.qualify-form` (deliberately **not** `.contact-form`, so the shared handler ignores it). Handles step nav, progress bar, Back, per-step focus; on submit it validates the contact fields, POSTs to `submit.php`, fires GA4 **`form_submit` with `source=qualify`** (brief §2), then reveals a **soft-routing result screen**:
+  - Funded fit (live in MA **and** [unemployed / laid off / part-time-or-low-wage **or** on public assistance]) → "You may be a good fit for state-funded training. An advisor will text you within 1 business day." Because **`FUNDING_ETPL_APPROVED` is false**, it appends "We'll also show you options to start now." (brief §3.2).
+  - Employer = Yes/Maybe → adds the "your employer may be reimbursed by Massachusetts" line.
+  - Otherwise → "Let's find the best way for you to pay. An advisor will text you within 1 business day."
+- **`css/style.css`** — `.qualify-*` styles (progress bar, big tap-target option cards, step show/hide, light-section field styling, result screen).
+- **Verified** (own local server, in-app browser): builds clean (26 pages, sitemap 24 URLs); both routing branches produce the correct copy; empty-contact submit is blocked by native validation; **no console errors**; **no horizontal overflow at 375px**; result screen renders (icon, headline, body, conditional employer line, CTAs, disclaimer). **Mandatory pre-deploy grep clean** on `qualify.html` (no `[VERIFY]`/`DRAFT`); compliance grep clean (no ETPL/WIOA-approval or Express-listing claims).
+- **Decisions / TODOs:**
+  - **`site-config.js` still doesn't exist**, so the `FUNDING_ETPL_APPROVED=false` result copy is written directly in `main.js`. When the config lands, make the two result strings flag-driven.
+  - **`employers.html` (§4) doesn't exist yet** → the result's employer line links to `student-financing.html` (Ways to Pay) as interim. Swap to `employers.html` once §4 is built.
+  - **Not linked in nav yet** — header CTA is still "Get in Touch"/dialog. Brief §1 wants the header CTA changed to "See If You Qualify" → `qualify.html` and an Admissions submenu entry; that's the separate nav-restructure task. `qualify.html` is in the sitemap and reachable by URL now.
+  - Spanish/Portuguese versions are a later TODO (brief §3.2).
+
 
 ### 2026-09-25 (later) — Option A pre-launch rework across the site (LOCAL, not deployed)
 Implemented the full "Program in development" rework from `docs/PRE_LAUNCH_SITE_SPEC.md`, now that the mailer works.

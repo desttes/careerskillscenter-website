@@ -770,6 +770,158 @@ PAGES.append(dict(
 """ + interest_form("unsure", "pricing and program")))
 
 
+# ---- qualify.html ---------------------------------------------------------
+# Lead-magnet #1 (brief §3.2). A 6-step, one-question-per-screen wizard with a
+# progress bar. It CAPTURES A LEAD and shows a soft-routing message — it never
+# renders a yes/no eligibility verdict (only a MassHire career center decides).
+# The wizard behaviour lives in js/main.js (feature-detected by .qualify-form);
+# it posts to the live submit.php mailer with a hidden source=qualify.
+#
+# FUNDING_ETPL_APPROVED is false (js/site-config.js doesn't exist yet), so the
+# result copy uses the not-yet-approved wording ("...options to start now").
+# When the config lands, the result strings in main.js can be flag-driven.
+
+
+def _q_opts(name, opts, autoadvance=True):
+    """Radio-button option cards for one wizard question.
+    `opts` is a list of (value, label). First step gets no pre-selection."""
+    rows = "\n".join(
+        f'''          <div class="qualify-option">
+            <input type="radio" id="{name}-{v}" name="{name}" value="{v}">
+            <label for="{name}-{v}">{lbl}</label>
+          </div>'''
+        for v, lbl in opts)
+    return rows
+
+
+PAGES.append(dict(
+    slug="qualify.html", nav="",
+    title="See If You Qualify for Funded Career Training in Massachusetts",
+    ogtitle="See If You Qualify for Funded Career Training in Massachusetts",
+    desc="Answer 6 quick questions and an advisor will help you find out which training funding you may qualify for in Massachusetts. Takes about 60 seconds.",
+    main="""    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>See If You Qualify</p>
+        <h1>See if you qualify in 60 seconds<span class="dot">.</span></h1>
+        <p class="page-hero-lede">Answer a few quick questions and an advisor will help you find the training
+        funding you may qualify for in Massachusetts. This isn&rsquo;t an application &mdash; there&rsquo;s no
+        cost and no obligation.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <div class="qualify-wrap">
+          <form class="qualify-form" action="submit.php" method="post" novalidate>
+            <input type="hidden" name="source" value="qualify">
+            <input type="text" class="hp-field" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="qualify-progress" aria-hidden="true">
+              <div class="qualify-progress-track"><div class="qualify-progress-fill"></div></div>
+              <p class="qualify-progress-label">Step 1 of 6</p>
+            </div>
+
+            <button type="button" class="qualify-back" hidden>&larr; Back</button>
+
+            <fieldset class="qualify-step" data-autoadvance="1">
+              <legend>Which program interests you?</legend>
+              <p class="qualify-help">Pick the one closest to what you want. You can change your mind later.</p>
+              <div class="qualify-options">
+""" + _q_opts("program", [
+        ("medical", "Medical Billing &amp; Coding"),
+        ("it", "IT Support"),
+        ("trades", "Skilled Trades"),
+        ("unsure", "Not sure yet")]) + """
+              </div>
+            </fieldset>
+
+            <fieldset class="qualify-step" data-autoadvance="1">
+              <legend>Do you live in Massachusetts?</legend>
+              <p class="qualify-help">Most state training funding is for Massachusetts residents.</p>
+              <div class="qualify-options">
+""" + _q_opts("live_ma", [("yes", "Yes"), ("no", "No")]) + """
+              </div>
+            </fieldset>
+
+            <fieldset class="qualify-step" data-autoadvance="1">
+              <legend>What&rsquo;s your current work situation?</legend>
+              <p class="qualify-help">This helps us point you to the right kind of help.</p>
+              <div class="qualify-options">
+""" + _q_opts("situation", [
+        ("unemployed", "Unemployed"),
+        ("laid-off", "Laid off in the last 2 years"),
+        ("part-low", "Working part-time or low wage"),
+        ("full-time", "Working full-time"),
+        ("other", "Other")]) + """
+              </div>
+            </fieldset>
+
+            <fieldset class="qualify-step" data-autoadvance="1">
+              <legend>Do you or your household receive public assistance?</legend>
+              <p class="qualify-help">For example SNAP, TAFDC, SSI or similar. This can open up more options.</p>
+              <div class="qualify-options">
+""" + _q_opts("assistance", [
+        ("yes", "Yes"),
+        ("no", "No"),
+        ("prefer-not", "Prefer not to say")]) + """
+              </div>
+            </fieldset>
+
+            <fieldset class="qualify-step" data-autoadvance="1">
+              <legend>Would your employer pay for training?</legend>
+              <p class="qualify-help">Massachusetts may reimburse employers who train their staff.</p>
+              <div class="qualify-options">
+""" + _q_opts("employer", [
+        ("yes", "Yes"),
+        ("maybe", "Maybe"),
+        ("no", "No"),
+        ("not-working", "I&rsquo;m not working right now")]) + """
+              </div>
+            </fieldset>
+
+            <fieldset class="qualify-step">
+              <legend>Where should the advisor reach you?</legend>
+              <p class="qualify-help">We&rsquo;ll text you within 1 business day. No spam, no pressure.</p>
+              <div class="qualify-fields">
+                <label class="sr-only" for="q-name">First name</label>
+                <input id="q-name" name="name" type="text" placeholder="First name" autocomplete="given-name" required>
+                <label class="sr-only" for="q-phone">Mobile phone</label>
+                <input id="q-phone" name="phone" type="tel" placeholder="Mobile phone" autocomplete="tel" required>
+                <label class="sr-only" for="q-email">Email address</label>
+                <input id="q-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+                <label class="sr-only" for="q-language">Preferred language</label>
+                <select id="q-language" name="language">
+                  <option value="" selected disabled>Preferred language</option>
+                  <option value="English">English</option>
+                  <option value="Espa&ntilde;ol">Espa&ntilde;ol</option>
+                  <option value="Portugu&ecirc;s">Portugu&ecirc;s</option>
+                </select>
+                <label class="consent-row"><input type="checkbox" name="consent" value="yes"> It&rsquo;s OK to
+                text me about training and funding. Message and data rates may apply.</label>
+              </div>
+              <div class="qualify-nav">
+                <button class="btn btn-yellow" type="submit">See my result</button>
+              </div>
+              <p class="form-status" role="status" aria-live="polite"></p>
+            </fieldset>
+
+            <div class="qualify-result" role="status" aria-live="polite">
+              <svg class="result-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <h2 class="result-head">Thanks &mdash; you&rsquo;re on the list.</h2>
+              <p class="result-body">An advisor will text you within 1 business day.</p>
+              <p class="result-employer" hidden>Good news: your employer may be reimbursed by Massachusetts for
+              training you. <a class="link-yellow" href="student-financing.html">See employer-paid options</a>.</p>
+              <a class="btn btn-navy" href="blog/free-job-training-massachusetts.html">Read the funding guide</a>
+              <a class="btn btn-outline-navy" href="student-financing.html">See Ways to Pay</a>
+              <p class="qualify-disclaimer">This tool doesn&rsquo;t decide your funding. Only a MassHire career
+              center can approve state training funds. We&rsquo;ll help you check what you may qualify for.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>"""))
+
+
 # ---- wioa.html ------------------------------------------------------------
 # Section order and layout follow the reference site's WIOA page; the copy is
 # written for Career Skills Center and Massachusetts (MassHire, not Texas).
