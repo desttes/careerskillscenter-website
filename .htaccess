@@ -1,0 +1,22 @@
+# Career Skills Center — redirects (guide mode, GUIDE_MODE_SPEC step 6)
+# Old program / enrollment pages now 301 to the career-field guides and the
+# guide-mode pages. Keep in sync with REDIRECTS in tools/build-pages.py and the
+# "Retired URLs" table in docs/COURSE_CONTENT_REGISTER.md.
+
+<IfModule mod_alias.c>
+  # Old program pages -> career-field guides
+  Redirect 301 /medical-billing-coding.html   /healthcare-careers-massachusetts.html
+  Redirect 301 /it-support-specialist.html    /it-careers-massachusetts.html
+  Redirect 301 /skilled-trades.html           /skilled-trades-careers-massachusetts.html
+
+  # Program hubs -> career paths hub
+  Redirect 301 /our-programs.html             /career-paths.html
+  Redirect 301 /programs.html                 /career-paths.html
+  Redirect 301 /admissions.html               /career-paths.html
+
+  # Enrollment-implying pages -> guide-mode equivalents
+  Redirect 301 /tuition.html                  /student-financing.html
+  Redirect 301 /career-services.html          /about.html
+  Redirect 301 /team.html                     /about.html
+  Redirect 301 /media.html                    /about.html
+</IfModule>

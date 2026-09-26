@@ -150,7 +150,7 @@ def program_cards():
         </div>"""
 
 
-def hero(label, title, lede, img="images/Hero.webp", btn2=("Our Programs", "our-programs.html")):
+def hero(label, title, lede, img="images/Hero.webp", btn2=("Career Paths", "career-paths.html")):
     bg = (f'\n      <div class="page-hero-bg"><img src="{img}" alt="" fetchpriority="high" decoding="async"></div>'
           if img else "")
     return f"""    <section class="page-hero">{bg}
@@ -474,6 +474,46 @@ PAGES = []
 # published until Career Skills Center is an approved Eligible Training
 # Provider on the Massachusetts ETPL.
 ARCHIVED = {"wioa.html", "financial-aid.html"}
+
+# STEP 6 — pages retired in guide mode. Each is emitted as a small 301-style
+# redirect stub (meta refresh + canonical), and .htaccess does the real server
+# 301 (SEO-correct). They're kept out of the sitemap. Their full PAGES entries
+# stay in this file (unused) so the content can be restored if a page returns in
+# course mode. See docs/GUIDE_MODE_SPEC.md step 6 + COURSE_CONTENT_REGISTER.
+REDIRECTS = {
+    "medical-billing-coding.html": "healthcare-careers-massachusetts.html",
+    "it-support-specialist.html":  "it-careers-massachusetts.html",
+    "skilled-trades.html":         "skilled-trades-careers-massachusetts.html",
+    "our-programs.html":           "career-paths.html",
+    "programs.html":               "career-paths.html",
+    "tuition.html":                "student-financing.html",
+    "admissions.html":             "career-paths.html",
+    "career-services.html":        "about.html",
+    "team.html":                   "about.html",
+    "media.html":                  "about.html",
+}
+
+
+def redirect_html(slug, target):
+    """A minimal 301-style stub: canonical + meta refresh to `target`.
+    .htaccess also serves a real 301 for the path; this is the belt-and-suspenders
+    fallback if .htaccess is ever not honored."""
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page moved | Career Skills Center</title>
+  <link rel="canonical" href="https://careerskillscenter.com/{target}">
+  <meta name="robots" content="noindex, follow">
+  <meta http-equiv="refresh" content="0; url={target}">
+</head>
+<body>
+  <p>This page has moved. If you are not redirected, <a href="{target}">continue here</a>.</p>
+  <script>location.replace({target!r});</script>
+</body>
+</html>
+"""
 
 
 # ---- programs.html --------------------------------------------------------
@@ -1927,6 +1967,16 @@ PAGES.append(dict(
             <p>We want to train people who live and work in Massachusetts, strengthening the communities we share.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Career support</p>
+        <h2 class="section-title left">Support that continues after training</h2>
+        <p>Training is only worth it if it leads to a job. As our programs launch, career support &mdash; help
+        with your resume, interview practice and connections to Massachusetts employers &mdash; will be built
+        into every program, not treated as an afterthought.</p>
       </div>
     </section>
 
@@ -3845,9 +3895,17 @@ PAGES.append(dict(
 # WRITE
 # ---------------------------------------------------------------------------
 written = 0
+_seen = set()
 for page in PAGES:
     if page["slug"] in ARCHIVED:
         print("skipped (archived)", page["slug"])
+        continue
+    if page["slug"] in REDIRECTS:
+        # Emit a redirect stub instead of the (now unused) full page body.
+        dest = ROOT / page["slug"]
+        dest.write_text(redirect_html(page["slug"], REDIRECTS[page["slug"]]), encoding="utf-8")
+        print("redirect", page["slug"], "->", REDIRECTS[page["slug"]])
+        _seen.add(page["slug"])
         continue
     header = HEADER
     footer = FOOTER
@@ -3891,8 +3949,8 @@ print("\n%d pages written." % written)
 # SITEMAP  (auto-lists live public pages so search engines / AI can crawl)
 # ---------------------------------------------------------------------------
 SITE = "https://careerskillscenter.com/"
-# Unlinked / deprecated pages kept on disk but left out of the sitemap.
-SITEMAP_EXCLUDE = {"programs.html", "team.html", "media.html"}
+# Redirected + unlinked pages are left out of the sitemap.
+SITEMAP_EXCLUDE = set(REDIRECTS)
 _today = datetime.date.today().isoformat()
 _urls = ['  <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>'
          % (SITE, _today)]
