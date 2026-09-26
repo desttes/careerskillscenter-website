@@ -1288,16 +1288,16 @@ def _q_opts(name, opts, autoadvance=True):
 
 PAGES.append(dict(
     slug="qualify.html", nav="",
-    title="See If You Qualify for Funded Career Training in Massachusetts",
-    ogtitle="See If You Qualify for Funded Career Training in Massachusetts",
-    desc="Answer 6 quick questions and an advisor will help you find out which training funding you may qualify for in Massachusetts. Takes about 60 seconds.",
+    title="Check Your Options for State-Funded Training in Massachusetts | Career Skills Center",
+    ogtitle="Check Your Options for State-Funded Training in Massachusetts",
+    desc="Answer a few quick questions and we'll show you personalized next steps for state-funded career training in Massachusetts. Takes about 60 seconds. No cost, no obligation.",
     main="""    <section class="page-hero">
       <div class="container">
-        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>See If You Qualify</p>
-        <h1>See if you qualify in 60 seconds<span class="dot">.</span></h1>
-        <p class="page-hero-lede">Answer a few quick questions and an advisor will help you find the training
-        funding you may qualify for in Massachusetts. This isn&rsquo;t an application &mdash; there&rsquo;s no
-        cost and no obligation.</p>
+        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>Check Your Options</p>
+        <h1>Find out what training help you may qualify for<span class="dot">.</span></h1>
+        <p class="page-hero-lede">Answer a few quick questions and we&rsquo;ll show you the next steps for
+        state-funded training in Massachusetts. This isn&rsquo;t an application &mdash; there&rsquo;s no cost and
+        no obligation, and only a MassHire career center can approve funding.</p>
       </div>
     </section>
 
@@ -1316,14 +1316,14 @@ PAGES.append(dict(
             <button type="button" class="qualify-back" hidden>&larr; Back</button>
 
             <fieldset class="qualify-step" data-autoadvance="1">
-              <legend>Which program interests you?</legend>
+              <legend>Which field interests you?</legend>
               <p class="qualify-help">Pick the one closest to what you want. You can change your mind later.</p>
               <div class="qualify-options">
-""" + _q_opts("program", [
-        ("medical", "Medical Billing &amp; Coding"),
-        ("it", "IT Support"),
+""" + _q_opts("field", [
+        ("healthcare", "Healthcare"),
+        ("it", "Information Technology"),
         ("trades", "Skilled Trades"),
-        ("unsure", "Not sure yet")]) + """
+        ("unsure", "Not sure")]) + """
               </div>
             </fieldset>
 
@@ -1372,15 +1372,16 @@ PAGES.append(dict(
             </fieldset>
 
             <fieldset class="qualify-step">
-              <legend>Where should the advisor reach you?</legend>
-              <p class="qualify-help">We&rsquo;ll text you within 1 business day. No spam, no pressure.</p>
+              <legend>Where should we send your results?</legend>
+              <p class="qualify-help">We&rsquo;ll show your next steps on the next screen and email you a copy.
+              No spam, no pressure.</p>
               <div class="qualify-fields">
                 <label class="sr-only" for="q-name">First name</label>
                 <input id="q-name" name="name" type="text" placeholder="First name" autocomplete="given-name" required>
-                <label class="sr-only" for="q-phone">Mobile phone</label>
-                <input id="q-phone" name="phone" type="tel" placeholder="Mobile phone" autocomplete="tel" required>
                 <label class="sr-only" for="q-email">Email address</label>
                 <input id="q-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+                <label class="sr-only" for="q-phone">Mobile phone (optional)</label>
+                <input id="q-phone" name="phone" type="tel" placeholder="Mobile phone (optional)" autocomplete="tel">
                 <label class="sr-only" for="q-language">Preferred language</label>
                 <select id="q-language" name="language">
                   <option value="" selected disabled>Preferred language</option>
@@ -1388,25 +1389,46 @@ PAGES.append(dict(
                   <option value="Espa&ntilde;ol">Espa&ntilde;ol</option>
                   <option value="Portugu&ecirc;s">Portugu&ecirc;s</option>
                 </select>
-                <label class="consent-row"><input type="checkbox" name="consent" value="yes"> It&rsquo;s OK to
-                text me about training and funding. Message and data rates may apply.</label>
+                <label class="consent-row"><input type="checkbox" name="consent" value="yes"> Send me updates from
+                Career Skills Center (email/SMS). Message and data rates may apply.</label>
               </div>
               <div class="qualify-nav">
-                <button class="btn btn-yellow" type="submit">See my result</button>
+                <button class="btn btn-yellow" type="submit">See my next steps</button>
               </div>
               <p class="form-status" role="status" aria-live="polite"></p>
             </fieldset>
 
+            <!-- Result screen = personalized OUTWARD next steps. Never a yes/no verdict.
+                 js/main.js fills the text and toggles blocks (see routeResult).
+                 COURSE-DEPENDENT: R-QUALIFY — in course mode the result routes inward
+                 (matching CSC course + funding help), pre-written behind SITE_MODE. -->
             <div class="qualify-result" role="status" aria-live="polite">
               <svg class="result-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <h2 class="result-head">Thanks &mdash; you&rsquo;re on the list.</h2>
-              <p class="result-body">An advisor will text you within 1 business day.</p>
-              <p class="result-employer" hidden>Good news: your employer may be reimbursed by Massachusetts for
-              training you. <a class="link-yellow" href="student-financing.html">See employer-paid options</a>.</p>
-              <a class="btn btn-navy" href="blog/free-job-training-massachusetts.html">Read the funding guide</a>
-              <a class="btn btn-outline-navy" href="student-financing.html">See Ways to Pay</a>
+              <h2 class="result-head">Thanks &mdash; here are your next steps.</h2>
+              <p class="result-body"></p>
+
+              <ol class="result-steps check-list check-list--num" hidden></ol>
+
+              <p class="result-readmore" hidden>Read more: <a class="link-yellow" href="blog/free-job-training-massachusetts.html">Free job training in Massachusetts</a> &middot; <a class="link-yellow" href="blog/wioa-eligibility-massachusetts.html">Who qualifies for WIOA</a> &middot; <a class="link-yellow" href="blog/masshire-training-voucher.html">How to get a MassHire voucher (ITA)</a>.</p>
+
+              <p class="result-employer" hidden>Your employer may be able to get training costs reimbursed by
+              Massachusetts. <a class="link-yellow" href="blog/free-job-training-massachusetts.html">See
+              employer-paid training</a>.</p>
+
+              <p class="result-otherpay" hidden>Here are other ways to pay for training in Massachusetts.
+              <a class="link-yellow" href="student-financing.html">See Ways to Pay</a>.</p>
+
+              <div class="result-actions">
+                <a class="btn btn-navy result-guide" href="career-paths.html">Explore your field</a>
+                <a class="btn btn-outline-navy" href="blog/free-job-training-massachusetts.html">Read the funding guide</a>
+              </div>
+
+              <!-- COURSE-DEPENDENT: R-QUALIFY — guide mode: interest-list line.
+                   Course mode: replace with the matching CSC course + enroll CTA. -->
+              <p class="result-field-note"></p>
+
               <p class="qualify-disclaimer">This tool doesn&rsquo;t decide your funding. Only a MassHire career
-              center can approve state training funds. We&rsquo;ll help you check what you may qualify for.</p>
+              center can approve state training funds. We&rsquo;ll help you understand what you may qualify for.</p>
             </div>
           </form>
         </div>

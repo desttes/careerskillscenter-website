@@ -16,7 +16,7 @@
 | R-IT | `it-careers-massachusetts.html` | same | same | same | COURSES_LIVE.it | `build-pages.py` field_interest("it") + outward_next_step (marked) |
 | R-TR | `skilled-trades-careers-massachusetts.html` | same | same | same | COURSES_LIVE.trades | `build-pages.py` field_interest("trades") + outward_next_step (marked) |
 | R-HUB | `career-paths.html` | Cards | Cards link to guides | Cards show "Now enrolling" badge + course link for live fields | COURSES_LIVE.* | `build-pages.py` career-paths.html (marked) |
-| R-QUALIFY | `qualify.html` + `js/main.js` | Q1 options + result screen | Collects lead, then outward next steps (MassHire, JobQuest, ITA, Section 30) | Result routes inward: matching CSC course + "we'll help with funding"; may restore an advisor follow-up promise if staffed | SITE_MODE, COURSES_LIVE.* | TBD |
+| R-QUALIFY | `qualify.html` + `js/main.js` | Q1 options + result screen | Collects lead, then outward next steps (MassHire, JobQuest, ITA, Section 30) | Result routes inward: matching CSC course + "we'll help with funding"; may restore an advisor follow-up promise if staffed | SITE_MODE, COURSES_LIVE.* | `build-pages.py` qualify.html + `js/main.js` routeResult (marked) |
 | R-PAY | `student-financing.html` | Options | Guide to MA funding options; no CSC terms; "working toward approval" disclosure | Add CSC tuition, payment plan terms, lenders; flip ETPL copy only if `FUNDING_ETPL_APPROVED` | SITE_MODE, FUNDING_ETPL_APPROVED | TBD |
 | R-FAQ | `faq.html` | Program answers | "We plan to launch training; get updates" | Real length, cost, credential, schedule, VA answers | SITE_MODE | TBD |
 | R-ABOUT | `about.html` | Mission + career support paragraph | Future tense | Present tense; instructors, delivery | SITE_MODE | TBD |

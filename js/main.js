@@ -202,35 +202,66 @@
       }
     });
 
-    // Soft routing per docs/BUILD_BRIEF.md §3.2. Never a yes/no verdict.
+    // Field → guide map (GUIDE_MODE_SPEC step 5). Result always routes OUTWARD.
+    const FIELD = {
+      healthcare: { label: 'healthcare', guide: 'healthcare-careers-massachusetts.html' },
+      it:         { label: 'information technology', guide: 'it-careers-massachusetts.html' },
+      trades:     { label: 'the skilled trades', guide: 'skilled-trades-careers-massachusetts.html' },
+      unsure:     { label: 'a new field', guide: 'career-paths.html' },
+    };
+    // The five outward steps for a likely funded fit.
+    const FUNDED_STEPS = [
+      'Find your MassHire Career Center. See the list of locations at <a class="link-yellow" href="https://www.mass.gov/info-details/masshire-career-center-locations" target="_blank" rel="noopener">mass.gov</a> and contact the nearest one.',
+      'Register on JobQuest at <a class="link-yellow" href="https://jobquest.mass.gov" target="_blank" rel="noopener">jobquest.mass.gov</a> — you need an account before you can get training funding.',
+      'Attend a Training Information Meeting at your career center.',
+      'Ask about an Individual Training Account (ITA). If you get unemployment benefits, ask about Section 30.',
+      'Choose a state-approved training program in your field.',
+    ];
+
+    // Soft routing per GUIDE_MODE_SPEC step 5. Never a yes/no verdict; always outward.
     function routeResult(data) {
       const inMA = data.get('live_ma') === 'yes';
       const situation = data.get('situation');
       const fundedSituations = ['unemployed', 'laid-off', 'part-low'];
       const assistance = data.get('assistance') === 'yes';
       const employer = data.get('employer');
+      const field = FIELD[data.get('field')] || FIELD.unsure;
 
       const fundedFit = inMA && (fundedSituations.indexOf(situation) !== -1 || assistance);
       const employerFit = employer === 'yes' || employer === 'maybe';
 
-      let head, body;
+      const setText = (sel, text) => { const el = result.querySelector(sel); if (el) el.textContent = text; };
+      const show = (sel, on) => { const el = result.querySelector(sel); if (el) el.hidden = !on; };
+
+      const stepsList = result.querySelector('.result-steps');
+
       if (fundedFit) {
-        head = 'You may be a good fit for state-funded training.';
-        // FUNDING_ETPL_APPROVED is false: promise the follow-up + start-now options.
-        body = 'An advisor will text you within 1 business day. We’ll also show you options to start now.';
+        setText('.result-head', 'You may qualify for state-funded training.');
+        setText('.result-body', 'Here’s how to start in Massachusetts:');
+        if (stepsList) stepsList.innerHTML = FUNDED_STEPS.map((s) => '<li>' + s + '</li>').join('');
+        show('.result-steps', true);
+        show('.result-readmore', true);
+        show('.result-otherpay', false);
       } else {
-        head = 'Let’s find the best way for you to pay.';
-        body = 'An advisor will text you within 1 business day.';
+        setText('.result-head', 'Let’s find the best way for you to pay.');
+        setText('.result-body', 'You may still qualify for help. Based on your answers, start here:');
+        show('.result-steps', false);
+        show('.result-readmore', false);
+        show('.result-otherpay', true);
       }
 
-      const setText = (sel, text) => { const el = result.querySelector(sel); if (el) el.textContent = text; };
-      setText('.result-head', head);
-      setText('.result-body', body);
+      // Employer line (shown when relevant, in addition to the above).
+      show('.result-employer', employerFit);
 
-      // Employer line (shown only when relevant). Interim link → Ways to Pay
-      // until employers.html (brief §4) exists.
-      const empLine = result.querySelector('.result-employer');
-      if (empLine) empLine.hidden = !employerFit;
+      // Always: link to the picked field guide + interest-list line (COURSE-DEPENDENT).
+      const guideBtn = result.querySelector('.result-guide');
+      if (guideBtn) {
+        guideBtn.setAttribute('href', field.guide);
+        guideBtn.textContent = field.label === 'a new field'
+          ? 'Explore career paths' : 'Explore ' + field.label;
+      }
+      setText('.result-field-note',
+        'We’ll also let you know when Career Skills Center launches training in ' + field.label + '.');
 
       steps.forEach((s) => s.classList.remove('is-active'));
       if (fill) fill.style.width = '100%';
