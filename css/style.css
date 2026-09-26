@@ -810,6 +810,8 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .role-facts dd { margin: 3px 0 0; font-size: 15px; color: var(--ink-light); line-height: 1.55; }
 .role-src { font-size: 12px; color: var(--muted); }
 .role-paynote { display: inline; font-size: 13px; color: var(--muted); }
+/* Space a button/paragraph that follows a checklist (e.g. "Check your funding options"). */
+.check-list + p { margin-top: 28px; }
 .check-list--num { list-style: decimal; padding-left: 22px; }
 .check-list--num li { padding-left: 6px; }
 .check-list--num li::before, .check-list--num li::after { content: none; display: none; }
