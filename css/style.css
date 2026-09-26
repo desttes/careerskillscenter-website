@@ -797,3 +797,20 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .related-title { font-size: 22px; color: var(--navy); margin: 48px 0 6px; }
 .post-grid--related { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 .post-grid--related .post-card h3 { margin-top: 0; }
+
+/* ---------- Career field guide: role cards (GUIDE_MODE_SPEC step 3) ---------- */
+.role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
+.role-card { background: #fff; border: 1px solid #e6e6e6; border-radius: 10px; padding: 24px; }
+.role-name { font-family: "Poppins", sans-serif; font-weight: 700; font-size: 20px; color: var(--navy); margin: 0 0 8px; }
+.role-blurb { font-size: 15px; color: var(--ink-light); margin: 0; }
+.role-facts { margin: 16px 0 0; }
+.role-facts > div { padding: 12px 0; border-top: 1px solid #ededed; }
+.role-facts > div:first-child { border-top: none; padding-top: 0; }
+.role-facts dt { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; }
+.role-facts dd { margin: 3px 0 0; font-size: 15px; color: var(--ink-light); line-height: 1.55; }
+.role-src { font-size: 12px; color: var(--muted); }
+.role-paynote { display: inline; font-size: 13px; color: var(--muted); }
+.check-list--num { list-style: decimal; padding-left: 22px; }
+.check-list--num li { padding-left: 6px; }
+.check-list--num li::before, .check-list--num li::after { content: none; display: none; }
+.check-list--num li strong { display: inline; color: var(--ink); }

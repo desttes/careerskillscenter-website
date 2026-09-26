@@ -170,3 +170,53 @@ These MA figures are used in post #5 (cited "BLS OEWS, May 2025, Massachusetts")
 - Checklist PDF content (A9) — pillar keeps a placeholder.
 - Optional: mention Workforce Pell? (left out for now.)
 - Program-page rework (F5) and the pre-launch site spec (Option A) — not started; separate task.
+
+---
+
+## H. APPLIED by Code — Sept 26, 2026 (guide mode, GUIDE_MODE_SPEC v1.4 steps 3–5)
+
+### H1. BLS OEWS May 2025 Massachusetts median annual wages (for the 3 career-field guides)
+Pulled from the BLS OEWS Query System via the in-app browser (bls.gov still 403s curl; the `oesm25st.zip` download 403s too). Source for every figure: **BLS OEWS, May 2025, Massachusetts** — `data.bls.gov/oes/#/area/2500000/2025`, "Annual median wage" column. Checked 9/26/2026.
+
+**Healthcare**
+| SOC | Occupation (BLS) | MA median | Used on guide as |
+|---|---|---|---|
+| 29-2072 | Medical Records Specialists | $60,350 | Medical billing & coding |
+| 31-9092 | Medical Assistants | $49,460 | Medical assistant |
+| 31-9097 | Phlebotomists | $50,170 | Phlebotomy technician |
+| 29-2052 | Pharmacy Technicians | $46,470 | Pharmacy technician |
+| 29-2031 | Cardiovascular Technologists & Technicians | $105,580 | EKG technician — **broad category; EKG-only roles pay less. Guide states this caveat explicitly.** |
+| 31-1131 | Nursing Assistants | $46,680 | Nurse aide (CNA) |
+| 31-1120 | Home Health & Personal Care Aides | $40,910 | Home health aide |
+| 43-6013 | Medical Secretaries & Administrative Assistants | $50,290 | Medical administrative assistant |
+| 43-3021 | Billing & Posting Clerks | $56,110 | (context on billing roles) |
+
+**IT**
+| SOC | Occupation | MA median | Used as |
+|---|---|---|---|
+| 15-1232 | Computer User Support Specialists | $75,070 | Help desk / user support |
+| 15-1231 | Computer Network Support Specialists | $88,650 | Network support technician |
+| 15-1212 | Information Security Analysts | $136,550 | Cybersecurity — **full-occupation median incl. experienced analysts; entry roles pay less. Guide states this caveat.** |
+| 15-1244 | Network & Computer Systems Administrators | $110,980 | Cloud support (closest category) — **advancement target; entry cloud/help-desk roles start lower. Caveat in guide.** |
+
+**Skilled trades**
+| SOC | Occupation | MA median | Used as |
+|---|---|---|---|
+| 47-2111 | Electricians | $79,420 | Electrician |
+| 49-9021 | HVAC & Refrigeration Mechanics & Installers | $77,300 | HVAC/R technician |
+| 47-2152 | Plumbers, Pipefitters & Steamfitters | $93,880 | Plumber |
+| 51-4121 | Welders, Cutters, Solderers & Brazers | $62,570 | Welder |
+
+### H2. Massachusetts licensing / registration facts (sourced) — used in guide "license" cells
+- **CNA (nurse aide):** MA requires completing a DPH-approved Nurse Aide Training Program (NATP) and passing the state competency evaluation, after which you are listed on the Nurse Aide Registry. Source: mass.gov/nurse-aide-registry-program and mass.gov/info-details/learn-how-to-become-a-certified-nurse-aide-in-massachusetts (DPH, 105 CMR 156). Checked 9/26/2026.
+- **Pharmacy technician:** MA requires a Pharmacy Technician license from the Board of Registration in Pharmacy — required even if nationally certified; must be 18+. Source: mass.gov/how-to/apply-for-a-pharmacy-technician-license and mass.gov/pharmacy-technician-licensing (247 CMR 8). Checked 9/26/2026.
+- **Electrician:** Journeyman (Class B) needs 8,000 hrs practical experience over ≥4 years as an apprentice + the 600-hour Journeyman's Course, then the exam; Board of State Examiners of Electricians. Source: mass.gov/board-of-state-examiners-of-electricians-licensing (237 CMR 13). Checked 9/26/2026.
+- **Plumber:** Apprentice needs ≥5,100 practical clock hours + 300 hrs theory over ~3 years, then the journeyman exam; Board of State Examiners of Plumbers and Gas Fitters. Source: mass.gov/plumber-licensing (248 CMR 11). Checked 9/26/2026.
+- **HVAC/refrigeration:** MA refrigeration technician license (6,000 apprentice hrs, or 450 hrs approved study) **plus** federal EPA 608 (universal CFC) to handle refrigerant. Source: mass.gov "Apply for a Refrigeration Technician License"; EPA 608 (federal). (Matches VERIFICATION_LOG A8/B18.)
+- **Welder:** No statewide Massachusetts welding license; employers use hands-on weld tests and voluntary AWS (American Welding Society) certification. Presented as general industry info (F3).
+- **Voluntary-cert healthcare roles (no MA license):** medical billing & coding (AAPC CPC/CPB, AHIMA CCA), medical assistant (AAMA CMA, AMT RMA), phlebotomy (ASCP, NHA CPT), EKG tech (CCI CET, NHA CET), medical administrative assistant (NHA CMAA), home health aide (agency training). Certifications are voluntary/employer-preferred; presented as general industry info (F3), not as CSC claims and not as state requirements.
+
+### H3. Outward destinations used (verified)
+- MassHire Career Center locations: mass.gov/info-details/masshire-career-center-locations
+- MassHire JobQuest: jobquest.mass.gov
+(both in js/site-config.js as MASSHIRE_LOCATOR / JOBQUEST)
