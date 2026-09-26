@@ -214,7 +214,9 @@ def interest_form(preselect="unsure", program_label="our programs"):
     options = "\n".join(
         f'              <option value="{v}"{" selected" if v == sel else ""}>{label}</option>'
         for v, label in opts)
-    return f"""    <section class="section section--alt" id="interest">
+    return f"""    <!-- COURSE-DEPENDENT: R-IFORM — interest list. In course mode, live fields swap
+         this for an enroll/apply form (COURSES_LIVE.*). -->
+    <section class="section section--alt" id="interest">
       <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Join the interest list</p>
         <h2 class="section-title left">Be first to know</h2>
@@ -455,9 +457,12 @@ def outward_next_step(field_label):
 
 
 def field_interest(field, field_name, human_field):
-    """COURSE-DEPENDENT secondary CTA for a field guide (interest list)."""
-    return (f"""    <!-- COURSE-DEPENDENT: R-{field.upper()} — guide mode routes outward (MassHire/JobQuest)
-         and offers the interest list. In course mode (COURSES_LIVE.{field}=true) replace this
+    """COURSE-DEPENDENT secondary CTA for a field guide (interest list).
+    `field` is one of healthcare/it/trades/hub; the register IDs are R-HC/R-IT/R-TR/R-HUB."""
+    rid = {"healthcare": "HC", "it": "IT", "trades": "TR", "hub": "HUB"}.get(field, field.upper())
+    live = {"healthcare": "healthcare", "it": "it", "trades": "trades", "hub": "*"}.get(field, field)
+    return (f"""    <!-- COURSE-DEPENDENT: R-{rid} — guide mode routes outward (MassHire/JobQuest)
+         and offers the interest list. In course mode (COURSES_LIVE.{live}) replace this
          with a "Train with Career Skills Center" block: course name, details, enroll/apply CTA. -->
 """
             + interest_form(field_name, human_field))
@@ -1830,38 +1835,48 @@ PAGES.append(dict(
 # ---- student-financing.html -----------------------------------------------
 PAGES.append(dict(
     slug="student-financing.html", nav="student-financing.html",
-    title="Ways to Pay | Career Skills Center — Massachusetts",
-    ogtitle="Ways to Pay",
-    desc="How you'll be able to pay for Career Skills Center training: payment plans, employer-paid options, and Massachusetts state funding you may qualify for. Details before enrollment opens.",
-    main=hero("Ways to Pay", "Ways to Pay",
-              "Cost shouldn&rsquo;t be the thing that stops you. Here are the ways we plan to help you pay "
-              "&mdash; and the funding you may qualify for right now.",
-              None) + """
+    title="Ways to Pay for Training in Massachusetts | Career Skills Center",
+    ogtitle="Ways to Pay for Training in Massachusetts",
+    desc="A plain guide to paying for career training in Massachusetts: WIOA/ITA vouchers, Section 30, Donnelly grants, employer-paid training and payment plans. See what you may qualify for.",
+    main=hero("Ways to Pay", "Ways to Pay for Training in Massachusetts",
+              "Cost shouldn&rsquo;t be the thing that stops you. Most people combine more than one source. "
+              "Here&rsquo;s how paying for training works in Massachusetts, and how to check what you may "
+              "qualify for.",
+              None, ("Check Your Options", "qualify.html")) + """
 
     <section class="section">
       <div class="container narrow">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Overview</p>
-        <h2 class="section-title left">Most people combine sources</h2>
-        <p class="lede">Our programs are in development, so payment terms aren&rsquo;t final yet. Here&rsquo;s the
-        shape of what we plan to offer, plus funding that already exists in Massachusetts. We&rsquo;ll publish
-        full terms before enrollment opens.</p>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>State-funded training</p>
+        <h2 class="section-title left">Massachusetts may pay for your training</h2>
+        <p class="lede">Massachusetts runs the system that pays for most career training, through your local
+        MassHire career center. You have to apply and qualify, and only a career center can approve funding
+        &mdash; but many people don&rsquo;t realize they may be eligible.</p>
+        <ul class="check-list">
+          <li><strong>WIOA / Individual Training Account (ITA)</strong>A voucher from your MassHire career center that pays for approved training. Register on JobQuest first, then work with a counselor.</li>
+          <li><strong>Section 30 (for people on unemployment)</strong>If you get unemployment benefits, Section 30 can let you keep collecting while you train full-time. Apply early &mdash; there are deadlines.</li>
+          <li><strong>Donnelly and other state grants</strong>Massachusetts funds training programs through grants like the Senator Kenneth J. Donnelly Workforce Success Grants. These go to organizations, so look for a program funded by one.</li>
+        </ul>
+        <p><a class="btn btn-yellow" href="qualify.html">Check your options</a>
+        <a class="btn btn-outline-navy" href="blog/free-job-training-massachusetts.html">Read the full funding guide</a></p>
       </div>
     </section>
 
     <section class="section section--alt">
       <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Other ways to pay</p>
+        <h2 class="section-title left">Beyond state funding</h2>
         <div class="feature-grid">
           <article class="feature">
-            <h3 class="feature-title">Payment plans</h3>
-            <p>We plan to offer a monthly payment option so you can spread tuition out. Terms will be published with pricing, before you commit to anything.</p>
-          </article>
-          <article class="feature">
             <h3 class="feature-title">Employer-paid training</h3>
-            <p>Ask your employer. Massachusetts employers may be reimbursed for training their staff through the state Workforce Training Fund.</p>
+            <p>Ask your employer. Massachusetts employers can be reimbursed for training their staff through the state Workforce Training Fund (including the Express Program).</p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">State &amp; grant funding</h3>
-            <p>You may qualify for free or low-cost training through a MassHire career center. See our <a class="link-yellow" href="blog/free-job-training-massachusetts.html">funding guide</a>.</p>
+            <h3 class="feature-title">Payment plans</h3>
+            <p>Many training providers offer monthly payment plans so you can spread the cost out. Ask any provider about terms, interest and whether there&rsquo;s a prepayment penalty before you sign.</p>
+          </article>
+          <article class="feature">
+            <h3 class="feature-title">Private lenders</h3>
+            <p>Some students use a career-training loan. Compare the interest rate, total cost and repayment terms carefully, and treat borrowing as a last resort after grants and vouchers.</p>
           </article>
         </div>
       </div>
@@ -1869,14 +1884,24 @@ PAGES.append(dict(
 
     <section class="section">
       <div class="container narrow">
-        <p class="note"><strong>About Career Skills Center and state funding:</strong> Massachusetts offers free
-        training to eligible residents through MassHire career centers. Career Skills Center is working toward
-        approval to accept these funds. We&rsquo;ll help you check what you may qualify for &mdash; but only your
-        MassHire career center can approve funding.</p>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Start here</p>
+        <h2 class="section-title left">How to begin</h2>
+        <ol class="check-list check-list--num">
+          <li>Find your MassHire Career Center at <a class="link-yellow" href="https://www.mass.gov/info-details/masshire-career-center-locations" target="_blank" rel="noopener">mass.gov</a> and contact the nearest one.</li>
+          <li>Register on JobQuest at <a class="link-yellow" href="https://jobquest.mass.gov" target="_blank" rel="noopener">jobquest.mass.gov</a>.</li>
+          <li>Read our guides: <a class="link-yellow" href="blog/free-job-training-massachusetts.html">Free job training in Massachusetts</a> and <a class="link-yellow" href="blog/masshire-training-voucher.html">how to get a MassHire voucher (ITA)</a>.</li>
+        </ol>
+        <!-- COURSE-DEPENDENT: R-PAY — guide mode: no CSC tuition/terms; "working toward
+             approval" disclosure. Course mode: add CSC tuition, payment-plan terms and
+             lenders; flip ETPL copy only if FUNDING_ETPL_APPROVED. -->
+        <p class="note"><strong>About Career Skills Center and state funding:</strong> Career Skills Center is
+        working toward approval to accept state training funds and doesn&rsquo;t have its own courses yet. We can
+        help you understand what you may qualify for &mdash; but only your MassHire career center can approve
+        funding.</p>
       </div>
     </section>
 
-""" + interest_form("unsure", "pricing and funding")))
+""" + interest_form("unsure", "training and funding")))
 
 
 # ---- about.html -----------------------------------------------------------
@@ -1970,6 +1995,9 @@ PAGES.append(dict(
       </div>
     </section>
 
+    <!-- COURSE-DEPENDENT: R-ABOUT — mission + career-support copy is future tense in
+         guide mode. In course mode (SITE_MODE=courses) switch to present tense and add
+         real delivery/instructor details. -->
     <section class="section section--alt">
       <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Career support</p>
@@ -2127,40 +2155,31 @@ PAGES.append(dict(
     slug="faq.html", nav="faq.html",
     title="FAQ | Career Skills Center — Massachusetts",
     ogtitle="Frequently Asked Questions",
-    desc="Answers about Career Skills Center's programs in development, how enrollment will work, funding options, and career support in Massachusetts.",
+    desc="Answers about career training and funding in Massachusetts: how state funding works, how to find your MassHire career center, and when Career Skills Center will launch training.",
     main=hero("FAQ", "Find Answers",
-              "The questions we hear most, answered plainly. If yours is not here, call us at "
-              "(617) 544-7155.",
-              None) + f"""
+              "The questions we hear most about training and funding in Massachusetts, answered plainly. If "
+              "yours is not here, call us at (617) 544-7155.",
+              None, ("Check Your Options", "qualify.html")) + f"""
 
     <section class="section">
       <div class="container">
         <div class="faq">
 
-          <p class="faq-group-title">Programs</p>
-{faq("How long are your programs?", "Our programs are still in development, so lengths are not final. Career training is measured in weeks and months rather than years &mdash; you finish sooner and start earning sooner. We will announce exact lengths before enrollment opens.")}
-{faq("Are classes online or in person?", "We are building online programs for Massachusetts adults. Some fields, like the skilled trades, also require hands-on hours you complete in person through an apprenticeship or shop.")}
-{faq("Do you offer evening or weekend classes?", "We plan to offer schedules that work around a job. Final day, evening and weekend options will be announced before enrollment opens.")}
-{faq("Do I need experience to start?", "No. Our programs are being built for people starting from zero, including career changers who have been out of school for years.")}
-{faq("What certifications will I earn?", "We plan to align each program with an industry-recognized certification. We will confirm which one before enrollment opens.")}
+          <p class="faq-group-title">Careers &amp; training</p>
+{faq("Do I need a college degree to get a good job?", 'Not always. Many jobs in healthcare, IT and the skilled trades are open to people without a four-year degree, and several can be trained for in months. See our <a class="link-yellow" href="career-paths.html">career paths</a> for what each field pays and how to train.')}
+{faq("Can I train online?", 'It depends on the field. Office-based roles like medical billing and IT support are very online-friendly. Hands-on roles &mdash; medical assistant, phlebotomy, and the licensed trades &mdash; can start online but need in-person practice or supervised hours.')}
+{faq("How long does training take?", 'It varies. Some healthcare and IT certificates take a few months, while licensed trades take years of apprenticeship. Each <a class="link-yellow" href="career-paths.html">career guide</a> explains the typical path.')}
 
-          <p class="faq-group-title">Admissions</p>
-{faq("Can I enroll now?", 'Not yet &mdash; enrollment is not open. Our programs are in development. <a class="link-yellow" href="#">Join the interest list</a> on any program page and we will email you the requirements and dates the moment they are set.')}
-{faq("What if I was not great at school?", "Career training is different from traditional academics. It is practical, short, and focused on one skill set at a time. Plenty of people who did not enjoy high school do well in career training.")}
-{faq("How do I get started?", 'Join the interest list for the program you want, or call <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a>. We will let you know the moment enrollment opens.')}
+          <p class="faq-group-title">Paying for training</p>
+{faq("How much does training cost, and how do people pay?", 'It varies by program and provider. Most people combine sources &mdash; state funding, employer help, and sometimes a payment plan. See <a class="link-yellow" href="student-financing.html">Ways to Pay</a>.')}
+{faq("Can Massachusetts pay for my training?", 'You may qualify for funded training through a MassHire career center (a WIOA/ITA voucher). If you get unemployment benefits, ask about Section 30. Only your career center can approve funding. Start with our <a class="link-yellow" href="blog/wioa-eligibility-massachusetts.html">WIOA eligibility guide</a>.')}
+{faq("Where do I actually start?", 'Two free steps: find your MassHire Career Center at <a class="link-yellow" href="https://www.mass.gov/info-details/masshire-career-center-locations" target="_blank" rel="noopener">mass.gov</a>, and register on <a class="link-yellow" href="https://jobquest.mass.gov" target="_blank" rel="noopener">JobQuest</a>. Or take our quick <a class="link-yellow" href="qualify.html">Check Your Options</a> quiz.')}
+{faq("Do you accept VA benefits?", 'Career Skills Center does not have its own courses yet. If you served, you may have education benefits like the GI Bill &mdash; the VA&rsquo;s GI Bill Comparison Tool shows which schools are approved.')}
 
-          <p class="faq-group-title">Tuition &amp; funding</p>
-{faq("How much does it cost?", 'Pricing is in development. We will publish the full cost of each program, including books and exam fees, before enrollment opens. See <a class="link-yellow" href="tuition.html">Tuition</a>.')}
-{faq("What if I cannot afford the tuition?", 'Most people combine sources. We plan to offer payment plans, and you may qualify for state or employer funding. See our guide to <a class="link-yellow" href="blog/free-job-training-massachusetts.html">free job training in Massachusetts</a>.')}
-{faq("Do you accept VA benefits?", "Not at this time. We will update this page if that changes.")}
-{faq("Can I use state or grant funding?", 'You may qualify for funded training through a MassHire career center. Career Skills Center is working toward approval to accept these funds; only your career center can approve funding. Start with our <a class="link-yellow" href="blog/wioa-eligibility-massachusetts.html">WIOA eligibility guide</a>.')}
-
-          <p class="faq-group-title">Career support</p>
-{faq("Will you help me find a job?", 'Career support &mdash; resume help, interview practice and employer connections &mdash; is part of the plan for every program. We will share the details as programs launch. See <a class="link-yellow" href="career-services.html">Career Services</a>.')}
-{faq("Will employers hire me with a certificate instead of a degree?", "In fields like IT and allied health, employers hire on credentials and demonstrated skill. A current certification plus hands-on practice is often what gets you through the door.")}
-
-          <p class="faq-group-title">About us</p>
-{faq("Where are you located?", "Career Skills Center is based in Quincy, MA, and our training is designed to be delivered online across Massachusetts.")}
+          <p class="faq-group-title">About Career Skills Center</p>
+{faq("Does Career Skills Center offer courses right now?", 'Not yet. Career Skills Center plans to offer training in healthcare, IT and the skilled trades. For now, this site is an honest guide to careers and funding in Massachusetts. <!-- COURSE-DEPENDENT: R-FAQ --> Join an interest list on any <a class="link-yellow" href="career-paths.html">career guide</a> and we&rsquo;ll let you know when we launch.')}
+{faq("Do you help employers?", 'Yes. Career Skills Center helps Massachusetts employers get state-funded training for their staff through the Workforce Training Fund Express Program, and handles the grant paperwork. Call us to learn more.')}
+{faq("Where are you located?", "Career Skills Center is based in Quincy, MA, and our guides serve people across Massachusetts.")}
 {faq("How can I reach you?", 'Call <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> or email <a class="link-yellow" href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a>.')}
 
         </div>
@@ -3735,22 +3754,23 @@ PAGES.append(dict(
     </section>
 
     <section class="section section--alt section--tight">
-      <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Visit</p>
-        <h2 class="section-title left">Find Us in Quincy</h2>
-        <div class="map-placeholder">Map embed placeholder — add a Google Maps iframe once the street address is final</div>
-        <div class="feature-grid" style="margin-top: 48px;">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Based in Quincy</p>
+        <h2 class="section-title left">How We Work</h2>
+        <p>Career Skills Center is based in Quincy, Massachusetts, and our guides and support are offered
+        online across the state. The fastest way to reach us is by phone or email &mdash; we usually reply
+        within one business day.</p>
+        <div class="feature-grid" style="margin-top: 40px;">
           <article class="feature">
-            <h3 class="feature-title">By Car</h3>
-            <p><span class="tbd">Directions and parking details TBD once the campus address is confirmed.</span></p>
+            <h3 class="feature-title">Call us</h3>
+            <p><a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a></p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">By MBTA</h3>
-            <p>Quincy is served by the MBTA Red Line. <span class="tbd">Confirm the nearest station and
-            walking time once the address is set.</span></p>
+            <h3 class="feature-title">Email us</h3>
+            <p><a class="link-yellow" href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a></p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">Office Hours</h3>
+            <h3 class="feature-title">Office hours</h3>
             <p>Monday through Friday, 9:00am to 5:00pm. Evening appointments available by request.</p>
           </article>
         </div>

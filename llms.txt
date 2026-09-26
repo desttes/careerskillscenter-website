@@ -1,23 +1,24 @@
 # Career Skills Center
 
-> Career Skills Center is developing online career-focused training for Massachusetts adults in information technology, medical billing and coding, and (planned) the skilled trades. Programs are in development; details, credentials, length and pricing will be announced before enrollment opens. Based in Quincy, MA. Phone: (617) 544-7155. Email: info@careerskillscenter.com.
+> Career Skills Center is an honest guide to career training and funding in Massachusetts. It explains what jobs in healthcare, information technology and the skilled trades pay in Massachusetts, how to train for them, and how the state can help pay for training — and it points people to official state resources (MassHire Career Centers and JobQuest). Career Skills Center is based in Quincy, MA, and plans to offer its own training in healthcare, IT and the skilled trades; enrollment is not open yet. For employers, Career Skills Center helps get state-funded staff training through the Workforce Training Fund Express Program and handles the grant paperwork. Phone: (617) 544-7155. Email: info@careerskillscenter.com.
 
-## Programs (in development)
-- [Our Programs](https://careerskillscenter.com/our-programs.html): Overview of the fields Career Skills Center is developing training for.
-- [Information Technology](https://careerskillscenter.com/it-support-specialist.html): An online IT support program in development for Massachusetts adults. Details coming before enrollment opens.
-- [Medical Billing & Coding](https://careerskillscenter.com/medical-billing-coding.html): An online medical billing and coding program in development for Massachusetts adults. Details coming before enrollment opens.
-- [Skilled Trades](https://careerskillscenter.com/skilled-trades.html): Planned skilled trades training. Coming soon.
+## Career paths (guides to fields in Massachusetts)
+- [Career Paths](https://careerskillscenter.com/career-paths.html): Overview of the fields you can train for in Massachusetts.
+- [Healthcare Careers in Massachusetts](https://careerskillscenter.com/healthcare-careers-massachusetts.html): Jobs, pay (BLS 2025), training paths and licensing for roles like medical billing & coding, medical assistant, phlebotomy, pharmacy tech, CNA and home health aide.
+- [IT Careers in Massachusetts](https://careerskillscenter.com/it-careers-massachusetts.html): Jobs, pay, certifications and training for help desk, networking, cybersecurity and cloud support.
+- [Skilled Trades Careers in Massachusetts](https://careerskillscenter.com/skilled-trades-careers-massachusetts.html): Jobs, pay and Massachusetts licensing for electricians, HVAC/R technicians, plumbers and welders.
 
-## Admissions & Cost
-- [Admissions](https://careerskillscenter.com/admissions.html): How enrollment will work, and how to join the interest list.
-- [Tuition](https://careerskillscenter.com/tuition.html): Pricing coming soon; full costs published before enrollment opens.
-- [Ways to Pay](https://careerskillscenter.com/student-financing.html): Planned payment options, employer-paid training, and state funding you may qualify for.
+## Paying for training
+- [Check Your Options](https://careerskillscenter.com/qualify.html): A quick tool that shows personalized next steps for state-funded training in Massachusetts.
+- [Ways to Pay](https://careerskillscenter.com/student-financing.html): How to pay for training in Massachusetts — WIOA/ITA vouchers, Section 30, grants, employer-paid training and payment plans.
 
 ## About
-- [About](https://careerskillscenter.com/about.html): Mission, focus, and approach.
-- [Career Services](https://careerskillscenter.com/career-services.html): The career support being built into every program.
-- [FAQ](https://careerskillscenter.com/faq.html): Common questions about the programs in development, funding, and how enrollment will work.
-- [Contact](https://careerskillscenter.com/contact.html): Get in touch with the school.
+- [About](https://careerskillscenter.com/about.html): Mission, Quincy base, and what Career Skills Center is building.
+- [FAQ](https://careerskillscenter.com/faq.html): Common questions about training, funding, and when Career Skills Center will launch training.
+- [Contact](https://careerskillscenter.com/contact.html): How to reach Career Skills Center.
 
-## Blog
-- [Blog](https://careerskillscenter.com/blog.html): Plain-language guides to career training and how to pay for it in Massachusetts.
+## Blog (plain-language guides)
+- [Blog](https://careerskillscenter.com/blog.html): Guides to career training and how to pay for it in Massachusetts.
+- [Free Job Training in Massachusetts](https://careerskillscenter.com/blog/free-job-training-massachusetts.html): WIOA, MassHire and state grants explained.
+- [Who Qualifies for WIOA Training in Massachusetts?](https://careerskillscenter.com/blog/wioa-eligibility-massachusetts.html)
+- [How to Get a MassHire Training Voucher (ITA)](https://careerskillscenter.com/blog/masshire-training-voucher.html)
