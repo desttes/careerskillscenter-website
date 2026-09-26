@@ -48,6 +48,10 @@ Built the honest "guide to careers and funding in Massachusetts" that routes peo
 
 **Verification.** Build clean (20 pages + 10 redirect stubs, sitemap 21 URLs). Root-HTML pre-deploy grep **clean** (no `[VERIFY]`/`DRAFT`). PRE_LAUNCH acceptance greps still clean (no $299/$329, 8/11 weeks, 89/117 hrs, FC0-U71, Marcus/David/alumni/graduate). Compliance grep clean (no "WIOA-funded"/"ETPL-approved"/"our course"/Express-listing claims; the only "ETPL-approved" hit is a blog draft describing the state ETPL system generically). No links to retired pages in any live page.
 
+**Post-step-7 tweaks (same session).**
+- Added hero background images to the three field guides (same images as the career-paths cards): healthcare → `images/medicalbilling.webp`, IT → `images/comptia.webp`, trades → `images/electrician.webp`.
+- CSS fix: a button/paragraph directly after a `.check-list` was flush against the last list item (button paragraph had `margin:0`). Added `.check-list + p { margin-top: 28px; }` — fixes the "Check your funding options" spacing on the field guides and the Ways to Pay page.
+
 **Ready for Emilio's review (all local, not deployed):**
 - New pages: `career-paths.html`, `healthcare-careers-massachusetts.html`, `it-careers-massachusetts.html`, `skilled-trades-careers-massachusetts.html`.
 - Reworked: `index.html`, `qualify.html`, `student-financing.html`, `faq.html`, `about.html`, `contact.html`, nav/footer (all pages), `llms.txt`.
