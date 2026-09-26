@@ -2,8 +2,9 @@
 
 Claude Code updates this file at the end of every session. The strategy side (Cowork + the "ETPL Massachusetts" Project) reads it.
 
-## Current state (as of 2026-09-25)
-- Brief being built: `docs/BUILD_BRIEF.md` v1.1, plus `docs/PRE_LAUNCH_SITE_SPEC.md` (Option A) and `docs/VERIFICATION_LOG.md`.
+## Current state (as of 2026-09-26)
+- Now building: **`docs/GUIDE_MODE_SPEC.md` v1.4 (guide mode)**, which supersedes the Option A pre-launch spec. Brief `v1.3` still applies where the guide spec is silent.
+- **Guide-mode steps 1–7 are DONE locally (not deployed).** See the 2026-09-26 session entry below. Steps 8 (For Employers) and 9 (blog CTA rework) are not started.
 
 **LIVE on careerskillscenter.com:**
 - The **contact-form backend** (`submit.php`, cPanel PHP mailer) — leads deliver to `vcanal@careerskillscenter.com`, confirmed working after fixing cPanel Email Routing to Remote (mailboxes are on Namecheap Private Email). GA4 `form_submit` fires.
@@ -21,6 +22,45 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
+
+### 2026-09-26 — Guide mode (GUIDE_MODE_SPEC v1.4) steps 1–7 (LOCAL, not deployed)
+Built the honest "guide to careers and funding in Massachusetts" that routes people **outward** to the state. All work is committed on `main` in seven step-by-step commits and verified in the in-app browser (no console errors, mobile nav works, wizard routing exercised). **Nothing deployed.**
+
+**Step 1 — Groundwork.** New **`js/site-config.js`** — plain global `window.SITE_CONFIG` (alias `CSC`) with `SITE_MODE="guide"`, `COURSES_LIVE={healthcare,it,trades:false}`, the compliance flags (`FUNDING_ETPL_APPROVED`/`EXPRESS_PROVIDER_LISTED=false`), the Express figures (all still VERIFY), and the verified MassHire/JobQuest URLs. Loaded (cache-busted) before `main.js` on every page and on `index.html`.
+
+**Step 2 — Nav + footer** (`index.html`, propagated by build). New menu: **Career Paths** (Healthcare · IT · Skilled Trades · All Career Paths) · **Resources** (Blog · Ways to Pay · Check Your Funding Options · FAQ) · **About** · **Contact**; header button **"Check Your Options" → qualify.html**. Footer mirrors it; broken "Catalog" link removed. (For Employers deliberately omitted until step 8 pages exist.)
+
+**Step 3 — Three career-field guides** (new pages, replace the old program pages):
+- `healthcare-careers-massachusetts.html`, `it-careers-massachusetts.html`, `skilled-trades-careers-massachusetts.html`.
+- Each has an intro, **role cards** (per role: what it is · MA median pay with SOC cited · training path · sourced MA license/cert · honest "train online?"), a shared **how-to-pay** block, an **outward next-step** (MassHire + JobQuest), a **FAQ with FAQPage schema**, an interest-list secondary CTA, and related guides. **No `Course` schema.**
+- **All pay = BLS OEWS May 2025, Massachusetts**, pulled via the in-app browser (bls.gov/oesm25st.zip still 403 curl). Logged in `VERIFICATION_LOG.md` **H1**. EKG tech and entry cyber/cloud carry explicit "broad category / entry pays less" caveats so the numbers aren't misleading.
+- **MA licensing facts sourced** (`VERIFICATION_LOG.md` **H2**): CNA (DPH Nurse Aide Registry), pharmacy tech (Board of Pharmacy license, required even if nationally certified), electrician (8,000 hrs + 600-hr course), plumber (5,100 + 300 hrs), HVAC/refrigeration (state license + EPA 608), welder (no state license; AWS voluntary). Voluntary healthcare certs framed as general industry info.
+
+**Step 4 — `career-paths.html` hub.** Cards for the 3 fields → their guides, plus a "Check Your Options" prompt and interest list. 301 target for our-programs/programs.
+
+**Step 5 — `qualify.html` reworked to an outward funding-options tool.** Title/H1 → "Check Your Options" / "Find out what training help you may qualify for." Q1 → "Which field interests you?" (Healthcare/IT/Skilled Trades/Not sure). Email required, mobile optional, consent reworded. **Removed the "an advisor will text you" promise.** Result screen is **personalized outward next steps** (never a yes/no verdict): funded-fit shows the 5 MassHire/JobQuest/TIM/ITA-Section 30/state-approved-program steps + the 3 funding blog links; employer and other-ways-to-pay branches; always links the chosen field guide + an interest-list line. Logic rewritten in `js/main.js` (`routeResult`); both branches verified.
+
+**Step 6 — Retired pages 301'd.** New **`.htaccess`** with server 301s + meta-refresh/canonical stubs (generated from a `REDIRECTS` map in `build-pages.py`) for: medical-billing-coding, it-support-specialist, skilled-trades, our-programs, programs, tuition, admissions, career-services, team, media. All dropped from the sitemap; a career-support paragraph was folded into `about.html`. Verified a stub redirects (tuition → student-financing).
+
+**Step 7 — Remaining pages.** `index.html` reframed to "your guide to careers & funding in MA" (guide hero, how-funding section, latest guides, interest band; metadata updated). `student-financing.html` = full **Ways to Pay for Training in Massachusetts** guide (WIOA/ITA, Section 30, grants, employer-paid/Express, payment plans, private lenders, outward links, disclosure kept). `faq.html` rewritten around the guide. `contact.html` campus/parking placeholders removed. `llms.txt` rewritten as a MA career-and-funding guide.
+
+**Course-dependent tracking.** `docs/COURSE_CONTENT_REGISTER.md` is current: every built row (R-NAV, R-HOME, R-HC, R-IT, R-TR, R-HUB, R-QUALIFY, R-PAY, R-FAQ, R-ABOUT, R-IFORM) has a matching `<!-- COURSE-DEPENDENT: R-xx -->` marker in source, with the "Location in source" column filled. R-LLMS lives in `llms.txt` (tracked there). R-BLOG/R-EMP/R-SCHEMA belong to steps 8–9 and are not marked yet.
+
+**Verification.** Build clean (20 pages + 10 redirect stubs, sitemap 21 URLs). Root-HTML pre-deploy grep **clean** (no `[VERIFY]`/`DRAFT`). PRE_LAUNCH acceptance greps still clean (no $299/$329, 8/11 weeks, 89/117 hrs, FC0-U71, Marcus/David/alumni/graduate). Compliance grep clean (no "WIOA-funded"/"ETPL-approved"/"our course"/Express-listing claims; the only "ETPL-approved" hit is a blog draft describing the state ETPL system generically). No links to retired pages in any live page.
+
+**Ready for Emilio's review (all local, not deployed):**
+- New pages: `career-paths.html`, `healthcare-careers-massachusetts.html`, `it-careers-massachusetts.html`, `skilled-trades-careers-massachusetts.html`.
+- Reworked: `index.html`, `qualify.html`, `student-financing.html`, `faq.html`, `about.html`, `contact.html`, nav/footer (all pages), `llms.txt`.
+- New infra: `js/site-config.js`, `.htaccess`, 10 redirect stubs.
+- Sources: `VERIFICATION_LOG.md` H1/H2.
+
+**Open TODOs / notes for Emilio:**
+- **Deploy is not done** (per instructions). When deploying: also upload `.htaccess` and `js/site-config.js`, and re-`chmod 644`. The auto-generated `sitemap.xml` lists the 8 blog drafts — keep excluding blog (and use the blog-free sitemap) until the drafts are approved, as before.
+- **Express Program figures in `site-config.js` are still VERIFY** with express@commcorp.org (needed for step 8 employer pages/calculator, not used in steps 1–7).
+- **Steps 8 (For Employers) and 9 (blog CTA rework) not started.** In step 9, the 8 blog posts' CTAs should be repointed to the field guides / `qualify.html` / MassHire (currently interim to contact/interest), and CSC mentions marked COURSE-DEPENDENT (R-BLOG).
+- The old full page bodies for the retired program/enrollment pages remain in `build-pages.py` (unused, behind the `REDIRECTS` map) so they can be restored in course mode.
+
+### 2026-09-25 (previous work below) —
 
 ### 2026-09-25 (later) — Built `qualify.html` — "See If You Qualify" wizard (§3.2) (LOCAL, not deployed)
 Built the first lead magnet: a 6-step, one-question-per-screen wizard with a progress bar. **It captures a lead; it never renders a yes/no eligibility verdict** (only a MassHire career center decides).
