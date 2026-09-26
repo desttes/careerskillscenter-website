@@ -29,10 +29,12 @@ DIALOG = block(r'<dialog class="contact-dialog".*?</dialog>')
 # fetch the current version after a change (no hard-refresh needed).
 CSS_VER = str(int((ROOT / "css" / "style.css").stat().st_mtime))
 JS_VER = str(int((ROOT / "js" / "main.js").stat().st_mtime))
+CFG_VER = str(int((ROOT / "js" / "site-config.js").stat().st_mtime))
 
 # index.html isn't regenerated, so keep its own asset links stamped here.
 _stamped = re.sub(r'(href="css/style\.css)(\?v=\d+)?"', r'\1?v=%s"' % CSS_VER, home)
 _stamped = re.sub(r'(src="js/main\.js)(\?v=\d+)?"', r'\1?v=%s"' % JS_VER, _stamped)
+_stamped = re.sub(r'(src="js/site-config\.js)(\?v=\d+)?"', r'\1?v=%s"' % CFG_VER, _stamped)
 if _stamped != home:
     (ROOT / "index.html").write_text(_stamped, encoding="utf-8")
     home = _stamped
@@ -90,6 +92,7 @@ PAGE = """<!DOCTYPE html>
 
 @@DIALOG@@
 
+  <script src="js/site-config.js?v=@@CFGVER@@" defer></script>
   <script src="js/main.js?v=@@JSVER@@" defer></script>
 </body>
 </html>
@@ -3353,7 +3356,8 @@ for page in PAGES:
             .replace("@@DIALOG@@", DIALOG)
             .replace("@@MAIN@@", page["main"])
             .replace("@@CSSVER@@", CSS_VER)
-            .replace("@@JSVER@@", JS_VER))
+            .replace("@@JSVER@@", JS_VER)
+            .replace("@@CFGVER@@", CFG_VER))
 
     # Pages in a subdirectory (e.g. blog/<slug>.html) need every relative link in
     # the shared chrome and body rewritten one level up so it still resolves.
