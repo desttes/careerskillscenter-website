@@ -1,5 +1,7 @@
 # Pre-Launch Site Spec — "Programs in development" (Option A)
 
+> **SUPERSEDED in part (Sept 26, 2026)** by `docs/GUIDE_MODE_SPEC.md` (v1.4). The global honesty rules and the acceptance greps below still apply. The page-by-page plan (program pages "in development," tuition/admissions kept, program-specific interest form) is replaced by the guide-mode plan.
+
 **From:** strategy side (Cowork), Sept 25, 2026 · **Decision by Emilio:** Option A
 **For:** Claude Code. Implement through `tools/build-pages.py` / `index.html` as usual. Don't deploy until Emilio approves, and run the pre-deploy check in `CLAUDE.md`.
 

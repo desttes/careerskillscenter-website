@@ -2,11 +2,13 @@
 
 **For:** Claude Code (or any developer) working in the careerskillscenter.com repository
 **From:** Emilio / strategy work in the "ETPL Massachusetts" Claude Project
-**Version:** 1.3 — Sept 25, 2026 (pre-launch site mode)
+**Version:** 1.4 — Sept 26, 2026 (guide mode)
 **Source of truth for strategy:** Project docs `11`, `13`, `18`. This file is the build spec derived from them.
 
 ---
 
+
+> **Update v1.4 (Sept 26, 2026): guide mode (Emilio's decision). Read `docs/GUIDE_MODE_SPEC.md` first; it overrides this brief where they conflict.** No ghost courses. The site is a guide to MA careers and funding that sends people outward to the state; course mode comes later. Changes to this brief: §1 nav replaced (Career Paths / For Employers / Resources / About / Contact; header button "Check Your Options"); the 3 program pages become career field guides (healthcare, not "Medical Billing & Coding"); §3.4 MA landing pages are merged into those guides; `qualify.html` is kept but routes outward (no "advisor will text you" promise); tuition/admissions/career-services/team/media are retired with 301s; §4 employer copy = "we help you get state-funded training and handle the paperwork," never "our course"; `clinic-billing-training.html` on hold. Track course-dependent copy in `docs/COURSE_CONTENT_REGISTER.md`.
 
 > **Update v1.3 (Sept 25, 2026):** Pre-launch site mode, Option A (Emilio's decision). Implement `docs/PRE_LAUNCH_SITE_SPEC.md` **before** the rest of this brief: program pages become "Program in development," fake testimonials are removed, and an interest-list form is the main CTA.
 
