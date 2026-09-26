@@ -257,3 +257,37 @@ matching the owner's guidance that state-sponsored IT certificate roles top out 
 ### I3. New CSS
 Added a self-contained `.ladder` component to `css/style.css` (guarded; braces balanced). All other new
 content reuses existing tested components (`.program-items`, `.data-table`, `.check-list--num`, `.note`).
+
+---
+
+## I (REVISED) — Sept 26, 2026: pay claims re-sourced to BLS (supersedes the aggregator numbers above)
+
+Emilio flagged that his "$25–$40/hr" was only an example and that crowdsourced salary sites are not authoritative.
+Correct. All entry-level pay claims on the four Career Paths pages were rewritten to use **BLS Occupational
+Outlook Handbook (OOH), May 2025** figures (national median, lowest-10%/highest-10%, and typical entry-level
+education), fetched 9/26/2026. The ZipRecruiter/Indeed numbers and the "$20–$40/hr" and "$25/hr apprentice"
+lines were removed.
+
+**BLS OOH, May 2025 (national) — figures now used:**
+| Occupation | Median | Lowest 10% | Entry education (BLS) | Source |
+|---|---|---|---|---|
+| Computer user support specialists | $61,860 | under $40,980 | Some college, or HS diploma + IT certifications | bls.gov/ooh/.../computer-support-specialists.htm |
+| Computer network support specialists | $76,220 | under $47,120 | Associate's typical | same |
+| Information security analysts | $129,180 | under $75,090 | Bachelor's + prior experience | bls.gov/ooh/.../information-security-analysts.htm |
+| Software developers | $135,980 | under $82,460 | Bachelor's | bls.gov/ooh/.../software-developers.htm |
+| Medical records specialists (billing/coding) | $51,140 | under $37,000 | Postsecondary nondegree award | bls.gov/ooh/healthcare/medical-records-and-health-information-technicians.htm |
+| Nursing assistants (CNA) | $42,260 | under $33,940 | State-approved program + competency exam | bls.gov/ooh/healthcare/nursing-assistants.htm |
+| Phlebotomists | $45,230 | under $35,780 | Postsecondary nondegree award | bls.gov/ooh/healthcare/phlebotomists.htm |
+| Medical assistants | $45,690 | under $36,050 | Postsecondary certificate | bls.gov/ooh/healthcare/medical-assistants.htm |
+| Electricians | $63,190 | under $42,640 | HS diploma; 4–5 yr apprenticeship; state license | bls.gov/ooh/.../electricians.htm |
+| Plumbers, pipefitters, steamfitters | $63,800 | under $44,150 | HS diploma; 4–5 yr apprenticeship | bls.gov/ooh/.../plumbers-pipefitters-and-steamfitters.htm |
+| HVAC/R mechanics & installers | $61,010 | under $40,050 | Postsecondary nondegree award; apprenticeship | bls.gov/ooh/.../heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm |
+
+MA-specific medians on the role cards remain as logged in H1 (BLS OEWS May 2025, Massachusetts). The IT "honest
+word on pay" note now makes Emilio's point with sources: user support is entry-level (some college / HS + certs,
+median $61,860, lowest 10% under $40,980), while the six-figure IT roles (info security analyst, software
+developer) require a bachelor's and/or experience. Apprenticeship structure (4–5 yr, ~2,000 hrs paid OJT/yr)
+is from the BLS OOH trade pages, replacing the aggregator apprentice-wage figure.
+
+Note: BLS OOH slugs matter — nursing-assistants.htm (not ...-and-orderlies) and
+medical-records-and-health-information-technicians.htm (not medical-records-specialists) are the working URLs.

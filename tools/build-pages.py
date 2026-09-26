@@ -943,12 +943,7 @@ PAGES.append(dict(
         certification (for example AAPC CPC/CPB or AHIMA CCA for coding, AAMA CMA or AMT RMA for medical
         assistants, or ASCP or NHA for phlebotomy) isn&rsquo;t required by law, but it&rsquo;s what many
         employers look for.</p>
-        <p class="note"><strong>An honest word on pay.</strong> The medians above are for all workers in each
-        job, including experienced ones. Starting out, Massachusetts pay is lower &mdash; for example,
-        entry-level CNAs run about <strong>$18&ndash;$25 an hour</strong> and entry-level phlebotomists about
-        <strong>$17&ndash;$26 an hour</strong> (2026 job-market data). These are short certificate paths, not
-        nursing degrees; pay grows with experience, added skills, and stepping up to roles like medical
-        assistant, coding, or further nursing training.</p>
+        <p class="note"><strong>An honest word on pay.</strong> The Massachusetts medians above include experienced workers; beginners earn less. Nationally, the lowest-paid 10% of nursing assistants earn under $33,940, phlebotomists under $35,780, medical assistants under $36,050, and medical records specialists under $37,000 (BLS, May 2025). These are short, postsecondary certificate paths &mdash; a nursing assistant, for example, finishes a state-approved program and a competency exam, not a college degree (BLS) &mdash; so pay grows with experience and with stepping up to higher roles or further nursing training.</p>
       </div>
     </section>
 """ + pay_for_training_block() + outward_next_step("a healthcare career") + """
@@ -1073,7 +1068,7 @@ PAGES.append(dict(
             <p>Where almost everyone begins. You learn to set up computers, fix everyday problems, and help
             people use software and networks. State-funded IT courses are short certificate programs aimed at
             this rung &mdash; they get you in the door, not straight to a senior salary.</p>
-            <div class="ladder-meta"><span><strong>Train for:</strong> CompTIA Tech+ (FC0-U71), then CompTIA A+</span><span><strong>MA starting pay:</strong> about $20&ndash;$31/hr</span></div>
+            <div class="ladder-meta"><span><strong>Train for:</strong> CompTIA Tech+ (FC0-U71), then CompTIA A+</span><span><strong>Entry pay:</strong> lowest 10% under ~$41,000/yr; MA median $75,070 (BLS)</span></div>
           </article>
           <article class="ladder-step">
             <p class="ladder-rank">Next step &middot; builds on the basics</p>
@@ -1106,13 +1101,7 @@ PAGES.append(dict(
             <div class="ladder-meta"><span><strong>Train through:</strong> a bootcamp or structured self-study, plus a project portfolio</span></div>
           </article>
         </div>
-        <p class="note"><strong>An honest word on pay.</strong> State-funded IT courses are short certificates,
-        not four-year degrees. They get you onto the help desk, where Massachusetts pay usually starts around
-        <strong>$20&ndash;$31 an hour</strong> and, with a few years and added certifications, climbs toward the
-        state medians of roughly $36/hr for support and $42/hr for network work (BLS OEWS, May 2025; entry
-        ranges from 2026 Massachusetts job-market data). The six-figure IT salaries you see advertised sit on
-        the higher rungs &mdash; cybersecurity, cloud and programming &mdash; which expect prior experience or a
-        degree. It&rsquo;s a real, well-paid career; just plan to start on the help desk and climb.</p>
+        <p class="note"><strong>An honest word on pay.</strong> The Massachusetts medians above are what people earn across a whole career, not what a beginner makes. Nationally, computer user support specialists have a median of $61,860, and the lowest-paid 10% earn under $40,980 &mdash; roughly where a first help-desk job sits (BLS, May 2025). Just as important, that is the rung a short certificate prepares you for: BLS lists the typical entry education for user support as some college, or a high-school diploma plus IT certifications &mdash; not a four-year degree. The IT jobs that pay six figures are a different tier &mdash; information security analysts (median $129,180) and software developers (median $135,980) both typically require a bachelor&rsquo;s degree, and security roles also expect prior IT experience. A state-funded certificate is a real way onto the ladder; plan to start on the help desk and add certifications and experience to climb.</p>
       </div>
     </section>
 """ + pay_for_training_block() + outward_next_step("an IT career") + """
@@ -1230,9 +1219,7 @@ PAGES.append(dict(
           <li><strong>Learn the theory.</strong> Code, safety, math and how systems work &mdash; this part can
           be online or in a classroom. Many people also do OSHA 10 or 30 safety training here, and, for
           HVAC/refrigeration, prep for the federal EPA 608 certification.</li>
-          <li><strong>Get into a registered apprenticeship.</strong> You work under a licensed tradesperson and
-          earn a wage while you build the supervised hours the state requires. In Massachusetts an apprentice
-          electrician earns about $25 an hour on average while training.</li>
+          <li><strong>Get into a registered apprenticeship.</strong> You work under a licensed tradesperson and earn a paid wage while you build the supervised hours the state requires. BLS describes trade apprenticeships as 4- to 5-year programs with about 2,000 hours of paid on-the-job training each year.</li>
           <li><strong>Log your hours and classroom time.</strong> Each trade sets its own mix of on-the-job
           hours and classroom hours (see the table below).</li>
           <li><strong>Pass the state exam and get licensed.</strong> Once you meet the hours and pass the exam
@@ -1257,11 +1244,7 @@ PAGES.append(dict(
         is the supervised, hands-on hours the state requires &mdash; those happen on real job sites under a
         licensed tradesperson. Treat online study as the classroom half of an apprenticeship, not a replacement
         for it.</p>
-        <p class="note"><strong>An honest word on pay.</strong> Apprentices earn while they learn &mdash; in
-        Massachusetts an apprentice electrician averages about <strong>$25 an hour</strong> &mdash; and pay
-        rises as you log hours and pass exams. Licensed journeymen earn much more: the Massachusetts medians are
-        about $79,420 for electricians, $77,300 for HVAC/R, and $93,880 for plumbers (BLS OEWS, May 2025). The
-        trade-off is time: licensing takes years, not months.</p>
+        <p class="note"><strong>An honest word on pay.</strong> You earn while you train &mdash; BLS describes trade apprenticeships as paid on-the-job training, with pay rising each year as you progress. Licensed tradespeople earn well: the Massachusetts medians are about $79,420 for electricians, $93,880 for plumbers and $77,300 for HVAC/R (BLS OEWS, May 2025). Beginners start lower &mdash; nationally the lowest-paid 10% in those trades earn under roughly $40,000&ndash;$44,000 &mdash; and the trade-off is time: a license takes a 4- to 5-year apprenticeship, not a few months.</p>
       </div>
     </section>
 """ + pay_for_training_block() + outward_next_step("a career in the trades") + """
