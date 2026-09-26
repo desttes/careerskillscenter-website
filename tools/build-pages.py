@@ -1095,6 +1095,73 @@ PAGES.append(dict(
 """))
 
 
+# ---- career-paths.html (STEP 4 — hub; 301 target for our-programs/programs) --
+PAGES.append(dict(
+    slug="career-paths.html", nav="career-paths.html",
+    title="Career Paths in Massachusetts: Explore Fields You Can Train For | Career Skills Center",
+    ogtitle="Career Paths in Massachusetts",
+    desc="Explore careers you can train for in Massachusetts — healthcare, information technology and the skilled trades. See what each field pays and how to train.",
+    main=hero("Career Paths", "Career Paths in Massachusetts",
+              "Explore careers you can train for in Massachusetts. Each guide covers what the jobs pay, how "
+              "to train, and how to get help paying for it.",
+              None, ("Check Your Options", "qualify.html")) + """
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Explore the fields</p>
+        <h2 class="section-title left">Choose a field</h2>
+        <!-- COURSE-DEPENDENT: R-HUB — guide mode: cards link to field guides. In
+             course mode, show a "Now enrolling" badge + course link for live fields
+             (COURSES_LIVE.*). -->
+        <div class="pcard-grid">
+
+          <article class="pcard">
+            <img src="images/medicalbilling.webp" alt="Healthcare worker" class="pcard-media" loading="lazy" decoding="async">
+            <div class="pcard-body">
+              <h3 class="pcard-title">Healthcare</h3>
+              <span class="pcard-rule" aria-hidden="true"></span>
+              <p>Billing and coding, medical assistant, phlebotomy, pharmacy tech, CNA and more &mdash; steady work, often trainable in months, some fully online.</p>
+              <a class="btn btn-outline-navy" href="healthcare-careers-massachusetts.html">Explore healthcare</a>
+            </div>
+          </article>
+
+          <article class="pcard">
+            <img src="images/comptia.webp" alt="IT support technician at work" class="pcard-media" loading="lazy" decoding="async">
+            <div class="pcard-body">
+              <h3 class="pcard-title">Information Technology</h3>
+              <span class="pcard-rule" aria-hidden="true"></span>
+              <p>Help desk, networking, cybersecurity and cloud &mdash; a common way into a well-paid tech career without a four-year degree.</p>
+              <a class="btn btn-outline-navy" href="it-careers-massachusetts.html">Explore IT</a>
+            </div>
+          </article>
+
+          <article class="pcard">
+            <img src="images/electrician.webp" alt="Electrician at work" class="pcard-media" loading="lazy" decoding="async">
+            <div class="pcard-body">
+              <h3 class="pcard-title">Skilled Trades</h3>
+              <span class="pcard-rule" aria-hidden="true"></span>
+              <p>Electrician, HVAC/R, plumber and welder &mdash; licensed trades that pay well in Massachusetts and can&rsquo;t be shipped overseas.</p>
+              <a class="btn btn-outline-navy" href="skilled-trades-careers-massachusetts.html">Explore the trades</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Not sure yet?</p>
+        <h2 class="section-title left">See what help you may qualify for</h2>
+        <p>Answer a few quick questions and we&rsquo;ll point you to the right next steps for state-funded
+        training in Massachusetts &mdash; no cost, no obligation.</p>
+        <p><a class="btn btn-yellow" href="qualify.html">Check your options</a></p>
+      </div>
+    </section>
+
+""" + field_interest("hub", "unsure", "training in these fields")))
+
+
 # ---- admissions.html ------------------------------------------------------
 PAGES.append(dict(
     slug="admissions.html", nav="admissions.html",
