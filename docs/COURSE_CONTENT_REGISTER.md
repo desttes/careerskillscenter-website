@@ -10,7 +10,7 @@
 
 | ID | Page / file | Section | Now (guide mode) | When a course launches (course mode) | Switch | Location in source |
 |---|---|---|---|---|---|---|
-| R-NAV | `index.html` header + footer | Menu | "Career Paths" → field guides; button "Check Your Options" → qualify | Add a "Courses" or per-field "Train with us" item; decide header button | SITE_MODE | TBD |
+| R-NAV | `index.html` header + footer | Menu | "Career Paths" → field guides; button "Check Your Options" → qualify | Add a "Courses" or per-field "Train with us" item; decide header button | SITE_MODE | `index.html` (nav-list + footer-links, marked) |
 | R-HOME | `index.html` | Hero + sections | "Your guide to career training and funding in MA"; interest list as secondary CTA | Feature live courses; primary CTA inward | SITE_MODE | TBD |
 | R-HC | `healthcare-careers-massachusetts.html` | "Get updates" block + Next step | Outward: MassHire + JobQuest; interest list "when we launch" | "Train with Career Skills Center" block: course name, details, enroll/apply CTA | COURSES_LIVE.healthcare | TBD |
 | R-IT | `it-careers-massachusetts.html` | same | same | same | COURSES_LIVE.it | TBD |
