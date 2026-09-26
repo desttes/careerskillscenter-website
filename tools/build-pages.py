@@ -826,7 +826,7 @@ PAGES.append(dict(
               "Healthcare is one of the largest and steadiest parts of the Massachusetts economy. Many roles "
               "don&rsquo;t need a four-year degree, and several can be trained for in months. Here&rsquo;s what "
               "the jobs pay, how to train, and how to get help paying for it.",
-              None, ("Check Your Options", "qualify.html")) + """
+              "images/medicalbilling.webp", ("Check Your Options", "qualify.html")) + """
 
     <section class="section">
       <div class="container narrow">
@@ -956,7 +956,7 @@ PAGES.append(dict(
               "Information technology is a common way into a stable, well-paid career without a four-year "
               "degree. Most people start on the help desk. Here&rsquo;s what IT roles pay in Massachusetts, "
               "which certifications to start with, and how to pay for training.",
-              None, ("Check Your Options", "qualify.html")) + """
+              "images/comptia.webp", ("Check Your Options", "qualify.html")) + """
 
     <section class="section">
       <div class="container narrow">
@@ -1063,7 +1063,7 @@ PAGES.append(dict(
               "The trades pay well, can&rsquo;t be shipped overseas, and are hiring across Massachusetts. They "
               "are also hands-on and licensed by the state. Here&rsquo;s what the work pays, how licensing "
               "works, and how to pay for training.",
-              None, ("Check Your Options", "qualify.html")) + """
+              "images/electrician.webp", ("Check Your Options", "qualify.html")) + """
 
     <section class="section">
       <div class="container narrow">
