@@ -220,3 +220,40 @@ Pulled from the BLS OEWS Query System via the in-app browser (bls.gov still 403s
 - MassHire Career Center locations: mass.gov/info-details/masshire-career-center-locations
 - MassHire JobQuest: jobquest.mass.gov
 (both in js/site-config.js as MASSHIRE_LOCATOR / JOBQUEST)
+
+---
+
+## I. APPLIED by Code — Sept 26, 2026 (deeper career-guide content)
+
+Expanded the four Career Paths pages (career-paths hub, healthcare, IT, skilled trades) with training-pathway
+content the guides were missing: an IT certification ladder, a healthcare "choose by work setting" section, a
+skilled-trades "how you get in" (theory + apprenticeship) section with a per-trade licensing table, and a
+"how training differs by field" comparison on the hub. All new material is **general industry information**
+(VERIFICATION_LOG F3) and states no CSC course facts.
+
+### I1. Certification / pathway facts (general industry info)
+- **CompTIA ladder:** entry = Tech+ (FC0-U71) then A+ (help desk); Network+ (networking); Security+ (entry
+  cybersecurity, expects prior support/networking experience). Consistent with B13. Cloud = vendor certs (AWS
+  Certified Cloud Practitioner, Microsoft Azure AZ-900, Google Cloud Digital Leader). Programming presented as
+  a separate, portfolio-driven path. Source: CompTIA certification roadmap (industry references), checked 9/26/2026.
+- **Healthcare license vs. certification** and **trade licensing hours**: reuse the sourced facts already in
+  H2 (CNA/pharmacy-tech MA licensing; electrician 600-hr course + 8,000 hrs; plumber 300 hrs theory + 5,100
+  hrs; HVAC/R 450 hrs study or 6,000 apprentice hrs + EPA 608; welder no state license + AWS). No new licensing
+  claims introduced.
+
+### I2. Entry-level pay ranges (NEW — labeled "Massachusetts job-market data, 2026", kept separate from BLS medians)
+Used to make the honest point that state-funded certificate courses start below the BLS occupation median.
+| Role | Entry range used | Source (checked 9/26/2026) |
+|---|---|---|
+| IT support / help desk (MA) | ~$20–$31/hr to start | ziprecruiter.com (Entry-Level IT Support Specialist, MA; 25th–75th pct $41k–$64.4k) |
+| CNA (MA) | ~$18–$25/hr to start | ziprecruiter.com (Entry-Level CNA, MA; 25th–75th pct $37.1k–$51.3k) |
+| Phlebotomist (MA) | ~$17–$26/hr to start | ziprecruiter.com (Entry-Level Phlebotomist, MA) |
+| Apprentice electrician (MA) | ~$25/hr average | indeed.com (Apprentice Electrician, MA) |
+BLS OEWS May 2025 medians (H1) are cited alongside as the full-occupation figure. The IT "honest word on pay"
+note frames the ~$36/hr (support) and ~$42/hr (network) BLS medians as experienced pay, and flags that
+six-figure IT salaries sit on the security/cloud/programming rungs that need prior knowledge or a degree —
+matching the owner's guidance that state-sponsored IT certificate roles top out well below degree-track roles.
+
+### I3. New CSS
+Added a self-contained `.ladder` component to `css/style.css` (guarded; braces balanced). All other new
+content reuses existing tested components (`.program-items`, `.data-table`, `.check-list--num`, `.note`).

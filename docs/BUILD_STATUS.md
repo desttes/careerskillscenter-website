@@ -213,3 +213,20 @@ Picked up the strategy-side handoff (commit `9aee0c0`: brief bumped to v1.1 + `d
 - **BLS wages** pulled from the OEWS Query System (`data.bls.gov`) rather than the zip (bls.gov blocks curl; per-state HTML retired). MA medians used and cited (May 2025).
 - Pillar post CTA points to **Ways to Pay** instead of the checklist download until the PDF exists.
 - Blog/interest-form CTAs point to `contact.html`/`#interest` (the interest list) as the interim for `qualify.html` until it's built.
+
+---
+
+## Update — Sept 26, 2026: deeper Career Paths content
+
+Expanded the four Career Paths pages with the training/pathway depth they were missing (all general
+industry info, guide-mode compliant — no CSS course claims):
+- **it-careers-massachusetts.html** — "Where you start and where it leads" certification ladder
+  (help desk → networking → cybersecurity → cloud → programming) + honest entry-pay note.
+- **healthcare-careers-massachusetts.html** — "Pick your path by where you want to work" (home/community,
+  hospital/facility, clinic/office, remote) + license-vs-certification and entry-pay notes.
+- **skilled-trades-careers-massachusetts.html** — "How you actually get into a trade" (theory + apprenticeship),
+  a per-trade licensing table, online can/can't note, apprentice-vs-journeyman pay note.
+- **career-paths.html** — "How training differs by field" comparison table.
+- Added `.ladder` CSS component (style.css). Entry-level pay sources logged in VERIFICATION_LOG §I.
+- Verified: all 4 pages parse clean, sections balanced, no ghost-course phrases, COURSE-DEPENDENT markers intact,
+  local server returns HTTP 200. Not deployed (awaiting Emilio's OK per handoff rule 2c).

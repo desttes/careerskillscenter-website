@@ -816,3 +816,13 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .check-list--num li { padding-left: 6px; }
 .check-list--num li::before, .check-list--num li::after { content: none; display: none; }
 .check-list--num li strong { display: inline; color: var(--ink); }
+
+/* ---------- Training ladder (career-field guides) ---------- */
+.ladder { display: grid; gap: 16px; margin-top: 36px; }
+.ladder-step { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--accent-blue); padding: 24px 26px; box-shadow: 0 2px 12px rgba(0,0,0,.04); }
+.ladder-step.is-entry { border-left-color: var(--yellow); }
+.ladder-rank { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.ladder-step h3 { color: var(--navy); font-size: 20px; margin: 6px 0 8px; }
+.ladder-step p { color: var(--ink-light); font-size: 15px; margin: 0 0 14px; line-height: 1.7; }
+.ladder-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13px; color: var(--ink-light); border-top: 1px solid var(--line); padding-top: 14px; }
+.ladder-meta strong { color: var(--ink); font-weight: 700; }

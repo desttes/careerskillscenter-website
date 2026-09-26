@@ -900,6 +900,57 @@ PAGES.append(dict(
       </div>
     </section>
 
+    <section class="section section--alt">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Choosing a path</p>
+        <h2 class="section-title left">Pick your path by where you want to work</h2>
+        <div class="section-intro"><p>Healthcare roles differ less by pay than by the setting and the kind of
+        day you want. A good first question isn&rsquo;t &ldquo;which pays most?&rdquo; but &ldquo;where do I
+        picture myself working?&rdquo;</p></div>
+        <div class="program-items">
+          <article class="program-item">
+            <h4>In someone&rsquo;s home or the community</h4>
+            <p>One-on-one caregiving in people&rsquo;s homes &mdash; helping older adults and people with
+            disabilities live safely and independently. Personal, relationship-based work, often on a schedule
+            that fits your life.</p>
+            <div class="program-meta"><span><strong>Roles:</strong> Home Health Aide, CNA (home care)</span></div>
+          </article>
+          <article class="program-item">
+            <h4>In a hospital or nursing facility</h4>
+            <p>Fast-paced, hands-on work with many patients across a shift. A good fit if you want to be on your
+            feet, part of a care team, and in the middle of things.</p>
+            <div class="program-meta"><span><strong>Roles:</strong> CNA, Phlebotomy Technician, EKG Technician</span></div>
+          </article>
+          <article class="program-item">
+            <h4>In a clinic or doctor&rsquo;s office</h4>
+            <p>A mix of patient contact and front-office work &mdash; rooming patients, taking vital signs,
+            scheduling and records &mdash; usually on regular daytime hours.</p>
+            <div class="program-meta"><span><strong>Roles:</strong> Medical Assistant, Medical Administrative Assistant, Phlebotomy</span></div>
+          </article>
+          <article class="program-item">
+            <h4>Behind the scenes, often from home</h4>
+            <p>Detail work with records, codes and insurance claims, with little or no patient contact &mdash;
+            the most remote-friendly healthcare path once you have some experience.</p>
+            <div class="program-meta"><span><strong>Roles:</strong> Medical Billing &amp; Coding, Medical Administrative Assistant</span></div>
+          </article>
+        </div>
+        <p class="note"><strong>License vs. certification &mdash; an important difference.</strong> Two of these
+        roles need the state&rsquo;s approval before you can work: nurse aides (CNAs) must finish a Department of
+        Public Health&ndash;approved training program and pass the state competency exam to be listed on the
+        Nurse Aide Registry, and pharmacy technicians must be licensed by the Massachusetts Board of
+        Registration in Pharmacy. The rest &mdash; billing and coding, medical assistant, phlebotomy, EKG and
+        medical admin &mdash; have <strong>no state license</strong>. For those, a voluntary national
+        certification (for example AAPC CPC/CPB or AHIMA CCA for coding, AAMA CMA or AMT RMA for medical
+        assistants, or ASCP or NHA for phlebotomy) isn&rsquo;t required by law, but it&rsquo;s what many
+        employers look for.</p>
+        <p class="note"><strong>An honest word on pay.</strong> The medians above are for all workers in each
+        job, including experienced ones. Starting out, Massachusetts pay is lower &mdash; for example,
+        entry-level CNAs run about <strong>$18&ndash;$25 an hour</strong> and entry-level phlebotomists about
+        <strong>$17&ndash;$26 an hour</strong> (2026 job-market data). These are short certificate paths, not
+        nursing degrees; pay grows with experience, added skills, and stepping up to roles like medical
+        assistant, coding, or further nursing training.</p>
+      </div>
+    </section>
 """ + pay_for_training_block() + outward_next_step("a healthcare career") + """
 
     <section class="section section--tight">
@@ -1007,6 +1058,63 @@ PAGES.append(dict(
       </div>
     </section>
 
+    <section class="section section--alt">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The training ladder</p>
+        <h2 class="section-title left">Where you start and where it leads</h2>
+        <div class="section-intro"><p>IT is built in rungs. The entry courses assume you know nothing; the
+        higher-paying ones assume you already know the basics. Certifications &mdash; not a four-year degree
+        &mdash; are how you show an employer you&rsquo;re ready for the next step. Almost everyone starts on the
+        help desk and climbs from there.</p></div>
+        <div class="ladder">
+          <article class="ladder-step is-entry">
+            <p class="ladder-rank">Start here &middot; no experience needed</p>
+            <h3>Help desk &amp; user support</h3>
+            <p>Where almost everyone begins. You learn to set up computers, fix everyday problems, and help
+            people use software and networks. State-funded IT courses are short certificate programs aimed at
+            this rung &mdash; they get you in the door, not straight to a senior salary.</p>
+            <div class="ladder-meta"><span><strong>Train for:</strong> CompTIA Tech+ (FC0-U71), then CompTIA A+</span><span><strong>MA starting pay:</strong> about $20&ndash;$31/hr</span></div>
+          </article>
+          <article class="ladder-step">
+            <p class="ladder-rank">Next step &middot; builds on the basics</p>
+            <h3>Network support</h3>
+            <p>Once you understand hardware and operating systems, networking is the natural next move:
+            routers, switches, Wi-Fi, and how machines talk to each other.</p>
+            <div class="ladder-meta"><span><strong>Train for:</strong> CompTIA Network+ (A+ first)</span><span><strong>Grows toward:</strong> network administration</span></div>
+          </article>
+          <article class="ladder-step">
+            <p class="ladder-rank">Higher pay &middot; needs prior knowledge</p>
+            <h3>Cybersecurity</h3>
+            <p>Security roles pay well but are rarely a first job. Employers expect you to already understand
+            systems and networks. Security+ is the common starting certification once you have help-desk or
+            networking experience behind you.</p>
+            <div class="ladder-meta"><span><strong>Train for:</strong> CompTIA Security+ (after A+/Network+ or work experience)</span></div>
+          </article>
+          <article class="ladder-step">
+            <p class="ladder-rank">Higher pay &middot; needs prior knowledge</p>
+            <h3>Cloud support</h3>
+            <p>Cloud platforms &mdash; Amazon AWS, Microsoft Azure and Google Cloud &mdash; run much of today&rsquo;s
+            software. Cloud roles usually come after some help-desk or networking experience.</p>
+            <div class="ladder-meta"><span><strong>Train for:</strong> AWS Cloud Practitioner, Microsoft Azure AZ-900, or Google Cloud Digital Leader</span></div>
+          </article>
+          <article class="ladder-step">
+            <p class="ladder-rank">A separate path</p>
+            <h3>Programming &amp; software</h3>
+            <p>Writing code is its own track rather than a step up from the help desk. Certifications matter
+            less here than a portfolio of real projects and knowing a language such as Python or JavaScript. It
+            can pay very well, but the learning curve is steeper and longer than an entry IT certificate.</p>
+            <div class="ladder-meta"><span><strong>Train through:</strong> a bootcamp or structured self-study, plus a project portfolio</span></div>
+          </article>
+        </div>
+        <p class="note"><strong>An honest word on pay.</strong> State-funded IT courses are short certificates,
+        not four-year degrees. They get you onto the help desk, where Massachusetts pay usually starts around
+        <strong>$20&ndash;$31 an hour</strong> and, with a few years and added certifications, climbs toward the
+        state medians of roughly $36/hr for support and $42/hr for network work (BLS OEWS, May 2025; entry
+        ranges from 2026 Massachusetts job-market data). The six-figure IT salaries you see advertised sit on
+        the higher rungs &mdash; cybersecurity, cloud and programming &mdash; which expect prior experience or a
+        degree. It&rsquo;s a real, well-paid career; just plan to start on the help desk and climb.</p>
+      </div>
+    </section>
 """ + pay_for_training_block() + outward_next_step("an IT career") + """
 
     <section class="section section--tight">
@@ -1111,6 +1219,51 @@ PAGES.append(dict(
       </div>
     </section>
 
+    <section class="section section--alt">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Getting in</p>
+        <h2 class="section-title left">How you actually get into a trade</h2>
+        <div class="section-intro"><p>The trades work differently from healthcare or IT. You can&rsquo;t certify
+        your way in from a laptop &mdash; but you also don&rsquo;t pay for years of school up front. You learn
+        the theory and get paid to do the hands-on work at the same time.</p></div>
+        <ol class="check-list check-list--num">
+          <li><strong>Learn the theory.</strong> Code, safety, math and how systems work &mdash; this part can
+          be online or in a classroom. Many people also do OSHA 10 or 30 safety training here, and, for
+          HVAC/refrigeration, prep for the federal EPA 608 certification.</li>
+          <li><strong>Get into a registered apprenticeship.</strong> You work under a licensed tradesperson and
+          earn a wage while you build the supervised hours the state requires. In Massachusetts an apprentice
+          electrician earns about $25 an hour on average while training.</li>
+          <li><strong>Log your hours and classroom time.</strong> Each trade sets its own mix of on-the-job
+          hours and classroom hours (see the table below).</li>
+          <li><strong>Pass the state exam and get licensed.</strong> Once you meet the hours and pass the exam
+          you become a journeyman &mdash; and your pay steps up.</li>
+        </ol>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Trade</th><th>Classroom / theory</th><th>Supervised work hours</th><th>Massachusetts license</th><th>Also required</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Electrician</th><td>600-hour Journeyman&rsquo;s Course</td><td>8,000 hours over at least 4 years</td><td>Journeyman (Class B) exam &mdash; Board of State Examiners of Electricians</td><td>&mdash;</td></tr>
+              <tr><th>HVAC/R Technician</th><td>450 hours approved study (or 6,000 apprentice hours)</td><td>Included in the apprentice route</td><td>Refrigeration Technician license</td><td>Federal EPA 608 to handle refrigerant</td></tr>
+              <tr><th>Plumber</th><td>300 hours of theory</td><td>5,100 practical hours (about 3 years)</td><td>Journeyman exam &mdash; Board of Plumbers &amp; Gas Fitters</td><td>Gas fitting is licensed separately</td></tr>
+              <tr><th>Welder</th><td>Short technical program</td><td>Plenty of hands-on shop practice</td><td>No statewide license</td><td>Voluntary AWS certification; employer weld tests</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="role-src">Licensing sources: mass.gov licensing boards (237 CMR 13 electricians; 248 CMR 11 plumbers), Massachusetts Refrigeration Technician licensing, and federal EPA 608. Checked 2026.</p>
+        <p class="note"><strong>What online learning can and can&rsquo;t do.</strong> You can genuinely learn the
+        theory, code and safety online, and do OSHA and EPA 608 exam prep on a screen. What you cannot do online
+        is the supervised, hands-on hours the state requires &mdash; those happen on real job sites under a
+        licensed tradesperson. Treat online study as the classroom half of an apprenticeship, not a replacement
+        for it.</p>
+        <p class="note"><strong>An honest word on pay.</strong> Apprentices earn while they learn &mdash; in
+        Massachusetts an apprentice electrician averages about <strong>$25 an hour</strong> &mdash; and pay
+        rises as you log hours and pass exams. Licensed journeymen earn much more: the Massachusetts medians are
+        about $79,420 for electricians, $77,300 for HVAC/R, and $93,880 for plumbers (BLS OEWS, May 2025). The
+        trade-off is time: licensing takes years, not months.</p>
+      </div>
+    </section>
 """ + pay_for_training_block() + outward_next_step("a career in the trades") + """
 
     <section class="section section--tight">
@@ -1191,6 +1344,32 @@ PAGES.append(dict(
           </article>
 
         </div>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How training works</p>
+        <h2 class="section-title left">How training differs by field</h2>
+        <div class="section-intro"><p>The three fields ask for very different things. Here&rsquo;s the honest
+        shape of each before you pick one.</p></div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Field</th><th>Time to first job</th><th>Where you learn</th><th>Credential</th><th>Pay while training</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Healthcare</th><td>A few months to about a year for entry roles</td><td>Mostly online, plus short in-person clinical practice</td><td>State registry (CNA) or a voluntary national certification</td><td>You usually pay for the course; may qualify for state funding</td></tr>
+              <tr><th>Information Technology</th><td>Weeks to a few months per certification</td><td>Mostly online, with a free home lab to practice</td><td>CompTIA and vendor certifications &mdash; not a four-year degree</td><td>You usually pay for the course; may qualify for state funding</td></tr>
+              <tr><th>Skilled Trades</th><td>Several years to a full license</td><td>Online or classroom theory, plus on-the-job apprenticeship</td><td>A state license after supervised hours and an exam</td><td>You earn a wage as an apprentice</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">State-funded short courses open the <em>entry-level</em> doors in each field. They&rsquo;re
+        certificates, not degrees, so the first job is usually an entry role &mdash; help desk in IT, a nurse aide
+        or phlebotomist in healthcare, an apprentice in the trades &mdash; and pay grows from there with
+        experience and further training. Each guide below is honest about where a field starts and where it can
+        lead.</p>
       </div>
     </section>
 
