@@ -1,5 +1,10 @@
 # Career Skills Center — Inner Page Specifications
 
+> **⚠️ Predates guide mode (Sept 26, 2026).** This file describes the old program/
+> admissions/WIOA page set and nav, most of which is now retired or 301-redirected.
+> For the current pages, read `docs/GUIDE_MODE_SPEC.md` and `docs/BUILD_STATUS.md`.
+> Keep this only as historical reference and for the reusable CSS component list.
+
 **Status: all pages below are built.** This file is now both the spec and the
 record of what each page contains. Update it when a page changes.
 

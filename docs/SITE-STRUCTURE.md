@@ -1,5 +1,11 @@
 # Career Skills Center — Site Structure & Design System
 
+> **⚠️ Predates guide mode (Sept 26, 2026).** The page list, nav, file layout and
+> company facts (phone, ZIP, service-area wording) below are OUTDATED. For the
+> current site, read `docs/GUIDE_MODE_SPEC.md` and `docs/BUILD_STATUS.md`. Use
+> this file only for the **design tokens and global components** (§3–§4), which
+> are still accurate.
+
 This document is the single source of truth for building every page of
 careerskillscenter.com. Anyone (or any AI assistant) should be able to
 build a new page from this file plus `PAGES.md` without seeing the reference

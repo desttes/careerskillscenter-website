@@ -4,6 +4,8 @@
 
 > **STATUS: LIVE.** The site is deployed and serving over HTTPS at **https://careerskillscenter.com** (Namecheap shared hosting). Deployment is done over SSH/SFTP with an authorized key — see **§5**. Last major deploy: 2026-09-24.
 
+> **⚠️ Guide mode (Sept 26, 2026) — built locally, NOT yet deployed.** The site has been reworked into an honest **guide to careers and funding in Massachusetts** per `docs/GUIDE_MODE_SPEC.md` v1.4. New pages (`career-paths.html` + three `*-careers-massachusetts.html` field guides), a restructured nav (Career Paths / Resources / About / Contact), `qualify.html` as an outward funding tool, `js/site-config.js` switches, and `.htaccess` 301s for 10 retired pages. **The page list and nav description in §3 below, and `docs/SITE-STRUCTURE.md` / `docs/PAGES.md`, predate this rework** — treat `docs/GUIDE_MODE_SPEC.md` + `docs/BUILD_STATUS.md` (2026-09-26 entry) as the source of truth. Deploy still pending Emilio's OK; remember to `put .htaccess` (see §5).
+
 ---
 
 ## 1. Quick facts
@@ -117,6 +119,7 @@ chmod 644 *.html *.php css/* js/* images/*  # ensure world-readable (see permiss
 sftp -i ~/.ssh/namecheap_cfcb -P 21098 -o IdentitiesOnly=yes ihrwgcpm@premium164-1.web-hosting.com <<'EOF'
 cd careerskillscenter.com
 put *.html
+put .htaccess
 put submit.php
 put -r css
 put -r js
@@ -126,6 +129,7 @@ put robots.txt
 put llms.txt
 EOF
 ```
+> **Guide mode (GUIDE_MODE_SPEC v1.4, Sept 2026):** the deploy now MUST include **`.htaccess`** (the 301 redirects for the retired pages) — without it, old URLs like `tuition.html`/`our-programs.html` serve only the meta-refresh stubs instead of a real 301. `put -r js` already carries `js/site-config.js` (the guide/course switches). `*.html` includes the 10 redirect stubs. As before, `blog/` stays excluded until the drafts are approved, and the auto-generated `sitemap.xml` lists the blog drafts — keep using the blog-free live sitemap until then.
 (For a small change, `put` only the specific files instead of everything.)
 
 **Form backend (`submit.php`).** The contact forms POST to `submit.php`, a plain-PHP mailer that emails submissions to `vcanal@careerskillscenter.com` (no database). cPanel runs PHP, so no extra setup is needed beyond uploading the file. Notes:
