@@ -1772,6 +1772,8 @@ PAGES.append(dict(
       </div>
     </section>
 
+    <!-- COURSE-DEPENDENT: R-WIOA — the "working toward approval / plans to offer"
+         line about CSC changes once CSC is an approved provider / has live courses. -->
     <section class="section">
       <div class="container narrow">
 """ + FUNDING_NOTE + """

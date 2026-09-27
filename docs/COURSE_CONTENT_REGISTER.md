@@ -8,35 +8,50 @@
 
 ## Rows
 
+> **v1.5 update (Sept 27, 2026):** Career Paths pages were renamed to location-neutral slugs
+> (`healthcare-careers.html`, `it-careers.html`, `skilled-trades-careers.html`) and their pay figures were
+> removed pending sourced data (see **R-PAY-DATA**). New Funding Guides + For Employers pages were added.
+> Most rows are tracked with `<!-- COURSE-DEPENDENT: R-xx -->`. Exceptions, tracked by other markers or as
+> pending work: **R-PAY-DATA** (`<!-- PAY-DATA: pending -->`), **R-EMP** / **R-SCHEMA** (design flags, no
+> inline marker yet), **R-LLMS** (whole file).
+
 | ID | Page / file | Section | Now (guide mode) | When a course launches (course mode) | Switch | Location in source |
 |---|---|---|---|---|---|---|
-| R-NAV | `index.html` header + footer | Menu | "Career Paths" → field guides; button "Check Your Options" → qualify | Add a "Courses" or per-field "Train with us" item; decide header button | SITE_MODE | `index.html` (nav-list + footer-links, marked) |
-| R-HOME | `index.html` | Hero + sections | "Your guide to career training and funding in MA"; interest list as secondary CTA | Feature live courses; primary CTA inward | SITE_MODE | `index.html` (hero + interest band, marked) |
-| R-HC | `healthcare-careers-massachusetts.html` | "Get updates" block + Next step | Outward: MassHire + JobQuest; interest list "when we launch" | "Train with Career Skills Center" block: course name, details, enroll/apply CTA | COURSES_LIVE.healthcare | `build-pages.py` field_interest("healthcare") + outward_next_step (marked) |
-| R-IT | `it-careers-massachusetts.html` | same | same | same | COURSES_LIVE.it | `build-pages.py` field_interest("it") + outward_next_step (marked) |
-| R-TR | `skilled-trades-careers-massachusetts.html` | same | same | same | COURSES_LIVE.trades | `build-pages.py` field_interest("trades") + outward_next_step (marked) |
+| R-NAV | `index.html` header + footer | Menu | Funding Guides · For Employers · Career Paths · Resources; header button "Do I Qualify?" → qualify | Add a "Courses" or per-field "Train with us" item; decide header button | SITE_MODE | `index.html` (nav-list + footer-links, marked) |
+| R-HOME | `index.html` | Hero + sections | "Career training and funding, explained"; Funding Guides + For Employers + Career Paths; interest list as secondary CTA | Feature live courses; primary CTA inward | SITE_MODE | `index.html` (hero + interest band, marked) |
+| R-HC | `healthcare-careers.html` | "Get updates" interest block | Outward funding links + interest list "when we launch" | "Train with Career Skills Center" block: course name, details, enroll/apply CTA | COURSES_LIVE.healthcare | `build-pages.py` field_interest("healthcare") (marked) |
+| R-IT | `it-careers.html` | same | same | same | COURSES_LIVE.it | `build-pages.py` field_interest("it") (marked) |
+| R-TR | `skilled-trades-careers.html` | same | same | same | COURSES_LIVE.trades | `build-pages.py` field_interest("trades") (marked) |
 | R-HUB | `career-paths.html` | Cards | Cards link to guides | Cards show "Now enrolling" badge + course link for live fields | COURSES_LIVE.* | `build-pages.py` career-paths.html (marked) |
-| R-QUALIFY | `qualify.html` + `js/main.js` | Q1 options + result screen | Collects lead, then outward next steps (MassHire, JobQuest, ITA, Section 30) | Result routes inward: matching CSC course + "we'll help with funding"; may restore an advisor follow-up promise if staffed | SITE_MODE, COURSES_LIVE.* | `build-pages.py` qualify.html + `js/main.js` routeResult (marked) |
+| R-QUALIFY | `qualify.html` + `js/main.js` | Result screen + field note | Results-first: which WIOA group you may fit + outward next steps (MassHire, JobQuest, ITA, Section 30) | Result also routes inward: matching CSC course + "we'll help with funding" | SITE_MODE, COURSES_LIVE.* | `build-pages.py` qualify.html + `js/main.js` classifyQualify (marked) |
 | R-PAY | `student-financing.html` | Options | Guide to MA funding options; no CSC terms; "working toward approval" disclosure | Add CSC tuition, payment plan terms, lenders; flip ETPL copy only if `FUNDING_ETPL_APPROVED` | SITE_MODE, FUNDING_ETPL_APPROVED | `build-pages.py` student-financing.html (marked) |
-| R-FAQ | `faq.html` | Program answers | "We plan to launch training; get updates" | Real length, cost, credential, schedule, VA answers | SITE_MODE | `build-pages.py` faq.html (marked) |
-| R-ABOUT | `about.html` | Mission + career support paragraph | Future tense | Present tense; instructors, delivery | SITE_MODE | `build-pages.py` about.html (marked) |
-| R-LLMS | `llms.txt` | Whole file | Site = MA career/funding guide; training planned | List live courses | SITE_MODE | `llms.txt` |
+| R-FAQ | `faq.html` | Launch/program answers | "We plan to launch training; get updates" | Real length, cost, credential, schedule, VA answers | SITE_MODE | `build-pages.py` faq.html (marked) |
+| R-ABOUT | `about.html` | "What we're building" + career support | Future tense | Present tense; instructors, delivery | SITE_MODE | `build-pages.py` about.html (marked) |
+| R-WIOA | `wioa-explained.html` | Funding-note / CSC mention | "Working toward approval; plans to offer training" | CSC is an approved provider / has live courses | SITE_MODE, FUNDING_ETPL_APPROVED | `build-pages.py` wioa-explained.html (marked) |
+| R-LLMS | `llms.txt` | Whole file | Site = career/funding guide; training planned | List live courses | SITE_MODE | `llms.txt` |
 | R-IFORM | Interest-list form (site-wide) | Field select + success msg | "Get updates when we launch training in [field]" | Replace with enroll/apply form on live fields | COURSES_LIVE.* | `build-pages.py` interest_form() (marked) |
-| R-BLOG | `blog/*.html` (8 posts) | CTA boxes + "CSC plans to…" lines | CTAs → field guides, qualify, MassHire | CTAs → matching CSC course | COURSES_LIVE.* | TBD (one row per post may be added) |
-| R-EMP | `employers.html`, `workplace-esol*.html` | Service description | Concierge: we help you apply; training by approved providers | If CSC lists its own Express courses: "our course," listing language only when `EXPRESS_PROVIDER_LISTED` | EXPRESS_PROVIDER_LISTED | TBD |
+| R-BLOG | `blog/*.html` (careers posts #6–#8) | CTA boxes + "CSC plans to…" lines | CTAs → career guides / funding guides | CTAs → matching CSC course | COURSES_LIVE.* | `build-pages.py` post_cta() for #6/#7/#8 (marked) |
+| R-CORP | `corporate-training.html` | Whole page | "We're building training for employers; tell us what you need" | Live corporate offerings, formats, enrollment | SITE_MODE | `build-pages.py` corporate-training.html (marked) |
+| R-APPR | `apprenticeships.html` | Graduate-pipeline line | "As our programs launch, our graduates will become a hiring pipeline…" (future tense) | Present tense; real graduate pipeline | SITE_MODE, COURSES_LIVE.* | `build-pages.py` apprenticeships.html (marked) |
+| R-PAY-DATA | Career pages (`healthcare-careers.html`, `it-careers.html`, `skilled-trades-careers.html`) | Role-card pay slot | Pay figures omitted; hidden slot pending sourced entry-level data | Add sourced "Typical pay" to each role card | — (data task) | `build-pages.py` role_card() `<!-- PAY-DATA: pending -->` |
+| R-EMP | `employers.html`, `staff-training-grants.html` | Service description | "We help you apply; you choose an approved provider" — no "our course" | If CSC lists its own Express courses: "our course," listing language only when `EXPRESS_PROVIDER_LISTED` | EXPRESS_PROVIDER_LISTED | `build-pages.py` staff-training-grants.html (no inline marker; flag-gated copy) |
 | R-SCHEMA | JSON-LD on all pages | Structured data | EducationalOrganization only; no `Course` schema | Add `Course` schema with real data | COURSES_LIVE.* | TBD |
 
 ## Retired URLs (restore or re-point only in course mode)
 | Old URL | Now 301s to | Course mode |
 |---|---|---|
-| `medical-billing-coding.html` | `healthcare-careers-massachusetts.html` | Could become a real course page |
-| `it-support-specialist.html` | `it-careers-massachusetts.html` | Could become a real course page |
-| `skilled-trades.html` | `skilled-trades-careers-massachusetts.html` | Could become a real course page |
+| `medical-billing-coding.html` | `healthcare-careers.html` | Could become a real course page |
+| `it-support-specialist.html` | `it-careers.html` | Could become a real course page |
+| `skilled-trades.html` | `skilled-trades-careers.html` | Could become a real course page |
+| `healthcare-careers-massachusetts.html` | `healthcare-careers.html` | v1.4 → v1.5 slug rename |
+| `it-careers-massachusetts.html` | `it-careers.html` | v1.4 → v1.5 slug rename |
+| `skilled-trades-careers-massachusetts.html` | `skilled-trades-careers.html` | v1.4 → v1.5 slug rename |
 | `our-programs.html`, `programs.html` | `career-paths.html` | Could list real courses |
 | `tuition.html` | `student-financing.html` | Real tuition page |
 | `admissions.html` | `career-paths.html` | Real admissions page |
 | `career-services.html` | `about.html` | Real career services page |
 | `team.html`, `media.html` | `about.html` | Real team page |
+| `terms-of-use.html` | `terms.html` | Legal page rename (v1.5) |
 
 ## Course-launch checklist (run when a field goes live)
 1. Confirm real facts with Emilio: course name, length, hours, price, credential, schedule, start date, delivery, VA status.

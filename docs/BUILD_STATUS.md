@@ -2,9 +2,13 @@
 
 Claude Code updates this file at the end of every session. The strategy side (Cowork + the "ETPL Massachusetts" Project) reads it.
 
-## Current state (as of 2026-09-26)
-- Now building: **`docs/GUIDE_MODE_SPEC.md` v1.4 (guide mode)**, which supersedes the Option A pre-launch spec. Brief `v1.3` still applies where the guide spec is silent.
-- **Guide-mode steps 1–7 are DONE locally (not deployed).** See the 2026-09-26 session entry below. Steps 8 (For Employers) and 9 (blog CTA rework) are not started.
+## Current state (as of 2026-09-27)
+- Now building: **`docs/SITE_STRUCTURE_SPEC.md` v1.5**, which supersedes the nav, page list and build order in GUIDE_MODE_SPEC v1.4. Everything else in v1.4 still applies (no ghost courses, funding-language rules, `[VERIFY]` sourcing, `COURSE-DEPENDENT` markers, no deploys without Emilio's OK).
+- **v1.5 is DONE locally (all 7 build-order groups), not deployed.** See the 2026-09-27 session entry below.
+- **Blocking Emilio (needed to clear `[VERIFY]` and deploy the new pages):** the Express Program figures in `js/site-config.js` (rates/caps/timeline, confirm with express@commcorp.org), the WIOA low-income example numbers, the Massachusetts/federal apprenticeship grants & tax credits, and confirmation of the Selective Service line. Also: founder name/photo for `about.html`.
+
+### Earlier (as of 2026-09-26)
+- Guide-mode steps 1–7 (v1.4) were DONE locally. v1.5 below builds on and supersedes them.
 
 **LIVE on careerskillscenter.com:**
 - The **contact-form backend** (`submit.php`, cPanel PHP mailer) — leads deliver to `vcanal@careerskillscenter.com`, confirmed working after fixing cPanel Email Routing to Remote (mailboxes are on Namecheap Private Email). GA4 `form_submit` fires.
@@ -22,6 +26,31 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
+
+### 2026-09-27 — Site Structure Spec v1.5 (all build-order groups) (LOCAL, not deployed)
+Built the v1.5 restructure. The spec was uploaded and saved to `docs/SITE_STRUCTURE_SPEC.md`. All work committed on `main` in step-by-step commits and verified in the in-app browser (self-tests pass, no console errors, pages 200, redirects serve). **Nothing deployed.**
+
+**Nav + footer (every page).** New groups: **Funding Guides** (WIOA Explained · Do I Qualify? · Express Program Explained) · **For Employers** (Overview · Staff Training Grants · Apprenticeship Programs · Corporate Training) · **Career Paths** (Healthcare · IT · Skilled Trades · All Career Paths) · **Resources** (Blog · FAQ) · About · Contact. Header button **"Do I Qualify?" → qualify.html**. Footer mirrors; Terms → `terms.html`.
+
+**Step 1 — Home + About.** `index.html` reframed to "Career Training & Funding, Explained" with Funding Guides + For Employers teaser + Career Paths + latest guides + interest band (removed the standalone funding band and the on-home mission section). `about.html`: "what we're building" (funding help, employer/apprenticeship, corporate training), **founder placeholder (Emilio to supply name/photo)**, future tense, no instructor/accreditation/outcome claims.
+
+**Step 2 — WIOA + Qualify.** New **`wioa-explained.html`** (what WIOA is, the three groups, priority of service, the ITA, ETPL, step-by-step, Section 30, FAQ+schema; facts sourced from VERIFICATION_LOG). **`qualify.html` reworked to 8 questions, results-first** (MA residency, age, work situation, public assistance, low income, veteran, work authorization, field). Shows which WIOA group you may fit + priority flags + outward next steps — never a yes/no verdict. Removed the "advisor will text you" promise; emailing the steps is now optional. Logic is a pure `classifyQualify()` in `js/main.js` with self-tests (`qualify.html#selftest`). New config-driven `[data-cfg]` filler so funding numbers render only from `site-config.js`.
+
+**Step 3 — Express.** New **`express-program-explained.html`** (what the Workforce Training Fund is, who can apply, what's covered — live instruction, rates/caps table, how to apply, timeline, FAQ+schema). All figures render from `site-config.js` via `[data-cfg]` with visible `[VERIFY]` fallback.
+
+**Step 4 — For Employers.** New **`employers.html`** (overview + inquiry form, `source=employer`), **`staff-training-grants.html`** ("we handle the paperwork," never "our course," follows `EXPRESS_PROVIDER_LISTED=false`; embeds the **reimbursement calculator** — pure `calcExpress()` in main.js with self-tests, `source=employer-express`), **`apprenticeships.html`** (`source=employer-apprenticeship`; COURSE-DEPENDENT graduate-pipeline line, R-APPR), **`corporate-training.html`** (future tense, no location/price/course names; `source=corporate`, R-CORP). New `employer_form()` helper.
+
+**Step 5 — Career Paths.** Renamed to location-neutral slugs: `healthcare-careers.html`, `it-careers.html`, `skilled-trades-careers.html` (301s from the v1.4 MA-named URLs and re-pointed the program-page 301s). Dropped all "Massachusetts" framing (only a clearly labeled MA licensing **example** on the trades page) and **removed all pay figures** (hidden `<!-- PAY-DATA: pending -->` slot, R-PAY-DATA). `role_card()` reworked (training · certifications · license · online). New location-neutral `career_pay_block()`.
+
+**Step 6 — Blog.** CTAs repointed to the cluster page each post supports (funding → WIOA/qualify; careers → career guides; never "our program"). Careers-post CSC mentions marked `COURSE-DEPENDENT` (R-BLOG). **Post #5 (Highest-Paying Certifications) put on hold** — off the index, noindex, off the sitemap (new HOLD set) until pay-data is ready.
+
+**Step 7 — Supporting.** `faq.html` gained a "For employers" group and updated launch/employer answers. `contact.html` "Program of interest" → **"Reason for contacting"** dropdown (general/employer/partnership/media), posted as a field. `privacy-policy.html` now describes form data, the eligibility-check answers, SMS consent and GA4 (still a template marked for legal review). `terms-of-use.html` → `terms.html`. `llms.txt` rewritten for the new structure/URLs.
+
+**Register + redirects.** `docs/COURSE_CONTENT_REGISTER.md` updated: new/renamed URLs, new rows R-WIOA/R-CORP/R-APPR/R-PAY-DATA (+ R-EMP/R-SCHEMA notes), Retired-URLs table extended. `.htaccess` + `REDIRECTS` re-pointed to new slugs and added the MA-career and terms redirects.
+
+**Verification.** Build clean (27 pages + redirect stubs). Every rendered `COURSE-DEPENDENT` marker has a register row (no orphans). Acceptance greps clean: no pay figures and no non-example "Massachusetts" on career pages; no "out of state" anywhere; every form posts a distinct `source`; nav/footer match on every page; qualify + calculator self-tests pass. Pre-deploy `[VERIFY]`/`DRAFT` scan: **held out of deploy** — `express-program-explained.html`, `staff-training-grants.html`, `apprenticeships.html`, `qualify.html` (all carry `[VERIFY]` funding figures) and the 8 blog `DRAFT`s.
+
+**Open TODOs / notes for Emilio:** verify the Express figures, WIOA income example, apprenticeship grants/tax credits and the Selective Service line (all `[VERIFY]`); supply the founder name/photo for About; then the new pages can deploy. The pre-existing uncommitted `it-careers-massachusetts-draft.html` course-mode experiment and `Claude outputs/` previews were left untouched (not part of v1.5).
 
 ### 2026-09-26 — Guide mode (GUIDE_MODE_SPEC v1.4) steps 1–7 (LOCAL, not deployed)
 Built the honest "guide to careers and funding in Massachusetts" that routes people **outward** to the state. All work is committed on `main` in seven step-by-step commits and verified in the in-app browser (no console errors, mobile nav works, wizard routing exercised). **Nothing deployed.**

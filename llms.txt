@@ -1,20 +1,28 @@
 # Career Skills Center
 
-> Career Skills Center is an honest guide to career training and funding in Massachusetts. It explains what jobs in healthcare, information technology and the skilled trades pay in Massachusetts, how to train for them, and how the state can help pay for training — and it points people to official state resources (MassHire Career Centers and JobQuest). Career Skills Center is based in Quincy, MA, and plans to offer its own training in healthcare, IT and the skilled trades; enrollment is not open yet. For employers, Career Skills Center helps get state-funded staff training through the Workforce Training Fund Express Program and handles the grant paperwork. Phone: (617) 544-7155. Email: info@careerskillscenter.com.
+> Career Skills Center is an honest guide to career training and funding. It explains how training-funding programs work — WIOA (the main public training fund) and the Massachusetts Workforce Training Fund Express Program for employers — and it points people to official state resources (MassHire Career Centers and JobQuest). It also has plain-language guides to careers in healthcare, information technology and the skilled trades. Career Skills Center is based in Quincy, Massachusetts, and plans to offer its own training in healthcare, IT and the skilled trades; enrollment is not open yet. For employers, Career Skills Center helps get state-funded staff training through the Express Program and handles the grant paperwork, and helps set up apprenticeships and corporate training. Phone: (617) 544-7155. Email: info@careerskillscenter.com.
 
-## Career paths (guides to fields in Massachusetts)
-- [Career Paths](https://careerskillscenter.com/career-paths.html): Overview of the fields you can train for in Massachusetts.
-- [Healthcare Careers in Massachusetts](https://careerskillscenter.com/healthcare-careers-massachusetts.html): Jobs, pay (BLS 2025), training paths and licensing for roles like medical billing & coding, medical assistant, phlebotomy, pharmacy tech, CNA and home health aide.
-- [IT Careers in Massachusetts](https://careerskillscenter.com/it-careers-massachusetts.html): Jobs, pay, certifications and training for help desk, networking, cybersecurity and cloud support.
-- [Skilled Trades Careers in Massachusetts](https://careerskillscenter.com/skilled-trades-careers-massachusetts.html): Jobs, pay and Massachusetts licensing for electricians, HVAC/R technicians, plumbers and welders.
-
-## Paying for training
-- [Check Your Options](https://careerskillscenter.com/qualify.html): A quick tool that shows personalized next steps for state-funded training in Massachusetts.
+## Funding guides
+- [WIOA Explained](https://careerskillscenter.com/wioa-explained.html): Who qualifies for WIOA training funds (Adult, Dislocated Worker, Youth), priority of service, the ITA voucher, the ETPL, and how to apply in Massachusetts.
+- [Do I Qualify?](https://careerskillscenter.com/qualify.html): A quick check that shows which WIOA group you may fit and your next steps. Never a yes/no verdict.
+- [Express Program Explained](https://careerskillscenter.com/express-program-explained.html): The Massachusetts Workforce Training Fund Express Program — who can apply, what's covered, rates and caps, and how to apply.
 - [Ways to Pay](https://careerskillscenter.com/student-financing.html): How to pay for training in Massachusetts — WIOA/ITA vouchers, Section 30, grants, employer-paid training and payment plans.
+
+## For employers
+- [For Employers](https://careerskillscenter.com/employers.html): How Career Skills Center helps employers pay for and organize staff training.
+- [Staff Training Grants](https://careerskillscenter.com/staff-training-grants.html): We help employers apply for Express Program reimbursement and handle the paperwork; includes a reimbursement estimate calculator.
+- [Apprenticeship Programs](https://careerskillscenter.com/apprenticeships.html): How Registered Apprenticeships work and why they pay off for employers.
+- [Corporate Training](https://careerskillscenter.com/corporate-training.html): Custom training for employer teams, with or without state funding.
+
+## Career paths (guides to fields)
+- [Career Paths](https://careerskillscenter.com/career-paths.html): Overview of the fields you can train for.
+- [Healthcare Careers](https://careerskillscenter.com/healthcare-careers.html): Roles, training paths and certifications for medical billing & coding, medical assistant, phlebotomy, pharmacy tech, CNA and home health aide.
+- [IT Careers](https://careerskillscenter.com/it-careers.html): Certifications and training for help desk, networking, cybersecurity and cloud support.
+- [Skilled Trades Careers](https://careerskillscenter.com/skilled-trades-careers.html): How licensing and apprenticeships work for electricians, HVAC/R technicians, plumbers and welders.
 
 ## About
 - [About](https://careerskillscenter.com/about.html): Mission, Quincy base, and what Career Skills Center is building.
-- [FAQ](https://careerskillscenter.com/faq.html): Common questions about training, funding, and when Career Skills Center will launch training.
+- [FAQ](https://careerskillscenter.com/faq.html): Common questions about training, funding, employers, and when Career Skills Center will launch training.
 - [Contact](https://careerskillscenter.com/contact.html): How to reach Career Skills Center.
 
 ## Blog (plain-language guides)
