@@ -133,12 +133,98 @@
     });
   });
 
-  /* ---------- "See if you qualify" wizard (qualify.html) ----------
-     Multi-step lead form. One question per screen with a progress bar. It
-     CAPTURES A LEAD and shows a soft-routing message — it never renders a
-     yes/no eligibility verdict (only a MassHire career center can decide that).
-     Self-contained: the form is `.qualify-form` (not `.contact-form`) so the
-     generic handler above ignores it. Posts to submit.php with source=qualify. */
+  /* ---------- Config-driven numbers ([data-cfg]) ----------
+     Funding numbers live ONLY in js/site-config.js (window.CSC). Pages render
+     them into [data-cfg] elements so nothing is hard-coded in copy. Each element
+     keeps a visible fallback (usually "[VERIFY]") so an un-run page still shows
+     the marker and the pre-deploy grep can catch unverified figures. */
+  function fmtMoney(n) {
+    return '$' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+  function fillConfigValues() {
+    const cfg = window.CSC || window.SITE_CONFIG;
+    if (!cfg) return;
+    document.querySelectorAll('[data-cfg]').forEach((el) => {
+      const key = el.getAttribute('data-cfg');
+      if (!(key in cfg)) return;
+      const val = cfg[key];
+      const fmt = el.getAttribute('data-cfg-format') || 'raw';
+      if (fmt === 'money') el.textContent = fmtMoney(val);
+      else if (fmt === 'percent') el.textContent = Math.round(val * 100) + '%';
+      else if (fmt === 'number') el.textContent = Number(val).toLocaleString('en-US');
+      else el.textContent = String(val);
+    });
+  }
+  fillConfigValues();
+
+  /* ---------- "Do I Qualify?" wizard (qualify.html) ----------
+     One question per screen, then a RESULTS-FIRST screen (Site Structure Spec
+     v1.5): it shows which WIOA group you may fit, any priority flags, and outward
+     next steps — never a yes/no verdict (only a MassHire career center decides).
+     Emailing the steps is optional and posts to submit.php with source=qualify.
+     The classifier is a pure function (classifyQualify) with self-tests you can
+     run by loading qualify.html#selftest. */
+  function classifyQualify(a) {
+    a = a || {};
+    const inMA = a.live_ma === 'yes';
+    const dislocated = a.situation === 'laid-off' || a.situation === 'self-closed' || a.situation === 'on-ui';
+
+    const groups = [];
+    if (a.age === 'under18' || a.age === '18-24') {
+      groups.push('WIOA Youth (ages 14–24)');
+    }
+    if (a.age === '18-24' || a.age === '25plus') {
+      groups.push('WIOA Adult');
+    }
+    if (dislocated) {
+      groups.push('WIOA Dislocated Worker');
+    }
+
+    const priorities = [];
+    if (a.assistance === 'yes') priorities.push('You receive public assistance');
+    if (a.income_low === 'yes') priorities.push('Your household income may be low');
+    if (a.veteran === 'yes') priorities.push('Veteran or military-spouse priority');
+
+    const needFit = dislocated ||
+      a.situation === 'unemployed' ||
+      a.situation === 'part-low' ||
+      priorities.length > 0;
+    const likely = inMA && needFit;
+
+    return {
+      inMA: inMA,
+      groups: groups,
+      priorities: priorities,
+      likely: likely,
+      selectiveService: a.age === '18-24' || a.age === '25plus',
+      workAuthConcern: a.work_auth === 'no',
+      employerAngle: a.situation === 'full-time' || a.situation === 'part-low',
+    };
+  }
+
+  // Self-tests (run only on qualify.html#selftest — silent unless something fails).
+  function runQualifyTests() {
+    const eq = (got, want, msg) => console.assert(got === want, msg + ' (got ' + got + ', want ' + want + ')');
+    let r = classifyQualify({ live_ma: 'yes', age: '25plus', situation: 'laid-off', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'it' });
+    eq(r.likely, true, 'laid-off MA adult is a likely fit');
+    console.assert(r.groups.indexOf('WIOA Dislocated Worker') !== -1, 'laid-off -> Dislocated Worker');
+    console.assert(r.groups.indexOf('WIOA Adult') !== -1, '25+ -> Adult');
+    r = classifyQualify({ live_ma: 'yes', age: '18-24', situation: 'full-time', assistance: 'yes', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'healthcare' });
+    console.assert(r.groups.indexOf('WIOA Youth (ages 14–24)') !== -1, '18-24 -> Youth');
+    eq(r.likely, true, 'public assistance is a priority -> likely');
+    eq(r.employerAngle, true, 'full-time -> employer angle');
+    r = classifyQualify({ live_ma: 'no', age: '25plus', situation: 'unemployed', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'trades' });
+    eq(r.inMA, false, 'not in MA flagged');
+    eq(r.likely, false, 'not in MA -> not likely (this check is MA-only)');
+    r = classifyQualify({ live_ma: 'yes', age: '25plus', situation: 'full-time', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'it' });
+    eq(r.likely, false, 'full-time no-priority -> not a strong fit');
+    eq(r.selectiveService, true, '25+ -> show Selective Service note');
+    r = classifyQualify({ live_ma: 'yes', age: 'under18', situation: 'unemployed', assistance: 'no', income_low: 'yes', veteran: 'no', work_auth: 'unsure', field: 'unsure' });
+    console.assert(r.groups.indexOf('WIOA Youth (ages 14–24)') !== -1 && r.groups.indexOf('WIOA Adult') === -1, 'under 18 -> Youth only');
+    eq(r.selectiveService, false, 'under 18 -> no Selective Service note');
+    console.log('[qualify] self-tests complete');
+  }
+
   const qForm = document.querySelector('.qualify-form');
   if (qForm) {
     const steps = Array.from(qForm.querySelectorAll('.qualify-step'));
@@ -149,6 +235,21 @@
     const status = qForm.querySelector('.form-status');
     const submitBtn = qForm.querySelector('[type="submit"]');
     let idx = 0;
+
+    // Field -> guide map (Site Structure Spec v1.5 location-neutral slugs).
+    const FIELD = {
+      healthcare: { label: 'healthcare', guide: 'healthcare-careers.html' },
+      it:         { label: 'information technology', guide: 'it-careers.html' },
+      trades:     { label: 'the skilled trades', guide: 'skilled-trades-careers.html' },
+      unsure:     { label: 'a new field', guide: 'career-paths.html' },
+    };
+    const FUNDED_STEPS = [
+      'Find your MassHire Career Center. See the list of locations at <a class="link-yellow" href="https://www.mass.gov/info-details/masshire-career-center-locations" target="_blank" rel="noopener">mass.gov</a> and contact the nearest one.',
+      'Register on JobQuest at <a class="link-yellow" href="https://jobquest.mass.gov" target="_blank" rel="noopener">jobquest.mass.gov</a> — you need an account before you can get training funding.',
+      'Attend a Training Information Meeting at your career center.',
+      'Ask about an Individual Training Account (ITA). If you collect unemployment, ask about Section 30 to keep your checks coming while you train.',
+      'Choose a state-approved (ETPL) training program in your field.',
+    ];
 
     const show = (n) => {
       idx = Math.max(0, Math.min(n, steps.length - 1));
@@ -161,118 +262,125 @@
       if (focusable) focusable.focus();
     };
 
-    // Choice steps auto-advance when an option is picked.
-    steps.forEach((step) => {
+    const answers = () => {
+      const d = new FormData(qForm);
+      return {
+        live_ma: d.get('live_ma'), age: d.get('age'), situation: d.get('situation'),
+        assistance: d.get('assistance'), income_low: d.get('income_low'),
+        veteran: d.get('veteran'), work_auth: d.get('work_auth'), field: d.get('field'),
+      };
+    };
+
+    // Auto-advance; the LAST question shows results instead of a next step.
+    steps.forEach((step, i) => {
       if (!step.dataset.autoadvance) return;
       step.querySelectorAll('input[type="radio"]').forEach((radio) => {
-        radio.addEventListener('change', () => { if (idx < steps.length - 1) show(idx + 1); });
+        radio.addEventListener('change', () => {
+          if (i < steps.length - 1) show(i + 1);
+          else showResults();
+        });
       });
     });
 
-    if (backBtn) backBtn.addEventListener('click', () => show(idx - 1));
-
-    qForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      if (status) { status.className = 'form-status'; status.textContent = ''; }
-      // Final step holds the required contact fields; let the browser validate them.
-      if (!qForm.checkValidity()) {
-        qForm.reportValidity();
-        return;
-      }
-
-      const data = new FormData(qForm);
-      data.set('page', window.location.pathname);
-      if (submitBtn) submitBtn.disabled = true;
-      if (status) status.textContent = 'Sending…';
-
-      try {
-        const res = await fetch(qForm.action, {
-          method: 'POST', body: data, headers: { Accept: 'application/json' },
-        });
-        const json = await res.json().catch(() => ({}));
-        if (!res.ok || !json.ok) throw new Error(json.error || 'Submission failed');
-        if (typeof gtag === 'function') gtag('event', 'form_submit', { source: 'qualify' });
-        routeResult(data);
-      } catch (err) {
-        if (status) {
-          status.textContent = 'Sorry, that didn’t send. Please email info@careerskillscenter.com or call (617) 544-7155.';
-          status.classList.add('is-error');
-        }
-        if (submitBtn) submitBtn.disabled = false;
+    if (backBtn) backBtn.addEventListener('click', () => {
+      if (result.classList.contains('is-active')) {
+        result.classList.remove('is-active');
+        show(steps.length - 1);
+      } else {
+        show(idx - 1);
       }
     });
 
-    // Field → guide map (GUIDE_MODE_SPEC step 5). Result always routes OUTWARD.
-    const FIELD = {
-      healthcare: { label: 'healthcare', guide: 'healthcare-careers-massachusetts.html' },
-      it:         { label: 'information technology', guide: 'it-careers-massachusetts.html' },
-      trades:     { label: 'the skilled trades', guide: 'skilled-trades-careers-massachusetts.html' },
-      unsure:     { label: 'a new field', guide: 'career-paths.html' },
-    };
-    // The five outward steps for a likely funded fit.
-    const FUNDED_STEPS = [
-      'Find your MassHire Career Center. See the list of locations at <a class="link-yellow" href="https://www.mass.gov/info-details/masshire-career-center-locations" target="_blank" rel="noopener">mass.gov</a> and contact the nearest one.',
-      'Register on JobQuest at <a class="link-yellow" href="https://jobquest.mass.gov" target="_blank" rel="noopener">jobquest.mass.gov</a> — you need an account before you can get training funding.',
-      'Attend a Training Information Meeting at your career center.',
-      'Ask about an Individual Training Account (ITA). If you get unemployment benefits, ask about Section 30.',
-      'Choose a state-approved training program in your field.',
-    ];
+    function el(sel) { return result.querySelector(sel); }
+    function toggle(sel, on) { const n = el(sel); if (n) n.hidden = !on; }
+    function setText(sel, t) { const n = el(sel); if (n) n.textContent = t; }
+    function setList(sel, items) {
+      const n = el(sel); if (!n) return;
+      n.innerHTML = items.map((s) => '<li>' + s + '</li>').join('');
+    }
 
-    // Soft routing per GUIDE_MODE_SPEC step 5. Never a yes/no verdict; always outward.
-    function routeResult(data) {
-      const inMA = data.get('live_ma') === 'yes';
-      const situation = data.get('situation');
-      const fundedSituations = ['unemployed', 'laid-off', 'part-low'];
-      const assistance = data.get('assistance') === 'yes';
-      const employer = data.get('employer');
-      const field = FIELD[data.get('field')] || FIELD.unsure;
+    function showResults() {
+      const a = answers();
+      const r = classifyQualify(a);
+      const field = FIELD[a.field] || FIELD.unsure;
 
-      const fundedFit = inMA && (fundedSituations.indexOf(situation) !== -1 || assistance);
-      const employerFit = employer === 'yes' || employer === 'maybe';
-
-      const setText = (sel, text) => { const el = result.querySelector(sel); if (el) el.textContent = text; };
-      const show = (sel, on) => { const el = result.querySelector(sel); if (el) el.hidden = !on; };
-
-      const stepsList = result.querySelector('.result-steps');
-
-      if (fundedFit) {
-        setText('.result-head', 'You may qualify for state-funded training.');
-        setText('.result-body', 'Here’s how to start in Massachusetts:');
-        if (stepsList) stepsList.innerHTML = FUNDED_STEPS.map((s) => '<li>' + s + '</li>').join('');
-        show('.result-steps', true);
-        show('.result-readmore', true);
-        show('.result-otherpay', false);
+      if (!r.inMA) {
+        setText('.result-head', 'This check covers Massachusetts.');
+        setText('.result-body', 'WIOA training funds exist in every state, but the steps below are for Massachusetts. Use the link to find your local American Job Center — and you can still explore the field you picked.');
+        toggle('.result-groups', false);
+        toggle('.result-priority', false);
+        toggle('.result-steps-wrap', false);
+        toggle('.result-notma', true);
+        toggle('.result-selective', false);
+        toggle('.result-workauth', r.workAuthConcern);
+        toggle('.result-employer', false);
       } else {
-        setText('.result-head', 'Let’s find the best way for you to pay.');
-        setText('.result-body', 'You may still qualify for help. Based on your answers, start here:');
-        show('.result-steps', false);
-        show('.result-readmore', false);
-        show('.result-otherpay', true);
+        if (r.likely) {
+          setText('.result-head', 'You may be a good candidate for WIOA-funded training.');
+          setText('.result-body', 'Your answers line up with the groups WIOA prioritizes. Only a MassHire career center can decide, but here’s exactly how to check:');
+        } else {
+          setText('.result-head', 'You may still have options worth checking.');
+          setText('.result-body', 'Your answers don’t point to the highest-priority groups, but WIOA’s adult program is broad and eligibility is decided locally. Here’s how to check, plus other ways to pay:');
+        }
+        setList('.result-group-list', r.groups.length ? r.groups : ['WIOA Adult']);
+        toggle('.result-groups', true);
+        toggle('.result-priority', r.priorities.length > 0);
+        if (r.priorities.length) setList('.result-priority-list', r.priorities);
+        setList('.result-steps', FUNDED_STEPS);
+        toggle('.result-steps-wrap', true);
+        toggle('.result-notma', false);
+        toggle('.result-selective', r.selectiveService);
+        toggle('.result-workauth', r.workAuthConcern);
+        toggle('.result-employer', r.employerAngle);
       }
 
-      // Employer line (shown when relevant, in addition to the above).
-      show('.result-employer', employerFit);
-
-      // Always: link to the picked field guide + interest-list line (COURSE-DEPENDENT).
-      const guideBtn = result.querySelector('.result-guide');
+      const guideBtn = el('.result-guide');
       if (guideBtn) {
         guideBtn.setAttribute('href', field.guide);
-        guideBtn.textContent = field.label === 'a new field'
-          ? 'Explore career paths' : 'Explore ' + field.label;
+        guideBtn.textContent = field.label === 'a new field' ? 'Explore career paths' : 'Explore ' + field.label;
       }
       setText('.result-field-note',
         'We’ll also let you know when Career Skills Center launches training in ' + field.label + '.');
 
       steps.forEach((s) => s.classList.remove('is-active'));
       if (fill) fill.style.width = '100%';
-      if (label) label.textContent = '';
-      if (backBtn) backBtn.hidden = true;
+      if (label) label.textContent = 'Your results';
+      if (backBtn) backBtn.hidden = false;
       result.classList.add('is-active');
       result.setAttribute('tabindex', '-1');
       result.focus();
-      result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    // Optional "email me these steps": posts answers + contact to submit.php.
+    qForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (status) { status.className = 'form-status'; status.textContent = ''; }
+      const email = qForm.querySelector('[name="email"]');
+      if (!email || !email.value.trim()) {
+        if (status) { status.textContent = 'Enter your email so we can send your steps.'; status.classList.add('is-error'); }
+        if (email) email.focus();
+        return;
+      }
+      if (!email.checkValidity()) { email.reportValidity(); return; }
+
+      const data = new FormData(qForm);
+      data.set('page', window.location.pathname);
+      if (submitBtn) submitBtn.disabled = true;
+      if (status) status.textContent = 'Sending…';
+      try {
+        const res = await fetch(qForm.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || !json.ok) throw new Error(json.error || 'Submission failed');
+        if (typeof gtag === 'function') gtag('event', 'form_submit', { source: 'qualify' });
+        if (status) { status.textContent = 'Sent! Check your email for your next steps.'; status.classList.add('is-success'); }
+      } catch (err) {
+        if (status) { status.textContent = 'Sorry, that didn’t send. Please email info@careerskillscenter.com or call (617) 544-7155.'; status.classList.add('is-error'); }
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+
+    if (window.location.hash === '#selftest') runQualifyTests();
     show(0);
   }
 

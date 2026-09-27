@@ -460,6 +460,13 @@ def outward_next_step(field_label):
     </section>"""
 
 
+FUNDING_NOTE = """        <div class="note"><strong>About Career Skills Center and state funding:</strong> Massachusetts offers
+        free training to eligible residents through MassHire Career Centers. Career Skills Center is working
+        toward approval to accept these funds. In the meantime, <a href="contact.html">join our interest
+        list</a>, and we will keep you posted as our programs and funding status develop. We will help you check
+        what you may qualify for — but only your MassHire career center can approve funding.</div>"""
+
+
 def career_pay_block():
     """Location-neutral 'how to pay' + next step for the Career Paths pages
     (Site Structure Spec v1.5: no location framing on career pages). Points to the
@@ -1552,6 +1559,193 @@ PAGES.append(dict(
 """ + field_interest("hub", "unsure", "training in these fields")))
 
 
+# ===========================================================================
+# v1.5 NEW PAGES — Funding Guides + For Employers (Site Structure Spec v1.5)
+# ===========================================================================
+
+# ---- wioa-explained.html (Funding Guides) ---------------------------------
+# Reference page. WIOA structure and Massachusetts process facts are sourced in
+# docs/VERIFICATION_LOG.md (B1, B2, B5, B6, B7, B8, B10, B11, B12). Do NOT state
+# statewide ITA dollar caps — the FY27 ETPL policy sets none (B12).
+_WIOA_FAQ = [
+    ("What is WIOA?",
+     "WIOA stands for the Workforce Innovation and Opportunity Act, the main federal law that pays for job training in the United States. Each state runs it locally. In Massachusetts, you access it through a MassHire career center."),
+    ("Who qualifies for WIOA training funds?",
+     "WIOA serves three groups: Adults, Dislocated Workers (people laid off or whose jobs ended), and Youth (ages 14–24). Within the adult program, people who receive public assistance, are low income, or are basic-skills deficient get priority of service, and veterans and eligible spouses get priority across all programs. Your local career center makes the final decision."),
+    ("How much does WIOA pay for training?",
+     "It pays tuition for training programs that are on the state Eligible Training Provider List (ETPL). There is no single statewide dollar cap in Massachusetts — the amount is set locally, and some career centers also help with related costs like books or exam fees. Ask your counselor exactly what yours covers."),
+    ("What is an ITA?",
+     "An Individual Training Account (ITA) is the WIOA voucher that pays your tuition at an approved training provider. You choose an eligible program with your career counselor, and the ITA covers the approved cost."),
+    ("Can I get paid while I train?",
+     "If you are collecting unemployment, ask about Section 30 (the Training Opportunities Program). It can keep your unemployment checks coming while you train full time and add up to 26 extra weeks of benefits. It does not pay tuition — you pair it with an ITA. You generally must apply by your 20th compensable week of benefits."),
+    ("Does Career Skills Center accept WIOA funding?",
+     "Not yet. Career Skills Center is working toward approval to accept these funds and plans to offer training in healthcare, IT and the skilled trades. Only your MassHire career center can approve funding. Join the interest list for updates."),
+]
+
+PAGES.append(dict(
+    slug="wioa-explained.html", nav="wioa-explained.html",
+    title="WIOA Training Funds Explained: Who Qualifies and How to Apply in Massachusetts | Career Skills Center",
+    ogtitle="WIOA Training Funds Explained: Who Qualifies and How to Apply",
+    desc="A plain-language guide to WIOA training funds: the three eligibility groups, priority of service, the ITA voucher, the ETPL, and the step-by-step process to apply in Massachusetts.",
+    extrahead=faq_ld(_WIOA_FAQ),
+    main=hero("Funding Guides &middot; WIOA",
+              "WIOA Training Funds Explained",
+              "WIOA is the main public program that pays for job training in the United States. Here&rsquo;s who "
+              "qualifies, what it covers, and the exact steps to apply through a MassHire career center in "
+              "Massachusetts.",
+              None, ("Do I Qualify?", "qualify.html")) + """
+
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The basics</p>
+        <h2 class="section-title left">What WIOA is</h2>
+        <p class="lede">WIOA stands for the <strong>Workforce Innovation and Opportunity Act</strong> &mdash; the
+        main federal law that funds job training across the country. The money is federal, but each state runs
+        the program through local offices. In Massachusetts, those offices are the <strong>MassHire career
+        centers</strong>, and the training you can pay for must be on the state&rsquo;s approved list.</p>
+        <p>WIOA is not a loan and not a scholarship you apply to online. It works through a career counselor who
+        checks your eligibility, helps you build a plan, and approves a voucher for an approved program.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Who it&rsquo;s for</p>
+        <h2 class="section-title left">The three groups WIOA serves</h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3 class="feature-title">Adults</h3>
+            <p>Adults 18 and over who want training for a better job. Priority goes to people on public
+            assistance, with low income, or who need to build basic skills.</p>
+          </article>
+          <article class="feature">
+            <h3 class="feature-title">Dislocated Workers</h3>
+            <p>People who were laid off, whose job or plant closed, or who otherwise lost work through no fault
+            of their own &mdash; including some who received a layoff notice.</p>
+          </article>
+          <article class="feature">
+            <h3 class="feature-title">Youth</h3>
+            <p>Young people ages 14–24, with services aimed at education, skills and a first career step.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Priority of service</p>
+        <h2 class="section-title left">Who gets served first</h2>
+        <p>Funds are limited, so the adult program serves some people ahead of others. Priority of service goes
+        to:</p>
+        <ul class="check-list">
+          <li>People who receive public assistance (such as SNAP or TAFDC)</li>
+          <li>Other low-income individuals</li>
+          <li>People who are &ldquo;basic skills deficient&rdquo; (need to build reading, writing or math skills)</li>
+        </ul>
+        <p><strong>Veterans and eligible spouses</strong> receive priority of service across all U.S. Department
+        of Labor–funded programs. You do not have to be in one of these groups to qualify &mdash; but if you
+        are, you move toward the front of the line.</p>
+        <p class="role-src">Source: U.S. Department of Labor, WIOA Adult program (priority of service);
+        veterans&rsquo; priority under the Jobs for Veterans Act.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The voucher</p>
+        <h2 class="section-title left">The ITA: what it covers and what it doesn&rsquo;t</h2>
+        <p>The voucher is called an <strong>Individual Training Account (ITA)</strong>. Here&rsquo;s the honest
+        picture:</p>
+        <ul class="check-list">
+          <li><strong>It pays tuition</strong> for an approved training program you choose with your counselor.</li>
+          <li><strong>It may cover related costs</strong> like books, fees or exam vouchers &mdash; this depends
+          on your career center, so ask.</li>
+          <li><strong>There is no single statewide dollar cap</strong> in Massachusetts; the amount is set
+          locally.</li>
+          <li><strong>It does not pay your living expenses.</strong> If you collect unemployment, Section 30
+          (below) can keep those checks coming while you train.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The approved list</p>
+        <h2 class="section-title left">Why the program must be on the ETPL</h2>
+        <p>WIOA money can only pay for training that is on the state&rsquo;s <strong>Eligible Training Provider
+        List (ETPL)</strong>. The ETPL is the state&rsquo;s vetted list of schools and programs that have shown
+        they lead to real jobs. If a program isn&rsquo;t on the list, an ITA can&rsquo;t pay for it &mdash; so
+        one of the first things to check is whether the training you want is listed. Your career counselor can
+        confirm this with you.</p>
+        <p class="role-src">Source: Massachusetts ETPL policy (100 DCS 14.106.2, FY27).</p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How to apply</p>
+        <h2 class="section-title left">Step by step in Massachusetts</h2>
+        <p>Exact steps vary by career center, but the path usually looks like this &mdash; and it takes roughly
+        <strong>six to eight weeks</strong> from your first visit to an approved voucher:</p>
+        <ol class="check-list check-list--num">
+          <li><strong>Register.</strong> Create a MyMassGov account and register on <a class="link-yellow" href="https://jobquest.mass.gov" target="_blank" rel="noopener">JobQuest</a>. You need a JobQuest account before you can get training funding.</li>
+          <li><strong>Connect with a MassHire career center.</strong> <a class="link-yellow" href="https://www.mass.gov/info-details/masshire-career-center-locations" target="_blank" rel="noopener">Find your nearest location</a> and attend a Training Information Meeting (some centers use a required video).</li>
+          <li><strong>Take a basic-skills assessment</strong> (often the TABE) so your counselor can build the right plan with you.</li>
+          <li><strong>Build a career plan and gather documents</strong> with your counselor (ID, income, work history).</li>
+          <li><strong>Pick an ETPL-approved program</strong> in your field.</li>
+          <li><strong>Get your ITA approved</strong> and start training.</li>
+        </ol>
+        <p><strong>Collecting unemployment?</strong> Ask about <strong>Section 30 (the Training Opportunities
+        Program)</strong>. If you train at least 20 hours a week, it can keep your unemployment checks coming and
+        add up to 26 extra weeks of benefits. You generally must apply by your <strong>20th compensable
+        week</strong>. Section 30 doesn&rsquo;t pay tuition &mdash; you pair it with an ITA.</p>
+        <p class="role-src">Sources: MassHire career center process pages; mass.gov Training Opportunities
+        Program (Section 30).</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+""" + FUNDING_NOTE + """
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Your next step</p>
+        <h2 class="section-title left">See where you may fit</h2>
+        <p>The quickest way to understand your options is our free check. It never gives a yes/no verdict &mdash;
+        only your career center can do that &mdash; but it shows which WIOA group you may fit and what to do
+        next.</p>
+        <p><a class="btn btn-yellow" href="qualify.html">Do I Qualify?</a></p>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="faq">
+          <p class="faq-group-title">WIOA FAQ</p>
+""" + "\n".join(f'''          <details class="faq-item">
+            <summary>{q}</summary>
+            <div class="faq-body"><p>{a}</p></div>
+          </details>''' for q, a in _WIOA_FAQ) + """
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="related-title">Related guides</h2>
+        <div class="post-grid post-grid--related">
+          <a class="post-card" href="blog/free-job-training-massachusetts.html"><h3>Free Job Training in Massachusetts</h3><span class="read-link">Read article</span></a>
+          <a class="post-card" href="blog/masshire-training-voucher.html"><h3>How to Get a MassHire Training Voucher (ITA)</h3><span class="read-link">Read article</span></a>
+          <a class="post-card" href="express-program-explained.html"><h3>Express Program Explained (Employers)</h3><span class="read-link">Read the guide</span></a>
+        </div>
+      </div>
+    </section>
+"""))
+
+
 # ---- admissions.html ------------------------------------------------------
 PAGES.append(dict(
     slug="admissions.html", nav="admissions.html",
@@ -1678,16 +1872,16 @@ def _q_opts(name, opts, autoadvance=True):
 
 PAGES.append(dict(
     slug="qualify.html", nav="",
-    title="Check Your Options for State-Funded Training in Massachusetts | Career Skills Center",
-    ogtitle="Check Your Options for State-Funded Training in Massachusetts",
-    desc="Answer a few quick questions and we'll show you personalized next steps for state-funded career training in Massachusetts. Takes about 60 seconds. No cost, no obligation.",
+    title="Do I Qualify for WIOA Training? Free Eligibility Check | Career Skills Center",
+    ogtitle="Do I Qualify for WIOA Training? Free Eligibility Check",
+    desc="Answer a few quick questions to see which WIOA group you may fit and your next steps for publicly funded training. Free, about 60 seconds, and never a yes/no verdict.",
     main="""    <section class="page-hero">
       <div class="container">
-        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>Check Your Options</p>
-        <h1>Find out what training help you may qualify for<span class="dot">.</span></h1>
-        <p class="page-hero-lede">Answer a few quick questions and we&rsquo;ll show you the next steps for
-        state-funded training in Massachusetts. This isn&rsquo;t an application &mdash; there&rsquo;s no cost and
-        no obligation, and only a MassHire career center can approve funding.</p>
+        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>Do I Qualify?</p>
+        <h1>See what training help you may qualify for<span class="dot">.</span></h1>
+        <p class="page-hero-lede">Answer a few quick questions and we&rsquo;ll show which WIOA group you may fit
+        and what to do next. This isn&rsquo;t an application, it&rsquo;s free, and it never gives a yes/no verdict
+        &mdash; only a MassHire career center can approve funding.</p>
       </div>
     </section>
 
@@ -1700,47 +1894,47 @@ PAGES.append(dict(
 
             <div class="qualify-progress" aria-hidden="true">
               <div class="qualify-progress-track"><div class="qualify-progress-fill"></div></div>
-              <p class="qualify-progress-label">Step 1 of 6</p>
+              <p class="qualify-progress-label">Step 1 of 8</p>
             </div>
 
             <button type="button" class="qualify-back" hidden>&larr; Back</button>
 
             <fieldset class="qualify-step" data-autoadvance="1">
-              <legend>Which field interests you?</legend>
-              <p class="qualify-help">Pick the one closest to what you want. You can change your mind later.</p>
-              <div class="qualify-options">
-""" + _q_opts("field", [
-        ("healthcare", "Healthcare"),
-        ("it", "Information Technology"),
-        ("trades", "Skilled Trades"),
-        ("unsure", "Not sure")]) + """
-              </div>
-            </fieldset>
-
-            <fieldset class="qualify-step" data-autoadvance="1">
               <legend>Do you live in Massachusetts?</legend>
-              <p class="qualify-help">Most state training funding is for Massachusetts residents.</p>
+              <p class="qualify-help">This check covers Massachusetts. WIOA exists in every state, though.</p>
               <div class="qualify-options">
 """ + _q_opts("live_ma", [("yes", "Yes"), ("no", "No")]) + """
               </div>
             </fieldset>
 
             <fieldset class="qualify-step" data-autoadvance="1">
-              <legend>What&rsquo;s your current work situation?</legend>
-              <p class="qualify-help">This helps us point you to the right kind of help.</p>
+              <legend>How old are you?</legend>
+              <p class="qualify-help">WIOA has a separate track for young people.</p>
               <div class="qualify-options">
-""" + _q_opts("situation", [
-        ("unemployed", "Unemployed"),
-        ("laid-off", "Laid off in the last 2 years"),
-        ("part-low", "Working part-time or low wage"),
-        ("full-time", "Working full-time"),
-        ("other", "Other")]) + """
+""" + _q_opts("age", [
+        ("under18", "Under 18"),
+        ("18-24", "18 to 24"),
+        ("25plus", "25 or older")]) + """
               </div>
             </fieldset>
 
             <fieldset class="qualify-step" data-autoadvance="1">
-              <legend>Do you or your household receive public assistance?</legend>
-              <p class="qualify-help">For example SNAP, TAFDC, SSI or similar. This can open up more options.</p>
+              <legend>What&rsquo;s your current work situation?</legend>
+              <p class="qualify-help">Pick the closest one.</p>
+              <div class="qualify-options">
+""" + _q_opts("situation", [
+        ("unemployed", "Unemployed"),
+        ("laid-off", "Laid off, or I got a layoff notice"),
+        ("on-ui", "Collecting unemployment benefits"),
+        ("part-low", "Working part-time or low wage"),
+        ("full-time", "Employed full-time"),
+        ("self-closed", "Self-employed and my business closed")]) + """
+              </div>
+            </fieldset>
+
+            <fieldset class="qualify-step" data-autoadvance="1">
+              <legend>Does your household receive public assistance?</legend>
+              <p class="qualify-help">For example SNAP, TAFDC, SSI or similar. This can move you up the priority list.</p>
               <div class="qualify-options">
 """ + _q_opts("assistance", [
         ("yes", "Yes"),
@@ -1750,67 +1944,90 @@ PAGES.append(dict(
             </fieldset>
 
             <fieldset class="qualify-step" data-autoadvance="1">
-              <legend>Would your employer pay for training?</legend>
-              <p class="qualify-help">Massachusetts may reimburse employers who train their staff.</p>
+              <legend>Is your household income low?</legend>
+              <p class="qualify-help">&ldquo;Low income&rdquo; depends on household size. As a rough example, one
+              Massachusetts career center in <span data-cfg="INCOME_EXAMPLE_YEAR" data-cfg-format="raw">[VERIFY]</span>
+              used thresholds from about <span data-cfg="INCOME_EXAMPLE_MIN" data-cfg-format="money">[VERIFY]</span>
+              for one person up to <span data-cfg="INCOME_EXAMPLE_MAX" data-cfg-format="money">[VERIFY]</span>+ for
+              larger families &mdash; but this varies by center and year, so it&rsquo;s only a guide.</p>
               <div class="qualify-options">
-""" + _q_opts("employer", [
-        ("yes", "Yes"),
-        ("maybe", "Maybe"),
+""" + _q_opts("income_low", [
+        ("yes", "Yes, or close to it"),
         ("no", "No"),
-        ("not-working", "I&rsquo;m not working right now")]) + """
+        ("unsure", "Not sure")]) + """
               </div>
             </fieldset>
 
-            <fieldset class="qualify-step">
-              <legend>Where should we send your results?</legend>
-              <p class="qualify-help">We&rsquo;ll show your next steps on the next screen and email you a copy.
-              No spam, no pressure.</p>
-              <div class="qualify-fields">
-                <label class="sr-only" for="q-name">First name</label>
-                <input id="q-name" name="name" type="text" placeholder="First name" autocomplete="given-name" required>
-                <label class="sr-only" for="q-email">Email address</label>
-                <input id="q-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
-                <label class="sr-only" for="q-phone">Mobile phone (optional)</label>
-                <input id="q-phone" name="phone" type="tel" placeholder="Mobile phone (optional)" autocomplete="tel">
-                <label class="sr-only" for="q-language">Preferred language</label>
-                <select id="q-language" name="language">
-                  <option value="" selected disabled>Preferred language</option>
-                  <option value="English">English</option>
-                  <option value="Espa&ntilde;ol">Espa&ntilde;ol</option>
-                  <option value="Portugu&ecirc;s">Portugu&ecirc;s</option>
-                </select>
-                <label class="consent-row"><input type="checkbox" name="consent" value="yes"> Send me updates from
-                Career Skills Center (email/SMS). Message and data rates may apply.</label>
+            <fieldset class="qualify-step" data-autoadvance="1">
+              <legend>Are you a veteran or the spouse of a veteran?</legend>
+              <p class="qualify-help">Veterans and eligible spouses get priority in these programs.</p>
+              <div class="qualify-options">
+""" + _q_opts("veteran", [("yes", "Yes"), ("no", "No")]) + """
               </div>
-              <div class="qualify-nav">
-                <button class="btn btn-yellow" type="submit">See my next steps</button>
-              </div>
-              <p class="form-status" role="status" aria-live="polite"></p>
             </fieldset>
 
-            <!-- Result screen = personalized OUTWARD next steps. Never a yes/no verdict.
-                 js/main.js fills the text and toggles blocks (see routeResult).
-                 COURSE-DEPENDENT: R-QUALIFY — in course mode the result routes inward
+            <fieldset class="qualify-step" data-autoadvance="1">
+              <legend>Are you legally allowed to work in the US?</legend>
+              <p class="qualify-help">Work authorization is generally required for WIOA-funded training.</p>
+              <div class="qualify-options">
+""" + _q_opts("work_auth", [("yes", "Yes"), ("no", "No"), ("unsure", "Not sure")]) + """
+              </div>
+            </fieldset>
+
+            <fieldset class="qualify-step" data-autoadvance="1">
+              <legend>Which field interests you?</legend>
+              <p class="qualify-help">You can change your mind later.</p>
+              <div class="qualify-options">
+""" + _q_opts("field", [
+        ("healthcare", "Healthcare"),
+        ("it", "Information Technology"),
+        ("trades", "Skilled Trades"),
+        ("unsure", "Not sure")]) + """
+              </div>
+            </fieldset>
+
+            <!-- Result screen = which WIOA group you MAY fit + priority flags + outward
+                 next steps. NEVER a yes/no verdict. js/main.js fills it (see classifyQualify).
+                 COURSE-DEPENDENT: R-QUALIFY — in course mode the result also routes inward
                  (matching CSC course + funding help), pre-written behind SITE_MODE. -->
             <div class="qualify-result" role="status" aria-live="polite">
               <svg class="result-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <h2 class="result-head">Thanks &mdash; here are your next steps.</h2>
+              <h2 class="result-head">Here&rsquo;s what your answers suggest.</h2>
               <p class="result-body"></p>
 
-              <ol class="result-steps check-list check-list--num" hidden></ol>
+              <div class="result-groups" hidden>
+                <h3 class="result-subhead">You may fit:</h3>
+                <ul class="result-group-list check-list"></ul>
+              </div>
 
-              <p class="result-readmore" hidden>Read more: <a class="link-yellow" href="blog/free-job-training-massachusetts.html">Free job training in Massachusetts</a> &middot; <a class="link-yellow" href="blog/wioa-eligibility-massachusetts.html">Who qualifies for WIOA</a> &middot; <a class="link-yellow" href="blog/masshire-training-voucher.html">How to get a MassHire voucher (ITA)</a>.</p>
+              <div class="result-priority" hidden>
+                <h3 class="result-subhead">Things that may move you up the priority list:</h3>
+                <ul class="result-priority-list check-list"></ul>
+              </div>
 
-              <p class="result-employer" hidden>Your employer may be able to get training costs reimbursed by
-              Massachusetts. <a class="link-yellow" href="blog/free-job-training-massachusetts.html">See
-              employer-paid training</a>.</p>
+              <div class="result-steps-wrap" hidden>
+                <h3 class="result-subhead">Your next steps:</h3>
+                <ol class="result-steps check-list check-list--num"></ol>
+              </div>
 
-              <p class="result-otherpay" hidden>Here are other ways to pay for training in Massachusetts.
-              <a class="link-yellow" href="student-financing.html">See Ways to Pay</a>.</p>
+              <p class="result-selective note" hidden>Note: men born on or after January 1, 1960 must be
+              registered with Selective Service to receive WIOA funds. [VERIFY]</p>
+
+              <p class="result-workauth note" hidden>Work authorization is generally required for WIOA-funded
+              training. A MassHire career center can explain your options.</p>
+
+              <p class="result-notma note" hidden>WIOA exists in every state, but this check covers Massachusetts.
+              Find your local American Job Center at <a class="link-yellow" href="https://www.careeronestop.org/LocalHelp/AmericanJobCenters/find-american-job-centers.aspx" target="_blank" rel="noopener">CareerOneStop</a>. [VERIFY]</p>
+
+              <p class="result-employer" hidden>Already working? Your employer may be able to get training costs
+              reimbursed through the state. <a class="link-yellow" href="staff-training-grants.html">See staff
+              training grants</a>.</p>
+
+              <p class="result-readmore">Read more: <a class="link-yellow" href="wioa-explained.html">WIOA explained</a> &middot; <a class="link-yellow" href="blog/free-job-training-massachusetts.html">Free job training in Massachusetts</a> &middot; <a class="link-yellow" href="blog/masshire-training-voucher.html">How to get a MassHire voucher (ITA)</a>.</p>
 
               <div class="result-actions">
                 <a class="btn btn-navy result-guide" href="career-paths.html">Explore your field</a>
-                <a class="btn btn-outline-navy" href="blog/free-job-training-massachusetts.html">Read the funding guide</a>
+                <a class="btn btn-outline-navy" href="wioa-explained.html">How WIOA works</a>
               </div>
 
               <!-- COURSE-DEPENDENT: R-QUALIFY — guide mode: interest-list line.
@@ -1819,6 +2036,34 @@ PAGES.append(dict(
 
               <p class="qualify-disclaimer">This tool doesn&rsquo;t decide your funding. Only a MassHire career
               center can approve state training funds. We&rsquo;ll help you understand what you may qualify for.</p>
+
+              <!-- Optional: email these steps. Not required to see results. -->
+              <div class="qualify-email">
+                <h3 class="result-subhead">Want these steps emailed to you?</h3>
+                <p class="qualify-help">Optional. Leave your details and we&rsquo;ll send a copy and keep you
+                posted. No spam, no pressure.</p>
+                <div class="qualify-fields">
+                  <label class="sr-only" for="q-name">First name</label>
+                  <input id="q-name" name="name" type="text" placeholder="First name" autocomplete="given-name">
+                  <label class="sr-only" for="q-email">Email address</label>
+                  <input id="q-email" name="email" type="email" placeholder="Email address" autocomplete="email">
+                  <label class="sr-only" for="q-phone">Mobile phone (optional)</label>
+                  <input id="q-phone" name="phone" type="tel" placeholder="Mobile phone (optional)" autocomplete="tel">
+                  <label class="sr-only" for="q-language">Preferred language</label>
+                  <select id="q-language" name="language">
+                    <option value="" selected disabled>Preferred language</option>
+                    <option value="English">English</option>
+                    <option value="Espa&ntilde;ol">Espa&ntilde;ol</option>
+                    <option value="Portugu&ecirc;s">Portugu&ecirc;s</option>
+                  </select>
+                  <label class="consent-row"><input type="checkbox" name="consent" value="yes"> Send me updates from
+                  Career Skills Center (email/SMS). Message and data rates may apply.</label>
+                </div>
+                <div class="qualify-nav">
+                  <button class="btn btn-yellow" type="submit">Email me these steps</button>
+                </div>
+                <p class="form-status" role="status" aria-live="polite"></p>
+              </div>
             </div>
           </form>
         </div>
@@ -2755,13 +3000,6 @@ PAGES.append(dict(
 # ===========================================================================
 
 # Reused funding disclosure box (matches FUNDING_ETPL_APPROVED = false wording).
-FUNDING_NOTE = """        <div class="note"><strong>About Career Skills Center and state funding:</strong> Massachusetts offers
-        free training to eligible residents through MassHire Career Centers. Career Skills Center is working
-        toward approval to accept these funds. In the meantime, <a href="contact.html">join our interest
-        list</a>, and we will keep you posted as our programs and funding status develop. We will help you check
-        what you may qualify for — but only your MassHire career center can approve funding.</div>"""
-
-
 # ---- 1. Pillar: Free Job Training in Massachusetts ------------------------
 _p1_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (9/25/2026): center count "more than 25" (A1);
              Donnelly totals/dates $7.4M Oct 2025 + $5.9M Aug 2026 (A2); locator URL (A3); Section 30/TOP rules

@@ -32,6 +32,14 @@
     EXPRESS_AGREEMENT_AUTOSTART_DAYS: 21,     // VERIFY
     ESOL_PAID_TIME_MIN_SHARE: 0.50,           // VERIFY
 
+    /* ---- WIOA low-income example (regional example only — VERIFY) ----
+       Thresholds vary by career center and year; these are a single regional
+       example (MassHire Central, 2026) used to illustrate, never a statewide rule.
+       Verify before removing the [VERIFY] markers the pages render. */
+    INCOME_EXAMPLE_MIN: 15960,   // VERIFY (MassHire Central 2026, 1-person household)
+    INCOME_EXAMPLE_MAX: 60124,   // VERIFY (MassHire Central 2026, larger household)
+    INCOME_EXAMPLE_YEAR: 2026,   // VERIFY
+
     /* ---- Official outward destinations (GUIDE_MODE_SPEC; verified) ---- */
     MASSHIRE_LOCATOR: "https://www.mass.gov/info-details/masshire-career-center-locations",
     JOBQUEST: "https://jobquest.mass.gov",
