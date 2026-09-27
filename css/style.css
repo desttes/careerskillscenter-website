@@ -527,6 +527,38 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .qualify-result .btn { margin-top: 8px; margin-right: 10px; }
 .qualify-disclaimer { font-size: 13px; color: var(--muted); margin-top: 22px; }
 
+/* Qualify results (v1.5): groups, priority flags, steps, optional email block */
+.result-subhead { font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); margin: 22px 0 10px; }
+.qualify-result .result-groups[hidden],
+.qualify-result .result-priority[hidden],
+.qualify-result .result-steps-wrap[hidden],
+.qualify-result .result-employer[hidden],
+.qualify-result .result-selective[hidden],
+.qualify-result .result-workauth[hidden],
+.qualify-result .result-notma[hidden] { display: none; }
+.result-group-list li { font-weight: 700; color: var(--navy); }
+.qualify-result .note { background: var(--surface-alt); border-left: 3px solid var(--yellow); padding: 12px 16px; font-size: 15px; border-radius: 0 8px 8px 0; }
+.qualify-email { margin-top: 30px; padding-top: 24px; border-top: 1px solid #e3e3e3; }
+.qualify-email .qualify-fields { margin-top: 12px; }
+
+/* Express reimbursement calculator (staff-training-grants.html) */
+.express-calc { background: var(--surface-alt); border: 1px solid #e3e3e3; border-radius: 14px; padding: clamp(20px, 3vw, 32px); }
+.express-calc .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.express-calc .calc-field { display: flex; flex-direction: column; gap: 6px; }
+.express-calc .calc-field label { font-size: 14px; font-weight: 700; color: var(--navy); }
+.express-calc input[type="number"] { padding: 12px 14px; border: 1px solid #ccc; border-radius: 8px; font: inherit; }
+.express-calc .calc-size { border: 0; padding: 18px 0 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.express-calc .calc-size legend { font-size: 14px; font-weight: 700; color: var(--navy); padding: 0; margin-bottom: 8px; }
+.express-calc .calc-size label { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; }
+.express-calc .calc-output { margin-top: 20px; padding: 18px 20px; background: var(--navy); color: #fff; border-radius: 10px; }
+.express-calc .calc-result-line { margin: 0; font-size: 18px; }
+.express-calc .calc-total { color: var(--yellow); font-size: 26px; }
+.express-calc .calc-detail { margin: 8px 0 0; font-size: 14px; color: #dfe7ef; }
+.express-calc .calc-note { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+@media (max-width: 560px) { .express-calc .calc-grid { grid-template-columns: 1fr; } }
+
+.mt-lg { margin-top: 40px; }
+
 .dialog-info { background: var(--navy-dark); padding: clamp(28px, 4vw, 48px); font-size: 15px; }
 .dialog-info h3 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--yellow); margin-bottom: 6px; }
 .dialog-info p { margin-bottom: 22px; }

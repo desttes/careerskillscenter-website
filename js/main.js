@@ -384,6 +384,69 @@
     show(0);
   }
 
+  /* ---------- Express reimbursement calculator (staff-training-grants.html) ----
+     Pure calcExpress() + a live UI. All figures come from js/site-config.js.
+     Estimate only — CommCorp sets final amounts. Self-tests run on #selftest. */
+  function calcExpress(inp, cfg) {
+    const rate = inp.small ? cfg.EXPRESS_RATE_SMALL : cfg.EXPRESS_RATE_LARGE;
+    const employees = Math.max(0, inp.employees || 0);
+    const cost = Math.max(0, inp.costPerEmployee || 0);
+    const perPersonUncapped = cost * rate;
+    const perPerson = Math.min(perPersonUncapped, cfg.EXPRESS_MAX_PER_PERSON_PER_COURSE);
+    const gross = perPerson * employees;
+    const total = Math.min(gross, cfg.EXPRESS_ANNUAL_CAP_PER_COMPANY);
+    return {
+      rate: rate, perPerson: perPerson, gross: gross, total: total,
+      cappedPerson: perPersonUncapped > cfg.EXPRESS_MAX_PER_PERSON_PER_COURSE,
+      cappedCompany: gross > cfg.EXPRESS_ANNUAL_CAP_PER_COMPANY,
+    };
+  }
+
+  function runExpressTests() {
+    const cfg = window.CSC || window.SITE_CONFIG; if (!cfg) return;
+    const eq = (g, w, m) => console.assert(g === w, m + ' (got ' + g + ', want ' + w + ')');
+    let r = calcExpress({ employees: 5, costPerEmployee: 2000, small: true }, cfg);
+    eq(r.perPerson, Math.min(2000 * cfg.EXPRESS_RATE_SMALL, cfg.EXPRESS_MAX_PER_PERSON_PER_COURSE), 'small perPerson');
+    eq(r.total, Math.min(r.perPerson * 5, cfg.EXPRESS_ANNUAL_CAP_PER_COMPANY), 'small total capped by company');
+    r = calcExpress({ employees: 1, costPerEmployee: 100000, small: true }, cfg);
+    eq(r.cappedPerson, true, 'huge cost -> per-person cap hit');
+    eq(r.perPerson, cfg.EXPRESS_MAX_PER_PERSON_PER_COURSE, 'per-person capped at config max');
+    r = calcExpress({ employees: 100, costPerEmployee: 3000, small: false }, cfg);
+    eq(r.cappedCompany, true, 'many employees -> company cap hit');
+    eq(r.total, cfg.EXPRESS_ANNUAL_CAP_PER_COMPANY, 'total capped at company max');
+    console.log('[express] self-tests complete');
+  }
+
+  const calc = document.querySelector('.express-calc');
+  if (calc) {
+    const cfg = window.CSC || window.SITE_CONFIG || {};
+    const empEl = calc.querySelector('#calc-emp');
+    const costEl = calc.querySelector('#calc-cost');
+    const totalEl = calc.querySelector('.calc-total');
+    const detailEl = calc.querySelector('.calc-detail');
+    const money = (n) => '$' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    const recalc = () => {
+      const small = (calc.querySelector('input[name="calc_size"]:checked') || {}).value !== 'large';
+      const r = calcExpress({
+        employees: parseInt(empEl.value, 10) || 0,
+        costPerEmployee: parseFloat(costEl.value) || 0,
+        small: small,
+      }, cfg);
+      if (totalEl) totalEl.textContent = money(r.total);
+      if (detailEl) {
+        const bits = ['At up to ' + Math.round(r.rate * 100) + '% of eligible cost, about ' +
+          money(r.perPerson) + ' per person.'];
+        if (r.cappedPerson) bits.push('Per-person amount is capped at ' + money(cfg.EXPRESS_MAX_PER_PERSON_PER_COURSE) + '.');
+        if (r.cappedCompany) bits.push('Total is capped at the annual company max of ' + money(cfg.EXPRESS_ANNUAL_CAP_PER_COMPANY) + '.');
+        detailEl.textContent = bits.join(' ');
+      }
+    };
+    calc.addEventListener('input', recalc);
+    calc.addEventListener('change', recalc);
+    recalc();
+    if (window.location.hash === '#selftest') runExpressTests();
+  }
+
   /* ---------- Footer year ---------- */
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());

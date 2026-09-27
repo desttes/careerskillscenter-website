@@ -260,6 +260,69 @@ def interest_form(preselect="unsure", program_label="our programs"):
     </section>"""
 
 
+def employer_form(source, heading="Talk to us about training your team",
+                  intro="Tell us what you need and we&rsquo;ll follow up. No obligation.",
+                  topic_options=None, show_team_size=True, show_timeline=False,
+                  submit_label="Send inquiry", eyebrow="For employers"):
+    """Employer inquiry form (Site Structure Spec v1.5). Reuses the .contact-form
+    fetch handler in main.js; posts to submit.php with a distinct hidden `source`.
+    Each employer page passes its own source (employer / employer-express /
+    employer-apprenticeship / corporate)."""
+    sid = source.replace("-", "_")
+    team = ("" if not show_team_size else f"""
+          <label class="sr-only" for="{sid}-team">Team size</label>
+          <select id="{sid}-team" name="team_size">
+            <option value="" selected disabled>How many people to train?</option>
+            <option value="1-5">1&ndash;5</option>
+            <option value="6-20">6&ndash;20</option>
+            <option value="21-100">21&ndash;100</option>
+            <option value="100+">More than 100</option>
+          </select>""")
+    if topic_options is not None:
+        opts = "\n".join(f'            <option value="{v}">{lbl}</option>' for v, lbl in topic_options)
+        topic = f"""
+          <label class="sr-only" for="{sid}-topic">Training topic</label>
+          <select id="{sid}-topic" name="topic">
+            <option value="" selected disabled>What training do you need?</option>
+{opts}
+          </select>"""
+    else:
+        topic = ""
+    timeline = ("" if not show_timeline else f"""
+          <label class="sr-only" for="{sid}-timeline">Timeline</label>
+          <select id="{sid}-timeline" name="timeline">
+            <option value="" selected disabled>When do you want to start?</option>
+            <option value="asap">As soon as possible</option>
+            <option value="1-3-months">In 1&ndash;3 months</option>
+            <option value="3-6-months">In 3&ndash;6 months</option>
+            <option value="exploring">Just exploring</option>
+          </select>""")
+    return f"""    <section class="section section--alt" id="employer-inquiry">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>{eyebrow}</p>
+        <h2 class="section-title left">{heading}</h2>
+        <div class="section-intro"><p>{intro}</p></div>
+        <form class="contact-form" action="submit.php" method="post" novalidate
+              data-success="Thanks &mdash; we&rsquo;ve got your details and will be in touch.">
+          <input type="hidden" name="source" value="{source}">
+          <input type="text" class="hp-field" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="sr-only" for="{sid}-company">Company name</label>
+          <input id="{sid}-company" name="company" type="text" placeholder="Company name" autocomplete="organization" required>
+          <label class="sr-only" for="{sid}-name">Your name</label>
+          <input id="{sid}-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+          <label class="sr-only" for="{sid}-email">Work email</label>
+          <input id="{sid}-email" name="email" type="email" placeholder="Work email" autocomplete="email" required>
+          <label class="sr-only" for="{sid}-phone">Phone (optional)</label>
+          <input id="{sid}-phone" name="phone" type="tel" placeholder="Phone (optional)" autocomplete="tel">{team}{topic}{timeline}
+          <label class="sr-only" for="{sid}-message">Anything else?</label>
+          <textarea id="{sid}-message" name="message" rows="4" placeholder="Anything else we should know?"></textarea>
+          <button class="btn btn-yellow" type="submit">{submit_label}</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>"""
+
+
 SITE_URL = "https://careerskillscenter.com/"
 
 
@@ -1743,6 +1806,410 @@ PAGES.append(dict(
         </div>
       </div>
     </section>
+"""))
+
+
+# ---- express-program-explained.html (Funding Guides) ----------------------
+# Reference page for employers. All rates/caps come from js/site-config.js via
+# [data-cfg] spans (hard rule: funding numbers live only in the config), and each
+# renders "[VERIFY]" until the figures are confirmed with express@commcorp.org.
+_EXPRESS_FAQ = [
+    ("What is the Workforce Training Fund Express Program?",
+     "It&rsquo;s a Massachusetts program that reimburses employers for training their current staff. The employer pays for approved training up front and the state pays part of it back. It is run by Commonwealth Corporation (CommCorp)."),
+    ("Which employers can apply?",
+     "Massachusetts businesses that contribute to the Workforce Training Fund can apply. Smaller employers get a higher reimbursement rate than larger ones. Check current eligibility with CommCorp before you plan."),
+    ("What does Express cover?",
+     "It reimburses the cost of eligible, instructor-led training. It is for live instruction — it does not cover things like equipment, travel, or wages during training. The exact list of eligible courses and costs is set by the program."),
+    ("How much does it pay back?",
+     "Reimbursement rates and per-person and per-company caps are set by the program and change over time. This page shows the current figures we have on file, but confirm them with CommCorp before you budget."),
+    ("How do I apply?",
+     "You choose eligible training, submit an application/agreement to CommCorp, run the training, and then request reimbursement. Career Skills Center can help you prepare the paperwork."),
+    ("Does Career Skills Center provide the training?",
+     "Career Skills Center helps employers apply for Express funding and handles the grant paperwork. Career Skills Center is not a listed Express training provider and does not have a course of its own; you choose an eligible training provider."),
+]
+
+PAGES.append(dict(
+    slug="express-program-explained.html", nav="express-program-explained.html",
+    title="Express Program Explained: Massachusetts Workforce Training Fund | Career Skills Center",
+    ogtitle="Express Program Explained: MA Workforce Training Fund",
+    desc="A plain-language guide to the Massachusetts Workforce Training Fund Express Program: who can apply, what it covers, reimbursement rates and caps, how to apply, and the timeline.",
+    extrahead=faq_ld(_EXPRESS_FAQ),
+    main=hero("Funding Guides &middot; Express Program",
+              "The Express Program, Explained",
+              "The Workforce Training Fund Express Program helps Massachusetts employers pay for training their "
+              "staff &mdash; the state reimburses part of the cost. Here&rsquo;s who can apply, what&rsquo;s "
+              "covered, the rates and caps, and how to apply.",
+              None, ("Staff Training Grants", "staff-training-grants.html")) + """
+
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The basics</p>
+        <h2 class="section-title left">What the Workforce Training Fund is</h2>
+        <p class="lede">The <strong>Workforce Training Fund</strong> is a Massachusetts program that helps
+        employers pay to train the people they already employ. The <strong>Express Program</strong> is its
+        simplest track: you pick eligible training, pay for it, and the state reimburses part of the cost. It is
+        administered by <strong>Commonwealth Corporation (CommCorp)</strong>.</p>
+        <p>It exists because trained workers are good for the whole state economy &mdash; so Massachusetts shares
+        the cost of upskilling with employers who contribute to the fund.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Who &amp; what</p>
+        <h2 class="section-title left">Who can apply, and what&rsquo;s covered</h2>
+        <p><strong>Who can apply:</strong> Massachusetts businesses that contribute to the Workforce Training
+        Fund. Smaller employers (up to <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span>
+        employees) get the highest reimbursement rate; larger employers can also participate at a lower rate.</p>
+        <p><strong>What&rsquo;s covered:</strong> the cost of eligible, <strong>instructor-led (live)
+        training</strong>. It is not for equipment, travel, or paying wages during training. The specific
+        eligible courses and costs are set by the program.</p>
+        <p class="note"><strong>Please confirm the current figures.</strong> Reimbursement rates, caps and
+        timelines change. The numbers below are what we have on file and are being verified with CommCorp
+        &mdash; treat them as a guide, not a guarantee. [VERIFY]</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Rates &amp; caps</p>
+        <h2 class="section-title left">What Express pays back</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>What</th><th>Amount</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>Reimbursement rate &mdash; small employers</th><td>up to <span data-cfg="EXPRESS_RATE_SMALL" data-cfg-format="percent">[VERIFY]</span> of eligible cost</td></tr>
+              <tr><th>Reimbursement rate &mdash; larger employers</th><td>up to <span data-cfg="EXPRESS_RATE_LARGE" data-cfg-format="percent">[VERIFY]</span> of eligible cost</td></tr>
+              <tr><th>Cap per person, per course</th><td>up to <span data-cfg="EXPRESS_MAX_PER_PERSON_PER_COURSE" data-cfg-format="money">[VERIFY]</span></td></tr>
+              <tr><th>Cap per instructional hour</th><td>up to <span data-cfg="EXPRESS_MAX_PER_INSTRUCTIONAL_HOUR" data-cfg-format="money">[VERIFY]</span></td></tr>
+              <tr><th>Annual cap per company</th><td>up to <span data-cfg="EXPRESS_ANNUAL_CAP_PER_COMPANY" data-cfg-format="money">[VERIFY]</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><a class="btn btn-yellow" href="staff-training-grants.html">Estimate your reimbursement</a></p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How &amp; when</p>
+        <h2 class="section-title left">How to apply, and the timeline</h2>
+        <ol class="check-list check-list--num">
+          <li><strong>Choose eligible training</strong> for your staff.</li>
+          <li><strong>Submit an application/agreement</strong> to CommCorp before training starts.</li>
+          <li><strong>Run the training</strong> once your agreement is in place. Smaller requests can be approved
+          quickly &mdash; some agreements start automatically after about
+          <span data-cfg="EXPRESS_AGREEMENT_AUTOSTART_DAYS" data-cfg-format="number">[VERIFY]</span> days if not
+          otherwise decided. [VERIFY]</li>
+          <li><strong>Request reimbursement</strong> after the training is complete.</li>
+        </ol>
+        <p>Career Skills Center can prepare and manage this paperwork for you.
+        <a class="link-yellow" href="staff-training-grants.html">See how we help</a>.</p>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="faq">
+          <p class="faq-group-title">Express Program FAQ</p>
+""" + "\n".join(f'''          <details class="faq-item">
+            <summary>{q}</summary>
+            <div class="faq-body"><p>{a}</p></div>
+          </details>''' for q, a in _EXPRESS_FAQ) + """
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" aria-labelledby="ex-cta">
+      <div class="container text-center">
+        <h2 class="cta-title" id="ex-cta">Want help getting Express funding for your team?</h2>
+        <a class="btn btn-yellow" href="staff-training-grants.html">See staff training grants</a>
+      </div>
+    </section>
+"""))
+
+
+# ---- employers.html (For Employers — overview) ----------------------------
+PAGES.append(dict(
+    slug="employers.html", nav="employers.html",
+    title="For Employers: Staff Training Grants, Apprenticeships &amp; Corporate Training | Career Skills Center",
+    ogtitle="For Employers: Training Help for Your Team",
+    desc="Career Skills Center helps employers pay for and organize staff training — state grant paperwork, Registered Apprenticeships, and custom corporate training.",
+    main=hero("For Employers",
+              "Training Help for Your Team",
+              "Trained staff stay longer and do better work. We help employers pay for and organize training "
+              "&mdash; from state grant paperwork to apprenticeships to custom corporate training.",
+              None, ("Do I Qualify?", "qualify.html")) + """
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How we help</p>
+        <h2 class="section-title left">Three ways we support employers</h2>
+        <div class="pcard-grid">
+          <article class="pcard">
+            <div class="pcard-body">
+              <h3 class="pcard-title">Staff Training Grants</h3>
+              <span class="pcard-rule" aria-hidden="true"></span>
+              <p>Massachusetts can reimburse part of what you spend training your staff through the Express
+              Program. We help you apply and handle the paperwork.</p>
+              <a class="btn btn-outline-navy" href="staff-training-grants.html">See staff training grants</a>
+            </div>
+          </article>
+          <article class="pcard">
+            <div class="pcard-body">
+              <h3 class="pcard-title">Apprenticeships</h3>
+              <span class="pcard-rule" aria-hidden="true"></span>
+              <p>Build a trained, loyal pipeline with a Registered Apprenticeship &mdash; earn-while-you-learn
+              roles supported by grants and tax credits.</p>
+              <a class="btn btn-outline-navy" href="apprenticeships.html">Explore apprenticeships</a>
+            </div>
+          </article>
+          <article class="pcard">
+            <div class="pcard-body">
+              <h3 class="pcard-title">Corporate Training</h3>
+              <span class="pcard-rule" aria-hidden="true"></span>
+              <p>Tell us what your team needs to learn. We&rsquo;re building training for employers, whether or
+              not state funding is involved.</p>
+              <a class="btn btn-outline-navy" href="corporate-training.html">See corporate training</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+""" + employer_form("employer",
+                    heading="Tell us about your training needs",
+                    intro="Whatever you&rsquo;re trying to do &mdash; grants, apprenticeships or custom "
+                          "training &mdash; start here and we&rsquo;ll point you the right way.",
+                    show_team_size=True) + """
+"""))
+
+
+# ---- staff-training-grants.html (For Employers — service + calculator) -----
+# Service page. CSC helps employers apply for Express funding and handles the
+# paperwork. Never "our course"; follow EXPRESS_PROVIDER_LISTED (false).
+# Calculator logic lives in js/main.js (calcExpress, with self-tests); all figures
+# come from js/site-config.js.
+PAGES.append(dict(
+    slug="staff-training-grants.html", nav="staff-training-grants.html",
+    title="Staff Training Grants: We Handle Your Express Program Paperwork | Career Skills Center",
+    ogtitle="Staff Training Grants: Express Program Help",
+    desc="Career Skills Center helps Massachusetts employers apply for Workforce Training Fund Express reimbursement and handles the paperwork. Estimate your reimbursement.",
+    main=hero("For Employers &middot; Staff Training Grants",
+              "We Handle Your Staff Training Grant Paperwork",
+              "Massachusetts reimburses employers for training their staff through the Express Program. We help "
+              "you apply and manage the paperwork &mdash; so you get the money back without the hassle.",
+              None, ("How Express works", "express-program-explained.html")) + """
+
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What we do</p>
+        <h2 class="section-title left">We handle the paperwork, you train your team</h2>
+        <p class="lede">The Express Program can pay back a large share of what you spend training your staff
+        &mdash; but the application, agreement and reimbursement steps take time most employers don&rsquo;t
+        have. That&rsquo;s where we come in.</p>
+        <ul class="check-list">
+          <li>We check whether your business and training are eligible.</li>
+          <li>We prepare and submit the Express application and agreement to CommCorp.</li>
+          <li>We help you keep the records the program requires.</li>
+          <li>We prepare your reimbursement request after training is done.</li>
+        </ul>
+        <p class="note"><strong>How we work:</strong> Career Skills Center helps you access Express funding and
+        handles the grant paperwork. We are not a listed Express training provider and don&rsquo;t sell a course
+        of our own &mdash; you choose an eligible training provider, and only CommCorp approves funding.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="calculator">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Estimate</p>
+        <h2 class="section-title left">Estimate your reimbursement</h2>
+        <div class="section-intro"><p>A rough estimate based on the current program figures. Final amounts are
+        set by CommCorp &mdash; treat this as a guide, not a guarantee. [VERIFY]</p></div>
+        <div class="express-calc">
+          <div class="calc-grid">
+            <div class="calc-field">
+              <label for="calc-emp">Employees to train</label>
+              <input id="calc-emp" type="number" min="1" step="1" value="5" inputmode="numeric">
+            </div>
+            <div class="calc-field">
+              <label for="calc-cost">Training cost per employee</label>
+              <input id="calc-cost" type="number" min="0" step="50" value="2000" inputmode="numeric">
+            </div>
+          </div>
+          <fieldset class="calc-size">
+            <legend>Company size</legend>
+            <label><input type="radio" name="calc_size" value="small" checked> Up to <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> employees</label>
+            <label><input type="radio" name="calc_size" value="large"> More than <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> employees</label>
+          </fieldset>
+          <div class="calc-output" aria-live="polite">
+            <p class="calc-result-line">Estimated reimbursement: <strong class="calc-total">&mdash;</strong></p>
+            <p class="calc-detail"></p>
+          </div>
+          <p class="calc-note">Estimate uses the reimbursement rate for your company size, capped per person and
+          per company. It doesn&rsquo;t apply the per-instructional-hour cap (that depends on course hours). All
+          figures come from the program and are being verified. [VERIFY]</p>
+        </div>
+      </div>
+    </section>
+
+""" + employer_form("employer-express",
+                    heading="Get help with your Express application",
+                    intro="Tell us what you&rsquo;d like to train your team in and we&rsquo;ll help you check "
+                          "eligibility and handle the paperwork.",
+                    show_team_size=True) + """
+
+    <section class="section">
+      <div class="container">
+        <h2 class="related-title">Related</h2>
+        <div class="post-grid post-grid--related">
+          <a class="post-card" href="express-program-explained.html"><h3>Express Program Explained</h3><span class="read-link">Read the guide</span></a>
+          <a class="post-card" href="apprenticeships.html"><h3>Apprenticeship Programs</h3><span class="read-link">Read more</span></a>
+          <a class="post-card" href="corporate-training.html"><h3>Corporate Training</h3><span class="read-link">Read more</span></a>
+        </div>
+      </div>
+    </section>
+"""))
+
+
+# ---- apprenticeships.html (For Employers) ---------------------------------
+_APPR_FAQ = [
+    ("What is a Registered Apprenticeship?",
+     "It&rsquo;s a formal, employer-driven training model that combines paid on-the-job learning with related classroom instruction, leading to a nationally recognized credential. Programs are registered with the state or federal apprenticeship agency."),
+    ("How is it different from an internship?",
+     "An apprenticeship is a structured, long-term program with a wage-progression schedule, defined skills, and a recognized credential at the end &mdash; not a short, informal placement."),
+    ("What are the benefits for employers?",
+     "Apprenticeships help you train workers to your standards, improve retention, and build a reliable talent pipeline. Grants and tax credits may help offset the cost."),
+    ("Does Career Skills Center run apprenticeships now?",
+     "We help employers set up and support apprenticeship training. Career Skills Center plans to offer training in healthcare, IT and the skilled trades; as our programs launch, our graduates will become a hiring pipeline for partner employers."),
+]
+
+PAGES.append(dict(
+    slug="apprenticeships.html", nav="apprenticeships.html",
+    title="Apprenticeship Programs for Employers: Build a Trained Pipeline | Career Skills Center",
+    ogtitle="Apprenticeship Programs for Employers",
+    desc="How Registered Apprenticeships work and why they pay off for employers: paid on-the-job learning, retention, a trained pipeline, and grants and tax credits that can help.",
+    extrahead=faq_ld(_APPR_FAQ),
+    main=hero("For Employers &middot; Apprenticeships",
+              "Build a Trained Pipeline with Apprenticeships",
+              "A Registered Apprenticeship lets you train workers to your standards while they earn &mdash; and "
+              "keeps them loyal. We help employers set up and support apprenticeship training.",
+              None, ("Talk to us", "#employer-inquiry")) + """
+
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The basics</p>
+        <h2 class="section-title left">What a Registered Apprenticeship is</h2>
+        <p class="lede">A Registered Apprenticeship is a structured, employer-driven way to train workers. It
+        combines <strong>paid on-the-job learning</strong> with <strong>related classroom instruction</strong>,
+        follows a defined <strong>wage-progression</strong> schedule, and ends in a nationally recognized
+        credential. Programs are registered with the state or federal apprenticeship agency.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How it works</p>
+        <h2 class="section-title left">The four building blocks</h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <h3 class="feature-title">A sponsor</h3>
+            <p>You (or an intermediary) sponsor the program and define the skills the apprentice will master.</p>
+          </article>
+          <article class="feature">
+            <h3 class="feature-title">On-the-job learning</h3>
+            <p>Apprentices work and learn under experienced staff, building real skills from day one.</p>
+          </article>
+          <article class="feature">
+            <h3 class="feature-title">Related instruction</h3>
+            <p>Classroom or online coursework runs alongside the job, often provided by a training partner.</p>
+          </article>
+          <article class="feature">
+            <h3 class="feature-title">Wage progression</h3>
+            <p>Pay rises on a set schedule as the apprentice hits skill milestones &mdash; earn while you learn.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Why it pays off</p>
+        <h2 class="section-title left">Benefits for employers</h2>
+        <ul class="check-list">
+          <li><strong>Better retention.</strong> Workers you train and invest in tend to stay longer.</li>
+          <li><strong>A trained pipeline.</strong> You grow the exact skills your business needs, to your standards.</li>
+          <li><strong>Grants and tax credits.</strong> State and federal programs may help offset the cost of apprenticeships. [VERIFY: confirm current Massachusetts and federal apprenticeship grants/tax credits with apprenticeship.gov / mass.gov]</li>
+        </ul>
+        <!-- COURSE-DEPENDENT: R-APPR — future graduate-pipeline line; present tense only in course mode. -->
+        <p>As our programs launch, our graduates will become a hiring pipeline for partner employers.</p>
+      </div>
+    </section>
+
+""" + employer_form("employer-apprenticeship",
+                    heading="Interested in apprenticeships?",
+                    intro="Tell us about your team and we&rsquo;ll help you explore setting up apprenticeship "
+                          "training.",
+                    show_team_size=True) + """
+
+    <section class="section section--alt section--tight">
+      <div class="container">
+        <div class="faq">
+          <p class="faq-group-title">Apprenticeship FAQ</p>
+""" + "\n".join(f'''          <details class="faq-item">
+            <summary>{q}</summary>
+            <div class="faq-body"><p>{a}</p></div>
+          </details>''' for q, a in _APPR_FAQ) + """
+        </div>
+      </div>
+    </section>
+"""))
+
+
+# ---- corporate-training.html (For Employers) ------------------------------
+# COURSE-DEPENDENT: R-CORP. No location wording, no prices/formats/course names.
+PAGES.append(dict(
+    slug="corporate-training.html", nav="corporate-training.html",
+    title="Corporate Training: Custom Training for Your Team | Career Skills Center",
+    ogtitle="Corporate Training for Your Team",
+    desc="Career Skills Center is building custom training for employers. Tell us what your team needs to learn and we'll follow up.",
+    main=hero("For Employers &middot; Corporate Training",
+              "Custom Training for Your Team",
+              "Every team has skills it needs to build. We&rsquo;re building training that employers can bring "
+              "to their people &mdash; with or without state funding.",
+              None, ("Tell us your needs", "#employer-inquiry")) + """
+
+    <!-- COURSE-DEPENDENT: R-CORP — corporate-training copy is future tense in guide
+         mode. In course mode, describe live offerings, formats and enrollment. -->
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What we&rsquo;re building</p>
+        <h2 class="section-title left">Training built around your team</h2>
+        <p class="lede">We&rsquo;re building training for employers. Tell us what your team needs, and
+        we&rsquo;ll work with you to shape it. If state funding can help cover the cost, we&rsquo;ll help you
+        pursue that too.</p>
+        <ul class="check-list">
+          <li>Skills your team needs, not off-the-shelf filler</li>
+          <li>Options whether or not you use state funding</li>
+          <li>Help checking whether grants like the Express Program can offset the cost</li>
+        </ul>
+        <p>Career Skills Center plans to offer training in healthcare, IT and the skilled trades. Corporate
+        training details will follow as our programs launch.</p>
+      </div>
+    </section>
+
+""" + employer_form("corporate",
+                    heading="Tell us what your team needs",
+                    intro="Share a few details and we&rsquo;ll be in touch to talk it through.",
+                    topic_options=[("healthcare", "Healthcare skills"),
+                                   ("it", "IT / technology skills"),
+                                   ("trades", "Skilled trades"),
+                                   ("safety-compliance", "Safety / compliance"),
+                                   ("other", "Something else")],
+                    show_team_size=True, show_timeline=True,
+                    submit_label="Send request") + """
 """))
 
 
