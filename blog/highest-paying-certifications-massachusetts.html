@@ -75,17 +75,36 @@
       </button>
 
       <nav class="primary-nav" id="primary-nav" aria-label="Primary">
-        <!-- COURSE-DEPENDENT: R-NAV — guide-mode menu routes outward to career-field
-             guides + state help. In course mode, add a "Courses"/"Train with us"
-             item and reconsider the header button. -->
+        <!-- COURSE-DEPENDENT: R-NAV — guide-mode menu routes outward to funding guides,
+             employer services and career-field guides. In course mode, add a
+             "Courses"/"Train with us" item and reconsider the header button. -->
         <ul class="nav-list">
+          <li class="has-dropdown">
+            <a href="../wioa-explained.html" aria-haspopup="true">Funding Guides <span class="chev" aria-hidden="true"></span></a>
+            <button class="dropdown-toggle" aria-expanded="false" aria-label="Open Funding Guides submenu"></button>
+            <ul class="dropdown">
+              <li><a href="../wioa-explained.html">WIOA Explained</a></li>
+              <li><a href="../qualify.html">Do I Qualify?</a></li>
+              <li><a href="../express-program-explained.html">Express Program Explained</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown">
+            <a href="../employers.html" aria-haspopup="true">For Employers <span class="chev" aria-hidden="true"></span></a>
+            <button class="dropdown-toggle" aria-expanded="false" aria-label="Open For Employers submenu"></button>
+            <ul class="dropdown">
+              <li><a href="../employers.html">Overview</a></li>
+              <li><a href="../staff-training-grants.html">Staff Training Grants</a></li>
+              <li><a href="../apprenticeships.html">Apprenticeship Programs</a></li>
+              <li><a href="../corporate-training.html">Corporate Training</a></li>
+            </ul>
+          </li>
           <li class="has-dropdown">
             <a href="../career-paths.html" aria-haspopup="true">Career Paths <span class="chev" aria-hidden="true"></span></a>
             <button class="dropdown-toggle" aria-expanded="false" aria-label="Open Career Paths submenu"></button>
             <ul class="dropdown">
-              <li><a href="../healthcare-careers-massachusetts.html">Healthcare</a></li>
-              <li><a href="../it-careers-massachusetts.html">Information Technology</a></li>
-              <li><a href="../skilled-trades-careers-massachusetts.html">Skilled Trades</a></li>
+              <li><a href="../healthcare-careers.html">Healthcare</a></li>
+              <li><a href="../it-careers.html">Information Technology</a></li>
+              <li><a href="../skilled-trades-careers.html">Skilled Trades</a></li>
               <li><a href="../career-paths.html">All Career Paths</a></li>
             </ul>
           </li>
@@ -94,15 +113,13 @@
             <button class="dropdown-toggle" aria-expanded="false" aria-label="Open Resources submenu"></button>
             <ul class="dropdown">
               <li><a href="../blog.html" aria-current="page">Blog</a></li>
-              <li><a href="../student-financing.html">Ways to Pay</a></li>
-              <li><a href="../qualify.html">Check Your Funding Options</a></li>
               <li><a href="../faq.html">FAQ</a></li>
             </ul>
           </li>
           <li><a href="../about.html">About</a></li>
           <li><a href="../contact.html">Contact</a></li>
           <li class="nav-cta-item">
-            <a class="btn btn-yellow btn-sm" href="../qualify.html">Check Your Options</a>
+            <a class="btn btn-yellow btn-sm" href="../qualify.html">Do I Qualify?</a>
           </li>
         </ul>
       </nav>
@@ -222,9 +239,10 @@
       <div class="container">
         <!-- COURSE-DEPENDENT: R-NAV — footer mirrors the guide-mode menu. -->
         <ul>
+          <li><a href="../wioa-explained.html">Funding Guides</a></li>
+          <li><a href="../employers.html">For Employers</a></li>
           <li><a href="../career-paths.html">Career Paths</a></li>
-          <li><a href="../student-financing.html">Ways to Pay</a></li>
-          <li><a href="../qualify.html">Check Your Options</a></li>
+          <li><a href="../qualify.html">Do I Qualify?</a></li>
           <li><a href="../blog.html" aria-current="page">Blog</a></li>
           <li><a href="../about.html">About</a></li>
           <li><a href="../contact.html">Contact</a></li>
@@ -281,7 +299,7 @@
     <div class="footer-bottom">
       <div class="container">
         <p>© <span id="year">2026</span> <a href="../index.html">Career Skills Center</a>. All Rights Reserved. &nbsp;|&nbsp;
-          <a href="../privacy-policy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="../terms-of-use.html">Terms of Use</a></p>
+          <a href="../privacy-policy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="../terms.html">Terms of Use</a></p>
       </div>
     </div>
   </footer>

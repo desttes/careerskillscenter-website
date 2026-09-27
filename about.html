@@ -13,13 +13,13 @@
     gtag('config', 'G-0XDE7E7RGQ');
   </script>
 
-  <title>About Us | Career Skills Center — Massachusetts</title>
-  <meta name="description" content="Career Skills Center is building online career training for Massachusetts adults in IT, medical billing and coding, and the skilled trades.">
+  <title>About Us | Career Skills Center</title>
+  <meta name="description" content="Career Skills Center is a Quincy, Massachusetts company building career training and helping workers and employers navigate training funding.">
   <link rel="canonical" href="https://careerskillscenter.com/about.html">
 
   <!-- Open Graph / social -->
   <meta property="og:title" content="About Career Skills Center">
-  <meta property="og:description" content="Career Skills Center is building online career training for Massachusetts adults in IT, medical billing and coding, and the skilled trades.">
+  <meta property="og:description" content="Career Skills Center is a Quincy, Massachusetts company building career training and helping workers and employers navigate training funding.">
   <meta property="og:url" content="https://careerskillscenter.com/about.html">
   <meta property="og:image" content="https://careerskillscenter.com/images/Hero.webp">
   <meta property="og:type" content="website">
@@ -54,17 +54,36 @@
       </button>
 
       <nav class="primary-nav" id="primary-nav" aria-label="Primary">
-        <!-- COURSE-DEPENDENT: R-NAV — guide-mode menu routes outward to career-field
-             guides + state help. In course mode, add a "Courses"/"Train with us"
-             item and reconsider the header button. -->
+        <!-- COURSE-DEPENDENT: R-NAV — guide-mode menu routes outward to funding guides,
+             employer services and career-field guides. In course mode, add a
+             "Courses"/"Train with us" item and reconsider the header button. -->
         <ul class="nav-list">
+          <li class="has-dropdown">
+            <a href="wioa-explained.html" aria-haspopup="true">Funding Guides <span class="chev" aria-hidden="true"></span></a>
+            <button class="dropdown-toggle" aria-expanded="false" aria-label="Open Funding Guides submenu"></button>
+            <ul class="dropdown">
+              <li><a href="wioa-explained.html">WIOA Explained</a></li>
+              <li><a href="qualify.html">Do I Qualify?</a></li>
+              <li><a href="express-program-explained.html">Express Program Explained</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown">
+            <a href="employers.html" aria-haspopup="true">For Employers <span class="chev" aria-hidden="true"></span></a>
+            <button class="dropdown-toggle" aria-expanded="false" aria-label="Open For Employers submenu"></button>
+            <ul class="dropdown">
+              <li><a href="employers.html">Overview</a></li>
+              <li><a href="staff-training-grants.html">Staff Training Grants</a></li>
+              <li><a href="apprenticeships.html">Apprenticeship Programs</a></li>
+              <li><a href="corporate-training.html">Corporate Training</a></li>
+            </ul>
+          </li>
           <li class="has-dropdown">
             <a href="career-paths.html" aria-haspopup="true">Career Paths <span class="chev" aria-hidden="true"></span></a>
             <button class="dropdown-toggle" aria-expanded="false" aria-label="Open Career Paths submenu"></button>
             <ul class="dropdown">
-              <li><a href="healthcare-careers-massachusetts.html">Healthcare</a></li>
-              <li><a href="it-careers-massachusetts.html">Information Technology</a></li>
-              <li><a href="skilled-trades-careers-massachusetts.html">Skilled Trades</a></li>
+              <li><a href="healthcare-careers.html">Healthcare</a></li>
+              <li><a href="it-careers.html">Information Technology</a></li>
+              <li><a href="skilled-trades-careers.html">Skilled Trades</a></li>
               <li><a href="career-paths.html">All Career Paths</a></li>
             </ul>
           </li>
@@ -73,15 +92,13 @@
             <button class="dropdown-toggle" aria-expanded="false" aria-label="Open Resources submenu"></button>
             <ul class="dropdown">
               <li><a href="blog.html">Blog</a></li>
-              <li><a href="student-financing.html">Ways to Pay</a></li>
-              <li><a href="qualify.html">Check Your Funding Options</a></li>
               <li><a href="faq.html">FAQ</a></li>
             </ul>
           </li>
           <li><a href="about.html" aria-current="page">About</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li class="nav-cta-item">
-            <a class="btn btn-yellow btn-sm" href="qualify.html">Check Your Options</a>
+            <a class="btn btn-yellow btn-sm" href="qualify.html">Do I Qualify?</a>
           </li>
         </ul>
       </nav>
@@ -95,7 +112,7 @@
       <div class="container">
         <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>About Us</p>
         <h1>About Us<span class="dot">.</span></h1>
-        <p class="page-hero-lede">A career school being built for Massachusetts, with online training designed around real jobs. Our focus is your potential.</p>
+        <p class="page-hero-lede">A Quincy, Massachusetts company building career training &mdash; and helping workers and employers make sense of how to pay for it. Our focus is your potential.</p>
         <div class="hero-actions">
           <button class="btn btn-yellow js-open-contact" type="button">Get in Touch</button>
           <a class="btn btn-outline" href="career-paths.html">Career Paths</a>
@@ -107,8 +124,8 @@
       <div class="container narrow text-center">
         <h2 class="section-title">Our Focus: Your Potential</h2>
         <p class="lede">Our goal isn’t just to help you achieve your potential. It’s to <strong>activate your
-        potential</strong>. Career Skills Center is being built to prepare committed Massachusetts adults for
-        rewarding careers through practical, job-focused training and real support.</p>
+        potential</strong>. Career Skills Center is being built to prepare committed adults for rewarding
+        careers through practical, job-focused training and real support.</p>
         <p class="lede">Employers today expect more than technical skill. They look for discipline, integrity,
         teamwork and professionalism. We intend to build those habits alongside the skills themselves.</p>
       </div>
@@ -121,55 +138,71 @@
       </div>
     </section>
 
-    <section class="about section section--alt" id="mission">
+    <!-- COURSE-DEPENDENT: R-ABOUT — "what we're building" is future tense in guide mode.
+         In course mode (SITE_MODE=courses) switch to present tense and add real program
+         details. -->
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What we&rsquo;re building</p>
+        <h2 class="section-title left">Three ways we help</h2>
+        <p>Career Skills Center is a new company, and we&rsquo;re building in three directions:</p>
+        <ul class="arrow-list">
+          <li><strong>Help paying for training.</strong> We explain how funding like WIOA and the state
+          Express Program works, and we help people and employers find and apply for it.</li>
+          <li><strong>Employer and apprenticeship training.</strong> We help employers organize staff
+          training and Registered Apprenticeships, and handle the grant paperwork.</li>
+          <li><strong>Corporate training.</strong> As we grow, we&rsquo;re building training that companies
+          can bring to their teams, funded or self-paid.</li>
+        </ul>
+        <p>Career Skills Center plans to offer training in healthcare, IT and the skilled trades.
+        <a class="link-yellow" href="career-paths.html#interest">Get updates when we launch.</a></p>
+      </div>
+    </section>
+
+    <!-- PLACEHOLDER: founder name, title, photo and short bio to be supplied by Emilio.
+         Keep future/neutral tense until confirmed. -->
+    <section class="section" id="founder">
       <div class="container about-grid">
         <div class="about-media">
           <div class="deco-dots deco-dots--about" aria-hidden="true"></div>
           <img src="images/aboutus.webp" alt="" loading="lazy" decoding="async">
         </div>
         <div class="about-copy">
-          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Our Mission</p>
-          <h2 class="section-title left">Our Mission</h2>
-          <p>We believe a well-trained workforce strengthens the economic and social vibrancy of the
-          Massachusetts communities we serve. To do that, we are committed to building a <strong>caring
-          learning environment</strong> where <strong>practical, job-focused training</strong> is delivered by
-          instructors with real industry experience.</p>
-          <ul class="arrow-list">
-            <li>Flexible, online-first learning that fits around a job</li>
-            <li>Instructors with real industry experience</li>
-            <li>Programs aimed at in-demand IT, medical and skilled-trades careers</li>
-            <li>Clear, honest information about cost and outcomes</li>
-            <li>Career support that continues after you finish</li>
-          </ul>
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Who we are</p>
+          <h2 class="section-title left">Founded in Quincy</h2>
+          <p>Career Skills Center is based in Quincy, Massachusetts. We started it because too many capable
+          people never get a fair shot at good training &mdash; either they can&rsquo;t find the funding or
+          no one explains how it works.</p>
+          <p><span class="tbd">[Founder name and short bio &mdash; to be supplied.]</span></p>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section--alt">
       <div class="container">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What We Stand For</p>
         <h2 class="section-title left">Our Values</h2>
         <div class="section-intro">
-          <p>We&rsquo;re building this school around a few simple commitments.</p>
+          <p>We&rsquo;re building this company around a few simple commitments.</p>
         </div>
         <div class="feature-grid">
           <article class="feature">
             <h3 class="feature-title">Practical, skills-first</h3>
-            <p>You learn by doing, not just watching. Training is built around what the job actually requires.</p>
+            <p>Training built around what the job actually requires, not just theory.</p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">Student support</h3>
-            <p>Accessible instructors and staff focused on your goals, from your first question to your first job.</p>
+            <h3 class="feature-title">Honest guidance</h3>
+            <p>Straight answers about cost, funding and what a credential really gets you. No pressure and no surprises.</p>
           </article>
           <article class="feature">
             <h3 class="feature-title">Industry relevance</h3>
-            <p>Programs designed around the credentials and skills Massachusetts employers actually hire for.</p>
+            <p>Focused on the credentials and skills employers actually hire for.</p>
           </article>
         </div>
         <div class="feature-grid" style="margin-top: 40px;">
           <article class="feature">
-            <h3 class="feature-title">Integrity</h3>
-            <p>Straight answers about cost, length and outcomes. No pressure and no surprises.</p>
+            <h3 class="feature-title">Access</h3>
+            <p>We help people find the funding that makes training possible, not just the training itself.</p>
           </article>
           <article class="feature">
             <h3 class="feature-title">Growth mindset</h3>
@@ -177,22 +210,32 @@
           </article>
           <article class="feature">
             <h3 class="feature-title">Community</h3>
-            <p>We want to train people who live and work in Massachusetts, strengthening the communities we share.</p>
+            <p>Rooted in Quincy, we want to strengthen the workforce and the employers around us.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- COURSE-DEPENDENT: R-ABOUT — mission + career-support copy is future tense in
-         guide mode. In course mode (SITE_MODE=courses) switch to present tense and add
-         real delivery/instructor details. -->
-    <section class="section section--alt">
+    <!-- COURSE-DEPENDENT: R-ABOUT — career-support copy is future tense in guide mode.
+         In course mode switch to present tense and add real details. -->
+    <section class="section">
       <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Career support</p>
         <h2 class="section-title left">Support that continues after training</h2>
         <p>Training is only worth it if it leads to a job. As our programs launch, career support &mdash; help
-        with your resume, interview practice and connections to Massachusetts employers &mdash; will be built
-        into every program, not treated as an afterthought.</p>
+        with your resume, interview practice and connections to employers &mdash; will be built into every
+        program, not treated as an afterthought.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt section--tight">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Get in touch</p>
+        <h2 class="section-title left">Talk to us</h2>
+        <p>Career Skills Center &middot; Quincy, MA 02171<br>
+        <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> &middot;
+        <a class="link-yellow" href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a></p>
+        <p><a class="btn btn-yellow" href="contact.html">Contact us</a></p>
       </div>
     </section>
 
@@ -251,9 +294,10 @@
       <div class="container">
         <!-- COURSE-DEPENDENT: R-NAV — footer mirrors the guide-mode menu. -->
         <ul>
+          <li><a href="wioa-explained.html">Funding Guides</a></li>
+          <li><a href="employers.html">For Employers</a></li>
           <li><a href="career-paths.html">Career Paths</a></li>
-          <li><a href="student-financing.html">Ways to Pay</a></li>
-          <li><a href="qualify.html">Check Your Options</a></li>
+          <li><a href="qualify.html">Do I Qualify?</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="about.html" aria-current="page">About</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -310,7 +354,7 @@
     <div class="footer-bottom">
       <div class="container">
         <p>© <span id="year">2026</span> <a href="index.html">Career Skills Center</a>. All Rights Reserved. &nbsp;|&nbsp;
-          <a href="privacy-policy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms-of-use.html">Terms of Use</a></p>
+          <a href="privacy-policy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html">Terms of Use</a></p>
       </div>
     </div>
   </footer>

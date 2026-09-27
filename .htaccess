@@ -1,13 +1,19 @@
-# Career Skills Center — redirects (guide mode, GUIDE_MODE_SPEC step 6)
-# Old program / enrollment pages now 301 to the career-field guides and the
-# guide-mode pages. Keep in sync with REDIRECTS in tools/build-pages.py and the
-# "Retired URLs" table in docs/COURSE_CONTENT_REGISTER.md.
+# Career Skills Center — redirects (Site Structure Spec v1.5)
+# Old program / enrollment pages and the v1.4 Massachusetts-named career guides now
+# 301 to the location-neutral career pages and the guide-mode pages. Keep in sync
+# with REDIRECTS in tools/build-pages.py and the "Retired URLs" table in
+# docs/COURSE_CONTENT_REGISTER.md.
 
 <IfModule mod_alias.c>
   # Old program pages -> career-field guides
-  Redirect 301 /medical-billing-coding.html   /healthcare-careers-massachusetts.html
-  Redirect 301 /it-support-specialist.html    /it-careers-massachusetts.html
-  Redirect 301 /skilled-trades.html           /skilled-trades-careers-massachusetts.html
+  Redirect 301 /medical-billing-coding.html   /healthcare-careers.html
+  Redirect 301 /it-support-specialist.html    /it-careers.html
+  Redirect 301 /skilled-trades.html           /skilled-trades-careers.html
+
+  # v1.4 Massachusetts-named guides -> v1.5 location-neutral URLs
+  Redirect 301 /healthcare-careers-massachusetts.html     /healthcare-careers.html
+  Redirect 301 /it-careers-massachusetts.html             /it-careers.html
+  Redirect 301 /skilled-trades-careers-massachusetts.html /skilled-trades-careers.html
 
   # Program hubs -> career paths hub
   Redirect 301 /our-programs.html             /career-paths.html
@@ -19,4 +25,7 @@
   Redirect 301 /career-services.html          /about.html
   Redirect 301 /team.html                     /about.html
   Redirect 301 /media.html                    /about.html
+
+  # Legal page rename
+  Redirect 301 /terms-of-use.html             /terms.html
 </IfModule>

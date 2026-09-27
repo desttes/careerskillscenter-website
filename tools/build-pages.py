@@ -398,17 +398,21 @@ MASSHIRE_URL = "https://www.mass.gov/info-details/masshire-career-center-locatio
 JOBQUEST_URL = "https://jobquest.mass.gov"
 
 
-def role_card(name, blurb, soc, pay, training, license_note, online, pay_note=""):
-    pn = f' <span class="role-paynote">{pay_note}</span>' if pay_note else ""
+def role_card(name, blurb, training, certs, online, license_note):
+    """Career-path role card (Site Structure Spec v1.5): location-neutral, no pay.
+    Pay figures are intentionally omitted until sourced entry-level data is ready
+    (R-PAY-DATA); each card carries a hidden PAY-DATA slot to drop them into."""
     return f"""          <article class="role-card">
             <h3 class="role-name">{name}</h3>
             <p class="role-blurb">{blurb}</p>
             <dl class="role-facts">
-              <div><dt>Massachusetts median pay</dt><dd><strong>{pay}</strong> a year{pn}<br><span class="role-src">BLS OEWS, May 2025 &middot; SOC {soc}</span></dd></div>
               <div><dt>Typical training</dt><dd>{training}</dd></div>
-              <div><dt>MA license / certification</dt><dd>{license_note}</dd></div>
+              <div><dt>Certifications</dt><dd>{certs}</dd></div>
+              <div><dt>License</dt><dd>{license_note}</dd></div>
               <div><dt>Can you train online?</dt><dd>{online}</dd></div>
             </dl>
+            <!-- PAY-DATA: pending — R-PAY-DATA. Typical-pay figures omitted until sourced;
+                 add a <div><dt>Typical pay</dt><dd>…</dd></div> here when ready. -->
           </article>"""
 
 
@@ -456,6 +460,27 @@ def outward_next_step(field_label):
     </section>"""
 
 
+def career_pay_block():
+    """Location-neutral 'how to pay' + next step for the Career Paths pages
+    (Site Structure Spec v1.5: no location framing on career pages). Points to the
+    funding guides, which carry the Massachusetts-specific detail."""
+    return """    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Paying for it</p>
+        <h2 class="section-title left">You may not have to pay out of pocket</h2>
+        <p>Training costs money, but you may not have to cover it yourself. Public workforce funding can pay
+        tuition for people who qualify, and employers can often get reimbursed for training their staff. Our
+        funding guides explain how these programs work and how to check what you may qualify for.</p>
+        <ul class="check-list">
+          <li><a class="link-yellow" href="wioa-explained.html">WIOA Explained</a> &mdash; how the main public training fund works and who qualifies</li>
+          <li><a class="link-yellow" href="express-program-explained.html">Express Program Explained</a> &mdash; how employers get staff training reimbursed</li>
+          <li><a class="link-yellow" href="qualify.html">Do I Qualify?</a> &mdash; a quick check of your options</li>
+        </ul>
+        <p><a class="btn btn-yellow" href="qualify.html">Check what you may qualify for</a></p>
+      </div>
+    </section>"""
+
+
 def field_interest(field, field_name, human_field):
     """COURSE-DEPENDENT secondary CTA for a field guide (interest list).
     `field` is one of healthcare/it/trades/hub; the register IDs are R-HC/R-IT/R-TR/R-HUB."""
@@ -486,9 +511,15 @@ ARCHIVED = {"wioa.html", "financial-aid.html"}
 # stay in this file (unused) so the content can be restored if a page returns in
 # course mode. See docs/GUIDE_MODE_SPEC.md step 6 + COURSE_CONTENT_REGISTER.
 REDIRECTS = {
-    "medical-billing-coding.html": "healthcare-careers-massachusetts.html",
-    "it-support-specialist.html":  "it-careers-massachusetts.html",
-    "skilled-trades.html":         "skilled-trades-careers-massachusetts.html",
+    # Old program pages -> the new location-neutral career-field guides (v1.5 renamed
+    # the guides and re-points these here).
+    "medical-billing-coding.html": "healthcare-careers.html",
+    "it-support-specialist.html":  "it-careers.html",
+    "skilled-trades.html":         "skilled-trades-careers.html",
+    # The v1.4 Massachusetts-named guides -> the v1.5 location-neutral URLs.
+    "healthcare-careers-massachusetts.html":     "healthcare-careers.html",
+    "it-careers-massachusetts.html":             "it-careers.html",
+    "skilled-trades-careers-massachusetts.html": "skilled-trades-careers.html",
     "our-programs.html":           "career-paths.html",
     "programs.html":               "career-paths.html",
     "tuition.html":                "student-financing.html",
@@ -496,6 +527,8 @@ REDIRECTS = {
     "career-services.html":        "about.html",
     "team.html":                   "about.html",
     "media.html":                  "about.html",
+    # Legal page rename (v1.5: terms.html).
+    "terms-of-use.html":           "terms.html",
 }
 
 
@@ -519,6 +552,17 @@ def redirect_html(slug, target):
 </body>
 </html>
 """
+
+
+# ---- redirect-only slugs (v1.5) -------------------------------------------
+# These have no page body of their own; they exist only so the build emits a
+# redirect stub (and overwrites any stale file on disk). The real 301 is served
+# by .htaccess. Targets live in the REDIRECTS map above.
+for _rslug in ("healthcare-careers-massachusetts.html",
+               "it-careers-massachusetts.html",
+               "skilled-trades-careers-massachusetts.html",
+               "terms-of-use.html"):
+    PAGES.append(dict(slug=_rslug, nav=None, title="", ogtitle="", desc="", main=""))
 
 
 # ---- programs.html --------------------------------------------------------
@@ -799,38 +843,41 @@ PAGES.append(dict(
 # in Massachusetts. They 301-replace the old program pages. No Course schema.
 # ===========================================================================
 
-# ---- healthcare-careers-massachusetts.html --------------------------------
+# ---- healthcare-careers.html ----------------------------------------------
+# Location-neutral career reference (Site Structure Spec v1.5): no "Massachusetts"
+# framing, no pay figures (hidden PAY-DATA slot, R-PAY-DATA). Licensing is a general
+# note with a clearly labeled Massachusetts example.
 _HC_FAQ = [
-    ("Do I need a college degree to work in healthcare in Massachusetts?",
+    ("Do I need a college degree to work in healthcare?",
      "No, not for many roles. Jobs like medical billing and coding, medical assistant, phlebotomy technician, nurse aide (CNA) and home health aide are open to people without a four-year degree, and several can be trained for in a matter of months."),
     ("Which healthcare jobs can I train for online?",
      "Office-based roles like medical billing and coding and medical administrative assistant are the most online-friendly. Hands-on roles such as medical assistant, phlebotomy, nurse aide and EKG technician can start online but require in-person clinical practice."),
-    ("Do I need a license to work in healthcare in Massachusetts?",
-     "It depends on the role. Nurse aides (CNAs) must complete a DPH-approved training program and pass the state competency exam, and pharmacy technicians must be licensed by the Board of Registration in Pharmacy. Roles like medical billing and coding, medical assistant and phlebotomy have no state license; employers often prefer a voluntary national certification."),
-    ("How much do entry-level healthcare jobs pay in Massachusetts?",
-     "Massachusetts median pay ranges from about $40,910 a year for home health aides to about $60,350 for medical records (billing and coding) specialists, according to BLS OEWS data for May 2025."),
+    ("Do I need a license to work in healthcare?",
+     "It depends on the role and your state. Some roles, like nurse aide (CNA) and pharmacy technician, are regulated. Others, like medical billing and coding, medical assistant and phlebotomy, usually have no license; employers often prefer a voluntary national certification. Always check the rules in your state. Example (Massachusetts): CNAs must complete a state-approved program and pass a competency exam, and pharmacy technicians must be licensed by the state Board of Registration in Pharmacy."),
+    ("How long does healthcare training take?",
+     "Many entry-level healthcare roles are short, postsecondary certificate paths that take a matter of months rather than years. Hands-on roles add supervised clinical hours; office-based roles like billing and coding can often be finished faster and online."),
     ("How do I pay for healthcare training?",
-     "Massachusetts residents may qualify for state-funded training through a MassHire career center. If you get unemployment benefits, ask about Section 30. Start with the free job training guide and check your options."),
+     "You may not have to pay out of pocket. Public workforce funding can cover tuition for people who qualify, and employers can be reimbursed for training staff. See our funding guides and use the Do I Qualify? check."),
     ("Does Career Skills Center offer healthcare training?",
      "Not yet. Career Skills Center plans to offer training in healthcare, IT and the skilled trades. Join the interest list to get updates when we launch."),
 ]
 
 PAGES.append(dict(
-    slug="healthcare-careers-massachusetts.html", nav="healthcare-careers-massachusetts.html",
-    title="Healthcare Careers in Massachusetts: Jobs, Pay &amp; Training (2026) | Career Skills Center",
-    ogtitle="Healthcare Careers in Massachusetts: Jobs, Pay & Training (2026)",
-    desc="A plain guide to entry-level healthcare careers in Massachusetts: what each job pays (BLS 2025), how to train, license requirements, and how to pay for training.",
+    slug="healthcare-careers.html", nav="healthcare-careers.html",
+    title="Healthcare Careers: Jobs, Training &amp; Certifications | Career Skills Center",
+    ogtitle="Healthcare Careers: Jobs, Training & Certifications",
+    desc="A plain guide to entry-level healthcare careers: what each job is, how to train, the certifications employers look for, whether you can train online, and how to pay for it.",
     extrahead=faq_ld(_HC_FAQ),
     main=hero("Career Paths &middot; Healthcare",
-              "Healthcare Careers in Massachusetts: Jobs, Pay and How to Train",
-              "Healthcare is one of the largest and steadiest parts of the Massachusetts economy. Many roles "
-              "don&rsquo;t need a four-year degree, and several can be trained for in months. Here&rsquo;s what "
-              "the jobs pay, how to train, and how to get help paying for it.",
-              "images/medicalbilling.webp", ("Check Your Options", "qualify.html")) + """
+              "Healthcare Careers: Jobs, Training and How to Get In",
+              "Healthcare is one of the largest and steadiest parts of the economy. Many roles don&rsquo;t need "
+              "a four-year degree, and several can be trained for in months. Here&rsquo;s what the jobs are, how "
+              "to train, and how to get help paying for it.",
+              "images/medicalbilling.webp", ("Do I Qualify?", "qualify.html")) + """
 
     <section class="section">
       <div class="container narrow">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The field in Massachusetts</p>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The field</p>
         <h2 class="section-title left">Is healthcare right for you?</h2>
         <p class="lede">Healthcare isn&rsquo;t only doctors and nurses. Behind every clinic and hospital is a
         team of billers, coders, assistants, aides and technicians &mdash; roles you can often train for
@@ -842,60 +889,60 @@ PAGES.append(dict(
 
     <section class="section section--tight">
       <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Roles &amp; pay</p>
-        <h2 class="section-title left">Common healthcare roles in Massachusetts</h2>
-        <div class="section-intro"><p>Pay figures are the Massachusetts median annual wage from the U.S.
-        Bureau of Labor Statistics (OEWS, May 2025). Half of workers earn more, half earn less.</p></div>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Common roles</p>
+        <h2 class="section-title left">Healthcare roles you can train for</h2>
+        <div class="section-intro"><p>For each role: what the job is, the typical training path, the
+        certifications employers look for, and whether you can train online. Licensing rules vary by state
+        &mdash; check yours before you start.</p></div>
 """ + role_grid(
         role_card("Medical Billing &amp; Coding",
                   "Turn doctor visits into standard codes and insurance claims. Detailed, office-based work, often remote once you have experience.",
-                  "29-2072", "$60,350",
-                  "Short certificate or online course, often a few months. Employers value a voluntary AAPC (CPC/CPB) or AHIMA (CCA) certification.",
-                  "No Massachusetts license. Certification is voluntary but employer-preferred.",
-                  "Yes &mdash; one of the most online-friendly healthcare paths."),
+                  "Short certificate or online course, often a few months.",
+                  "Voluntary but employer-preferred: AAPC (CPC/CPB) or AHIMA (CCA).",
+                  "Yes &mdash; one of the most online-friendly healthcare paths.",
+                  "No state license typically required."),
         role_card("Medical Assistant",
                   "Work alongside doctors and nurses: rooming patients, taking vital signs, and handling front-office tasks.",
-                  "31-9092", "$49,460",
-                  "Postsecondary certificate, often under a year. A voluntary CMA (AAMA) or RMA (AMT) certification helps.",
-                  "No Massachusetts license; certification is voluntary.",
-                  "Partly. Classroom work can be online, but you need an in-person clinical externship."),
+                  "Postsecondary certificate, often under a year, plus a clinical externship.",
+                  "Voluntary: CMA (AAMA) or RMA (AMT).",
+                  "Partly. Classroom work can be online, but you need an in-person clinical externship.",
+                  "No state license typically required; certification is voluntary."),
         role_card("Phlebotomy Technician",
                   "Draw blood for tests, donations and research. A focused role you can train for quickly.",
-                  "31-9097", "$50,170",
-                  "Short certificate plus supervised, hands-on draws. Many earn a voluntary certification (e.g., ASCP or NHA).",
-                  "No Massachusetts license; national certification is voluntary.",
-                  "Partly. Theory can be online, but you must practice real blood draws in person."),
+                  "Short certificate plus supervised, hands-on draws.",
+                  "Voluntary: ASCP or NHA.",
+                  "Partly. Theory can be online, but you must practice real blood draws in person.",
+                  "Most states don&rsquo;t license phlebotomists; a few require certification. Check your state."),
         role_card("Pharmacy Technician",
                   "Help pharmacists prepare and dispense medications in pharmacies and hospitals.",
-                  "29-2052", "$46,470",
-                  "Short training program. Many earn PTCB or ExCPT certification.",
-                  "Massachusetts requires a Pharmacy Technician license from the Board of Registration in Pharmacy &mdash; even if you&rsquo;re nationally certified &mdash; and you must be 18 or older. (mass.gov)",
-                  "Partly. Coursework can be online; you gain hands-on experience on the job."),
+                  "Short training program, plus hands-on experience on the job.",
+                  "PTCB or ExCPT (widely expected by employers).",
+                  "Partly. Coursework can be online; you gain hands-on experience on the job.",
+                  "Licensing varies by state. Example (Massachusetts): a state Pharmacy Technician license is required even if you&rsquo;re nationally certified, and you must be 18 or older."),
         role_card("EKG Technician",
                   "Run electrocardiogram (EKG/ECG) tests that record the heart&rsquo;s activity for doctors to read.",
-                  "29-2031", "$105,580",
-                  "Short certificate plus hands-on practice. A voluntary CET certification (CCI or NHA) can help.",
-                  "No Massachusetts license; certification is voluntary.",
+                  "Short certificate plus hands-on practice with the equipment.",
+                  "Voluntary: CET (CCI or NHA).",
                   "Partly. Theory can be online, but you need hands-on practice with the equipment.",
-                  pay_note="(This is the BLS median for the broad &lsquo;cardiovascular technologists and technicians&rsquo; group; EKG-only roles typically pay well below this.)"),
+                  "No state license typically required; certification is voluntary."),
         role_card("Nurse Aide (CNA)",
                   "Provide hands-on daily care to patients and residents in nursing homes, hospitals and home care.",
-                  "31-1131", "$46,680",
-                  "A Department of Public Health&ndash;approved Nurse Aide Training Program plus the state competency exam.",
-                  "Massachusetts requires completing a DPH-approved training program and passing the state competency evaluation to be listed on the Nurse Aide Registry. (mass.gov, DPH)",
-                  "Partly. Some classroom hours may be online, but clinical hours must be done in person."),
+                  "A state-approved Nurse Aide Training Program plus a competency exam.",
+                  "State competency exam and registry listing (required to work).",
+                  "Partly. Some classroom hours may be online, but clinical hours must be done in person.",
+                  "Regulated in every state. Example (Massachusetts): complete a Department of Public Health&ndash;approved program and pass the state competency exam to be listed on the Nurse Aide Registry."),
         role_card("Home Health Aide",
                   "Help older adults and people with disabilities live safely and independently at home.",
-                  "31-1120", "$40,910",
-                  "Training is usually provided by the employing agency; Medicare-certified agencies follow federal training standards.",
-                  "No Massachusetts license for the role; agencies set training requirements.",
-                  "Partly. Some training is online, but hands-on care skills are practiced in person."),
+                  "Usually provided by the employing agency; Medicare-certified agencies follow federal training standards.",
+                  "Agency training; federal standards apply at Medicare-certified agencies.",
+                  "Partly. Some training is online, but hands-on care skills are practiced in person.",
+                  "No license for the role in most states; agencies set training requirements."),
         role_card("Medical Administrative Assistant",
                   "Run the front office of a clinic or practice: scheduling, records, insurance and patient intake.",
-                  "43-6013", "$50,290",
-                  "Short certificate. A voluntary CMAA certification can help.",
-                  "No Massachusetts license; certification is voluntary.",
-                  "Yes &mdash; this office-based role is well suited to online training."),
+                  "Short certificate.",
+                  "Voluntary: CMAA.",
+                  "Yes &mdash; this office-based role is well suited to online training.",
+                  "No state license typically required; certification is voluntary."),
     ) + """
       </div>
     </section>
@@ -904,9 +951,9 @@ PAGES.append(dict(
       <div class="container">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Choosing a path</p>
         <h2 class="section-title left">Pick your path by where you want to work</h2>
-        <div class="section-intro"><p>Healthcare roles differ less by pay than by the setting and the kind of
-        day you want. A good first question isn&rsquo;t &ldquo;which pays most?&rdquo; but &ldquo;where do I
-        picture myself working?&rdquo;</p></div>
+        <div class="section-intro"><p>Healthcare roles differ most by the setting and the kind of day you want.
+        A good first question isn&rsquo;t &ldquo;which pays most?&rdquo; but &ldquo;where do I picture myself
+        working?&rdquo;</p></div>
         <div class="program-items">
           <article class="program-item">
             <h4>In someone&rsquo;s home or the community</h4>
@@ -934,19 +981,15 @@ PAGES.append(dict(
             <div class="program-meta"><span><strong>Roles:</strong> Medical Billing &amp; Coding, Medical Administrative Assistant</span></div>
           </article>
         </div>
-        <p class="note"><strong>License vs. certification &mdash; an important difference.</strong> Two of these
-        roles need the state&rsquo;s approval before you can work: nurse aides (CNAs) must finish a Department of
-        Public Health&ndash;approved training program and pass the state competency exam to be listed on the
-        Nurse Aide Registry, and pharmacy technicians must be licensed by the Massachusetts Board of
-        Registration in Pharmacy. The rest &mdash; billing and coding, medical assistant, phlebotomy, EKG and
-        medical admin &mdash; have <strong>no state license</strong>. For those, a voluntary national
-        certification (for example AAPC CPC/CPB or AHIMA CCA for coding, AAMA CMA or AMT RMA for medical
-        assistants, or ASCP or NHA for phlebotomy) isn&rsquo;t required by law, but it&rsquo;s what many
-        employers look for.</p>
-        <p class="note"><strong>An honest word on pay.</strong> The Massachusetts medians above include experienced workers; beginners earn less. Nationally, the lowest-paid 10% of nursing assistants earn under $33,940, phlebotomists under $35,780, medical assistants under $36,050, and medical records specialists under $37,000 (BLS, May 2025). These are short, postsecondary certificate paths &mdash; a nursing assistant, for example, finishes a state-approved program and a competency exam, not a college degree (BLS) &mdash; so pay grows with experience and with stepping up to higher roles or further nursing training.</p>
+        <p class="note"><strong>License vs. certification &mdash; an important difference.</strong> A
+        <em>license</em> is government permission you must have before you can work; a <em>certification</em> is
+        a voluntary credential that shows employers you&rsquo;re qualified. Some healthcare roles are licensed
+        or regulated (nurse aide and pharmacy technician are common examples), while many others &mdash; billing
+        and coding, medical assistant, phlebotomy, EKG and medical admin &mdash; usually have no license, so a
+        voluntary national certification is what employers look for. The exact rules depend on your state.</p>
       </div>
     </section>
-""" + pay_for_training_block() + outward_next_step("a healthcare career") + """
+""" + career_pay_block() + """
 
     <section class="section section--tight">
       <div class="container">
@@ -967,46 +1010,48 @@ PAGES.append(dict(
         <h2 class="related-title">Related guides</h2>
         <div class="post-grid post-grid--related">
           <a class="post-card" href="blog/can-medical-billing-coding-be-learned-online.html"><h3>Can Medical Billing &amp; Coding Be Learned Online?</h3><span class="read-link">Read article</span></a>
-          <a class="post-card" href="blog/highest-paying-certifications-massachusetts.html"><h3>Highest-Paying Certifications in Massachusetts</h3><span class="read-link">Read article</span></a>
-          <a class="post-card" href="blog/free-job-training-massachusetts.html"><h3>Free Job Training in Massachusetts</h3><span class="read-link">Read article</span></a>
+          <a class="post-card" href="wioa-explained.html"><h3>WIOA Training Funds Explained</h3><span class="read-link">Read the guide</span></a>
+          <a class="post-card" href="qualify.html"><h3>Do I Qualify for Training Funding?</h3><span class="read-link">Check your options</span></a>
         </div>
       </div>
     </section>
 """))
 
 
-# ---- it-careers-massachusetts.html ----------------------------------------
+# ---- it-careers.html ------------------------------------------------------
+# Location-neutral career reference (Site Structure Spec v1.5): no "Massachusetts"
+# framing, no pay figures (hidden PAY-DATA slot, R-PAY-DATA).
 _IT_FAQ = [
-    ("Can I get an IT job in Massachusetts without a degree?",
+    ("Can I get an IT job without a degree?",
      "Often yes. Many employers hire for entry-level help desk and support roles based on skills and certifications rather than a four-year degree. A certification like CompTIA A+ or Tech+ plus some hands-on practice is a common way in."),
     ("What IT certification should I start with?",
      "Most people start with CompTIA A+ or Tech+ for help desk work, then add Network+ for networking or Security+ for cybersecurity. Cloud roles use vendor certifications such as AWS, Microsoft Azure or Google Cloud fundamentals."),
     ("Can I learn IT online?",
      "Yes. IT is one of the most online-friendly fields. You can study the material and build a free home lab on your own computer to practice the skills employers test for."),
-    ("How much does IT support pay in Massachusetts?",
-     "Computer user support specialists (help desk) earn a Massachusetts median of about $75,070 a year, and computer network support specialists about $88,650, according to BLS OEWS data for May 2025."),
+    ("Which IT job should I aim for first?",
+     "Almost everyone starts on the help desk or in user support. It gets you in the door with a short certificate, and it&rsquo;s the foundation for networking, security and cloud roles later. The higher-paying roles assume you already know the basics."),
     ("Is IT support still a good field with AI around?",
-     "Demand for user support is steady rather than booming, with thousands of openings each year in Massachusetts as people move up or retire. The work is shifting toward troubleshooting, security and cloud tools, so keeping your skills current matters."),
+     "Demand for user support is steady rather than booming, with thousands of openings each year as people move up or retire. The work is shifting toward troubleshooting, security and cloud tools, so keeping your skills current matters."),
     ("Does Career Skills Center offer IT training?",
      "Not yet. Career Skills Center plans to offer training in healthcare, IT and the skilled trades. Join the interest list to get updates when we launch."),
 ]
 
 PAGES.append(dict(
-    slug="it-careers-massachusetts.html", nav="it-careers-massachusetts.html",
-    title="IT Careers in Massachusetts: Jobs, Pay &amp; Training (2026) | Career Skills Center",
-    ogtitle="IT Careers in Massachusetts: Jobs, Pay & Training (2026)",
-    desc="A plain guide to IT careers in Massachusetts: help desk, networking, cybersecurity and cloud. What they pay (BLS 2025), which certifications to start with, and how to pay for training.",
+    slug="it-careers.html", nav="it-careers.html",
+    title="IT Careers: Jobs, Certifications &amp; How to Get Started | Career Skills Center",
+    ogtitle="IT Careers: Jobs, Certifications & How to Get Started",
+    desc="A plain guide to IT careers: help desk, networking, cybersecurity and cloud. Which certifications to start with, whether you can train online, and how to pay for training.",
     extrahead=faq_ld(_IT_FAQ),
     main=hero("Career Paths &middot; Information Technology",
-              "IT Careers in Massachusetts: Jobs, Pay and How to Train",
+              "IT Careers: Jobs, Certifications and How to Get Started",
               "Information technology is a common way into a stable, well-paid career without a four-year "
-              "degree. Most people start on the help desk. Here&rsquo;s what IT roles pay in Massachusetts, "
-              "which certifications to start with, and how to pay for training.",
-              "images/comptia.webp", ("Check Your Options", "qualify.html")) + """
+              "degree. Most people start on the help desk. Here&rsquo;s what the roles are, which certifications "
+              "to start with, and how to pay for training.",
+              "images/comptia.webp", ("Do I Qualify?", "qualify.html")) + """
 
     <section class="section">
       <div class="container narrow">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The field in Massachusetts</p>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The field</p>
         <h2 class="section-title left">Is IT right for you?</h2>
         <p class="lede">IT suits people who like solving problems, are patient with others, and enjoy learning
         new tools. Most careers start with help desk or user support &mdash; setting up computers, fixing
@@ -1018,37 +1063,36 @@ PAGES.append(dict(
 
     <section class="section section--tight">
       <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Roles &amp; pay</p>
-        <h2 class="section-title left">Common IT roles in Massachusetts</h2>
-        <div class="section-intro"><p>Pay figures are the Massachusetts median annual wage from the U.S.
-        Bureau of Labor Statistics (OEWS, May 2025).</p></div>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Common roles</p>
+        <h2 class="section-title left">IT roles you can train for</h2>
+        <div class="section-intro"><p>For each role: what the job is, the typical training path, the
+        certifications employers look for, and whether you can train online. IT roles generally don&rsquo;t
+        require a government license &mdash; certifications are how you show you&rsquo;re ready.</p></div>
 """ + role_grid(
         role_card("Help Desk / User Support",
                   "The most common way into tech. Set up computers, fix everyday problems and help people use software and networks.",
-                  "15-1232", "$75,070",
-                  "Short online course. A certification like CompTIA A+ or Tech+ helps you get hired.",
-                  "No license. Certifications (CompTIA A+, Tech+) are voluntary but employer-preferred.",
-                  "Yes &mdash; fully online-friendly. A free home lab helps you practice."),
+                  "Short online course; a free home lab to practice.",
+                  "CompTIA A+ or Tech+ (voluntary but employer-preferred).",
+                  "Yes &mdash; fully online-friendly. A free home lab helps you practice.",
+                  "No license required; certifications are voluntary."),
         role_card("Network Support Technician",
                   "Keep an organization&rsquo;s networks running: routers, switches, Wi-Fi and connections between systems.",
-                  "15-1231", "$88,650",
-                  "Online coursework plus hands-on labs. CompTIA Network+ is a common credential.",
-                  "No license; Network+ and similar certifications are voluntary.",
-                  "Yes, with virtual or home labs to practice on."),
+                  "Online coursework plus hands-on labs; usually after A+.",
+                  "CompTIA Network+.",
+                  "Yes, with virtual or home labs to practice on.",
+                  "No license required; certifications are voluntary."),
         role_card("Entry-Level Cybersecurity",
                   "Help protect systems and data from attacks: monitoring, access, and following security procedures.",
-                  "15-1212", "$136,550",
-                  "Usually after some help desk or networking experience. CompTIA Security+ is a common starting certification.",
-                  "No license; Security+ and similar certifications are voluntary.",
+                  "Usually after some help desk or networking experience.",
+                  "CompTIA Security+ (a common starting security cert).",
                   "Yes for coursework; expect to build lab and hands-on experience.",
-                  pay_note="(This is the median for the full &lsquo;information security analysts&rsquo; occupation, including experienced staff; entry-level roles pay less, and most people start in help desk or networking first.)"),
+                  "No license required; certifications are voluntary."),
         role_card("Cloud Support",
                   "Help run services on cloud platforms like AWS, Microsoft Azure and Google Cloud.",
-                  "15-1244", "$110,980",
-                  "Online coursework plus vendor certifications (AWS, Azure or Google Cloud fundamentals).",
-                  "No license; cloud certifications are voluntary.",
+                  "Online coursework plus vendor certifications; often after help-desk or networking.",
+                  "AWS Cloud Practitioner, Microsoft Azure AZ-900, or Google Cloud Digital Leader.",
                   "Yes &mdash; cloud work is inherently online.",
-                  pay_note="(Closest BLS category is network and computer systems administration; entry-level cloud and support roles start lower.)"),
+                  "No license required; certifications are voluntary."),
     ) + """
       </div>
     </section>
@@ -1068,7 +1112,7 @@ PAGES.append(dict(
             <p>Where almost everyone begins. You learn to set up computers, fix everyday problems, and help
             people use software and networks. State-funded IT courses are short certificate programs aimed at
             this rung &mdash; they get you in the door, not straight to a senior salary.</p>
-            <div class="ladder-meta"><span><strong>Train for:</strong> CompTIA Tech+ (FC0-U71), then CompTIA A+</span><span><strong>Entry pay:</strong> lowest 10% under ~$41,000/yr; MA median $75,070 (BLS)</span></div>
+            <div class="ladder-meta"><span><strong>Train for:</strong> CompTIA Tech+ (FC0-U71), then CompTIA A+</span><span><strong>Leads to:</strong> networking, security and cloud roles</span></div>
           </article>
           <article class="ladder-step">
             <p class="ladder-rank">Next step &middot; builds on the basics</p>
@@ -1101,10 +1145,15 @@ PAGES.append(dict(
             <div class="ladder-meta"><span><strong>Train through:</strong> a bootcamp or structured self-study, plus a project portfolio</span></div>
           </article>
         </div>
-        <p class="note"><strong>An honest word on pay.</strong> The Massachusetts medians above are what people earn across a whole career, not what a beginner makes. Nationally, computer user support specialists have a median of $61,860, and the lowest-paid 10% earn under $40,980 &mdash; roughly where a first help-desk job sits (BLS, May 2025). Just as important, that is the rung a short certificate prepares you for: BLS lists the typical entry education for user support as some college, or a high-school diploma plus IT certifications &mdash; not a four-year degree. The IT jobs that pay six figures are a different tier &mdash; information security analysts (median $129,180) and software developers (median $135,980) both typically require a bachelor&rsquo;s degree, and security roles also expect prior IT experience. A state-funded certificate is a real way onto the ladder; plan to start on the help desk and add certifications and experience to climb.</p>
+        <p class="note"><strong>Start on the ladder, then climb.</strong> A short certificate is a real way in,
+        but it prepares you for the entry rung &mdash; usually help desk or user support &mdash; not a senior
+        salary on day one. The higher-paying IT roles (security, cloud, software) assume you already know the
+        basics and often expect prior experience or a degree. Plan to start on the help desk and add
+        certifications and experience to move up. Certifications, not a four-year degree, are how you show
+        you&rsquo;re ready for the next step.</p>
       </div>
     </section>
-""" + pay_for_training_block() + outward_next_step("an IT career") + """
+""" + career_pay_block() + """
 
     <section class="section section--tight">
       <div class="container">
@@ -1125,7 +1174,137 @@ PAGES.append(dict(
         <h2 class="related-title">Related guides</h2>
         <div class="post-grid post-grid--related">
           <a class="post-card" href="blog/can-you-learn-it-support-online.html"><h3>Can You Learn IT Support Online?</h3><span class="read-link">Read article</span></a>
-          <a class="post-card" href="blog/highest-paying-certifications-massachusetts.html"><h3>Highest-Paying Certifications in Massachusetts</h3><span class="read-link">Read article</span></a>
+          <a class="post-card" href="wioa-explained.html"><h3>WIOA Training Funds Explained</h3><span class="read-link">Read the guide</span></a>
+          <a class="post-card" href="qualify.html"><h3>Do I Qualify for Training Funding?</h3><span class="read-link">Check your options</span></a>
+        </div>
+      </div>
+    </section>
+"""))
+
+
+# ---- it-careers-massachusetts-draft.html (WORKING DRAFT - course-focused) --
+def course_card(course, blurb, trains_for, length, cert, online, note=""):
+    extra = ('\n              <div><dt>Good to know</dt><dd>%s</dd></div>' % note) if note else ""
+    return """          <article class="role-card">
+            <h3 class="role-name">%s</h3>
+            <p class="role-blurb">%s</p>
+            <dl class="role-facts">
+              <div><dt>Trains you for</dt><dd>%s</dd></div>
+              <div><dt>Typical length</dt><dd>%s</dd></div>
+              <div><dt>Certification</dt><dd>%s</dd></div>
+              <div><dt>Typical starting pay</dt><dd><span class="tbd">Entry-level &mdash; sourcing current figures</span></dd></div>
+              <div><dt>Can you train online?</dt><dd>%s</dd></div>%s
+            </dl>
+          </article>""" % (course, blurb, trains_for, length, cert, online, extra)
+
+_ITD_FAQ = [
+    ("Do I need a college degree to get an IT job in Massachusetts?",
+     "Often no. Many employers hire for entry-level help desk and support roles based on skills and a certification like CompTIA A+, rather than a four-year degree."),
+    ("How long do these courses take?",
+     "Most are short &mdash; a few weeks to about four months &mdash; and prepare you for a certification exam. They are not two- or four-year college degrees."),
+    ("Which course should I start with?",
+     "Most people start with CompTIA A+ (or the more basic CompTIA Tech+) for help desk work, then add Network+ for networking or Security+ for security later."),
+    ("Can I learn IT online?",
+     "Yes. IT is one of the most online-friendly fields. You can study the material and build a free home lab on your own computer to practice."),
+    ("How much will I earn?",
+     "These courses lead to entry-level jobs, so expect entry-level pay to start &mdash; it rises with experience and added certifications. We are sourcing accurate Massachusetts starting-wage figures and will add them per course."),
+    ("Does Career Skills Center offer these courses?",
+     "Not yet. Career Skills Center plans to offer training in healthcare, IT and the skilled trades. Join the interest list to get updates when we launch."),
+]
+
+PAGES.append(dict(
+    slug="it-careers-massachusetts-draft.html", nav="",
+    title="DRAFT - IT Courses You Can Train For in Massachusetts | Career Skills Center",
+    ogtitle="IT Courses You Can Train For in Massachusetts (DRAFT)",
+    desc="Working draft: short IT courses a Massachusetts training voucher can cover, the job each trains you for, and how funding works.",
+    extrahead='  <meta name="robots" content="noindex">\n' + faq_ld(_ITD_FAQ),
+    main=hero("Career Paths &middot; Information Technology",
+              "IT Courses You Can Train For in Massachusetts",
+              "A Massachusetts training voucher can pay for short IT courses that prepare you for a "
+              "certification and an entry-level job &mdash; no four-year degree required. Here are the courses a "
+              "voucher commonly covers, what each one trains you for, and how to get funding.",
+              "images/comptia.webp", ("Check Your Options", "qualify.html")) + """
+
+    <section class="section">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The field in Massachusetts</p>
+        <h2 class="section-title left">Is IT right for you?</h2>
+        <p class="lede">IT suits people who like solving problems, are patient with others, and enjoy learning
+        new tools. Most careers start with help desk or user support &mdash; setting up computers, fixing
+        everyday problems and helping people &mdash; and grow from there into networking, security or cloud.
+        You can learn most of it online, and a certification matters more than a degree for getting your first
+        job.</p>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Courses &amp; pay</p>
+        <h2 class="section-title left">IT courses a training voucher can pay for</h2>
+        <div class="section-intro"><p>These are the short IT courses a MassHire training voucher (an
+        Individual Training Account, or ITA) commonly covers. Each one prepares you for an industry
+        certification and an entry-level job &mdash; they are <strong>not</strong> two- or four-year college
+        degrees. Most run only a few weeks to about four months, so the pay to expect is entry-level: what
+        people earn starting out, which grows with experience and added certifications.</p></div>
+""" + role_grid(
+        course_card("IT Support (CompTIA A+)",
+                    "The core entry course for tech. Learn to set up computers, fix everyday problems, and support people using software and networks.",
+                    "Help Desk / User Support Specialist",
+                    "Short &mdash; a few weeks to a few months",
+                    "CompTIA A+ (some begin with the more basic CompTIA Tech+)",
+                    "Yes &mdash; fully online-friendly; a free home lab helps you practice."),
+        course_card("Networking (CompTIA Network+)",
+                    "Builds on A+. Learn how routers, switches, Wi-Fi and the connections between systems work.",
+                    "Network Support Technician",
+                    "Short &mdash; a few weeks to a few months",
+                    "CompTIA Network+",
+                    "Yes, with virtual or home labs to practice on.",
+                    note="Usually taken after CompTIA A+ or some help-desk experience."),
+        course_card("Cybersecurity (CompTIA Security+)",
+                    "An introduction to protecting systems and data: monitoring, access, and security procedures.",
+                    "Entry security / IT support with a security focus",
+                    "Short &mdash; a few weeks to a few months",
+                    "CompTIA Security+",
+                    "Yes for coursework; expect to build hands-on lab experience.",
+                    note="Security+ is usually taken after A+/Network+ or IT experience &mdash; it is rarely a first job. The six-figure &lsquo;security analyst&rsquo; salaries advertised elsewhere generally require a bachelor&rsquo;s degree and years of experience."),
+        course_card("Cloud fundamentals (AWS / Azure / Google Cloud)",
+                    "An introduction to running services on cloud platforms.",
+                    "Junior cloud or IT support",
+                    "Short &mdash; a few weeks to a few months",
+                    "AWS Cloud Practitioner, Microsoft Azure AZ-900, or Google Cloud Digital Leader",
+                    "Yes &mdash; cloud work is inherently online.",
+                    note="Usually taken after some help-desk or networking experience."),
+    ) + """
+        <p class="note"><strong>Why we don&rsquo;t show a single salary yet.</strong> Pay for these jobs
+        varies, and the career-wide &ldquo;median&rdquo; figures you see elsewhere overstate what a new
+        certificate-holder earns. We&rsquo;re sourcing accurate <em>entry-level</em> Massachusetts wage data and
+        will add it to each course.</p>
+        <p>Longer paths such as software development or programming also exist and can pay well, but they
+        usually take more than a few months and aren&rsquo;t typically short voucher courses.</p>
+      </div>
+    </section>
+
+""" + pay_for_training_block() + outward_next_step("an IT career") + """
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="faq">
+          <p class="faq-group-title">IT courses FAQ</p>
+""" + "\n".join('''          <details class="faq-item">
+            <summary>%s</summary>
+            <div class="faq-body"><p>%s</p></div>
+          </details>''' % (q, a) for q, a in _ITD_FAQ) + """
+        </div>
+      </div>
+    </section>
+
+""" + field_interest("it", "it", "IT training") + """
+
+    <section class="section">
+      <div class="container">
+        <h2 class="related-title">Related guides</h2>
+        <div class="post-grid post-grid--related">
+          <a class="post-card" href="blog/can-you-learn-it-support-online.html"><h3>Can You Learn IT Support Online?</h3><span class="read-link">Read article</span></a>
           <a class="post-card" href="blog/free-job-training-massachusetts.html"><h3>Free Job Training in Massachusetts</h3><span class="read-link">Read article</span></a>
         </div>
       </div>
@@ -1134,76 +1313,77 @@ PAGES.append(dict(
 
 
 # ---- skilled-trades-careers-massachusetts.html ----------------------------
+# Location-neutral career reference (Site Structure Spec v1.5): no "Massachusetts"
+# framing except the clearly labeled licensing example; no pay figures (R-PAY-DATA).
 _TR_FAQ = [
-    ("Do the skilled trades pay well in Massachusetts?",
-     "Yes. Massachusetts median pay runs from about $62,570 a year for welders to about $93,880 for plumbers, according to BLS OEWS data for May 2025 &mdash; and licensed tradespeople can earn more with experience."),
     ("Can I learn a skilled trade online?",
-     "Only partly. You can study theory, code and safety online, but the trades are hands-on and Massachusetts licenses require supervised, in-person work hours. The honest path pairs online or classroom coursework with an apprenticeship."),
-    ("How long does it take to get licensed in Massachusetts?",
-     "It varies by trade. For example, a Massachusetts journeyman electrician needs 8,000 hours of supervised work over at least four years plus a 600-hour course before the exam. Plumbers and refrigeration technicians have their own hour requirements set by their state boards."),
+     "Only partly. You can study theory, code and safety online, but the trades are hands-on and licenses require supervised, in-person work hours. The honest path pairs online or classroom coursework with an apprenticeship."),
+    ("How long does it take to get licensed in a trade?",
+     "It varies by trade and by state. Licensed trades typically require a mix of classroom hours and thousands of supervised, on-the-job hours &mdash; often a 4- to 5-year apprenticeship &mdash; before you sit for a state exam. Always check the rules where you plan to work."),
     ("Do I need a license for every trade?",
-     "No. Electricians, plumbers and refrigeration/HVAC technicians are licensed by Massachusetts state boards. Welding has no statewide license &mdash; employers use hands-on weld tests and voluntary AWS certification."),
-    ("How do I pay for trade training in Massachusetts?",
-     "Registered apprenticeships let you earn while you learn. You may also qualify for state-funded training through a MassHire career center. Start with the free job training guide and check your options."),
+     "No. Electricians, plumbers and refrigeration/HVAC technicians are licensed in most states, with requirements set by state boards. Welding generally has no statewide license &mdash; employers use hands-on weld tests and voluntary AWS certification."),
+    ("How do I pay for trade training?",
+     "Registered apprenticeships let you earn while you learn. You may also qualify for publicly funded training. See our funding guides and use the Do I Qualify? check."),
     ("Does Career Skills Center offer skilled trades training?",
      "Not yet. Career Skills Center plans to offer training in healthcare, IT and the skilled trades. Join the interest list to get updates when we launch."),
 ]
 
 PAGES.append(dict(
-    slug="skilled-trades-careers-massachusetts.html", nav="skilled-trades-careers-massachusetts.html",
-    title="Skilled Trades Careers in Massachusetts: Jobs, Pay &amp; Licensing (2026) | Career Skills Center",
-    ogtitle="Skilled Trades Careers in Massachusetts: Jobs, Pay & Licensing (2026)",
-    desc="A plain guide to skilled trades careers in Massachusetts: electrician, HVAC/R, plumber and welder. What they pay (BLS 2025), how licensing works, and how to pay for training.",
+    slug="skilled-trades-careers.html", nav="skilled-trades-careers.html",
+    title="Skilled Trades Careers: Jobs, Licensing &amp; Apprenticeships | Career Skills Center",
+    ogtitle="Skilled Trades Careers: Jobs, Licensing & Apprenticeships",
+    desc="A plain guide to skilled trades careers: electrician, HVAC/R, plumber and welder. How licensing and apprenticeships work, whether you can train online, and how to pay for training.",
     extrahead=faq_ld(_TR_FAQ),
     main=hero("Career Paths &middot; Skilled Trades",
-              "Skilled Trades Careers in Massachusetts: Jobs, Pay and Licensing",
-              "The trades pay well, can&rsquo;t be shipped overseas, and are hiring across Massachusetts. They "
-              "are also hands-on and licensed by the state. Here&rsquo;s what the work pays, how licensing "
-              "works, and how to pay for training.",
-              "images/electrician.webp", ("Check Your Options", "qualify.html")) + """
+              "Skilled Trades Careers: Jobs, Licensing and Apprenticeships",
+              "The trades pay well, can&rsquo;t be shipped overseas, and are hiring. They are also hands-on and, "
+              "in most states, licensed. Here&rsquo;s what the work is, how licensing and apprenticeships work, "
+              "and how to pay for training.",
+              "images/electrician.webp", ("Do I Qualify?", "qualify.html")) + """
 
     <section class="section">
       <div class="container narrow">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The field in Massachusetts</p>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The field</p>
         <h2 class="section-title left">Are the trades right for you?</h2>
         <p class="lede">The trades suit people who like working with their hands, solving physical problems, and
         seeing the result of a day&rsquo;s work. The trade-off compared with office jobs: the work is physical,
-        and most trades in Massachusetts require a license that combines classroom hours with thousands of
-        supervised, on-the-job hours. That path takes time, but you can earn while you learn.</p>
+        and most licensed trades combine classroom hours with thousands of supervised, on-the-job hours. That
+        path takes time, but you can earn while you learn.</p>
       </div>
     </section>
 
     <section class="section section--tight">
       <div class="container">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Roles &amp; pay</p>
-        <h2 class="section-title left">Common skilled trades in Massachusetts</h2>
-        <div class="section-intro"><p>Pay figures are the Massachusetts median annual wage from the U.S.
-        Bureau of Labor Statistics (OEWS, May 2025).</p></div>
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Common roles</p>
+        <h2 class="section-title left">Skilled trades you can train for</h2>
+        <div class="section-intro"><p>For each trade: what the work is, the typical training path, the
+        certifications involved, and whether you can train online. Licensing rules vary by state &mdash; the
+        example table further down uses Massachusetts; check the rules where you plan to work.</p></div>
 """ + role_grid(
         role_card("Electrician",
                   "Install and maintain wiring, power, lighting and control systems in homes and businesses.",
-                  "47-2111", "$79,420",
                   "An apprenticeship: classroom hours plus supervised on-the-job hours over about four years.",
-                  "Massachusetts journeyman (Class B) license: 8,000 hours of supervised work over at least four years, plus the 600-hour Journeyman&rsquo;s Course, then the state exam. (mass.gov, 237 CMR 13)",
-                  "Partly. Some related theory can be online, but licensing requires supervised in-person hours."),
+                  "State journeyman license (via exam); no national certificate required.",
+                  "Partly. Some related theory can be online, but licensing requires supervised in-person hours.",
+                  "Licensed in most states. Example (Massachusetts): journeyman (Class B) needs 8,000 supervised hours over at least four years plus a 600-hour course, then the state exam."),
         role_card("HVAC/R Technician",
                   "Install and service heating, air conditioning and refrigeration systems.",
-                  "49-9021", "$77,300",
                   "An apprenticeship or approved study, plus federal EPA 608 certification to handle refrigerant.",
-                  "Massachusetts refrigeration technician license (6,000 apprentice hours, or 450 hours of approved study) plus federal EPA 608 certification. (mass.gov)",
-                  "Partly. Theory and EPA 608 exam prep can be online; hands-on hours are in person."),
+                  "Federal EPA 608 (required to handle refrigerant); plus a state license where required.",
+                  "Partly. Theory and EPA 608 exam prep can be online; hands-on hours are in person.",
+                  "Licensing varies by state. Example (Massachusetts): a refrigeration technician license (6,000 apprentice hours, or 450 hours of approved study) plus federal EPA 608."),
         role_card("Plumber",
                   "Install and repair pipes, fixtures and systems that carry water and gas.",
-                  "47-2152", "$93,880",
                   "An apprenticeship: practical hours plus theory over about three years, then the journeyman exam.",
-                  "Massachusetts apprentice plumbers need at least 5,100 practical hours plus 300 hours of theory before the journeyman exam; Board of State Examiners of Plumbers and Gas Fitters. (mass.gov, 248 CMR 11)",
-                  "Partly. Some theory can be online; supervised hours are in person."),
+                  "State journeyman license (via exam); gas fitting is often licensed separately.",
+                  "Partly. Some theory can be online; supervised hours are in person.",
+                  "Licensed in most states. Example (Massachusetts): apprentices need at least 5,100 practical hours plus 300 hours of theory before the journeyman exam."),
         role_card("Welder",
                   "Join metal parts for construction, manufacturing and repair using heat and specialized tools.",
-                  "51-4121", "$62,570",
                   "A short technical program plus a lot of hands-on practice.",
-                  "No statewide Massachusetts welding license; employers use hands-on weld tests and voluntary AWS (American Welding Society) certification.",
-                  "Mostly no &mdash; welding is a hands-on skill you build in a shop."),
+                  "Voluntary AWS (American Welding Society) certification; employer weld tests.",
+                  "Mostly no &mdash; welding is a hands-on skill you build in a shop.",
+                  "Generally no statewide license; employers rely on weld tests and AWS certification."),
     ) + """
       </div>
     </section>
@@ -1219,16 +1399,20 @@ PAGES.append(dict(
           <li><strong>Learn the theory.</strong> Code, safety, math and how systems work &mdash; this part can
           be online or in a classroom. Many people also do OSHA 10 or 30 safety training here, and, for
           HVAC/refrigeration, prep for the federal EPA 608 certification.</li>
-          <li><strong>Get into a registered apprenticeship.</strong> You work under a licensed tradesperson and earn a paid wage while you build the supervised hours the state requires. BLS describes trade apprenticeships as 4- to 5-year programs with about 2,000 hours of paid on-the-job training each year.</li>
+          <li><strong>Get into a registered apprenticeship.</strong> You work under a licensed tradesperson and earn a paid wage while you build the supervised hours your state requires. BLS describes trade apprenticeships as 4- to 5-year programs with about 2,000 hours of paid on-the-job training each year.</li>
           <li><strong>Log your hours and classroom time.</strong> Each trade sets its own mix of on-the-job
-          hours and classroom hours (see the table below).</li>
+          hours and classroom hours.</li>
           <li><strong>Pass the state exam and get licensed.</strong> Once you meet the hours and pass the exam
           you become a journeyman &mdash; and your pay steps up.</li>
         </ol>
+        <h3 class="mt-lg">Example: how licensing works in Massachusetts</h3>
+        <p>Licensing is set state by state. The table below is a <strong>Massachusetts example</strong> to show
+        the shape of the requirements &mdash; the specific hours and boards differ where you live, so always
+        check your own state.</p>
         <div class="table-wrap">
           <table class="data-table">
             <thead>
-              <tr><th>Trade</th><th>Classroom / theory</th><th>Supervised work hours</th><th>Massachusetts license</th><th>Also required</th></tr>
+              <tr><th>Trade</th><th>Classroom / theory</th><th>Supervised work hours</th><th>License (MA example)</th><th>Also required</th></tr>
             </thead>
             <tbody>
               <tr><th>Electrician</th><td>600-hour Journeyman&rsquo;s Course</td><td>8,000 hours over at least 4 years</td><td>Journeyman (Class B) exam &mdash; Board of State Examiners of Electricians</td><td>&mdash;</td></tr>
@@ -1238,16 +1422,15 @@ PAGES.append(dict(
             </tbody>
           </table>
         </div>
-        <p class="role-src">Licensing sources: mass.gov licensing boards (237 CMR 13 electricians; 248 CMR 11 plumbers), Massachusetts Refrigeration Technician licensing, and federal EPA 608. Checked 2026.</p>
+        <p class="role-src">Massachusetts example sources: mass.gov licensing boards (237 CMR 13 electricians; 248 CMR 11 plumbers), Massachusetts Refrigeration Technician licensing, and federal EPA 608. Checked 2026.</p>
         <p class="note"><strong>What online learning can and can&rsquo;t do.</strong> You can genuinely learn the
         theory, code and safety online, and do OSHA and EPA 608 exam prep on a screen. What you cannot do online
-        is the supervised, hands-on hours the state requires &mdash; those happen on real job sites under a
+        is the supervised, hands-on hours a license requires &mdash; those happen on real job sites under a
         licensed tradesperson. Treat online study as the classroom half of an apprenticeship, not a replacement
         for it.</p>
-        <p class="note"><strong>An honest word on pay.</strong> You earn while you train &mdash; BLS describes trade apprenticeships as paid on-the-job training, with pay rising each year as you progress. Licensed tradespeople earn well: the Massachusetts medians are about $79,420 for electricians, $93,880 for plumbers and $77,300 for HVAC/R (BLS OEWS, May 2025). Beginners start lower &mdash; nationally the lowest-paid 10% in those trades earn under roughly $40,000&ndash;$44,000 &mdash; and the trade-off is time: a license takes a 4- to 5-year apprenticeship, not a few months.</p>
       </div>
     </section>
-""" + pay_for_training_block() + outward_next_step("a career in the trades") + """
+""" + career_pay_block() + """
 
     <section class="section section--tight">
       <div class="container">
@@ -1268,8 +1451,8 @@ PAGES.append(dict(
         <h2 class="related-title">Related guides</h2>
         <div class="post-grid post-grid--related">
           <a class="post-card" href="blog/can-you-learn-a-trade-online.html"><h3>Can You Learn a Skilled Trade Online?</h3><span class="read-link">Read article</span></a>
-          <a class="post-card" href="blog/highest-paying-certifications-massachusetts.html"><h3>Highest-Paying Certifications in Massachusetts</h3><span class="read-link">Read article</span></a>
-          <a class="post-card" href="blog/free-job-training-massachusetts.html"><h3>Free Job Training in Massachusetts</h3><span class="read-link">Read article</span></a>
+          <a class="post-card" href="apprenticeships.html"><h3>Apprenticeship Programs (for Employers)</h3><span class="read-link">Read more</span></a>
+          <a class="post-card" href="qualify.html"><h3>Do I Qualify for Training Funding?</h3><span class="read-link">Check your options</span></a>
         </div>
       </div>
     </section>
@@ -1279,13 +1462,13 @@ PAGES.append(dict(
 # ---- career-paths.html (STEP 4 — hub; 301 target for our-programs/programs) --
 PAGES.append(dict(
     slug="career-paths.html", nav="career-paths.html",
-    title="Career Paths in Massachusetts: Explore Fields You Can Train For | Career Skills Center",
-    ogtitle="Career Paths in Massachusetts",
-    desc="Explore careers you can train for in Massachusetts — healthcare, information technology and the skilled trades. See what each field pays and how to train.",
-    main=hero("Career Paths", "Career Paths in Massachusetts",
-              "Explore careers you can train for in Massachusetts. Each guide covers what the jobs pay, how "
-              "to train, and how to get help paying for it.",
-              None, ("Check Your Options", "qualify.html")) + """
+    title="Career Paths: Explore Fields You Can Train For | Career Skills Center",
+    ogtitle="Career Paths",
+    desc="Explore careers you can train for — healthcare, information technology and the skilled trades. See what each field involves, how to train, and how to get help paying for it.",
+    main=hero("Career Paths", "Explore Careers You Can Train For",
+              "Three fields with clear ways in and no four-year degree required. Each guide covers what the "
+              "jobs are, how to train, and how to get help paying for it.",
+              None, ("Do I Qualify?", "qualify.html")) + """
 
     <section class="section">
       <div class="container">
@@ -1302,7 +1485,7 @@ PAGES.append(dict(
               <h3 class="pcard-title">Healthcare</h3>
               <span class="pcard-rule" aria-hidden="true"></span>
               <p>Billing and coding, medical assistant, phlebotomy, pharmacy tech, CNA and more &mdash; steady work, often trainable in months, some fully online.</p>
-              <a class="btn btn-outline-navy" href="healthcare-careers-massachusetts.html">Explore healthcare</a>
+              <a class="btn btn-outline-navy" href="healthcare-careers.html">Explore healthcare</a>
             </div>
           </article>
 
@@ -1312,7 +1495,7 @@ PAGES.append(dict(
               <h3 class="pcard-title">Information Technology</h3>
               <span class="pcard-rule" aria-hidden="true"></span>
               <p>Help desk, networking, cybersecurity and cloud &mdash; a common way into a well-paid tech career without a four-year degree.</p>
-              <a class="btn btn-outline-navy" href="it-careers-massachusetts.html">Explore IT</a>
+              <a class="btn btn-outline-navy" href="it-careers.html">Explore IT</a>
             </div>
           </article>
 
@@ -1321,8 +1504,8 @@ PAGES.append(dict(
             <div class="pcard-body">
               <h3 class="pcard-title">Skilled Trades</h3>
               <span class="pcard-rule" aria-hidden="true"></span>
-              <p>Electrician, HVAC/R, plumber and welder &mdash; licensed trades that pay well in Massachusetts and can&rsquo;t be shipped overseas.</p>
-              <a class="btn btn-outline-navy" href="skilled-trades-careers-massachusetts.html">Explore the trades</a>
+              <p>Electrician, HVAC/R, plumber and welder &mdash; licensed trades that pay well and can&rsquo;t be shipped overseas. Earn while you learn through an apprenticeship.</p>
+              <a class="btn btn-outline-navy" href="skilled-trades-careers.html">Explore the trades</a>
             </div>
           </article>
 
@@ -1360,9 +1543,9 @@ PAGES.append(dict(
       <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Not sure yet?</p>
         <h2 class="section-title left">See what help you may qualify for</h2>
-        <p>Answer a few quick questions and we&rsquo;ll point you to the right next steps for state-funded
-        training in Massachusetts &mdash; no cost, no obligation.</p>
-        <p><a class="btn btn-yellow" href="qualify.html">Check your options</a></p>
+        <p>Answer a few quick questions and we&rsquo;ll point you to the right next steps for publicly funded
+        training &mdash; no cost, no obligation.</p>
+        <p><a class="btn btn-yellow" href="qualify.html">Do I Qualify?</a></p>
       </div>
     </section>
 
@@ -2069,20 +2252,20 @@ PAGES.append(dict(
 # ---- about.html -----------------------------------------------------------
 PAGES.append(dict(
     slug="about.html", nav="about.html",
-    title="About Us | Career Skills Center — Massachusetts",
+    title="About Us | Career Skills Center",
     ogtitle="About Career Skills Center",
-    desc="Career Skills Center is building online career training for Massachusetts adults in IT, medical billing and coding, and the skilled trades.",
+    desc="Career Skills Center is a Quincy, Massachusetts company building career training and helping workers and employers navigate training funding.",
     main=hero("About Us", "About Us",
-              "A career school being built for Massachusetts, with online training designed around real jobs. "
-              "Our focus is your potential.",
+              "A Quincy, Massachusetts company building career training &mdash; and helping workers and "
+              "employers make sense of how to pay for it. Our focus is your potential.",
               "images/aboutus.webp") + f"""
 
     <section class="section">
       <div class="container narrow text-center">
         <h2 class="section-title">Our Focus: Your Potential</h2>
         <p class="lede">Our goal isn’t just to help you achieve your potential. It’s to <strong>activate your
-        potential</strong>. Career Skills Center is being built to prepare committed Massachusetts adults for
-        rewarding careers through practical, job-focused training and real support.</p>
+        potential</strong>. Career Skills Center is being built to prepare committed adults for rewarding
+        careers through practical, job-focused training and real support.</p>
         <p class="lede">Employers today expect more than technical skill. They look for discipline, integrity,
         teamwork and professionalism. We intend to build those habits alongside the skills themselves.</p>
       </div>
@@ -2095,55 +2278,71 @@ PAGES.append(dict(
       </div>
     </section>
 
-    <section class="about section section--alt" id="mission">
+    <!-- COURSE-DEPENDENT: R-ABOUT — "what we're building" is future tense in guide mode.
+         In course mode (SITE_MODE=courses) switch to present tense and add real program
+         details. -->
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What we&rsquo;re building</p>
+        <h2 class="section-title left">Three ways we help</h2>
+        <p>Career Skills Center is a new company, and we&rsquo;re building in three directions:</p>
+        <ul class="arrow-list">
+          <li><strong>Help paying for training.</strong> We explain how funding like WIOA and the state
+          Express Program works, and we help people and employers find and apply for it.</li>
+          <li><strong>Employer and apprenticeship training.</strong> We help employers organize staff
+          training and Registered Apprenticeships, and handle the grant paperwork.</li>
+          <li><strong>Corporate training.</strong> As we grow, we&rsquo;re building training that companies
+          can bring to their teams, funded or self-paid.</li>
+        </ul>
+        <p>Career Skills Center plans to offer training in healthcare, IT and the skilled trades.
+        <a class="link-yellow" href="career-paths.html#interest">Get updates when we launch.</a></p>
+      </div>
+    </section>
+
+    <!-- PLACEHOLDER: founder name, title, photo and short bio to be supplied by Emilio.
+         Keep future/neutral tense until confirmed. -->
+    <section class="section" id="founder">
       <div class="container about-grid">
         <div class="about-media">
           <div class="deco-dots deco-dots--about" aria-hidden="true"></div>
           <img src="images/aboutus.webp" alt="" loading="lazy" decoding="async">
         </div>
         <div class="about-copy">
-          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Our Mission</p>
-          <h2 class="section-title left">Our Mission</h2>
-          <p>We believe a well-trained workforce strengthens the economic and social vibrancy of the
-          Massachusetts communities we serve. To do that, we are committed to building a <strong>caring
-          learning environment</strong> where <strong>practical, job-focused training</strong> is delivered by
-          instructors with real industry experience.</p>
-          <ul class="arrow-list">
-            <li>Flexible, online-first learning that fits around a job</li>
-            <li>Instructors with real industry experience</li>
-            <li>Programs aimed at in-demand IT, medical and skilled-trades careers</li>
-            <li>Clear, honest information about cost and outcomes</li>
-            <li>Career support that continues after you finish</li>
-          </ul>
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Who we are</p>
+          <h2 class="section-title left">Founded in Quincy</h2>
+          <p>Career Skills Center is based in Quincy, Massachusetts. We started it because too many capable
+          people never get a fair shot at good training &mdash; either they can&rsquo;t find the funding or
+          no one explains how it works.</p>
+          <p><span class="tbd">[Founder name and short bio &mdash; to be supplied.]</span></p>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section--alt">
       <div class="container">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What We Stand For</p>
         <h2 class="section-title left">Our Values</h2>
         <div class="section-intro">
-          <p>We&rsquo;re building this school around a few simple commitments.</p>
+          <p>We&rsquo;re building this company around a few simple commitments.</p>
         </div>
         <div class="feature-grid">
           <article class="feature">
             <h3 class="feature-title">Practical, skills-first</h3>
-            <p>You learn by doing, not just watching. Training is built around what the job actually requires.</p>
+            <p>Training built around what the job actually requires, not just theory.</p>
           </article>
           <article class="feature">
-            <h3 class="feature-title">Student support</h3>
-            <p>Accessible instructors and staff focused on your goals, from your first question to your first job.</p>
+            <h3 class="feature-title">Honest guidance</h3>
+            <p>Straight answers about cost, funding and what a credential really gets you. No pressure and no surprises.</p>
           </article>
           <article class="feature">
             <h3 class="feature-title">Industry relevance</h3>
-            <p>Programs designed around the credentials and skills Massachusetts employers actually hire for.</p>
+            <p>Focused on the credentials and skills employers actually hire for.</p>
           </article>
         </div>
         <div class="feature-grid" style="margin-top: 40px;">
           <article class="feature">
-            <h3 class="feature-title">Integrity</h3>
-            <p>Straight answers about cost, length and outcomes. No pressure and no surprises.</p>
+            <h3 class="feature-title">Access</h3>
+            <p>We help people find the funding that makes training possible, not just the training itself.</p>
           </article>
           <article class="feature">
             <h3 class="feature-title">Growth mindset</h3>
@@ -2151,22 +2350,32 @@ PAGES.append(dict(
           </article>
           <article class="feature">
             <h3 class="feature-title">Community</h3>
-            <p>We want to train people who live and work in Massachusetts, strengthening the communities we share.</p>
+            <p>Rooted in Quincy, we want to strengthen the workforce and the employers around us.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- COURSE-DEPENDENT: R-ABOUT — mission + career-support copy is future tense in
-         guide mode. In course mode (SITE_MODE=courses) switch to present tense and add
-         real delivery/instructor details. -->
-    <section class="section section--alt">
+    <!-- COURSE-DEPENDENT: R-ABOUT — career-support copy is future tense in guide mode.
+         In course mode switch to present tense and add real details. -->
+    <section class="section">
       <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Career support</p>
         <h2 class="section-title left">Support that continues after training</h2>
         <p>Training is only worth it if it leads to a job. As our programs launch, career support &mdash; help
-        with your resume, interview practice and connections to Massachusetts employers &mdash; will be built
-        into every program, not treated as an afterthought.</p>
+        with your resume, interview practice and connections to employers &mdash; will be built into every
+        program, not treated as an afterthought.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt section--tight">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Get in touch</p>
+        <h2 class="section-title left">Talk to us</h2>
+        <p>Career Skills Center &middot; Quincy, MA 02171<br>
+        <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> &middot;
+        <a class="link-yellow" href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a></p>
+        <p><a class="btn btn-yellow" href="contact.html">Contact us</a></p>
       </div>
     </section>
 
@@ -4014,9 +4223,9 @@ PAGES.append(dict(
 """))
 
 
-# ---- terms-of-use.html ----------------------------------------------------
+# ---- terms.html (v1.5 rename of terms-of-use.html) ------------------------
 PAGES.append(dict(
-    slug="terms-of-use.html", nav=None,
+    slug="terms.html", nav=None,
     title="Terms of Use | Career Skills Center",
     ogtitle="Terms of Use",
     desc="The terms that govern your use of the Career Skills Center website.",
