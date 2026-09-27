@@ -602,6 +602,11 @@ REDIRECTS = {
 }
 
 
+# Pages built but held back from the sitemap and search indexing (not redirected).
+# Post #5 is on hold until the pay-data work is done (Site Structure Spec v1.5 §6).
+HOLD = {"blog/highest-paying-certifications-massachusetts.html"}
+
+
 def redirect_html(slug, target):
     """A minimal 301-style stub: canonical + meta refresh to `target`.
     .htaccess also serves a real 301 for the path; this is the belt-and-suspenders
@@ -3240,9 +3245,9 @@ PAGES.append(dict(
     ogtitle="Frequently Asked Questions",
     desc="Answers about career training and funding in Massachusetts: how state funding works, how to find your MassHire career center, and when Career Skills Center will launch training.",
     main=hero("FAQ", "Find Answers",
-              "The questions we hear most about training and funding in Massachusetts, answered plainly. If "
+              "The questions we hear most about training and funding, answered plainly. If "
               "yours is not here, call us at (617) 544-7155.",
-              None, ("Check Your Options", "qualify.html")) + f"""
+              None, ("Do I Qualify?", "qualify.html")) + f"""
 
     <section class="section">
       <div class="container">
@@ -3259,11 +3264,16 @@ PAGES.append(dict(
 {faq("Where do I actually start?", 'Two free steps: find your MassHire Career Center at <a class="link-yellow" href="https://www.mass.gov/info-details/masshire-career-center-locations" target="_blank" rel="noopener">mass.gov</a>, and register on <a class="link-yellow" href="https://jobquest.mass.gov" target="_blank" rel="noopener">JobQuest</a>. Or take our quick <a class="link-yellow" href="qualify.html">Check Your Options</a> quiz.')}
 {faq("Do you accept VA benefits?", 'Career Skills Center does not have its own courses yet. If you served, you may have education benefits like the GI Bill &mdash; the VA&rsquo;s GI Bill Comparison Tool shows which schools are approved.')}
 
+          <p class="faq-group-title">For employers</p>
+{faq("Can you help my company pay for staff training?", 'Yes. Massachusetts can reimburse part of what you spend training your staff through the Workforce Training Fund Express Program. We help you apply and handle the paperwork &mdash; see <a class="link-yellow" href="staff-training-grants.html">Staff Training Grants</a> and <a class="link-yellow" href="express-program-explained.html">how Express works</a>.')}
+{faq("Do you run apprenticeships?", 'We help employers set up and support Registered Apprenticeships &mdash; paid, earn-while-you-learn training that builds a loyal, skilled pipeline. See <a class="link-yellow" href="apprenticeships.html">Apprenticeship Programs</a>.')}
+{faq("Can you train my team on something specific?", 'Tell us what your team needs. We&rsquo;re building <a class="link-yellow" href="corporate-training.html">corporate training</a> for employers, with or without state funding.')}
+
           <p class="faq-group-title">About Career Skills Center</p>
-{faq("Does Career Skills Center offer courses right now?", 'Not yet. Career Skills Center plans to offer training in healthcare, IT and the skilled trades. For now, this site is an honest guide to careers and funding in Massachusetts. <!-- COURSE-DEPENDENT: R-FAQ --> Join an interest list on any <a class="link-yellow" href="career-paths.html">career guide</a> and we&rsquo;ll let you know when we launch.')}
-{faq("Do you help employers?", 'Yes. Career Skills Center helps Massachusetts employers get state-funded training for their staff through the Workforce Training Fund Express Program, and handles the grant paperwork. Call us to learn more.')}
-{faq("Where are you located?", "Career Skills Center is based in Quincy, MA, and our guides serve people across Massachusetts.")}
-{faq("How can I reach you?", 'Call <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> or email <a class="link-yellow" href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a>.')}
+{faq("Does Career Skills Center offer courses right now?", 'Not yet. Career Skills Center plans to offer training in healthcare, IT and the skilled trades. For now, this site is an honest guide to careers and funding. <!-- COURSE-DEPENDENT: R-FAQ --> Join an interest list on any <a class="link-yellow" href="career-paths.html">career guide</a> and we&rsquo;ll let you know when we launch.')}
+{faq("When will training launch?", 'We don&rsquo;t have a public date yet. The best way to hear first is to join an interest list on a <a class="link-yellow" href="career-paths.html">career guide</a>. In the meantime, our guides help you start now through the state.')}
+{faq("Where are you located?", "Career Skills Center is based in Quincy, Massachusetts.")}
+{faq("How can I reach you?", 'Call <a class="link-yellow" href="tel:+16175447155">(617) 544-7155</a> or email <a class="link-yellow" href="mailto:info@careerskillscenter.com">info@careerskillscenter.com</a>, or use our <a class="link-yellow" href="contact.html">contact form</a>.')}
 
         </div>
       </div>
@@ -3384,11 +3394,9 @@ BLOG_POSTS = [
      "WIOA can cover tuition and some costs, but not always everything. Here is an honest look at what a "
      "grant usually pays for and what you may still owe.",
      "blog/is-wioa-training-free.html"),
-    ("Paying for Training", "Sep 25, 2026", "8 min read",
-     "Highest-Paying Certifications You Can Train For in Massachusetts (2026)",
-     "Short certificate programs can lead to solid pay in healthcare, IT, and the trades. Here are the "
-     "credentials worth looking at and how to check the real wages.",
-     "blog/highest-paying-certifications-massachusetts.html"),
+    # Post #5 (Highest-Paying Certifications) is ON HOLD until the pay-data work is
+    # done (Site Structure Spec v1.5 §6). Kept in the build (noindex, off the sitemap)
+    # but not featured in the index.
     ("Medical", "Sep 25, 2026", "6 min read",
      "Can Medical Billing and Coding Be Learned Online?",
      "Yes. Medical billing and coding is one of the healthcare fields you can learn fully online. Here is "
@@ -3632,9 +3640,9 @@ _p1_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
 
 """ + post_cta(
     "Want help figuring out how to pay?",
-    "Tell us your goal and we will walk you through the options — payment plans now, and the funding you may "
-    "qualify for. No pressure.",
-    "See Ways to Pay", "student-financing.html") + """
+    "Start with how the main public training fund works, then check what you may qualify for. It only takes a "
+    "minute.",
+    "How WIOA works", "wioa-explained.html") + """
 
         <h2>Frequently asked questions</h2>
         <div class="faq">
@@ -3845,9 +3853,9 @@ _p2_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
 
 """ + post_cta(
     "Think you might qualify?",
-    "We will help you understand your options and get ready to talk to your career center. Reach out and we "
-    "will point you in the right direction.",
-    "See Ways to Pay", "student-financing.html") + """
+    "Take our quick check to see which WIOA group you may fit and what to do next. It never gives a yes/no "
+    "verdict &mdash; only your career center can do that.",
+    "Do I Qualify?", "qualify.html") + """
 
 """ + related(
     ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
@@ -4001,9 +4009,8 @@ _p3_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
 
 """ + post_cta(
     "Getting ready to apply?",
-    "We can help you pick a job-focused program and understand your ways to pay while you work with your "
-    "career center.",
-    "Join Our Interest List", "contact.html") + """
+    "See the full WIOA process from start to finish, then check what you may qualify for.",
+    "How WIOA works", "wioa-explained.html") + """
 
         <h2>Frequently asked questions</h2>
         <div class="faq">
@@ -4159,9 +4166,9 @@ _p4_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
 
 """ + post_cta(
     "Worried about the gap?",
-    "Tell us your situation. We will show you how a payment plan and the funding you may qualify for can fit "
-    "together, so cost is not the thing that stops you.",
-    "See Ways to Pay", "student-financing.html") + """
+    "See how WIOA and Section 30 can fit together, then check what you may qualify for so cost isn&rsquo;t the "
+    "thing that stops you.",
+    "Do I Qualify?", "qualify.html") + """
 
 """ + related(
     ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
@@ -4271,9 +4278,9 @@ _p5_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
 
 """ + post_cta(
     "Not sure which field fits?",
-    "Tell us what you are good at and what you want out of work. We will help you compare fields and figure "
-    "out how to pay, and let you know when our programs open.",
-    "Join Our Interest List", "contact.html") + """
+    "Compare healthcare, IT and the skilled trades &mdash; what each involves, how to train, and what the work "
+    "is really like.",
+    "Explore career paths", "career-paths.html") + """
 
 """ + related(
     ("Can Medical Billing and Coding Be Learned Online?", "blog/can-medical-billing-coding-be-learned-online.html"),
@@ -4286,7 +4293,7 @@ PAGES.append(dict(
     title="Highest-Paying Certifications You Can Train For in Massachusetts (2026) | Career Skills Center",
     ogtitle="Highest-Paying Certifications You Can Train For in Massachusetts (2026)",
     desc="Short certificate programs can lead to good pay in Massachusetts healthcare, IT, and the trades. The credentials worth considering and how to check real local wages.",
-    extrahead=article_ld("blog/highest-paying-certifications-massachusetts.html",
+    extrahead='  <meta name="robots" content="noindex">\n' + article_ld("blog/highest-paying-certifications-massachusetts.html",
                          "Highest-Paying Certifications You Can Train For in Massachusetts (2026)",
                          "Certificate programs with strong pay in Massachusetts and how to verify local wages.",
                          "2026-09-25", "2026-09-25"),
@@ -4388,9 +4395,10 @@ _p6_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
 
 """ + post_cta(
     "Interested in medical billing and coding?",
-    "Career Skills Center is planning an online Medical Billing & Coding program. Join our interest list and "
-    "we'll let you know when it opens.",
-    "Join Our Interest List", "contact.html") + """
+    "Explore healthcare careers &mdash; what the roles involve, how to train, and the certifications employers "
+    "look for. <!-- COURSE-DEPENDENT: R-BLOG --> Career Skills Center plans to offer training in the medical "
+    "field; get updates when we launch.",
+    "Explore healthcare careers", "healthcare-careers.html") + """
 
         <h2>Frequently asked questions</h2>
         <div class="faq">
@@ -4412,7 +4420,7 @@ _p6_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
         </div>
 
 """ + related(
-    ("Highest-Paying Certifications in Massachusetts (2026)", "blog/highest-paying-certifications-massachusetts.html"),
+    ("WIOA Training Funds Explained", "wioa-explained.html"),
     ("Can You Learn IT Support Online?", "blog/can-you-learn-it-support-online.html"),
     ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
 )
@@ -4541,9 +4549,10 @@ _p7_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
 
 """ + post_cta(
     "Thinking about a tech career?",
-    "Career Skills Center is planning an online IT Support program. Join our interest list and we'll let you "
-    "know when it opens.",
-    "Join Our Interest List", "contact.html") + """
+    "Explore IT careers &mdash; where you start, the certifications to aim for, and how to train online. "
+    "<!-- COURSE-DEPENDENT: R-BLOG --> Career Skills Center plans to offer training in IT; get updates when we "
+    "launch.",
+    "Explore IT careers", "it-careers.html") + """
 
         <h2>Frequently asked questions</h2>
         <div class="faq">
@@ -4565,7 +4574,7 @@ _p7_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
         </div>
 
 """ + related(
-    ("Highest-Paying Certifications in Massachusetts (2026)", "blog/highest-paying-certifications-massachusetts.html"),
+    ("WIOA Training Funds Explained", "wioa-explained.html"),
     ("Can Medical Billing and Coding Be Learned Online?", "blog/can-medical-billing-coding-be-learned-online.html"),
     ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
 )
@@ -4690,9 +4699,10 @@ _p8_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
 
 """ + post_cta(
     "Interested in the trades?",
-    "Career Skills Center is developing skilled trades training. Join our interest list and we'll let you know "
-    "when it opens.",
-    "Join Our Interest List", "contact.html") + """
+    "Explore skilled-trades careers &mdash; how licensing and apprenticeships work, and how to get in. "
+    "<!-- COURSE-DEPENDENT: R-BLOG --> Career Skills Center plans to offer training in the skilled trades; get "
+    "updates when we launch.",
+    "Explore skilled-trades careers", "skilled-trades-careers.html") + """
 
         <h2>Frequently asked questions</h2>
         <div class="faq">
@@ -4715,7 +4725,7 @@ _p8_body = """        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (
         </div>
 
 """ + related(
-    ("Highest-Paying Certifications in Massachusetts (2026)", "blog/highest-paying-certifications-massachusetts.html"),
+    ("WIOA Training Funds Explained", "wioa-explained.html"),
     ("Can You Learn IT Support Online?", "blog/can-you-learn-it-support-online.html"),
     ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
 )
@@ -4778,13 +4788,13 @@ PAGES.append(dict(
             <label class="sr-only" for="cp-email">Email Address</label>
             <input id="cp-email" name="email" type="email" placeholder="Email Address" autocomplete="email" required>
 
-            <label class="sr-only" for="cp-program">Program of interest</label>
-            <select id="cp-program" name="program" required>
-              <option value="" selected disabled>Program of interest</option>
-              <option value="trades">Skilled Trades</option>
-              <option value="it">Information Technology</option>
-              <option value="medical">Medical</option>
-              <option value="unsure">Not sure yet</option>
+            <label class="sr-only" for="cp-reason">Reason for contacting</label>
+            <select id="cp-reason" name="reason" required>
+              <option value="" selected disabled>Reason for contacting</option>
+              <option value="general">General question</option>
+              <option value="employer">Employer training</option>
+              <option value="partnership">Partnership</option>
+              <option value="media">Media</option>
             </select>
 
             <label class="sr-only" for="cp-message">Message</label>
@@ -4874,17 +4884,20 @@ PAGES.append(dict(
         Massachusetts data security regulation 201 CMR 17.00 and any student-records rules that apply.</p>
 
         <h2>Information we collect</h2>
-        <p>When you contact us, request information or enroll, we may collect your name, phone number, email
-        address, mailing address, program of interest and any information you choose to include in a message.
-        Students provide additional records required for enrollment and funding.</p>
+        <p>When you contact us, join an interest list, use the &ldquo;Do I Qualify?&rdquo; check, or submit an
+        employer inquiry, we may collect the details you provide &mdash; such as your name, email address, phone
+        number, preferred language, company name, the reason you&rsquo;re contacting us, and any answers or
+        message you choose to include. If you use the eligibility check, the answers you select are included when
+        you ask us to email you your results.</p>
 
         <h2>How we use your information</h2>
         <ul>
-          <li>To respond to your inquiry and discuss programs with you</li>
-          <li>To process enrollment, funding applications and student records</li>
-          <li>To provide career services during and after your program</li>
-          <li>To send information about programs, start dates and events</li>
-          <li>To meet legal, accreditation and reporting obligations</li>
+          <li>To respond to your inquiry and help you understand your training and funding options</li>
+          <li>To email the results and next steps you request</li>
+          <li>To help employers apply for training grants when they ask us to</li>
+          <li>To send you updates you asked for, such as when training launches</li>
+          <li>To improve this website and our guides</li>
+          <li>To meet legal and reporting obligations</li>
         </ul>
 
         <h2>Communications consent</h2>
@@ -4898,8 +4911,13 @@ PAGES.append(dict(
         operate the school, with funding agencies when you apply for assistance, and where required by law.</p>
 
         <h2>Cookies and analytics</h2>
-        <p><span class="tbd">Describe any analytics, advertising or tracking tools in use once they are
-        configured.</span></p>
+        <p>This website uses <strong>Google Analytics 4 (GA4)</strong> to understand how visitors use the site
+        &mdash; for example, which pages are viewed and when a form is submitted. GA4 sets cookies and collects
+        usage data such as your approximate location, device and browser. We use this only in aggregate to
+        improve the site. You can limit this with your browser settings or a tracking-blocker. See
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google&rsquo;s privacy
+        policy</a> for how Google handles this data.</p>
+        <p><span class="tbd">[Confirm and list any additional advertising or tracking tools before publishing.]</span></p>
 
         <h2>Data security</h2>
         <p>We maintain administrative, technical and physical safeguards intended to protect personal
@@ -5046,7 +5064,7 @@ print("\n%d pages written." % written)
 # ---------------------------------------------------------------------------
 SITE = "https://careerskillscenter.com/"
 # Redirected + unlinked pages are left out of the sitemap.
-SITEMAP_EXCLUDE = set(REDIRECTS)
+SITEMAP_EXCLUDE = set(REDIRECTS) | HOLD
 _today = datetime.date.today().isoformat()
 _urls = ['  <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>'
          % (SITE, _today)]
