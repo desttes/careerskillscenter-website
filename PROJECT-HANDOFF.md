@@ -2,9 +2,9 @@
 
 **Purpose of this document:** hand this project to a fresh chat/session. It captures what the site is, how it's built, what's done, what's still open, and exactly how to deploy it.
 
-> **STATUS: LIVE.** The site is deployed and serving over HTTPS at **https://careerskillscenter.com** (Namecheap shared hosting). Deployment is done over SSH/SFTP with an authorized key — see **§5**. Last major deploy: 2026-09-24.
+> **STATUS: LIVE.** The site is deployed and serving over HTTPS at **https://careerskillscenter.com** (Namecheap shared hosting). Deployment is done over SSH/SFTP with an authorized key — see **§5**. Last major deploy: **2026-09-28**.
 
-> **⚠️ Guide mode (Sept 26, 2026) — built locally, NOT yet deployed.** The site has been reworked into an honest **guide to careers and funding in Massachusetts** per `docs/GUIDE_MODE_SPEC.md` v1.4. New pages (`career-paths.html` + three `*-careers-massachusetts.html` field guides), a restructured nav (Career Paths / Resources / About / Contact), `qualify.html` as an outward funding tool, `js/site-config.js` switches, and `.htaccess` 301s for 10 retired pages. **The page list and nav description in §3 below, and `docs/SITE-STRUCTURE.md` / `docs/PAGES.md`, predate this rework** — treat `docs/GUIDE_MODE_SPEC.md` + `docs/BUILD_STATUS.md` (2026-09-26 entry) as the source of truth. Deploy still pending Emilio's OK; remember to `put .htaccess` (see §5).
+> **✅ Guide mode v1.5 — DEPLOYED (2026-09-28).** The full guide-mode site (`docs/SITE_STRUCTURE_SPEC.md` v1.5, superseding GUIDE_MODE_SPEC v1.4) is now live, **including the blog**. Live nav: Funding Guides / For Employers / Career Paths / Resources / About / Contact, header CTA "Do I Qualify?". `.htaccess` 301s are active. Funding figures render from `js/site-config.js`; all `[VERIFY]`/`DRAFT` were resolved (Emilio review, 2026-09-28). **The page list / nav in §3 below and `docs/SITE-STRUCTURE.md` / `docs/PAGES.md` are OUTDATED** — treat `docs/SITE_STRUCTURE_SPEC.md` (v1.5) + `docs/BUILD_STATUS.md` (2026-09-28 entry) as the source of truth. When deploying: always `put .htaccess`, upload only the 7 referenced `images/`, and exclude `it-careers-massachusetts-draft.html` (uncommitted experiment). No pay/salary figures anywhere; the only on-site $ figures are Express funding caps.
 
 ---
 

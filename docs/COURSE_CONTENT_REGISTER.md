@@ -14,6 +14,11 @@
 > Most rows are tracked with `<!-- COURSE-DEPENDENT: R-xx -->`. Exceptions, tracked by other markers or as
 > pending work: **R-PAY-DATA** (`<!-- PAY-DATA: pending -->`), **R-EMP** / **R-SCHEMA** (design flags, no
 > inline marker yet), **R-LLMS** (whole file).
+>
+> **LIVE-DEPLOY update (Sept 28, 2026):** Emilio decided **no real wage/salary figures anywhere on the site** —
+> so **R-PAY-DATA now applies to the blog too**: blog posts use qualitative wording + a BLS look-up link instead
+> of dollar medians. Blog post **"Highest-Paying Certifications" was removed entirely** (file + all cross-links).
+> R-BLOG still covers careers posts #6–#8. The full v1.5 site (incl. blog) is now LIVE.
 
 | ID | Page / file | Section | Now (guide mode) | When a course launches (course mode) | Switch | Location in source |
 |---|---|---|---|---|---|---|

@@ -326,3 +326,16 @@ related technical instruction (RTI / classroom part) of a Registered Apprentices
 - ITAs may cover apprenticeship classroom/distance-learning costs; **local WDBs/AJCs set the allowable-cost policy** (TEGL 13-16). So it varies by MassHire board, and the apprentice must personally be WIOA-eligible.
 - Source: U.S. DOL TEGL 13-16 (dol.gov/node/162570); 20 CFR 680.470.
 Added to apprenticeships.html (funding section + FAQ). Not asserting the wage-side OJT reimbursement detail on-site (kept scope to RTI).
+
+## L. APPLIED by Code — Sept 28, 2026 (pre-launch verify sweep, all cleared for the LIVE deploy)
+
+Emilio reviewed every remaining `[VERIFY]`/`DRAFT` one by one; the whole site (incl. blog) went live.
+
+- **Express $3,000/person/course + $300/instructional hour — CONFIRMED.** Official CommCorp Express Program Guidelines: "Grant funds are limited to $15,000 per company per calendar year, $300 per instructional hour, and $3,000 per employee per course." Corroborated by Emilio's 851 Ventures training FAQ (training.851ventures.com). `[VERIFY]` cleared in `site-config.js`. Source: https://commcorp.org/subprogram/wtfp-express-program-guidelines/
+- **"Larger employers 50%" tier — REMOVED (was wrong/obsolete).** Current CommCorp rule: ≤100 MA W-2 employees at up to 100% (the 51–100 tier was raised from 50% to 100%). Employers over 100 aren't the Express audience. Dropped `EXPRESS_RATE_LARGE` and the "larger employers" copy/table row; reimbursement calculator collapsed to the single ≤100-employee model.
+- **21-day auto-start — REMOVED.** Not present in CommCorp guidelines or the 851 FAQ; dropped `EXPRESS_AGREEMENT_AUTOSTART_DAYS` and the sentence.
+- **WIOA low-income example ($15,960–$60,124, MassHire Central 2026) — REMOVED.** Region-specific and potentially misleading; `qualify.html` and blog #2 now say limits vary by region/household and a MassHire center checks. Dropped `INCOME_EXAMPLE_*`.
+- **Selective Service (men born on/after 1/1/1960 must register for WIOA funds) — CONFIRMED by Emilio.** Kept.
+- **AAPC CPC exam $425 (one attempt) / $499 (two) — RE-VERIFIED** on aapc.com (2026). Kept in blog #6.
+- **All real wage/salary figures — REMOVED site-wide** (Emilio: "no real figures"). Blog uses qualitative wording + a BLS look-up link. (The BLS OEWS May 2025 MA medians logged in §G1/§I-REVISED are no longer displayed; the old program pages that still contain them are 301 redirect stubs, so nothing renders live.)
+- **ITA approval model — CORRECTED (Emilio).** The student selects from the already-approved ETPL; the counselor does not vet the school. Approval = eligible + program-on-ETPL + funding available. Fixed blog #3. (Also in Code memory.)
