@@ -2006,11 +2006,12 @@ PAGES.append(dict(
     title="Staff Training Grants: Train Your Team, the State Can Reimburse You | Career Skills Center",
     ogtitle="Staff Training Grants for Massachusetts Employers",
     desc="Career Skills Center trains your team. Through the Massachusetts Workforce Training Fund Express Program, eligible employers can be reimbursed for much of the cost. Estimate the reimbursement.",
-    main=hero("For Employers &middot; Staff Training Grants",
+    main=hero('<span>For Massachusetts businesses &middot; <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> or fewer W-2 employees</span>',
               "We Train Your Team. The State Can Reimburse the Cost",
-              "Career Skills Center provides the training your team needs. Through the Massachusetts Workforce "
-              "Training Fund Express Program, eligible employers can be reimbursed for much of what they spend "
-              "on training.",
+              'Hands-on training that makes your people genuinely productive, taught by experts in each field. '
+              'Massachusetts reimburses up to <span data-cfg="EXPRESS_RATE_SMALL" data-cfg-format="percent">[VERIFY]</span> '
+              'of the cost for eligible companies with <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> '
+              'or fewer employees, through the Workforce Training Fund Express Program.',
               None, ("How Express works", "express-program-explained.html")) + """
 
     <section class="section">
