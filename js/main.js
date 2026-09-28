@@ -197,16 +197,29 @@
     else if (generalCandidate) tier = 'candidate';
     else tier = 'explore';
 
+    // Confident-but-honest verdict (Emilio, 2026-09-28 — overrides spec v1.5 §2's
+    // "never a yes/no verdict" and CLAUDE.md "use may qualify"; logged in BUILD_STATUS).
+    //   'no'    : a genuine WIOA disqualifier (not authorized to work in the US).
+    //   'yes'   : strong match (priority-of-service flag or dislocated worker).
+    //   'maybe' : eligible-but-not-certain (adult program is broad, decided locally).
+    // 'yes' never promises approval and 'no' still routes to other ways to pay.
+    const workAuthConcern = a.work_auth === 'no';
+    let verdict;
+    if (workAuthConcern) verdict = 'no';
+    else if (tier === 'priority') verdict = 'yes';
+    else verdict = 'maybe';
+
     return {
       inMA: inMA,
       groups: groups,
       priorities: priorities,
       dislocated: dislocated,
       tier: tier,
+      verdict: verdict,
       // Retained for any callers/tests that only care whether it's a strong match.
       likely: inMA && tier !== 'explore',
       selectiveService: a.age === '18-24' || a.age === '25plus',
-      workAuthConcern: a.work_auth === 'no',
+      workAuthConcern: workAuthConcern,
       employerAngle: a.situation === 'full-time' || a.situation === 'part-low',
     };
   }
@@ -214,9 +227,10 @@
   // Self-tests (run only on qualify.html#selftest — silent unless something fails).
   function runQualifyTests() {
     const eq = (got, want, msg) => console.assert(got === want, msg + ' (got ' + got + ', want ' + want + ')');
-    // Dislocated worker -> priority tier.
+    // Dislocated worker -> priority tier -> 'yes' verdict.
     let r = classifyQualify({ live_ma: 'yes', age: '25plus', situation: 'laid-off', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'it' });
     eq(r.tier, 'priority', 'laid-off MA adult -> priority tier');
+    eq(r.verdict, 'yes', 'priority -> yes verdict');
     console.assert(r.groups.indexOf('WIOA Dislocated Worker') !== -1, 'laid-off -> Dislocated Worker');
     console.assert(r.groups.indexOf('WIOA Adult') !== -1, '25+ -> Adult');
     // Priority-of-service flag beats employment status.
@@ -227,14 +241,19 @@
     // General job-seeker need, no flag -> candidate tier.
     r = classifyQualify({ live_ma: 'yes', age: '25plus', situation: 'unemployed', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'it' });
     eq(r.tier, 'candidate', 'unemployed, no flag -> candidate tier');
+    eq(r.verdict, 'maybe', 'candidate -> maybe verdict');
     r = classifyQualify({ live_ma: 'yes', age: '25plus', situation: 'part-low', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'it' });
     eq(r.tier, 'candidate', 'part-time/low-wage, no flag -> candidate tier');
+    // Not authorized to work -> 'no' verdict, even when otherwise a priority match.
+    r = classifyQualify({ live_ma: 'yes', age: '25plus', situation: 'laid-off', assistance: 'yes', income_low: 'yes', veteran: 'no', work_auth: 'no', field: 'it' });
+    eq(r.verdict, 'no', 'no work authorization -> no verdict (overrides priority)');
     // Not in MA -> handled separately; classifier still reports inMA=false.
     r = classifyQualify({ live_ma: 'no', age: '25plus', situation: 'unemployed', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'trades' });
     eq(r.inMA, false, 'not in MA flagged');
     // Full-time, no flags -> explore tier (the softest result).
     r = classifyQualify({ live_ma: 'yes', age: '25plus', situation: 'full-time', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'it' });
     eq(r.tier, 'explore', 'full-time no-priority -> explore tier');
+    eq(r.verdict, 'maybe', 'explore -> maybe verdict (not a hard no)');
     eq(r.likely, false, 'explore tier is not a strong match');
     eq(r.selectiveService, true, '25+ -> show Selective Service note');
     // Youth-only classification unchanged.
@@ -318,13 +337,33 @@
       const n = el(sel); if (!n) return;
       n.innerHTML = items.map((s) => '<li>' + s + '</li>').join('');
     }
+    function setVerdict(kind, text) {
+      const n = el('.result-verdict'); if (!n) return;
+      n.className = 'result-verdict result-verdict--' + kind;
+      n.textContent = text;
+      n.hidden = false;
+    }
 
     function showResults() {
       const a = answers();
       const r = classifyQualify(a);
       const field = FIELD[a.field] || FIELD.unsure;
 
-      if (!r.inMA) {
+      if (r.verdict === 'no') {
+        // Genuine WIOA disqualifier (not authorized to work) — honest "no", but never a dead end.
+        setVerdict('no', 'Likely not a fit for WIOA');
+        setText('.result-head', 'WIOA funding likely isn’t a fit — but you still have options.');
+        setText('.result-body', 'WIOA-funded training requires authorization to work in the U.S. That doesn’t close every door — here are other ways to pay for training and keep building your skills:');
+        toggle('.result-groups', false);
+        toggle('.result-priority', false);
+        toggle('.result-steps-wrap', false);
+        toggle('.result-notma', false);
+        toggle('.result-selective', false);
+        toggle('.result-workauth', true);
+        toggle('.result-otherpay', true);
+        toggle('.result-employer', false);
+      } else if (!r.inMA) {
+        setVerdict('maybe', 'This check covers Massachusetts');
         setText('.result-head', 'This check covers Massachusetts.');
         setText('.result-body', 'WIOA training funds exist in every state, but the steps below are for Massachusetts. Use the link to find your local American Job Center — and you can still explore the field you picked.');
         toggle('.result-groups', false);
@@ -332,18 +371,22 @@
         toggle('.result-steps-wrap', false);
         toggle('.result-notma', true);
         toggle('.result-selective', false);
-        toggle('.result-workauth', r.workAuthConcern);
+        toggle('.result-workauth', false);
+        toggle('.result-otherpay', false);
         toggle('.result-employer', false);
       } else {
-        if (r.tier === 'priority') {
-          setText('.result-head', 'Your answers match WIOA’s priority groups.');
-          setText('.result-body', 'You checked one or more of the things WIOA gives priority for — so you’re well positioned. Only a MassHire career center can make the final call, but here’s exactly how to apply:');
+        if (r.verdict === 'yes') {
+          setVerdict('yes', 'You’re very likely eligible');
+          setText('.result-head', 'You’re very likely eligible for WIOA-funded training.');
+          setText('.result-body', 'Your answers match the groups Massachusetts gives priority for funding. A MassHire career center makes it official — here’s exactly how to apply:');
         } else if (r.tier === 'candidate') {
-          setText('.result-head', 'You look like a candidate for WIOA-funded training.');
-          setText('.result-body', 'WIOA’s Adult program is open to job seekers like you. A MassHire career center makes the final call and funding is limited, so it helps to start early. Here’s how:');
+          setVerdict('maybe', 'You may qualify');
+          setText('.result-head', 'You may qualify for WIOA-funded training.');
+          setText('.result-body', 'WIOA’s Adult program is open to job seekers like you, though it isn’t guaranteed and funding is limited. A MassHire career center makes the final call — here’s how to check:');
         } else {
-          setText('.result-head', 'Here’s how to check what you qualify for.');
-          setText('.result-body', 'Your answers don’t point to the highest-priority groups, but eligibility is decided locally — and there are other ways to pay for training too. Here’s how to find out where you stand:');
+          setVerdict('maybe', 'You may qualify');
+          setText('.result-head', 'You may qualify — here’s how to check.');
+          setText('.result-body', 'You didn’t match the highest-priority groups, but eligibility is decided locally, and there are other ways to pay for training too. Here’s how to find out where you stand:');
         }
         setList('.result-group-list', r.groups.length ? r.groups : ['WIOA Adult']);
         toggle('.result-groups', true);
@@ -353,7 +396,8 @@
         toggle('.result-steps-wrap', true);
         toggle('.result-notma', false);
         toggle('.result-selective', r.selectiveService);
-        toggle('.result-workauth', r.workAuthConcern);
+        toggle('.result-workauth', false);
+        toggle('.result-otherpay', r.verdict === 'maybe' && r.tier === 'explore');
         toggle('.result-employer', r.employerAngle);
       }
 

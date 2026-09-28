@@ -2524,6 +2524,7 @@ PAGES.append(dict(
                  (matching CSC course + funding help), pre-written behind SITE_MODE. -->
             <div class="qualify-result" role="status" aria-live="polite">
               <svg class="result-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <p class="result-verdict" hidden></p>
               <h2 class="result-head">Here&rsquo;s what your answers suggest.</h2>
               <p class="result-body"></p>
 
@@ -2554,6 +2555,8 @@ PAGES.append(dict(
               <p class="result-employer" hidden>Already working? Your employer may be able to get training costs
               reimbursed through the state. <a class="link-yellow" href="staff-training-grants.html">See staff
               training grants</a>.</p>
+
+              <p class="result-otherpay note" hidden>Other ways to pay for training: <a class="link-yellow" href="student-financing.html">see all your options</a>, including payment plans and employer-paid training.</p>
 
               <p class="result-readmore">Read more: <a class="link-yellow" href="wioa-explained.html">WIOA explained</a> &middot; <a class="link-yellow" href="blog/free-job-training-massachusetts.html">Free job training in Massachusetts</a> &middot; <a class="link-yellow" href="blog/masshire-training-voucher.html">How to get a MassHire voucher (ITA)</a>.</p>
 

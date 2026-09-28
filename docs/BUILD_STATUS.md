@@ -30,6 +30,17 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-28 (later) — qualify.html: confident yes/maybe/no verdict (⚠️ DEVIATION from spec §2) (LOCAL, not deployed)
+Emilio: the tiered result still wasn't decisive enough — he asked for a "yes / no / you may fit" verdict. **This deviates from Site Structure Spec v1.5 §2 ("the result is never a yes/no verdict") and the CLAUDE.md hard rule "never promise approval; use 'may qualify.'"** I flagged both; Emilio chose the **"confident but honest"** option (2026-09-28), which keeps the yes/no/maybe structure without promising funding or giving a false hard "no." **Strategy should update spec §2 + CLAUDE.md to match.** Not deployed.
+
+- **`classifyQualify` now returns `verdict` ∈ {yes, maybe, no}** on top of `tier`:
+  - **`yes`** — priority tier (WIOA priority-of-service flag or dislocated worker). Badge "You're very likely eligible" (green). Never says "approved"; body adds "A MassHire career center makes it official."
+  - **`maybe`** — candidate/explore tiers (Adult program is broad, decided locally). Badge "You may qualify" (amber).
+  - **`no`** — a genuine WIOA disqualifier: **not authorized to work in the US** (a real requirement). Badge "Likely not a fit for WIOA" (red). Still routes to other ways to pay (`student-financing.html`) — never a dead end. This is the only hard "no"; a false "no" for eligible people is deliberately avoided.
+  - Not-in-MA keeps its own scope message (amber badge).
+- **UI:** new colored verdict **badge** (`.result-verdict` pill, green/amber/red) above the headline, and a new `.result-otherpay` line (Ways to Pay) shown on the `no` branch and the softest `explore` case. Both added to `tools/build-pages.py` (qualify block) + `css/style.css`; JS in `js/main.js` (`setVerdict` helper + rewritten `showResults` with `no` → not-MA → yes/maybe precedence). The bottom disclaimer ("This tool doesn't decide your funding — only a MassHire center can approve") is unchanged and still shows on every result.
+- **Verified:** reworked `#selftest` (verdict + disqualifier-override cases) — all pass in-browser, no console errors. Drove all five outcomes (yes / maybe-candidate / maybe-explore / no / not-MA) through the real form UI; badge text, color, headline and section visibility all correct. Screenshot of the "yes" result confirmed. Rebuilt; asset `?v=` bumped and index.html re-stamped in sync.
+
 ### 2026-09-28 (later) — qualify.html result tiers (fix "everything says you may fit") (LOCAL, not deployed)
 Emilio reported that almost every answer set on `qualify.html` concluded "you may fit." Diagnosed and fixed. **Not deployed.**
 
@@ -311,6 +322,7 @@ Picked up the strategy-side handoff (commit `9aee0c0`: brief bumped to v1.1 + `d
 
 ## Decisions that differ from the brief
 <!-- What you changed and why -->
+- **⚠️ `qualify.html` now gives a yes/maybe/no verdict (Emilio, 2026-09-28)** — directly overrides Site Structure Spec v1.5 §2 ("never a yes/no verdict") and the CLAUDE.md hard rule "never promise approval; use 'may qualify.'" Implemented as **"confident but honest"**: a green "very likely eligible" for priority matches (no approval guarantee), amber "you may qualify" for the broad middle, and a red "likely not a fit for WIOA" **only** for a real disqualifier (no US work authorization), which still routes to other ways to pay. The "only a MassHire center decides" disclaimer stays on every result. **Strategy should reconcile spec §2 + CLAUDE.md.**
 - **Blog post URLs = real `/blog/<slug>.html` subdirectory** (per brief §2); required teaching `build-pages.py` to handle nested pages (relative-link rewriting). Older `docs/PAGES.md` flat-filename note is superseded — update it if approved.
 - **Program-facts policy (v1.1 / spec) supersedes brief §3.3 program detail:** no CSC program length/hours/price/credential/certificate/VA/outcomes anywhere; pages say "in development" + join the interest list. `outcomes.html` withdrawn (no real graduates).
 - **BLS wages** pulled from the OEWS Query System (`data.bls.gov`) rather than the zip (bls.gov blocks curl; per-state HTML retired). MA medians used and cited (May 2025).
