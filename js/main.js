@@ -388,7 +388,7 @@
      Pure calcExpress() + a live UI. All figures come from js/site-config.js.
      Estimate only — CommCorp sets final amounts. Self-tests run on #selftest. */
   function calcExpress(inp, cfg) {
-    const rate = inp.small ? cfg.EXPRESS_RATE_SMALL : cfg.EXPRESS_RATE_LARGE;
+    const rate = (inp.small === false && cfg.EXPRESS_RATE_LARGE != null) ? cfg.EXPRESS_RATE_LARGE : cfg.EXPRESS_RATE_SMALL;
     const employees = Math.max(0, inp.employees || 0);
     const cost = Math.max(0, inp.costPerEmployee || 0);
     const perPersonUncapped = cost * rate;

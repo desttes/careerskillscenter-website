@@ -22,14 +22,12 @@
     FUNDING_ETPL_APPROVED: false,       // true only after the ETPL listing is live
     EXPRESS_PROVIDER_LISTED: false,     // true only after CommCorp approves the provider + courses
 
-    /* ---- Express Program figures — ALL VERIFY with express@commcorp.org ---- */
-    EXPRESS_MAX_PER_PERSON_PER_COURSE: 3000,  // VERIFY
-    EXPRESS_MAX_PER_INSTRUCTIONAL_HOUR: 300,  // VERIFY
+    /* ---- Express Program figures — CommCorp Express Program Guidelines ---- */
+    EXPRESS_MAX_PER_PERSON_PER_COURSE: 3000,  // confirmed 2026-09-28 (CommCorp Express Guidelines: $3,000/employee/course)
+    EXPRESS_MAX_PER_INSTRUCTIONAL_HOUR: 300,  // confirmed 2026-09-28 (CommCorp Express Guidelines: $300/instructional hour)
     EXPRESS_ANNUAL_CAP_PER_COMPANY: 15000,    // confirmed by Emilio 2026-09-28 (up to $15k/yr, reusable across trainings)
     EXPRESS_SMALL_EMPLOYER_MAX: 100,          // confirmed by Emilio 2026-09-28 (100 or fewer W-2 employees)
-    EXPRESS_RATE_SMALL: 1.00,                 // confirmed by Emilio 2026-09-28 (up to 100% for eligible small employers)
-    EXPRESS_RATE_LARGE: 0.50,                 // VERIFY — DCS Info 26-102 opened Express to any size at 50%
-    EXPRESS_AGREEMENT_AUTOSTART_DAYS: 21,     // VERIFY
+    EXPRESS_RATE_SMALL: 1.00,                 // confirmed 2026-09-28 (up to 100% for eligible employers with <=100 MA W-2 employees)
     EXPRESS_APPLICATION_WEEKS: 3,             // confirmed by Emilio 2026-09-28 (application -> acceptance ~3 weeks)
     ESOL_PAID_TIME_MIN_SHARE: 0.50,           // VERIFY
 
@@ -41,14 +39,6 @@
     APPRENTICE_TAX_CREDIT_MAX_PER_EMPLOYER: 100000,  // per employer (sponsor), per year
     APPRENTICE_TAX_CREDIT_YEARS: 2,                  // up to 2 consecutive tax years per apprentice
     APPRENTICE_MIN_DAYS: 180,                        // apprentice must work >= 180 days in the tax year
-
-    /* ---- WIOA low-income example (regional example only — VERIFY) ----
-       Thresholds vary by career center and year; these are a single regional
-       example (MassHire Central, 2026) used to illustrate, never a statewide rule.
-       Verify before removing the [VERIFY] markers the pages render. */
-    INCOME_EXAMPLE_MIN: 15960,   // VERIFY (MassHire Central 2026, 1-person household)
-    INCOME_EXAMPLE_MAX: 60124,   // VERIFY (MassHire Central 2026, larger household)
-    INCOME_EXAMPLE_YEAR: 2026,   // VERIFY
 
     /* ---- Official outward destinations (GUIDE_MODE_SPEC; verified) ---- */
     MASSHIRE_LOCATOR: "https://www.mass.gov/info-details/masshire-career-center-locations",

@@ -179,10 +179,10 @@
 
     <section class="section">
       <div class="container prose">
-        <!-- DRAFT – verified against docs/VERIFICATION_LOG.md (9/25/2026): priority of service (B5),
-             final decision is the local center's (B6), basic requirements incl. Selective Service (B7), income
-             example $15,960–$60,124+ is a regional example only (B3). Dislocated-worker timing left soft
-             ("varies, so ask"). No CSC program details (F1). Do not promise approval. -->
+        <!-- Approved by Emilio 2026-09-28. Facts sourced in docs/VERIFICATION_LOG.md: priority of service (B5),
+             final decision is the local center's (B6), basic requirements incl. Selective Service (B7). Regional
+             income-example dollars removed 2026-09-28 (now "varies by region/household; a center checks").
+             Dislocated-worker timing left soft. No CSC program details (F1). Do not promise approval. -->
         <p class="lead">WIOA training in Massachusetts is mainly for three groups: adults (with priority for
         people with lower incomes), dislocated workers, and young people aged 16&ndash;24. But there is an
         important catch: your local <strong>MassHire career center</strong> makes the final decision, based on
@@ -223,10 +223,11 @@
         build basic reading or math skills. Veterans and their eligible spouses come first of all. This does
         not mean everyone else is turned away — it means these groups move to the front of the line.</p>
 
-        <h2>Training has to point to a real job</h2>
-        <p>Career centers fund training that leads to work that is actually hiring in Massachusetts, like health
-        care, IT, and the skilled trades. Short programs that end in a recognized credential are usually the
-        easiest to get approved. Come ready to explain how your training leads to a job.</p>
+        <h2>Funding follows in-demand jobs</h2>
+        <p>Career centers focus their funding on training for occupations that are actually hiring in
+        Massachusetts &mdash; fields like health care, IT, and the skilled trades. Shorter programs that end in a
+        recognized credential tend to be the most straightforward to fund. When you visit a career center, they
+        will help you match a training program to a real job goal.</p>
 
         <h2>What the career center will look at</h2>
         <ul>
@@ -246,10 +247,9 @@
 
         <h2>What about income limits?</h2>
         <p>There is no single income cutoff. Lower income can raise your priority, especially for Adult funds.
-        As an example, one region (MassHire Central) listed 2026 "economic disadvantage" limits ranging from
-        about <strong>$15,960</strong> for a single person to <strong>$60,124 or more</strong> for a larger
-        family. Every region sets its own table, so treat this as an example only, and ask your center for the
-        current numbers where you live.</p>
+        The limits depend on your household size and are set region by region, and they change from year to year.
+        You don&rsquo;t need an exact figure before you start &mdash; a MassHire career center checks the current
+        limits for where you live and tells you where you stand.</p>
 
         <h2>You might qualify even if&hellip;</h2>
         <ul>
@@ -384,8 +384,6 @@
             <li><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM21.9 12c0-1.4 0-2.7-.1-4.1-.1-1.6-.4-3-1.6-4.2S17.6 2.2 16 2.1C14.7 2 13.4 2 12 2s-2.7 0-4.1.1c-1.6.1-3 .4-4.2 1.6S2.2 6.4 2.1 8C2 9.3 2 10.6 2 12s0 2.7.1 4.1c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.4.1 2.7.1 4.1.1s2.7 0 4.1-.1c1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.1-1.4.1-2.7.1-4.1zm-2.4 5.8a3 3 0 0 1-1.7 1.7c-1.2.5-4 .4-5.8.4s-4.6.1-5.8-.4a3 3 0 0 1-1.7-1.7c-.5-1.2-.4-4-.4-5.8s-.1-4.6.4-5.8a3 3 0 0 1 1.7-1.7c1.2-.5 4-.4 5.8-.4s4.6-.1 5.8.4a3 3 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.8s.1 4.6-.4 5.8z"/></svg></a></li>
             <li><a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.9 21H3.2V8.9h3.7V21zM5 7.3a2.2 2.2 0 1 1 0-4.3 2.2 2.2 0 0 1 0 4.3zM21 21h-3.7v-5.9c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1V21H9.3V8.9h3.6v1.7h.1c.5-.9 1.7-2 3.5-2 3.8 0 4.5 2.5 4.5 5.7V21z"/></svg></a></li>
           </ul>
-          <!-- PLACEHOLDER: accreditation / BBB badge goes here when available -->
-          <div class="badge-placeholder" aria-hidden="true">Accreditation badge</div>
         </div>
       </div>
     </div>
@@ -418,13 +416,13 @@
           <label class="sr-only" for="cf-email">Email Address</label>
           <input id="cf-email" name="email" type="email" placeholder="Email Address" autocomplete="email" required>
 
-          <label class="sr-only" for="cf-program">Program of interest</label>
-          <select id="cf-program" name="program" required>
-            <option value="" selected disabled>Program of interest</option>
-            <option value="trades">Skilled Trades</option>
-            <option value="it">Information Technology</option>
-            <option value="medical">Medical</option>
-            <option value="unsure">Not sure yet</option>
+          <label class="sr-only" for="cf-reason">Reason for contacting</label>
+          <select id="cf-reason" name="reason" required>
+            <option value="" selected disabled>Reason for contacting</option>
+            <option value="general">General question</option>
+            <option value="employer">Employer training</option>
+            <option value="partnership">Partnership</option>
+            <option value="media">Media</option>
           </select>
 
           <label class="sr-only" for="cf-message">Message</label>
@@ -452,7 +450,7 @@
     </div>
   </dialog>
 
-  <script src="../js/site-config.js?v=1790576432" defer></script>
-  <script src="../js/main.js?v=1790542281" defer></script>
+  <script src="../js/site-config.js?v=1790612076" defer></script>
+  <script src="../js/main.js?v=1790611739" defer></script>
 </body>
 </html>
