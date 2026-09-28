@@ -307,3 +307,13 @@ staff-training-grants.html / express pages). Applied to `js/site-config.js` and 
 Still `[VERIFY]` (Emilio has not confirmed against CommCorp yet): `EXPRESS_MAX_PER_PERSON_PER_COURSE`
 ($3,000), `EXPRESS_MAX_PER_INSTRUCTIONAL_HOUR` ($300), `EXPRESS_RATE_LARGE` (50%),
 `EXPRESS_AGREEMENT_AUTOSTART_DAYS` (21). Those still gate the employer pages from deploy.
+
+## K. Massachusetts Registered Apprenticeship — employer funding (sourced 2026-09-28)
+
+For `apprenticeships.html`. Corroborated on the state/federal sites (not in project docs):
+
+- **Model:** Registered Apprenticeship is "earn while you learn" — the apprentice is an **employee from day one**; training (on-the-job + related classroom instruction) happens **during** employment. It flips the "train first, then hire" model. (apprenticeship.gov; mass.gov Learn/Earn/Succeed.)
+- **Registered Apprentice Tax Credit (claimed by the employer/sponsor):** 50% of the apprentice's wages, up to **$4,800/apprentice/yr**, up to **$100,000/employer/yr**, for up to **2 consecutive tax years**. Eligibility: registered with DAS as a sponsor with an approved agreement; apprentice works **≥180 days** in the tax year, primary workplace in MA; occupation on the eligible list (tech, healthcare, advanced manufacturing, life sciences, clean energy, other in-demand). Sources: mass.gov "Apply for a Registered Apprentice Tax Credit"; DAS Issuance 32-07012026 (TY2026 eligibility); DAS Issuance 28-12172025 (expansion).
+- **GROW / RTI grants:** can fund the related (classroom) instruction; amounts set per grant round; program rules bar passing RTI cost to the apprentice. Sources: mass.gov Registered Apprenticeship funding opportunities; DAS Issuance 27-073025 (GROW FY26).
+- **Corrected a misconception:** "ITA-train the person → then they become an apprentice → employer claims the credit" is NOT how it works. The credit requires a *registered apprentice* (trained on the job). ITA (classroom-first) and apprenticeship (earn-while-you-learn) are two separate funnels; a pre-apprenticeship can bridge them. Whether WIOA/ITA can fund apprenticeship RTI specifically is still unconfirmed — left off the site.
+- Applied to `js/site-config.js` (APPRENTICE_TAX_CREDIT_* / APPRENTICE_MIN_DAYS) and rendered on apprenticeships.html via [data-cfg].

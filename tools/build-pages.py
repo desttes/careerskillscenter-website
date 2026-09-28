@@ -2100,36 +2100,45 @@ PAGES.append(dict(
 # ---- apprenticeships.html (For Employers) ---------------------------------
 _APPR_FAQ = [
     ("What is a Registered Apprenticeship?",
-     "It&rsquo;s a formal, employer-driven training model that combines paid on-the-job learning with related classroom instruction, leading to a nationally recognized credential. Programs are registered with the state or federal apprenticeship agency."),
-    ("How is it different from an internship?",
-     "An apprenticeship is a structured, long-term program with a wage-progression schedule, defined skills, and a recognized credential at the end &mdash; not a short, informal placement."),
-    ("What are the benefits for employers?",
-     "Apprenticeships help you train workers to your standards, improve retention, and build a reliable talent pipeline. Grants and tax credits may help offset the cost."),
+     "It&rsquo;s an &ldquo;earn while you learn&rdquo; job. The apprentice is your employee from day one and is trained on the job by a mentor, plus related classroom instruction, over a program that ends in a nationally recognized credential. Programs are registered with the state (Division of Apprentice Standards) or the federal apprenticeship agency."),
+    ("Do I train the person first and then they become an apprentice?",
+     "No &mdash; that&rsquo;s a common mix-up. An apprenticeship flips the usual order: you hire the person first and they learn on the job while they work. It&rsquo;s not a subsidy for hiring someone who is already fully trained. (Separately, a pre-apprenticeship can prepare someone to enter an apprenticeship.)"),
+    ("How is this different from an ITA / WIOA training voucher?",
+     "They&rsquo;re two different paths. An ITA voucher pays for classroom training before a job, at a state-approved school. An apprenticeship is a paid job where training happens during employment. The apprentice tax credit only applies to registered apprentices &mdash; not to someone you hire after they finish ITA-funded training."),
+    ("How much can an employer get back?",
+     "Massachusetts offers a Registered Apprentice Tax Credit worth 50% of an apprentice&rsquo;s wages, up to $4,800 per apprentice per year and up to $100,000 per employer per year, for up to two consecutive tax years. GROW grants can also help fund the classroom (related instruction) side. Amounts and rules are set by the state."),
+    ("Which apprentices qualify for the tax credit?",
+     "Per the state: you must be registered with the Division of Apprentice Standards as a sponsor with an approved apprenticeship agreement, the apprentice must work at least 180 days in the tax year with their main workplace in Massachusetts, and the occupation must be on the state&rsquo;s eligible list (technology, healthcare, advanced manufacturing, life sciences, clean energy and other in-demand fields)."),
     ("What is Career Skills Center's role in apprenticeships?",
-     "Career Skills Center provides training. We can deliver the related classroom instruction a Registered Apprenticeship requires. We don't register or administer your apprenticeship program &mdash; that's between you and the state apprenticeship agency. Career Skills Center plans to offer training in healthcare, IT and the skilled trades; as our programs launch, our graduates will become a hiring pipeline for partner employers."),
+     "Career Skills Center provides training. We can deliver the related classroom instruction a Registered Apprenticeship requires. We don't register or administer your apprenticeship program or claim the tax credit &mdash; you do that with the state as the sponsor. Career Skills Center plans to offer training in healthcare, IT and the skilled trades; as our programs launch, our graduates will become a hiring pipeline for partner employers."),
 ]
 
 PAGES.append(dict(
     slug="apprenticeships.html", nav="apprenticeships.html",
-    title="Apprenticeship Programs for Employers: Build a Trained Pipeline | Career Skills Center",
+    title="Apprenticeship Programs for Employers: Tax Credit &amp; Grants | Career Skills Center",
     ogtitle="Apprenticeship Programs for Employers",
-    desc="How Registered Apprenticeships work and why they pay off for employers: paid on-the-job learning, retention, a trained pipeline, and grants and tax credits that can help.",
+    desc="How Registered Apprenticeships work in Massachusetts: earn-while-you-learn hiring, the Registered Apprentice Tax Credit (up to $4,800/apprentice), GROW grants for the classroom side, and who qualifies.",
     extrahead=faq_ld(_APPR_FAQ),
     main=hero("For Employers &middot; Apprenticeships",
               "Build a Trained Pipeline with Apprenticeships",
-              "A Registered Apprenticeship lets you train workers to your standards while they earn &mdash; and "
-              "keeps them loyal. Career Skills Center&rsquo;s role is the training &mdash; we can provide the "
-              "related classroom instruction a Registered Apprenticeship requires.",
+              "A Registered Apprenticeship lets you hire and train workers to your standards while they earn "
+              "&mdash; with a state tax credit on their wages and grants that can fund the classroom side. "
+              "Career Skills Center provides that classroom training.",
               None, ("Talk to us", "#employer-inquiry")) + """
 
     <section class="section">
       <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>The basics</p>
         <h2 class="section-title left">What a Registered Apprenticeship is</h2>
-        <p class="lede">A Registered Apprenticeship is a structured, employer-driven way to train workers. It
-        combines <strong>paid on-the-job learning</strong> with <strong>related classroom instruction</strong>,
-        follows a defined <strong>wage-progression</strong> schedule, and ends in a nationally recognized
-        credential. Programs are registered with the state or federal apprenticeship agency.</p>
+        <p class="lede">A Registered Apprenticeship is an <strong>&ldquo;earn while you learn&rdquo;</strong> job.
+        The apprentice is your <strong>employee from day one</strong>, learns on the job from a mentor, takes
+        <strong>related classroom instruction</strong> alongside the work, and moves up a defined
+        <strong>wage-progression</strong> schedule to a nationally recognized credential.</p>
+        <p class="note"><strong>It flips the usual order.</strong> Instead of &ldquo;train first, then get
+        hired,&rdquo; the apprentice is hired first and trained during the job. So an apprenticeship isn&rsquo;t a
+        way to get a credit for hiring someone who&rsquo;s already fully trained &mdash; the training <em>is</em>
+        the job. (A separate ITA/WIOA voucher is the classroom-first path; see
+        <a class="link-yellow" href="wioa-explained.html">WIOA explained</a>.)</p>
       </div>
     </section>
 
@@ -2140,7 +2149,7 @@ PAGES.append(dict(
         <div class="feature-grid">
           <article class="feature">
             <h3 class="feature-title">A sponsor</h3>
-            <p>You (or an intermediary) sponsor the program and define the skills the apprentice will master.</p>
+            <p>You (or an intermediary) register the program with the state and define the skills the apprentice will master.</p>
           </article>
           <article class="feature">
             <h3 class="feature-title">On-the-job learning</h3>
@@ -2148,7 +2157,7 @@ PAGES.append(dict(
           </article>
           <article class="feature">
             <h3 class="feature-title">Related instruction</h3>
-            <p>Classroom or online coursework runs alongside the job, often provided by a training partner.</p>
+            <p>Classroom or online coursework runs alongside the job &mdash; the part Career Skills Center can provide.</p>
           </article>
           <article class="feature">
             <h3 class="feature-title">Wage progression</h3>
@@ -2160,12 +2169,45 @@ PAGES.append(dict(
 
     <section class="section">
       <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Funding</p>
+        <h2 class="section-title left">How much it costs an employer &mdash; and what you get back</h2>
+        <p class="lede">Because the apprentice is your employee, you pay their wages. Two things bring the real
+        cost down: a state tax credit on those wages, and grants that can fund the classroom instruction.</p>
+
+        <h3>Registered Apprentice Tax Credit</h3>
+        <p>If you register as a program sponsor, Massachusetts offers a tax credit worth
+        <strong><span data-cfg="APPRENTICE_TAX_CREDIT_WAGE_SHARE" data-cfg-format="percent">50%</span> of an
+        apprentice&rsquo;s wages</strong>, up to
+        <strong><span data-cfg="APPRENTICE_TAX_CREDIT_MAX_PER_APPRENTICE" data-cfg-format="money">$4,800</span>
+        per apprentice</strong> per year, and up to
+        <strong><span data-cfg="APPRENTICE_TAX_CREDIT_MAX_PER_EMPLOYER" data-cfg-format="money">$100,000</span>
+        per employer</strong> per year &mdash; for up to
+        <strong><span data-cfg="APPRENTICE_TAX_CREDIT_YEARS" data-cfg-format="number">2</span> consecutive tax
+        years</strong> per apprentice.</p>
+        <p><strong>To qualify</strong> (per the state): you must be registered with the Division of Apprentice
+        Standards (DAS) as a sponsor with an approved apprenticeship agreement; the apprentice must work at least
+        <span data-cfg="APPRENTICE_MIN_DAYS" data-cfg-format="number">180</span> days in the tax year with their
+        main workplace in Massachusetts; and the occupation must be on the state&rsquo;s eligible list
+        (technology, healthcare, advanced manufacturing, life sciences, clean energy and other in-demand fields).</p>
+
+        <h3>Grants for the classroom side</h3>
+        <p>Massachusetts <strong>GROW</strong> grants (and related technical instruction grants) can help fund the
+        classroom portion of an apprenticeship. Award amounts are set per grant round, and the rules require that
+        the cost of related instruction <strong>not</strong> be passed on to the apprentice. This classroom piece
+        is exactly what Career Skills Center can provide.</p>
+        <p class="role-src">Sources: mass.gov &mdash; Apply for a Registered Apprentice Tax Credit (DAS Issuance
+        TY2026); Registered Apprenticeship funding opportunities / GROW grants; apprenticeship.gov (earn-while-you-learn model). Checked 2026-09-28.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Why it pays off</p>
         <h2 class="section-title left">Benefits for employers</h2>
         <ul class="check-list">
           <li><strong>Better retention.</strong> Workers you train and invest in tend to stay longer.</li>
           <li><strong>A trained pipeline.</strong> You grow the exact skills your business needs, to your standards.</li>
-          <li><strong>Grants and tax credits.</strong> State and federal programs may help offset the cost of apprenticeships. [VERIFY: confirm current Massachusetts and federal apprenticeship grants/tax credits with apprenticeship.gov / mass.gov]</li>
+          <li><strong>Real cost offsets.</strong> The state tax credit on wages plus grants for the classroom side lower what the apprenticeship costs you.</li>
         </ul>
         <!-- COURSE-DEPENDENT: R-APPR — future graduate-pipeline line; present tense only in course mode. -->
         <p>As our programs launch, our graduates will become a hiring pipeline for partner employers.</p>
@@ -2174,11 +2216,11 @@ PAGES.append(dict(
 
 """ + employer_form("employer-apprenticeship",
                     heading="Interested in apprenticeships?",
-                    intro="Tell us about your team and the training you need for an apprenticeship, and "
-                          "we&rsquo;ll follow up.",
+                    intro="Tell us about your team and the classroom training you need for an apprenticeship, "
+                          "and we&rsquo;ll follow up.",
                     show_team_size=True) + """
 
-    <section class="section section--alt section--tight">
+    <section class="section section--tight">
       <div class="container">
         <div class="faq">
           <p class="faq-group-title">Apprenticeship FAQ</p>

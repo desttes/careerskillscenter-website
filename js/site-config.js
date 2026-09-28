@@ -33,6 +33,15 @@
     EXPRESS_APPLICATION_WEEKS: 3,             // confirmed by Emilio 2026-09-28 (application -> acceptance ~3 weeks)
     ESOL_PAID_TIME_MIN_SHARE: 0.50,           // VERIFY
 
+    /* ---- Massachusetts Registered Apprentice Tax Credit ----
+       Source: mass.gov Division of Apprentice Standards (Apply for a Registered
+       Apprentice Tax Credit; DAS Issuance TY2026 32-07012026). Checked 2026-09-28. */
+    APPRENTICE_TAX_CREDIT_WAGE_SHARE: 0.50,          // 50% of the apprentice's wages
+    APPRENTICE_TAX_CREDIT_MAX_PER_APPRENTICE: 4800,  // per apprentice, per year
+    APPRENTICE_TAX_CREDIT_MAX_PER_EMPLOYER: 100000,  // per employer (sponsor), per year
+    APPRENTICE_TAX_CREDIT_YEARS: 2,                  // up to 2 consecutive tax years per apprentice
+    APPRENTICE_MIN_DAYS: 180,                        // apprentice must work >= 180 days in the tax year
+
     /* ---- WIOA low-income example (regional example only — VERIFY) ----
        Thresholds vary by career center and year; these are a single regional
        example (MassHire Central, 2026) used to illustrate, never a statewide rule.
