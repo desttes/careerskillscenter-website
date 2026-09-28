@@ -2090,8 +2090,8 @@ _APPR_FAQ = [
      "An apprenticeship is a structured, long-term program with a wage-progression schedule, defined skills, and a recognized credential at the end &mdash; not a short, informal placement."),
     ("What are the benefits for employers?",
      "Apprenticeships help you train workers to your standards, improve retention, and build a reliable talent pipeline. Grants and tax credits may help offset the cost."),
-    ("Does Career Skills Center run apprenticeships now?",
-     "We help employers set up and support apprenticeship training. Career Skills Center plans to offer training in healthcare, IT and the skilled trades; as our programs launch, our graduates will become a hiring pipeline for partner employers."),
+    ("What is Career Skills Center's role in apprenticeships?",
+     "Career Skills Center provides training. We can deliver the related classroom instruction a Registered Apprenticeship requires. We don't register or administer your apprenticeship program &mdash; that's between you and the state apprenticeship agency. Career Skills Center plans to offer training in healthcare, IT and the skilled trades; as our programs launch, our graduates will become a hiring pipeline for partner employers."),
 ]
 
 PAGES.append(dict(
@@ -2103,7 +2103,8 @@ PAGES.append(dict(
     main=hero("For Employers &middot; Apprenticeships",
               "Build a Trained Pipeline with Apprenticeships",
               "A Registered Apprenticeship lets you train workers to your standards while they earn &mdash; and "
-              "keeps them loyal. We help employers set up and support apprenticeship training.",
+              "keeps them loyal. Career Skills Center&rsquo;s role is the training &mdash; we can provide the "
+              "related classroom instruction a Registered Apprenticeship requires.",
               None, ("Talk to us", "#employer-inquiry")) + """
 
     <section class="section">
@@ -2158,8 +2159,8 @@ PAGES.append(dict(
 
 """ + employer_form("employer-apprenticeship",
                     heading="Interested in apprenticeships?",
-                    intro="Tell us about your team and we&rsquo;ll help you explore setting up apprenticeship "
-                          "training.",
+                    intro="Tell us about your team and the training you need for an apprenticeship, and "
+                          "we&rsquo;ll follow up.",
                     show_team_size=True) + """
 
     <section class="section section--alt section--tight">
@@ -3270,7 +3271,7 @@ PAGES.append(dict(
 
           <p class="faq-group-title">For employers</p>
 {faq("Can my company get training reimbursed?", 'We provide the training; the reimbursement comes from the state. Through the Workforce Training Fund Express Program, eligible Massachusetts employers can be reimbursed for much of what they spend on training &mdash; you apply directly to the state. See <a class="link-yellow" href="staff-training-grants.html">Staff Training Grants</a> and <a class="link-yellow" href="express-program-explained.html">how Express works</a>.')}
-{faq("Do you run apprenticeships?", 'We help employers set up and support Registered Apprenticeships &mdash; paid, earn-while-you-learn training that builds a loyal, skilled pipeline. See <a class="link-yellow" href="apprenticeships.html">Apprenticeship Programs</a>.')}
+{faq("Do you run apprenticeships?", 'Career Skills Center provides the training side &mdash; we can deliver the related classroom instruction a Registered Apprenticeship requires. Employers register and run the apprenticeship with the state. See <a class="link-yellow" href="apprenticeships.html">Apprenticeship Programs</a>.')}
 {faq("Can you train my team on something specific?", 'Tell us what your team needs. We&rsquo;re building <a class="link-yellow" href="corporate-training.html">corporate training</a> for employers, with or without state funding.')}
 
           <p class="faq-group-title">About Career Skills Center</p>
