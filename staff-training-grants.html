@@ -109,9 +109,9 @@
 
     <section class="page-hero">
       <div class="container">
-        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span><span>For Massachusetts businesses &middot; <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> or fewer W-2 employees</span></p>
+        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span><span>For Massachusetts businesses &middot; <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">100</span> or fewer W-2 employees</span></p>
         <h1>We Train Your Team. The State Can Reimburse the Cost<span class="dot">.</span></h1>
-        <p class="page-hero-lede">Hands-on training that makes your people genuinely productive, taught by experts in each field. Massachusetts reimburses up to <span data-cfg="EXPRESS_RATE_SMALL" data-cfg-format="percent">[VERIFY]</span> of the cost for eligible companies with <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> or fewer employees, through the Workforce Training Fund Express Program.</p>
+        <p class="page-hero-lede">Hands-on training that makes your people genuinely productive, taught by experts in each field. Massachusetts reimburses up to <span data-cfg="EXPRESS_RATE_SMALL" data-cfg-format="percent">100%</span> of the cost for eligible companies with <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">100</span> or fewer employees, through the Workforce Training Fund Express Program.</p>
         <div class="hero-actions">
           <button class="btn btn-yellow js-open-contact" type="button">Get in Touch</button>
           <a class="btn btn-outline" href="express-program-explained.html">How Express works</a>
@@ -135,7 +135,21 @@
       </div>
     </section>
 
-    <section class="section section--alt" id="calculator">
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How the reimbursement works</p>
+        <h2 class="section-title left">Up to 100%, up to <span data-cfg="EXPRESS_ANNUAL_CAP_PER_COMPANY" data-cfg-format="money">$15,000</span> a year</h2>
+        <p class="lede">For eligible Massachusetts companies with <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">100</span> or fewer W-2 employees, the Express Program can cover the full cost of training your staff.</p>
+        <ul class="check-list check-list--num">
+          <li><strong>Up to <span data-cfg="EXPRESS_RATE_SMALL" data-cfg-format="percent">100%</span> reimbursed.</strong> Eligible small employers can get back up to the full cost of approved training.</li>
+          <li><strong>Up to <span data-cfg="EXPRESS_ANNUAL_CAP_PER_COMPANY" data-cfg-format="money">$15,000</span> a year.</strong> Each company can be reimbursed up to this amount per year, and you can use it across different trainings.</li>
+          <li><strong>About <span data-cfg="EXPRESS_APPLICATION_WEEKS" data-cfg-format="number">3</span> weeks.</strong> From application to acceptance typically takes about three weeks.</li>
+          <li><strong>The state sends you a check.</strong> You pay for the training, then Massachusetts reimburses you directly.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="calculator">
       <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Estimate</p>
         <h2 class="section-title left">Estimate the reimbursement</h2>
@@ -155,8 +169,8 @@
           </div>
           <fieldset class="calc-size">
             <legend>Company size</legend>
-            <label><input type="radio" name="calc_size" value="small" checked> Up to <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> employees</label>
-            <label><input type="radio" name="calc_size" value="large"> More than <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> employees</label>
+            <label><input type="radio" name="calc_size" value="small" checked> Up to <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">100</span> employees</label>
+            <label><input type="radio" name="calc_size" value="large"> More than <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">100</span> employees</label>
           </fieldset>
           <div class="calc-output" aria-live="polite">
             <p class="calc-result-line">Estimated reimbursement: <strong class="calc-total">&mdash;</strong></p>
@@ -340,7 +354,7 @@
     </div>
   </dialog>
 
-  <script src="js/site-config.js?v=1790541768" defer></script>
+  <script src="js/site-config.js?v=1790574445" defer></script>
   <script src="js/main.js?v=1790542281" defer></script>
 </body>
 </html>

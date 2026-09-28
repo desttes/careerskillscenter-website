@@ -291,3 +291,19 @@ is from the BLS OOH trade pages, replacing the aggregator apprentice-wage figure
 
 Note: BLS OOH slugs matter — nursing-assistants.htm (not ...-and-orderlies) and
 medical-records-and-health-information-technicians.htm (not medical-records-specialists) are the working URLs.
+
+## J. Express Program figures — confirmed by Emilio (2026-09-28)
+
+Emilio confirmed these Workforce Training Fund Express figures directly (for the
+staff-training-grants.html / express pages). Applied to `js/site-config.js` and the
+`[VERIFY]` fallbacks on `staff-training-grants.html` cleared to real numbers for these:
+
+- **Reimbursement rate (eligible small employers):** up to **100%** (`EXPRESS_RATE_SMALL = 1.00`).
+- **Small-employer size:** **100 or fewer W-2 employees** (`EXPRESS_SMALL_EMPLOYER_MAX = 100`).
+- **Annual cap per company:** up to **$15,000/year**, reusable across different trainings (`EXPRESS_ANNUAL_CAP_PER_COMPANY = 15000`).
+- **Application → acceptance:** about **3 weeks** (`EXPRESS_APPLICATION_WEEKS = 3`).
+- **Payout:** the state **sends the employer a check** (reimbursement after the employer pays).
+
+Still `[VERIFY]` (Emilio has not confirmed against CommCorp yet): `EXPRESS_MAX_PER_PERSON_PER_COURSE`
+($3,000), `EXPRESS_MAX_PER_INSTRUCTIONAL_HOUR` ($300), `EXPRESS_RATE_LARGE` (50%),
+`EXPRESS_AGREEMENT_AUTOSTART_DAYS` (21). Those still gate the employer pages from deploy.

@@ -2006,11 +2006,11 @@ PAGES.append(dict(
     title="Staff Training Grants: Train Your Team, the State Can Reimburse You | Career Skills Center",
     ogtitle="Staff Training Grants for Massachusetts Employers",
     desc="Career Skills Center trains your team. Through the Massachusetts Workforce Training Fund Express Program, eligible employers can be reimbursed for much of the cost. Estimate the reimbursement.",
-    main=hero('<span>For Massachusetts businesses &middot; <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> or fewer W-2 employees</span>',
+    main=hero('<span>For Massachusetts businesses &middot; <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">100</span> or fewer W-2 employees</span>',
               "We Train Your Team. The State Can Reimburse the Cost",
               'Hands-on training that makes your people genuinely productive, taught by experts in each field. '
-              'Massachusetts reimburses up to <span data-cfg="EXPRESS_RATE_SMALL" data-cfg-format="percent">[VERIFY]</span> '
-              'of the cost for eligible companies with <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> '
+              'Massachusetts reimburses up to <span data-cfg="EXPRESS_RATE_SMALL" data-cfg-format="percent">100%</span> '
+              'of the cost for eligible companies with <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">100</span> '
               'or fewer employees, through the Workforce Training Fund Express Program.',
               None, ("How Express works", "express-program-explained.html")) + """
 
@@ -2030,7 +2030,21 @@ PAGES.append(dict(
       </div>
     </section>
 
-    <section class="section section--alt" id="calculator">
+    <section class="section section--alt">
+      <div class="container narrow">
+        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>How the reimbursement works</p>
+        <h2 class="section-title left">Up to 100%, up to <span data-cfg="EXPRESS_ANNUAL_CAP_PER_COMPANY" data-cfg-format="money">$15,000</span> a year</h2>
+        <p class="lede">For eligible Massachusetts companies with <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">100</span> or fewer W-2 employees, the Express Program can cover the full cost of training your staff.</p>
+        <ul class="check-list check-list--num">
+          <li><strong>Up to <span data-cfg="EXPRESS_RATE_SMALL" data-cfg-format="percent">100%</span> reimbursed.</strong> Eligible small employers can get back up to the full cost of approved training.</li>
+          <li><strong>Up to <span data-cfg="EXPRESS_ANNUAL_CAP_PER_COMPANY" data-cfg-format="money">$15,000</span> a year.</strong> Each company can be reimbursed up to this amount per year, and you can use it across different trainings.</li>
+          <li><strong>About <span data-cfg="EXPRESS_APPLICATION_WEEKS" data-cfg-format="number">3</span> weeks.</strong> From application to acceptance typically takes about three weeks.</li>
+          <li><strong>The state sends you a check.</strong> You pay for the training, then Massachusetts reimburses you directly.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="calculator">
       <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Estimate</p>
         <h2 class="section-title left">Estimate the reimbursement</h2>
@@ -2050,8 +2064,8 @@ PAGES.append(dict(
           </div>
           <fieldset class="calc-size">
             <legend>Company size</legend>
-            <label><input type="radio" name="calc_size" value="small" checked> Up to <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> employees</label>
-            <label><input type="radio" name="calc_size" value="large"> More than <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">[VERIFY]</span> employees</label>
+            <label><input type="radio" name="calc_size" value="small" checked> Up to <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">100</span> employees</label>
+            <label><input type="radio" name="calc_size" value="large"> More than <span data-cfg="EXPRESS_SMALL_EMPLOYER_MAX" data-cfg-format="number">100</span> employees</label>
           </fieldset>
           <div class="calc-output" aria-live="polite">
             <p class="calc-result-line">Estimated reimbursement: <strong class="calc-total">&mdash;</strong></p>

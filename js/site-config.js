@@ -25,11 +25,12 @@
     /* ---- Express Program figures — ALL VERIFY with express@commcorp.org ---- */
     EXPRESS_MAX_PER_PERSON_PER_COURSE: 3000,  // VERIFY
     EXPRESS_MAX_PER_INSTRUCTIONAL_HOUR: 300,  // VERIFY
-    EXPRESS_ANNUAL_CAP_PER_COMPANY: 15000,    // VERIFY (some sources say $30k)
-    EXPRESS_SMALL_EMPLOYER_MAX: 100,          // VERIFY
-    EXPRESS_RATE_SMALL: 1.00,                 // VERIFY — up to 100% for small employers
+    EXPRESS_ANNUAL_CAP_PER_COMPANY: 15000,    // confirmed by Emilio 2026-09-28 (up to $15k/yr, reusable across trainings)
+    EXPRESS_SMALL_EMPLOYER_MAX: 100,          // confirmed by Emilio 2026-09-28 (100 or fewer W-2 employees)
+    EXPRESS_RATE_SMALL: 1.00,                 // confirmed by Emilio 2026-09-28 (up to 100% for eligible small employers)
     EXPRESS_RATE_LARGE: 0.50,                 // VERIFY — DCS Info 26-102 opened Express to any size at 50%
     EXPRESS_AGREEMENT_AUTOSTART_DAYS: 21,     // VERIFY
+    EXPRESS_APPLICATION_WEEKS: 3,             // confirmed by Emilio 2026-09-28 (application -> acceptance ~3 weeks)
     ESOL_PAID_TIME_MIN_SHARE: 0.50,           // VERIFY
 
     /* ---- WIOA low-income example (regional example only — VERIFY) ----
