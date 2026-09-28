@@ -8,7 +8,7 @@
 ---
 
 
-> **Update v1.4 (Sept 26, 2026): guide mode (Emilio's decision). Read `docs/GUIDE_MODE_SPEC.md` first; it overrides this brief where they conflict.** No ghost courses. The site is a guide to MA careers and funding that sends people outward to the state; course mode comes later. Changes to this brief: §1 nav replaced (Career Paths / For Employers / Resources / About / Contact; header button "Check Your Options"); the 3 program pages become career field guides (healthcare, not "Medical Billing & Coding"); §3.4 MA landing pages are merged into those guides; `qualify.html` is kept but routes outward (no "advisor will text you" promise); tuition/admissions/career-services/team/media are retired with 301s; §4 employer copy = "we help you get state-funded training and handle the paperwork," never "our course"; `clinic-billing-training.html` on hold. Track course-dependent copy in `docs/COURSE_CONTENT_REGISTER.md`.
+> **Update v1.4 (Sept 26, 2026): guide mode (Emilio's decision). Read `docs/GUIDE_MODE_SPEC.md` first; it overrides this brief where they conflict.** No ghost courses. The site is a guide to MA careers and funding that sends people outward to the state; course mode comes later. Changes to this brief: §1 nav replaced (Career Paths / For Employers / Resources / About / Contact; header button "Check Your Options"); the 3 program pages become career field guides (healthcare, not "Medical Billing & Coding"); §3.4 MA landing pages are merged into those guides; `qualify.html` is kept but routes outward (no "advisor will text you" promise); tuition/admissions/career-services/team/media are retired with 301s; §4 employer copy = "we provide the training; eligible employers apply to the state and get reimbursed" (CSC does **not** handle the paperwork or apply for the employer — corrected 2026-09-28 per Emilio; supersedes the old "we handle the paperwork" wording), never "our course"; `clinic-billing-training.html` on hold. Track course-dependent copy in `docs/COURSE_CONTENT_REGISTER.md`.
 
 > **Update v1.3 (Sept 25, 2026):** Pre-launch site mode, Option A (Emilio's decision). Implement `docs/PRE_LAUNCH_SITE_SPEC.md` **before** the rest of this brief: program pages become "Program in development," fake testimonials are removed, and an interest-list form is the main CTA.
 
@@ -156,7 +156,7 @@ These can launch **before** ETPL approval. The state program is the **Massachuse
 - **H1:** Train your team. Massachusetts may pay for it.
 - **Sections:**
   1. The money: "Massachusetts employers pay into the Workforce Training Fund through unemployment insurance. The Express Program lets you use it to train your staff." (Figures from config §6.)
-  2. How it works (3 steps): We check eligibility → We handle the grant paperwork → Your team trains live online and you're reimbursed.
+  2. How it works (3 steps): You apply to the state for Express → We provide the training → The state reimburses you. (Corrected 2026-09-28 per Emilio: CSC does **not** check eligibility for you or handle the grant paperwork — the employer applies directly.)
   3. Two offer cards → workplace-esol.html, clinic-billing-training.html.
   4. Reassurance: "No class runs until your grant agreement is in place." (VERIFY wording with CommCorp; see §6.)
   5. CTA: "Check if your company qualifies" (form: company name, city, # of MA employees, contact name, phone, email, which training, preferred language) → contact handler with `source=employer`. Promise: "We reply within 1 business day."

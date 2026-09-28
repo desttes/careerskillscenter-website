@@ -1,6 +1,6 @@
 # Career Skills Center
 
-> Career Skills Center is an honest guide to career training and funding. It explains how training-funding programs work — WIOA (the main public training fund) and the Massachusetts Workforce Training Fund Express Program for employers — and it points people to official state resources (MassHire Career Centers and JobQuest). It also has plain-language guides to careers in healthcare, information technology and the skilled trades. Career Skills Center is based in Quincy, Massachusetts, and plans to offer its own training in healthcare, IT and the skilled trades; enrollment is not open yet. For employers, Career Skills Center helps get state-funded staff training through the Express Program and handles the grant paperwork, and helps set up apprenticeships and corporate training. Phone: (617) 544-7155. Email: info@careerskillscenter.com.
+> Career Skills Center is an honest guide to career training and funding. It explains how training-funding programs work — WIOA (the main public training fund) and the Massachusetts Workforce Training Fund Express Program for employers — and it points people to official state resources (MassHire Career Centers and JobQuest). It also has plain-language guides to careers in healthcare, information technology and the skilled trades. Career Skills Center is based in Quincy, Massachusetts, and plans to offer its own training in healthcare, IT and the skilled trades; enrollment is not open yet. For employers, Career Skills Center provides the training; eligible employers can be reimbursed for it through the Workforce Training Fund Express Program, which the employer applies for directly with the state. Career Skills Center does not handle the grant paperwork or take payment for the application. It also offers apprenticeship-related classroom instruction and corporate training. Phone: (617) 544-7155. Email: info@careerskillscenter.com.
 
 ## Funding guides
 - [WIOA Explained](https://careerskillscenter.com/wioa-explained.html): Who qualifies for WIOA training funds (Adult, Dislocated Worker, Youth), priority of service, the ITA voucher, the ETPL, and how to apply in Massachusetts.
@@ -10,7 +10,7 @@
 
 ## For employers
 - [For Employers](https://careerskillscenter.com/employers.html): How Career Skills Center helps employers pay for and organize staff training.
-- [Staff Training Grants](https://careerskillscenter.com/staff-training-grants.html): We help employers apply for Express Program reimbursement and handle the paperwork; includes a reimbursement estimate calculator.
+- [Staff Training Grants](https://careerskillscenter.com/staff-training-grants.html): Career Skills Center provides the training; eligible employers can be reimbursed through the Express Program, which they apply for directly with the state. Includes a reimbursement estimate calculator.
 - [Apprenticeship Programs](https://careerskillscenter.com/apprenticeships.html): How Registered Apprenticeships work and why they pay off for employers.
 - [Corporate Training](https://careerskillscenter.com/corporate-training.html): Custom training for employer teams, with or without state funding.
 

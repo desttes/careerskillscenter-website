@@ -80,7 +80,7 @@ Footer: same groups + Privacy Policy · Terms · phone · email · Quincy, MA ad
 ### 4. For Employers
 - **`employers.html`** — Overview: three cards (Staff Training Grants · Apprenticeships · Corporate Training) plus the employer inquiry form (`source=employer`).
 - **`staff-training-grants.html`** — the service page.
-  - Service line: "We help you apply for Express funding and handle the paperwork." Never "our course"; follow the `EXPRESS_PROVIDER_LISTED` flag.
+  - Service line: "We provide the training; eligible employers apply to the state and get reimbursed." CSC does **not** handle the paperwork or apply on the employer's behalf (Emilio, 2026-09-28). Never "our course"; follow the `EXPRESS_PROVIDER_LISTED` flag.
   - Embeds the reimbursement calculator (brief §4.4 logic, config values). Form preset to `source=employer-express`.
 - **`apprenticeships.html`**
   - Sections: what a Registered Apprenticeship is · how it works (sponsor, on-the-job learning, related instruction, wage progression) · employer benefits (retention, trained pipeline, grants and tax credits available in MA, each sourced from apprenticeship.gov or mass.gov, otherwise `[VERIFY]`) · the future graduate-pipeline line (`COURSE-DEPENDENT`) · form (`source=employer-apprenticeship`).

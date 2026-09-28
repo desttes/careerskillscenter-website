@@ -3,7 +3,7 @@
 **Read this first in any new chat about the website, blog or marketing.** Also saved in the "ETPL Massachusetts" Project as `claude/20-handoff-website-and-marketing.md`.
 
 ## What we're doing
-Building the marketing engine for **Career Skills Center** (careerskillscenter.com, Quincy, MA). **Since Sept 26 the site is in "guide mode":** CSC has no courses yet, so the site is an honest guide to Massachusetts careers and training funding that sends people **outward** to the state (MassHire, JobQuest, mass.gov). When real courses launch, it switches to **course mode** and sends people **inward**. Goal now: look legitimate and build SEO with real content. The one real service today: helping MA employers get state-funded staff training (Express Program) and doing the grant paperwork.
+Building the marketing engine for **Career Skills Center** (careerskillscenter.com, Quincy, MA). **Since Sept 26 the site is in "guide mode":** CSC has no courses yet, so the site is an honest guide to Massachusetts careers and training funding that sends people **outward** to the state (MassHire, JobQuest, mass.gov). When real courses launch, it switches to **course mode** and sends people **inward**. Goal now: look legitimate and build SEO with real content. The one real service today: **providing training** for MA employers' staff; eligible employers can be reimbursed through the Express Program, which **they apply for themselves** (CSC does **not** do the grant paperwork — Emilio, 2026-09-28).
 
 ## Two-sided workflow
 - **Website repo:** `/Users/desttes/Documents/ETPL/Website`. Git on `main`, local only. Live site deploys via SFTP (see `PROJECT-HANDOFF.md`).
@@ -18,7 +18,7 @@ Building the marketing engine for **Career Skills Center** (careerskillscenter.c
 3. **`qualify.html` stays:** collects the lead, then gives outward next steps to enroll with the state. No "advisor will text you" promise. Routes inward only in course mode.
 4. **Track course-dependent copy** in `docs/COURSE_CONTENT_REGISTER.md` + `<!-- COURSE-DEPENDENT -->` markers; switches `SITE_MODE` / `COURSES_LIVE` in `js/site-config.js`.
 5. **No fake social proof,** no funding claims (never ETPL/WIOA approval or Express listing; "may qualify").
-6. **Employer pages:** "we help you get state-funded training and handle the paperwork," never "our course." Clinic billing page on hold.
+6. **Employer pages:** "we provide the training; eligible employers apply to the state and get reimbursed" — CSC does **not** handle the paperwork or apply for the employer (Emilio, 2026-09-28). Never "our course." Clinic billing page on hold.
 7. **No deploys without Emilio's OK;** pre-deploy `[VERIFY`/`DRAFT` grep clean. Real publish dates only.
 8. **Form backend** = cPanel PHP mailer (`submit.php`), live; leads → `vcanal@careerskillscenter.com`.
 

@@ -93,7 +93,7 @@ Keep the 6-step wizard; it **collects the lead** (posts to `submit.php`, `source
 - `llms.txt`: describe the site as a Massachusetts career-and-funding guide; CSC plans training in healthcare, IT and skilled trades.
 
 ### Step 8 — For Employers (real service now; see BUILD_BRIEF §4 with this framing)
-CSC helps employers get state-funded training for their staff and handles the grant paperwork. CSC is **not** a listed Express provider and has no course of its own: never "our course." Pages: `employers.html` (with embedded eligibility form, `source=employer`), `workplace-esol.html` + `-es` + `-pt`, `reimbursement-calculator.html`. `clinic-billing-training.html` is on hold.
+CSC **provides training** for employers' staff; eligible employers can be reimbursed through the Express Program, which **the employer applies for directly** with the state. CSC does **not** handle the grant paperwork or take payment for the application (Emilio, 2026-09-28). CSC is **not** a listed Express provider and has no course of its own: never "our course." Pages: `employers.html` (with embedded eligibility form, `source=employer`), `workplace-esol.html` + `-es` + `-pt`, `reimbursement-calculator.html`. `clinic-billing-training.html` is on hold.
 
 ### Step 9 — Blog
 - Update the 8 drafts: CTAs point to the field guides, `qualify.html` and MassHire, not to "our program." Mark any CSC mention `COURSE-DEPENDENT`.
