@@ -30,6 +30,14 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-28 (later) — qualify.html result tiers (fix "everything says you may fit") (LOCAL, not deployed)
+Emilio reported that almost every answer set on `qualify.html` concluded "you may fit." Diagnosed and fixed. **Not deployed.**
+
+- **Root cause:** the verdict was a single `likely` boolean (`js/main.js` `classifyQualify`) built from an OR of nearly every condition. A sweep of all answer combinations showed **98% of in-Massachusetts respondents (423/432)** hit the strong "You may be a good candidate" message — 5 of the 6 work situations flipped it true on their own, and any one priority flag flipped it true regardless. Both headlines also began "You may…", so even the weak branch read as a soft yes.
+- **Fix (Emilio: "differentiate results into tiers"):** replaced `likely` with a three-tier `tier` — **priority** (matches a WIOA priority-of-service flag: public assistance / low income / veteran, or a dislocated worker), **candidate** (an active job-seeker need — unemployed or part-time/low-wage — with no flag), **explore** (employed full-time, no flags → softest "here's how to check"). Not-in-MA still handled separately. Distinct headline + body per tier; the priority-flag list only shows when actually flagged. `likely` is retained (derived) for back-compat.
+- **Result:** for a typical user with no priority flags, the outcome now varies by work situation (laid-off/on-UI/self-closed → priority; unemployed/part-low → candidate; full-time → explore) instead of one universal message. Copy still never gives a yes/no verdict (spec §2).
+- **Verified:** rewrote the `#selftest` cases for tiers — all pass in-browser (no console errors). Drove all four branches through the real form UI and confirmed the correct headline, groups and priority list render for each. Rebuilt; bumped the cache-bust `?v=` on `main.js` across generated pages and `index.html`.
+
 ### 2026-09-28 (later) — Post-launch polish: www 301, cookie note, image renames (LOCAL, not deployed)
 Tackled two of the four post-launch open items (Emilio: "no preference," so I did the two that need no input from him). The other two (founder name/photo on `about.html`; real street address/suite) still need content from Emilio. All committed on `main`; **nothing deployed** (awaiting Emilio's OK).
 

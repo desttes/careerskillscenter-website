@@ -185,17 +185,26 @@
     if (a.income_low === 'yes') priorities.push('Your household income may be low');
     if (a.veteran === 'yes') priorities.push('Veteran or military-spouse priority');
 
-    const needFit = dislocated ||
-      a.situation === 'unemployed' ||
-      a.situation === 'part-low' ||
-      priorities.length > 0;
-    const likely = inMA && needFit;
+    // Three tiers, strongest first (never a yes/no verdict — a MassHire center decides):
+    //  - 'priority'  : matches a WIOA priority-of-service flag, or is a dislocated worker.
+    //  - 'candidate' : an active job-seeker need (unemployed / part-time or low-wage), no flag.
+    //  - 'explore'   : employed full-time with no flags — softest, "here's how to check."
+    // Not-in-MA is handled separately in showResults().
+    const hasPriority = priorities.length > 0 || dislocated;
+    const generalCandidate = a.situation === 'unemployed' || a.situation === 'part-low';
+    let tier;
+    if (hasPriority) tier = 'priority';
+    else if (generalCandidate) tier = 'candidate';
+    else tier = 'explore';
 
     return {
       inMA: inMA,
       groups: groups,
       priorities: priorities,
-      likely: likely,
+      dislocated: dislocated,
+      tier: tier,
+      // Retained for any callers/tests that only care whether it's a strong match.
+      likely: inMA && tier !== 'explore',
       selectiveService: a.age === '18-24' || a.age === '25plus',
       workAuthConcern: a.work_auth === 'no',
       employerAngle: a.situation === 'full-time' || a.situation === 'part-low',
@@ -205,22 +214,33 @@
   // Self-tests (run only on qualify.html#selftest — silent unless something fails).
   function runQualifyTests() {
     const eq = (got, want, msg) => console.assert(got === want, msg + ' (got ' + got + ', want ' + want + ')');
+    // Dislocated worker -> priority tier.
     let r = classifyQualify({ live_ma: 'yes', age: '25plus', situation: 'laid-off', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'it' });
-    eq(r.likely, true, 'laid-off MA adult is a likely fit');
+    eq(r.tier, 'priority', 'laid-off MA adult -> priority tier');
     console.assert(r.groups.indexOf('WIOA Dislocated Worker') !== -1, 'laid-off -> Dislocated Worker');
     console.assert(r.groups.indexOf('WIOA Adult') !== -1, '25+ -> Adult');
+    // Priority-of-service flag beats employment status.
     r = classifyQualify({ live_ma: 'yes', age: '18-24', situation: 'full-time', assistance: 'yes', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'healthcare' });
     console.assert(r.groups.indexOf('WIOA Youth (ages 14–24)') !== -1, '18-24 -> Youth');
-    eq(r.likely, true, 'public assistance is a priority -> likely');
+    eq(r.tier, 'priority', 'full-time + public assistance -> priority tier');
     eq(r.employerAngle, true, 'full-time -> employer angle');
+    // General job-seeker need, no flag -> candidate tier.
+    r = classifyQualify({ live_ma: 'yes', age: '25plus', situation: 'unemployed', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'it' });
+    eq(r.tier, 'candidate', 'unemployed, no flag -> candidate tier');
+    r = classifyQualify({ live_ma: 'yes', age: '25plus', situation: 'part-low', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'it' });
+    eq(r.tier, 'candidate', 'part-time/low-wage, no flag -> candidate tier');
+    // Not in MA -> handled separately; classifier still reports inMA=false.
     r = classifyQualify({ live_ma: 'no', age: '25plus', situation: 'unemployed', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'trades' });
     eq(r.inMA, false, 'not in MA flagged');
-    eq(r.likely, false, 'not in MA -> not likely (this check is MA-only)');
+    // Full-time, no flags -> explore tier (the softest result).
     r = classifyQualify({ live_ma: 'yes', age: '25plus', situation: 'full-time', assistance: 'no', income_low: 'no', veteran: 'no', work_auth: 'yes', field: 'it' });
-    eq(r.likely, false, 'full-time no-priority -> not a strong fit');
+    eq(r.tier, 'explore', 'full-time no-priority -> explore tier');
+    eq(r.likely, false, 'explore tier is not a strong match');
     eq(r.selectiveService, true, '25+ -> show Selective Service note');
+    // Youth-only classification unchanged.
     r = classifyQualify({ live_ma: 'yes', age: 'under18', situation: 'unemployed', assistance: 'no', income_low: 'yes', veteran: 'no', work_auth: 'unsure', field: 'unsure' });
     console.assert(r.groups.indexOf('WIOA Youth (ages 14–24)') !== -1 && r.groups.indexOf('WIOA Adult') === -1, 'under 18 -> Youth only');
+    eq(r.tier, 'priority', 'low-income -> priority tier');
     eq(r.selectiveService, false, 'under 18 -> no Selective Service note');
     console.log('[qualify] self-tests complete');
   }
@@ -315,12 +335,15 @@
         toggle('.result-workauth', r.workAuthConcern);
         toggle('.result-employer', false);
       } else {
-        if (r.likely) {
-          setText('.result-head', 'You may be a good candidate for WIOA-funded training.');
-          setText('.result-body', 'Your answers line up with the groups WIOA prioritizes. Only a MassHire career center can decide, but here’s exactly how to check:');
+        if (r.tier === 'priority') {
+          setText('.result-head', 'Your answers match WIOA’s priority groups.');
+          setText('.result-body', 'You checked one or more of the things WIOA gives priority for — so you’re well positioned. Only a MassHire career center can make the final call, but here’s exactly how to apply:');
+        } else if (r.tier === 'candidate') {
+          setText('.result-head', 'You look like a candidate for WIOA-funded training.');
+          setText('.result-body', 'WIOA’s Adult program is open to job seekers like you. A MassHire career center makes the final call and funding is limited, so it helps to start early. Here’s how:');
         } else {
-          setText('.result-head', 'You may still have options worth checking.');
-          setText('.result-body', 'Your answers don’t point to the highest-priority groups, but WIOA’s adult program is broad and eligibility is decided locally. Here’s how to check, plus other ways to pay:');
+          setText('.result-head', 'Here’s how to check what you qualify for.');
+          setText('.result-body', 'Your answers don’t point to the highest-priority groups, but eligibility is decided locally — and there are other ways to pay for training too. Here’s how to find out where you stand:');
         }
         setList('.result-group-list', r.groups.length ? r.groups : ['WIOA Adult']);
         toggle('.result-groups', true);
