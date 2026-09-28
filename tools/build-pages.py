@@ -1830,9 +1830,9 @@ _EXPRESS_FAQ = [
     ("How much does it pay back?",
      "Reimbursement rates and per-person and per-company caps are set by the program and change over time. This page shows the current figures we have on file, but confirm them with CommCorp before you budget."),
     ("How do I apply?",
-     "You choose eligible training, submit an application/agreement to CommCorp, run the training, and then request reimbursement. Career Skills Center can help you prepare the paperwork."),
-    ("Does Career Skills Center provide the training?",
-     "Career Skills Center helps employers apply for Express funding and handles the grant paperwork. Career Skills Center is not a listed Express training provider and does not have a course of its own; you choose an eligible training provider."),
+     "The employer applies directly with the state: you choose eligible training, submit an application/agreement to CommCorp, run the training, and then request reimbursement. You manage this yourself &mdash; a training provider does not apply on your behalf."),
+    ("What is Career Skills Center's role?",
+     "Career Skills Center provides training for employer teams. It does not apply for Express grants, handle the paperwork, or take payment for the grant process &mdash; the employer applies to the state directly. Career Skills Center is working toward becoming a listed Express provider."),
 ]
 
 PAGES.append(dict(
@@ -1912,8 +1912,9 @@ PAGES.append(dict(
           otherwise decided. [VERIFY]</li>
           <li><strong>Request reimbursement</strong> after the training is complete.</li>
         </ol>
-        <p>Career Skills Center can prepare and manage this paperwork for you.
-        <a class="link-yellow" href="staff-training-grants.html">See how we help</a>.</p>
+        <p>The employer manages this application directly with the state. Career Skills Center&rsquo;s role is to
+        provide the training. <a class="link-yellow" href="staff-training-grants.html">See the training we offer
+        employers</a>.</p>
       </div>
     </section>
 
@@ -1931,8 +1932,8 @@ PAGES.append(dict(
 
     <section class="cta-band" aria-labelledby="ex-cta">
       <div class="container text-center">
-        <h2 class="cta-title" id="ex-cta">Want help getting Express funding for your team?</h2>
-        <a class="btn btn-yellow" href="staff-training-grants.html">See staff training grants</a>
+        <h2 class="cta-title" id="ex-cta">Thinking about training your team?</h2>
+        <a class="btn btn-yellow" href="staff-training-grants.html">See the training we offer employers</a>
       </div>
     </section>
 """))
@@ -1942,12 +1943,13 @@ PAGES.append(dict(
 PAGES.append(dict(
     slug="employers.html", nav="employers.html",
     title="For Employers: Staff Training Grants, Apprenticeships &amp; Corporate Training | Career Skills Center",
-    ogtitle="For Employers: Training Help for Your Team",
-    desc="Career Skills Center helps employers pay for and organize staff training — state grant paperwork, Registered Apprenticeships, and custom corporate training.",
+    ogtitle="For Employers: Training for Your Team",
+    desc="Career Skills Center trains your team — and eligible Massachusetts employers can be reimbursed for the cost through the Express Program. Plus apprenticeships and custom corporate training.",
     main=hero("For Employers",
-              "Training Help for Your Team",
-              "Trained staff stay longer and do better work. We help employers pay for and organize training "
-              "&mdash; from state grant paperwork to apprenticeships to custom corporate training.",
+              "Training for Your Team",
+              "Career Skills Center trains your team. Through the Massachusetts Express Program, eligible "
+              "employers can be reimbursed for much of the cost &mdash; you apply to the state, we deliver the "
+              "training. We also support apprenticeships and custom corporate training.",
               None, ("Do I Qualify?", "qualify.html")) + """
 
     <section class="section">
@@ -1959,8 +1961,8 @@ PAGES.append(dict(
             <div class="pcard-body">
               <h3 class="pcard-title">Staff Training Grants</h3>
               <span class="pcard-rule" aria-hidden="true"></span>
-              <p>Massachusetts can reimburse part of what you spend training your staff through the Express
-              Program. We help you apply and handle the paperwork.</p>
+              <p>We provide the training. Through the Express Program, eligible employers can be reimbursed for
+              much of the cost &mdash; you apply to the state directly.</p>
               <a class="btn btn-outline-navy" href="staff-training-grants.html">See staff training grants</a>
             </div>
           </article>
@@ -1988,53 +1990,52 @@ PAGES.append(dict(
 
 """ + employer_form("employer",
                     heading="Tell us about your training needs",
-                    intro="Whatever you&rsquo;re trying to do &mdash; grants, apprenticeships or custom "
-                          "training &mdash; start here and we&rsquo;ll point you the right way.",
+                    intro="Tell us what you&rsquo;d like your team to learn &mdash; staff training, "
+                          "apprenticeships or custom corporate training &mdash; and we&rsquo;ll follow up.",
                     show_team_size=True) + """
 """))
 
 
 # ---- staff-training-grants.html (For Employers — service + calculator) -----
-# Service page. CSC helps employers apply for Express funding and handles the
-# paperwork. Never "our course"; follow EXPRESS_PROVIDER_LISTED (false).
-# Calculator logic lives in js/main.js (calcExpress, with self-tests); all figures
-# come from js/site-config.js.
+# Service page. CSC PROVIDES THE TRAINING only. It does NOT apply for grants,
+# handle Express paperwork, or get paid to help employers apply — the employer
+# applies to the state directly. Never "our course"; follow EXPRESS_PROVIDER_LISTED
+# (false). Calculator logic lives in js/main.js (calcExpress); figures from config.
 PAGES.append(dict(
     slug="staff-training-grants.html", nav="staff-training-grants.html",
-    title="Staff Training Grants: We Handle Your Express Program Paperwork | Career Skills Center",
-    ogtitle="Staff Training Grants: Express Program Help",
-    desc="Career Skills Center helps Massachusetts employers apply for Workforce Training Fund Express reimbursement and handles the paperwork. Estimate your reimbursement.",
+    title="Staff Training Grants: Train Your Team, the State Can Reimburse You | Career Skills Center",
+    ogtitle="Staff Training Grants for Massachusetts Employers",
+    desc="Career Skills Center trains your team. Through the Massachusetts Workforce Training Fund Express Program, eligible employers can be reimbursed for much of the cost. Estimate the reimbursement.",
     main=hero("For Employers &middot; Staff Training Grants",
-              "We Handle Your Staff Training Grant Paperwork",
-              "Massachusetts reimburses employers for training their staff through the Express Program. We help "
-              "you apply and manage the paperwork &mdash; so you get the money back without the hassle.",
+              "We Train Your Team. The State Can Reimburse the Cost",
+              "Career Skills Center provides the training your team needs. Through the Massachusetts Workforce "
+              "Training Fund Express Program, eligible employers can be reimbursed for much of what they spend "
+              "on training.",
               None, ("How Express works", "express-program-explained.html")) + """
 
     <section class="section">
       <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What we do</p>
-        <h2 class="section-title left">We handle the paperwork, you train your team</h2>
-        <p class="lede">The Express Program can pay back a large share of what you spend training your staff
-        &mdash; but the application, agreement and reimbursement steps take time most employers don&rsquo;t
-        have. That&rsquo;s where we come in.</p>
-        <ul class="check-list">
-          <li>We check whether your business and training are eligible.</li>
-          <li>We prepare and submit the Express application and agreement to CommCorp.</li>
-          <li>We help you keep the records the program requires.</li>
-          <li>We prepare your reimbursement request after training is done.</li>
-        </ul>
-        <p class="note"><strong>How we work:</strong> Career Skills Center helps you access Express funding and
-        handles the grant paperwork. We are not a listed Express training provider and don&rsquo;t sell a course
-        of our own &mdash; you choose an eligible training provider, and only CommCorp approves funding.</p>
+        <h2 class="section-title left">We provide the training</h2>
+        <p class="lede">Our role is simple: we train your team. We&rsquo;re building training for employers in
+        healthcare, IT and the skilled trades. The Massachusetts Express Program can then reimburse eligible
+        employers for a large share of what that training costs.</p>
+        <p class="note"><strong>How the funding works &mdash; and our role in it:</strong> the Express Program is
+        between you and the state. <strong>The employer applies for the grant directly</strong> and receives the
+        reimbursement. Career Skills Center does <strong>not</strong> apply on your behalf, handle the paperwork,
+        or take any payment for the grant process &mdash; we simply provide the training. Only the state approves
+        reimbursement.</p>
+        <p><a class="btn btn-yellow" href="express-program-explained.html">See how the Express Program works</a></p>
       </div>
     </section>
 
     <section class="section section--alt" id="calculator">
       <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Estimate</p>
-        <h2 class="section-title left">Estimate your reimbursement</h2>
-        <div class="section-intro"><p>A rough estimate based on the current program figures. Final amounts are
-        set by CommCorp &mdash; treat this as a guide, not a guarantee. [VERIFY]</p></div>
+        <h2 class="section-title left">Estimate the reimbursement</h2>
+        <div class="section-intro"><p>A rough estimate of what an eligible employer could be reimbursed, based on
+        the current program figures. Final amounts are set by the state &mdash; treat this as a guide, not a
+        guarantee. [VERIFY]</p></div>
         <div class="express-calc">
           <div class="calc-grid">
             <div class="calc-field">
@@ -2063,9 +2064,9 @@ PAGES.append(dict(
     </section>
 
 """ + employer_form("employer-express",
-                    heading="Get help with your Express application",
-                    intro="Tell us what you&rsquo;d like to train your team in and we&rsquo;ll help you check "
-                          "eligibility and handle the paperwork.",
+                    heading="Tell us about training your team",
+                    intro="Tell us what you&rsquo;d like your team to learn and we&rsquo;ll follow up about the "
+                          "training we can provide.",
                     show_team_size=True) + """
 
     <section class="section">
@@ -2195,12 +2196,12 @@ PAGES.append(dict(
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>What we&rsquo;re building</p>
         <h2 class="section-title left">Training built around your team</h2>
         <p class="lede">We&rsquo;re building training for employers. Tell us what your team needs, and
-        we&rsquo;ll work with you to shape it. If state funding can help cover the cost, we&rsquo;ll help you
-        pursue that too.</p>
+        we&rsquo;ll work with you to shape it. Eligible employers may be able to offset the cost through the
+        state Express Program, which the employer applies for directly.</p>
         <ul class="check-list">
           <li>Skills your team needs, not off-the-shelf filler</li>
           <li>Options whether or not you use state funding</li>
-          <li>Help checking whether grants like the Express Program can offset the cost</li>
+          <li>Training built to be eligible for reimbursement where it applies</li>
         </ul>
         <p>Career Skills Center plans to offer training in healthcare, IT and the skilled trades. Corporate
         training details will follow as our programs launch.</p>
@@ -3006,10 +3007,11 @@ PAGES.append(dict(
         <h2 class="section-title left">Three ways we help</h2>
         <p>Career Skills Center is a new company, and we&rsquo;re building in three directions:</p>
         <ul class="arrow-list">
-          <li><strong>Help paying for training.</strong> We explain how funding like WIOA and the state
-          Express Program works, and we help people and employers find and apply for it.</li>
-          <li><strong>Employer and apprenticeship training.</strong> We help employers organize staff
-          training and Registered Apprenticeships, and handle the grant paperwork.</li>
+          <li><strong>Clear funding guidance.</strong> We explain how funding like WIOA and the state Express
+          Program works, so workers and employers understand their options and where to go.</li>
+          <li><strong>Training for employers and apprenticeships.</strong> We provide training for employer
+          teams and support Registered Apprenticeships. Eligible employers can be reimbursed for training
+          through the state &mdash; they apply directly; we deliver the training.</li>
           <li><strong>Corporate training.</strong> As we grow, we&rsquo;re building training that companies
           can bring to their teams, funded or self-paid.</li>
         </ul>
@@ -3267,7 +3269,7 @@ PAGES.append(dict(
 {faq("Do you accept VA benefits?", 'Career Skills Center does not have its own courses yet. If you served, you may have education benefits like the GI Bill &mdash; the VA&rsquo;s GI Bill Comparison Tool shows which schools are approved.')}
 
           <p class="faq-group-title">For employers</p>
-{faq("Can you help my company pay for staff training?", 'Yes. Massachusetts can reimburse part of what you spend training your staff through the Workforce Training Fund Express Program. We help you apply and handle the paperwork &mdash; see <a class="link-yellow" href="staff-training-grants.html">Staff Training Grants</a> and <a class="link-yellow" href="express-program-explained.html">how Express works</a>.')}
+{faq("Can my company get training reimbursed?", 'We provide the training; the reimbursement comes from the state. Through the Workforce Training Fund Express Program, eligible Massachusetts employers can be reimbursed for much of what they spend on training &mdash; you apply directly to the state. See <a class="link-yellow" href="staff-training-grants.html">Staff Training Grants</a> and <a class="link-yellow" href="express-program-explained.html">how Express works</a>.')}
 {faq("Do you run apprenticeships?", 'We help employers set up and support Registered Apprenticeships &mdash; paid, earn-while-you-learn training that builds a loyal, skilled pipeline. See <a class="link-yellow" href="apprenticeships.html">Apprenticeship Programs</a>.')}
 {faq("Can you train my team on something specific?", 'Tell us what your team needs. We&rsquo;re building <a class="link-yellow" href="corporate-training.html">corporate training</a> for employers, with or without state funding.')}
 
@@ -4896,7 +4898,7 @@ PAGES.append(dict(
         <ul>
           <li>To respond to your inquiry and help you understand your training and funding options</li>
           <li>To email the results and next steps you request</li>
-          <li>To help employers apply for training grants when they ask us to</li>
+          <li>To respond to employer training inquiries</li>
           <li>To send you updates you asked for, such as when training launches</li>
           <li>To improve this website and our guides</li>
           <li>To meet legal and reporting obligations</li>

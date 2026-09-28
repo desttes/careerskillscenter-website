@@ -2,9 +2,10 @@
 
 Claude Code updates this file at the end of every session. The strategy side (Cowork + the "ETPL Massachusetts" Project) reads it.
 
-## Current state (as of 2026-09-27)
+## Current state (as of 2026-09-28)
 - Now building: **`docs/SITE_STRUCTURE_SPEC.md` v1.5**, which supersedes the nav, page list and build order in GUIDE_MODE_SPEC v1.4. Everything else in v1.4 still applies (no ghost courses, funding-language rules, `[VERIFY]` sourcing, `COURSE-DEPENDENT` markers, no deploys without Emilio's OK).
 - **v1.5 is DONE locally (all 7 build-order groups), not deployed.** See the 2026-09-27 session entry below.
+- **⚠️ CHANGE FROM CLAUDE.md / the specs (Emilio, 2026-09-28):** Career Skills Center **provides the training only.** It does **not** help employers apply for grants, handle Express paperwork, or take payment for the grant process — Emilio says the Massachusetts Express rules mean a provider shouldn't help with or be paid for the application. All "we handle the paperwork / we help you apply" copy has been removed and reframed to: *we provide the training; eligible employers apply to the state directly and get reimbursed.* This **contradicts `CLAUDE.md`** ("CSC helps them get state-funded staff training … and handles the grant paperwork") and v1.5 §4 ("We help you apply for Express funding and handle the paperwork") — **strategy should update `CLAUDE.md` and the spec to match.**
 - **Blocking Emilio (needed to clear `[VERIFY]` and deploy the new pages):** the Express Program figures in `js/site-config.js` (rates/caps/timeline, confirm with express@commcorp.org), the WIOA low-income example numbers, the Massachusetts/federal apprenticeship grants & tax credits, and confirmation of the Selective Service line. Also: founder name/photo for `about.html`.
 
 ### Earlier (as of 2026-09-26)
