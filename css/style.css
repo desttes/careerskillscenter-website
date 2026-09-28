@@ -464,17 +464,18 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 }
 .contact-form input:user-invalid, .contact-form select:user-invalid { border-color: #ff8a8a; }
 .contact-form .btn { justify-self: start; margin-top: 6px; }
-/* Interest-list form sits on a LIGHT section — override the dark-dialog input styling. */
-.interest-form input, .interest-form select, .interest-form textarea {
+/* Interest-list and employer forms sit on a LIGHT section — override the dark-dialog input styling. */
+.interest-form input, .interest-form select, .interest-form textarea,
+.employer-form input, .employer-form select, .employer-form textarea {
   border-color: var(--line); background: #fff; color: var(--ink);
 }
-.interest-form ::placeholder { color: var(--muted); }
-.interest-form select { color: var(--muted); }
-.interest-form select:valid { color: var(--ink); }
+.interest-form ::placeholder, .employer-form ::placeholder { color: var(--muted); }
+.interest-form select, .employer-form select { color: var(--muted); }
+.interest-form select:valid, .employer-form select:valid { color: var(--ink); }
 .consent-row { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-light); }
 .consent-row input { width: auto; margin-top: 3px; flex: none; }
-.interest-form .form-status.is-error { color: #c0392b; }
-.interest-form .form-status.is-success { color: var(--yellow-dark); }
+.interest-form .form-status.is-error, .employer-form .form-status.is-error { color: #c0392b; }
+.interest-form .form-status.is-success, .employer-form .form-status.is-success { color: var(--yellow-dark); }
 .form-status { min-height: 1.5em; font-size: 14px; margin: 6px 0 0; }
 .form-status.is-error { color: #ffb4b4; }
 .form-status.is-success { color: var(--yellow); }

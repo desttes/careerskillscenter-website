@@ -302,7 +302,7 @@ def employer_form(source, heading="Talk to us about training your team",
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>{eyebrow}</p>
         <h2 class="section-title left">{heading}</h2>
         <div class="section-intro"><p>{intro}</p></div>
-        <form class="contact-form" action="submit.php" method="post" novalidate
+        <form class="contact-form employer-form" action="submit.php" method="post" novalidate
               data-success="Thanks &mdash; we&rsquo;ve got your details and will be in touch.">
           <input type="hidden" name="source" value="{source}">
           <input type="text" class="hp-field" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
