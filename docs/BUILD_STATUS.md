@@ -30,6 +30,22 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-28 (later) — Post-launch polish: www 301, cookie note, image renames (LOCAL, not deployed)
+Tackled two of the four post-launch open items (Emilio: "no preference," so I did the two that need no input from him). The other two (founder name/photo on `about.html`; real street address/suite) still need content from Emilio. All committed on `main`; **nothing deployed** (awaiting Emilio's OK).
+
+- **www → non-www 301 (`.htaccess`).** Added a `mod_rewrite` block at the top that 301-redirects `www.careerskillscenter.com` → `careerskillscenter.com` (keeps GA4/SEO on one host). Sits above the existing `mod_alias` redirects.
+- **Cookie/analytics note (privacy policy).** The policy already had a "Cookies and analytics" section describing GA4 + cookies; strengthened it with a concrete opt-out (Google Analytics Opt-out Browser Add-on link) alongside the existing browser-settings / Google privacy-policy links. Edited in `tools/build-pages.py` and rebuilt `privacy-policy.html`.
+- **Image renames (uppercase → lowercase-hyphen).** `git mv images/Hero.webp → images/hero.webp` and `images/Todaybanner.webp → images/today-banner.webp`. Updated every **source** reference — `index.html` (og:image, preload, hero `<img>`, comments), `tools/build-pages.py` (shared `og:image`, `hero()` default, the Financial-Aid and Contact hero calls), and a comment in `js/main.js` — then rebuilt. `grep` confirms **no `Hero.webp`/`Todaybanner.webp` refs remain** in any source or generated page (excluding the untracked `it-careers-massachusetts-draft.html` and `Claude outputs/`).
+  - Left `images/Todaybanner2.webp` untouched — it's the reserved `data-hover-image` on the trades card, never loaded, and outside the two filenames Emilio named.
+- **Verified:** build clean (26 pages). Against the running dev server: `images/hero.webp` and `images/today-banner.webp` both 200; homepage references the new names. Mandatory `[VERIFY]`/`DRAFT` grep clean on all touched pages. (Local macOS FS is case-insensitive, so the old paths still resolve here — the rename only *matters* on the live Linux server.)
+
+**⚠️ Deploy notes for these changes:**
+- Upload the renamed images **and remove the old server files** `images/Hero.webp` + `images/Todaybanner.webp` — the live Linux server is case-sensitive, so the old-cased files would otherwise linger as orphans (and any external link/cache pointing at the old paths would 404). Live `images/` should end up as {hero, hero2, today-banner, aboutus, comptia, electrician, medicalbilling}.webp.
+- Upload the new `.htaccess` (www 301) and the rebuilt `privacy-policy.html`.
+- Re-run the pre-deploy `[VERIFY]`/`DRAFT` grep and exclude `it-careers-massachusetts-draft.html`.
+
+**Still open (need Emilio's content):** founder name/photo for `about.html`; real street address/suite for footer + `contact.html`. Also noted in passing: `privacy-policy.html` still carries a bracketed `[Confirm and list any additional advertising or tracking tools before publishing.]` placeholder (class `tbd`) — it shipped live in the 2026-09-28 deploy and isn't caught by the `[VERIFY]`/`DRAFT` grep; decide whether to resolve/remove it.
+
 ### 2026-09-28 — LIVE DEPLOY of the full v1.5 site + blog (Emilio-authorized)
 Emilio directed the full deploy and reviewed every `[VERIFY]`/`DRAFT` one by one in this session. **The whole site is now LIVE at https://careerskillscenter.com**, including the blog. Committed locally as restore point `6083475` before deploy.
 

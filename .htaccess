@@ -4,6 +4,14 @@
 # with REDIRECTS in tools/build-pages.py and the "Retired URLs" table in
 # docs/COURSE_CONTENT_REGISTER.md.
 
+# Canonical host: redirect www -> non-www (301). GA4 is live; keep one host so
+# analytics and SEO aren't split across www/non-www.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.careerskillscenter\.com$ [NC]
+  RewriteRule ^(.*)$ https://careerskillscenter.com/$1 [R=301,L]
+</IfModule>
+
 <IfModule mod_alias.c>
   # Old program pages -> career-field guides
   Redirect 301 /medical-billing-coding.html   /healthcare-careers.html

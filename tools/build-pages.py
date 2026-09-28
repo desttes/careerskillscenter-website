@@ -65,7 +65,7 @@ PAGE = """<!DOCTYPE html>
   <meta property="og:title" content="@@OGTITLE@@">
   <meta property="og:description" content="@@DESC@@">
   <meta property="og:url" content="https://careerskillscenter.com/@@SLUG@@">
-  <meta property="og:image" content="https://careerskillscenter.com/images/Hero.webp">
+  <meta property="og:image" content="https://careerskillscenter.com/images/hero.webp">
   <meta property="og:type" content="website">
 
   <!-- Fonts: Poppins (display) + Roboto (everything else) -->
@@ -150,7 +150,7 @@ def program_cards():
         </div>"""
 
 
-def hero(label, title, lede, img="images/Hero.webp", btn2=("Career Paths", "career-paths.html")):
+def hero(label, title, lede, img="images/hero.webp", btn2=("Career Paths", "career-paths.html")):
     bg = (f'\n      <div class="page-hero-bg"><img src="{img}" alt="" fetchpriority="high" decoding="async"></div>'
           if img else "")
     return f"""    <section class="page-hero">{bg}
@@ -2816,7 +2816,7 @@ PAGES.append(dict(
     main=hero("Financial Aid", "Financial Aid",
               "You may qualify for funding that covers some or all of your training. Find out in a single "
               "phone call.",
-              "images/Todaybanner.webp") + f"""
+              "images/today-banner.webp") + f"""
 
     <section class="section">
       <div class="container">
@@ -4714,7 +4714,7 @@ PAGES.append(dict(
     main=hero("Contact", "Contact Us",
               "You’re moments away from a new career and a brighter future. Tell us a little about yourself "
               "and we’ll take it from there.",
-              "images/Hero.webp") + """
+              "images/hero.webp") + """
 
     <section class="section">
       <div class="container contact-grid">
@@ -4861,7 +4861,10 @@ PAGES.append(dict(
         <p>This website uses <strong>Google Analytics 4 (GA4)</strong> to understand how visitors use the site
         &mdash; for example, which pages are viewed and when a form is submitted. GA4 sets cookies and collects
         usage data such as your approximate location, device and browser. We use this only in aggregate to
-        improve the site. You can limit this with your browser settings or a tracking-blocker. See
+        improve the site. You can limit this with your browser settings or a tracking-blocker, or opt out of
+        Google Analytics across all sites with the
+        <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics
+        Opt-out Browser Add-on</a>. See
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google&rsquo;s privacy
         policy</a> for how Google handles this data.</p>
         <p><span class="tbd">[Confirm and list any additional advertising or tracking tools before publishing.]</span></p>

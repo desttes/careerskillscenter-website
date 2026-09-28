@@ -37,7 +37,7 @@
     });
   });
 
-  /* ---------- Hero crossfade (Hero.webp -> hero2.webp) ---------- */
+  /* ---------- Hero crossfade (hero.webp -> hero2.webp) ---------- */
   const slides = document.querySelectorAll('.hero-slide');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (slides.length > 1 && !reduceMotion) {
