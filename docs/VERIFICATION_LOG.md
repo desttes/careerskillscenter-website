@@ -317,3 +317,12 @@ For `apprenticeships.html`. Corroborated on the state/federal sites (not in proj
 - **GROW / RTI grants:** can fund the related (classroom) instruction; amounts set per grant round; program rules bar passing RTI cost to the apprentice. Sources: mass.gov Registered Apprenticeship funding opportunities; DAS Issuance 27-073025 (GROW FY26).
 - **Corrected a misconception:** "ITA-train the person → then they become an apprentice → employer claims the credit" is NOT how it works. The credit requires a *registered apprentice* (trained on the job). ITA (classroom-first) and apprenticeship (earn-while-you-learn) are two separate funnels; a pre-apprenticeship can bridge them. Whether WIOA/ITA can fund apprenticeship RTI specifically is still unconfirmed — left off the site.
 - Applied to `js/site-config.js` (APPRENTICE_TAX_CREDIT_* / APPRENTICE_MIN_DAYS) and rendered on apprenticeships.html via [data-cfg].
+
+### K1. ITA can fund apprenticeship related instruction (confirmed 2026-09-28)
+
+Follow-up to K. Corroborated on DOL: an Individual Training Account (ITA) can pay for the
+related technical instruction (RTI / classroom part) of a Registered Apprenticeship.
+- Registered Apprenticeships have **automatic ETPL eligibility** (20 CFR 680.470); the sponsor opts in.
+- ITAs may cover apprenticeship classroom/distance-learning costs; **local WDBs/AJCs set the allowable-cost policy** (TEGL 13-16). So it varies by MassHire board, and the apprentice must personally be WIOA-eligible.
+- Source: U.S. DOL TEGL 13-16 (dol.gov/node/162570); 20 CFR 680.470.
+Added to apprenticeships.html (funding section + FAQ). Not asserting the wage-side OJT reimbursement detail on-site (kept scope to RTI).

@@ -2105,6 +2105,8 @@ _APPR_FAQ = [
      "No &mdash; that&rsquo;s a common mix-up. An apprenticeship flips the usual order: you hire the person first and they learn on the job while they work. It&rsquo;s not a subsidy for hiring someone who is already fully trained. (Separately, a pre-apprenticeship can prepare someone to enter an apprenticeship.)"),
     ("How is this different from an ITA / WIOA training voucher?",
      "They&rsquo;re two different paths. An ITA voucher pays for classroom training before a job, at a state-approved school. An apprenticeship is a paid job where training happens during employment. The apprentice tax credit only applies to registered apprentices &mdash; not to someone you hire after they finish ITA-funded training."),
+    ("Can a WIOA voucher (ITA) help pay for an apprenticeship?",
+     "Yes &mdash; for the classroom (related instruction) part. Registered Apprenticeships are automatically eligible for the state training-provider list, so an ITA can cover an apprentice&rsquo;s related instruction when the apprentice personally qualifies for WIOA. Local MassHire boards set the caps and eligible occupations, so it varies by region. (Federal guidance TEGL 13-16; 20 CFR 680.470.)"),
     ("How much can an employer get back?",
      "Massachusetts offers a Registered Apprentice Tax Credit worth 50% of an apprentice&rsquo;s wages, up to $4,800 per apprentice per year and up to $100,000 per employer per year, for up to two consecutive tax years. GROW grants can also help fund the classroom (related instruction) side. Amounts and rules are set by the state."),
     ("Which apprentices qualify for the tax credit?",
@@ -2195,8 +2197,15 @@ PAGES.append(dict(
         classroom portion of an apprenticeship. Award amounts are set per grant round, and the rules require that
         the cost of related instruction <strong>not</strong> be passed on to the apprentice. This classroom piece
         is exactly what Career Skills Center can provide.</p>
+        <p>A WIOA training voucher can cover the classroom side too. Under federal rules, Registered
+        Apprenticeships are <strong>automatically eligible</strong> for the state&rsquo;s Eligible Training
+        Provider List, so an <strong>Individual Training Account (ITA)</strong> can pay for an apprentice&rsquo;s
+        related instruction. The catch: the apprentice must personally qualify for WIOA, and each MassHire board
+        sets its own caps and eligible occupations &mdash; so this varies by region.</p>
         <p class="role-src">Sources: mass.gov &mdash; Apply for a Registered Apprentice Tax Credit (DAS Issuance
-        TY2026); Registered Apprenticeship funding opportunities / GROW grants; apprenticeship.gov (earn-while-you-learn model). Checked 2026-09-28.</p>
+        TY2026); Registered Apprenticeship funding opportunities / GROW grants; apprenticeship.gov
+        (earn-while-you-learn model); U.S. DOL TEGL 13-16 and 20 CFR 680.470 (ITA for apprenticeship related
+        instruction; automatic ETPL eligibility). Checked 2026-09-28.</p>
       </div>
     </section>
 
