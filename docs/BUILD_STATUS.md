@@ -3,8 +3,9 @@
 Claude Code updates this file at the end of every session. The strategy side (Cowork + the "ETPL Massachusetts" Project) reads it.
 
 ## Current state (as of 2026-09-28)
+- **🚀 THE FULL v1.5 SITE IS NOW LIVE at https://careerskillscenter.com (Emilio authorized the deploy, 2026-09-28).** All `[VERIFY]`/`DRAFT` were resolved in an Emilio review session, so the blog deployed too. See the "2026-09-28 — LIVE DEPLOY" entry below.
 - Now building: **`docs/SITE_STRUCTURE_SPEC.md` v1.5**, which supersedes the nav, page list and build order in GUIDE_MODE_SPEC v1.4. Everything else in v1.4 still applies (no ghost courses, funding-language rules, `[VERIFY]` sourcing, `COURSE-DEPENDENT` markers, no deploys without Emilio's OK).
-- **v1.5 is DONE locally (all 7 build-order groups), not deployed.** See the 2026-09-27 session entry below.
+- **v1.5 is DONE and DEPLOYED.** See the 2026-09-27 (build) and 2026-09-28 (LIVE DEPLOY) session entries below.
 - **⚠️ CHANGE FROM CLAUDE.md / the specs (Emilio, 2026-09-28):** Career Skills Center **provides the training only.** It does **not** help employers apply for grants, handle Express paperwork, or take payment for the grant process — Emilio says the Massachusetts Express rules mean a provider shouldn't help with or be paid for the application. All "we handle the paperwork / we help you apply" copy has been removed and reframed to: *we provide the training; eligible employers apply to the state directly and get reimbursed.* This **contradicts `CLAUDE.md`** ("CSC helps them get state-funded staff training … and handles the grant paperwork") and v1.5 §4 ("We help you apply for Express funding and handle the paperwork") — **strategy should update `CLAUDE.md` and the spec to match.** (Also saved to Code's memory.)
 - **Still blocking deploy (`[VERIFY]` / missing):** Express per-person cap ($3,000/course), per-instructional-hour cap ($300), large-employer rate (50%) and the 21-day autostart in `js/site-config.js` — the CommCorp guidelines page appears to **confirm the $3,000 and $300 caps** (see VERIFICATION_LOG, and note the current guidelines show ≤100 employees at up to 100%, superseding the old 51–100 = 50% tier); the WIOA low-income example numbers; the Selective Service line; and the founder name/photo for `about.html`.
 - **Cleared this session:** Express rate/annual-cap/size/timeline (Emilio-confirmed) and the Massachusetts apprenticeship tax-credit + GROW/ITA-RTI figures (sourced from mass.gov / DOL) are no longer `[VERIFY]`.
@@ -28,6 +29,38 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
+
+### 2026-09-28 — LIVE DEPLOY of the full v1.5 site + blog (Emilio-authorized)
+Emilio directed the full deploy and reviewed every `[VERIFY]`/`DRAFT` one by one in this session. **The whole site is now LIVE at https://careerskillscenter.com**, including the blog. Committed locally as restore point `6083475` before deploy.
+
+**Funding verifies resolved** (sources: CommCorp Express Program Guidelines + Emilio's 851 Ventures training FAQ):
+- Express **$3,000/person/course** and **$300/instructional hour** confirmed → `[VERIFY]` cleared in `site-config.js`.
+- **Dropped the obsolete "larger employers 50%" tier** (current rule: ≤100 employees at up to 100%). Removed `EXPRESS_RATE_LARGE`; collapsed the reimbursement calculator (`calcExpress` + `staff-training-grants.html`) to the single ≤100-employee model.
+- **Removed the unverified 21-day auto-start** claim + `EXPRESS_AGREEMENT_AUTOSTART_DAYS`.
+- **Removed the regional WIOA income-example dollars** ($15,960–$60,124) from `qualify.html` and blog #2 → now "varies by region/household; a MassHire center checks." Removed `INCOME_EXAMPLE_*`.
+- Selective Service line (confirmed by Emilio) and AAPC CPC exam cost **$425/$499** (re-verified on aapc.com) kept.
+
+**Blog — reviewed post by post, 7 approved + 1 removed:**
+- **Removed "Highest-Paying Certifications" entirely** (Emilio) — deleted the file, its 3 career-page cross-link cards, and 3 inline links in posts #6/#7/#8; out of the index/sitemap.
+- **Removed all real wage/pay figures site-wide** (Emilio: "no real figures"). Blog now uses qualitative wording + a BLS look-up link. The old program pages that still contained BLS medians (`it-support-specialist.html`, `medical-billing-coding.html`) are 301 redirect stubs, so those figures never render live.
+- **Corrected the ITA approval model** (Emilio): the student picks from the already-approved **ETPL**; the counselor does **not** vet the school. Approval = eligible + program-on-ETPL + funding. Fixed post #3 (was "be ready to explain how training leads to a job"). Saved to Code memory.
+- Removed the cap / "pay the difference" framing from posts #3 and #4.
+- Reframed post #2's "training has to point to a real job" (was student-burden wording).
+- Cleared all 8 `DRAFT` markers (7 to "Approved by Emilio"; #5 deleted).
+
+**Chrome cleanup:** removed the visible "Accreditation badge" footer placeholder (compliance); contact **dialog** "Program of interest" → "Reason for contacting" (matches `contact.html`; no implied programs).
+
+**Deploy details (SFTP, `premium164-1.web-hosting.com:21098`, user `ihrwgcpm`, docroot `~/careerskillscenter.com/`):**
+- Uploaded 33 root `*.html` (real pages + 301 redirect stubs), **`.htaccess`** (was missing on the server — 301s are now active), `submit.php`, `css/`, `js/`, **`blog/` (7 posts, new dir)**, `sitemap.xml` (27 urls, includes blog), `robots.txt`, `llms.txt`.
+- **Images managed:** uploaded only the **7 referenced images**; **removed 15 orphan images** from the server (incl. the `billing&coding.webp` `&` file, old hero variants, person photos, unused logos) so live `images/` = exactly {Hero, Todaybanner, aboutus, comptia, electrician, hero2, medicalbilling}.webp. Excluded the uncommitted `it-careers-massachusetts-draft.html` from the upload.
+- **Verified live:** homepage + all new pages/blog/assets 200; every 301 redirect resolves (tuition→student-financing, our-programs→career-paths, it-support-specialist→it-careers, medical-billing-coding→healthcare-careers, terms-of-use→terms, MA-named guides→neutral); removed images 404; **0 `[VERIFY]`** on live funding pages; `submit.php` GET→405 (mailer active); removed post #5 → 404; dialog shows "Reason for contacting"; no "Accreditation badge" text.
+
+**Open TODOs / notes for Emilio:**
+- Two uppercase image filenames remain (`Hero.webp`, `Todaybanner.webp`) — work fine (refs match), but rename to lowercase-hyphen sometime for safety.
+- `about.html` still uses the founder **placeholder** (name/photo) — supply when ready.
+- Real **street address/suite** still TBD (footer/contact say "Quincy, MA 02171").
+- Consider a `www → non-www` 301 and a cookie/analytics note in the privacy policy (GA4 is live).
+- If a "Paying for Training in Massachusetts" checklist PDF is produced later, the pillar post's download note was removed and can be re-added.
 
 ### 2026-09-28 — Employer compliance rework + Express/apprenticeship funding (LOCAL, not deployed)
 Follow-up to v1.5, driven by Emilio. All committed on `main`, verified in the in-app browser. **Nothing deployed.**
