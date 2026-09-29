@@ -2,7 +2,7 @@
 
 **Purpose of this document:** hand this project to a fresh chat/session. It captures what the site is, how it's built, what's done, what's still open, and exactly how to deploy it.
 
-> **STATUS: LIVE.** The site is deployed and serving over HTTPS at **https://careerskillscenter.com** (Namecheap shared hosting). Deployment is done over SSH/SFTP with an authorized key — see **§5**. Last major deploy: **2026-09-28**.
+> **STATUS: LIVE.** The site is deployed and serving over HTTPS at **https://careerskillscenter.com** (Namecheap shared hosting). Deployment is done over SSH/SFTP with an authorized key — see **§5**. Last major deploy: **2026-09-29** — the `qualify.html` results now give a confident **yes / maybe / no** verdict (with a per-result "why" reason), plus a **www→non-www 301** and the consent-checkbox layout fix. (Note: the yes/no verdict is a deliberate deviation from Spec v1.5 §2 / the CLAUDE.md "use 'may qualify'" rule — Emilio's call; see `docs/BUILD_STATUS.md` 2026-09-29.)
 
 > **✅ Guide mode v1.5 — DEPLOYED (2026-09-28).** The full guide-mode site (`docs/SITE_STRUCTURE_SPEC.md` v1.5, superseding GUIDE_MODE_SPEC v1.4) is now live, **including the blog**. Live nav: Funding Guides / For Employers / Career Paths / Resources / About / Contact, header CTA "Do I Qualify?". `.htaccess` 301s are active. Funding figures render from `js/site-config.js`; all `[VERIFY]`/`DRAFT` were resolved (Emilio review, 2026-09-28). **The page list / nav in §3 below and `docs/SITE-STRUCTURE.md` / `docs/PAGES.md` are OUTDATED** — treat `docs/SITE_STRUCTURE_SPEC.md` (v1.5) + `docs/BUILD_STATUS.md` (2026-09-28 entry) as the source of truth. When deploying: always `put .htaccess`, upload only the 7 referenced `images/`, and exclude `it-careers-massachusetts-draft.html` (uncommitted experiment). No pay/salary figures anywhere; the only on-site $ figures are Express funding caps.
 
@@ -131,6 +131,10 @@ EOF
 ```
 > **Guide mode (GUIDE_MODE_SPEC v1.4, Sept 2026):** the deploy now MUST include **`.htaccess`** (the 301 redirects for the retired pages) — without it, old URLs like `tuition.html`/`our-programs.html` serve only the meta-refresh stubs instead of a real 301. `put -r js` already carries `js/site-config.js` (the guide/course switches). `*.html` includes the 10 redirect stubs. As before, `blog/` stays excluded until the drafts are approved, and the auto-generated `sitemap.xml` lists the blog drafts — keep using the blog-free live sitemap until then.
 (For a small change, `put` only the specific files instead of everything.)
+
+> **⚠️ Images — do NOT `put -r images`.** The local `images/` folder still contains ~15 orphan files that were deliberately removed from the server (the live site keeps only the **7 referenced** images: `hero.webp`, `hero2.webp`, `today-banner.webp`, `aboutus.webp`, `comptia.webp`, `electrician.webp`, `medicalbilling.webp`). A recursive put re-adds all the orphans. Upload changed images individually (`put images/foo.webp images/foo.webp`) and `rm` any you rename/remove. (2026-09-29: `Hero.webp`→`hero.webp` and `Todaybanner.webp`→`today-banner.webp` were renamed to lowercase-hyphen; the old-cased files were `rm`'d from the server.)
+
+> **⚠️ Exclude the draft on `put *.html`.** `it-careers-massachusetts-draft.html` is an uncommitted experiment in the repo root; `put *.html` will glob it. Move it aside before deploy (or `rm` it from the server after) so it never ships.
 
 **Form backend (`submit.php`).** The contact forms POST to `submit.php`, a plain-PHP mailer that emails submissions to `vcanal@careerskillscenter.com` (no database). cPanel runs PHP, so no extra setup is needed beyond uploading the file. Notes:
 - Delivery vs. display: leads are sent to `vcanal@careerskillscenter.com` (`CSC_RECIPIENT`), while visitors only ever see the public `info@careerskillscenter.com` (`CSC_PUBLIC_EMAIL`). Make sure the `vcanal@` mailbox/alias exists in cPanel.
