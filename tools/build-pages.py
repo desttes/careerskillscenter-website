@@ -2435,7 +2435,7 @@ PAGES.append(dict(
 
             <fieldset class="qualify-step" data-autoadvance="1">
               <legend>Do you live in Massachusetts?</legend>
-              <p class="qualify-help">This check covers Massachusetts. WIOA exists in every state, though.</p>
+              <p class="qualify-help">These training funds are for Massachusetts residents. WIOA exists in every state, though.</p>
               <div class="qualify-options">
 """ + _q_opts("live_ma", [("yes", "Yes"), ("no", "No")]) + """
               </div>
@@ -2550,7 +2550,7 @@ PAGES.append(dict(
               <p class="result-workauth note" hidden>Work authorization is generally required for WIOA-funded
               training. A MassHire career center can explain your options.</p>
 
-              <p class="result-notma note" hidden>WIOA exists in every state, but this check covers Massachusetts.
+              <p class="result-notma note" hidden>WIOA exists in every state &mdash; you&rsquo;d apply where you live.
               Find your local American Job Center at <a class="link-yellow" href="https://www.careeronestop.org/LocalHelp/AmericanJobCenters/find-american-job-centers.aspx" target="_blank" rel="noopener">CareerOneStop</a>.</p>
 
               <p class="result-employer" hidden>Already working? Your employer may be able to get training costs
@@ -2570,7 +2570,7 @@ PAGES.append(dict(
                    Course mode: replace with the matching CSC course + enroll CTA. -->
               <p class="result-field-note"></p>
 
-              <p class="qualify-disclaimer">This tool doesn&rsquo;t decide your funding. Only a MassHire career
+              <p class="qualify-disclaimer">These answers don&rsquo;t decide your funding. Only a MassHire career
               center can approve state training funds. We&rsquo;ll help you understand what you may qualify for.</p>
 
               <!-- Optional: email these steps. Not required to see results. -->

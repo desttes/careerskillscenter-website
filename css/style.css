@@ -552,6 +552,7 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .qualify-result .result-verdict--yes   { color: #1B7A3D; background: #E6F4EC; }
 .qualify-result .result-verdict--maybe { color: #8A5A00; background: #FDF3D9; }
 .qualify-result .result-verdict--no    { color: #9A2A2A; background: #FBEAEA; }
+.qualify-result .result-verdict--ma    { color: #44506A; background: #EDEFF2; }
 .qualify-result .note { background: var(--surface-alt); border-left: 3px solid var(--yellow); padding: 12px 16px; font-size: 15px; border-radius: 0 8px 8px 0; }
 .qualify-email { margin-top: 30px; padding-top: 24px; border-top: 1px solid #e3e3e3; }
 .qualify-email .qualify-fields { margin-top: 12px; }

@@ -369,10 +369,10 @@
         toggle('.result-otherpay', true);
         toggle('.result-employer', false);
       } else if (!r.inMA) {
-        setVerdict('maybe', 'This check covers Massachusetts');
-        setText('.result-head', 'This check covers Massachusetts.');
-        setWhy('This tool only covers Massachusetts. WIOA exists everywhere, so we point you to a local American Job Center in your state.');
-        setText('.result-body', 'WIOA training funds exist in every state, but the steps below are for Massachusetts. Use the link to find your local American Job Center — and you can still explore the field you picked.');
+        setVerdict('ma', 'Outside Massachusetts');
+        setText('.result-head', 'You’d apply in your home state, not Massachusetts.');
+        setWhy('WIOA training funds are run by each state. Since you don’t live in Massachusetts, you’d apply where you live — not here.');
+        setText('.result-body', 'You won’t qualify for funding through Massachusetts (MassHire), but every state runs the same kind of WIOA program. Find your local American Job Center to see whether you qualify at home — and you can still explore the field you picked.');
         toggle('.result-groups', false);
         toggle('.result-priority', false);
         toggle('.result-steps-wrap', false);
