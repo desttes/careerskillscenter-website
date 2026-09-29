@@ -30,6 +30,22 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 ## Session log
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
+### 2026-09-29 — LIVE DEPLOY: qualify verdict rework + post-launch polish (Emilio-authorized)
+Emilio said "send these changes live." Deployed the full stack of local commits since the 2026-09-28 launch. **All live at https://careerskillscenter.com.**
+
+**What went live (commits `ece6ec3` → `c95c980`):**
+- **qualify.html verdict system** — confident yes / maybe / no result (replaces the always-"you may" behavior), each with a colored badge, a "Why you're seeing this" reason line, priority-flag vs dislocated-worker distinction, and the honest out-of-state ("Outside Massachusetts → apply in your home state") + work-authorization ("Likely not a fit") branches. Green checkmark + rectangular badge on eligible; focus-outline flash removed.
+- **Copy fix** — removed the now-inaccurate "never gives a yes/no verdict" line from the hero, meta desc, wioa-explained teaser and home CTA → "isn't an official decision."
+- **Consent-checkbox layout bug** fixed site-wide (checkbox no longer stretches full-width; label flows normally) on the qualify email form + interest-list form.
+- **www → non-www 301** added to `.htaccess`; **GA4 opt-out link** added to the privacy policy.
+- **Image renames** `Hero.webp → hero.webp`, `Todaybanner.webp → today-banner.webp` — uploaded the new files and **removed the old-cased server files** (verified 404).
+
+**Deploy (SFTP key `~/.ssh/namecheap_cfcb`, `premium164-1.web-hosting.com:21098`, docroot `~/careerskillscenter.com/`):** `chmod 644` first; moved the uncommitted `it-careers-massachusetts-draft.html` aside so `put *.html` wouldn't ship it, then restored it. Uploaded all root `*.html`, `blog/`, `.htaccess`, `submit.php`, `css/`, `js/`, `sitemap.xml`, `robots.txt`, `llms.txt`, the two renamed images; `rm`'d `images/Hero.webp` + `images/Todaybanner.webp`. Did **not** `put -r images` (would re-add the orphans); live `images/` stays the 7 referenced files. Mandatory `[VERIFY]`/`DRAFT` grep: clean.
+
+**Verified live:** homepage + qualify 200; new images 200, old-cased images 404; `main.js` carries the verdict logic; `style.css` has the checkbox `:not([type=checkbox])` fix + verdict styles; www→non-www returns 301; a retired-page 301 (tuition→student-financing) still resolves; hero copy now reads "isn't an official decision"; and a live browser run of a priority case renders the green "You're very likely eligible" badge + reason line (screenshot).
+
+**⚠️ DEVIATION still open for strategy:** the yes/no verdict overrides Spec v1.5 §2 and the CLAUDE.md "use 'may qualify'" rule (Emilio's call). Strategy should reconcile the spec + CLAUDE.md. Also still pending Emilio content: founder name/photo on `about.html`; real street address/suite.
+
 ### 2026-09-28 (later) — qualify.html: confident yes/maybe/no verdict (⚠️ DEVIATION from spec §2) (LOCAL, not deployed)
 Emilio: the tiered result still wasn't decisive enough — he asked for a "yes / no / you may fit" verdict. **This deviates from Site Structure Spec v1.5 §2 ("the result is never a yes/no verdict") and the CLAUDE.md hard rule "never promise approval; use 'may qualify.'"** I flagged both; Emilio chose the **"confident but honest"** option (2026-09-28), which keeps the yes/no/maybe structure without promising funding or giving a false hard "no." **Strategy should update spec §2 + CLAUDE.md to match.** Not deployed.
 
