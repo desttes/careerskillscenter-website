@@ -343,6 +343,11 @@
       n.textContent = text;
       n.hidden = false;
     }
+    function setWhy(reason) {
+      const n = el('.result-why'); if (!n) return;
+      n.innerHTML = '<strong>Why you’re seeing this:</strong> ' + reason;
+      n.hidden = false;
+    }
 
     function showResults() {
       const a = answers();
@@ -353,6 +358,7 @@
         // Genuine WIOA disqualifier (not authorized to work) — honest "no", but never a dead end.
         setVerdict('no', 'Likely not a fit for WIOA');
         setText('.result-head', 'WIOA funding likely isn’t a fit — but you still have options.');
+        setWhy('Authorization to work in the U.S. is a WIOA requirement, and it comes before every other answer. This isn’t a dead end — we still point you to other ways to pay.');
         setText('.result-body', 'WIOA-funded training requires authorization to work in the U.S. That doesn’t close every door — here are other ways to pay for training and keep building your skills:');
         toggle('.result-groups', false);
         toggle('.result-priority', false);
@@ -365,6 +371,7 @@
       } else if (!r.inMA) {
         setVerdict('maybe', 'This check covers Massachusetts');
         setText('.result-head', 'This check covers Massachusetts.');
+        setWhy('This tool only covers Massachusetts. WIOA exists everywhere, so we point you to a local American Job Center in your state.');
         setText('.result-body', 'WIOA training funds exist in every state, but the steps below are for Massachusetts. Use the link to find your local American Job Center — and you can still explore the field you picked.');
         toggle('.result-groups', false);
         toggle('.result-priority', false);
@@ -378,14 +385,21 @@
         if (r.verdict === 'yes') {
           setVerdict('yes', 'You’re very likely eligible');
           setText('.result-head', 'You’re very likely eligible for WIOA-funded training.');
+          if (r.priorities.length) {
+            setWhy('You match a WIOA “priority of service” group (public assistance, low income, or veteran). That’s not approval — a MassHire career center makes it official.');
+          } else {
+            setWhy('Being laid off, on unemployment, or having your business close makes you a dislocated worker — its own strong WIOA group. A MassHire career center makes it official.');
+          }
           setText('.result-body', 'Your answers match the groups Massachusetts gives priority for funding. A MassHire career center makes it official — here’s exactly how to apply:');
         } else if (r.tier === 'candidate') {
           setVerdict('maybe', 'You may qualify');
           setText('.result-head', 'You may qualify for WIOA-funded training.');
+          setWhy('WIOA’s Adult program is open to job seekers like you, but it isn’t guaranteed — a MassHire career center decides locally.');
           setText('.result-body', 'WIOA’s Adult program is open to job seekers like you, though it isn’t guaranteed and funding is limited. A MassHire career center makes the final call — here’s how to check:');
         } else {
           setVerdict('maybe', 'You may qualify');
           setText('.result-head', 'You may qualify — here’s how to check.');
+          setWhy('You didn’t match a priority group, and full-time workers are the lowest priority for WIOA — so we also show other ways to pay.');
           setText('.result-body', 'You didn’t match the highest-priority groups, but eligibility is decided locally, and there are other ways to pay for training too. Here’s how to find out where you stand:');
         }
         setList('.result-group-list', r.groups.length ? r.groups : ['WIOA Adult']);

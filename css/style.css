@@ -538,7 +538,10 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .qualify-result .result-workauth[hidden],
 .qualify-result .result-otherpay[hidden],
 .qualify-result .result-verdict[hidden],
+.qualify-result .result-why[hidden],
 .qualify-result .result-notma[hidden] { display: none; }
+.qualify-result .result-why { background: var(--surface-alt); border-left: 3px solid var(--navy); padding: 10px 14px; font-size: 15px; color: var(--ink-light); border-radius: 0 8px 8px 0; margin: 0 0 18px; }
+.qualify-result .result-why strong { color: var(--navy); }
 .result-group-list li { font-weight: 700; color: var(--navy); }
 /* Verdict badge (v1.5.1): confident-but-honest yes / maybe / no. */
 .qualify-result .result-verdict {
