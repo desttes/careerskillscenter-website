@@ -450,7 +450,7 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .dialog-form { padding: clamp(28px, 4vw, 48px); }
 .dialog-form h2 { font-size: clamp(22px, 2.6vw, 30px); font-weight: 500; margin-bottom: 24px; }
 .contact-form { display: grid; gap: 12px; }
-.contact-form input, .contact-form select, .contact-form textarea {
+.contact-form input:not([type="checkbox"]), .contact-form select, .contact-form textarea {
   width: 100%; padding: 14px 16px; font: inherit; font-size: 15px;
   border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius);
   background: rgba(255,255,255,.08); color: #fff;
@@ -509,7 +509,7 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .qualify-option input:checked + label { border-color: var(--navy); background: rgba(0,59,105,.05); font-weight: 700; }
 .qualify-option input:focus-visible + label { outline: 2px solid var(--yellow); outline-offset: 2px; }
 .qualify-fields { display: grid; gap: 12px; }
-.qualify-fields input, .qualify-fields select {
+.qualify-fields input:not([type="checkbox"]), .qualify-fields select {
   width: 100%; padding: 14px 16px; font: inherit; font-size: 15px;
   border: 1px solid var(--line); border-radius: var(--radius); background: #fff; color: var(--ink);
 }
