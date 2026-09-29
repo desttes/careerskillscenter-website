@@ -1781,7 +1781,7 @@ PAGES.append(dict(
       <div class="container narrow">
         <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span>Your next step</p>
         <h2 class="section-title left">See where you may fit</h2>
-        <p>The quickest way to understand your options is our free check. It never gives a yes/no verdict &mdash;
+        <p>The quickest way to understand your options is our free check. It isn&rsquo;t the official decision &mdash;
         only your career center can do that &mdash; but it shows which WIOA group you may fit and what to do
         next.</p>
         <p><a class="btn btn-yellow" href="qualify.html">Do I Qualify?</a></p>
@@ -2408,13 +2408,13 @@ PAGES.append(dict(
     slug="qualify.html", nav="",
     title="Do I Qualify for WIOA Training? Free Eligibility Check | Career Skills Center",
     ogtitle="Do I Qualify for WIOA Training? Free Eligibility Check",
-    desc="Answer a few quick questions to see which WIOA group you may fit and your next steps for publicly funded training. Free, about 60 seconds, and never a yes/no verdict.",
+    desc="Answer a few quick questions to see which WIOA group you may fit and your next steps for publicly funded training. Free, about 60 seconds, and not an official decision.",
     main="""    <section class="page-hero">
       <div class="container">
         <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>Do I Qualify?</p>
         <h1>See what training help you may qualify for<span class="dot">.</span></h1>
         <p class="page-hero-lede">Answer a few quick questions and we&rsquo;ll show which WIOA group you may fit
-        and what to do next. This isn&rsquo;t an application, it&rsquo;s free, and it never gives a yes/no verdict
+        and what to do next. This isn&rsquo;t an application, it&rsquo;s free, and it isn&rsquo;t an official decision
         &mdash; only a MassHire career center can approve funding.</p>
       </div>
     </section>
@@ -2518,8 +2518,9 @@ PAGES.append(dict(
               </div>
             </fieldset>
 
-            <!-- Result screen = which WIOA group you MAY fit + priority flags + outward
-                 next steps. NEVER a yes/no verdict. js/main.js fills it (see classifyQualify).
+            <!-- Result screen = a confident yes/maybe/no read (NOT an official approval —
+                 only a MassHire center decides) + WIOA group + priority flags + next steps.
+                 js/main.js fills it (see classifyQualify).
                  COURSE-DEPENDENT: R-QUALIFY — in course mode the result also routes inward
                  (matching CSC course + funding help), pre-written behind SITE_MODE. -->
             <div class="qualify-result" role="status" aria-live="polite">
@@ -3912,8 +3913,8 @@ _p2_body = """        <!-- Approved by Emilio 2026-09-28. Facts sourced in docs/
 
 """ + post_cta(
     "Think you might qualify?",
-    "Take our quick check to see which WIOA group you may fit and what to do next. It never gives a yes/no "
-    "verdict &mdash; only your career center can do that.",
+    "Take our quick check to see which WIOA group you may fit and what to do next. It isn&rsquo;t the official "
+    "decision &mdash; only your career center can do that.",
     "Do I Qualify?", "qualify.html") + """
 
 """ + related(

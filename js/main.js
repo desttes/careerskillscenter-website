@@ -342,6 +342,8 @@
       n.className = 'result-verdict result-verdict--' + kind;
       n.textContent = text;
       n.hidden = false;
+      const icon = el('.result-icon');
+      if (icon) icon.style.color = (kind === 'yes') ? '#1B7A3D' : '';
     }
     function setWhy(reason) {
       const n = el('.result-why'); if (!n) return;

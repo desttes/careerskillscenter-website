@@ -522,6 +522,8 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .qualify-back[hidden] { display: none; }
 .qualify-result { display: none; }
 .qualify-result.is-active { display: block; }
+.qualify-result:focus { outline: none; }
+.qualify-result .result-field-note { margin-top: 30px; }
 .qualify-result .result-icon { width: 56px; height: 56px; color: var(--yellow); margin-bottom: 12px; }
 .qualify-result h2 { font-size: clamp(24px, 3.4vw, 32px); color: var(--navy); margin: 0 0 14px; }
 .qualify-result p { color: var(--ink-light); font-size: 17px; line-height: 1.7; margin: 0 0 16px; }
@@ -547,7 +549,7 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .qualify-result .result-verdict {
   display: inline-block;
   font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
-  padding: 6px 14px; border-radius: 999px; margin: 0 0 14px;
+  padding: 6px 14px; border-radius: var(--radius); margin: 0 0 14px;
 }
 .qualify-result .result-verdict--yes   { color: #1B7A3D; background: #E6F4EC; }
 .qualify-result .result-verdict--maybe { color: #8A5A00; background: #FDF3D9; }
