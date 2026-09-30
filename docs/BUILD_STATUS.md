@@ -347,6 +347,29 @@ Picked up the strategy-side handoff (commit `9aee0c0`: brief bumped to v1.1 + `d
 
 ---
 
+## Update — 2026-09-30: new post "4-Week vs. 4-Month Medical Billing and Coding Courses" + info form page
+
+**Built (in `tools/build-pages.py`; pages regenerated, not hand-edited):**
+- `/blog/4-week-vs-4-month-medical-billing-coding-course.html` — Category Medical, byline Vicent Canal, published 2026-09-30 (visible date + `datePublished`/`dateModified`). Text, links, BlogPosting + FAQPage JSON-LD and `COURSE-DEPENDENT: R-BLOG-MBC` markers copied from the source doc. Added to `blog.html` (top of grid) and `sitemap.xml`.
+- `/medical-billing-coding-info.html` — name, email, phone (optional), state, "When would you like to start?" (ASAP / 1-3 months / Just exploring); posts to `submit.php` with `source=blog-mbc-4week`; success text "Thanks! We'll email you more information soon." No dates, prices or enrollment mentioned. Marked `R-BLOG-MBC`. **noindex and left out of the sitemap** (lead-capture page).
+- `docs/COURSE_CONTENT_REGISTER.md`: added row **R-BLOG-MBC**.
+
+**Guide-mode exceptions (approved by Emilio for this post only):**
+1. The **$679** price in the "What you'll pay in total" table (generic "4-week online course" row; also stated in the lead sentence of that section).
+2. The CTA heading **"Want to learn more about our courses?"**
+
+**Small differences from the source file / decisions to confirm:**
+- Source had a CODE note "no author byline"; the task says byline Vicent Canal, so the visible byline is Vicent Canal. The JSON-LD author was kept as written (Organization: Career Skills Center).
+- Related line: links to `/healthcare-careers.html` (the live guide) instead of `/healthcare-careers-massachusetts.html` (now a 301), and adds post #6 "Can Medical Billing and Coding Be Learned Online?" as the source CODE note asked.
+- FAQ markup converted to the site's `details.faq-item` accordion (same text as the JSON-LD); tables use `.data-table`; CTA uses `.post-cta`.
+- Page hero "dek" = the meta description.
+- In-article links are plain grey with no underline site-wide (`.prose a`), which hides this post's many source links. Added a small **scoped** style in this post's `<head>` only (navy + underline). **Recommend a site-wide `.prose a` rule later** (would need a CSS deploy).
+- `og:type` stays `website` (shared template), not `article`.
+- The form's generic JS validation message still reads "…name, phone, email, and program of interest" (shared `js/main.js`); not changed because only the named files are deployed.
+- The post's price table uses third-party prices checked Sept 30, 2026 (per the source). Nothing in it is a CSC program fact except the approved $679 row.
+
+**Checks:** pre-deploy `grep -rn -e '[VERIFY' -e 'DRAFT'` on the new/changed files: no matches. Local form test: payload has `source=blog-mbc-4week`, success message shows; `submit.php` email body verified via `csc_process`. Mobile (375px): no horizontal scroll, tables scroll inside their wrapper, no console errors.
+
 ## Update — Sept 26, 2026: deeper Career Paths content
 
 Expanded the four Career Paths pages with the training/pathway depth they were missing (all general

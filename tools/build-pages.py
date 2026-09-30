@@ -3445,6 +3445,11 @@ def post_card(tag, date, read, title, excerpt, href="#"):
 # Real launch posts. Order = newest first in the grid (the pillar is featured
 # above the grid, so it is not repeated here). href points into /blog/.
 BLOG_POSTS = [
+    ("Medical", "Sep 30, 2026", "8 min read",
+     "4-Week vs. 4-Month Medical Billing and Coding Courses: What's the Real Difference?",
+     "A 4-week course, a 4-month course and a college certificate all lead to the same national exam. "
+     "Here is what each costs and what you get.",
+     "blog/4-week-vs-4-month-medical-billing-coding-course.html"),
     ("Paying for Training", "Sep 25, 2026", "8 min read",
      "Who Qualifies for WIOA Training in Massachusetts?",
      "WIOA training is for adults, dislocated workers, and low-income residents. Your local MassHire "
@@ -4958,6 +4963,344 @@ PAGES.append(dict(
       </div>
     </section>
 """))
+
+
+# ---------------------------------------------------------------------------
+# 4-week vs 4-month medical billing & coding post (published 2026-09-30, byline Vicent Canal).
+# Source: Claude Doc rev 16. JSON-LD (BlogPosting + FAQPage) is copied verbatim from the source.
+# Guide-mode exceptions approved by Emilio for THIS post only (logged in BUILD_STATUS):
+# the $679 "4-week online course" price in the total-cost table, and the CTA heading
+# "Want to learn more about our courses?". CTA box = COURSE-DEPENDENT: R-BLOG-MBC.
+# ---------------------------------------------------------------------------
+PAGES.append(dict(
+    slug="blog/4-week-vs-4-month-medical-billing-coding-course.html", nav="blog.html",
+    title="4-Week vs. 4-Month Medical Billing and Coding Courses: What's the Real Difference?" + " | Career Skills Center",
+    ogtitle="4-Week vs. 4-Month Medical Billing and Coding Courses: What's the Real Difference?",
+    desc="A 4-week course, a 4-month course and a college certificate all lead to the same national exam. Here's what each costs and what you get.",
+    extrahead=r'''  <!-- Scoped to this post: in-article links are plain grey site-wide, which hides the many source links here. Consider a site-wide .prose a rule. -->
+  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}</style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "4-Week vs. 4-Month Medical Billing and Coding Courses: What's the Real Difference?",
+    "description": "A 4-week course, a 4-month course and a college certificate all lead to the same national exam. Here's what each costs and what you get.",
+    "author": { "@type": "Organization", "name": "Career Skills Center", "url": "https://careerskillscenter.com/" },
+    "publisher": { "@type": "Organization", "name": "Career Skills Center", "url": "https://careerskillscenter.com/" },
+    "datePublished": "2026-09-30",
+    "dateModified": "2026-09-30",
+    "mainEntityOfPage": "https://careerskillscenter.com/blog/4-week-vs-4-month-medical-billing-coding-course.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I pass the CPC exam after a 4-week course?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, if you put in enough study time on your own. The same is true for a longer program. The exam is the same no matter how long your course was." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a college certificate the same as being certified?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. A college certificate shows you finished a program. Certification, such as the CPC, comes from passing a national exam." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a license to work in medical billing and coding?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No state license is required. Employers often prefer, and sometimes require, a national certification such as the CPC, CCA or CBCS, according to the U.S. Bureau of Labor Statistics." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I find a job with no experience?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It's harder, but possible. Use AAPC's job board filters for CPC-A and entry-level jobs, look at the Xtern Program, and consider related starter jobs like billing or patient registration." }
+      }
+    ]
+  }
+  </script>''',
+    main=article("Medical", "4-Week vs. 4-Month Medical Billing and Coding Courses: What's the Real Difference?",
+                 "A 4-week course, a 4-month course and a college certificate all lead to the same national exam. Here's what each costs and what you get.",
+                 "September 30, 2026", "8 min read", r'''
+        <p>A 4-week medical billing and coding course and a 4-month (or longer) college program lead to the same place: a national certification exam that everyone takes. On both paths, you'll do much of the learning by studying on your own. The main differences are time, cost and format.</p>
+
+        <p>Here is how the two paths compare on time, cost and what you get.</p>
+
+        <h2>How long do medical billing and coding programs take?</h2>
+
+        <p>Most programs take 4 to 12 months. AAPC, the organization that runs the most common coding exam, says <a href="https://www.aapc.com/support/certification-exams/how-long-does-it-take-to-become-a-certified-medical-coder" target="_blank" rel="noopener">most people finish their coursework and pass the exam in 4 to 8 months</a>.</p>
+
+        <p>Here are four real programs:</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>School</th><th>Program</th><th>How long</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><a href="https://www.utsa.edu/pace/medical-billing-coding-certification.html" target="_blank" rel="noopener">UT San Antonio</a> (Texas)</td><td>Medical Billing and Coding (CBCS prep), live online</td><td>16 weeks, 112 hours</td></tr>
+            <tr><td><a href="https://www.gatewaycc.edu/degrees-certificates/medical-billing-and-coding" target="_blank" rel="noopener">GateWay Community College</a> (Arizona)</td><td>Medical Billing and Coding certificate, live online</td><td>9 months at 20 hours a week</td></tr>
+            <tr><td><a href="https://continue.austincc.edu/billing" target="_blank" rel="noopener">Austin Community College</a> (Texas)</td><td>Medical Billing &amp; Coding, continuing education</td><td>1 to 3 semesters, 464 hours</td></tr>
+            <tr><td><a href="https://quincycollege.edu/" target="_blank" rel="noopener">Quincy College</a> (Massachusetts)</td><td>Medical Billing and Coding certificate</td><td>16 credits, about 2 semesters (one required class runs only in the fall)</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>A 4-week course is much shorter. Short online courses usually include about 20 to 40 hours of lessons. For example, ITU Online's self-paced <a href="https://www.ituonline.com/courses/medical-coding-billing/medical-coding-and-billing-icd-10-and-icd-11/" target="_blank" rel="noopener">ICD-10 and ICD-11 course</a> has about 20 hours of video, and its full <a href="https://www.ituonline.com/product-category/medical-coding-billing/" target="_blank" rel="noopener">medical coding course list</a> adds up to roughly 38 hours. Your own study time comes on top of that, on any path.</p>
+
+        <h2>What does a college program cost?</h2>
+
+        <p>A college certificate usually costs $3,500 to $6,500 in tuition, and some programs don't include books.</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>School</th><th>Tuition</th><th>What's included</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><a href="https://continue.austincc.edu/billing" target="_blank" rel="noopener">Austin Community College</a></td><td>$6,385</td><td>Books and fees not included (a Fast Track discount can cut it in half)</td></tr>
+            <tr><td><a href="https://quincycollege.edu/tuition/" target="_blank" rel="noopener">Quincy College</a></td><td>About $5,687 (our estimate)</td><td>16 credits at 2026–27 rates, plus technology and registration fees; books not included</td></tr>
+            <tr><td><a href="https://www.gatewaycc.edu/degrees-certificates/medical-billing-and-coding" target="_blank" rel="noopener">GateWay Community College</a></td><td>$3,670</td><td>Tuition and estimated book fees</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>How we estimated Quincy College: $282 per credit for 13 credits, $331 per credit for the computer class, a $48-per-credit technology fee and a $130 registration fee each semester, from the <a href="https://quincycollege.edu/tuition/" target="_blank" rel="noopener">2026–27 tuition page</a>.</p>
+
+        <p>Financial aid can lower these prices for students who qualify. But for many people, a college program still means thousands of dollars out of pocket, and none of these prices include the certification exam.</p>
+
+        <h2>Everyone takes the same certification exam</h2>
+
+        <p>A college certificate is not a certification. Whether you study for 4 weeks or 9 months, you still have to pass a national exam to become certified. Employers look for that credential, not for where you studied.</p>
+
+        <p>The most common exam for medical coders is the <strong>Certified Professional Coder (CPC)</strong> exam from <a href="https://www.aapc.com/" target="_blank" rel="noopener">AAPC</a>. It has 100 multiple-choice questions, takes 4 hours, and is open-book: you bring your own code books. Quincy College's own program sheet says a main goal of its certificate is to prepare students "to sit for" the CPC exam. Other national credentials include <a href="https://www.ahima.org/" target="_blank" rel="noopener">AHIMA's</a> Certified Coding Associate (CCA) and <a href="https://www.nhanow.com/" target="_blank" rel="noopener">NHA's</a> Certified Billing and Coding Specialist (CBCS).</p>
+
+        <p>What the CPC exam costs, from <a href="https://www.aapc.com/support/certification-exams/how-much-does-the-cpc-exam-cost" target="_blank" rel="noopener">AAPC's price page</a>:</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Voucher</th><th>Standard price</th><th>AAPC student price</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1 attempt</td><td>$425</td><td>$400</td></tr>
+            <tr><td>2 attempts</td><td>$499</td><td>$475</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>You must also be an AAPC member to take the exam. <a href="https://www.aapc.com/memberships/student.aspx" target="_blank" rel="noopener">Student membership is $164</a>, but only for people enrolled in an AAPC course or an AAPC-approved school. Everyone else pays the <a href="https://www.aapc.com/memberships/" target="_blank" rel="noopener">individual rate of $229 a year</a>.</p>
+
+        <p>One more thing to know: if you pass the CPC without work experience, you get the title <strong>CPC-A</strong> (Apprentice). AAPC explains <a href="https://www.aapc.com/certifications/cpc-a/how-to-remove-your-a" target="_blank" rel="noopener">how to remove the "A"</a> through work experience, its Practicode practice program, or an approved coding course. This is the same for every new coder, no matter how long their course was.</p>
+
+        <h2>What a 4-week course gives you</h2>
+
+        <p>A 4-week course covers the basics in a short time and at a lower cost. Many 4-week courses also give you a teacher you can ask questions by email or in scheduled appointments.</p>
+
+        <p>Medical coding is detailed, focused work. You read medical records, look up codes in large code books, and check the rules for each insurance claim. A short course is one way to find out whether you enjoy that kind of work before you decide on your next step.</p>
+
+        <p>A good short course should cover:</p>
+        <ul>
+          <li>What billers and coders do each day</li>
+          <li>Basic medical terms and anatomy</li>
+          <li>How the three main code sets work: ICD-10-CM (diagnoses), CPT (procedures) and HCPCS Level II (supplies and services)</li>
+          <li>How a claim moves from the doctor's office to the insurance company</li>
+          <li>How the certification exam works and how to prepare for it</li>
+        </ul>
+
+        <p><strong>What it takes:</strong> a short course moves fast. To be ready for the exam, plan to keep studying on your own after the course ends, with the code books and practice tests.</p>
+
+        <h2>What a 4-month or college program looks like</h2>
+
+        <p>A longer program spreads the material over more weeks. Colleges teach it online, in person or in a hybrid of the two.</p>
+
+        <p>Four months is a common length for exam prep. AAPC's own self-study courses are built to be <a href="https://www.aapc.com/medical-coding-books/bundles.aspx" target="_blank" rel="noopener">finished in 4 months or less</a>. College certificates often take two semesters or more. A longer program usually means:</p>
+        <ul>
+          <li>More weeks to spend on each topic</li>
+          <li>A choice of format (online, in person or hybrid), depending on the school</li>
+          <li>Instructors and classmates, especially in live or in-person classes</li>
+          <li>Assignments and deadlines that set a steady pace</li>
+        </ul>
+
+        <p>On any path, you'll study from the same kind of code books, in print or as eBooks. AAPC's <a href="https://www.aapc.com/medical-coding-books/bundles.aspx" target="_blank" rel="noopener">Exam Book Bundle 2026</a> (the code books most people use for the CPC exam) is $244.99 on sale, down from $374.93.</p>
+
+        <p>AAPC also sells its own <a href="https://aapc.com/training/cpc-online-medical-coding-training-course.aspx" target="_blank" rel="noopener">online CPC course</a>, including a 16-week instructor-led option. In September 2026 it cost about $2,400 to $3,550 on sale (about $4,800 to $7,100 at full price), with membership included and exam attempts in some packages.</p>
+
+        <h2>Either way, most of the studying is up to you</h2>
+
+        <p>Online college courses also expect you to read, practice and review on your own, much like a short course does. The approach is similar on both paths.</p>
+
+        <p>How ready you are for the exam depends mostly on the time and effort you put in, not on the length of the course. Pick the format, pace and price that fit your life.</p>
+
+        <h2>Free resources you can use on any path</h2>
+
+        <p>You don't have to pay for every hour of learning. A lot of good material is free.</p>
+        <ul>
+          <li><strong>YouTube:</strong> Search for topics like "ICD-10-CM coding for beginners" or "how to use the CPT book." AAPC has its own <a href="https://www.youtube.com/c/AAPCHealthCare" target="_blank" rel="noopener">YouTube channel</a>, and many working coders post walkthroughs and exam tips.</li>
+          <li><strong>Google:</strong> Search for the specific subjects on the exam, and add "for medical coders" so the results match what you need. Try searches like:
+            <ul>
+              <li>"anatomy and physiology for medical coders"</li>
+              <li>"medical terminology for medical coding"</li>
+              <li>"how to read an operative report for coding"</li>
+              <li>"ICD-10-CM official guidelines explained"</li>
+              <li>"CPT modifiers explained"</li>
+              <li>"E/M (evaluation and management) coding basics"</li>
+              <li>"how a CMS-1500 claim form works"</li>
+            </ul>
+          </li>
+          <li><strong>Government code files:</strong> The official ICD-10-CM code lists and guidelines are published free by the federal government. Start with the <a href="https://www.cms.gov/medicare/coding-billing/icd-10-codes" target="_blank" rel="noopener">CMS ICD-10 page</a>.</li>
+          <li><strong>The AAPC community forum:</strong> New coders ask questions and get answers from experienced coders on the <a href="https://www.aapc.com/discuss" target="_blank" rel="noopener">AAPC forum</a>.</li>
+        </ul>
+
+        <p>Free resources work best alongside a course, not instead of one. Use them to review topics you find hard and to hear things explained in a different way.</p>
+
+        <h2>Finding your first job after certification</h2>
+
+        <p>The hardest step for most new coders is the first job, because many postings ask for experience. A few places are set up to help people who are newly certified.</p>
+
+        <p><strong>AAPC's job board.</strong> <a href="https://jobs.aapc.com/jobs/" target="_blank" rel="noopener">AAPC's job board</a> lists coding and billing jobs across the country. You can filter by credential, including <strong>CPC-A</strong>, and by experience level, including <strong>Entry Level</strong>. There is also a filter for the <strong>Xtern Program</strong>.</p>
+
+        <p><strong>AAPC's Xtern Program.</strong> <a href="https://www.aapc.com/software-and-services/xtern-program-overview" target="_blank" rel="noopener">Xtern</a> connects newly certified coders with employers for a structured 160-hour externship. It gives you real work experience to put on your resume.</p>
+
+        <p><strong>Other places to look:</strong></p>
+        <ul>
+          <li><strong>General job sites</strong> such as Indeed and LinkedIn. Search "medical billing entry level," "CPC-A" or "coding apprentice."</li>
+          <li><strong>Hospital and health-system career pages.</strong> Large systems often hire for billing, registration and charge-entry jobs, which can lead to coding roles.</li>
+          <li><strong>Medical billing companies and staffing agencies</strong>, which often hire new billers.</li>
+          <li><strong>Local AAPC chapters.</strong> <a href="https://www.aapc.com/membership/local-chapter-overview" target="_blank" rel="noopener">Chapter meetings</a> are a good way to meet working coders and hear about openings.</li>
+          <li><strong>Your local American Job Center.</strong> These free, government-funded centers help with job searches and resumes. <a href="https://www.careeronestop.org/LocalHelp/AmericanJobCenters/find-american-job-centers.aspx" target="_blank" rel="noopener">Find one near you on CareerOneStop</a>.</li>
+        </ul>
+
+        <p>A tip from the field: many coders start in a related job first, such as front desk, patient registration or billing. That experience counts, and it gets you inside a place that also hires coders.</p>
+
+        <h2>What you'll pay in total: 4-week course vs. college</h2>
+
+        <p>Once you add books, membership and the exam, a college certificate costs roughly $4,400 to $7,400. A 4-week course at $679 comes to about $1,652 with the same books, membership and exam.</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Path</th><th>Tuition</th><th>Code books</th><th>AAPC membership + exam (2 attempts)</th><th>Total</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>4-week online course</td><td>$679</td><td>$245</td><td>$728</td><td>$1,652</td></tr>
+            <tr><td>GateWay Community College</td><td>$3,670</td><td>Included</td><td>$728</td><td>$4,398</td></tr>
+            <tr><td>Quincy College</td><td>About $5,687</td><td>$245</td><td>$728</td><td>About $6,660</td></tr>
+            <tr><td>Austin Community College</td><td>$6,385</td><td>$245</td><td>$728</td><td>$7,358</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>How we got these numbers:</p>
+        <ul>
+          <li><strong>Code books:</strong> AAPC's <a href="https://www.aapc.com/medical-coding-books/bundles.aspx" target="_blank" rel="noopener">Exam Book Bundle 2026</a>, $244.99 on sale. Colleges may require other textbooks on top of this.</li>
+          <li><strong>Membership + exam:</strong> $229 for individual AAPC membership plus $499 for a <a href="https://www.aapc.com/support/certification-exams/how-much-does-the-cpc-exam-cost" target="_blank" rel="noopener">two-attempt exam voucher</a>. Students at AAPC-approved schools may pay $164 and $475 instead, saving $89.</li>
+          <li><strong>Tuition:</strong> from each school's own pages, cited above. Financial aid can lower the college totals for students who qualify.</li>
+        </ul>
+
+        <p>The exam and the books cost the same on every path. The main differences are tuition, how long the program takes, and whether classes are online, in person or hybrid. Choose the path that fits your budget, your schedule and the way you like to learn.</p>
+
+        <!-- COURSE-DEPENDENT: R-BLOG-MBC -->
+        <div class="post-cta">
+          <h2>Want to learn more about our courses?</h2>
+          <p><strong>Interested in medical billing and coding training?</strong> <a class="link-yellow" href="/medical-billing-coding-info.html">Fill out this short form</a> and we'll send you more information.</p>
+        </div>
+        <!-- /COURSE-DEPENDENT: R-BLOG-MBC -->
+
+        <p class="related">Related: <a href="healthcare-careers.html">Healthcare careers guide</a> &middot; <a href="blog/can-medical-billing-coding-be-learned-online.html">Can Medical Billing and Coding Be Learned Online?</a></p>
+
+        <section class="faq" aria-labelledby="faq-heading">
+          <h2 id="faq-heading">Frequently asked questions</h2>
+          <div class="faq">
+            <details class="faq-item"><summary>Can I pass the CPC exam after a 4-week course?</summary>
+            <div><p>Yes, if you put in enough study time on your own. The same is true for a longer program. The exam is the same no matter how long your course was.</p></div></details>
+            <details class="faq-item"><summary>Is a college certificate the same as being certified?</summary>
+            <div><p>No. A college certificate shows you finished a program. Certification, such as the CPC, comes from passing a national exam.</p></div></details>
+            <details class="faq-item"><summary>Do I need a license to work in medical billing and coding?</summary>
+            <div><p>No state license is required. Employers often prefer, and sometimes require, a national certification such as the CPC, CCA or CBCS, according to the <a href="https://www.bls.gov/ooh/healthcare/medical-records-and-health-information-technicians.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a>.</p></div></details>
+            <details class="faq-item"><summary>Can I find a job with no experience?</summary>
+            <div><p>It's harder, but possible. Use AAPC's job board filters for CPC-A and entry-level jobs, look at the Xtern Program, and consider related starter jobs like billing or patient registration.</p></div></details>
+          </div>
+        </section>
+
+        <section class="sources" aria-labelledby="sources-heading">
+          <h2 id="sources-heading">Sources</h2>
+          <p>Prices and program details as of September 30, 2026.</p>
+          <ul>
+            <li>AAPC: <a href="https://www.aapc.com/support/certification-exams/how-much-does-the-cpc-exam-cost" target="_blank" rel="noopener">CPC exam cost</a>, <a href="https://www.aapc.com/support/certification-exams/how-long-does-it-take-to-become-a-certified-medical-coder" target="_blank" rel="noopener">how long certification takes</a>, <a href="https://www.aapc.com/memberships/" target="_blank" rel="noopener">membership</a>, <a href="https://www.aapc.com/memberships/student.aspx" target="_blank" rel="noopener">student membership</a>, <a href="https://www.aapc.com/medical-coding-books/bundles.aspx" target="_blank" rel="noopener">book bundles</a>, <a href="https://aapc.com/training/cpc-online-medical-coding-training-course.aspx" target="_blank" rel="noopener">online CPC course</a>, <a href="https://www.aapc.com/certifications/cpc-a/how-to-remove-your-a" target="_blank" rel="noopener">removing the CPC-A</a>, <a href="https://jobs.aapc.com/jobs/" target="_blank" rel="noopener">job board</a>, <a href="https://www.aapc.com/software-and-services/xtern-program-overview" target="_blank" rel="noopener">Xtern Program</a></li>
+            <li><a href="https://www.bls.gov/ooh/healthcare/medical-records-and-health-information-technicians.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics, Medical Records Specialists</a></li>
+            <li><a href="https://certprep.kaptest.com/blog/healthcare-clinical/how-to-pass-the-cpc-exam-on-your-first-try" target="_blank" rel="noopener">Kaplan CertPrep, CPC exam format</a></li>
+            <li><a href="https://quincycollege.edu/tuition/" target="_blank" rel="noopener">Quincy College 2026–27 tuition</a> and 2026–27 Medical Billing and Coding program sheet</li>
+            <li><a href="https://www.gatewaycc.edu/degrees-certificates/medical-billing-and-coding" target="_blank" rel="noopener">GateWay Community College, Medical Billing and Coding</a></li>
+            <li><a href="https://continue.austincc.edu/billing" target="_blank" rel="noopener">Austin Community College, Medical Billing &amp; Coding</a></li>
+            <li><a href="https://www.utsa.edu/pace/medical-billing-coding-certification.html" target="_blank" rel="noopener">UT San Antonio, Medical Billing and Coding</a></li>
+            <li><a href="https://www.ituonline.com/product-category/medical-coding-billing/" target="_blank" rel="noopener">ITU Online, medical coding courses</a></li>
+            <li><a href="https://www.cms.gov/medicare/coding-billing/icd-10-codes" target="_blank" rel="noopener">CMS, ICD-10 codes</a>; <a href="https://www.careeronestop.org/LocalHelp/AmericanJobCenters/find-american-job-centers.aspx" target="_blank" rel="noopener">CareerOneStop, American Job Center finder</a></li>
+          </ul>
+        </section>
+''', author="Vicent Canal")))
+
+# Interest form the post's CTA points to. COURSE-DEPENDENT: R-BLOG-MBC.
+# Deliberately says nothing about course dates, prices or enrollment.
+_US_STATES = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
+    "District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas",
+    "Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi",
+    "Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York",
+    "North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island",
+    "South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington",
+    "West Virginia","Wisconsin","Wyoming","Outside the U.S."]
+_state_opts = "\n".join(f'            <option value="{s}">{s}</option>' for s in _US_STATES)
+
+PAGES.append(dict(
+    slug="medical-billing-coding-info.html", nav="blog.html",
+    title="Medical Billing and Coding Information | Career Skills Center",
+    ogtitle="Medical Billing and Coding Information",
+    desc="Interested in medical billing and coding training? Fill out this short form and we'll email you more information.",
+    extrahead='  <meta name="robots" content="noindex, follow">',
+    main=f"""    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>Medical</p>
+        <h1 class="article-title">Medical billing and coding information</h1>
+        <p class="page-hero-lede">Tell us a little about yourself and we&rsquo;ll email you more information.</p>
+      </div>
+    </section>
+
+    <!-- COURSE-DEPENDENT: R-BLOG-MBC — interest form. When the course is live, the blog CTA
+         links to the course/enroll page instead, and this page is retired or redirected. -->
+    <section class="section section--alt" id="interest">
+      <div class="container narrow">
+        <form class="contact-form interest-form" action="submit.php" method="post" novalidate
+              data-success="Thanks! We&rsquo;ll email you more information soon.">
+          <input type="hidden" name="source" value="blog-mbc-4week">
+          <input type="text" class="hp-field" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="sr-only" for="mbc-name">Name</label>
+          <input id="mbc-name" name="name" type="text" placeholder="Name" autocomplete="name" required>
+          <label class="sr-only" for="mbc-email">Email address</label>
+          <input id="mbc-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+          <label class="sr-only" for="mbc-phone">Phone (optional)</label>
+          <input id="mbc-phone" name="phone" type="tel" placeholder="Phone (optional)" autocomplete="tel">
+          <label class="sr-only" for="mbc-state">State</label>
+          <select id="mbc-state" name="state" required>
+            <option value="" selected disabled>State</option>
+{_state_opts}
+          </select>
+          <label class="sr-only" for="mbc-start">When would you like to start?</label>
+          <select id="mbc-start" name="start_timing" required>
+            <option value="" selected disabled>When would you like to start?</option>
+            <option value="ASAP">ASAP</option>
+            <option value="1-3 months">1-3 months</option>
+            <option value="Just exploring">Just exploring</option>
+          </select>
+          <button class="btn btn-yellow" type="submit">Send me more information</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+    <!-- /COURSE-DEPENDENT: R-BLOG-MBC -->
+"""))
+
+HOLD.add("medical-billing-coding-info.html")  # lead-capture page: noindex, kept out of the sitemap
 
 
 # ---------------------------------------------------------------------------
