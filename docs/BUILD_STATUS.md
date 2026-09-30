@@ -370,6 +370,8 @@ Picked up the strategy-side handoff (commit `9aee0c0`: brief bumped to v1.1 + `d
 
 **Checks:** pre-deploy `grep -rn -e '[VERIFY' -e 'DRAFT'` on the new/changed files: no matches. Local form test: payload has `source=blog-mbc-4week`, success message shows; `submit.php` email body verified via `csc_process`. Mobile (375px): no horizontal scroll, tables scroll inside their wrapper, no console errors.
 
+**DEPLOYED 2026-09-30 (Emilio approved; SFTP, only these 4 files, chmod 644):** `blog/4-week-vs-4-month-medical-billing-coding-course.html`, `medical-billing-coding-info.html`, `blog.html`, `sitemap.xml`. Live check: all four URLs return HTTP 200; `blog.html` and `sitemap.xml` list the new post; the post shows the Vicent Canal byline. Live form test: POST to `submit.php` with `source=blog-mbc-4week` returned `{"ok":true}` (subject `[blog-mbc-4week] Website inquiry from TEST - please ignore…`). **Open: confirm the test lead actually arrived in the `vcanal@` inbox** (I can't read that mailbox; delete the test lead afterward).
+
 ## Update — Sept 26, 2026: deeper Career Paths content
 
 Expanded the four Career Paths pages with the training/pathway depth they were missing (all general
