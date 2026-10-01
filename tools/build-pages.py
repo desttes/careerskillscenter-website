@@ -326,17 +326,28 @@ def employer_form(source, heading="Talk to us about training your team",
 SITE_URL = "https://careerskillscenter.com/"
 
 
-def article(category, title, dek, date, read, body, author="Career Skills Center Team"):
-    # author=None -> no byline (salary post)
+def article(category, title, dek, date, read, body, author="Career Skills Center Team", date_block=None):
     """Blog article: navy hero (category eyebrow, H1, meta line) + prose body.
     `body` is the inner HTML of the .prose container. Image-free by design.
-    No "Updated" line — added only when a real update happens (see VERIFICATION_LOG F2)."""
+    No "Updated" line — added only when a real update happens (see VERIFICATION_LOG F2).
+    author=None -> no byline. date_block=(iso, day, MON, year) -> big date beside the headline
+    instead of "Published <date>" in the meta line (styles live in that post's <head>)."""
+    byline = f'<span class="dot-sep"></span>By {author}' if author else ""
+    if date_block:
+        iso, day, mon, year = date_block
+        meta = f'<span class="sr-only">Published {date}. </span>{read}{byline}'
+        stamp = (f'<time class="date-block" datetime="{iso}"><span class="db-day">{day}</span>'
+                 f'<span class="db-mon">{mon}</span><span class="db-year">{year}</span></time>')
+        open_row, close_row = '<div class="hero-row">' + stamp + '<div class="hero-main">', '</div></div>'
+    else:
+        meta = f'Published {date}<span class="dot-sep"></span>{read}{byline}'
+        open_row = close_row = ""
     return f"""    <section class="page-hero">
       <div class="container">
-        <p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>{category}</p>
+        {open_row}<p class="eyebrow eyebrow--light"><span class="eyebrow-line" aria-hidden="true"></span>{category}</p>
         <h1 class="article-title">{title}</h1>
         <p class="page-hero-lede">{dek}</p>
-        <p class="article-meta">Published {date}<span class="dot-sep"></span>{read}{f'<span class="dot-sep"></span>By {author}' if author else ''}</p>
+        <p class="article-meta">{meta}</p>{close_row}
       </div>
     </section>
 
@@ -5259,8 +5270,9 @@ PAGES.append(dict(
     title="Medical Coding and Billing Salary by State (2026): What Coders and Billers Earn" + " | Career Skills Center",
     ogtitle="Medical Coding and Billing Salary by State (2026): What Coders and Billers Earn",
     desc="Medical coders earn a median of $51,140 a year ($24.59 an hour). See pay in every state, what beginners make, and whether coders or billers earn more.",
-    extrahead=r'''  <!-- Scoped to this post: plain grey in-article links hide the source links; narrow tables don't need the 660px minimum. -->
-  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}.data-table--narrow{min-width:0}.prose table caption{caption-side:top;text-align:left;font-weight:700;color:var(--navy);padding:0 0 10px}</style>
+    extrahead=r'''  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Scoped to this post: plain grey in-article links hide the source links; narrow tables don't need the 660px minimum; date block beside the headline. -->
+  <style>.hero-row{display:flex;gap:clamp(18px,3vw,36px);align-items:flex-start}.hero-main{min-width:0}.date-block{flex:none;display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;color:#fff;font-family:Dosis,"Roboto Condensed",Roboto,sans-serif;text-transform:uppercase;line-height:1;padding-right:clamp(18px,3vw,36px);border-right:1px solid rgba(255,255,255,.3)}.db-day{grid-row:1/3;font-size:clamp(64px,9vw,96px);font-weight:700;letter-spacing:-.02em}.db-mon{align-self:end;font-size:clamp(22px,3vw,32px);font-weight:500;letter-spacing:.04em}.db-year{align-self:start;font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:.04em;margin-top:4px}@media(max-width:560px){.hero-row{flex-direction:column;gap:14px}.date-block{border-right:0;padding-right:0}}.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}.data-table--narrow{min-width:0}.prose table caption{caption-side:top;text-align:left;font-weight:700;color:var(--navy);padding:0 0 10px}</style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -5522,7 +5534,7 @@ PAGES.append(dict(
             <li><a href="https://www.aapc.com/resources/medical-coding-salary-survey" target="_blank" rel="noopener">AAPC, 2026 Medical Coding and Billing Salary Report</a></li>
           </ul>
         </section>
-''', author=None)))
+''', author=None, date_block=("2026-10-01", "1", "OCT", "2026"))))
 
 # Interest form the post's CTA points to. COURSE-DEPENDENT: R-BLOG-MBC.
 # Deliberately says nothing about course dates, prices or enrollment.
