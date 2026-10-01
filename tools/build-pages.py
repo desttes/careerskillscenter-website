@@ -5047,6 +5047,7 @@ PAGES.append(dict(
         </table>
         </div>
 
+        <!-- COURSE-DEPENDENT: R-BLOG-MBC-ITU — when CSC launches its own courses, remove this ITU Online reference (Emilio, 2026-10-01). -->
         <p>A 4-week course is much shorter. Short online courses usually include about 20 to 40 hours of lessons. For example, ITU Online's self-paced <a href="https://www.ituonline.com/courses/medical-coding-billing/medical-coding-and-billing-icd-10-and-icd-11/" target="_blank" rel="noopener">ICD-10 and ICD-11 course</a> has about 20 hours of video, and its full <a href="https://www.ituonline.com/product-category/medical-coding-billing/" target="_blank" rel="noopener">medical coding course list</a> adds up to roughly 38 hours. Your own study time comes on top of that, on any path.</p>
 
         <h2>What does a college program cost?</h2>

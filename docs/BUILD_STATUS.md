@@ -372,6 +372,8 @@ Picked up the strategy-side handoff (commit `9aee0c0`: brief bumped to v1.1 + `d
 
 **DEPLOYED 2026-09-30 (Emilio approved; SFTP, only these 4 files, chmod 644):** `blog/4-week-vs-4-month-medical-billing-coding-course.html`, `medical-billing-coding-info.html`, `blog.html`, `sitemap.xml`. Live check: all four URLs return HTTP 200; `blog.html` and `sitemap.xml` list the new post; the post shows the Vicent Canal byline. Live form test: POST to `submit.php` with `source=blog-mbc-4week` returned `{"ok":true}` (subject `[blog-mbc-4week] Website inquiry from TEST - please ignore…`). **Open: confirm the test lead actually arrived in the `vcanal@` inbox** (I can't read that mailbox; delete the test lead afterward).
 
+- **2026-10-01:** ITU Online reference in the 4-week vs 4-month post stays as written for now (Emilio). Marked `R-BLOG-MBC-ITU` in source + register: remove it when CSC launches its own courses. Comment-only source change; not deployed (no visible change).
+
 ## Update — Sept 26, 2026: deeper Career Paths content
 
 Expanded the four Career Paths pages with the training/pathway depth they were missing (all general
