@@ -5260,7 +5260,7 @@ PAGES.append(dict(
     ogtitle="Medical Coding and Billing Salary by State (2026): What Coders and Billers Earn",
     desc="Medical coders earn a median of $51,140 a year ($24.59 an hour). See pay in every state, what beginners make, and whether coders or billers earn more.",
     extrahead=r'''  <!-- Scoped to this post: plain grey in-article links hide the source links; narrow tables don't need the 660px minimum. -->
-  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}.data-table--narrow{min-width:0}.prose table caption{caption-side:top;text-align:left;font-weight:700;color:var(--navy);padding:0 0 10px}</style>
+  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}.data-table--narrow{min-width:0}.toc ul{list-style:none;margin:0 0 24px;padding:0}.toc li{margin:0 0 8px}.toc a{font-weight:700}.prose h2[id]{scroll-margin-top:100px}@media(min-width:1280px){.prose{position:relative}.toc{position:absolute;top:0;right:100%;width:210px}.toc ul{margin:0}}.prose table caption{caption-side:top;text-align:left;font-weight:700;color:var(--navy);padding:0 0 10px}</style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -5310,6 +5310,18 @@ PAGES.append(dict(
     main=article("Medical", "Medical Coding and Billing Salary by State (2026): What Coders and Billers Earn",
                  "Medical coders earn a median of $51,140 a year ($24.59 an hour). See pay in every state, what beginners make, and whether coders or billers earn more.",
                  "October 1, 2026", "7 min read", r'''
+        <nav class="toc" aria-label="On this page">
+          <ul>
+            <li><a href="#toc-beginner">How much can a beginner coder make?</a></li>
+            <li><a href="#toc-billing">What pays more, medical coding or billing?</a></li>
+            <li><a href="#toc-states">Medical coding salary by state</a></li>
+            <li><a href="#toc-raise">What raises your pay</a></li>
+            <li><a href="#toc-paid-well">Do medical coders get paid well?</a></li>
+            <li><a href="#faq-heading">Frequently asked questions</a></li>
+            <li><a href="#sources-heading">Sources</a></li>
+          </ul>
+        </nav>
+
         <p>Medical coders earn a median of <strong>$51,140 a year, or $24.59 an hour</strong>, according to the <a href="https://www.bls.gov/ooh/healthcare/medical-records-and-health-information-technicians.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a> (May 2025). Most earn between $37,000 and $81,150. Where you live, whether you're certified and where you work all make a big difference.</p>
 
         <p>Below you'll find pay at every level, what beginners make, whether coders or billers earn more, and pay in every state.</p>
@@ -5338,7 +5350,7 @@ PAGES.append(dict(
 
         <p>The average (mean) was a bit higher, $56,790, because a smaller group of experienced coders earns well above the median.</p>
 
-        <h2>How much can a beginner coder make?</h2>
+        <h2 id="toc-beginner">How much can a beginner coder make?</h2>
 
         <p>Expect to start somewhere around <strong>$37,000 to $43,500 a year</strong>, or about $18 to $21 an hour. The government doesn't publish pay by years of experience, but new workers usually earn near the lower end of the range, between the lowest 10 percent and the lower 25 percent in the table above.</p>
 
@@ -5351,7 +5363,7 @@ PAGES.append(dict(
 
         <p>If you're still deciding how to train, our guide on <a href="/blog/4-week-vs-4-month-medical-billing-coding-course.html">4-week vs. 4-month medical billing and coding courses</a> compares the time and total cost of each path.</p>
 
-        <h2>What pays more, medical coding or billing?</h2>
+        <h2 id="toc-billing">What pays more, medical coding or billing?</h2>
 
         <p>Coding usually pays a little more. In May 2025:</p>
 
@@ -5376,7 +5388,7 @@ PAGES.append(dict(
 
         <p>Certification shows a similar pattern. In <a href="https://www.aapc.com/resources/medical-coding-salary-survey" target="_blank" rel="noopener">AAPC's 2026 salary report</a>, members holding the Certified Professional Coder (CPC) credential averaged $67,147 in 2025.</p>
 
-        <h2>Medical coding salary by state</h2>
+        <h2 id="toc-states">Medical coding salary by state</h2>
 
         <p>Pay varies a lot by state. In May 2025, the highest median pay for medical records specialists was in:</p>
 
@@ -5471,7 +5483,7 @@ PAGES.append(dict(
         </div>
         <!-- STATE-TABLE:END -->
 
-        <h2>What raises your pay</h2>
+        <h2 id="toc-raise">What raises your pay</h2>
 
         <p><strong>Certification.</strong> This is the biggest factor most people can control. In <a href="https://www.aapc.com/resources/medical-coding-salary-survey" target="_blank" rel="noopener">AAPC's 2026 salary report</a>, certified members averaged $67,260, compared with $55,721 for members without a certification, a difference of about 21 percent. Members with two AAPC certifications averaged $74,557, and those with three or more averaged $81,227.</p>
 
@@ -5481,7 +5493,7 @@ PAGES.append(dict(
 
         <p><strong>Location.</strong> Moving to a higher-paying state or landing a remote job based in one can raise your pay, though higher costs of living can eat into it.</p>
 
-        <h2>Do medical coders get paid well?</h2>
+        <h2 id="toc-paid-well">Do medical coders get paid well?</h2>
 
         <p>Medical coding pays close to the middle of the U.S. job market. The median for medical records specialists ($51,140) is just above the median for all U.S. jobs ($50,980). What makes it attractive to many people is the combination: you can train in months rather than years, there's no state license, and experienced, certified coders can earn well above the median.</p>
 
