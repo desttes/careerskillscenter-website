@@ -5601,6 +5601,7 @@ PAGES.append(dict(
 """))
 
 HOLD.add("medical-billing-coding-info.html")  # lead-capture page: noindex, kept out of the sitemap
+HOLD.add("it-careers-massachusetts-draft.html")  # uncommitted working draft: never list in the sitemap
 
 
 # ---------------------------------------------------------------------------
