@@ -5260,7 +5260,7 @@ PAGES.append(dict(
     ogtitle="Medical Coding and Billing Salary by State (2026): What Coders and Billers Earn",
     desc="Medical coders earn a median of $51,140 a year ($24.59 an hour). See pay in every state, what beginners make, and whether coders or billers earn more.",
     extrahead=r'''  <!-- Scoped to this post: plain grey in-article links hide the source links; narrow tables don't need the 660px minimum. -->
-  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}.data-table--narrow{min-width:0}.toc ul{list-style:none;margin:0 0 24px;padding:0}.toc li{margin:0 0 8px}.prose .toc a{font-weight:700;text-decoration:none}.prose h2[id]{scroll-margin-top:100px}@media(min-width:1280px){.prose{position:relative}.toc{position:absolute;top:0;right:100%;width:210px}.toc ul{margin:0}}.prose table caption{caption-side:top;text-align:left;font-weight:700;color:var(--navy);padding:0 0 10px}</style>
+  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}.data-table--narrow{min-width:0}.toc ul{list-style:none;margin:0 0 24px;padding:0}.toc li{margin:0 0 8px}.prose .toc a:not(.btn):not(.link-yellow){font-weight:700;text-decoration:none}.prose h2[id]{scroll-margin-top:100px}@media(min-width:1280px){.prose{position:relative}.toc{position:absolute;top:0;right:100%;width:210px}.toc ul{margin:0}}.prose table caption{caption-side:top;text-align:left;font-weight:700;color:var(--navy);padding:0 0 10px}</style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
