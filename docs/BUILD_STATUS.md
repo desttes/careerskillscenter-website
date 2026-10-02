@@ -380,6 +380,8 @@ Picked up the strategy-side handoff (commit `9aee0c0`: brief bumped to v1.1 + `d
 
 **Page layout (added after the first build, at Emilio's request):** an "On this page" list in the left column, side by side with the article column and spanning the width of the header title (from 1100px up; stacked below that). Plain bold links, no underline or background: the H2s from the second one on, then each of the 5 FAQ questions as its own link (clicking one opens that FAQ item), then Sources. The "Do medical coders get paid well?" H2 and FAQ question share a title, so it appears twice in the list. The date stays in the normal meta line (a large date block was tried and reverted).
 
+**Open TODO:** `llms.txt` now lists the salary post locally but was not part of the approved 4-file deploy; upload it with the next deploy (needs Emilio's OK). Also logged: `docs/VERIFICATION_LOG.md` §M (wage sources) and a `PROJECT-HANDOFF.md` note that this post is the one exception to "no pay figures".
+
 **Sitemap fix:** the live sitemap already listed `it-careers-massachusetts-draft.html` (a 404) since the 2026-09-30 deploy. `build-pages.py` now keeps that draft out of the sitemap (`HOLD`); the new sitemap has 28 URLs.
 
 **Built (in `tools/build-pages.py`; pages regenerated, not hand-edited):**
