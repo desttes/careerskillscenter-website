@@ -5536,6 +5536,18 @@ PAGES.append(dict(
         </section>
 ''', author=None)))
 
+# PREVIEW VARIANT of the salary post (not linked, noindex, kept out of the sitemap): the H2 list and the
+# article column sit side by side across the same width as the header title. Delete if not chosen.
+_v2 = dict(PAGES[-1])
+assert _v2["slug"] == "blog/medical-coding-billing-salary-by-state.html"
+_v2["slug"] = "blog/medical-coding-billing-salary-by-state-v2.html"
+_v2["extrahead"] = ('  <meta name="robots" content="noindex, follow">\n' + _v2["extrahead"].replace(
+    "</style>", "@media(min-width:1100px){.prose{position:relative;max-width:var(--container);"
+    "padding-left:calc(var(--gutter) + 250px)}.prose>*{max-width:820px}"
+    ".toc{position:absolute;top:0;left:var(--gutter);right:auto;width:210px}.toc ul{margin:0}}</style>", 1))
+PAGES.append(_v2)
+HOLD.add(_v2["slug"])
+
 # Interest form the post's CTA points to. COURSE-DEPENDENT: R-BLOG-MBC.
 # Deliberately says nothing about course dates, prices or enrollment.
 _US_STATES = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
