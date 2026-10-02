@@ -5260,7 +5260,8 @@ PAGES.append(dict(
     ogtitle="Medical Coding and Billing Salary by State (2026): What Coders and Billers Earn",
     desc="Medical coders earn a median of $51,140 a year ($24.59 an hour). See pay in every state, what beginners make, and whether coders or billers earn more.",
     extrahead=r'''  <!-- Scoped to this post: plain grey in-article links hide the source links; narrow tables don't need the 660px minimum. -->
-  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}.data-table--narrow{min-width:0}.toc ul{list-style:none;margin:0 0 24px;padding:0}.toc li{margin:0 0 8px}.prose .toc a:not(.btn):not(.link-yellow){font-weight:700;text-decoration:none}.prose h2[id]{scroll-margin-top:100px}@media(min-width:1280px){.prose{position:relative}.toc{position:absolute;top:0;right:100%;width:210px}.toc ul{margin:0}}.prose table caption{caption-side:top;text-align:left;font-weight:700;color:var(--navy);padding:0 0 10px}</style>
+  <script>document.addEventListener("DOMContentLoaded",function(){function o(){var e=location.hash&&document.querySelector(location.hash);if(e&&e.tagName==="DETAILS")e.open=true}o();addEventListener("hashchange",o)});</script>
+  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}.data-table--narrow{min-width:0}.toc ul{list-style:none;margin:0 0 24px;padding:0}.toc li{margin:0 0 8px}.prose .toc a:not(.btn):not(.link-yellow){font-weight:700;text-decoration:none}.prose h2[id]{scroll-margin-top:100px}@media(min-width:1100px){.prose{position:relative;max-width:var(--container);padding-left:calc(var(--gutter) + 250px)}.prose>*{max-width:820px}.toc{position:absolute;top:0;left:var(--gutter);right:auto;width:210px}.toc ul{margin:0}}.prose table caption{caption-side:top;text-align:left;font-weight:700;color:var(--navy);padding:0 0 10px}</style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -5317,7 +5318,11 @@ PAGES.append(dict(
             <li><a href="#toc-states">Medical coding salary by state</a></li>
             <li><a href="#toc-raise">What raises your pay</a></li>
             <li><a href="#toc-paid-well">Do medical coders get paid well?</a></li>
-            <li><a href="#faq-heading">Frequently asked questions</a></li>
+            <li><a href="#faq-1">How much money do you make as a medical coder?</a></li>
+            <li><a href="#faq-2">How much can a beginner medical coder make?</a></li>
+            <li><a href="#faq-3">Who gets paid more, a medical biller or a medical coder?</a></li>
+            <li><a href="#faq-4">Do medical coders get paid well?</a></li>
+            <li><a href="#faq-5">Which state pays medical coders the most?</a></li>
             <li><a href="#sources-heading">Sources</a></li>
           </ul>
         </nav>
@@ -5511,15 +5516,15 @@ PAGES.append(dict(
         <section class="faq" aria-labelledby="faq-heading">
           <h2 id="faq-heading">Frequently asked questions</h2>
           <div class="faq">
-            <details class="faq-item"><summary>How much money do you make as a medical coder?</summary>
+            <details class="faq-item" id="faq-1"><summary>How much money do you make as a medical coder?</summary>
             <div><p>The median pay for medical coders and other medical records specialists was $51,140 a year, or $24.59 an hour, in May 2025, according to the U.S. Bureau of Labor Statistics. Most earn between $37,000 and $81,150.</p></div></details>
-            <details class="faq-item"><summary>How much can a beginner medical coder make?</summary>
+            <details class="faq-item" id="faq-2"><summary>How much can a beginner medical coder make?</summary>
             <div><p>The government doesn't track pay by experience, but the lower end of the pay range is a good guide. A quarter of medical records specialists earned $43,490 or less in May 2025, and the lowest 10 percent earned under $37,000. That's about $18 to $21 an hour.</p></div></details>
-            <details class="faq-item"><summary>Who gets paid more, a medical biller or a medical coder?</summary>
+            <details class="faq-item" id="faq-3"><summary>Who gets paid more, a medical biller or a medical coder?</summary>
             <div><p>Coders usually earn a little more. Medical records specialists, the group that includes coders, had a median of $51,140 in May 2025. Billing and posting clerks had a median of $48,500. Many jobs combine both tasks.</p></div></details>
-            <details class="faq-item"><summary>Do medical coders get paid well?</summary>
+            <details class="faq-item" id="faq-4"><summary>Do medical coders get paid well?</summary>
             <div><p>Medical coding pays close to the middle of the U.S. job market. The median for medical records specialists ($51,140) is just above the median for all jobs ($50,980). Certification tends to raise pay: AAPC's 2026 report found certified members averaged $67,260, compared with $55,721 for members without a certification.</p></div></details>
-            <details class="faq-item"><summary>Which state pays medical coders the most?</summary>
+            <details class="faq-item" id="faq-5"><summary>Which state pays medical coders the most?</summary>
             <div><p>In May 2025 the highest medians were in the District of Columbia, Rhode Island, Hawaii, Washington and California, all above $61,000 a year.</p></div></details>
           </div>
         </section>
@@ -5535,18 +5540,6 @@ PAGES.append(dict(
           </ul>
         </section>
 ''', author=None)))
-
-# PREVIEW VARIANT of the salary post (not linked, noindex, kept out of the sitemap): the H2 list and the
-# article column sit side by side across the same width as the header title. Delete if not chosen.
-_v2 = dict(PAGES[-1])
-assert _v2["slug"] == "blog/medical-coding-billing-salary-by-state.html"
-_v2["slug"] = "blog/medical-coding-billing-salary-by-state-v2.html"
-_v2["extrahead"] = ('  <meta name="robots" content="noindex, follow">\n' + _v2["extrahead"].replace(
-    "</style>", "@media(min-width:1100px){.prose{position:relative;max-width:var(--container);"
-    "padding-left:calc(var(--gutter) + 250px)}.prose>*{max-width:820px}"
-    ".toc{position:absolute;top:0;left:var(--gutter);right:auto;width:210px}.toc ul{margin:0}}</style>", 1))
-PAGES.append(_v2)
-HOLD.add(_v2["slug"])
 
 # Interest form the post's CTA points to. COURSE-DEPENDENT: R-BLOG-MBC.
 # Deliberately says nothing about course dates, prices or enrollment.
