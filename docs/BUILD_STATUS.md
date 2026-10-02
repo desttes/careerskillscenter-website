@@ -374,7 +374,40 @@ Picked up the strategy-side handoff (commit `9aee0c0`: brief bumped to v1.1 + `d
 
 - **2026-10-01:** ITU Online reference in the 4-week vs 4-month post stays as written for now (Emilio). Marked `R-BLOG-MBC-ITU` in source + register: remove it when CSC launches its own courses. Comment-only source change; not deployed (no visible change).
 
-## Update — 2026-10-01: salary post "Medical Coding and Billing Salary by State" (BUILT, NOT DEPLOYED)
+## Update — 2026-10-01/02: salary post "Medical Coding and Billing Salary by State" (DEPLOYED 2026-10-02)
+
+**DEPLOYED 2026-10-02 (Emilio approved the deploy and the $31.17 correction; SFTP, only these 4 files, chmod 644):** `blog/medical-coding-billing-salary-by-state.html`, `blog/4-week-vs-4-month-medical-billing-coding-course.html`, `blog.html`, `sitemap.xml`. Live check: all four return 200; the post has all 68 table rows, `$31.17`, the left-hand H2 list and the 4-week post's Related link; `blog.html` and `sitemap.xml` list the post; `it-careers-massachusetts-draft.html` is still 404 (not uploaded). Pre-deploy grep for `[VERIFY` / `DRAFT` / `CODE:` on the 4 files: no matches.
+
+**Page layout (added after the first build, at Emilio's request):** an "On this page" list in the left column, side by side with the article column and spanning the width of the header title (from 1100px up; stacked below that). Plain bold links, no underline or background: the H2s from the second one on, then each of the 5 FAQ questions as its own link (clicking one opens that FAQ item), then Sources. The "Do medical coders get paid well?" H2 and FAQ question share a title, so it appears twice in the list. The date stays in the normal meta line (a large date block was tried and reverted).
+
+**Sitemap fix:** the live sitemap already listed `it-careers-massachusetts-draft.html` (a 404) since the 2026-09-30 deploy. `build-pages.py` now keeps that draft out of the sitemap (`HOLD`); the new sitemap has 28 URLs.
+
+**Built (in `tools/build-pages.py`; pages regenerated, not hand-edited):**
+- `/blog/4-week-vs-4-month-medical-billing-coding-course.html` — Category Medical, byline Vicent Canal, published 2026-09-30 (visible date + `datePublished`/`dateModified`). Text, links, BlogPosting + FAQPage JSON-LD and `COURSE-DEPENDENT: R-BLOG-MBC` markers copied from the source doc. Added to `blog.html` (top of grid) and `sitemap.xml`.
+- `/medical-billing-coding-info.html` — name, email, phone (optional), state, "When would you like to start?" (ASAP / 1-3 months / Just exploring); posts to `submit.php` with `source=blog-mbc-4week`; success text "Thanks! We'll email you more information soon." No dates, prices or enrollment mentioned. Marked `R-BLOG-MBC`. **noindex and left out of the sitemap** (lead-capture page).
+- `docs/COURSE_CONTENT_REGISTER.md`: added row **R-BLOG-MBC**.
+
+**Guide-mode exceptions (approved by Emilio for this post only):**
+1. The **$679** price in the "What you'll pay in total" table (generic "4-week online course" row; also stated in the lead sentence of that section).
+2. The CTA heading **"Want to learn more about our courses?"**
+
+**Small differences from the source file / decisions to confirm:**
+- Source had a CODE note "no author byline"; the task says byline Vicent Canal, so the visible byline is Vicent Canal. The JSON-LD author was kept as written (Organization: Career Skills Center).
+- Related line: links to `/healthcare-careers.html` (the live guide) instead of `/healthcare-careers-massachusetts.html` (now a 301), and adds post #6 "Can Medical Billing and Coding Be Learned Online?" as the source CODE note asked.
+- FAQ markup converted to the site's `details.faq-item` accordion (same text as the JSON-LD); tables use `.data-table`; CTA uses `.post-cta`.
+- Page hero "dek" = the meta description.
+- In-article links are plain grey with no underline site-wide (`.prose a`), which hides this post's many source links. Added a small **scoped** style in this post's `<head>` only (navy + underline). **Recommend a site-wide `.prose a` rule later** (would need a CSS deploy).
+- `og:type` stays `website` (shared template), not `article`.
+- The form's generic JS validation message still reads "…name, phone, email, and program of interest" (shared `js/main.js`); not changed because only the named files are deployed.
+- The post's price table uses third-party prices checked Sept 30, 2026 (per the source). Nothing in it is a CSC program fact except the approved $679 row.
+
+**Checks:** pre-deploy `grep -rn -e '[VERIFY' -e 'DRAFT'` on the new/changed files: no matches. Local form test: payload has `source=blog-mbc-4week`, success message shows; `submit.php` email body verified via `csc_process`. Mobile (375px): no horizontal scroll, tables scroll inside their wrapper, no console errors.
+
+**DEPLOYED 2026-09-30 (Emilio approved; SFTP, only these 4 files, chmod 644):** `blog/4-week-vs-4-month-medical-billing-coding-course.html`, `medical-billing-coding-info.html`, `blog.html`, `sitemap.xml`. Live check: all four URLs return HTTP 200; `blog.html` and `sitemap.xml` list the new post; the post shows the Vicent Canal byline. Live form test: POST to `submit.php` with `source=blog-mbc-4week` returned `{"ok":true}` (subject `[blog-mbc-4week] Website inquiry from TEST - please ignore…`). **Open: confirm the test lead actually arrived in the `vcanal@` inbox** (I can't read that mailbox; delete the test lead afterward).
+
+- **2026-10-01:** ITU Online reference in the 4-week vs 4-month post stays as written for now (Emilio). Marked `R-BLOG-MBC-ITU` in source + register: remove it when CSC launches its own courses. Comment-only source change; not deployed (no visible change).
+
+## Update — 2026-10-01/02: salary post "Medical Coding and Billing Salary by State" (DEPLOYED 2026-10-02)
 
 **⛔ Deploy held, per the task rule "if any national figure doesn't match the BLS file, stop and report":** one national figure in the draft did not match BLS (see "Changes" #1). It is a one-cent correction, already fixed in the page, but Emilio should confirm before the deploy goes out.
 
@@ -398,8 +431,6 @@ Picked up the strategy-side handoff (commit `9aee0c0`: brief bumped to v1.1 + `d
 - AAPC figures ($67,260, $55,721, $67,147 for CPC, $74,557, $81,227) checked against the live AAPC page: match. The "about 21 percent" is AAPC's 20.7%.
 
 **Checks:** grep for `[VERIFY`, `DRAFT`, `CODE:` on the post, the 4-week post, `blog.html`, `sitemap.xml`: no matches. Mobile (375px): the page does not scroll sideways; only the 51-row state table scrolls, inside its box. Vermont's job count is "Not published" in BLS (`**`).
-
-**To do before deploy (Emilio):** OK the $31.17 correction. Files to deploy: the salary post, the 4-week post, `blog.html`, `sitemap.xml`. **`sitemap.xml` currently lists `it-careers-massachusetts-draft.html` (uncommitted experiment): remove that line from the deployed copy** (or compare with the live sitemap) so the draft is never advertised.
 
 ## Update — Sept 26, 2026: deeper Career Paths content
 
