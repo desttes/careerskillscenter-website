@@ -339,3 +339,13 @@ Emilio reviewed every remaining `[VERIFY]`/`DRAFT` one by one; the whole site (i
 - **AAPC CPC exam $425 (one attempt) / $499 (two) — RE-VERIFIED** on aapc.com (2026). Kept in blog #6.
 - **All real wage/salary figures — REMOVED site-wide** (Emilio: "no real figures"). Blog uses qualitative wording + a BLS look-up link. (The BLS OEWS May 2025 MA medians logged in §G1/§I-REVISED are no longer displayed; the old program pages that still contain them are 301 redirect stubs, so nothing renders live.)
 - **ITA approval model — CORRECTED (Emilio).** The student selects from the already-approved ETPL; the counselor does not vet the school. Approval = eligible + program-on-ETPL + funding available. Fixed blog #3. (Also in Code memory.)
+
+## M. Salary-by-state post — wage figures (2026-10-01/02; Emilio-approved exception to "no real figures")
+
+`blog/medical-coding-billing-salary-by-state.html` is the one place the site shows real pay figures (it supersedes the "no real figures" sweep in §L for this post only; the rest of the site still has none). Sources, all checked against the files/pages themselves:
+- **BLS OEWS May 2025**, state file `oesm25st.zip` and national file `oesm25nat.zip` (bls.gov/oes/tables.htm; plain curl gets a 403, a descriptive User-Agent works). Occupations: 29-2072 Medical Records Specialists, 43-3021 Billing and Posting Clerks, 00-0000 All Occupations.
+- National table CONFIRMED against the national file except one fix: upper-25% hourly **$31.16 → $31.17** (H_PCT75 = 31.17). Mean $56,790, all-jobs median $50,980, 43-3021 median $48,500 / $23.32: match.
+- Top-10 states table and the five FAQ states (DC, RI, HI, WA, CA; all above $61,000): match the state file. The 51-row state table is generated from the file by `tools/build-salary-table.py` (Vermont job count is "**" in BLS → "Not published").
+- **BLS Occupational Outlook Handbook** (medical records specialists): 8 percent growth 2025–2035, "much faster than the average for all occupations"; the draft said "faster than average", corrected.
+- **AAPC 2026 salary report** (aapc.com/resources/medical-coding-salary-survey): certified $67,260; non-certified $55,721 (20.7% more); CPC $67,147; 2 certifications $74,557; 3+ $81,227. All match.
+- Next year: download the new `oesm<yy>st.zip`, run `python3 tools/build-salary-table.py <file>.xlsx` then `python3 tools/build-pages.py`, and re-check the hard-coded national, top-10 and FAQ numbers in the post's `PAGES.append` block by hand.
