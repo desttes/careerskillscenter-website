@@ -3,7 +3,6 @@
 Add blog topics here for the blog agent to work on. The agent runs every 6 hours, picks up the next item, and moves it to "In Progress" or "Done."
 
 ## Next Up
-- **Healthcare Jobs You Can Train For in Massachusetts (2026)** — broad overview post covering CNA, medical assistant, phlebotomist, pharmacy tech, medical billing/coding, EKG tech. For each: what the job is, MA median pay (BLS OEWS), training path, licensing. Link to the healthcare careers guide. Target: "healthcare jobs massachusetts"
 - **How to Become a Phlebotomist in Massachusetts** — role guide: what phlebotomists do, MA pay (BLS SOC 31-9097), training path (certificate program), certification (ASCP, NHA), MA licensing requirements, job outlook, how to pay for training. Target: "phlebotomist massachusetts"
 - **How to Become a Pharmacy Technician in Massachusetts** — role guide: daily work, MA pay (BLS SOC 29-2052), Board of Pharmacy license requirement, PTCB/ExCPT certification, training path, job outlook. Target: "pharmacy technician massachusetts"
 - **How to Become a CNA in Massachusetts** — role guide: what CNAs do, MA pay (BLS SOC 31-1131), DPH Nurse Aide Registry, state-approved training program requirement, competency eval, job outlook. Target: "CNA massachusetts"
@@ -13,6 +12,7 @@ Add blog topics here for the blog agent to work on. The agent runs every 6 hours
 
 ## In Progress
 <!-- The agent moves items here while working on them. -->
+- **Healthcare Jobs You Can Train For in Massachusetts (2026)** — broad overview post covering CNA, medical assistant, phlebotomist, pharmacy tech, medical billing/coding, EKG tech. For each: what the job is, MA median pay (BLS OEWS), training path, licensing. Link to the healthcare careers guide. Target: "healthcare jobs massachusetts"
 
 ## Done
 <!-- Completed drafts. The agent logs the file path and date. -->
