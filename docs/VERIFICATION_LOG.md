@@ -405,3 +405,51 @@ https://www.bls.gov/ooh/healthcare/nursing-assistants.htm · medical-assistants.
 9. "Coding is the only one of the six sometimes done from home" has no official source (hedged); unsourced work-environment lines to confirm against BLS.
 10. FAQ questions are placeholders, not real People Also Ask data; capture real ones.
 11. FAQ 4 wording "many employers prefer or require" vs. the brief's "may prefer or require".
+
+## O. Phlebotomist post — national BLS pay, outlook, licensing and certification facts (2026-10-03, DRAFT, local)
+
+`blog/phlebotomist-massachusetts.html` (publish date 2026-10-03). Compliance review: PASS (non-blocking issues 1-7, see `docs/blog-drafts/phlebotomist-massachusetts/review-report.md`). Source file: `docs/blog-drafts/phlebotomist-massachusetts/research-brief.md`.
+
+**STATUS: from search extracts, not yet verified on live pages.** bls.gov, ascp.org, nhanow.com and mass.gov could not be opened during research. The post carries a `<!-- DRAFT -->` marker that blocks deploy until every item below is checked live and Emilio approves.
+
+**FLAGGED POLICY QUESTION (Emilio decides):** PROJECT-HANDOFF.md allows pay figures only in the salary-by-state post (section M). This post shows national BLS pay for phlebotomists (same open question as section N). Either approve an exception or swap the pay section for a link to the BLS page.
+
+**Note:** section H1 of this log holds a Massachusetts phlebotomist median of **$50,170** (SOC 31-9097, line ~186). It is **not used** in the post (the post shows national pay and links the BLS Massachusetts page). Confirm its source/vintage before any use.
+
+### O1. BLS wage data, phlebotomists (SOC 31-9097), national, May 2025 (vintage to confirm on oes319097.htm; brief called it "2025 median pay")
+- Median: $45,230/year; $21.75/hour
+- 10th percentile: under $35,780/year; 90th percentile: over $58,780/year
+- No Massachusetts pay shown (current MA figure not found).
+- https://www.bls.gov/oes/current/oes319097.htm · https://www.bls.gov/ooh/healthcare/phlebotomists.htm · MA page linked: https://www.bls.gov/oes/current/oes_ma.htm
+
+### O2. BLS outlook 2025-35
+- 7% growth (label "much faster than average" deliberately not used); 143,900 jobs in 2025; about 18,000 openings a year.
+
+### O3. BLS industry shares, 2025
+- Hospitals 36%; medical and diagnostic labs 33%; other ambulatory health services 16%; physician offices 9%; outpatient care centers 2%.
+
+### O4. BLS work environment / training (confirm wording live)
+- Standing for long periods; mostly full time; nights/weekends/holidays in hospitals and labs; one of the highest rates of work injuries and illnesses.
+- Programs usually take less than one year (community college, vocational, technical school); some people hired with HS diploma and trained on the job; lab technologist usually needs a bachelor's degree; medical assistant listed as related job.
+- BLS also lists National Phlebotomy Association and NCCT as certifying groups.
+
+### O5. Licensing facts
+- States requiring phlebotomist certification/licensure per BLS and ASCP: California, Louisiana, Nevada, Washington. Massachusetts not on the list. https://www.ascp.org/boc/explore-credentials/state-licensure
+- No mass.gov sentence stating "no phlebotomy license" was found. DPH Clinical Laboratory Program licenses labs and collection sites, not individuals (M.G.L. c.111D, 105 CMR 180.00). https://www.mass.gov/clinical-laboratory-program. Confirm with DPH. Also confirm "we did not find a Massachusetts state approval for phlebotomy programs."
+- CNA Nurse Aide Registry mention (one sentence, comparison section): see section N3.
+
+### O6. Certification facts
+- NHA CPT: $134; 120 items (100 scored + 20 pretest); 2 hours; HS/GED (or within 18 months) plus training within 5 years OR 1 year supervised work within 3 years (or 2 within 5); 30 venipunctures + 10 capillary sticks on live people; renew every 2 years with 10 CE credits plus fee. https://www.nhanow.com/certification/nha-certifications/certified-phlebotomy-technician-(cpt) · https://www.nhanow.com/stay-certified
+- ASCP PBT: $155 (a non-official site says $165 after Jan 2026: CHECK); 80 multiple-choice questions; 2 hours; adaptive; routes include NAACLS-approved program, structured program, 1 year full-time experience (all within 5 years); HS diploma or equivalent for training routes; 3-year Credential Maintenance Program. https://www.ascp.org/boc/explore-credentials/view-all-credentials/PBT · https://www.ascp.org/boc/maintain-your-credentials/view-credentials-to-maintain/PBT
+- AMT RPT: no details in the post (table says "See AMT's site"). Section N4 holds $125 / 200 questions / 2.5 hours (unused here). https://americanmedtech.org/phlebotomy-technician
+
+### O7. Claims drawn from the content strategy, not the research brief (confirm or remove)
+- MassEducate / MassReconnect generally cover credit programs, not short non-credit certificates (needs mass.edu OSFA source or removal).
+- "Some employers may train new workers and pay them while they learn" (hedged, no employer named).
+- MassHire can point to free ESOL classes (unsourced).
+- "Some people get hired with a high school diploma and learn on the job" (from BLS; confirm wording).
+- Programs/employers may ask for immunizations, CPR, background check (written as "ask").
+- FAQ questions are drafted from search patterns, not live People Also Ask data.
+
+### O8. Check live before deploy
+1. Pay-figure policy decision. 2. O1-O4 against live BLS pages. 3. O5 with DPH. 4. O6 on NHA/ASCP/AMT sites (ASCP $155 vs $165). 5. O7 items. 6. Optional: OSHA 29 CFR 1910.1030 cite for the blood-risk line.

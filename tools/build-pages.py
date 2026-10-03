@@ -3446,6 +3446,11 @@ def post_card(tag, date, read, title, excerpt, href="#"):
 # Real launch posts. Order = newest first in the grid (the pillar is featured
 # above the grid, so it is not repeated here). href points into /blog/.
 BLOG_POSTS = [
+    ("Medical", "Oct 3, 2026", "11 min read",
+     "How to Become a Phlebotomist in Massachusetts (2026)",
+     "Massachusetts is not one of the states that license phlebotomists. Employers still want certification "
+     "and real blood draws. Here is the honest path and who may help pay.",
+     "blog/phlebotomist-massachusetts.html"),
     ("Medical", "Oct 3, 2026", "12 min read",
      "Healthcare Jobs in Massachusetts You Can Train For (2026)",
      "Six healthcare jobs you can train for with a high school diploma or GED: what they pay, which need a "
@@ -5952,6 +5957,383 @@ PAGES.append(dict(
         "Six jobs you can train for with a high school diploma or GED: what they pay, which ones need a state "
         "license, and who each one is not a good fit for.",
         "October 3, 2026", "12 min read", _hcj_body)))
+
+
+# ---------------------------------------------------------------------------
+# How to Become a Phlebotomist in Massachusetts (2026). Published 2026-10-03.
+# Target keyword: "phlebotomist massachusetts". Source: blog pipeline
+# (research-brief.md + content-strategy.md, 2026-10-03). Pay: BLS national
+# figures only, SOC 31-9097 (no current Massachusetts figures were found by
+# research). CSC lines = COURSE-DEPENDENT: R-BLOG-02. Course-mode copy:
+# blog/course-mode-copy/phlebotomist-massachusetts.md
+# ---------------------------------------------------------------------------
+_phl_faq = [
+    ("Do you need a license to be a phlebotomist in Massachusetts?",
+     "Massachusetts is not on the list of states that require phlebotomists to be certified or licensed. Those states are California, Louisiana, Nevada and Washington. But many employers ask for national certification. Check current rules with the Massachusetts DPH Clinical Laboratory Program."),
+    ("How long does it take to become a phlebotomist?",
+     "The U.S. Bureau of Labor Statistics says phlebotomy programs usually take less than one year. Class time is only part of it. Most people also need supervised blood draws on real people before they can take a national exam, and finding that clinical spot can take the longest."),
+    ("How much do phlebotomists make?",
+     "The national median pay for phlebotomists was $45,230 a year, or $21.75 an hour, according to the U.S. Bureau of Labor Statistics (job code 31-9097). The lowest 10% earned under $35,780 and the top 10% earned over $58,780. New workers usually start below the median. Pay in Massachusetts is different."),
+    ("What certification do you need to be a phlebotomist?",
+     "Massachusetts is not on the list of states that require one, but many employers want one. Common national certifications are the NHA CPT, the ASCP PBT and the AMT RPT. NHA and ASCP both ask for a high school diploma or equivalent plus training or work experience. Ask local employers which ones they accept."),
+    ("How much does phlebotomy certification cost?",
+     "At last check, the exam fee was $134 for the NHA CPT and $155 for the ASCP PBT. Fees change, so check the official sites. Training costs vary a lot. Ask each program for the full price, including the exam fee. A MassHire Career Center may help pay if you qualify."),
+    ("Is phlebotomy a good career?",
+     "It can be a short path into healthcare. The U.S. Bureau of Labor Statistics projects 7% job growth from 2025 to 2035, with about 18,000 openings a year nationwide. The hard parts: you stand a lot, many jobs include nights, weekends and holidays, and there is a risk of needlestick injuries."),
+]
+
+_phl_faq_html = "\n".join(
+    f'          <details class="faq-item"><summary>{q}</summary>\n          <div><p>{a}</p></div></details>'
+    for q, a in _phl_faq)
+
+_phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF.md says no pay figures anywhere except the
+             salary-by-state post (Emilio exception). This post shows NATIONAL BLS pay for phlebotomists (SOC 31-9097),
+             same open question as the healthcare-jobs post (VERIFICATION_LOG N): Emilio must approve, or swap the pay
+             section for a link to the BLS page. Research could not open bls.gov, ascp.org, nhanow.com or mass.gov
+             directly; EVERY figure below came from search summaries and needs a live check before publishing.
+             (1) BLS national pay 31-9097: median $45,230/yr, $21.75/hr; 10th pct under $35,780; 90th pct over $58,780.
+             Brief labels this "2025 median pay" (OOH); post calls it May 2025 data: confirm vintage on oes319097.htm.
+             No Massachusetts pay shown (brief: current MA figures NOT FOUND); post links the BLS MA page instead.
+             (2) BLS projections 2025-35: 7% growth, 143,900 jobs in 2025, about 18,000 openings a year. The
+             "much faster than average" label is deliberately NOT used (brief flagged it).
+             (3) BLS industry shares 2025: hospitals 36%, medical/diagnostic labs 33%, other ambulatory 16%,
+             physician offices 9%, outpatient care centers 2%.
+             (4) BLS work environment: standing, mostly full time, nights/weekends/holidays in hospitals and labs,
+             one of the highest rates of work injuries and illnesses. Confirm wording live.
+             (5) Licensing: Massachusetts is NOT on the BLS/ASCP list of states requiring phlebotomist
+             certification/licensure (California, Louisiana, Nevada, Washington). No mass.gov sentence saying "no
+             phlebotomy license" was found; DPH Clinical Laboratory Program licenses labs and collection sites, not
+             individuals (M.G.L. c.111D, 105 CMR 180.00). Confirm with DPH. Also confirm the line "we did not find a
+             Massachusetts state approval for phlebotomy programs."
+             (6) NHA CPT: $134 (NHA store); 120 items (100 scored + 20 pretest); 2 hours; HS/GED (or within 18
+             months) plus training within 5 years OR 1 year supervised work within 3 years (or 2 within 5); 30
+             venipunctures + 10 capillary sticks on live people; renew every 2 years with 10 CE credits plus a fee.
+             (7) ASCP PBT: $155 (a non-official site says $165 after Jan 2026: CHECK); 80 questions; 2 hours;
+             adaptive test; routes incl. NAACLS-approved program, structured program, 1 year full-time experience
+             (all within 5 years); HS diploma or equivalent for training routes; 3-year Credential Maintenance Program.
+             (8) AMT RPT: no details in the research brief; post names it and links AMT only.
+             (9) Programs may ask for immunizations, CPR and a background check: written as "ask," not as a rule.
+             (10) Free community college caveat (MassEducate / MassReconnect generally cover credit programs, not
+             short non-credit certificates): from the content strategy, NOT in the research brief. Written as
+             "may not cover ... ask the college." Confirm against mass.edu OSFA guidelines or remove.
+             (11) "Some employers may train new workers and pay them while they learn": from the content strategy
+             (a 2023 MassHire session with a hospital employer), not in the research brief; hedged, no employer named.
+             (12) FAQ questions are drafted from search patterns, NOT live People Also Ask data. Capture real PAA
+             questions before publishing. -->
+
+        <p class="lead">Search &ldquo;phlebotomist Massachusetts&rdquo; and you will see hundreds of job ads.
+        Massachusetts is not one of the states that require a license to draw blood. So why can&rsquo;t you just apply?
+        Because most employers want national certification. And you usually can&rsquo;t get certified until you
+        have drawn blood from real people while someone supervises you.</p>
+
+        <!-- COURSE-DEPENDENT: R-BLOG-02 -->
+        <p>This guide shows you how that works, what it costs, who may help you pay, and the parts of the job other
+        guides leave out. Most guides on this topic are written by schools or sites that earn money when you sign
+        up for a course. Career Skills Center does not sell phlebotomy training, so we can be honest.</p>
+        <!-- /COURSE-DEPENDENT: R-BLOG-02 -->
+
+        <div class="note"><strong>Quick answer.</strong> To become a phlebotomist in Massachusetts, you usually
+        need a high school diploma or GED, a phlebotomy training program with real blood draws, and a national
+        certification that employers trust. Massachusetts is not on the list of states that license
+        phlebotomists. The hardest step for many people is getting supervised practice on real patients.</div>
+
+        <h2>Words to know</h2>
+        <ul>
+          <li><strong>Phlebotomist</strong> (say it: fleh-BOT-uh-mist): a person who draws blood for tests or
+          donations.</li>
+          <li><strong>Venipuncture:</strong> drawing blood from a vein, usually in the arm, with a needle.</li>
+          <li><strong>Capillary stick:</strong> a small poke in the finger (or a baby&rsquo;s heel) to get a few
+          drops of blood.</li>
+          <li><strong>Specimen:</strong> a sample, like a tube of blood, that goes to a lab for testing.</li>
+          <li><strong>Clinical practice</strong> (also called an externship): time you spend at a hospital, lab or
+          clinic, drawing blood from real patients while a trained worker watches you.</li>
+          <li><strong>Certification:</strong> a national credential you earn by passing a test. It is not the same
+          as a state license.</li>
+        </ul>
+
+        <h2>What a phlebotomist does</h2>
+        <p>You would spend your day drawing blood. You check the patient&rsquo;s name and test order, find a vein,
+        draw the blood, and label each tube the right way. Then you get the specimen ready to go to the lab. You
+        also help patients stay calm. Many people are scared of needles.</p>
+        <p>Small mistakes matter in this job. A wrong name on a tube can mean a wrong test result for a patient.
+        So you must read carefully and follow steps exactly every time.</p>
+        <p><strong>Where phlebotomists work.</strong> In 2025, the U.S. Bureau of Labor Statistics (BLS) counted
+        these as the biggest employers:</p>
+        <ul>
+          <li>Hospitals: 36%</li>
+          <li>Medical and diagnostic labs: 33%</li>
+          <li>Other outpatient health services: 16%</li>
+          <li>Doctors&rsquo; offices: 9%</li>
+          <li>Outpatient care centers: 2%</li>
+        </ul>
+        <p>This is hands-on work with patients. You cannot do it from home.</p>
+
+        <h2>Do you need a license to be a phlebotomist in Massachusetts?</h2>
+        <p>Massachusetts is not on the list of states that require phlebotomists to be certified or licensed. But
+        employers can still require certification. Check the current rules with the state&rsquo;s Clinical
+        Laboratory Program.</p>
+        <p>Here is what we found:</p>
+        <ul>
+          <li>BLS and the ASCP (American Society for Clinical Pathology) name four states that require
+          phlebotomists to be certified or licensed: <strong>California, Louisiana, Nevada and Washington</strong>.
+          Massachusetts is not one of them. If you plan to move, check that state&rsquo;s rules.</li>
+          <li>In Massachusetts, the Department of Public Health (DPH)
+          <a href="https://www.mass.gov/clinical-laboratory-program" target="_blank" rel="noopener">Clinical
+          Laboratory Program</a> licenses labs and places that collect specimens. We did not find a license for
+          individual phlebotomists. Contact the program if you want to be sure.</li>
+        </ul>
+        <p><strong>Watch out for &ldquo;state-approved&rdquo; phlebotomy programs.</strong> We did not find a
+        Massachusetts state approval for phlebotomy programs. If a school uses that phrase, ask what it means and
+        which agency approved what. It is a fair question, and a good school will have a clear answer.</p>
+
+        <h2>The real gatekeepers: live blood draws and employer rules</h2>
+        <p>No state license rule does not mean easy hiring. In practice, two things decide whether you get hired:</p>
+        <ol>
+          <li><strong>What employers ask for.</strong> BLS says most states do not require certification, but
+          employers may prefer it, and some require it.</li>
+          <li><strong>What the certification asks for.</strong> To earn the NHA certification, for example, you
+          must show at least <strong>30 blood draws from a vein and 10 capillary sticks on live people</strong>.
+          Practice on a plastic arm does not count.</li>
+        </ol>
+        <p>So the chain looks like this: training with real blood draws &rarr; national certification &rarr; job.
+        This is also why an online-only course is not enough. You can learn the theory online. You cannot get
+        your live draws online.</p>
+
+        <h3>Saw a phlebotomy job ad? Here&rsquo;s what it is asking for</h3>
+        <p>Try this before you pay for any training:</p>
+        <ol>
+          <li>Go to <a href=\"""" + JOBQUEST_URL + """\" target="_blank" rel="noopener">JobQuest</a>, the free
+          Massachusetts job site, or any job board.</li>
+          <li>Search &ldquo;phlebotomist&rdquo; near where you live.</li>
+          <li>Open 10 ads. For each one, write down: Does it require certification? Which one (NHA, ASCP, AMT)?
+          Does it ask for experience? Does it ask for CPR training, shots, or a background check?</li>
+        </ol>
+        <p>Now you know what employers near you really want. Use that list when you pick a training program.</p>
+
+        <h2>Phlebotomy certifications compared</h2>
+        <p>These are national certifications, so they are the same in every state. BLS also lists the National
+        Phlebotomy Association and NCCT (National Center for Competency Testing) as certifying groups. The table
+        covers the three you will see most in job ads.</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <caption>Three common phlebotomy certifications (fees at last check; always confirm on the official site)</caption>
+          <thead>
+            <tr><th></th><th>NHA CPT</th><th>ASCP PBT</th><th>AMT RPT</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Full name</td><td>Certified Phlebotomy Technician</td><td>Phlebotomy Technician</td><td>Registered Phlebotomy Technician</td></tr>
+            <tr><td>Who gives it</td><td>National Healthcareer Association</td><td>American Society for Clinical Pathology, Board of Certification</td><td>American Medical Technologists</td></tr>
+            <tr><td>Exam fee</td><td>$134</td><td>$155</td><td>See AMT&rsquo;s site</td></tr>
+            <tr><td>The test</td><td>120 questions (100 count toward your score), 2 hours</td><td>80 multiple-choice questions, 2 hours. The test adjusts to your answers as you go.</td><td>See AMT&rsquo;s site</td></tr>
+            <tr><td>How you qualify</td><td>High school diploma or GED, plus a training program in the last 5 years, or 1 year of supervised work in the last 3 years</td><td>High school diploma or equivalent plus an approved or structured program in the last 5 years, or 1 year of full-time work in the last 5 years. Other routes exist.</td><td>See AMT&rsquo;s site</td></tr>
+            <tr><td>Live blood draws</td><td>At least 30 from a vein and 10 capillary sticks on live people</td><td>Clinical practice is part of the program routes. Check the details for your route.</td><td>See AMT&rsquo;s site</td></tr>
+            <tr><td>Keeping it</td><td>Renew every 2 years with 10 continuing education credits and a fee</td><td>Every 3 years through ASCP&rsquo;s Credential Maintenance Program</td><td>See AMT&rsquo;s site</td></tr>
+            <tr><td>Official page</td><td><a href="https://www.nhanow.com/certification/nha-certifications/certified-phlebotomy-technician-(cpt)" target="_blank" rel="noopener">nhanow.com</a></td><td><a href="https://www.ascp.org/boc/explore-credentials/view-all-credentials/PBT" target="_blank" rel="noopener">ascp.org</a></td><td><a href="https://americanmedtech.org/phlebotomy-technician" target="_blank" rel="noopener">americanmedtech.org</a></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p><strong>Which one is best?</strong> The best one is the one employers near you accept. Use your list of
+        10 job ads. If most ads name one certification, aim for that one.</p>
+        <p><strong>If you are still learning English:</strong> ask the certifying group which languages the test is
+        offered in, and ask the training program how much English the classes and the clinical site need. On the
+        job, you must confirm patient names and read test orders exactly. Your MassHire Career Center can point
+        you to free English classes (ESOL) if you want to build your English first.</p>
+
+        <h2>How to become a phlebotomist in Massachusetts: the real path</h2>
+        <p>Here are the steps, with the slow part of each one marked. BLS says most phlebotomists finish a
+        certificate program at a community college, vocational school or technical school, and these programs
+        usually take less than one year. Some people get hired with a high school diploma and learn on the job.</p>
+        <ol>
+          <li><strong>Have a high school diploma or GED.</strong> NHA and ASCP both ask for one (or an equivalent).
+          <em>Slow part:</em> if you don&rsquo;t have one yet, getting your GED or equivalent comes first.</li>
+          <li><strong>Check what local employers want.</strong> Do the 10-ad check above. <em>Slow part:</em>
+          none. This is quick.</li>
+          <li><strong>Pick a training program that includes live blood draws.</strong> Classes cover the body,
+          medical words, safety and lab steps, plus hands-on practice. <em>Slow part:</em> comparing programs and
+          finding a way to pay. Start with MassHire (see below).</li>
+          <li><strong>Get your live draws at a clinical site.</strong> <em>Slow part:</em> this is often the
+          longest step. Ask the program how it finds clinical spots and how long students wait.</li>
+          <li><strong>Pass a national certification exam.</strong> <em>Slow part:</em> studying, scheduling the
+          test, and waiting for results.</li>
+          <li><strong>Apply for jobs.</strong> Programs and employers may ask for proof of shots (immunizations),
+          CPR training and a background check. <em>Slow part:</em> these checks can add time before your first
+          shift.</li>
+        </ol>
+        <p>Ask any program: &ldquo;How long until I am ready to take the exam?&rdquo; That is a better question
+        than &ldquo;How long is the class?&rdquo;</p>
+
+        <div class="note"><strong>Before you pay for a program, ask these 6 questions.</strong>
+        <ol>
+          <li>Does the program include live blood draws on real people? How many?</li>
+          <li>Where is the clinical site, and how do students get a spot there?</li>
+          <li>Which certification exam does it prepare me for? Is the exam fee included in the price?</li>
+          <li>Is the program on the Massachusetts list of training programs that MassHire can pay for (the
+          ETPL, or Eligible Training Provider List)? Your MassHire Career Center can check.</li>
+          <li>Is it a for-credit college program or a non-credit course? This affects which aid you can use.</li>
+          <li>What level of English do the classes and the clinical site need?</li>
+        </ol>
+        Also ask for the <strong>total</strong> price: tuition, books, uniform, background check, shots and exam
+        fee. Costs vary a lot from program to program.</div>
+
+        <h2>How much do phlebotomists make?</h2>
+        <p>The national median pay for phlebotomists was <strong>$45,230 a year</strong>, or <strong>$21.75 an
+        hour</strong>, according to BLS (May 2025 data, the latest available as of October 2026). The median is
+        the middle: half of workers earn more, half earn less.</p>
+        <ul>
+          <li>The lowest 10% earned under <strong>$35,780</strong> a year.</li>
+          <li>The top 10% earned over <strong>$58,780</strong> a year.</li>
+        </ul>
+        <p><strong>What this means for you.</strong> New workers usually start below the median. BLS does not
+        publish a separate starting wage, so treat the lowest 10% number as a rough guide to where beginners
+        start. These are national numbers. Pay in Massachusetts is different. You can look it up on the
+        <a href="https://www.bls.gov/oes/current/oes_ma.htm" target="_blank" rel="noopener">BLS Massachusetts
+        wage page</a>.</p>
+        <p><small>Source: BLS Occupational Employment and Wage Statistics (OEWS) and Occupational Outlook Handbook,
+        phlebotomists, job code (SOC) 31-9097.</small></p>
+
+        <h2>Job outlook</h2>
+        <p>BLS projects that phlebotomist jobs will grow <strong>7% from 2025 to 2035</strong>. There were about
+        143,900 phlebotomist jobs in the U.S. in 2025. BLS expects about <strong>18,000 openings a year</strong>
+        on average. Many of those openings come from replacing workers who change jobs or retire. These are
+        national numbers.</p>
+
+        <h2>The hard truth: is this job right for you?</h2>
+        <p>Other guides list the good parts. Here are the hard parts too, from BLS:</p>
+        <ul>
+          <li><strong>You stand a lot.</strong> Many phlebotomists are on their feet for long periods.</li>
+          <li><strong>The hours can be hard.</strong> Most work full time. Jobs in hospitals and labs may include
+          nights, weekends and holidays.</li>
+          <li><strong>There is real risk.</strong> BLS says phlebotomists have one of the highest rates of work
+          injuries and illnesses. Needlesticks and contact with blood are part of the risk. You must follow safety
+          rules every time.</li>
+          <li><strong>The pay range is fairly narrow.</strong> The top 10% earned over $58,780 a year. To earn more
+          over time, many people add skills or move into a related job. Lab technologist jobs are a step up, but BLS
+          says they usually need a bachelor&rsquo;s degree.</li>
+          <li><strong>Training is not the whole timeline.</strong> A short class does not mean a fast job. Live
+          draws, the exam and employer checks all take time.</li>
+        </ul>
+
+        <p><strong>This job may fit you if:</strong></p>
+        <ul>
+          <li>You stay calm around needles and blood.</li>
+          <li>You are patient and kind with people who are scared.</li>
+          <li>You like clear steps and careful, exact work.</li>
+          <li>You want a shorter path into healthcare without a college degree.</li>
+        </ul>
+        <p><strong>It is probably not for you if:</strong></p>
+        <ul>
+          <li>Needles or blood make you feel faint.</li>
+          <li>You get nervous when someone else is upset.</li>
+          <li>You need a job you can do sitting down or from home.</li>
+          <li>You can only work weekday daytime hours. Ask about the schedule before you train.</li>
+        </ul>
+
+        <h3>Phlebotomist, CNA or medical assistant?</h3>
+        <p>People often compare these three. A phlebotomist mostly draws blood. A CNA (certified nurse aide) helps
+        patients with daily care, and in Massachusetts must be on the state Nurse Aide Registry. A medical
+        assistant does a mix of patient care and office work in a doctor&rsquo;s office. BLS lists medical
+        assistant as a related job. To compare pay, rules and training for all three, read our guide to
+        <a href="blog/healthcare-jobs-massachusetts.html">healthcare jobs in Massachusetts you can train
+        for</a>.</p>
+
+        <h2>How to pay for phlebotomy training in Massachusetts</h2>
+        <p>Massachusetts has programs that may help pay for training for people who qualify. Funding is limited,
+        and a career counselor decides who is eligible, so no one can promise you will be approved.</p>
+        <ol>
+          <li><strong>Start at a MassHire Career Center.</strong>
+          <a href=\"""" + MASSHIRE_URL + """\" target="_blank" rel="noopener">See the list of locations</a> and
+          contact the one nearest you. Career centers can help eligible people pay for approved training through
+          WIOA (the Workforce Innovation and Opportunity Act, a federal training program). Ask whether a phlebotomy
+          program near you is on the state&rsquo;s approved list.</li>
+          <li><strong>Register on JobQuest.</strong>
+          <a href=\"""" + JOBQUEST_URL + """\" target="_blank" rel="noopener">Create an account at
+          jobquest.mass.gov</a>. You need one before you can ask about training funding.</li>
+          <li><strong>Ask about paid training with employers.</strong> Some employers may train new workers and
+          pay them while they learn. Ask your career center if any openings like this exist right now.</li>
+          <li><strong>Be careful with &ldquo;free community college.&rdquo;</strong> Massachusetts has free
+          community college programs (MassEducate and MassReconnect). They are mainly for for-credit college
+          programs. A short, non-credit phlebotomy course may not count. Ask the college&rsquo;s financial aid
+          office before you assume it is free.</li>
+        </ol>
+        <p>To learn more, read our <a href="blog/free-job-training-massachusetts.html">guide to free job training
+        in Massachusetts</a> and <a href="blog/masshire-training-voucher.html">how to get a MassHire training
+        voucher</a>.</p>
+
+""" + post_cta(
+    "Check what funding you may qualify for",
+    "Answer a few short questions to see which Massachusetts funding options you may qualify for, and where to "
+    "go next.",
+    "Check what you may qualify for", "qualify.html") + """
+
+        <h2>What to do this week</h2>
+        <ol>
+          <li><strong>Do the 10-ad check</strong> on JobQuest. Write down which certification local employers
+          want.</li>
+          <li><strong>Read the official certification pages</strong> for
+          <a href="https://www.nhanow.com/certification/nha-certifications/certified-phlebotomy-technician-(cpt)" target="_blank" rel="noopener">NHA CPT</a>,
+          <a href="https://www.ascp.org/boc/explore-credentials/view-all-credentials/PBT" target="_blank" rel="noopener">ASCP PBT</a> and
+          <a href="https://americanmedtech.org/phlebotomy-technician" target="_blank" rel="noopener">AMT RPT</a>.</li>
+          <li><strong>Contact your MassHire Career Center</strong> and register on JobQuest.</li>
+          <li><strong>Ask two programs the 6 questions</strong> above, and compare the answers.</li>
+          <li><strong>See the bigger picture</strong> in our
+          <a href="healthcare-careers.html">field guide to healthcare work</a>.</li>
+        </ol>
+
+        <!-- COURSE-DEPENDENT: R-BLOG-02 -->
+        <p>Career Skills Center plans to offer training in healthcare, IT and the skilled trades.
+        <a href="healthcare-careers.html#interest">Get updates when we launch</a>.</p>
+        <!-- /COURSE-DEPENDENT: R-BLOG-02 -->
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+""" + _phl_faq_html + """
+        </div>
+
+        <section class="sources" aria-labelledby="phl-sources-heading">
+          <h2 id="phl-sources-heading">Sources</h2>
+          <p>Pay data and job outlook from the U.S. Bureau of Labor Statistics, phlebotomists (SOC 31-9097).
+          Certification facts from the certifying bodies&rsquo; own websites.</p>
+          <ul>
+            <li><a href="https://www.bls.gov/ooh/healthcare/phlebotomists.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Phlebotomists</a></li>
+            <li><a href="https://www.bls.gov/oes/current/oes319097.htm" target="_blank" rel="noopener">BLS Occupational Employment and Wages: Phlebotomists (31-9097)</a></li>
+            <li><a href="https://www.bls.gov/oes/current/oes_ma.htm" target="_blank" rel="noopener">BLS Occupational Employment and Wage Estimates: Massachusetts</a></li>
+            <li><a href="https://www.mass.gov/clinical-laboratory-program" target="_blank" rel="noopener">Massachusetts DPH Clinical Laboratory Program</a></li>
+            <li><a href="https://www.ascp.org/boc/explore-credentials/state-licensure" target="_blank" rel="noopener">ASCP Board of Certification: State Licensure</a></li>
+            <li><a href="https://www.ascp.org/boc/explore-credentials/view-all-credentials/PBT" target="_blank" rel="noopener">ASCP Board of Certification: Phlebotomy Technician (PBT)</a></li>
+            <li><a href="https://www.ascp.org/boc/maintain-your-credentials/view-credentials-to-maintain/PBT" target="_blank" rel="noopener">ASCP: Maintaining the PBT credential</a></li>
+            <li><a href="https://www.nhanow.com/certification/nha-certifications/certified-phlebotomy-technician-(cpt)" target="_blank" rel="noopener">NHA: Certified Phlebotomy Technician (CPT)</a></li>
+            <li><a href="https://www.nhanow.com/stay-certified" target="_blank" rel="noopener">NHA: Stay Certified</a></li>
+            <li><a href="https://americanmedtech.org/phlebotomy-technician" target="_blank" rel="noopener">AMT: Registered Phlebotomy Technician (RPT)</a></li>
+          </ul>
+        </section>
+
+""" + related(
+    ("Healthcare Jobs in Massachusetts You Can Train For", "blog/healthcare-jobs-massachusetts.html"),
+    ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
+    ("How to Get a MassHire Training Voucher (ITA)", "blog/masshire-training-voucher.html"),
+)
+
+_PHL_TITLE = "How to Become a Phlebotomist in Massachusetts (2026): Certification, Pay and Help Paying for Training"
+_PHL_DESC = ("To be a phlebotomist in Massachusetts, you need what employers want: certification and live blood "
+             "draws. The honest path and who may help pay.")
+
+PAGES.append(dict(
+    slug="blog/phlebotomist-massachusetts.html", nav="blog.html",
+    title="How to Become a Phlebotomist in Massachusetts (2026)",
+    ogtitle=_PHL_TITLE,
+    desc=_PHL_DESC,
+    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;'
+               'text-underline-offset:2px}.prose table caption{caption-side:top;text-align:left;font-weight:700;'
+               'color:var(--navy);padding:0 0 10px}.prose .note ol{margin:10px 0}</style>\n'
+               + article_ld("blog/phlebotomist-massachusetts.html", _PHL_TITLE, _PHL_DESC,
+                            "2026-10-03", "2026-10-03", author="Career Skills Center")
+               + "\n" + faq_ld(_phl_faq)),
+    main=article(
+        "Medical", _PHL_TITLE,
+        "Massachusetts is not one of the states that license phlebotomists, but employers want certification and real blood draws. Here is the honest path, what "
+        "it costs, and who may help you pay.",
+        "October 3, 2026", "11 min read", _phl_body, author="Career Skills Center")))
 
 
 # Interest form the post's CTA points to. COURSE-DEPENDENT: R-BLOG-MBC.

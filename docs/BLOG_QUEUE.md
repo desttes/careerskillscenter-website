@@ -11,11 +11,11 @@ Add blog topics here for the blog agent to work on. The agent runs every 6 hours
 
 ## In Progress
 <!-- The agent moves items here while working on them. -->
-- **How to Become a Phlebotomist in Massachusetts** — role guide: what phlebotomists do, MA pay (BLS SOC 31-9097), training path (certificate program), certification (ASCP, NHA), MA licensing requirements, job outlook, how to pay for training. Target: "phlebotomist massachusetts"
 
 ## Done
 <!-- Completed drafts. The agent logs the file path and date. -->
 - **Healthcare Jobs in Massachusetts You Can Train For (2026)** — `blog/healthcare-jobs-massachusetts.html` — 2026-10-03 — status: draft, local, needs Emilio review (DRAFT marker blocks deploy; see VERIFICATION_LOG section N).
+- **How to Become a Phlebotomist in Massachusetts (2026)** — `blog/phlebotomist-massachusetts.html` — 2026-10-03 — status: draft, local, needs Emilio review (DRAFT marker blocks deploy; see VERIFICATION_LOG section O).
 
 ## Notes for the Agent
 <!-- Any standing instructions: tone preferences, topics to avoid, priority order, etc. -->
