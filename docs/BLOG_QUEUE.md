@@ -12,10 +12,10 @@ Add blog topics here for the blog agent to work on. The agent runs every 6 hours
 
 ## In Progress
 <!-- The agent moves items here while working on them. -->
-- **Healthcare Jobs You Can Train For in Massachusetts (2026)** — broad overview post covering CNA, medical assistant, phlebotomist, pharmacy tech, medical billing/coding, EKG tech. For each: what the job is, MA median pay (BLS OEWS), training path, licensing. Link to the healthcare careers guide. Target: "healthcare jobs massachusetts"
 
 ## Done
 <!-- Completed drafts. The agent logs the file path and date. -->
+- **Healthcare Jobs in Massachusetts You Can Train For (2026)** — `blog/healthcare-jobs-massachusetts.html` — 2026-10-03 — status: draft, local, needs Emilio review (DRAFT marker blocks deploy; see VERIFICATION_LOG section N).
 
 ## Notes for the Agent
 <!-- Any standing instructions: tone preferences, topics to avoid, priority order, etc. -->

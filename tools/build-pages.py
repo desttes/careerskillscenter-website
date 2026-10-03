@@ -3446,6 +3446,11 @@ def post_card(tag, date, read, title, excerpt, href="#"):
 # Real launch posts. Order = newest first in the grid (the pillar is featured
 # above the grid, so it is not repeated here). href points into /blog/.
 BLOG_POSTS = [
+    ("Medical", "Oct 3, 2026", "12 min read",
+     "Healthcare Jobs in Massachusetts You Can Train For (2026)",
+     "Six healthcare jobs you can train for with a high school diploma or GED: what they pay, which need a "
+     "state license, and who each one is not a good fit for.",
+     "blog/healthcare-jobs-massachusetts.html"),
     ("Medical", "Oct 1, 2026", "7 min read",
      "Medical Coding and Billing Salary by State (2026): What Coders and Billers Earn",
      "Medical coders earn a median of $51,140 a year ($24.59 an hour). See pay in every state, what "
@@ -5540,6 +5545,414 @@ PAGES.append(dict(
           </ul>
         </section>
 ''', author=None)))
+
+# ---------------------------------------------------------------------------
+# Healthcare Jobs You Can Train For in Massachusetts (2026). Published 2026-10-03.
+# Source: blog pipeline (research-brief.md + content-strategy.md, 2026-10-03).
+# Pay: BLS OEWS May 2025, NATIONAL medians only (no Massachusetts medians were
+# found by research). CSC line = COURSE-DEPENDENT: R-BLOG-01. Course-mode copy:
+# blog/course-mode-copy/healthcare-jobs-massachusetts.md
+# ---------------------------------------------------------------------------
+_hcj_faq = [
+    ("What is the highest-paying healthcare job you can get without a degree?",
+     "Of the six jobs in this guide, medical records specialists (the group that includes medical coders) had the highest national median pay in May 2025: $51,140 a year, according to the U.S. Bureau of Labor Statistics. New workers usually start lower. EKG technicians are left out of this comparison because the government does not track their pay separately."),
+    ("How long does it take to become a CNA in Massachusetts?",
+     "It depends on the program. Massachusetts sets a minimum number of training hours, and the Department of Public Health has announced changes to it, so check mass.gov for the current number. After training, you must pass the state exam and be listed on the Nurse Aide Registry before you can work in a nursing home."),
+    ("Do you need a license to be a pharmacy technician in Massachusetts?",
+     "Yes. All pharmacy technicians who work in Massachusetts must be licensed by the Board of Registration in Pharmacy. A trainee license is open from age 16. The full license requires age 18, a high school diploma or equivalent, and one of the routes the Board accepts. The application fee is $150."),
+    ("Do medical assistants need to be certified in Massachusetts?",
+     "We did not find a Massachusetts state license for medical assistants, so check with the state before you train. National certifications like the NHA CCMA or AMT RMA are optional in most states, but many employers prefer or require one."),
+    ("Which healthcare jobs are growing fastest?",
+     "Of the six jobs in this guide, the U.S. Bureau of Labor Statistics projects the most growth from 2025 to 2035 for medical assistants (13%), then medical records specialists (8%), phlebotomists (7%), pharmacy technicians (6%) and nursing assistants (3%). These are national numbers."),
+]
+
+_hcj_faq_html = "\n".join(
+    f'          <details class="faq-item"><summary>{q}</summary>\n          <div><p>{a}</p></div></details>'
+    for q, a in _hcj_faq)
+
+_hcj_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF.md says no pay figures anywhere except the
+             salary-by-state post (Emilio exception). This post shows national BLS medians per the blog pipeline
+             brief: Emilio must approve a second exception, or the pay columns must be swapped for a BLS look-up link.
+             Research could not open bls.gov or mass.gov directly; EVERY figure below
+             came from search summaries of the official pages and needs a live check before publishing.
+             (1) BLS OEWS May 2025 NATIONAL medians: CNA 31-1131 $42,260; MA 31-9092 $45,690; phlebotomist 31-9097
+             $45,230; pharmacy tech 29-2052 $45,750; medical records specialist 29-2072 $51,140.
+             (2) Hourly: medical assistant $21.97 only (live check). CNA hourly deliberately NOT shown: the brief's
+             CNA hourly figure belongs to the combined "nursing assistants and orderlies" row and is marked [CHECK].
+             (3) 10th/90th percentile annual figures for all five roles (CNA range: confirm which row it belongs to).
+             (4) BLS 2025-35 projections: 3%, 13%, 7%, 6%, 8%; labels used ONLY for CNA (about as fast as average),
+             MA (much faster than average), pharmacy tech (faster than average). Phlebotomist and medical records
+             labels deliberately left out (brief flagged them as inconsistent).
+             (5) Openings-from-replacement statement (brief: MA, phlebotomist, pharmacy tech, medical records only).
+             (6) Pharmacy tech MA rules: license required for all techs; trainee license age 16+; PT2 age 18+,
+             HS or equivalent, good moral character, three routes incl. 500 on-the-job hours as PT1; $150 fee.
+             (7) CNA: DPH Nurse Aide Registry; registry required for nursing-home work; DPH-approved clinical sites.
+             The 87-hour change, exam vendor (Prometric vs. D&S conflict), exam fees and exam languages are
+             deliberately NOT stated: check mass.gov.
+             (8) No Massachusetts state license found for medical assistants, phlebotomists, coders or EKG techs:
+             the post says "we did not find one; check with the state." Confirm with DPH / BHPL / Clinical Lab Program.
+             (9) DPH circular 17-8-102: MAs who give immunizations in primary care need a CAAHEP- or
+             ABHES-accredited program and direct supervision (2017 document: confirm still current).
+             (10) Certification fees and exam formats: CCMA $169; RMA $150; CPT $134; PBT $155; RPT $125;
+             PTCE $129 (90 questions); CPC $425 one attempt / $499 two, 100 questions, 4 hours, 70% to pass,
+             CPC-A; CCA $199 member / $299 non-member, HS diploma; CET $134, 10 live EKGs; CPT 30 venipunctures
+             and 10 capillary sticks.
+             (11) EKG tech: no separate BLS occupation; grouped under 29-2031 where an associate's degree is typical.
+             (13) "Coding is the only one of the six sometimes done from home": no official source; it is hedged.
+             (14) FAQ questions are placeholders from the research brief, NOT verified People Also Ask data.
+             Capture real PAA questions before publishing. -->
+
+        <p class="lead">Search &ldquo;healthcare jobs Massachusetts&rdquo; and you will see page after page of
+        openings. Many of them need a nursing license or a college degree.
+        This guide covers six jobs you can train for with a high school diploma or GED, what they pay, and what
+        stands between you and your first shift.</p>
+
+        <p>This guide is written to help you decide, not to sell you training. It covers the parts schools and job
+        boards often skip: the license rules, the hands-on hours, the real pay range and who each job is not a good
+        fit for.</p>
+
+        <div class="note"><strong>Quick answer.</strong> Six healthcare jobs in Massachusetts are open to people
+        with a high school diploma or GED: nursing assistant (CNA), medical assistant, phlebotomist, pharmacy
+        technician, medical biller/coder and EKG technician. National median pay for the first five was about
+        $42,000 to $51,000 a year in May 2025. CNA and pharmacy technician have Massachusetts state rules you must
+        meet before you work. For the other four, we did not find a state license.</div>
+
+        <h2>Before you click Apply: how to read a healthcare job listing</h2>
+        <p>A big number of openings does not mean every opening is open to a beginner. When you read a listing,
+        look for three things first:</p>
+        <ul>
+          <li><strong>A license or degree in the title.</strong> &ldquo;RN&rdquo; (registered nurse),
+          &ldquo;LPN&rdquo; (licensed practical nurse) or &ldquo;associate degree required&rdquo; means the job is
+          not an entry-level job.</li>
+          <li><strong>A required credential.</strong> Some listings ask for a state registry listing, a state
+          license or a national certification before day one.</li>
+          <li><strong>&ldquo;Experience preferred.&rdquo;</strong> New workers often compete with people who
+          already have experience. A credential and hands-on hours help you stand out.</li>
+        </ul>
+        <p>The six jobs below are the ones where a beginner with a high school diploma or GED has a real path in.</p>
+
+        <h2>Healthcare jobs in Massachusetts: the six jobs compared</h2>
+        <p>Pay below is the <strong>national</strong> median from the U.S. Bureau of Labor Statistics (BLS),
+        May 2025 data, the latest available as of October 2026. The median is the middle: half earn more, half
+        earn less. We show national numbers because we could not confirm Massachusetts figures for every job.
+        Pay in Massachusetts is different. You can look up Massachusetts pay for any job on the
+        <a href="https://www.bls.gov/oes/current/oessrcst.htm" target="_blank" rel="noopener">BLS state wage
+        page</a>.</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <caption>Six healthcare jobs you can train for with a high school diploma or GED</caption>
+          <thead>
+            <tr><th>Job</th><th>What you do</th><th>National median pay, May 2025</th><th>Pay range (lowest 10% to top 10%)</th><th>Massachusetts license?</th><th>National certifications (examples)</th><th>U.S. job growth, 2025&ndash;35</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nursing assistant (CNA)</td><td>Help patients bathe, dress, eat and move</td><td>$42,260 a year</td><td>Under $33,940 to over $51,980</td><td>Yes. State-approved training, state exam, DPH Nurse Aide Registry</td><td>None. CNA is a state credential</td><td>3%</td></tr>
+            <tr><td>Medical assistant</td><td>Check patients in, take vital signs, help the doctor, do office work</td><td>$45,690 a year; $21.97 an hour</td><td>Under $36,050 to over $59,310</td><td>We did not find one</td><td>NHA CCMA, AMT RMA</td><td>13%</td></tr>
+            <tr><td>Phlebotomist</td><td>Draw blood for tests and donations</td><td>$45,230 a year</td><td>Under $35,780 to over $58,780</td><td>We did not find one</td><td>NHA CPT, ASCP PBT, AMT RPT</td><td>7%</td></tr>
+            <tr><td>Pharmacy technician</td><td>Help pharmacists fill prescriptions and serve customers</td><td>$45,750 a year</td><td>Under $36,020 to over $61,040</td><td>Yes. Board of Registration in Pharmacy license</td><td>PTCB CPhT</td><td>6%</td></tr>
+            <tr><td>Medical biller/coder</td><td>Turn doctor visits into codes and insurance claims</td><td>$51,140 a year</td><td>Under $37,000 to over $81,150</td><td>We did not find one</td><td>AAPC CPC, AHIMA CCA</td><td>8%</td></tr>
+            <tr><td>EKG technician</td><td>Run heart tests called EKGs</td><td>Not shown (see below)</td><td>Not shown</td><td>We did not find one</td><td>NHA CET</td><td>Not shown</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p><small>Sources: BLS Occupational Employment and Wage Statistics (OEWS), May 2025, and BLS Employment
+        Projections 2025&ndash;2035. Job codes: nursing assistants 31-1131, medical assistants 31-9092,
+        phlebotomists 31-9097, pharmacy technicians 29-2052, medical records specialists (includes coders)
+        29-2072.</small></p>
+
+        <p><strong>What the pay range means for you.</strong> New workers usually start nearer the low end of the
+        range, not at the median. The government does not publish pay by years of experience, so treat the lowest
+        10% number as a rough guide to where beginners start.</p>
+
+        <p><strong>Where the openings come from.</strong> For medical assistants, phlebotomists, pharmacy
+        technicians and medical records specialists, BLS says many openings come from replacing workers who change
+        jobs or retire. They do not come only from new jobs being added.</p>
+
+        <h2>The six jobs, one by one</h2>
+        <p>For each job: what it takes in Massachusetts, which credentials matter, and who it is not a good fit
+        for. Program lengths vary a lot. Ask any school for the number of training hours <em>and</em> for how long
+        it will take until you can legally work.</p>
+
+        <h3>1. Nursing assistant (CNA)</h3>
+        <p>A CNA (certified nurse aide, also called a nursing assistant) gives hands-on daily care. You help
+        patients bathe, dress, eat, use the bathroom and move safely. Jobs can be in nursing homes, hospitals and
+        other care settings.</p>
+        <p><strong>Massachusetts rules.</strong> You must finish a state-approved training program, then pass the
+        state competency exam (a written or oral test plus a skills test). Passing puts you on the Massachusetts
+        Department of Public Health (DPH) Nurse Aide Registry. You must be on the registry to work in a nursing
+        home. Training includes supervised clinical hours at a site DPH has approved. Massachusetts sets a minimum
+        number of training hours, and DPH has announced changes to it. Check the
+        <a href="https://www.mass.gov/nurse-aide-registry-program" target="_blank" rel="noopener">Nurse Aide
+        Registry page on mass.gov</a> for the current hours and exam details.</p>
+        <p><strong>National pay:</strong> $42,260 a year (May 2025). <strong>Growth:</strong> 3% from 2025 to 2035,
+        about as fast as average.</p>
+        <p><strong>Not for you if:</strong> you cannot lift and move people, or you are not comfortable with
+        bathing and toileting other adults. The work is physical and emotional. Many jobs include nights,
+        weekends and holidays.</p>
+
+        <h3>2. Medical assistant</h3>
+        <p>A medical assistant works in a doctor&rsquo;s office or clinic. You check patients in, take vital signs
+        (like blood pressure), help the doctor during exams and do some office work.</p>
+        <p><strong>Massachusetts rules.</strong> We did not find a Massachusetts state license for this job. Check
+        with the state before you train. One rule to know: a DPH guidance letter says medical assistants who give
+        shots (immunizations) in primary-care offices must have graduated from an accredited medical assistant
+        program and work under direct supervision. The accrediting groups named are CAAHEP (Commission on
+        Accreditation of Allied Health Education Programs) and ABHES (Accrediting Bureau of Health Education
+        Schools). If you want to give shots, ask a school if its program is accredited by one of them.</p>
+        <p><strong>Certifications.</strong> BLS says most states do not require certification, but employers may
+        prefer or require it. Two common ones:</p>
+        <ul>
+          <li><strong>CCMA</strong> (Certified Clinical Medical Assistant) from the
+          <a href="https://www.nhanow.com/certification/nha-certifications/certified-clinical-medical-assistant-(ccma)" target="_blank" rel="noopener">NHA</a>
+          (National Healthcareer Association). You need a high school diploma or GED plus a training program in the
+          last 5 years, or 1 year of supervised work. The exam takes 3 hours. The fee is $169.</li>
+          <li><strong>RMA</strong> (Registered Medical Assistant) from
+          <a href="https://americanmedtech.org/medical-assistant" target="_blank" rel="noopener">AMT</a>
+          (American Medical Technologists). Routes include an accredited program in the last 4 years, or 3 years of
+          work in the last 7. The fee is $150.</li>
+        </ul>
+        <p><strong>National pay:</strong> $45,690 a year, or $21.97 an hour (May 2025). <strong>Growth:</strong>
+        13% from 2025 to 2035, much faster than average.</p>
+        <p><strong>Not for you if:</strong> you want to avoid patients, or you do not like switching tasks all day.
+        You will talk with sick and worried people and move between the exam room and the front desk.</p>
+
+        <h3>3. Phlebotomist</h3>
+        <p>A phlebotomist draws blood for lab tests and donations. Jobs can be in hospitals, labs, blood
+        donation centers and clinics.</p>
+        <p><strong>Massachusetts rules.</strong> We did not find a Massachusetts state license for this job. Check
+        with the state before you train. A few other states do license phlebotomists.</p>
+        <p><strong>Certifications.</strong> All three below need a high school diploma or GED. You cannot learn this
+        job fully online: you need real practice on real people.</p>
+        <ul>
+          <li><strong>CPT</strong> (Certified Phlebotomy Technician) from the
+          <a href="https://www.nhanow.com/certification/nha-certifications/certified-phlebotomy-technician-(cpt)" target="_blank" rel="noopener">NHA</a>.
+          The training route asks for at least 30 blood draws from a vein and 10 finger or heel sticks on live
+          people. The fee is $134.</li>
+          <li><strong>PBT</strong> (Phlebotomy Technician) from the
+          <a href="https://www.ascp.org/boc/explore-credentials/view-all-credentials/PBT" target="_blank" rel="noopener">ASCP</a>
+          (American Society for Clinical Pathology). Several routes, including an accredited program or 1 year of
+          full-time work. The fee is $155.</li>
+          <li><strong>RPT</strong> (Registered Phlebotomy Technician) from
+          <a href="https://americanmedtech.org/phlebotomy-technician" target="_blank" rel="noopener">AMT</a>. The
+          fee is $125.</li>
+        </ul>
+        <p><strong>National pay:</strong> $45,230 a year (May 2025). <strong>Growth:</strong> 7% from 2025 to
+        2035.</p>
+        <p><strong>Not for you if:</strong> needles or blood make you feel faint, or you get nervous when someone
+        is scared. You will draw blood many times a day, often from people who do not want to be stuck.</p>
+
+        <h3>4. Pharmacy technician</h3>
+        <p>A pharmacy technician helps a pharmacist fill prescriptions. You count and label medicine, take
+        information from customers and help with insurance questions. Jobs can be in store pharmacies and
+        hospitals.</p>
+        <p><strong>Massachusetts rules.</strong> All pharmacy technicians who work in Massachusetts must be licensed
+        by the state Board of Registration in Pharmacy. There are two main levels:</p>
+        <ul>
+          <li><strong>Trainee license</strong> (technician in training): age 16 or older, a high school diploma or
+          equivalent (or enrolled in a program that gives one) and good moral character.</li>
+          <li><strong>Full license</strong> (called PT2): age 18 or older, a high school diploma or equivalent and
+          good moral character. You also need one of these: pass a national certification exam; finish a
+          Board-approved training program with a final exam; or work at least 500 hours in a pharmacy as a trainee
+          and pass an employer&rsquo;s skills test.</li>
+        </ul>
+        <p>The license application fee is $150. A national certification can help you qualify for the license, but
+        it does not replace it. See the
+        <a href="https://www.mass.gov/pharmacy-technician-licensing" target="_blank" rel="noopener">pharmacy
+        technician licensing page on mass.gov</a>.</p>
+        <p><strong>Certification.</strong> The best-known is the <strong>CPhT</strong> (Certified Pharmacy
+        Technician) from the
+        <a href="https://ptcb.org/credentials/certification/certified-pharmacy-technician/" target="_blank" rel="noopener">PTCB</a>
+        (Pharmacy Technician Certification Board). You need a recognized training program or at least 500 hours of
+        work. The test (the PTCE) has 90 multiple-choice questions. It costs $129.</p>
+        <p><strong>National pay:</strong> $45,750 a year (May 2025). <strong>Growth:</strong> 6% from 2025 to 2035,
+        faster than average.</p>
+        <p><strong>Not for you if:</strong> you dislike standing for long shifts, busy customer lines or careful
+        counting. Small mistakes with medicine matter, so you must stay focused when it gets busy.</p>
+
+        <h3>5. Medical biller and coder</h3>
+        <p>Medical coders turn a doctor visit into standard codes. Billers use those codes to send claims to
+        insurance companies and follow up on payment. Many jobs do both. BLS counts coders as &ldquo;medical
+        records specialists.&rdquo;</p>
+        <p><strong>Massachusetts rules.</strong> We did not find a Massachusetts state license for this job. Check
+        with the state before you train.</p>
+        <p><strong>Certifications.</strong></p>
+        <ul>
+          <li><strong>CPC</strong> (Certified Professional Coder) from
+          <a href="https://www.aapc.com/resources/cpc-exam-faqs" target="_blank" rel="noopener">AAPC</a>, a
+          national coding organization. The test has 100 questions over 4 hours. You need 70% to pass. It costs
+          $425 for one attempt or $499 for two. Passing first earns you the CPC-A (apprentice) title. The
+          &ldquo;A&rdquo; comes off after 2 years of experience.</li>
+          <li><strong>CCA</strong> (Certified Coding Associate) from
+          <a href="https://www.ahima.org/certification-careers/certifications-overview/cca/" target="_blank" rel="noopener">AHIMA</a>
+          (American Health Information Management Association). You need a high school diploma. The test takes 2
+          hours. It costs $199 for members or $299 for non-members.</li>
+        </ul>
+        <p><strong>National pay:</strong> $51,140 a year (May 2025). This job has the widest pay range of the six:
+        the top 10% earned over $81,150. <strong>Growth:</strong> 8% from 2025 to 2035.</p>
+        <p><strong>Not for you if:</strong> you want to work with people all day, or you do not like reading and
+        detail work. This is quiet screen work. It is the only one of the six that is sometimes done from home, but
+        most beginners should not count on starting remote. Read more in
+        <a href="blog/can-medical-billing-coding-be-learned-online.html">can medical billing and coding be learned
+        online?</a> and see state-by-state pay in our
+        <a href="blog/medical-coding-billing-salary-by-state.html">medical coding salary guide</a>.</p>
+
+        <h3>6. EKG technician (read this one carefully)</h3>
+        <p>An EKG technician runs electrocardiograms (EKGs), tests that record the heart&rsquo;s electrical
+        activity. You place small sticky pads on the patient&rsquo;s chest, arms and legs and run the machine.</p>
+        <p><strong>Why we do not show pay.</strong> BLS does not have a separate category for EKG technicians. It
+        groups them with cardiovascular technologists and technicians (job code 29-2031). For that group, BLS says
+        an associate&rsquo;s degree is the typical way in, and much of that work is more advanced. So the pay for
+        that group does not tell you what an entry-level EKG technician earns, and we do not quote it.</p>
+        <p><strong>Massachusetts rules.</strong> We did not find a Massachusetts state license for this job. Check
+        with the state before you train.</p>
+        <p><strong>Certification.</strong> The <strong>CET</strong> (Certified EKG Technician) from the
+        <a href="https://www.nhanow.com/certification/nha-certifications/certified-ekg-technician-(cet)" target="_blank" rel="noopener">NHA</a>
+        needs a high school diploma or GED, plus a training program or 1 year of supervised work. You also need
+        proof of at least 10 EKGs on live people. The fee is $134.</p>
+        <p><strong>Not for you if:</strong> you want a clear, stand-alone job title with lots of openings. This is a
+        partial fit for a beginner. Before you train only for EKG, ask local employers if they hire for it and what
+        else they want you to know.</p>
+
+        <h2>Choose by your situation</h2>
+        <ul>
+          <li><strong>If you want to learn inside a workplace:</strong> look at pharmacy technician. Massachusetts
+          has a trainee license, and one route to the full license is 500 hours of training inside a pharmacy.</li>
+          <li><strong>If you cannot lift or do hands-on body care:</strong> look at medical billing and coding, or
+          pharmacy technician.</li>
+          <li><strong>If needles or blood bother you:</strong> skip phlebotomy and EKG. Be careful with medical
+          assistant too, since some give shots.</li>
+          <li><strong>If you want office work, and maybe home-based work later:</strong> look at medical billing
+          and coding.</li>
+          <li><strong>If you want hands-on patient care:</strong> look at CNA or medical assistant.</li>
+          <li><strong>If you want the highest pay ceiling:</strong> medical records specialists had the widest pay
+          range of the six.</li>
+          <li><strong>If you are still learning English:</strong> every path has a test. Ask the school and
+          the testing group which languages the test is offered in, and what reading help the program gives.</li>
+        </ul>
+
+        <h2>The hard truth: what schools and job boards don&rsquo;t tell you</h2>
+        <ul>
+          <li><strong>&ldquo;Fast&rdquo; training is not the full timeline.</strong> For CNA and pharmacy
+          technician, finishing class is not the end. You still need the state exam and registry (CNA) or the state
+          license (pharmacy tech) before you can work.</li>
+          <li><strong>A certificate is not a job.</strong> For most of these jobs, national certification is
+          optional in Massachusetts. Employers may still want it, plus hands-on hours.</li>
+          <li><strong>Starting pay is below the median.</strong> The medians above are the middle of all workers,
+          including people with years of experience.</li>
+          <li><strong>Massachusetts pay is different.</strong> Our table is national. Look up your job on the
+          <a href="https://www.bls.gov/oes/current/oessrcst.htm" target="_blank" rel="noopener">BLS state wage
+          page</a> before you decide.</li>
+          <li><strong>Competition is real.</strong> You may compete with people who already have experience. Being
+          on the registry, holding your license or credential and having real practice hours all help.</li>
+          <li><strong>Ask about extra steps.</strong> Ask each school and employer: Is there a background check? Do
+          I need shots or a health screening? Do I need CPR (emergency first aid for the heart and breathing) training? These can add time and cost.</li>
+        </ul>
+
+        <h2>How people in Massachusetts pay for training</h2>
+        <p>Massachusetts has programs that may help pay for career training for people who qualify. Most start at
+        a MassHire Career Center. Funding is limited, and a career counselor decides who is eligible, so no one
+        can promise you will be approved.</p>
+        <ol>
+          <li><strong>Find your MassHire Career Center.</strong>
+          <a href=\"""" + MASSHIRE_URL + """\" target="_blank" rel="noopener">See the list of locations</a> and
+          contact the one nearest you.</li>
+          <li><strong>Register on JobQuest.</strong>
+          <a href=\"""" + JOBQUEST_URL + """\" target="_blank" rel="noopener">Create an account at
+          jobquest.mass.gov</a>. You need one before you can ask about training funding.</li>
+          <li><strong>Learn the options.</strong> Our <a href="blog/free-job-training-massachusetts.html">guide to
+          free job training in Massachusetts</a> explains WIOA (the Workforce Innovation and Opportunity Act, a federal
+          training program), MassHire and state grants in plain language.</li>
+        </ol>
+
+""" + post_cta(
+    "Check what funding you may qualify for",
+    "Answer a few short questions to see which Massachusetts funding options you may qualify for, and where to "
+    "go next.",
+    "Check what you may qualify for", "qualify.html") + """
+
+        <h2>What to do this week</h2>
+        <ol>
+          <li><strong>Pick two jobs</strong> from the table that fit your situation.</li>
+          <li><strong>Read the official rules.</strong> For CNA, the
+          <a href="https://www.mass.gov/nurse-aide-registry-program" target="_blank" rel="noopener">Nurse Aide
+          Registry page</a>. For pharmacy tech, the
+          <a href="https://www.mass.gov/pharmacy-technician-licensing" target="_blank" rel="noopener">pharmacy
+          technician licensing page</a>. For the others, the certifying group&rsquo;s website (NHA, AMT, ASCP, AAPC
+          or AHIMA).</li>
+          <li><strong>Check Massachusetts pay</strong> for those two jobs on the
+          <a href="https://www.bls.gov/oes/current/oessrcst.htm" target="_blank" rel="noopener">BLS state wage
+          page</a>.</li>
+          <li><strong>Contact your MassHire Career Center</strong> and register on JobQuest (see the funding
+          steps above).</li>
+          <li><strong>Ask any school these questions:</strong> How many training hours? How long until I can
+          legally work? What is the total cost, including exam and license fees? How many hands-on hours are
+          included? Is the program accredited or state-approved?</li>
+          <li><strong>See the bigger picture</strong> in our
+          <a href="healthcare-careers.html">field guide to healthcare work</a>: settings, roles and how license and
+          certification differ.</li>
+        </ol>
+
+        <!-- COURSE-DEPENDENT: R-BLOG-01 -->
+        <p>Career Skills Center plans to offer training in healthcare.
+        <a href="healthcare-careers.html#interest">Get updates when we launch</a>.</p>
+        <!-- /COURSE-DEPENDENT: R-BLOG-01 -->
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+""" + _hcj_faq_html + """
+        </div>
+
+        <section class="sources" aria-labelledby="hcj-sources-heading">
+          <h2 id="hcj-sources-heading">Sources</h2>
+          <p>Pay data from the BLS May 2025 release, the latest available as of October 2026. Job outlook from BLS
+          Employment Projections 2025&ndash;2035.</p>
+          <ul>
+            <li><a href="https://www.bls.gov/ooh/healthcare/nursing-assistants.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Nursing Assistants and Orderlies</a></li>
+            <li><a href="https://www.bls.gov/ooh/healthcare/medical-assistants.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Medical Assistants</a></li>
+            <li><a href="https://www.bls.gov/ooh/healthcare/phlebotomists.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Phlebotomists</a></li>
+            <li><a href="https://www.bls.gov/ooh/healthcare/pharmacy-technicians.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Pharmacy Technicians</a></li>
+            <li><a href="https://www.bls.gov/ooh/healthcare/medical-records-and-health-information-technicians.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Medical Records Specialists</a></li>
+            <li><a href="https://www.bls.gov/ooh/healthcare/cardiovascular-technologists-and-technicians.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Cardiovascular Technologists and Technicians</a></li>
+            <li><a href="https://www.bls.gov/oes/current/oessrcst.htm" target="_blank" rel="noopener">BLS State Occupational Employment and Wage Estimates</a></li>
+            <li><a href="https://www.mass.gov/nurse-aide-registry-program" target="_blank" rel="noopener">Massachusetts DPH Nurse Aide Registry Program</a></li>
+            <li><a href="https://www.mass.gov/pharmacy-technician-licensing" target="_blank" rel="noopener">Massachusetts Board of Registration in Pharmacy: Pharmacy Technician Licensing</a></li>
+            <li><a href="https://www.mass.gov/files/documents/2017/09/28/cma-circular-17-8-102.pdf" target="_blank" rel="noopener">Massachusetts DPH circular on medical assistants and immunizations</a></li>
+            <li>Certifying bodies: <a href="https://www.nhanow.com/" target="_blank" rel="noopener">NHA</a>,
+            <a href="https://americanmedtech.org/" target="_blank" rel="noopener">AMT</a>,
+            <a href="https://www.ascp.org/boc/explore-credentials/view-all-credentials/PBT" target="_blank" rel="noopener">ASCP</a>,
+            <a href="https://ptcb.org/" target="_blank" rel="noopener">PTCB</a>,
+            <a href="https://www.aapc.com/" target="_blank" rel="noopener">AAPC</a>,
+            <a href="https://www.ahima.org/" target="_blank" rel="noopener">AHIMA</a></li>
+          </ul>
+        </section>
+
+""" + related(
+    ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
+    ("Is WIOA Training Really Free?", "blog/is-wioa-training-free.html"),
+    ("Can Medical Billing and Coding Be Learned Online?", "blog/can-medical-billing-coding-be-learned-online.html"),
+)
+
+_HCJ_TITLE = "Healthcare Jobs in Massachusetts You Can Train For (2026): Pay, Licenses and Real Next Steps"
+_HCJ_DESC = ("Many healthcare jobs in Massachusetts need a license or degree. See 6 you can train for with a GED, "
+             "what they pay and the real steps.")
+
+PAGES.append(dict(
+    slug="blog/healthcare-jobs-massachusetts.html", nav="blog.html",
+    title="Healthcare Jobs in Massachusetts You Can Train For (2026)",
+    ogtitle=_HCJ_TITLE,
+    desc=_HCJ_DESC,
+    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;'
+               'text-underline-offset:2px}.prose table caption{caption-side:top;text-align:left;font-weight:700;'
+               'color:var(--navy);padding:0 0 10px}</style>\n'
+               + article_ld("blog/healthcare-jobs-massachusetts.html", _HCJ_TITLE, _HCJ_DESC,
+                            "2026-10-03", "2026-10-03")
+               + "\n" + faq_ld(_hcj_faq)),
+    main=article(
+        "Medical", _HCJ_TITLE,
+        "Six jobs you can train for with a high school diploma or GED: what they pay, which ones need a state "
+        "license, and who each one is not a good fit for.",
+        "October 3, 2026", "12 min read", _hcj_body)))
+
 
 # Interest form the post's CTA points to. COURSE-DEPENDENT: R-BLOG-MBC.
 # Deliberately says nothing about course dates, prices or enrollment.

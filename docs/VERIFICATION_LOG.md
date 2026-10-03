@@ -349,3 +349,59 @@ Emilio reviewed every remaining `[VERIFY]`/`DRAFT` one by one; the whole site (i
 - **BLS Occupational Outlook Handbook** (medical records specialists): 8 percent growth 2025–2035, "much faster than the average for all occupations"; the draft said "faster than average", corrected.
 - **AAPC 2026 salary report** (aapc.com/resources/medical-coding-salary-survey): certified $67,260; non-certified $55,721 (20.7% more); CPC $67,147; 2 certifications $74,557; 3+ $81,227. All match.
 - Next year: download the new `oesm<yy>st.zip`, run `python3 tools/build-salary-table.py <file>.xlsx` then `python3 tools/build-pages.py`, and re-check the hard-coded national, top-10 and FAQ numbers in the post's `PAGES.append` block by hand.
+
+## N. Healthcare jobs post — national BLS pay, outlook, licensing and certification facts (2026-10-03, DRAFT, local)
+
+`blog/healthcare-jobs-massachusetts.html` (publish date 2026-10-03). Compliance review: PASS (second review). Source file for everything below: `research-brief.md` (pipeline scratch, untracked).
+
+**STATUS: NOT VERIFIED LIVE.** All figures were drawn from search summaries of official pages; bls.gov and mass.gov were unreachable (proxy-blocked) during research. The post carries a `<!-- DRAFT -->` marker that blocks deploy until every item below is checked live and Emilio approves.
+
+**FLAGGED POLICY QUESTION (Emilio decides):** PROJECT-HANDOFF.md allows pay figures only in the salary-by-state post (section M). This post shows national BLS pay (median + 10th/90th percentile columns). Either (a) approve a second exception, or (b) remove the pay columns and link to the BLS pages instead. No Massachusetts OEWS medians were found, so the post uses national pay and links to https://www.bls.gov/oes/current/oessrcst.htm.
+
+### N1. BLS OEWS May 2025, national (released 2026-05-15)
+
+| Role | SOC | Median annual | Hourly shown | 10th pct / 90th pct annual |
+|---|---|---|---|---|
+| Nursing assistants (CNA) | 31-1131 | $42,260 | none (the brief's $20.13 belongs to the combined "nursing assistants and orderlies" row, $41,870; not used) | under $33,940 / over $51,980 [confirm which row the range belongs to] |
+| Medical assistants | 31-9092 | $45,690 | $21.97 | under $36,050 / over $59,310 |
+| Phlebotomists | 31-9097 | $45,230 | none | under $35,780 / over $58,780 |
+| Pharmacy technicians | 29-2052 | $45,750 | none | under $36,020 / over $61,040 |
+| Medical records specialists (coders) | 29-2072 | $51,140 | none | under $37,000 / over $81,150 |
+| EKG technician | none (BLS groups under cardiovascular technologists 29-2031, median $74,310, associate's degree typical) | not shown | none | not shown |
+
+### N2. BLS Employment Projections 2025-35, U.S.
+CNA 3% (label used: about as fast as average); medical assistants 13% (much faster than average); phlebotomists 7% (label NOT used, brief flagged as inconsistent); pharmacy technicians 6% (faster than average); medical records specialists 8% (label NOT used, flagged); cardiovascular technologists 4% (not shown in post). Statement that many openings come from replacing workers (MA, phlebotomist, pharmacy tech, medical records only) is from the brief. Massachusetts projections (EOLWD) deliberately left out: vintage unknown.
+
+### N3. Licensing facts
+- CNA: MA DPH Nurse Aide Registry (https://www.mass.gov/nurse-aide-registry-program); state-approved training, state competency exam, registry listing required for nursing-home work; DPH-approved clinical sites. NOT stated in post: 87-hour minimum (effective date unconfirmed), exam vendor (Prometric vs. D&S conflict), exam fees, exam languages.
+- Pharmacy technician: MA Board of Registration in Pharmacy (247 CMR 8.00; https://www.mass.gov/pharmacy-technician-licensing). License required for all techs. Trainee license: age 16+, HS or equivalent (or enrolled), good moral character. PT2: age 18+, HS or equivalent, good moral character, plus one of three routes (national exam PTCE/ExCPT/NRCPhT; board-approved program with final competency exam; 500 on-the-job hours as PT1 plus employer competency exam). Application fee $150, non-refundable. Renewal/CE terms not found; not stated.
+- Medical assistant, phlebotomist, coder, EKG tech: no Massachusetts license found; post says "we did not find one; check with the state." Confirm with DPH, BHPL and the Clinical Laboratory Program (https://www.mass.gov/clinical-laboratory-program).
+- DPH circular DCP 17-8-102 (2017): MAs who give immunizations in primary care need a CAAHEP- or ABHES-accredited program and direct supervision (https://www.mass.gov/files/documents/2017/09/28/cma-circular-17-8-102.pdf). 2017 document: confirm still current.
+
+### N4. National certification facts (exam fees / questions / time)
+- NHA CCMA: $169; 150 scored + 30 pretest items; 3 hours; HS/GED (or within 18 months) plus training within 5 years or work experience. https://www.nhanow.com/certification/nha-certifications/certified-clinical-medical-assistant-(ccma)
+- AMT RMA: $150 (includes first annual fee); 210 questions; 2 hours. https://americanmedtech.org/medical-assistant
+- NHA CPT: $134; 100 scored + 20 pretest; 2 hours; training program with 30 venipunctures and 10 capillary sticks on live people. https://www.nhanow.com/certification/nha-certifications/certified-phlebotomy-technician-(cpt)
+- ASCP PBT: $155; 80 questions; 2 hours. https://www.ascp.org/boc/explore-credentials/view-all-credentials/PBT
+- AMT RPT: $125; 200 questions; 2.5 hours. https://americanmedtech.org/phlebotomy-technician
+- PTCB CPhT (PTCE): $129; 90 questions (80 scored); 1 h 50 min. https://ptcb.org/credentials/certification/certified-pharmacy-technician/
+- AAPC CPC: $425 one attempt / $499 two (student $400 / $475); 100 questions; 4 hours; 70% to pass; passing earns CPC-A. https://www.aapc.com/resources/cpc-exam-faqs
+- AHIMA CCA: $199 member / $299 non-member; HS diploma; 90-115 questions; 2 hours. https://www.ahima.org/certification-careers/certifications-overview/cca/
+- NHA CET: $134; 2 hours; 10 live EKGs. https://www.nhanow.com/certification/nha-certifications/certified-ekg-technician-(cet)
+- Passing scores for CCMA, RMA, CPT, PBT, RPT, PTCE, CCA, CET and the CET question count were not found; not stated.
+
+### N5. BLS pages linked in the post
+https://www.bls.gov/ooh/healthcare/nursing-assistants.htm · medical-assistants.htm · phlebotomists.htm · pharmacy-technicians.htm · medical-records-and-health-information-technicians.htm · cardiovascular-technologists-and-technicians.htm · https://www.bls.gov/oes/current/oessrcst.htm · https://www.mass.gov/info-details/masshire-career-center-locations · https://jobquest.mass.gov
+
+### N6. Check live before deploy
+1. Policy decision on pay columns (above).
+2. Every figure in N1 and N2 against the live BLS OOH pages; CNA 10th/90th row; the 7% and 8% labels.
+3. Pharmacy technician PT1/PT2 rules and $150 fee on mass.gov.
+4. CNA registry wording; whether the 87-hour change is in force (if so, decide whether to mention it).
+5. No-license statements for MA, phlebotomist, coder and EKG tech.
+6. DPH circular 17-8-102 still current.
+7. All exam fees, question counts and times in N4.
+8. EKG tech grouping under 29-2031 (associate's degree typical).
+9. "Coding is the only one of the six sometimes done from home" has no official source (hedged); unsourced work-environment lines to confirm against BLS.
+10. FAQ questions are placeholders, not real People Also Ask data; capture real ones.
+11. FAQ 4 wording "many employers prefer or require" vs. the brief's "may prefer or require".
