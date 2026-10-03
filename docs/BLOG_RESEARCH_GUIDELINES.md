@@ -13,10 +13,13 @@ Use sources in this priority order:
 3. **Neutral career data:** O*NET, CareerOneStop
 4. **Never use:** salary aggregators (Glassdoor, Indeed, ZipRecruiter, Salary.com, Payscale), training provider or education company websites, other career/training blogs, or any source with a financial interest in steering readers toward a product or program
 
-### 2. Geographic Scope
-Lead with **national data**. No Massachusetts-specific framing — these are nationwide certifications and careers. If a state-specific requirement exists (like a state license), note it as "some states require..." without centering the post on Massachusetts.
+### 2. Entry Requirements Filter
+Only include careers/certifications that can be obtained with **no prior experience or education beyond a high school diploma or GED**. If a role requires a college degree, prior clinical experience, or any credential that itself requires higher education, exclude it from the research brief. The audience is working adults with a GED/high school diploma looking for accessible career paths.
 
-### 3. Required Data Points (every brief must include)
+### 3. Geographic Scope
+Lead with **national data**. These are nationwide certifications and careers. For certifications managed by a national body (AAPC, AHIMA, NHA, etc.), present them as national credentials. For **state-level licenses** (like CNA registry, pharmacy tech license), note that requirements vary by state — guide readers to check their own state's licensing board, and include Massachusetts rules as a specific example. Don't center the entire post on Massachusetts, but don't ignore state-specific requirements either.
+
+### 4. Required Data Points (every brief must include)
 1. **BLS median pay** — annual + hourly, national, with SOC code cited
 2. **Job outlook** — % growth and timeframe (e.g., "8% from 2025–2035, much faster than average")
 3. **Licensing/certification requirements** — what's required, what's optional, which body manages it
@@ -30,14 +33,14 @@ Lead with **national data**. No Massachusetts-specific framing — these are nat
 - Remote work feasibility
 - Top employers or sectors
 
-### 4. Missing Data
+### 5. Missing Data
 If a data point can't be found from a trusted source, mark it as:
 ```
 [DATA NOT FOUND — searched: source1, source2, source3]
 ```
 Never substitute from an untrusted source. The Writer will work around the gap.
 
-### 5. Certification Depth
+### 6. Certification Depth
 For each relevant credential, gather:
 - Managing body (AAPC, AHIMA, CompTIA, etc.)
 - Credential name (CPC, CCA, A+, etc.)
@@ -49,14 +52,14 @@ For each relevant credential, gather:
 
 Source everything from the certifying body's official site.
 
-### 6. Exclusions
+### 7. Exclusions
 **Never source information from:**
 - Training providers or education company websites (they steer info toward their own products)
 - Other career/training blogs (not expert sources)
 - Salary aggregators (Glassdoor, Indeed, ZipRecruiter, Salary.com, Payscale)
 - Any source with a financial interest in steering the reader toward a product or program
 
-### 7. FAQ Sourcing
+### 8. FAQ Sourcing
 Find FAQ questions from real search behavior:
 - Google "People Also Ask" boxes
 - Google autocomplete suggestions
@@ -64,7 +67,7 @@ Find FAQ questions from real search behavior:
 
 These reflect what actual readers are looking for, not what experts think they should ask.
 
-### 8. Research Brief Format
+### 9. Research Brief Format
 Write findings to `research-brief.md` with this structure:
 ```
 ## Topic: [TOPIC]

@@ -20,13 +20,21 @@ Friendly expert neighbor — plain, direct, encouraging but honest. Write like y
 
 Write at a **7th–8th grade reading level**. Short sentences (under 20 words when possible). One idea per paragraph. Define every technical term the first time it appears — not in a footnote, right in the sentence: "a CPC (Certified Professional Coder) credential." Avoid idioms and slang that don't translate well for ESL readers. Use "you" and "your" — speak directly to the reader. Prefer common words: "get" over "obtain," "pay" over "compensation," "test" over "examination." Break up walls of text with subheadings, bullet lists, and short paragraphs.
 
-## 4. Honesty and Downsides
+## 4. Entry Requirements and State Licensing
+
+Only cover careers accessible with a **high school diploma or GED and no prior experience**. If the research brief includes a role that requires a college degree or prior clinical experience, skip it.
+
+For **national certifications** (AAPC, AHIMA, NHA, CompTIA, etc.), point readers to the certifying body's website — these are the same in every state.
+
+For **state-level licenses** (CNA registry, pharmacy tech license, electrician license, etc.), tell readers that requirements vary by state and they should check their own state's licensing board. Include Massachusetts rules as a concrete example: "In Massachusetts, CNAs must complete a state-approved training program and pass a competency evaluation through the DPH Nurse Aide Registry. Your state may have different requirements — check your state health department's website."
+
+## 5. Honesty and Downsides
 
 Always include the hard parts — don't just sell the upside. If the certification exam has a low pass rate, say so. If the training takes real study hours on top of a full-time job, say so. If entry-level pay in some areas is lower than the national median, say so. Our biggest advantage is that we have nothing to sell right now — we can be the one page that tells the whole truth. Structure it as: here's the opportunity, here's what it actually takes, here's what could go wrong, here's how to decide if it's right for you.
 
 Use marketing judgment: know when to inspire and when to be blunt. The reader should finish the post feeling informed and empowered, not discouraged — but never misled.
 
-## 5. Post Structure
+## 6. Post Structure
 
 Every post follows a predictable skeleton so readers always know where they are:
 
@@ -42,7 +50,7 @@ Every post follows a predictable skeleton so readers always know where they are:
 
 The Writer can reorder or merge sections if the Content Strategist's angle calls for it, but every post must hit all nine topics somewhere.
 
-## 6. Funnel Structure and CTAs
+## 7. Funnel Structure and CTAs
 
 Every blog post is part of a funnel. The reader enters at curiosity and should leave closer to action.
 
@@ -85,7 +93,7 @@ The Writer must write **both versions** of every course-dependent CTA and docume
 
 The guide-mode version renders in the HTML. The course-mode version sits behind the `SITE_MODE` switch in the code and is documented in the markdown file so the switchover is explicit and reviewable.
 
-## 7. SEO
+## 8. SEO
 
 The Writer executes SEO based on the **target keyword assigned in the blog queue**. This keyword was chosen through prior analysis and is final. The Writer must NOT invent, substitute, or "improve" the target keyword. Every SEO decision flows from that assigned keyword:
 
@@ -100,7 +108,7 @@ The Writer executes SEO based on the **target keyword assigned in the blog queue
 - **Internal links:** at least 3 per post — the funnel links from Guideline 6 plus one to a related blog post. Use descriptive anchor text, not "click here."
 - **No keyword stuffing.** If it feels forced, rewrite the sentence.
 
-## 8. Hard Prohibitions
+## 9. Hard Prohibitions
 
 1. **Never state CSC program details** — no length, hours, cost, credentials, format, start dates, instructors, campus details, VA status
 2. **Never claim ETPL/WIOA approval**, "state-approved," or Express Course Directory listing
@@ -112,7 +120,7 @@ The Writer executes SEO based on the **target keyword assigned in the blog queue
 8. **Never write "our program," "our courses," "enroll now," or "apply" in guide-mode copy** — CSC has nothing to enroll in yet. Write both guide-mode and course-mode versions of every course-dependent CTA and document the course-mode version in `blog/course-mode-copy/[post-slug].md`
 9. **Never describe a specific CSC credential** — say "healthcare" or "the medical field," not "Medical Billing & Coding program"
 
-## 9. Working With the Content Strategist's Angle
+## 10. Working With the Content Strategist's Angle
 
 The Content Strategist's recommended angle is the **north star** — the Writer doesn't get to ignore it and write a generic post:
 
@@ -122,7 +130,7 @@ The Content Strategist's recommended angle is the **north star** — the Writer 
 - **If the Writer disagrees with the angle**, write a note at the top of the output explaining why, but still follow it. The angle was chosen from competitive research; the Writer hasn't seen the SERP.
 - **After writing, self-check:** Would a reader notice what makes this post different from the top 10 Google results? If not, the angle isn't showing enough — rewrite the intro and strengthen the differentiators.
 
-## 10. Technical Execution
+## 11. Technical Execution
 
 The Writer adds code to `tools/build-pages.py`, not hand-written HTML files:
 
