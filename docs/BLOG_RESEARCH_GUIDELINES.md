@@ -20,18 +20,19 @@ Only include careers/certifications that can be obtained with **no prior experie
 Lead with **national data**. These are nationwide certifications and careers. For certifications managed by a national body (AAPC, AHIMA, NHA, etc.), present them as national credentials. For **state-level licenses** (like CNA registry, pharmacy tech license), note that requirements vary by state — guide readers to check their own state's licensing board, and include Massachusetts rules as a specific example. Don't center the entire post on Massachusetts, but don't ignore state-specific requirements either.
 
 ### 4. Required Data Points (every brief must include)
-1. **BLS median pay** — annual + hourly, national, with SOC code cited
-2. **Job outlook** — % growth and timeframe (e.g., "8% from 2025–2035, much faster than average")
+1. **BLS median pay** — annual, national, with SOC code cited. Just the median — no percentile ranges unless specifically needed. Include hourly only if annual is unavailable.
+2. **Job outlook** — % growth and timeframe. Skip the BLS label ("faster than average") — just give the number and let the Writer contextualize it.
 3. **Licensing/certification requirements** — what's required, what's optional, which body manages it
-4. **Typical training path and duration** (general industry info, NOT Career Skills Center specifics)
-5. **Employer demand** — projected job openings, top industries hiring, growth drivers
-6. **4–6 FAQ questions** sourced from Google People Also Ask, autocomplete, and related searches
+4. **Typical training path and duration** (general industry info, NOT Career Skills Center specifics) — how many weeks/months, whether evening/weekend options exist, whether any part is online
+5. **Typical training cost range** — what do programs in this field generally cost? Search for general industry cost ranges from neutral sources (BLS, CareerOneStop, DOL). If multiple program lengths exist (e.g., 4-week vs 4-month for medical billing), note the range for each. This is one of the reader's first questions — don't skip it.
+6. **Employer demand** — projected job openings, top industries hiring, growth drivers
+7. **4–6 FAQ questions** sourced from Google People Also Ask, autocomplete, and related searches
 
 **Optional (include when available):**
-- Entry-level vs experienced pay range
+- Entry-level pay estimate (if available from BLS 25th percentile)
 - Related/adjacent occupations
 - Remote work feasibility
-- Top employers or sectors
+- Whether you can train while working a full-time job
 
 ### 5. Missing Data
 If a data point can't be found from a trusted source, mark it as:
@@ -75,10 +76,10 @@ Write findings to `research-brief.md` with this structure:
 ## Pay Data (BLS OEWS, National)
 ## Job Outlook
 ## Licensing & Certification
-## Training Paths (general industry)
+## Training Paths (general industry — include duration and cost range)
 ## Employer Demand
 ## FAQ Questions (4-6)
-## Sources (full URLs)
+## Sources (full URLs, SOC codes here — not in the body text the reader sees)
 ```
 
 ---

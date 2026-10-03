@@ -16,6 +16,8 @@ Secondary audience: someone already in a healthcare admin, IT support, or trades
 
 Friendly expert neighbor — plain, direct, encouraging but honest. Write like you're explaining to a smart friend who's exploring career options, not like a school admissions page. No jargon without a plain-English definition right next to it. No exclamation marks in body copy. No "you'll love this career" or "exciting opportunity" — let the facts speak. Never talk down to the reader; respect that they're making a big life decision and need straight answers, not a sales pitch.
 
+**Critical: write FOR the reader, not for our team.** The reader is someone sitting on their phone after work wondering "can I actually do this?" Every sentence must answer a question THEY have. If a sentence only matters to us (our research process, what we couldn't find, our data methodology), delete it. The reader never needs to know how we made the post — they need the answers.
+
 ## 3. Reading Level and Language
 
 Write at a **7th–8th grade reading level**. Short sentences (under 20 words when possible). One idea per paragraph. Define every technical term the first time it appears — not in a footnote, right in the sentence: "a CPC (Certified Professional Coder) credential." Avoid idioms and slang that don't translate well for ESL readers. Use "you" and "your" — speak directly to the reader. Prefer common words: "get" over "obtain," "pay" over "compensation," "test" over "examination." Break up walls of text with subheadings, bullet lists, and short paragraphs.
@@ -40,17 +42,48 @@ Every post follows a predictable skeleton so readers always know where they are:
 
 1. **Hook** — follow the Content Strategist's recommended angle, not a generic intro
 2. **What the job actually is** — daily tasks in plain language ("you'd spend your day...")
-3. **Pay** — BLS median with honest context (entry vs experienced, regional variation)
-4. **How to get in** — training path, timeline, cost range (general industry, never CSC specifics)
-5. **Certifications** — which ones matter, what the exam is like, what it costs
+3. **Pay** — one clear number (national median annual). Entry-level estimate if available. No percentile ranges, no methodology explanations.
+4. **How to get in** — training path, **how long it takes** (weeks/months), **how much it costs** (general industry range, NOT CSC prices), whether you can do it while working. Link to existing posts about training options when relevant.
+5. **Certifications** — which ones matter, what the exam is like (questions, time, passing score), what it costs. Make the exam feel manageable, not scary.
 6. **The hard truth** — downsides, common surprises, who this is NOT a good fit for
-7. **How to pay for training** — funding options, link to qualify.html
-8. **Next step** — one clear action (see Guideline 6 for what to link to)
+7. **How to pay for training** — funding options, link to qualify.html and existing funding posts
+8. **Next step** — one clear action (see CTA guidelines for what to link to)
 9. **FAQ** — 4–6 questions from the research brief, with FAQPage schema
 
 The Writer can reorder or merge sections if the Content Strategist's angle calls for it, but every post must hit all nine topics somewhere.
 
-## 7. Funnel Structure and CTAs
+## 7. What the Reader Needs (and What to Cut)
+
+The reader is making a practical decision. Every section must answer a question they actually have. Here's what to include and what to cut:
+
+### ALWAYS include (the reader's real questions):
+- **"How much will I make?"** — Give ONE clear number: the national median annual pay. Say "Most [job title] earn around $X a year." Don't explain what a median is, don't show percentile ranges, don't show hourly unless it's the only figure available. If you know entry-level is lower, say "New [job title] often start around $X."
+- **"How long does training take?"** — Give a range: "Training programs typically run X weeks to X months." If there are different program lengths, explain the tradeoff (like 4 weeks vs 4 months for medical billing).
+- **"How much does training cost?"** — Give a general cost range from industry data (NOT CSC prices). "Programs typically cost $X to $Y." This is one of the reader's first questions — don't skip it.
+- **"Can I do this while working my current job?"** — Are there evening/weekend programs? Is any of it online? How many hours per week?
+- **"What do I need to get started?"** — Be specific: GED? Background check? Immunizations? CPR cert?
+- **"Is there a state license?"** — Yes or no, plainly. If no, say "No state license required." NEVER say "we did not find one."
+- **"What's the exam like?"** — Number of questions, time limit, passing score, cost. Readers are anxious about tests — give them the facts so the exam isn't scary.
+
+### ALWAYS cut (things only we care about):
+- **"We did not find..."** / **"We could not confirm..."** — The reader doesn't care about our research process. If the data doesn't exist, don't mention it. If a license isn't required, say "No state license required" — not "We did not find a state license."
+- **Percentile ranges (10th/90th)** — Nobody asks "what does the 10th percentile earn?" They ask "what will I make?" Give them the median and an entry-level estimate if available.
+- **"The median is the middle: half earn more, half earn less"** — Don't explain statistics. Just give the number.
+- **"We do not show / we do not quote"** — If you can't show data, just don't show it. Don't explain why you're not showing it.
+- **Methodology notes in the body** — "National figures because we couldn't confirm MA figures" is an internal note. Put the national figure and link to the BLS state page. That's it.
+- **SOC codes in the body text** — Put them in a small source note at the bottom, not in sentences the reader sees. The reader doesn't know what a SOC code is.
+- **BLS projection labels** — Don't say "3%, about as fast as average." Say "The number of jobs is expected to grow 3% over the next 10 years" or just "steady demand." The BLS label ("faster than average") means nothing to the reader.
+
+### ALWAYS link to existing posts when relevant:
+- If the post mentions medical billing training options → link to the [4-week vs 4-month post](blog/4-week-vs-4-month-medical-billing-coding-course.html)
+- If it mentions paying for training → link to [free job training in MA](blog/free-job-training-massachusetts.html) and [WIOA explained](blog/is-wioa-training-free.html)
+- If it mentions salaries → link to [salary by state](blog/medical-coding-billing-salary-by-state.html)
+- If it mentions online learning → link to the relevant "can you learn X online" post
+- **Check every existing blog post** in build-pages.py before writing. Every relevant internal link is a missed opportunity if you skip it.
+
+## 8. Funnel Structure and CTAs
+
+**Important note on tables:** If a comparison table includes data you don't have, **leave that cell out or merge it** — don't write "Not shown" or "We did not find one." A blank is better than drawing attention to what's missing. Better yet, restructure so the table only includes columns where you have complete data.
 
 Every blog post is part of a funnel. The reader enters at curiosity and should leave closer to action.
 
@@ -93,7 +126,7 @@ The Writer must write **both versions** of every course-dependent CTA and docume
 
 The guide-mode version renders in the HTML. The course-mode version sits behind the `SITE_MODE` switch in the code and is documented in the markdown file so the switchover is explicit and reviewable.
 
-## 8. SEO
+## 9. SEO
 
 The Writer executes SEO based on the **target keyword assigned in the blog queue**. This keyword was chosen through prior analysis and is final. The Writer must NOT invent, substitute, or "improve" the target keyword. Every SEO decision flows from that assigned keyword:
 
@@ -108,7 +141,7 @@ The Writer executes SEO based on the **target keyword assigned in the blog queue
 - **Internal links:** at least 3 per post — the funnel links from Guideline 6 plus one to a related blog post. Use descriptive anchor text, not "click here."
 - **No keyword stuffing.** If it feels forced, rewrite the sentence.
 
-## 9. Hard Prohibitions
+## 10. Hard Prohibitions
 
 1. **Never state CSC program details** — no length, hours, cost, credentials, format, start dates, instructors, campus details, VA status
 2. **Never claim ETPL/WIOA approval**, "state-approved," or Express Course Directory listing
@@ -120,7 +153,7 @@ The Writer executes SEO based on the **target keyword assigned in the blog queue
 8. **Never write "our program," "our courses," "enroll now," or "apply" in guide-mode copy** — CSC has nothing to enroll in yet. Write both guide-mode and course-mode versions of every course-dependent CTA and document the course-mode version in `blog/course-mode-copy/[post-slug].md`
 9. **Never describe a specific CSC credential** — say "healthcare" or "the medical field," not "Medical Billing & Coding program"
 
-## 10. Working With the Content Strategist's Angle
+## 11. Working With the Content Strategist's Angle
 
 The Content Strategist's recommended angle is the **north star** — the Writer doesn't get to ignore it and write a generic post:
 
@@ -130,7 +163,7 @@ The Content Strategist's recommended angle is the **north star** — the Writer 
 - **If the Writer disagrees with the angle**, write a note at the top of the output explaining why, but still follow it. The angle was chosen from competitive research; the Writer hasn't seen the SERP.
 - **After writing, self-check:** Would a reader notice what makes this post different from the top 10 Google results? If not, the angle isn't showing enough — rewrite the intro and strengthen the differentiators.
 
-## 11. Technical Execution
+## 12. Technical Execution
 
 The Writer adds code to `tools/build-pages.py`, not hand-written HTML files:
 
