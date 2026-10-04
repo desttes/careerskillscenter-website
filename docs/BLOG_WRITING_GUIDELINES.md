@@ -20,7 +20,7 @@ Friendly expert neighbor — plain, direct, encouraging but honest. Write like y
 
 ## 3. Reading Level and Language
 
-Write at a **7th–8th grade reading level**. Short sentences (under 20 words when possible). One idea per paragraph. Define every technical term the first time it appears — not in a footnote, right in the sentence: "a CPC (Certified Professional Coder) credential." Avoid idioms and slang that don't translate well for ESL readers. Use "you" and "your" — speak directly to the reader. Prefer common words: "get" over "obtain," "pay" over "compensation," "test" over "examination." Break up walls of text with subheadings, bullet lists, and short paragraphs.
+Write at a **7th–8th grade reading level**. Short sentences (under 20 words when possible). One idea per paragraph. **Paragraphs are two lines long on the desktop blog, at most a word or two onto a third line: about 210 characters, never more than 230** (Emilio, 2026-10-04). Define every technical term the first time it appears — not in a footnote, right in the sentence: "a CPC (Certified Professional Coder) credential." Avoid idioms and slang that don't translate well for ESL readers. Use "you" and "your" — speak directly to the reader. Prefer common words: "get" over "obtain," "pay" over "compensation," "test" over "examination." Break up walls of text with subheadings, bullet lists, and short paragraphs.
 
 ## 4. Entry Requirements and State Licensing
 
