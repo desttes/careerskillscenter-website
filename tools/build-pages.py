@@ -3446,6 +3446,11 @@ def post_card(tag, date, read, title, excerpt, href="#"):
 # Real launch posts. Order = newest first in the grid (the pillar is featured
 # above the grid, so it is not repeated here). href points into /blog/.
 BLOG_POSTS = [
+    ("Medical", "Oct 4, 2026", "14 min read",
+     "How to Become a CNA in Massachusetts (2026)",
+     "If a nursing home hires you before training starts, it cannot charge you for it. Three ways to pay, "
+     "the state exam, the registry and the hard parts of the job.",
+     "blog/cna-massachusetts.html"),
     ("Medical", "Oct 4, 2026", "13 min read",
      "How to Become a Pharmacy Technician in Massachusetts (2026)",
      "Every pharmacy tech in Massachusetts needs a state license. Here are the three ways to get it, what "
@@ -6755,6 +6760,415 @@ PAGES.append(dict(
         "Everyone needs a state license, but there are three ways to get it. One of them, getting hired as a "
         "trainee, may mean no tuition and a paycheck while you learn.",
         "October 4, 2026", "13 min read", _pt_body, author="Career Skills Center")))
+
+
+# ---------------------------------------------------------------------------
+# How to Become a CNA in Massachusetts (2026). Published 2026-10-04.
+# Target keyword: "CNA massachusetts". Source: blog pipeline, docs/blog-drafts/cna-massachusetts/
+# (research-brief.md, content-strategy.md, community-verification.md, editorial-decisions.md).
+# Pay: BLS OEWS May 2025, SOC 31-1131 (Massachusetts median, needs a human spot check).
+# Community items: only C1, C2, C3, C4, C5, C6, C7, C9, C10 as approved in editorial-decisions.md.
+# CSC lines = COURSE-DEPENDENT: R-BLOG-04. Course-mode copy: blog/course-mode-copy/cna-massachusetts.md
+# ---------------------------------------------------------------------------
+_cna_faq = [
+    ("How long does it take to become a CNA in Massachusetts?",
+     "Training must be at least 75 hours under federal rules. In April 2026 the Massachusetts Department of Public Health (DPH) announced it plans to raise the minimum to 87 hours, with 21 hours of hands-on practice. Most Massachusetts programs listed on CareerOneStop take under 12 weeks. After training you still need to pass the state exam and be listed on the Nurse Aide Registry."),
+    ("How much does CNA training cost in Massachusetts?",
+     "Tuition depends on the school, so ask each program for the full price, including test fees, books, uniform and background check. The state exam costs $30 for the knowledge test and $70 for the skills test on each try. If a nursing home hires you or offers you a job before training starts, federal rules say it cannot charge you for the training."),
+    ("Can I get CNA training for free in Massachusetts?",
+     "Possibly. Federal rules say a nursing facility that has hired you, or offered you a job, before your class starts cannot charge you for the training. If you pay yourself and a nursing facility hires you within 12 months after you finish, the state must pay back part of your cost. Ask DPH how this works in Massachusetts. A MassHire Career Center can also tell you if you may qualify for funded training. Read any work contract before you sign."),
+    ("What is on the Massachusetts CNA exam?",
+     "There are two parts. The knowledge test has 60 multiple-choice questions, takes up to 60 minutes, and you need 76% to pass. The skills test has 3 or 4 tasks, picked at random, done in front of a nurse in up to 40 minutes. You can take the exam in English, Spanish, Chinese or Haitian Creole."),
+    ("How much do CNAs make in Massachusetts?",
+     "Most CNAs in Massachusetts earn around $46,680 a year, according to the U.S. Bureau of Labor Statistics (May 2025). New CNAs often start lower. Pay depends on where you work and your shift."),
+    ("I'm a CNA in another state. Can I work in Massachusetts?",
+     "If your certification in another state is current and in good standing, you can ask for reciprocity. That means Massachusetts lists you on its registry without new training. You do this online through D&S Diversified Technologies, the state's testing company. If you finished an approved course in another state, you may be able to take the Massachusetts exam without repeating training."),
+]
+
+_cna_faq_html = "\n".join(
+    f'          <details class="faq-item"><summary>{q}</summary>\n          <div><p>{a}</p></div></details>'
+    for q, a in _cna_faq)
+
+_cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF.md / register note (Sept 28) say no pay figures
+             except the salary-by-state post; this post shows one BLS pay figure, same open question as the
+             healthcare-jobs, phlebotomist and pharmacy posts. Emilio must approve or swap for a BLS link.
+             (1) MA median $46,680 (BLS OEWS May 2025, SOC 31-1131, from the BLS API with decoded series IDs):
+             spot check at data.bls.gov/oes. (2) 3% growth 2025-35 and ~203,300 openings/yr (BLS OOH, opened).
+             (3) 36% nursing care facilities / 32% hospitals (BLS OOH). (4) 87-hour / 21 practical-hour DPH
+             announcement (April 2026 memo, SEARCH SUMMARY only; effective date unknown); revised exam early 2027.
+             (5) All mass.gov facts (DPH approval list, Check a License, registry phone 617-753-8144, reciprocity
+             online since Dec 2023) are SEARCH SUMMARY: open the pages. (6) Exam facts from D&S May 2026 handbook
+             v7.0: 60 Q / 60 min / 76%; 3-4 tasks / 40 min; 4 and 3 tries; $30 knowledge, $40 audio; skills fee $70
+             from the 7.2024 handbook only; "first exam no longer free since July 1, 2025" unconfirmed (not stated
+             as a date in copy). (7) 42 CFR 483.152(c) no-charge + 12-month reimbursement (eCFR, opened); how MA
+             runs the reimbursement is unknown (copy says ask DPH). (8) 42 CFR 483.35(d) 4-month / 120-day rule.
+             (9) CareerOneStop MA program counts (37 programs, 29 under 12 weeks) are SEARCH SUMMARY. (10) Community
+             experiences per editorial-decisions.md; 3 approved quotes used word for word. (11) FAQ questions are
+             inferred, not live People Also Ask data. -->
+
+        <p class="lead">Most guides to becoming a CNA in Massachusetts start with a list of schools and a price
+        tag. Start here instead. If a nursing home hires you, or offers you a job, before your training starts,
+        federal rules say it cannot charge you for that training. That is one of three ways to pay, and often the
+        cheapest.</p>
+
+        <!-- COURSE-DEPENDENT: R-BLOG-04 -->
+        <p>This guide shows all three ways to pay, how the state exam and registry work, what changed in 2026,
+        and the hard parts of the job. Career Skills Center does not sell CNA training, so we can be straight
+        with you.</p>
+        <!-- /COURSE-DEPENDENT: R-BLOG-04 -->
+
+        <div class="note"><strong>Quick answer.</strong> To become a CNA in Massachusetts, you finish a nurse aide
+        training program approved by the state Department of Public Health (DPH). Then you pass a two-part state
+        exam: a written test and a skills test. After you pass both parts, you are listed on the Massachusetts
+        Nurse Aide Registry, and employers can hire you as a certified nurse aide.</div>
+
+        <h2>Words to know</h2>
+        <ul>
+          <li><strong>CNA</strong> (certified nurse aide, also called certified nursing assistant): a person who
+          gives daily, hands-on care to patients or residents.</li>
+          <li><strong>Resident:</strong> a person who lives in a nursing home.</li>
+          <li><strong>Nurse Aide Registry:</strong> the state list of certified nurse aides. Employers check it
+          before they hire you.</li>
+          <li><strong>Competency evaluation:</strong> the state CNA exam. It has a knowledge test and a skills
+          test.</li>
+          <li><strong>Clinical hours:</strong> the hands-on part of training, done in person in a care
+          facility.</li>
+          <li><strong>D&amp;S Diversified Technologies (D&amp;S):</strong> the company that runs the CNA exam for
+          the state.</li>
+          <li><strong>CORI</strong> (Criminal Offender Record Information): the Massachusetts criminal background
+          check.</li>
+          <li><strong>Reciprocity:</strong> moving your CNA certification from another state to Massachusetts
+          without new training.</li>
+        </ul>
+
+        <h2>What a CNA does</h2>
+        <p>You would spend your day helping people with things they can&rsquo;t do alone, like bathing,
+        dressing, eating and moving around. You work under nurses. It is hands-on, physical work with
+        people.</p>
+        <p>Most CNAs work in one of two places. About 36% work in nursing homes and 32% work in hospitals. Others
+        work in assisted living, home health and similar places.</p>
+
+        <h2>Do you need a state certification to be a CNA in Massachusetts?</h2>
+        <p><strong>Yes.</strong> To work as a certified nurse aide, you must pass the state exam and be listed on
+        the Massachusetts Nurse Aide Registry. The registry is run by the
+        <a href="https://www.mass.gov/nurse-aide-registry-program" target="_blank" rel="noopener">DPH Nurse Aide
+        Registry Program</a><!-- [VERIFY: mass.gov page not opened] -->. Some websites call it a CNA
+        &ldquo;license.&rdquo; In Massachusetts, the correct word is certification.</p>
+        <p>Other states have their own rules and registries. If you plan to move, check that state&rsquo;s health
+        department.</p>
+
+        <h2>The real path, start to finish</h2>
+        <ol>
+          <li><strong>Find a DPH-approved program, or a nursing home that will hire and train you.</strong> Check
+          that a program is approved before you pay. Use the state&rsquo;s
+          <a href="https://www.mass.gov/info-details/information-for-nurse-aide-training-programs" target="_blank" rel="noopener">list
+          and map of approved training programs</a><!-- [VERIFY: mass.gov page not opened; Check a License > Nurse Aide Registry > Nurse Aide Training Provider Approval] -->.</li>
+          <li><strong>Ask what you need to start.</strong> Programs and employers set their own entry steps. Ask
+          what health tests, shots and background checks they need, and what level of English the classes
+          use.</li>
+          <li><strong>Finish your training.</strong> Federal rules require at least 75 hours, with at least 16
+          hours of hands-on practice. In April 2026, DPH announced it plans to raise the Massachusetts minimum to
+          87 hours, with 21 hours of supervised hands-on practice<!-- [VERIFY: DPH advisory memo, SEARCH SUMMARY; effective date unconfirmed] -->.
+          Ask any program which standard it follows.</li>
+          <li><strong>Sign up for the state exam.</strong> Your program enters your name with D&amp;S. You pay the
+          test fees before you can pick a test date. Some programs pay the fees for you, so ask.</li>
+          <li><strong>Pass both parts</strong> of the exam: the knowledge test and the skills test.</li>
+          <li><strong>Get listed on the Nurse Aide Registry.</strong> Now you can work as a CNA.</li>
+          <li><strong>Keep it active.</strong> You renew every 24 months. To renew, you must have worked for pay
+          as a nurse aide for at least 8 hours in a row during those 24 months.</li>
+        </ol>
+
+        <h2>How long does CNA training take in Massachusetts?</h2>
+        <p>Training must be at least 75 hours today, and DPH has announced 87. Of the 37 nursing assistant
+        programs in Massachusetts listed on CareerOneStop, 29 take under 12 weeks<!-- [VERIFY: CareerOneStop counts, SEARCH SUMMARY] -->.
+        A full-time class can finish in a few weeks. Evening or weekend classes take longer.</p>
+        <p>Training is not the whole timeline. After class, you wait for a test date, take both parts and wait for
+        your registry listing. Employers may also need time for background checks and other hiring steps.</p>
+        <p><strong>Can you do it while working?</strong> The hands-on clinical hours are in person, at a care
+        facility. Ask each program if it has evening or weekend classes. There is also an &ldquo;earn while you
+        learn&rdquo; path. Federal rules let a nursing home employ you as an aide for up to 4 months (120 days)
+        while you train and take the exam. After that, you must be certified to keep doing aide work there.</p>
+        <p><strong>Can you do it online?</strong> Not fully. Some classroom parts may be online, but the
+        hands-on skills and the skills test are in person.</p>
+
+        <h2>Three ways to pay for CNA training</h2>
+        <p>This is the question most guides skip. Here are your options side by side.</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <caption>Three ways to pay for CNA training in Massachusetts</caption>
+          <thead>
+            <tr><th></th><th>1. A nursing home hires you first</th><th>2. A free public program</th><th>3. You pay first</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>How it works</td><td>A nursing home hires you, or offers you a job, before your class starts. Federal rules say it cannot charge you for any part of the training, including textbooks.</td><td>A MassHire Career Center or local workforce program helps pay for training. You may qualify through WIOA (the Workforce Innovation and Opportunity Act, a federal training program).</td><td>You pay the school yourself. If a nursing home hires you within 12 months after you finish, federal rules say the state must pay back part of your cost while you work there as an aide.</td></tr>
+            <tr><td>Cost to you</td><td>Training: $0</td><td>May be $0 if you qualify</td><td>Full tuition up front</td></tr>
+            <tr><td>Strings attached</td><td>Often a work contract. Read it before you sign.</td><td>Eligibility rules, paperwork and waiting time</td><td>You carry the cost until you are hired. Ask DPH how the pay-back works.</td></tr>
+            <tr><td>Best for</td><td>People who want a nursing home job and need to start fast</td><td>People who need help paying and can wait for approval</td><td>People who want to choose their own school and schedule</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p><strong>The fine print on the federal rule.</strong> It covers nursing facilities (nursing homes). It
+        does not clearly cover hospitals, home care agencies or assisted living. It only counts if you are hired,
+        or have a job offer, on the day training starts.</p>
+
+        <h3>&ldquo;Free&rdquo; training and work contracts</h3>
+        <p>CNAs who trained through a nursing home share mixed stories. Some say they owed nothing. Others say they
+        signed a contract to work there for one or two years, and were told they would have to pay the training
+        back if they left early.</p>
+        <p>Before you sign, ask in writing: &ldquo;What happens if I leave?&rdquo; If you are told you owe money,
+        call the DPH Nurse Aide Registry at (617) 753-8144<!-- [VERIFY: DPH registry phone, mass.gov SEARCH SUMMARY] -->, or look for free legal help at
+        <a href="https://www.masslegalhelp.org" target="_blank" rel="noopener">Mass Legal Help</a>, before you
+        sign.</p>
+
+        <div class="note"><strong>Before you sign up, ask these questions.</strong>
+        <ol>
+          <li>Is this program on the DPH list of approved programs?</li>
+          <li>How many training hours is it? Does it follow the new 87-hour minimum?</li>
+          <li>What is the total price? Does it include the state test fees, background check, CPR class, TB test
+          and shots, and uniform?</li>
+          <li>Where are the clinical hours, and on what days and times?</li>
+          <li>Is there a work contract? What happens if I leave early?</li>
+          <li>What level of English do the classes need? Is there a class for English learners?</li>
+          <li>Do you help students find a job after training?</li>
+        </ol></div>
+
+        <p>To learn more about paying for training, read our
+        <a href="blog/free-job-training-massachusetts.html">guide to free job training in Massachusetts</a>,
+        <a href="blog/masshire-training-voucher.html">how to get a MassHire training voucher</a> and
+        <a href="blog/wioa-eligibility-massachusetts.html">who may qualify for WIOA training</a>. If you
+        pay yourself, our <a href="student-financing.html">guide to paying for training</a> covers your
+        options.</p>
+
+""" + post_cta(
+    "Check what funding you may qualify for",
+    "Answer a few short questions to see which Massachusetts funding options you may qualify for, and where to "
+    "go next.",
+    "Check what you may qualify for", "qualify.html") + """
+
+        <h2>The Massachusetts CNA exam</h2>
+        <p>The exam has two parts. You must pass both. The facts below come from the D&amp;S candidate handbook
+        dated May 2026. A revised state exam is expected in early 2027, so check the
+        <a href="https://hdmaster.com/testing/cnatesting/Massachusetts/MA_CNA_Home.htm" target="_blank" rel="noopener">D&amp;S
+        Massachusetts page</a> for the latest rules.</p>
+
+        <div class="note"><strong>Exam day at a glance</strong>
+        <ul>
+          <li><strong>Knowledge test:</strong> 60 multiple-choice questions. Up to 60 minutes. You need 76% to
+          pass. You can ask for an audio version, read out loud to you.</li>
+          <li><strong>Skills test:</strong> 3 or 4 tasks, picked at random. You do them in front of a nurse who
+          watches and scores you. Up to 40 minutes.</li>
+          <li><strong>Cost per try:</strong> $30 for the knowledge test ($40 for the audio version) and $70 for the
+          skills test<!-- [VERIFY: skills fee $70 from 7.2024 handbook; confirm on D&S fee page; first-time fee rules unconfirmed] -->.
+          Some programs pay these fees for you.</li>
+          <li><strong>Number of tries:</strong> 4 for the knowledge test and 3 for the skills test. If you use
+          them all, you must finish a new approved training program. Your training does not expire.</li>
+          <li><strong>Languages:</strong> English, Spanish, Chinese (traditional and simplified) and Haitian
+          Creole. You must ask for another language when you sign up. Once you start in that language, you
+          cannot switch back to English.</li>
+          <li><strong>Dictionaries:</strong> a printed word-for-word translation dictionary is allowed. Show it at
+          check-in. Dictionaries with definitions or notes, and electronic translators, are not allowed.</li>
+          <li><strong>Arrive early:</strong> be there at least 20 minutes before your test. If you are late, you
+          count as a no-show and lose your fees.</li>
+        </ul></div>
+
+        <h3>Bring the right ID</h3>
+        <p>Check this rule early, especially if your ID is from another country. You need an original, unexpired photo ID
+        with your signature, issued by the U.S. government.</p>
+        <ul>
+          <li>A <strong>foreign passport is not accepted</strong>, unless it has a U.S. visa attached.</li>
+          <li>A Green Card (Permanent Resident Card) or work permit (Employment Authorization Card) <strong>is
+          accepted</strong>.</li>
+          <li>Photocopies and phone wallet IDs are not accepted.</li>
+          <li>Your first and last name must match <strong>exactly</strong> what your training program entered.</li>
+        </ul>
+        <p>Not sure your ID works? Call D&amp;S at (888) 401-0462 before test day.</p>
+
+        <h3>Why people fail the skills test</h3>
+        <p>CNAs say the skills test surprised them, even after working with patients. As one CNA put it:
+        &ldquo;How you do stuff at work and how you do stuff when taking the state exam are two different
+        things.&rdquo;</p>
+        <p>The handbook explains why. The test scores a list of steps for each task.</p>
+        <ul>
+          <li>Some steps are <strong>critical</strong> (shown in bold in the handbook). Miss one and you fail
+          that task.</li>
+          <li>You must also do at least 80% of the other steps on each task.</li>
+          <li><strong>Do every step with your hands.</strong> Just saying a step out loud does not count. Only a
+          few steps must be said, like the soaking time in a foot soak. Tell the nurse when you finish each
+          task.</li>
+          <li>Steps can be done in any order, unless the step says BEFORE or AFTER.</li>
+          <li>Made a mistake? You can tell the nurse you want to make a correction, as long as time is left.</li>
+        </ul>
+        <p><strong>If you fail:</strong> sign in to your D&amp;S account and click &ldquo;View Failed Steps&rdquo;
+        to see what you missed. If you think the result is wrong, call D&amp;S first. You can then ask for a test
+        review within 3 business days. It needs a $25 deposit, which you get back only if the review finds in your
+        favor.</p>
+
+        <h3>Study tips</h3>
+        <ul>
+          <li><strong>Practice the skills with your hands,</strong> step by step, using the skills list in the
+          <a href="https://hdmaster.com/testing/cnatesting/Massachusetts/MA_CNA_Home.htm" target="_blank" rel="noopener">D&amp;S
+          handbook</a>.</li>
+          <li><strong>If English is not your first language,</strong> think about testing in Spanish, Chinese or
+          Haitian Creole. Or bring a printed word-for-word dictionary.</li>
+          <li><strong>Check your ID now,</strong> not the night before.</li>
+        </ul>
+
+        <h2>How much do CNAs make in Massachusetts?</h2>
+        <p>Most CNAs in Massachusetts earn around <strong>$46,680 a year</strong><!-- [VERIFY: MA median, BLS OEWS May 2025; spot check data.bls.gov/oes] -->,
+        according to the U.S. Bureau of Labor Statistics (BLS, May 2025 data). New CNAs often start lower. Pay
+        depends on where you work and which shift you take. Across the whole U.S., CNAs earn around $42,260 a
+        year<!-- [VERIFY: national median, BLS OOH May 2025] -->. So CNA pay in Massachusetts is higher than the national figure.</p>
+        <p>The number of CNA and orderly jobs in the U.S. is expected to grow 3% from 2025 to 2035. That sounds
+        small, but there are about 203,300 openings each year, mostly because people leave the job or move up.
+        That means steady demand.</p>
+
+        <h2>The hard truth: is this job right for you?</h2>
+        <p>Other guides only list the good parts. Here are the hard parts too.</p>
+        <ul>
+          <li><strong>It is hard on your body.</strong> BLS says: &ldquo;Nursing assistants and orderlies have one
+          of the highest rates of injuries and illnesses of all occupations.&rdquo; You lift and move people all
+          day. CNAs say injuries often happen when someone does a two-person move alone. Use the lift. Wait for
+          help.</li>
+          <li><strong>The hours.</strong> The job may include nights, weekends and holidays.</li>
+          <li><strong>The first weeks are a lot.</strong> CNAs say it feels overwhelming at first. As one CNA put
+          it: &ldquo;You will be slow at first and that&rsquo;s okay.&rdquo; Slow is normal. Unsafe is not. Some
+          units and shifts are harder than others, and it is okay to leave a workplace that is not safe.</li>
+          <li><strong>Moving up takes more school.</strong> Many people use CNA work as a step toward becoming a
+          licensed practical nurse (LPN) or registered nurse (RN), but those need more training.</li>
+          <li><strong>Your certification can lapse.</strong> If you don&rsquo;t work for pay as an aide in a
+          24-month period, you can&rsquo;t renew.</li>
+          <li><strong>Background checks.</strong> Nursing homes and other employers run a CORI check when they hire
+          you. If you have a record, ask the employer or program how it is reviewed before you pay for training.
+          For free legal help about your record, try
+          <a href="https://www.masslegalhelp.org" target="_blank" rel="noopener">Mass Legal Help</a>.</li>
+        </ul>
+
+        <h3>Before you take your first CNA job</h3>
+        <ul>
+          <li><strong>Look up the nursing home</strong> on Medicare&rsquo;s
+          <a href="https://www.medicare.gov/care-compare/" target="_blank" rel="noopener">Care Compare</a>. It shows
+          separate ratings for health inspections, staffing and quality.</li>
+          <li><strong>Ask how many residents each aide cares for</strong> on your shift.</li>
+          <li><strong>Ask about the schedule:</strong> how long the shifts are, how many weekends you work, and if
+          night shifts pay more.</li>
+          <li><strong>Know that you can say no</strong> to extra shifts. CNAs say it is okay to protect your
+          rest.</li>
+        </ul>
+
+        <h3>What people who&rsquo;ve done it say</h3>
+        <p>CNAs are honestly split on whether the job is worth it. One CNA summed it up this way: &ldquo;I say
+        it&rsquo;s my least favorite job, but I&rsquo;m never doing anything else.&rdquo;</p>
+        <p>Many others say the hard side weighs more. They talk about short staffing, a job that is hard on the
+        body, not feeling respected, pay that feels low for the work, and caring for residents who are dying.
+        Several say to do it only as a step toward nursing. On the good side, people mention a real sense of
+        purpose. Many say the workplace makes the biggest difference. These are personal experiences, not
+        promises about any job.</p>
+
+        <p><strong>This job may fit you if:</strong></p>
+        <ul>
+          <li>You want to help people with their daily needs, face to face.</li>
+          <li>You want a fast way into healthcare, and maybe a first step toward nursing.</li>
+          <li>You are okay with physical work and changing schedules.</li>
+        </ul>
+        <p><strong>It is probably not for you if:</strong></p>
+        <ul>
+          <li>You have back problems or can&rsquo;t lift and move people.</li>
+          <li>You can only work weekday daytime hours.</li>
+          <li>You want a desk job. Look at other options in our
+          <a href="career-paths.html">career paths</a>.</li>
+        </ul>
+
+        <h3>CNA, home health aide, phlebotomist or pharmacy tech?</h3>
+        <p>People often compare these jobs. Home health aides and personal care attendants (PCAs) do similar care
+        work but do not take the CNA exam. A phlebotomist draws blood, and a pharmacy tech helps prepare medicine.
+        Read <a href="blog/phlebotomist-massachusetts.html">how to become a phlebotomist in Massachusetts</a> or
+        <a href="blog/pharmacy-technician-massachusetts.html">how to become a pharmacy technician in
+        Massachusetts</a>. Or compare six jobs in our guide to
+        <a href="blog/healthcare-jobs-massachusetts.html">healthcare jobs in Massachusetts you can train
+        for</a>.</p>
+
+        <h2>Already a CNA in another state?</h2>
+        <p>If your certification is current and in good standing in another state, you can request
+        reciprocity online through D&amp;S<!-- [VERIFY: mass.gov reciprocity page not opened] -->. If you finished
+        an approved nurse aide course in another state, or a clinical course in an approved nursing school, you
+        may be able to take the Massachusetts exam without repeating training.</p>
+
+        <h2>What to do this week</h2>
+        <ol>
+          <li><strong>Read the state rules</strong> on
+          <a href="https://www.mass.gov/info-details/learn-how-to-become-a-certified-nurse-aide-in-massachusetts" target="_blank" rel="noopener">how
+          to become a certified nurse aide in Massachusetts</a>.</li>
+          <li><strong>Search <a href=\"""" + JOBQUEST_URL + """\" target="_blank" rel="noopener">JobQuest</a></strong>,
+          the free Massachusetts job site, for nursing homes near you that hire and train new aides.</li>
+          <li><strong>Contact your <a href=\"""" + MASSHIRE_URL + """\" target="_blank" rel="noopener">MassHire
+          Career Center</a></strong> if you need help paying for training. You may qualify for funded training.
+          See also <a href="blog/is-wioa-training-free.html">whether WIOA training is really free</a>.</li>
+          <li><strong>Check any program</strong> on the DPH approved list before you pay.</li>
+          <li><strong>See the bigger picture</strong> in our
+          <a href="healthcare-careers.html">field guide to healthcare work</a>, including where CNA work can
+          lead.</li>
+        </ol>
+
+        <!-- COURSE-DEPENDENT: R-BLOG-04 -->
+        <p>Career Skills Center plans to offer training in healthcare, IT and the skilled trades.
+        <a href="healthcare-careers.html#interest">Get updates when we launch</a>.</p>
+        <!-- /COURSE-DEPENDENT: R-BLOG-04 -->
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+""" + _cna_faq_html + """
+        </div>
+
+        <section class="sources" aria-labelledby="cna-sources-heading">
+          <h2 id="cna-sources-heading">Sources</h2>
+          <p>Pay and job outlook from the U.S. Bureau of Labor Statistics, nursing assistants (SOC 31-1131), May
+          2025 data and 2025-2035 projections. Training rules from federal regulations (42 CFR 483.35, 483.152)
+          and the Massachusetts Department of Public Health (105 CMR 156). Exam facts from the D&amp;S
+          Diversified Technologies Massachusetts candidate handbook (May 2026).</p>
+          <ul>
+            <li><a href="https://www.bls.gov/ooh/healthcare/nursing-assistants.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Nursing Assistants and Orderlies</a></li>
+            <li><a href="https://www.bls.gov/oes/current/oes_ma.htm" target="_blank" rel="noopener">BLS Occupational Employment and Wage Estimates: Massachusetts</a></li>
+            <li><a href="https://www.mass.gov/info-details/learn-how-to-become-a-certified-nurse-aide-in-massachusetts" target="_blank" rel="noopener">mass.gov: Learn how to become a certified nurse aide in Massachusetts</a></li>
+            <li><a href="https://www.mass.gov/nurse-aide-registry-program" target="_blank" rel="noopener">mass.gov: Nurse Aide Registry Program</a></li>
+            <li><a href="https://www.mass.gov/info-details/information-for-nurse-aide-training-programs" target="_blank" rel="noopener">mass.gov: Information for Nurse Aide Training Programs</a></li>
+            <li><a href="https://www.mass.gov/info-details/dph-advisory-memo-new-certified-nurse-aide-cna-curriculum-framework" target="_blank" rel="noopener">mass.gov: DPH Advisory Memo, New CNA Curriculum Framework (April 2026)</a></li>
+            <li><a href="https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-483/subpart-D/section-483.152" target="_blank" rel="noopener">42 CFR 483.152: Nurse aide training and competency evaluation programs</a></li>
+            <li><a href="https://www.law.cornell.edu/cfr/text/42/483.35" target="_blank" rel="noopener">42 CFR 483.35: Nursing services</a></li>
+            <li><a href="https://www.law.cornell.edu/regulations/massachusetts/105-CMR-156-300" target="_blank" rel="noopener">105 CMR 156.300: Nurse aide training course requirements</a></li>
+            <li><a href="https://www.hdmaster.com/testing/cnatesting/Massachusetts/forms/MA%20Candidate%20Handbook%205.2026.pdf" target="_blank" rel="noopener">D&amp;S Diversified Technologies: Massachusetts Nurse Aide Candidate Handbook (May 2026)</a></li>
+            <li><a href="https://www.cms.gov/medicare/health-safety-standards/certification-compliance/five-star-quality-rating-system" target="_blank" rel="noopener">CMS: Five-Star Quality Rating System</a></li>
+            <li><a href="https://www.careeronestop.org/Toolkit/Training/find-local-training.aspx" target="_blank" rel="noopener">CareerOneStop Training Finder (U.S. Department of Labor)</a></li>
+          </ul>
+        </section>
+
+""" + related(
+    ("Healthcare Jobs in Massachusetts You Can Train For", "blog/healthcare-jobs-massachusetts.html"),
+    ("How to Become a Phlebotomist in Massachusetts", "blog/phlebotomist-massachusetts.html"),
+    ("Free Job Training in Massachusetts", "blog/free-job-training-massachusetts.html"),
+)
+
+_CNA_TITLE = "How to Become a CNA in Massachusetts (2026): Training, Exam and Who Pays"
+_CNA_DESC = ("How to become a CNA in Massachusetts: the state exam, the registry, what changed in 2026, and how "
+             "training may cost you nothing.")
+
+PAGES.append(dict(
+    slug="blog/cna-massachusetts.html", nav="blog.html",
+    title="CNA in Massachusetts: Training, Exam and Who Pays (2026)",
+    ogtitle=_CNA_TITLE,
+    desc=_CNA_DESC,
+    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;'
+               'text-underline-offset:2px}.prose table caption{caption-side:top;text-align:left;font-weight:700;'
+               'color:var(--navy);padding:0 0 10px}.prose .note ol,.prose .note ul{margin:10px 0}</style>\n'
+               + article_ld("blog/cna-massachusetts.html", _CNA_TITLE, _CNA_DESC,
+                            "2026-10-04", "2026-10-04", author="Career Skills Center")
+               + "\n" + faq_ld(_cna_faq)),
+    main=article(
+        "Medical", _CNA_TITLE,
+        "If a nursing home hires you before training starts, it cannot charge you for that training. Here is "
+        "that path and two others, plus the state exam, the registry and the hard parts of the job.",
+        "October 4, 2026", "14 min read", _cna_body, author="Career Skills Center")))
 
 
 # Interest form the post's CTA points to. COURSE-DEPENDENT: R-BLOG-MBC.

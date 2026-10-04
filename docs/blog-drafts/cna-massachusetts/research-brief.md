@@ -118,3 +118,30 @@ Rejected / do not use: blsmon1.bls.gov mirror (stale 2022 data), community colle
 3. Spot check MA median $46,680 at https://data.bls.gov/oes/ .
 4. Replace placeholder FAQs with real PAA/autocomplete.
 5. Neutral tuition range remains missing.
+
+---
+
+## Verified addendum (from community-verification.md)
+
+Copied from `community-verification.md` (verified 2026-10-04, verification mode). No new research. Status labels are the ones used there. Items the post uses that the brief above lacks.
+
+**Current handbook edition.** D&S "May 2026, VERSION 7.0" is the current edition. It supersedes the Oct 2025 and 7.2024 handbooks cited earlier in this brief; where they differ, use May 2026. Title page: "Updates effective February 19th, 2026: Alternate Testing Languages section." [OPENED, full 71-page text read]
+Source: https://www.hdmaster.com/testing/cnatesting/Massachusetts/forms/MA%20Candidate%20Handbook%205.2026.pdf
+Upcoming change: revised state exam expected early 2027 `[SEARCH SUMMARY]`, so add a dated note ("as of the May 2026 handbook") to exam-day tips.
+
+| Item | Fact | Source | Status |
+|---|---|---|---|
+| Work before certification | Facility may not use someone as a nurse aide for more than 4 months, full-time, unless competent and has completed a training and competency evaluation program (42 CFR 483.35(d)). The D&S handbook words it for MA as up to 120 days from the day employment and training is offered in an approved facility-based program; if you fail 4 knowledge or 3 skills attempts, the facility may no longer employ you as an aide. Say "up to 4 months (120 days)" and that it applies to nursing facilities. | https://www.law.cornell.edu/cfr/text/42/483.35 (Cornell mirror) and the May 2026 handbook (URL above) | CONSISTENT [OPENED] |
+| Skills test scoring | "You must correctly perform all critical steps (in bold font) and 80% of all non-key steps on each task assigned to pass the Skill Test." The 80% applies per task. Skills: 3 or 4 randomly selected tasks, 40 minutes. | May 2026 handbook | CONSISTENT [OPENED] |
+| Test review request | You may request a review of results or dispute a testing condition. Call D&S first, then submit the form on mc.tmutest.com. $25 deposit. Request must be received within 3 business days of official scoring; late requests are denied. Do not call it a "grievance." | May 2026 handbook, "Test Review Requests" | CONSISTENT [OPENED]. NOTE: the verification file says the $25 is "non-refundable deposit (refunded only if the review finds in your favor)". Write "a $25 deposit, returned only if the review goes your way", not "refundable". |
+| Check-in / no-show | Arrive 20 minutes early or you are a no-show and forfeit fees. Refund needs a request within 30 days of payment and costs $35. A no-show does not count as an attempt. | May 2026 handbook | CONSISTENT [OPENED] |
+| D&S phone | (888) 401-0462, 8-8 ET Mon-Fri. Alternate-language help line: (855) 263-6050. D&S does not give results by phone (use the TMU account at mc.tmutest.com). | May 2026 handbook; D&S MA home page | CONSISTENT [OPENED] |
+| ID rules | Original, non-expired, US government-issued photo ID with signature. Signed US passport accepted (foreign passports and passport cards not). Signed foreign passport with a US visa attached accepted. USCIS Permanent Resident Card or Employment Authorization Card accepted (no signature needed if issued from Jan 30, 2023). Tribal and US military IDs accepted. First and last name must match the program's entry in the D&S database. Hole-punched license not valid. Apple/Google Wallet and photocopies not accepted. High school students: current-year school ID plus a secondary ID. Learner's permit: not mentioned in the handbook, so say "call D&S before test day." | May 2026 handbook | CONSISTENT [OPENED]; learner's permit UNVERIFIABLE |
+| Exam languages | Knowledge and skills components offered in Chinese (traditional and simplified), Haitian Creole, Spanish (simplified), and English. D&S home page: Haitian Creole administration began December 2, 2024. Apply for the alternate language on the TMU page. You cannot switch back to English once you start. If you pass one part you cannot switch languages unless you use up your attempts and finish a new program. Audio knowledge option exists. | May 2026 handbook, Alternate Testing Languages (updated Feb 19, 2026); https://www.nepm.org/regional-news/2024-07-17/mass-now-offers-test-to-certify-nurse-aids-in-chinese-spanish-advocates-also-want-easier-english | CONSISTENT [OPENED] |
+| Dictionary rule | "Published foreign word-for-word translation dictionaries are allowed. Dictionaries with definitions or handwriting/notes will not be allowed." Show it to the observer at check-in. Electronic dictionaries and translators are not allowed. | May 2026 handbook, Language Translation Dictionaries | CONSISTENT [OPENED] |
+
+Related wording cautions from the same verification file:
+- Do not print "say every step out loud." Steps only verbalized do not count; only a few named steps (such as soak time) must also be said aloud. Tell the observer when you finish each task. (CONTRADICTED as a general rule.)
+- Skills steps are not order dependent unless the step says BEFORE or AFTER.
+- Retake fees seen: knowledge $30, audio knowledge $40. Skills fee not extracted from the handbook table; confirm on the live D&S fee page before printing. `[SEARCH SUMMARY / UNVERIFIABLE here]`
+- Attempts: 4 knowledge, 3 skills, then a new DPH-approved program is required.

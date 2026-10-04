@@ -29,6 +29,19 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 
 ## Session log
 
+### 2026-10-04 — Blog Manager: How to Become a CNA in Massachusetts (2026): Training, Exam and Who Pays (LOCAL, not deployed)
+- **Built:** `blog/cna-massachusetts.html` (about 4,200 words including page chrome), added via `tools/build-pages.py`; `blog.html` index and `sitemap.xml` regenerated. Course-mode copy in `blog/course-mode-copy/cna-massachusetts.md`. Register row R-BLOG-04 added.
+- **Angle:** lead with who pays. If a nursing home hires you or offers you a job first, federal rules (42 CFR 483.152) say it cannot charge for training. Three ways to pay, the state exam (D&S) and registry, what changes in 2026, honest downsides, with three approved community quotes.
+- Compliance review: PASS (round 2). Pipeline files: docs/blog-drafts/cna-massachusetts/
+- Status: LOCAL (not deployed). DRAFT marker and [VERIFY] comments in the post block deploy. Facts logged in VERIFICATION_LOG section Q.
+- **Open TODOs / questions for Emilio:**
+  1. Pay-figure policy: post prints MA $46,680 and national $42,260 (BLS). Handoff allows pay only in the salary-by-state post. Approve an exception for role-guide posts or swap for a BLS link (same question as healthcare-jobs, phlebotomist, pharmacy posts).
+  2. Open the mass.gov pages (registry program, approved-program list, DPH advisory memo, reciprocity, registry phone 617-753-8144); they were SEARCH SUMMARY only. Confirm the 87-hour/21-practical-hour effective date.
+  3. Spot check the $46,680 MA median at data.bls.gov/oes.
+  4. Confirm the $70 skills test fee (from the 7.2024 handbook only) and first-exam fee rules on the D&S fee page.
+  5. Add back-links to the CNA post from the phlebotomist, pharmacy technician and healthcare-jobs posts.
+  6. `blog/healthcare-jobs-massachusetts.html` conflicts with this post: it says CNA training is "4 to 12 weeks" and "$500 to $2,000" (table and FAQ), with no neutral source. This post says tuition varies and the federal minimum is 75 hours. Fix the healthcare-jobs post.
+
 ### 2026-10-04 — Blog pipeline moved into the repo; scheduled runs paused (LOCAL + GitHub, not deployed)
 - **Blog Manager routine paused** (`trig_01XgMjFh5eKjNm4qx8Gr9HdM`, `enabled: false`). Emilio asked for this until the agents write the way he expects. Re-enable it on claude.ai or by asking Code.
 - **Agents now live in the repo:** `.claude/agents/` holds `data-researcher`, `content-strategist`, `blog-writer`, `compliance-reviewer` and `blog-publisher`. The director is the `/blog-pipeline` command in `.claude/commands/blog-pipeline.md`. Any Claude Code session on this repo can run them. Local runs can also open bls.gov and mass.gov, which the cloud routine's network blocks.

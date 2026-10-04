@@ -500,3 +500,44 @@ https://www.bls.gov/ooh/healthcare/nursing-assistants.htm · medical-assistants.
 
 ### P6. Check live before deploy
 1. Pay-figure policy decision. 2. P1-P2 against live BLS pages. 3. P3 and P5 on mass.gov and with the Board. 4. P4 on ptcb.org and nhanow.com. 5. Remove the DRAFT marker only after Emilio approves.
+
+## Q. CNA post - BLS pay and outlook, DPH/registry, D&S exam facts, federal rules (2026-10-04, DRAFT, local)
+
+`blog/cna-massachusetts.html` (publish date 2026-10-04). Compliance review: PASS round 2 (`docs/blog-drafts/cna-massachusetts/review-report-round2.md`). Pipeline files: `docs/blog-drafts/cna-massachusetts/`.
+
+**STATUS: partly verified.** BLS and eCFR pages were opened; mass.gov pages were NOT opened (search summaries only). The DRAFT marker and inline [VERIFY] comments block deploy.
+
+**FLAGGED POLICY QUESTION (Emilio decides):** PROJECT-HANDOFF.md allows pay figures only in the salary-by-state post (section M). This post prints two BLS medians (same open question as sections N, O, P). Approve an exception or swap for a BLS link.
+
+### Q1. BLS wage data, nursing assistants and orderlies (SOC 31-1131), May 2025
+- Massachusetts median: $46,680/year (BLS API, decoded series IDs; spot check at https://www.bls.gov/oes/current/oes_ma.htm / data.bls.gov/oes). NOT yet spot-checked by eye.
+- National median: $42,260/year (same as N1; BLS OOH https://www.bls.gov/ooh/healthcare/nursing-assistants.htm). Also in FAQ JSON-LD (MA figure).
+
+### Q2. BLS outlook 2025-35 (OOH, opened)
+- 3% growth; about 203,300 openings per year; about 36% of jobs in nursing care facilities, 32% in hospitals.
+
+### Q3. Training hours
+- Federal minimum 75 hours, at least 16 hours supervised practical (42 CFR 483.152, eCFR, opened): https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-483/subpart-D/section-483.152
+- DPH plan (April 2026 advisory memo): 87 hours, 21 practical hours; revised exam early 2027. SEARCH SUMMARY only, effective date unknown. https://www.mass.gov/info-details/dph-advisory-memo-new-certified-nurse-aide-cna-curriculum-framework
+- CareerOneStop MA: 37 nursing assistant programs, 29 under 12 weeks. SEARCH SUMMARY. https://www.careeronestop.org/Toolkit/Training/find-local-training.aspx
+
+### Q4. Who pays (federal rules)
+- 42 CFR 483.152(c): a facility-employed or offered-a-job trainee cannot be charged; 12-month reimbursement rule. How MA runs reimbursement is unknown (copy says ask DPH).
+- 42 CFR 483.35(d): 4-month / 120-day rule (https://www.law.cornell.edu/cfr/text/42/483.35). 105 CMR 156.300 cited (https://www.law.cornell.edu/regulations/massachusetts/105-CMR-156-300).
+
+### Q5. State exam (D&S Diversified Technologies, Candidate Handbook May 2026 v7.0)
+- Knowledge test: 60 multiple-choice questions, up to 60 minutes, 76% to pass. Skills test: 3-4 random tasks, 40 minutes. Tries: 4 (knowledge) and 3 (skills) per the handbook.
+- Fees: $30 knowledge, $40 audio version, $70 skills. The $70 comes from the 7.2024 handbook only; confirm on the D&S fee page. "First exam no longer free since July 1, 2025" unconfirmed, not stated as a date in copy.
+- Test review: request within 3 business days, $25 deposit refunded only if the review finds in the candidate's favor.
+- Skills rules (80% of other steps per task, any order unless BEFORE/AFTER, corrections allowed): from the handbook.
+- URLs: https://www.hdmaster.com/testing/cnatesting/Massachusetts/forms/MA%20Candidate%20Handbook%205.2026.pdf · https://hdmaster.com/testing/cnatesting/Massachusetts/MA_CNA_Home.htm
+
+### Q6. Registry and mass.gov (SEARCH SUMMARY, pages NOT opened)
+- Nurse Aide Registry Program https://www.mass.gov/nurse-aide-registry-program ; training program list/map https://www.mass.gov/info-details/information-for-nurse-aide-training-programs ; how to become a CNA https://www.mass.gov/info-details/learn-how-to-become-a-certified-nurse-aide-in-massachusetts
+- Registry phone (617) 753-8144. Renewal every 24 months with at least 8 hours paid work as a nurse aide. Out-of-state reciprocity online through D&S since Dec 2023. Other links: https://www.mass.gov/info-details/masshire-career-center-locations , https://jobquest.mass.gov , https://www.masslegalhelp.org , https://www.medicare.gov/care-compare/ , https://www.cms.gov/medicare/health-safety-standards/certification-compliance/five-star-quality-rating-system
+
+### Q7. Other
+- Community experiences and 3 approved quotes (word for word, no usernames): editorial-decisions.md. FAQ questions are inferred, not live People Also Ask data.
+
+### Q8. Check live before deploy
+1. Pay-figure policy decision. 2. Q1 spot check on data.bls.gov/oes. 3. Open every Q6 mass.gov page; confirm Q3 DPH memo and effective date. 4. Confirm $70 skills fee and first-exam fee rule on D&S. 5. Remove the DRAFT marker and [VERIFY] comments only after Emilio approves.
