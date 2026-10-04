@@ -453,3 +453,50 @@ https://www.bls.gov/ooh/healthcare/nursing-assistants.htm · medical-assistants.
 
 ### O8. Check live before deploy
 1. Pay-figure policy decision. 2. O1-O4 against live BLS pages. 3. O5 with DPH. 4. O6 on NHA/ASCP/AMT sites (ASCP $155 vs $165). 5. O7 items. 6. Optional: OSHA 29 CFR 1910.1030 cite for the blood-risk line.
+
+## P. Pharmacy technician post — BLS pay and outlook, Massachusetts licensing, PTCB exam facts (2026-10-04, DRAFT, local)
+
+`blog/pharmacy-technician-massachusetts.html` (publish date 2026-10-04). Compliance review: PASS (see `review-report.md` in the pipeline workspace; not committed). Source: `research-brief.md` (pipeline workspace, not committed).
+
+**STATUS: from search extracts and the research brief, not yet verified on live pages.** mass.gov, bls.gov and ptcb.org could not be opened during research. The post carries a `<!-- DRAFT -->` marker that blocks deploy until every item below is checked live and Emilio approves.
+
+**FLAGGED POLICY QUESTION (Emilio decides):** PROJECT-HANDOFF.md allows pay figures only in the salary-by-state post (section M). This post prints BLS medians for pharmacy technicians (same open question as sections N and O). Either approve an exception for role-guide posts or swap the pay section and FAQ 5 for a link to the BLS pages.
+
+**Note:** the research brief was stale against this log (it had May 2024 pay, $43,460, and the 2024-34 openings figure of about 49,000). Neither is used in the post.
+
+### P1. BLS wage data, pharmacy technicians (SOC 29-2052), May 2025
+- National median: $45,750/year (from search summaries; same figure as N1). Confirm on https://www.bls.gov/oes/current/oes292052.htm
+- Massachusetts median: $46,470/year (H1, read from data.bls.gov 2026-09-26). MA page: https://www.bls.gov/oes/current/oes_ma.htm
+- Worded as medians with job code 29-2052 in the body and FAQ 5 (and the FAQPage JSON-LD). No percentiles shown.
+
+### P2. BLS outlook 2025-35
+- 6% growth (N2). Annual openings NOT shown (the brief's about 49,000 is from the 2024-34 cycle). https://www.bls.gov/ooh/healthcare/pharmacy-technicians.htm
+- Duties paraphrase (collect patient info, process prescriptions, measure and package medicine, inventory, payments, phones, under a pharmacist) and downsides (standing, evenings/weekends/holidays, busy counters, accuracy pressure): confirm wording on OOH. Pharmacist needs a doctoral degree (BLS).
+
+### P3. Massachusetts licensing (247 CMR 8.00; see H2 and N3)
+- License required for all pharmacy technicians, even if nationally certified. https://www.mass.gov/regulations/247-CMR-800-pharmacy-interns-and-technicians · https://www.mass.gov/pharmacy-technician-licensing
+- Trainee license: age 16+, high school or equivalent (or enrolled), good moral character. https://www.mass.gov/how-to/apply-for-pharmacy-technician-in-training-license
+- Full license: age 18+, high school or equivalent, good moral character, plus ONE of three routes: (1) a national exam (PTCE, ExCPT); (2) a Board-approved training program with a final exam; (3) 500 hours as a trainee plus an employer competency exam (brief: 75% passing score; hours attested by the employer). https://www.mass.gov/how-to/apply-for-a-pharmacy-technician-license
+- License application fee: $150, non-refundable.
+- Board-approved programs (PTCB-recognized, ASHP-accredited, Armed Services/Public Health Service) and Board policy 2023-11 accepted exams: https://www.mass.gov/doc/technician-training-programs-and-exams-pdf/download
+- NRCPhT dropped from the routes table (brief lists it as Board-accepted but no source explains it).
+
+### P4. PTCB PTCE facts
+- Fee $129; 90 questions (80 scored); 1 hour 50 minutes (N4). Passing scaled score 1,400 on a 1,000-1,600 scale (brief only, not confirmed). Eligibility: high school or equivalent plus a PTCB-recognized program OR 500 hours of work experience. https://ptcb.org/credentials/certification/certified-pharmacy-technician/
+- PTCE content claims removed; the copy points to PTCB's exam content outline (confirm the outline is on the linked page).
+- Other: CareerOneStop program lengths, under 12 weeks to about 2 years (1,400+ U.S. listings); no national cost range exists and none is stated. https://www.careeronestop.org/Toolkit/Training/find-local-training.aspx
+
+### P5. Facts still to verify live (not stated in copy, or stated from the brief only)
+1. Criminal record: good moral character rule; drug-related felony disqualifying (brief [VERIFY]); the application asks about criminal history; the Board runs a CORI check (strategy, not brief). Confirm wording on mass.gov and the Board's good-moral-character policy. CORI fee.
+2. Trainee time limit (strategy: one year or 1,500 hours unless extended; [VERIFY 247 CMR 8.03]). Trainee license fee (brief says none, [VERIFY]). Neither is stated in copy; link only.
+3. ASHP full name "American Society of Health-System Pharmacists" (expansion not in the brief).
+4. Exam languages: not stated; copy tells readers to ask PTCB/NHA.
+5. NHA ExCPT: fee, question count, time, passing score and eligibility NOT stated (brief took all of them from third-party sites); link only.
+6. PTCB renewal ($49, 20 CE per brief) NOT stated. State license renewal cycle (brief: every 2 years on birthday) and fee (not found) NOT stated.
+7. Share of jobs by workplace: "store pharmacies and hospitals" kept only as examples; BLS industry shares not found in the brief.
+8. "You learn drug names, medical abbreviations and dose math" line (list item "It is not just counting pills"): not from an official source; confirm or soften.
+9. "Certified Pharmacy Technician" license level (247 CMR 8.04): only "employers may prefer it" is said. Reciprocity for out-of-state licenses (brief lists a 4th route [VERIFY]): copy says only "ask the Board."
+10. Job-ad decoder terms ("PTT", "sterile compounding"): plain-language definitions, not from an official source. FAQ questions are drafted from search patterns, not live People Also Ask data.
+
+### P6. Check live before deploy
+1. Pay-figure policy decision. 2. P1-P2 against live BLS pages. 3. P3 and P5 on mass.gov and with the Board. 4. P4 on ptcb.org and nhanow.com. 5. Remove the DRAFT marker only after Emilio approves.

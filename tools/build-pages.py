@@ -3446,6 +3446,11 @@ def post_card(tag, date, read, title, excerpt, href="#"):
 # Real launch posts. Order = newest first in the grid (the pillar is featured
 # above the grid, so it is not repeated here). href points into /blog/.
 BLOG_POSTS = [
+    ("Medical", "Oct 4, 2026", "13 min read",
+     "How to Become a Pharmacy Technician in Massachusetts (2026)",
+     "Every pharmacy tech in Massachusetts needs a state license. Here are the three ways to get it, what "
+     "each costs, and the trainee route that may need no tuition.",
+     "blog/pharmacy-technician-massachusetts.html"),
     ("Medical", "Oct 3, 2026", "11 min read",
      "How to Become a Phlebotomist in Massachusetts (2026)",
      "Massachusetts is not one of the states that license phlebotomists. Employers still want certification "
@@ -6334,6 +6339,438 @@ PAGES.append(dict(
         "Massachusetts is not one of the states that license phlebotomists, but employers want certification and real blood draws. Here is the honest path, what "
         "it costs, and who may help you pay.",
         "October 3, 2026", "11 min read", _phl_body, author="Career Skills Center")))
+
+
+# ---------------------------------------------------------------------------
+# How to Become a Pharmacy Technician in Massachusetts (2026). Published 2026-10-04.
+# Target keyword: "pharmacy technician massachusetts". Source: blog pipeline
+# (research-brief.md + content-strategy.md, 2026-10-04) plus the newer figures
+# already in docs/VERIFICATION_LOG.md (H1, N1, N2, N3, N4). Pay: BLS OEWS May 2025,
+# SOC 29-2052 (national + Massachusetts medians). CSC lines = COURSE-DEPENDENT:
+# R-BLOG-03. Course-mode copy: blog/course-mode-copy/pharmacy-technician-massachusetts.md
+# ---------------------------------------------------------------------------
+_pt_faq = [
+    ("Do you need a license to be a pharmacy technician in Massachusetts?",
+     "Yes. Every pharmacy technician who works in Massachusetts needs a license from the state Board of Registration in Pharmacy. This is true even if you already have a national certification. A national certification is one way to qualify for the license, but it does not replace it."),
+    ("Can I become a pharmacy technician in Massachusetts without going to school?",
+     "Possibly. You can start with a trainee license and learn on the job in a pharmacy. After at least 500 hours of work as a trainee and a passing score on your employer's skills test, you can apply for the full license. The catch: you first need an employer that hires trainees."),
+    ("How long does it take to become a pharmacy technician in Massachusetts?",
+     "It depends on your route. The on-the-job route needs at least 500 work hours as a trainee. That is about 13 weeks at 40 hours a week, or about 25 weeks at 20 hours a week. Training programs listed on CareerOneStop run from under 12 weeks to about 2 years. Then the Board must process your license."),
+    ("How much does it cost to get a pharmacy technician license in Massachusetts?",
+     "The application fee for the pharmacy technician license is $150, and it is not refunded. If you take the PTCB exam, the fee is $129. Training program prices vary a lot, so ask each program for the full price. If you learn on the job as a trainee, you may not pay tuition at all."),
+    ("How much do pharmacy technicians make in Massachusetts?",
+     "In Massachusetts, the median pay for pharmacy technicians was $46,470 a year in May 2025, according to the U.S. Bureau of Labor Statistics (job code 29-2052). The median means half earn more and half earn less. The national median was $45,750 (same job code and date). New technicians usually start below the median."),
+    ("Can I be a pharmacy technician in Massachusetts with a criminal record?",
+     "Maybe. The Board requires good moral character, and a drug-related felony can stop you from getting a license. The application asks about your criminal history. Read the questions on the mass.gov application, and ask the Board, before you pay for any training."),
+]
+
+_pt_faq_html = "\n".join(
+    f'          <details class="faq-item"><summary>{q}</summary>\n          <div><p>{a}</p></div></details>'
+    for q, a in _pt_faq)
+
+_pt_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF.md says no pay figures anywhere except the
+             salary-by-state post (Emilio exception). This post shows BLS pay for pharmacy technicians (SOC 29-2052),
+             same open question as the healthcare-jobs and phlebotomist posts (VERIFICATION_LOG N and O): Emilio must
+             approve, or swap the pay section and FAQ 5 for a link to the BLS pages. mass.gov, bls.gov, ptcb.org and
+             nhanow.com could not be opened during research; check every item below live before publishing.
+             (1) BLS OEWS May 2025: national median $45,750 (VERIFICATION_LOG N1, from search summaries: confirm on
+             oes292052.htm); Massachusetts median $46,470 (VERIFICATION_LOG H1, read from data.bls.gov 9/26/2026).
+             research-brief.md still had May 2024 ($43,460); NOT used. No percentiles shown.
+             (2) BLS projections 2025-35: 6% growth (VERIFICATION_LOG N2). Annual openings NOT shown (brief's ~49,000
+             is from the 2024-34 cycle). (3) BLS duties paraphrase (collect patient info, process prescriptions,
+             measure/package medicine, inventory, payments, phones, under a pharmacist): confirm wording on OOH.
+             (4) MA licensing (247 CMR 8.00, VERIFICATION_LOG H2/N3): license required for all techs, even if
+             nationally certified; trainee age 16+, HS or equivalent (or enrolled), good moral character; full
+             license age 18+, HS or equivalent, good moral character, plus ONE of: national exam (PTCE, ExCPT,
+             NRCPhT), Board-approved program with final exam, or 500 hours as trainee + employer competency exam.
+             Brief adds: 75% passing score on the employer exam; hours attested by the employer. $150 license fee,
+             non-refundable. (5) NOT stated in copy, link only: trainee license fee (brief says none [VERIFY]);
+             trainee time limit (strategy: one year or 1,500 hours unless extended [VERIFY 247 CMR 8.03]); renewal
+             cycle and fee (brief: every 2 years on birthday, fee NOT FOUND); CORI fee. (6) "Certified Pharmacy
+             Technician" license level and what it changes (247 CMR 8.04): only "employers may prefer it" is said.
+             (7) Reciprocity for out-of-state licenses: brief lists it as a 4th pathway [VERIFY]; copy only says
+             "ask the Board." (8) Criminal record: good moral character rule; drug-related felony is disqualifying
+             (brief [VERIFY]); application asks about criminal history; Board runs a CORI background check
+             (strategy, not brief): confirm wording on mass.gov and Board good-moral-character policy. (9) Board-
+             approved programs (PTCB-recognized, ASHP-accredited, Armed Services/Public Health Service) and Board
+             policy 2023-11 accepted exams: confirm on the Board's "Technician Training Programs and Exams" document.
+             (10) PTCB PTCE: $129; 90 questions (80 scored); 1 h 50 min (VERIFICATION_LOG N4); passing scaled score
+             1,400 on a 1,000-1,600 scale (brief only); eligibility HS or equivalent + PTCB-recognized program OR 500
+             hours work experience. PTCB renewal ($49, 20 CE) NOT stated. (11) NHA ExCPT: fee, question count, time,
+             passing score and eligibility NOT stated (brief: all from third-party sites); link only. (12)
+             CareerOneStop program lengths: under 12 weeks to about 2 years (1,400+ U.S. listings). No national cost
+             range exists; none stated. (13) Downsides (standing, evenings/weekends/holidays, busy counters, accuracy
+             pressure): from the content strategy citing BLS OOH "Work Environment": confirm on OOH. Pharmacist needs a
+             doctoral degree (BLS). (14) Job-ad decoder terms ("PTT," "sterile compounding" = germ-free medicines such
+             as some IV medicines, usually needs extra training): plain-language definitions, not from an official
+             source. (15) Exam language options NOT stated: copy tells readers to ask PTCB/NHA. (16) FAQ questions
+             drafted from search patterns, NOT live People Also Ask data. (17) Review fixes 2026-10-04: pay now
+             worded as medians with job code 29-2052 in body and FAQ 5 (also in FAQPage JSON-LD); "store pharmacies
+             and hospitals" kept only as examples (BLS industry shares NOT found in brief: confirm on OOH); PTCE
+             content claims removed, copy points to PTCB's exam content outline (confirm the outline is on the
+             linked page); NRCPhT dropped from the routes table (brief lists it as Board-accepted, but no source
+             explains it: confirm on the Board's exams document); ASHP spelled out as American Society of
+             Health-System Pharmacists (expansion not in brief: confirm). Headline/og title shortened. -->
+
+        <p class="lead">Look up &ldquo;pharmacy technician Massachusetts&rdquo; and you get two kinds of answers:
+        job ads, and websites selling a course or a test-prep package. Here is what most of them don&rsquo;t say
+        clearly. In Massachusetts you need a state license to work as a pharmacy technician. A training program is
+        only one way to get it. Some people start as a paid trainee in a pharmacy and earn the license on the
+        job.</p>
+
+        <!-- COURSE-DEPENDENT: R-BLOG-03 -->
+        <p>This guide explains all three ways in, what each one costs, the rules that can stop you, and the parts
+        of the job other guides leave out. Career Skills Center does not sell pharmacy technician training, so we
+        can be honest.</p>
+        <!-- /COURSE-DEPENDENT: R-BLOG-03 -->
+
+        <div class="note"><strong>Quick answer.</strong> To become a pharmacy technician in Massachusetts, you
+        need a license from the state Board of Registration in Pharmacy. You must be at least 18 and have a high
+        school diploma or GED. Then you qualify in one of three ways: work 500 hours as a trainee and pass your
+        employer&rsquo;s skills test, finish a Board-approved training program, or pass a national exam. The
+        license application fee is $150.</div>
+
+        <h2>Words to know</h2>
+        <ul>
+          <li><strong>Pharmacy technician</strong> (or &ldquo;pharmacy tech&rdquo;): a person who helps a
+          pharmacist get medicine ready for patients.</li>
+          <li><strong>License:</strong> permission from the state to do a job. In Massachusetts, every pharmacy
+          tech needs one.</li>
+          <li><strong>Trainee:</strong> a person who is learning the job while working. Massachusetts has a
+          special trainee license for this. You may see it called &ldquo;technician in training.&rdquo;</li>
+          <li><strong>Certification:</strong> a national credential you earn by passing a test. It is not the same
+          as a state license.</li>
+          <li><strong>CPhT</strong> (Certified Pharmacy Technician): the certification you get when you pass the
+          <strong>PTCE</strong>, the exam from the PTCB (Pharmacy Technician Certification Board).</li>
+          <li><strong>ExCPT:</strong> another national pharmacy technician exam. It comes from the NHA (National
+          Healthcareer Association).</li>
+          <li><strong>Competency exam:</strong> a skills test. In the trainee route, your employer gives it.</li>
+          <li><strong>CORI</strong> (Criminal Offender Record Information): the Massachusetts criminal background
+          check.</li>
+          <li><strong>Sterile compounding:</strong> making medicines that must stay free of germs, like some IV
+          medicines. It usually needs extra training.</li>
+        </ul>
+
+        <h2>What a pharmacy technician does</h2>
+        <p>You work under a licensed pharmacist. According to the U.S. Bureau of Labor Statistics (BLS), you
+        would spend your day doing tasks like these:</p>
+        <ul>
+          <li>Taking information from patients and their prescriptions</li>
+          <li>Measuring, counting and packaging medicine</li>
+          <li>Keeping track of the medicine on the shelves</li>
+          <li>Taking payments and answering the phone</li>
+        </ul>
+        <p>Pharmacy techs work in places like store pharmacies and hospitals. The pharmacist checks your work and
+        answers medical questions. Small mistakes matter here. The wrong medicine or the wrong amount can hurt
+        someone. So you must read labels carefully and follow the steps every time.</p>
+
+        <h2>Do you need a license to be a pharmacy technician in Massachusetts?</h2>
+        <p><strong>Yes.</strong> Every pharmacy technician who works in Massachusetts must be licensed by the
+        state <a href="https://www.mass.gov/pharmacy-technician-licensing" target="_blank" rel="noopener">Board of
+        Registration in Pharmacy</a>. This is true even if you already have a national certification. A
+        certification can help you qualify for the license. It does not replace it.</p>
+        <p>The rules are in a state regulation called 247 CMR 8.00. Other states have different rules. If you plan
+        to move, check that state&rsquo;s pharmacy board.</p>
+
+        <div class="note"><strong>The license levels, in plain words</strong>
+        <ul>
+          <li><strong>Trainee license</strong> (technician in training): for people who are learning on the job.
+          You must be at least 16, have a high school diploma or equivalent (or be enrolled in a program that
+          gives one), and have good moral character. With this license you can work and learn in a pharmacy while
+          you build your hours.</li>
+          <li><strong>Pharmacy technician license:</strong> the full license. You must be at least 18, have a high
+          school diploma or equivalent, and have good moral character. You also need one of the three routes
+          below. The application fee is $150, and it is not refunded.</li>
+          <li><strong>Certified pharmacy technician:</strong> the state rules also have a level for licensed
+          technicians who hold a national certification. Some employers may prefer it.</li>
+        </ul>
+        Check the current rules and fees on the
+        <a href="https://www.mass.gov/pharmacy-technician-licensing" target="_blank" rel="noopener">mass.gov
+        pharmacy technician licensing page</a>.</div>
+
+        <h2>Three ways to get your Massachusetts license</h2>
+        <p>You only need <strong>one</strong> of these routes. Most websites push the route that sells their
+        product. Here they are side by side.</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <caption>Three routes to the Massachusetts pharmacy technician license</caption>
+          <thead>
+            <tr><th></th><th>1. Learn on the job as a trainee</th><th>2. Finish a training program</th><th>3. Pass a national exam</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>What you do</td><td>Get hired as a trainee. Work at least 500 hours. Pass a skills test your employer gives you.</td><td>Finish a training program the Board accepts, including its final exam.</td><td>Pass a national exam the Board accepts, such as the PTCE (PTCB) or the ExCPT (NHA). The Board&rsquo;s list names the exams it accepts.</td></tr>
+            <tr><td>Cost to you</td><td>Often no tuition. You still pay the $150 license fee.</td><td>Tuition varies a lot. Plus the $150 license fee.</td><td>The exam fee ($129 for the PTCE) plus the $150 license fee. Plus any study costs.</td></tr>
+            <tr><td>Paid while you do it?</td><td>Yes. You earn a paycheck while you learn.</td><td>Usually not, unless you work at the same time.</td><td>Depends on how you got ready for the exam.</td></tr>
+            <tr><td>How long</td><td>At least 500 work hours. About 13 weeks at 40 hours a week, or about 25 weeks at 20 hours a week.</td><td>Programs listed on CareerOneStop run from under 12 weeks to about 2 years.</td><td>Depends on your study time and when you can test.</td></tr>
+            <tr><td>The catch</td><td>You need an employer that hires trainees. The trainee license also has a time limit.</td><td>You pay before you earn. Make sure the Board accepts the program.</td><td>You can&rsquo;t just sign up. The PTCE needs a recognized program or 500 hours of work first.</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h3>Why the trainee route matters</h3>
+        <p>The trainee route can do two things at once. Your 500 work hours count toward the Massachusetts
+        license. And the PTCB also accepts 500 hours of work experience, instead of a training program, for its
+        CPhT exam. So one paid trainee job can lead to both the state license and a national certification,
+        without tuition.</p>
+        <p>Be honest with yourself about the catch. A pharmacy has to hire you first. And the trainee license does
+        not last forever. Check the time limit on the
+        <a href="https://www.mass.gov/how-to/apply-for-pharmacy-technician-in-training-license" target="_blank" rel="noopener">trainee
+        license page on mass.gov</a> before you start counting hours.</p>
+
+        <h3>Already certified or licensed in another state?</h3>
+        <p>A national certificate alone does not let you work in Massachusetts. You still need the Massachusetts
+        license. Your certification may count as your route to it. If you hold a license from another state, ask
+        the Board whether you can use it to apply.</p>
+
+        <h2>What can stop you</h2>
+        <p>These are the hurdles other guides skip. Check them <strong>before</strong> you pay for anything.</p>
+        <ul>
+          <li><strong>A criminal record.</strong> The Board requires &ldquo;good moral character.&rdquo; Under the
+          state rules, a drug-related felony can stop you from getting a license. A record is not always a
+          &ldquo;no,&rdquo; but a drug felony may be. The application asks about your criminal history, and the
+          state runs a CORI background check. Read the questions on the
+          <a href="https://www.mass.gov/how-to/apply-for-a-pharmacy-technician-license" target="_blank" rel="noopener">license
+          application</a> first. If you are not sure, contact the Board before you spend money on training. This
+          is not legal advice.</li>
+          <li><strong>Your age.</strong> The full license needs you to be at least 18. The trainee license starts
+          at 16.</li>
+          <li><strong>No high school diploma or GED yet.</strong> You need one (or an equivalent) for the full
+          license. If you don&rsquo;t have one, start there.</li>
+          <li><strong>The trainee time limit.</strong> If your hours run out of time, you may need to ask the
+          Board for more. Plan your schedule so you reach 500 hours in time.</li>
+          <li><strong>Renewal.</strong> The license does not last forever. You must renew it. Check mass.gov for
+          when and how.</li>
+        </ul>
+
+        <h2>The national exams: what they are like</h2>
+        <p>National exams are the same in every state. In Massachusetts, passing one is a route to the license.
+        Some employers also want you to be certified.</p>
+        <div class="table-wrap">
+        <table class="data-table">
+          <caption>Two common national pharmacy technician exams (fees at last check; always confirm on the official site)</caption>
+          <thead>
+            <tr><th></th><th>PTCE (PTCB)</th><th>ExCPT (NHA)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>What you earn</td><td>CPhT (Certified Pharmacy Technician)</td><td>ExCPT certification</td></tr>
+            <tr><td>Exam fee</td><td>$129</td><td>See NHA&rsquo;s site</td></tr>
+            <tr><td>The test</td><td>90 multiple-choice questions (80 count toward your score), 1 hour 50 minutes, on a computer. You need a score of 1,400 (scores run from 1,000 to 1,600).</td><td>See NHA&rsquo;s site</td></tr>
+            <tr><td>How you qualify</td><td>High school diploma or equivalent, plus a PTCB-recognized program or at least 500 hours of work as a pharmacy technician</td><td>See NHA&rsquo;s site</td></tr>
+            <tr><td>Official page</td><td><a href="https://ptcb.org/credentials/certification/certified-pharmacy-technician/" target="_blank" rel="noopener">ptcb.org</a></td><td><a href="https://www.nhanow.com" target="_blank" rel="noopener">nhanow.com</a></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>About 90 questions in under 2 hours sounds like a lot. But the questions are multiple choice. To see
+        what the test covers, read the exam content outline on
+        <a href="https://ptcb.org/credentials/certification/certified-pharmacy-technician/" target="_blank" rel="noopener">PTCB&rsquo;s
+        site</a>.</p>
+        <p><strong>If you are still learning English:</strong> ask PTCB and NHA which languages their tests are
+        offered in. On the job you must read drug names, labels and short medical abbreviations exactly, and talk
+        with patients. Your MassHire Career Center can point you to free English classes (ESOL) and adult
+        education if you want to build your English or math first.</p>
+
+        <h2>Read a pharmacy job ad</h2>
+        <p>Job ads use short words that confuse beginners. Here is what they usually mean:</p>
+        <ul>
+          <li><strong>&ldquo;Pharmacy Technician Trainee,&rdquo; &ldquo;Tech in Training&rdquo; or
+          &ldquo;PTT&rdquo;:</strong> the employer hires beginners and trains them. This is the job to look for if
+          you want the on-the-job route. Ask if they help with the trainee license.</li>
+          <li><strong>&ldquo;Licensed in MA&rdquo; or &ldquo;MA license required&rdquo;:</strong> you need the full
+          Massachusetts license on day one.</li>
+          <li><strong>&ldquo;CPhT required&rdquo; or &ldquo;CPhT preferred&rdquo;:</strong> the employer wants
+          the PTCB certification. &ldquo;Preferred&rdquo; means you can still apply without it.</li>
+          <li><strong>&ldquo;Sterile compounding&rdquo; or &ldquo;IV room&rdquo;:</strong> preparing germ-free
+          medicines. These jobs are often in hospitals and usually need extra training.</li>
+          <li><strong>Retail vs. hospital:</strong> retail means a store pharmacy with customers at a counter.
+          Hospital pharmacies serve patients inside the hospital and may run day and night.</li>
+        </ul>
+        <p><strong>Try this:</strong> go to <a href=\"""" + JOBQUEST_URL + """\" target="_blank" rel="noopener">JobQuest</a>,
+        the free Massachusetts job site. Search &ldquo;pharmacy technician trainee&rdquo; near where you live.
+        Count how many ads hire trainees and how many want a license or CPhT on day one. Now you know which route
+        makes sense where you live.</p>
+
+        <h2>How much do pharmacy technicians make in Massachusetts?</h2>
+        <p>The median pay for pharmacy technicians in Massachusetts was <strong>$46,470 a year</strong>, according
+        to BLS (May 2025 data, job code 29-2052). The median means half earn more and half earn less. Across the
+        U.S., the median was <strong>$45,750 a year</strong>. New technicians usually start below these numbers. Pay also depends on where you work and on your skills.</p>
+        <p>BLS projects that pharmacy technician jobs will grow <strong>6% from 2025 to 2035</strong> across the
+        U.S. That points to steady demand.</p>
+        <p><small>Source: BLS Occupational Employment and Wage Statistics (OEWS), May 2025, national and
+        Massachusetts, and BLS Employment Projections 2025-2035; pharmacy technicians, job code (SOC) 29-2052.</small></p>
+
+        <h2>The hard truth: is this job right for you?</h2>
+        <p>Other guides only list the good parts. Here are the hard parts too:</p>
+        <ul>
+          <li><strong>You stand most of the shift.</strong></li>
+          <li><strong>The hours can be hard.</strong> Store pharmacies are often open evenings, weekends and
+          holidays. Some hospital pharmacies run 24 hours a day.</li>
+          <li><strong>Customers can be upset.</strong> People are often stressed about cost and insurance, and the
+          line can be long.</li>
+          <li><strong>The pressure to be exact is real.</strong> A wrong drug or a wrong dose can hurt someone. You
+          must stay focused even when it gets busy.</li>
+          <li><strong>The pay ceiling is modest.</strong> To earn more, many techs add skills, like sterile
+          compounding. Becoming a pharmacist is a big step: BLS says pharmacists need a doctoral degree.</li>
+          <li><strong>It is not just counting pills.</strong> You learn drug names, medical abbreviations and
+          dose math. You can learn this without college, but it takes real study.</li>
+        </ul>
+
+        <p><strong>This job may fit you if:</strong></p>
+        <ul>
+          <li>You work in retail or customer service now and are good with people at a counter.</li>
+          <li>You like careful, exact work with clear steps.</li>
+          <li>You want to earn while you learn, instead of paying for school first.</li>
+          <li>You want a way into healthcare without needles or blood.</li>
+        </ul>
+        <p><strong>It is probably not for you if:</strong></p>
+        <ul>
+          <li>You need a job you can do sitting down or from home.</li>
+          <li>You can only work weekday daytime hours. Ask about the schedule first.</li>
+          <li>You find it hard to stay calm when people are upset.</li>
+          <li>Your record includes a drug felony. Check with the Board first.</li>
+        </ul>
+
+        <h3>Pharmacy tech, phlebotomist or CNA?</h3>
+        <p>People often compare these jobs. A pharmacy tech works with medicine, not blood. A phlebotomist draws
+        blood, and Massachusetts does not license phlebotomists. A CNA (certified nurse aide) helps patients with
+        daily care and must be on the state Nurse Aide Registry. Read
+        <a href="blog/phlebotomist-massachusetts.html">how to become a phlebotomist in Massachusetts</a>, or
+        compare six jobs in our guide to
+        <a href="blog/healthcare-jobs-massachusetts.html">healthcare jobs in Massachusetts you can train for</a>.</p>
+
+        <h2>How long does it take, and what does it cost?</h2>
+        <p>Here is a simple checklist of costs. Fees change, so check each one on the official site.</p>
+        <ul>
+          <li><strong>Pharmacy technician license:</strong> $150 application fee, not refunded
+          (<a href="https://www.mass.gov/how-to/apply-for-a-pharmacy-technician-license" target="_blank" rel="noopener">mass.gov</a>).</li>
+          <li><strong>Trainee license:</strong> check the fee on
+          <a href="https://www.mass.gov/how-to/apply-for-pharmacy-technician-in-training-license" target="_blank" rel="noopener">mass.gov</a>.</li>
+          <li><strong>National exam (only if you use that route or want certification):</strong> $129 for the
+          PTCE. Check NHA&rsquo;s site for the ExCPT.</li>
+          <li><strong>Background check (CORI):</strong> ask the Board.</li>
+          <li><strong>Training program (only if you use that route):</strong> prices vary a lot. Ask each program
+          for the total price, including the exam fee. You can compare programs on the
+          <a href="https://www.careeronestop.org/Toolkit/Training/find-local-training.aspx" target="_blank" rel="noopener">CareerOneStop
+          Training Finder</a>.</li>
+        </ul>
+        <p><strong>Time:</strong> at least 500 work hours on the trainee route, or the length of your program
+        (from under 12 weeks to about 2 years). Then the Board needs time to process your license. Ask the Board
+        how long it takes now.</p>
+        <p><strong>Can you do it while working?</strong> On the trainee route, the work <em>is</em> the
+        training. If you choose a program, ask whether it has evening, weekend or online classes.</p>
+
+        <div class="note"><strong>Before you pay for a program, ask these 6 questions.</strong>
+        <ol>
+          <li>Does the Massachusetts Board accept this program for the license? Is it recognized by the PTCB, or
+          accredited by the ASHP (American Society of Health-System Pharmacists, a national pharmacy group)? Check the Board&rsquo;s
+          <a href="https://www.mass.gov/doc/technician-training-programs-and-exams-pdf/download" target="_blank" rel="noopener">list
+          of approved programs and exams</a>.</li>
+          <li>What is the total price? Does it include the exam fee?</li>
+          <li>Is there hands-on practice in a real pharmacy?</li>
+          <li>Is it on the Massachusetts list of programs that MassHire can pay for (the ETPL, or Eligible
+          Training Provider List)? Your MassHire Career Center can check.</li>
+          <li>What level of English and math do the classes need?</li>
+          <li>Could I get hired as a trainee instead and skip tuition?</li>
+        </ol></div>
+
+        <h2>How to pay for pharmacy technician training in Massachusetts</h2>
+        <p>There are a few ways to lower the cost. No one can promise you will be approved for funding, but you
+        may qualify for help.</p>
+        <ol>
+          <li><strong>Get paid to learn.</strong> On the trainee route, the employer trains you while you work.
+          Look for &ldquo;trainee&rdquo; ads on JobQuest. Ask the employer if they also help pay for the exam or
+          license fee.</li>
+          <li><strong>Start at a MassHire Career Center.</strong>
+          <a href=\"""" + MASSHIRE_URL + """\" target="_blank" rel="noopener">See the list of locations</a> and
+          contact the one nearest you. Career centers can help eligible people pay for approved training through
+          WIOA (the Workforce Innovation and Opportunity Act, a federal training program). Ask whether a pharmacy
+          technician program near you is on the state&rsquo;s approved list. Also ask if any funded pharmacy
+          technician training is running in your area right now.</li>
+          <li><strong>Register on JobQuest.</strong>
+          <a href=\"""" + JOBQUEST_URL + """\" target="_blank" rel="noopener">Create an account at
+          jobquest.mass.gov</a>. You need one before you can ask about training funding.</li>
+          <li><strong>Ask about exam fee help.</strong> Your employer or your career center may help with the exam
+          fee. It never hurts to ask.</li>
+        </ol>
+        <p>To learn more, read <a href="blog/wioa-eligibility-massachusetts.html">who qualifies for WIOA training
+        in Massachusetts</a>, <a href="blog/is-wioa-training-free.html">whether WIOA training is really free</a>,
+        our <a href="blog/free-job-training-massachusetts.html">guide to free job training in Massachusetts</a>
+        and <a href="blog/masshire-training-voucher.html">how to get a MassHire training voucher</a>.</p>
+
+""" + post_cta(
+    "Check what funding you may qualify for",
+    "Answer a few short questions to see which Massachusetts funding options you may qualify for, and where to "
+    "go next.",
+    "Check what you may qualify for", "qualify.html") + """
+
+        <h2>What to do this week</h2>
+        <ol>
+          <li><strong>Read the state rules</strong> on the
+          <a href="https://www.mass.gov/pharmacy-technician-licensing" target="_blank" rel="noopener">mass.gov
+          pharmacy technician licensing page</a>, including the questions on the application.</li>
+          <li><strong>Search JobQuest</strong> for &ldquo;pharmacy technician trainee&rdquo; near you.</li>
+          <li><strong>Pick your route:</strong> trainee job, training program or exam.</li>
+          <li><strong>Contact your MassHire Career Center</strong> if you need help paying for training.</li>
+          <li><strong>See the bigger picture</strong> in our
+          <a href="healthcare-careers.html">field guide to healthcare work</a>.</li>
+        </ol>
+
+        <!-- COURSE-DEPENDENT: R-BLOG-03 -->
+        <p>Career Skills Center plans to offer training in healthcare, IT and the skilled trades.
+        <a href="healthcare-careers.html#interest">Get updates when we launch</a>.</p>
+        <!-- /COURSE-DEPENDENT: R-BLOG-03 -->
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+""" + _pt_faq_html + """
+        </div>
+
+        <section class="sources" aria-labelledby="pt-sources-heading">
+          <h2 id="pt-sources-heading">Sources</h2>
+          <p>Pay data and job outlook from the U.S. Bureau of Labor Statistics, pharmacy technicians (SOC 29-2052).
+          License rules from the Massachusetts Board of Registration in Pharmacy (247 CMR 8.00). Exam facts from the
+          certifying bodies&rsquo; own websites.</p>
+          <ul>
+            <li><a href="https://www.bls.gov/ooh/healthcare/pharmacy-technicians.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Pharmacy Technicians</a></li>
+            <li><a href="https://www.bls.gov/oes/current/oes292052.htm" target="_blank" rel="noopener">BLS Occupational Employment and Wages: Pharmacy Technicians (29-2052)</a></li>
+            <li><a href="https://www.bls.gov/oes/current/oes_ma.htm" target="_blank" rel="noopener">BLS Occupational Employment and Wage Estimates: Massachusetts</a></li>
+            <li><a href="https://www.mass.gov/pharmacy-technician-licensing" target="_blank" rel="noopener">Massachusetts Board of Registration in Pharmacy: Pharmacy Technician Licensing</a></li>
+            <li><a href="https://www.mass.gov/how-to/apply-for-a-pharmacy-technician-license" target="_blank" rel="noopener">mass.gov: Apply for a Pharmacy Technician License</a></li>
+            <li><a href="https://www.mass.gov/how-to/apply-for-pharmacy-technician-in-training-license" target="_blank" rel="noopener">mass.gov: Apply for a Pharmacy Technician in Training License</a></li>
+            <li><a href="https://www.mass.gov/regulations/247-CMR-800-pharmacy-interns-and-technicians" target="_blank" rel="noopener">247 CMR 8.00: Pharmacy Interns and Technicians</a></li>
+            <li><a href="https://www.mass.gov/doc/technician-training-programs-and-exams-pdf/download" target="_blank" rel="noopener">Massachusetts Board: Technician Training Programs and Exams</a></li>
+            <li><a href="https://ptcb.org/credentials/certification/certified-pharmacy-technician/" target="_blank" rel="noopener">PTCB: Certified Pharmacy Technician (CPhT)</a></li>
+            <li><a href="https://www.nhanow.com" target="_blank" rel="noopener">NHA: National Healthcareer Association</a></li>
+            <li><a href="https://www.careeronestop.org/Toolkit/Training/find-local-training.aspx" target="_blank" rel="noopener">CareerOneStop Training Finder (U.S. Department of Labor)</a></li>
+          </ul>
+        </section>
+
+""" + related(
+    ("How to Become a Phlebotomist in Massachusetts", "blog/phlebotomist-massachusetts.html"),
+    ("Healthcare Jobs in Massachusetts You Can Train For", "blog/healthcare-jobs-massachusetts.html"),
+    ("Who Qualifies for WIOA Training in Massachusetts?", "blog/wioa-eligibility-massachusetts.html"),
+)
+
+_PT_TITLE = "Pharmacy Technician in Massachusetts: 3 Ways to Get Licensed (2026)"
+_PT_DESC = ("Every pharmacy technician in Massachusetts needs a state license. See the 3 ways to get it, what each "
+            "costs, and the route that may need no tuition.")
+
+PAGES.append(dict(
+    slug="blog/pharmacy-technician-massachusetts.html", nav="blog.html",
+    title="How to Become a Pharmacy Technician in Massachusetts (2026)",
+    ogtitle=_PT_TITLE,
+    desc=_PT_DESC,
+    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;'
+               'text-underline-offset:2px}.prose table caption{caption-side:top;text-align:left;font-weight:700;'
+               'color:var(--navy);padding:0 0 10px}.prose .note ol,.prose .note ul{margin:10px 0}</style>\n'
+               + article_ld("blog/pharmacy-technician-massachusetts.html", _PT_TITLE, _PT_DESC,
+                            "2026-10-04", "2026-10-04", author="Career Skills Center")
+               + "\n" + faq_ld(_pt_faq)),
+    main=article(
+        "Medical", _PT_TITLE,
+        "Everyone needs a state license, but there are three ways to get it. One of them, getting hired as a "
+        "trainee, may mean no tuition and a paycheck while you learn.",
+        "October 4, 2026", "13 min read", _pt_body, author="Career Skills Center")))
 
 
 # Interest form the post's CTA points to. COURSE-DEPENDENT: R-BLOG-MBC.
