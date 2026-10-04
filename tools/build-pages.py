@@ -5572,13 +5572,13 @@ _hcj_faq = [
     ("What is the highest-paying healthcare job you can get without a degree?",
      "Medical billing and coding pays the most of the six jobs in this guide. Most medical coders earn around $51,000 a year. With experience and specialized certifications, some earn over $80,000."),
     ("How long does it take to train for a healthcare job?",
-     "It depends on the job. CNA training can take as little as 4 to 12 weeks. Medical assistant programs run 6 to 12 months. Medical billing and coding programs range from 4 weeks to 4 months or longer, depending on the format. Pharmacy tech training is usually 6 to 12 months, or you can train on the job in Massachusetts."),
+     "It depends on the job. CNA programs must meet the federal minimum of 75 hours, and each school sets its own schedule, so ask the school how long it takes. Medical assistant programs run 6 to 12 months. Medical billing and coding programs range from 4 weeks to 4 months or longer, depending on the format. Pharmacy tech training is usually 6 to 12 months, or you can train on the job in Massachusetts."),
     ("Do you need a license to work in healthcare in Massachusetts?",
      "It depends on the job. CNAs need to pass a state exam and be on the Massachusetts Nurse Aide Registry. Pharmacy technicians need a state license from the Board of Pharmacy. Medical assistants, phlebotomists, medical coders and EKG technicians do not need a state license, but employers often want a national certification."),
     ("Can I train for healthcare jobs while working full time?",
      "Yes, many programs offer evening and weekend classes. Medical billing and coding can be learned partly online. CNA and phlebotomy programs are shorter but require in-person practice hours. Ask any school about their schedule before you sign up."),
     ("How much does healthcare training cost?",
-     "Costs vary by program and location. CNA programs can cost $500 to $2,000. Medical assistant programs run $1,000 to $5,000. Medical billing and coding ranges from a few hundred dollars for a short course to $3,000 or more for a longer program. You may qualify for state funding to help cover the cost."),
+     "Costs vary by program and location. CNA programs set their own prices, and some training may be free if a nursing home hires you first, so ask each school for the full price. Medical assistant programs run $1,000 to $5,000. Medical billing and coding ranges from a few hundred dollars for a short course to $3,000 or more for a longer program. You may qualify for state funding to help cover the cost."),
 ]
 
 _hcj_faq_html = "\n".join(
@@ -5631,7 +5631,7 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: BLS OEWS May 2025
             <tr><th>Job</th><th>What you do</th><th>Pay (national median)</th><th>Training time</th><th>Training cost</th><th>State license needed?</th></tr>
           </thead>
           <tbody>
-            <tr><td>Nursing assistant (CNA)</td><td>Help patients bathe, dress, eat and move</td><td>$42,260/yr</td><td>4&ndash;12 weeks</td><td>$500&ndash;$2,000</td><td>Yes &mdash; state exam + DPH registry</td></tr>
+            <tr><td>Nursing assistant (CNA)</td><td>Help patients bathe, dress, eat and move</td><td>$42,260/yr</td><td>Varies by school (federal minimum 75 hours)</td><td>Varies; may be free if an employer hires you first</td><td>Yes &mdash; state exam + DPH registry</td></tr>
             <tr><td>Medical assistant</td><td>Check patients in, take vitals, help the doctor</td><td>$45,690/yr</td><td>6&ndash;12 months</td><td>$1,000&ndash;$5,000</td><td>No</td></tr>
             <tr><td>Phlebotomist</td><td>Draw blood for tests and donations</td><td>$45,230/yr</td><td>4&ndash;8 weeks</td><td>$500&ndash;$2,000</td><td>No</td></tr>
             <tr><td>Pharmacy technician</td><td>Help pharmacists fill prescriptions</td><td>$45,750/yr</td><td>6&ndash;12 months (or on-the-job)</td><td>$1,000&ndash;$4,000</td><td>Yes &mdash; Board of Pharmacy license</td></tr>
@@ -5651,8 +5651,9 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: BLS OEWS May 2025
         use the bathroom and move safely. Jobs are in nursing homes, hospitals and other care settings.</p>
         <p><strong>How much will I make?</strong> Most CNAs earn around $42,260 a year. New workers usually
         start lower.</p>
-        <p><strong>How long is training?</strong> Most CNA programs take 4 to 12 weeks. Programs cost about
-        $500 to $2,000.</p>
+        <p><strong>How long is training?</strong> Each school sets its own schedule and price. The federal
+        minimum is 75 hours, and some training is free if a nursing home hires you first. Read our
+        <a href="blog/cna-massachusetts.html">CNA guide</a> before you pay.</p>
         <p><strong>Is there a state license?</strong> Yes. You must finish a state-approved training program,
         then pass the state exam (a written or oral test plus a skills test). Passing puts you on the
         Massachusetts Department of Public Health (DPH) Nurse Aide Registry. You must be on the registry to
@@ -5815,7 +5816,7 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: BLS OEWS May 2025
           assistant too &mdash; some give shots.</li>
           <li><strong>Want office work, maybe from home later?</strong> Look at medical billing and
           coding.</li>
-          <li><strong>Want hands-on patient care?</strong> Look at CNA or medical assistant.</li>
+          <li><strong>Want hands-on patient care?</strong> Look at <a href="blog/cna-massachusetts.html">CNA</a> or medical assistant.</li>
           <li><strong>Want the highest pay?</strong> Medical billing and coding has the highest median of
           the six.</li>
           <li><strong>Still learning English?</strong> Every path has a test. Ask the school and the
@@ -6227,7 +6228,8 @@ _phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         <p>People often compare these three. A phlebotomist mostly draws blood. A CNA (certified nurse aide) helps
         patients with daily care, and in Massachusetts must be on the state Nurse Aide Registry. A medical
         assistant does a mix of patient care and office work in a doctor&rsquo;s office. BLS lists medical
-        assistant as a related job. To compare pay, rules and training for all three, read our guide to
+        assistant as a related job. Read <a href="blog/cna-massachusetts.html">how to become a CNA in
+        Massachusetts</a>. To compare pay, rules and training for all three, read our guide to
         <a href="blog/healthcare-jobs-massachusetts.html">healthcare jobs in Massachusetts you can train
         for</a>.</p>
 
@@ -6623,7 +6625,8 @@ _pt_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF
         <p>People often compare these jobs. A pharmacy tech works with medicine, not blood. A phlebotomist draws
         blood, and Massachusetts does not license phlebotomists. A CNA (certified nurse aide) helps patients with
         daily care and must be on the state Nurse Aide Registry. Read
-        <a href="blog/phlebotomist-massachusetts.html">how to become a phlebotomist in Massachusetts</a>, or
+        <a href="blog/phlebotomist-massachusetts.html">how to become a phlebotomist in Massachusetts</a>,
+        <a href="blog/cna-massachusetts.html">how to become a CNA in Massachusetts</a>, or
         compare six jobs in our guide to
         <a href="blog/healthcare-jobs-massachusetts.html">healthcare jobs in Massachusetts you can train for</a>.</p>
 

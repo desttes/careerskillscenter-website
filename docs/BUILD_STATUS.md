@@ -512,3 +512,9 @@ industry info, guide-mode compliant — no CSS course claims):
 - Added `.ladder` CSS component (style.css). Entry-level pay sources logged in VERIFICATION_LOG §I.
 - Verified: all 4 pages parse clean, sections balanced, no ghost-course phrases, COURSE-DEPENDENT markers intact,
   local server returns HTTP 200. Not deployed (awaiting Emilio's OK per handoff rule 2c).
+
+## 2026-10-04 follow-up: CNA numbers removed from healthcare-jobs post
+- Emilio confirmed the CNA length ("4 to 12 weeks") and cost ("$500 to $2,000") in `healthcare-jobs-massachusetts` were made up. Removed from the table, the intro box and both FAQ answers; replaced with "varies by school (federal minimum 75 hours)" and "may be free if an employer hires you first".
+- Back-links to `blog/cna-massachusetts.html` added in the healthcare-jobs, phlebotomist and pharmacy-technician posts.
+- OPEN: the same post still has other unsourced length/cost figures (phlebotomist 4-8 weeks, EKG 4-12 weeks and $500-$2,000, medical assistant, billing/coding, pharmacy tech) from the same unknown source. Emilio to confirm whether to strip those too.
+- Pay figures in role guides and mass.gov / D&S fee checks: Emilio said leave as is.
