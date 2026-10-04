@@ -5407,62 +5407,62 @@ PAGES.append(dict(
         <!-- STATE-TABLE:START -->
         <div class="table-wrap">
         <table class="data-table">
-          <caption>Median pay by state, May 2025.</caption>
+          <caption>Typical yearly pay by state, as of 2025.</caption>
           <thead>
-            <tr><th>State</th><th>Coders: median per year</th><th>Coders: median per hour</th><th>Billers: median per year</th><th>Number of coding jobs</th></tr>
+            <tr><th>State</th><th>Coders: typical pay per year</th><th>Billers: typical pay per year</th><th>Number of coding jobs</th></tr>
           </thead>
           <tbody>
-            <tr><td>Alabama</td><td>$43,810</td><td>$21.06</td><td>$39,520</td><td>2,330</td></tr>
-            <tr><td>Alaska</td><td>$61,090</td><td>$29.37</td><td>$52,170</td><td>1,070</td></tr>
-            <tr><td>Arizona</td><td>$47,630</td><td>$22.90</td><td>$47,730</td><td>3,750</td></tr>
-            <tr><td>Arkansas</td><td>$41,740</td><td>$20.07</td><td>$38,780</td><td>1,920</td></tr>
-            <tr><td>California</td><td>$61,810</td><td>$29.71</td><td>$56,260</td><td>18,700</td></tr>
-            <tr><td>Colorado</td><td>$59,020</td><td>$28.37</td><td>$52,670</td><td>1,780</td></tr>
-            <tr><td>Connecticut</td><td>$60,940</td><td>$29.30</td><td>$52,000</td><td>1,120</td></tr>
-            <tr><td>Delaware</td><td>$56,060</td><td>$26.95</td><td>$52,110</td><td>610</td></tr>
-            <tr><td>District of Columbia</td><td>$72,040</td><td>$34.63</td><td>$64,330</td><td>270</td></tr>
-            <tr><td>Florida</td><td>$45,760</td><td>$22.00</td><td>$46,540</td><td>21,490</td></tr>
-            <tr><td>Georgia</td><td>$51,550</td><td>$24.78</td><td>$47,390</td><td>5,930</td></tr>
-            <tr><td>Hawaii</td><td>$63,180</td><td>$30.37</td><td>$51,240</td><td>400</td></tr>
-            <tr><td>Idaho</td><td>$53,460</td><td>$25.70</td><td>$46,440</td><td>1,490</td></tr>
-            <tr><td>Illinois</td><td>$56,440</td><td>$27.14</td><td>$49,730</td><td>5,740</td></tr>
-            <tr><td>Indiana</td><td>$47,670</td><td>$22.92</td><td>$46,400</td><td>5,860</td></tr>
-            <tr><td>Iowa</td><td>$50,640</td><td>$24.35</td><td>$47,110</td><td>2,250</td></tr>
-            <tr><td>Kansas</td><td>$48,160</td><td>$23.15</td><td>$46,420</td><td>2,030</td></tr>
-            <tr><td>Kentucky</td><td>$48,410</td><td>$23.28</td><td>$45,590</td><td>4,210</td></tr>
-            <tr><td>Louisiana</td><td>$44,610</td><td>$21.45</td><td>$43,170</td><td>2,600</td></tr>
-            <tr><td>Maine</td><td>$52,090</td><td>$25.04</td><td>$47,840</td><td>1,000</td></tr>
-            <tr><td>Maryland</td><td>$54,220</td><td>$26.07</td><td>$52,210</td><td>2,440</td></tr>
-            <tr><td>Massachusetts</td><td>$60,350</td><td>$29.02</td><td>$56,110</td><td>3,500</td></tr>
-            <tr><td>Michigan</td><td>$48,120</td><td>$23.13</td><td>$46,890</td><td>4,890</td></tr>
-            <tr><td>Minnesota</td><td>$61,530</td><td>$29.58</td><td>$55,810</td><td>3,150</td></tr>
-            <tr><td>Mississippi</td><td>$41,500</td><td>$19.95</td><td>$41,190</td><td>2,310</td></tr>
-            <tr><td>Missouri</td><td>$50,750</td><td>$24.40</td><td>$46,760</td><td>3,890</td></tr>
-            <tr><td>Montana</td><td>$50,190</td><td>$24.13</td><td>$46,730</td><td>820</td></tr>
-            <tr><td>Nebraska</td><td>$51,670</td><td>$24.84</td><td>$47,410</td><td>1,640</td></tr>
-            <tr><td>Nevada</td><td>$50,300</td><td>$24.19</td><td>$47,430</td><td>2,350</td></tr>
-            <tr><td>New Hampshire</td><td>$49,210</td><td>$23.66</td><td>$50,710</td><td>930</td></tr>
-            <tr><td>New Jersey</td><td>$50,240</td><td>$24.16</td><td>$51,750</td><td>4,450</td></tr>
-            <tr><td>New Mexico</td><td>$57,470</td><td>$27.63</td><td>$46,120</td><td>1,400</td></tr>
-            <tr><td>New York</td><td>$61,720</td><td>$29.67</td><td>$53,320</td><td>9,080</td></tr>
-            <tr><td>North Carolina</td><td>$49,620</td><td>$23.86</td><td>$47,160</td><td>6,760</td></tr>
-            <tr><td>North Dakota</td><td>$46,280</td><td>$22.25</td><td>$48,550</td><td>520</td></tr>
-            <tr><td>Ohio</td><td>$50,990</td><td>$24.52</td><td>$46,390</td><td>7,440</td></tr>
-            <tr><td>Oklahoma</td><td>$53,460</td><td>$25.70</td><td>$45,120</td><td>2,480</td></tr>
-            <tr><td>Oregon</td><td>$59,000</td><td>$28.37</td><td>$51,860</td><td>2,560</td></tr>
-            <tr><td>Pennsylvania</td><td>$46,840</td><td>$22.52</td><td>$46,890</td><td>6,970</td></tr>
-            <tr><td>Rhode Island</td><td>$63,960</td><td>$30.75</td><td>$52,910</td><td>650</td></tr>
-            <tr><td>South Carolina</td><td>$54,280</td><td>$26.10</td><td>$45,250</td><td>2,750</td></tr>
-            <tr><td>South Dakota</td><td>$51,610</td><td>$24.81</td><td>$46,180</td><td>900</td></tr>
-            <tr><td>Tennessee</td><td>$48,780</td><td>$23.45</td><td>$46,330</td><td>4,440</td></tr>
-            <tr><td>Texas</td><td>$48,860</td><td>$23.49</td><td>$45,910</td><td>17,210</td></tr>
-            <tr><td>Utah</td><td>$52,870</td><td>$25.42</td><td>$46,470</td><td>1,910</td></tr>
-            <tr><td>Vermont</td><td>$57,560</td><td>$27.67</td><td>$50,730</td><td>Not published</td></tr>
-            <tr><td>Virginia</td><td>$53,290</td><td>$25.62</td><td>$47,580</td><td>4,630</td></tr>
-            <tr><td>Washington</td><td>$62,270</td><td>$29.94</td><td>$56,090</td><td>5,010</td></tr>
-            <tr><td>West Virginia</td><td>$47,360</td><td>$22.77</td><td>$39,300</td><td>1,260</td></tr>
-            <tr><td>Wisconsin</td><td>$60,280</td><td>$28.98</td><td>$48,230</td><td>2,870</td></tr>
-            <tr><td>Wyoming</td><td>$54,210</td><td>$26.06</td><td>$44,880</td><td>280</td></tr>
+            <tr><td>Alabama</td><td>$43,810</td><td>$39,520</td><td>2,330</td></tr>
+            <tr><td>Alaska</td><td>$61,090</td><td>$52,170</td><td>1,070</td></tr>
+            <tr><td>Arizona</td><td>$47,630</td><td>$47,730</td><td>3,750</td></tr>
+            <tr><td>Arkansas</td><td>$41,740</td><td>$38,780</td><td>1,920</td></tr>
+            <tr><td>California</td><td>$61,810</td><td>$56,260</td><td>18,700</td></tr>
+            <tr><td>Colorado</td><td>$59,020</td><td>$52,670</td><td>1,780</td></tr>
+            <tr><td>Connecticut</td><td>$60,940</td><td>$52,000</td><td>1,120</td></tr>
+            <tr><td>Delaware</td><td>$56,060</td><td>$52,110</td><td>610</td></tr>
+            <tr><td>District of Columbia</td><td>$72,040</td><td>$64,330</td><td>270</td></tr>
+            <tr><td>Florida</td><td>$45,760</td><td>$46,540</td><td>21,490</td></tr>
+            <tr><td>Georgia</td><td>$51,550</td><td>$47,390</td><td>5,930</td></tr>
+            <tr><td>Hawaii</td><td>$63,180</td><td>$51,240</td><td>400</td></tr>
+            <tr><td>Idaho</td><td>$53,460</td><td>$46,440</td><td>1,490</td></tr>
+            <tr><td>Illinois</td><td>$56,440</td><td>$49,730</td><td>5,740</td></tr>
+            <tr><td>Indiana</td><td>$47,670</td><td>$46,400</td><td>5,860</td></tr>
+            <tr><td>Iowa</td><td>$50,640</td><td>$47,110</td><td>2,250</td></tr>
+            <tr><td>Kansas</td><td>$48,160</td><td>$46,420</td><td>2,030</td></tr>
+            <tr><td>Kentucky</td><td>$48,410</td><td>$45,590</td><td>4,210</td></tr>
+            <tr><td>Louisiana</td><td>$44,610</td><td>$43,170</td><td>2,600</td></tr>
+            <tr><td>Maine</td><td>$52,090</td><td>$47,840</td><td>1,000</td></tr>
+            <tr><td>Maryland</td><td>$54,220</td><td>$52,210</td><td>2,440</td></tr>
+            <tr><td>Massachusetts</td><td>$60,350</td><td>$56,110</td><td>3,500</td></tr>
+            <tr><td>Michigan</td><td>$48,120</td><td>$46,890</td><td>4,890</td></tr>
+            <tr><td>Minnesota</td><td>$61,530</td><td>$55,810</td><td>3,150</td></tr>
+            <tr><td>Mississippi</td><td>$41,500</td><td>$41,190</td><td>2,310</td></tr>
+            <tr><td>Missouri</td><td>$50,750</td><td>$46,760</td><td>3,890</td></tr>
+            <tr><td>Montana</td><td>$50,190</td><td>$46,730</td><td>820</td></tr>
+            <tr><td>Nebraska</td><td>$51,670</td><td>$47,410</td><td>1,640</td></tr>
+            <tr><td>Nevada</td><td>$50,300</td><td>$47,430</td><td>2,350</td></tr>
+            <tr><td>New Hampshire</td><td>$49,210</td><td>$50,710</td><td>930</td></tr>
+            <tr><td>New Jersey</td><td>$50,240</td><td>$51,750</td><td>4,450</td></tr>
+            <tr><td>New Mexico</td><td>$57,470</td><td>$46,120</td><td>1,400</td></tr>
+            <tr><td>New York</td><td>$61,720</td><td>$53,320</td><td>9,080</td></tr>
+            <tr><td>North Carolina</td><td>$49,620</td><td>$47,160</td><td>6,760</td></tr>
+            <tr><td>North Dakota</td><td>$46,280</td><td>$48,550</td><td>520</td></tr>
+            <tr><td>Ohio</td><td>$50,990</td><td>$46,390</td><td>7,440</td></tr>
+            <tr><td>Oklahoma</td><td>$53,460</td><td>$45,120</td><td>2,480</td></tr>
+            <tr><td>Oregon</td><td>$59,000</td><td>$51,860</td><td>2,560</td></tr>
+            <tr><td>Pennsylvania</td><td>$46,840</td><td>$46,890</td><td>6,970</td></tr>
+            <tr><td>Rhode Island</td><td>$63,960</td><td>$52,910</td><td>650</td></tr>
+            <tr><td>South Carolina</td><td>$54,280</td><td>$45,250</td><td>2,750</td></tr>
+            <tr><td>South Dakota</td><td>$51,610</td><td>$46,180</td><td>900</td></tr>
+            <tr><td>Tennessee</td><td>$48,780</td><td>$46,330</td><td>4,440</td></tr>
+            <tr><td>Texas</td><td>$48,860</td><td>$45,910</td><td>17,210</td></tr>
+            <tr><td>Utah</td><td>$52,870</td><td>$46,470</td><td>1,910</td></tr>
+            <tr><td>Vermont</td><td>$57,560</td><td>$50,730</td><td>Not published</td></tr>
+            <tr><td>Virginia</td><td>$53,290</td><td>$47,580</td><td>4,630</td></tr>
+            <tr><td>Washington</td><td>$62,270</td><td>$56,090</td><td>5,010</td></tr>
+            <tr><td>West Virginia</td><td>$47,360</td><td>$39,300</td><td>1,260</td></tr>
+            <tr><td>Wisconsin</td><td>$60,280</td><td>$48,230</td><td>2,870</td></tr>
+            <tr><td>Wyoming</td><td>$54,210</td><td>$44,880</td><td>280</td></tr>
           </tbody>
         </table>
         </div>

@@ -10,8 +10,8 @@ Usage (yearly update):
     python3 tools/build-salary-table.py path/to/state_M2025_dl.xlsx
     python3 tools/build-pages.py
 
-Columns: State | coders median/yr (29-2072 A_MEDIAN) | coders median/hr (29-2072 H_MEDIAN)
-         | billers median/yr (43-3021 A_MEDIAN) | coding jobs (29-2072 TOT_EMP).
+Columns: State | coders typical pay/yr (29-2072 A_MEDIAN) | billers typical pay/yr (43-3021 A_MEDIAN)
+         | coding jobs (29-2072 TOT_EMP). Reader-facing labels avoid "median" and sources (keep it simple).
 Rows: 50 states + DC (AREA_TYPE 2), alphabetical; Puerto Rico, Guam and the Virgin
 Islands are left out. BLS symbols: "*" / "**" = not published; "#" = at or above the
 top-coded wage ($239,200 a year / $115.00 an hour).
@@ -27,7 +27,7 @@ TARGET = Path(__file__).with_name("build-pages.py")
 SKIP = {"Puerto Rico", "Guam", "Virgin Islands"}
 START, END = "<!-- STATE-TABLE:START -->", "<!-- STATE-TABLE:END -->"
 NA = "Not published"
-CAPTION = "Median pay by state, May 2025. Source: U.S. Bureau of Labor Statistics."
+CAPTION = "Typical yearly pay by state, as of 2025."
 
 
 def money(v, hourly=False):
@@ -62,8 +62,8 @@ def build(data):
         '        <table class="data-table">',
         f"          <caption>{CAPTION}</caption>",
         "          <thead>",
-        "            <tr><th>State</th><th>Coders: median per year</th><th>Coders: median per hour</th>"
-        "<th>Billers: median per year</th><th>Number of coding jobs</th></tr>",
+        "            <tr><th>State</th><th>Coders: typical pay per year</th>"
+        "<th>Billers: typical pay per year</th><th>Number of coding jobs</th></tr>",
         "          </thead>",
         "          <tbody>",
     ]
@@ -71,7 +71,7 @@ def build(data):
         c, b = data[state]["29-2072"], data[state]["43-3021"]
         lines.append(
             f"            <tr><td>{state}</td><td>{money(c['A_MEDIAN'])}</td>"
-            f"<td>{money(c['H_MEDIAN'], True)}</td><td>{money(b['A_MEDIAN'])}</td>"
+            f"<td>{money(b['A_MEDIAN'])}</td>"
             f"<td>{count(c['TOT_EMP'])}</td></tr>")
     lines += ["          </tbody>", "        </table>", "        </div>"]
     return "\n".join(lines)
