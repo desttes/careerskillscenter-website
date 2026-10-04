@@ -3,13 +3,13 @@
 Add blog topics here for the blog agent to work on. The agent runs every 6 hours, picks up the next item, and moves it to "In Progress" or "Done."
 
 ## Next Up
-- **How to Become a CNA in Massachusetts** — role guide: what CNAs do, MA pay (BLS SOC 31-1131), DPH Nurse Aide Registry, state-approved training program requirement, competency eval, job outlook. Target: "CNA massachusetts"
 - **How to Become a Medical Assistant in Massachusetts** — role guide: clinical vs admin duties, MA pay (BLS SOC 31-9092), CMA/RMA certification, training path, no state license required, job outlook. Target: "medical assistant massachusetts"
 - **How to Become an Electrician in Massachusetts** — role guide: apprenticeship path (8,000 hrs + 600-hr course), MA licensing (journeyman/master), MA pay (BLS SOC 47-2111), union vs non-union, job outlook. Target: "electrician massachusetts"
 - **How to Become an HVAC Technician in Massachusetts** — role guide: what HVAC techs do, MA pay (BLS SOC 49-9021), state license + EPA 608 certification, refrigeration license, apprenticeship path, job outlook. Target: "HVAC technician massachusetts"
 
 ## In Progress
 <!-- The agent moves items here while working on them. -->
+- **How to Become a CNA in Massachusetts** — role guide: what CNAs do, MA pay (BLS SOC 31-1131), DPH Nurse Aide Registry, state-approved training program requirement, competency eval, job outlook. Target: "CNA massachusetts"
 
 ## Done
 <!-- Completed drafts. The agent logs the file path and date. -->
