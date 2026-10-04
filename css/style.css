@@ -613,6 +613,7 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 
 /* ---------- Section helpers ---------- */
 .section--alt { background: var(--surface-alt); }
+.section--alt + .section--alt { padding-top: 0; }
 .course-overview { overflow: hidden; }
 .course-overview .container { position: relative; z-index: 1; }
 .section--tight { padding-block: clamp(48px, 6vw, 84px); }
