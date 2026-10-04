@@ -28,6 +28,15 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 **Immediate next step:** decide whether to deploy the Option A rework + interest form (blog stays excluded). Everything is committed on `main`.
 
 ## Session log
+
+### 2026-10-04 — Blog pipeline moved into the repo; scheduled runs paused (LOCAL + GitHub, not deployed)
+- **Blog Manager routine paused** (`trig_01XgMjFh5eKjNm4qx8Gr9HdM`, `enabled: false`). Emilio asked for this until the agents write the way he expects. Re-enable it on claude.ai or by asking Code.
+- **Agents now live in the repo:** `.claude/agents/` holds `data-researcher`, `content-strategist`, `blog-writer`, `compliance-reviewer` and `blog-publisher`. The director is the `/blog-pipeline` command in `.claude/commands/blog-pipeline.md`. Any Claude Code session on this repo can run them. Local runs can also open bls.gov and mass.gov, which the cloud routine's network blocks.
+- **Pipeline files are kept:** every run saves `research-brief.md`, `content-strategy.md` and `review-report*.md` to `docs/blog-drafts/<slug>/`.
+- **Healthcare jobs post rewritten** for the reader (`blog/healthcare-jobs-massachusetts.html`): training time and cost per role, "No state license required", one pay number per role, more internal links. **Its training cost and length ranges are NOT sourced.** They came from Code, not the research brief, which breaks Writing Guideline 10. Source them or remove them before approval.
+- **Pharmacy technician post drafted** by the last scheduled run (`blog/pharmacy-technician-massachusetts.html`, VERIFICATION_LOG section P). It was written under the older prompt, so it still needs a reader-first review. A second run collided with it and stopped itself without pushing anything.
+- **Questions for Emilio:** (a) pay figures in role-guide posts (still the open policy question from sections N, O and P); (b) send the keyword analysis from the Project so it can be saved as `docs/KEYWORD_ANALYSIS.md`.
+- **For strategy:** the guidelines live in `docs/BLOG_RESEARCH_GUIDELINES.md` and `docs/BLOG_WRITING_GUIDELINES.md`. If the Project adds this repo to its knowledge, it can read the pipeline's briefs directly.
 <!-- Newest first. For each session: date · what was built (files/URLs) · status (local only / deployed) · TODOs -->
 
 ### 2026-10-04 — Blog Manager: How to Become a Pharmacy Technician in Massachusetts (LOCAL, not deployed)
