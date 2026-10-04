@@ -17,7 +17,7 @@
   --muted:       #1f7fae;
   --line:        #E4E7EB;
   --surface:     #FFFFFF;
-  --surface-alt: #eaf6fc;
+  --surface-alt: #edeff6;
   --surface-gray:#d9eff9;
 
   --font-body:   "Roboto", Helvetica, Arial, sans-serif;
@@ -465,8 +465,8 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .contact-form input:user-invalid, .contact-form select:user-invalid { border-color: #ff8a8a; }
 .contact-form .btn { justify-self: start; margin-top: 6px; }
 /* Interest-list and employer forms sit on a LIGHT section — override the dark-dialog input styling. */
-.interest-form input, .interest-form select, .interest-form textarea,
-.employer-form input, .employer-form select, .employer-form textarea {
+.interest-form input:not([type="checkbox"]), .interest-form select, .interest-form textarea,
+.employer-form input:not([type="checkbox"]), .employer-form select, .employer-form textarea {
   border-color: var(--line); background: #fff; color: var(--ink);
 }
 .interest-form ::placeholder, .employer-form ::placeholder { color: var(--muted); }
@@ -832,7 +832,7 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .prose .updated { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 
 /* ---------- Inline note / disclaimer ---------- */
-.note { margin-top: 26px; padding: 32px 40px; margin-inline: -40px; background: #eaf6fc; font-size: 14px; color: var(--ink-light); }
+.note { margin-top: 26px; padding: 32px 40px; margin-inline: -40px; background: var(--surface-alt); font-size: 14px; color: var(--ink-light); }
 .note:last-child { margin-bottom: 0; }
 @media (max-width: 900px) { .note { padding-inline: var(--gutter); margin-inline: calc(-1 * var(--gutter)); } }
 .prose .note ul, .prose .note ol { padding-left: 0; }
