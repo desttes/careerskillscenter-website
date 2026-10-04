@@ -519,3 +519,11 @@ industry info, guide-mode compliant — no CSS course claims):
 - Back-links to `blog/cna-massachusetts.html` added in the healthcare-jobs, phlebotomist and pharmacy-technician posts.
 - OPEN: the same post still has other unsourced length/cost figures (phlebotomist 4-8 weeks, EKG 4-12 weeks and $500-$2,000, medical assistant, billing/coding, pharmacy tech) from the same unknown source. Emilio to confirm whether to strip those too.
 - Pay figures in role guides and mass.gov / D&S fee checks: Emilio said leave as is.
+
+## 2026-10-04: new site-wide palette and blog layout (Emilio's design test, applied to style.css)
+- Tested on a throwaway copy of the CNA post, then moved into `css/style.css` and `tools/build-pages.py`; all 33 pages rebuilt. Not committed, not deployed.
+- Palette: navy #1e2b64 (dark #161f4b), orange #ef6625 (dark #d4551a), accent #40b0e4 (accent lines, stat numbers), gray surfaces now pale tints #eaf6fc / #d9eff9, muted text #1f7fae.
+- Blog/guide `.prose`: body 18px/1.35, H2 36px, H3 24px (both #455ca8), paragraph gap 20px, 60px above and 16px below headings, links #c24d12 (the inline link rule in 6 `extrahead` blocks in build-pages.py).
+- `.note`, `.post-cta` and `.table-wrap` extend 40px past the text column (page gutter under 900px) so text stays aligned with paragraphs; 6px corners; no orange left line on notes; lists inside notes and `.prose ol` have no indent; table captions aligned to the column.
+- Paragraph right after a table is 14px (table note). Callout titles 20px; `.post-cta h2` 36px.
+- OPEN: these `.prose` sizes apply to every page that uses `.prose`, not just blog posts. Spot-check the non-blog pages (faq, terms, privacy, employers) in a browser before any deploy. Pre-deploy grep for `[VERIFY` / `DRAFT` still applies.

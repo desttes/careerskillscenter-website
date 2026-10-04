@@ -4859,7 +4859,7 @@ PAGES.append(dict(
               None) + """
 
     <section class="section">
-      <div class="container prose">
+      <div class="container prose prose-legacy">
         <p class="updated">Last updated: [Month DD, YYYY]</p>
 
         <p class="note"><strong>Template only.</strong> This page is a starting structure, not legal advice.
@@ -4943,7 +4943,7 @@ PAGES.append(dict(
               None) + """
 
     <section class="section">
-      <div class="container prose">
+      <div class="container prose prose-legacy">
         <p class="updated">Last updated: [Month DD, YYYY]</p>
 
         <p class="note"><strong>Template only.</strong> This page is a starting structure, not legal advice.
@@ -5004,7 +5004,7 @@ PAGES.append(dict(
     ogtitle="4-Week vs. 4-Month Medical Billing and Coding Courses: What's the Real Difference?",
     desc="A 4-week course, a 4-month course and a college certificate all lead to the same national exam. Here's what each costs and what you get.",
     extrahead=r'''  <!-- Scoped to this post: in-article links are plain grey site-wide, which hides the many source links here. Consider a site-wide .prose a rule. -->
-  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}</style>
+  <style>.prose a:not(.btn):not(.link-yellow){color:#c24d12;text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}</style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -5281,7 +5281,7 @@ PAGES.append(dict(
     desc="Medical coders earn a median of $51,140 a year ($24.59 an hour). See pay in every state, what beginners make, and whether coders or billers earn more.",
     extrahead=r'''  <!-- Scoped to this post: plain grey in-article links hide the source links; narrow tables don't need the 660px minimum. -->
   <script>document.addEventListener("DOMContentLoaded",function(){function o(){var e=location.hash&&document.querySelector(location.hash);if(e&&e.tagName==="DETAILS")e.open=true}o();addEventListener("hashchange",o)});</script>
-  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}.data-table--narrow{min-width:0}.toc ul{list-style:none;margin:0 0 24px;padding:0}.toc li{margin:0 0 8px}.prose .toc a:not(.btn):not(.link-yellow){font-weight:700;text-decoration:none}.prose h2[id]{scroll-margin-top:100px}@media(min-width:1100px){.prose{position:relative;max-width:var(--container);padding-left:calc(var(--gutter) + 250px)}.prose>*{max-width:820px}.toc{position:absolute;top:0;left:var(--gutter);right:auto;width:210px}.toc ul{margin:0}}.prose table caption{caption-side:top;text-align:left;font-weight:700;color:var(--navy);padding:0 0 10px}</style>
+  <style>.prose a:not(.btn):not(.link-yellow){color:#c24d12;text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}.data-table--narrow{min-width:0}.toc ul{list-style:none;margin:0 0 24px;padding:0}.toc li{margin:0 0 8px}.prose .toc a:not(.btn):not(.link-yellow){font-weight:700;text-decoration:none}.prose h2[id]{scroll-margin-top:100px}@media(min-width:1100px){.prose{position:relative;max-width:var(--container);padding-left:calc(var(--gutter) + 250px)}.prose>*{max-width:820px}.toc{position:absolute;top:0;left:var(--gutter);right:auto;width:210px}.toc ul{margin:0}}.prose table caption{caption-side:top;text-align:left;font-weight:700;color:var(--navy);padding:0 0 10px}</style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -5941,7 +5941,7 @@ PAGES.append(dict(
     title="Healthcare Jobs in Massachusetts You Can Train For (2026)",
     ogtitle=_HCJ_TITLE,
     desc=_HCJ_DESC,
-    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;'
+    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:#c24d12;text-decoration:underline;'
                'text-underline-offset:2px}.prose table caption{caption-side:top;text-align:left;font-weight:700;'
                'color:var(--navy);padding:0 0 10px}</style>\n'
                + article_ld("blog/healthcare-jobs-massachusetts.html", _HCJ_TITLE, _HCJ_DESC,
@@ -6319,7 +6319,7 @@ PAGES.append(dict(
     title="How to Become a Phlebotomist in Massachusetts (2026)",
     ogtitle=_PHL_TITLE,
     desc=_PHL_DESC,
-    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;'
+    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:#c24d12;text-decoration:underline;'
                'text-underline-offset:2px}.prose table caption{caption-side:top;text-align:left;font-weight:700;'
                'color:var(--navy);padding:0 0 10px}.prose .note ol{margin:10px 0}</style>\n'
                + article_ld("blog/phlebotomist-massachusetts.html", _PHL_TITLE, _PHL_DESC,
@@ -6752,7 +6752,7 @@ PAGES.append(dict(
     title="How to Become a Pharmacy Technician in Massachusetts (2026)",
     ogtitle=_PT_TITLE,
     desc=_PT_DESC,
-    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;'
+    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:#c24d12;text-decoration:underline;'
                'text-underline-offset:2px}.prose table caption{caption-side:top;text-align:left;font-weight:700;'
                'color:var(--navy);padding:0 0 10px}.prose .note ol,.prose .note ul{margin:10px 0}</style>\n'
                + article_ld("blog/pharmacy-technician-massachusetts.html", _PT_TITLE, _PT_DESC,
@@ -7185,7 +7185,7 @@ PAGES.append(dict(
     title="CNA in Massachusetts: Training, Exam and Who Pays (2026)",
     ogtitle=_CNA_TITLE,
     desc=_CNA_DESC,
-    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:var(--navy);text-decoration:underline;'
+    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:#c24d12;text-decoration:underline;'
                'text-underline-offset:2px}.prose table caption{caption-side:top;text-align:left;font-weight:700;'
                'color:var(--navy);padding:0 0 10px}.prose .note ol,.prose .note ul{margin:10px 0}</style>\n'
                + article_ld("blog/cna-massachusetts.html", _CNA_TITLE, _CNA_DESC,
