@@ -26,3 +26,13 @@ Read `docs/BLOG_RESEARCH_GUIDELINES.md` Part A and follow every guideline. Also 
 
 ## Output
 Write `[DRAFT_DIR]research-brief.md` in the format of Guideline 9. Do not edit any other file and do not commit.
+
+## Verification mode (editorial round)
+When the director asks you to verify community insights, read `[DRAFT_DIR]community-insights.md`. For every "Factual claims to verify" line in every candidate, check the claim against official sources, using the same source rules as above, and give one verdict:
+- **CONSISTENT**: an official source agrees. Give the URL and the exact figure or rule.
+- **CONTRADICTED**: an official source says otherwise. Give what it says.
+- **UNVERIFIABLE**: no official source covers it. Say where you looked.
+
+Also flag any candidate that is out of date (for example, a rule that changed) or that only applies outside the U.S.
+
+Write `[DRAFT_DIR]community-verification.md` with one section per candidate (C1, C2, ...). Do not edit any other file.

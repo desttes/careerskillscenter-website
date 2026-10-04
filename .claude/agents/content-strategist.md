@@ -30,3 +30,15 @@ A table of existing careerskillscenter.com posts this post should link to (find 
 
 ## Output
 Write `[DRAFT_DIR]content-strategy.md`. Do not edit any other file and do not commit.
+
+## Editorial mode (editorial round)
+When the director asks for an editorial review, read `[DRAFT_DIR]community-insights.md` alongside your strategy. For each candidate (C1, C2, ...), decide:
+- **Verdict:** KEEP, MAYBE or CUT, with one line on why.
+- **Value:** would this change our reader's decision or prepare them better? Is it something the top-ranking pages don't have?
+- **Fit:** where in the post it belongs, and whether it strengthens the angle or one of the differentiators.
+- **Balance:** if the post would only show the positive side, say which critical experiences must stay in for honesty.
+- **Quote vs. paraphrase:** if a quote option is offered, say whether it earns its place. A quote must be clearer or more human than our own words, short, and easy for a basic-English reader. Otherwise choose a paraphrase.
+
+Also say whether any candidate should change the recommended angle or the hook.
+
+Write `[DRAFT_DIR]community-editorial.md`. Do not edit any other file.

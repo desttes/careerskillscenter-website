@@ -136,6 +136,9 @@ Write a specific, actionable recommendation:
 - **Key differentiators:** 2-3 specific things this post will cover that the top results don't
 - **Why this wins:** why a reader (and Google) would prefer this post over what's already ranking
 
+### Editorial round
+After the community researcher runs, the strategist also reviews its candidates (KEEP / MAYBE / CUT, fit, balance, quote vs. paraphrase). See Part C.
+
 ### Content Strategy Output Format
 ```
 ## Content Strategy: [TOPIC]
@@ -170,3 +173,35 @@ Write a specific, actionable recommendation:
 3. [...]
 **Why this wins:** [why readers/Google prefer this]
 ```
+
+---
+
+## Part C — Community Researcher and the Editorial Round
+
+**Why this exists:** other career blogs repeat the same official facts. What they don't have is what real people who did the job, or tried to get into it, went through. That first-hand experience is highly valuable to our reader, so we go and find it. (Emilio, 2026-10-04.)
+
+### 1. Where to look
+Reddit, Quora, public forums, and public Facebook posts or groups that show up in search. Never log in or get around a login. Prefer posts from the last 3 years.
+
+### 2. What counts
+First-hand experiences, honest opinions, tips, warnings, surprises and hidden costs that are **not already in the research brief or strategy**. Skip promotion, rants with no useful detail, posts about named people, and non-U.S. situations unless the point applies everywhere.
+
+### 3. Forum posts are never a fact source on their own
+Any number or rule inside a post (cost, hours, pay, pass rate, license rule) must be checked by the Data Researcher against an official source. CONTRADICTED claims kill the item. UNVERIFIABLE claims are dropped from the item. If the post gives a number, the blog uses the verified official figure.
+
+### 4. Corroboration
+An experience goes in only if at least 2 independent people in separate threads describe it, or an official source backs it up. Report the real mix of views. We never keep only the encouraging side.
+
+### 5. Quotes
+The team decides whether a quote is worth it. A quote must be clearer or more human than our own words, 25 words or fewer, exact, easy for a basic-English reader, and free of names, employers, places or other identifying details. Otherwise we paraphrase. This is Emilio's exception (2026-10-04) to the CLAUDE.md rule that quotes come only from consenting students. It applies only to items approved through this process.
+
+### 6. Nothing that points to the person
+No usernames, no thread links and no identifying details in the post. Source URLs stay in `community-insights.md` (internal) so reviewers can confirm every quote is real.
+
+### 7. The editorial round (agents decide together)
+1. **Community Researcher** proposes candidates in `community-insights.md`.
+2. **Data Researcher** (verification mode) checks their facts in `community-verification.md`.
+3. **Content Strategist** (editorial mode) judges value, fit and balance in `community-editorial.md`.
+4. **The director** applies the rules above and writes `editorial-decisions.md` (approved items, where they go, quote or paraphrase, and the cut list with reasons). The stricter call wins; when unsure, cut.
+5. **Writer** uses only approved items.
+6. **Compliance Reviewer** checks that every experience and quote in the post was approved and used faithfully.

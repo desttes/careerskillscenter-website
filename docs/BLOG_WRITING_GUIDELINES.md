@@ -145,7 +145,7 @@ The Writer executes SEO based on the **target keyword assigned in the blog queue
 
 1. **Never state CSC program details** — no length, hours, cost, credentials, format, start dates, instructors, campus details, VA status
 2. **Never claim ETPL/WIOA approval**, "state-approved," or Express Course Directory listing
-3. **Never invent statistics, outcomes, testimonials, salary figures, or quotes** — only use what's in the research brief
+3. **Never invent statistics, outcomes, testimonials, salary figures, or quotes** — only use what's in the research brief, plus community experiences and quotes approved in `editorial-decisions.md` (see Guideline 13)
 4. **Never promise funding approval** — always "may qualify"
 5. **Never source facts from training providers, career blogs, or salary aggregators** — if the research brief didn't include it, the Writer doesn't add it
 6. **Never use a backdated publish date** — use today's actual date
@@ -176,3 +176,15 @@ The Writer adds code to `tools/build-pages.py`, not hand-written HTML files:
 - **Author:** "Career Skills Center" (organization, not a person) unless told otherwise.
 - **Category:** Match existing ones — Medical, Information Technology, Skilled Trades, Paying for Training, or Career Advice.
 - **Publish date:** Today's actual date. Never backdated.
+
+## 13. Real People's Experiences
+
+First-hand experience from people who did the job is what makes our posts different from every other career blog. Use it well:
+
+- **Use only what the team approved** in `editorial-decisions.md` (see Research Guidelines Part C). Never add an experience, opinion or quote on your own.
+- **Give it a home.** Usually a section like "What people who've done it say", placed near the hard truth. Strong items can also go in the training, exam or first-job sections.
+- **Experiences are experiences, not facts.** Write "Many people who started as trainees say..." or "Some say the exam was harder than they expected." Facts inside them use the verified official figure.
+- **Show the real mix.** If people disagree, say so. Never keep only the encouraging side.
+- **Quotes:** use an approved quote word for word, short, with a generic attribution ("one pharmacy technician who started as a trainee"). Never change words in a way that changes the meaning. Two or three quotes per post at most, so they keep their impact.
+- **Never point to the person:** no usernames, no thread links, no details that could identify anyone.
+- **Never imply they are Career Skills Center students** or that their results are typical outcomes.
