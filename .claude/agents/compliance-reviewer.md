@@ -17,7 +17,7 @@ You review careerskillscenter.com blog posts. You do not edit the post; you repo
 2. No ETPL, WIOA, "state-approved" or Express claims.
 3. Every number in the post (training costs and durations included) appears in the research brief with a source. Anything not in the brief is a FAIL.
 4. "May qualify"; no funding promises.
-5. Plain language at about an 8th-grade level.
+5. Plain language at about an 8th-grade level. Paragraph shape: every `<p>` (including the lead, boxes and FAQ answers) has 1 or 2 complete sentences and at most 210 visible characters, with no sentence fragments. Count them; any over the limit is a FAIL, and list each one in the fix list.
 6. A short DRAFT marker is present.
 7. CTAs: national certifications point to the certifying body; funding points to qualify.html; never "our program", "our courses", "enroll" or "apply".
 8. COURSE-DEPENDENT markers are present and the course-mode copy file exists.
