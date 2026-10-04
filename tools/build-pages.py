@@ -5251,21 +5251,6 @@ PAGES.append(dict(
           </div>
         </section>
 
-        <section class="sources" aria-labelledby="sources-heading">
-          <h2 id="sources-heading">Sources</h2>
-          <p>Prices and program details as of September 30, 2026.</p>
-          <ul>
-            <li>AAPC: <a href="https://www.aapc.com/support/certification-exams/how-much-does-the-cpc-exam-cost" target="_blank" rel="noopener">CPC exam cost</a>, <a href="https://www.aapc.com/support/certification-exams/how-long-does-it-take-to-become-a-certified-medical-coder" target="_blank" rel="noopener">how long certification takes</a>, <a href="https://www.aapc.com/memberships/" target="_blank" rel="noopener">membership</a>, <a href="https://www.aapc.com/memberships/student.aspx" target="_blank" rel="noopener">student membership</a>, <a href="https://www.aapc.com/medical-coding-books/bundles.aspx" target="_blank" rel="noopener">book bundles</a>, <a href="https://aapc.com/training/cpc-online-medical-coding-training-course.aspx" target="_blank" rel="noopener">online CPC course</a>, <a href="https://www.aapc.com/certifications/cpc-a/how-to-remove-your-a" target="_blank" rel="noopener">removing the CPC-A</a>, <a href="https://jobs.aapc.com/jobs/" target="_blank" rel="noopener">job board</a>, <a href="https://www.aapc.com/software-and-services/xtern-program-overview" target="_blank" rel="noopener">Xtern Program</a></li>
-            <li><a href="https://www.bls.gov/ooh/healthcare/medical-records-and-health-information-technicians.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics, Medical Records Specialists</a></li>
-            <li><a href="https://certprep.kaptest.com/blog/healthcare-clinical/how-to-pass-the-cpc-exam-on-your-first-try" target="_blank" rel="noopener">Kaplan CertPrep, CPC exam format</a></li>
-            <li><a href="https://quincycollege.edu/tuition/" target="_blank" rel="noopener">Quincy College 2026–27 tuition</a> and 2026–27 Medical Billing and Coding program sheet</li>
-            <li><a href="https://www.gatewaycc.edu/degrees-certificates/medical-billing-and-coding" target="_blank" rel="noopener">GateWay Community College, Medical Billing and Coding</a></li>
-            <li><a href="https://continue.austincc.edu/billing" target="_blank" rel="noopener">Austin Community College, Medical Billing &amp; Coding</a></li>
-            <li><a href="https://www.utsa.edu/pace/medical-billing-coding-certification.html" target="_blank" rel="noopener">UT San Antonio, Medical Billing and Coding</a></li>
-            <li><a href="https://www.ituonline.com/product-category/medical-coding-billing/" target="_blank" rel="noopener">ITU Online, medical coding courses</a></li>
-            <li><a href="https://www.cms.gov/medicare/coding-billing/icd-10-codes" target="_blank" rel="noopener">CMS, ICD-10 codes</a>; <a href="https://www.careeronestop.org/LocalHelp/AmericanJobCenters/find-american-job-centers.aspx" target="_blank" rel="noopener">CareerOneStop, American Job Center finder</a></li>
-          </ul>
-        </section>
 ''', author="Vicent Canal")))
 
 # ---------------------------------------------------------------------------
@@ -5343,7 +5328,6 @@ PAGES.append(dict(
             <li><a href="#faq-3">Who gets paid more, a medical biller or a medical coder?</a></li>
             <li><a href="#faq-4">Do medical coders get paid well?</a></li>
             <li><a href="#faq-5">Which state pays medical coders the most?</a></li>
-            <li><a href="#sources-heading">Sources</a></li>
           </ul>
         </nav>
 
@@ -5447,7 +5431,7 @@ PAGES.append(dict(
         <!-- STATE-TABLE:START -->
         <div class="table-wrap">
         <table class="data-table">
-          <caption>Median pay by state, May 2025. Source: U.S. Bureau of Labor Statistics.</caption>
+          <caption>Median pay by state, May 2025.</caption>
           <thead>
             <tr><th>State</th><th>Coders: median per year</th><th>Coders: median per hour</th><th>Billers: median per year</th><th>Number of coding jobs</th></tr>
           </thead>
@@ -5549,16 +5533,6 @@ PAGES.append(dict(
           </div>
         </section>
 
-        <section class="sources" aria-labelledby="sources-heading">
-          <h2 id="sources-heading">Sources</h2>
-          <p>Wage data from the May 2025 release, the latest available as of October 2026.</p>
-          <ul>
-            <li><a href="https://www.bls.gov/ooh/healthcare/medical-records-and-health-information-technicians.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics, Occupational Outlook Handbook: Medical Records Specialists</a></li>
-            <li><a href="https://www.bls.gov/oes/current/oessrcst.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics, May 2025 State Occupational Employment and Wage Estimates</a> (medical records specialists, 29-2072; billing and posting clerks, 43-3021)</li>
-            <li><a href="https://www.onetonline.org/link/summary/43-3021.00" target="_blank" rel="noopener">O*NET OnLine, Billing and Posting Clerks</a></li>
-            <li><a href="https://www.aapc.com/resources/medical-coding-salary-survey" target="_blank" rel="noopener">AAPC, 2026 Medical Coding and Billing Salary Report</a></li>
-          </ul>
-        </section>
 ''', author=None)))
 
 # ---------------------------------------------------------------------------
@@ -5640,9 +5614,6 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
           </tbody>
         </table>
         </div>
-        <p><small>Pay: BLS Occupational Employment and Wage Statistics (OEWS), May 2025. Training costs are
-        general industry ranges and vary by school and location. EKG technicians do not have their own BLS pay
-        category (see the EKG section below).</small></p>
 
         <h2>The six jobs, one by one</h2>
 
@@ -5896,33 +5867,6 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
 """ + _hcj_faq_html + """
         </div>
 
-        <section class="sources" aria-labelledby="hcj-sources-heading">
-          <h2 id="hcj-sources-heading">Sources</h2>
-          <p>Pay data: BLS Occupational Employment and Wage Statistics (OEWS), May 2025, the latest available as
-          of October 2026. Job outlook: BLS Employment Projections 2025&ndash;2035. SOC codes: nursing assistants
-          31-1131, medical assistants 31-9092, phlebotomists 31-9097, pharmacy technicians 29-2052, medical
-          records specialists (includes coders) 29-2072, cardiovascular technologists and technicians (includes
-          EKG techs) 29-2031. Training costs are general industry estimates from publicly available program
-          listings and may vary by school and location.</p>
-          <ul>
-            <li><a href="https://www.bls.gov/ooh/healthcare/nursing-assistants.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Nursing Assistants and Orderlies</a></li>
-            <li><a href="https://www.bls.gov/ooh/healthcare/medical-assistants.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Medical Assistants</a></li>
-            <li><a href="https://www.bls.gov/ooh/healthcare/phlebotomists.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Phlebotomists</a></li>
-            <li><a href="https://www.bls.gov/ooh/healthcare/pharmacy-technicians.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Pharmacy Technicians</a></li>
-            <li><a href="https://www.bls.gov/ooh/healthcare/medical-records-and-health-information-technicians.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Medical Records Specialists</a></li>
-            <li><a href="https://www.bls.gov/ooh/healthcare/cardiovascular-technologists-and-technicians.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Cardiovascular Technologists and Technicians</a></li>
-            <li><a href="https://www.bls.gov/oes/current/oessrcst.htm" target="_blank" rel="noopener">BLS State Occupational Employment and Wage Estimates</a></li>
-            <li><a href="https://www.mass.gov/nurse-aide-registry-program" target="_blank" rel="noopener">Massachusetts DPH Nurse Aide Registry Program</a></li>
-            <li><a href="https://www.mass.gov/pharmacy-technician-licensing" target="_blank" rel="noopener">Massachusetts Board of Registration in Pharmacy: Pharmacy Technician Licensing</a></li>
-            <li><a href="https://www.mass.gov/files/documents/2017/09/28/cma-circular-17-8-102.pdf" target="_blank" rel="noopener">Massachusetts DPH circular on medical assistants and immunizations</a></li>
-            <li>Certifying bodies: <a href="https://www.nhanow.com/" target="_blank" rel="noopener">NHA</a>,
-            <a href="https://americanmedtech.org/" target="_blank" rel="noopener">AMT</a>,
-            <a href="https://www.ascp.org/boc/explore-credentials/view-all-credentials/PBT" target="_blank" rel="noopener">ASCP</a>,
-            <a href="https://ptcb.org/" target="_blank" rel="noopener">PTCB</a>,
-            <a href="https://www.aapc.com/" target="_blank" rel="noopener">AAPC</a>,
-            <a href="https://www.ahima.org/" target="_blank" rel="noopener">AHIMA</a></li>
-          </ul>
-        </section>
 
 """ + related(
     ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
@@ -6184,8 +6128,6 @@ _phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         start. These are national numbers. Pay in Massachusetts is different. You can look it up on the
         <a href="https://www.bls.gov/oes/current/oes_ma.htm" target="_blank" rel="noopener">BLS Massachusetts
         wage page</a>.</p>
-        <p><small>Source: BLS Occupational Employment and Wage Statistics (OEWS) and Occupational Outlook Handbook,
-        phlebotomists, job code (SOC) 31-9097.</small></p>
 
         <h2>Job outlook</h2>
         <p>BLS projects that phlebotomist jobs will grow <strong>7% from 2025 to 2035</strong>. There were about
@@ -6286,23 +6228,6 @@ _phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
 """ + _phl_faq_html + """
         </div>
 
-        <section class="sources" aria-labelledby="phl-sources-heading">
-          <h2 id="phl-sources-heading">Sources</h2>
-          <p>Pay data and job outlook from the U.S. Bureau of Labor Statistics, phlebotomists (SOC 31-9097).
-          Certification facts from the certifying bodies&rsquo; own websites.</p>
-          <ul>
-            <li><a href="https://www.bls.gov/ooh/healthcare/phlebotomists.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Phlebotomists</a></li>
-            <li><a href="https://www.bls.gov/oes/current/oes319097.htm" target="_blank" rel="noopener">BLS Occupational Employment and Wages: Phlebotomists (31-9097)</a></li>
-            <li><a href="https://www.bls.gov/oes/current/oes_ma.htm" target="_blank" rel="noopener">BLS Occupational Employment and Wage Estimates: Massachusetts</a></li>
-            <li><a href="https://www.mass.gov/clinical-laboratory-program" target="_blank" rel="noopener">Massachusetts DPH Clinical Laboratory Program</a></li>
-            <li><a href="https://www.ascp.org/boc/explore-credentials/state-licensure" target="_blank" rel="noopener">ASCP Board of Certification: State Licensure</a></li>
-            <li><a href="https://www.ascp.org/boc/explore-credentials/view-all-credentials/PBT" target="_blank" rel="noopener">ASCP Board of Certification: Phlebotomy Technician (PBT)</a></li>
-            <li><a href="https://www.ascp.org/boc/maintain-your-credentials/view-credentials-to-maintain/PBT" target="_blank" rel="noopener">ASCP: Maintaining the PBT credential</a></li>
-            <li><a href="https://www.nhanow.com/certification/nha-certifications/certified-phlebotomy-technician-(cpt)" target="_blank" rel="noopener">NHA: Certified Phlebotomy Technician (CPT)</a></li>
-            <li><a href="https://www.nhanow.com/stay-certified" target="_blank" rel="noopener">NHA: Stay Certified</a></li>
-            <li><a href="https://americanmedtech.org/phlebotomy-technician" target="_blank" rel="noopener">AMT: Registered Phlebotomy Technician (RPT)</a></li>
-          </ul>
-        </section>
 
 """ + related(
     ("Healthcare Jobs in Massachusetts You Can Train For", "blog/healthcare-jobs-massachusetts.html"),
@@ -6587,8 +6512,6 @@ _pt_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF
         U.S., the median was <strong>$45,750 a year</strong>. New technicians usually start below these numbers. Pay also depends on where you work and on your skills.</p>
         <p>BLS projects that pharmacy technician jobs will grow <strong>6% from 2025 to 2035</strong> across the
         U.S. That points to steady demand.</p>
-        <p><small>Source: BLS Occupational Employment and Wage Statistics (OEWS), May 2025, national and
-        Massachusetts, and BLS Employment Projections 2025-2035; pharmacy technicians, job code (SOC) 29-2052.</small></p>
 
         <h2>The hard truth: is this job right for you?</h2>
         <p>Other guides only list the good parts. Here are the hard parts too:</p>
@@ -6717,25 +6640,6 @@ _pt_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF
 """ + _pt_faq_html + """
         </div>
 
-        <section class="sources" aria-labelledby="pt-sources-heading">
-          <h2 id="pt-sources-heading">Sources</h2>
-          <p>Pay data and job outlook from the U.S. Bureau of Labor Statistics, pharmacy technicians (SOC 29-2052).
-          License rules from the Massachusetts Board of Registration in Pharmacy (247 CMR 8.00). Exam facts from the
-          certifying bodies&rsquo; own websites.</p>
-          <ul>
-            <li><a href="https://www.bls.gov/ooh/healthcare/pharmacy-technicians.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Pharmacy Technicians</a></li>
-            <li><a href="https://www.bls.gov/oes/current/oes292052.htm" target="_blank" rel="noopener">BLS Occupational Employment and Wages: Pharmacy Technicians (29-2052)</a></li>
-            <li><a href="https://www.bls.gov/oes/current/oes_ma.htm" target="_blank" rel="noopener">BLS Occupational Employment and Wage Estimates: Massachusetts</a></li>
-            <li><a href="https://www.mass.gov/pharmacy-technician-licensing" target="_blank" rel="noopener">Massachusetts Board of Registration in Pharmacy: Pharmacy Technician Licensing</a></li>
-            <li><a href="https://www.mass.gov/how-to/apply-for-a-pharmacy-technician-license" target="_blank" rel="noopener">mass.gov: Apply for a Pharmacy Technician License</a></li>
-            <li><a href="https://www.mass.gov/how-to/apply-for-pharmacy-technician-in-training-license" target="_blank" rel="noopener">mass.gov: Apply for a Pharmacy Technician in Training License</a></li>
-            <li><a href="https://www.mass.gov/regulations/247-CMR-800-pharmacy-interns-and-technicians" target="_blank" rel="noopener">247 CMR 8.00: Pharmacy Interns and Technicians</a></li>
-            <li><a href="https://www.mass.gov/doc/technician-training-programs-and-exams-pdf/download" target="_blank" rel="noopener">Massachusetts Board: Technician Training Programs and Exams</a></li>
-            <li><a href="https://ptcb.org/credentials/certification/certified-pharmacy-technician/" target="_blank" rel="noopener">PTCB: Certified Pharmacy Technician (CPhT)</a></li>
-            <li><a href="https://www.nhanow.com" target="_blank" rel="noopener">NHA: National Healthcareer Association</a></li>
-            <li><a href="https://www.careeronestop.org/Toolkit/Training/find-local-training.aspx" target="_blank" rel="noopener">CareerOneStop Training Finder (U.S. Department of Labor)</a></li>
-          </ul>
-        </section>
 
 """ + related(
     ("How to Become a Phlebotomist in Massachusetts", "blog/phlebotomist-massachusetts.html"),
@@ -7148,27 +7052,6 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
 """ + _cna_faq_html + """
         </div>
 
-        <section class="sources" aria-labelledby="cna-sources-heading">
-          <h2 id="cna-sources-heading">Sources</h2>
-          <p>Pay and job outlook from the U.S. Bureau of Labor Statistics, nursing assistants (SOC 31-1131), May
-          2025 data and 2025-2035 projections. Training rules from federal regulations (42 CFR 483.35, 483.152)
-          and the Massachusetts Department of Public Health (105 CMR 156). Exam facts from the D&amp;S
-          Diversified Technologies Massachusetts candidate handbook (May 2026).</p>
-          <ul>
-            <li><a href="https://www.bls.gov/ooh/healthcare/nursing-assistants.htm" target="_blank" rel="noopener">BLS Occupational Outlook Handbook: Nursing Assistants and Orderlies</a></li>
-            <li><a href="https://www.bls.gov/oes/current/oes_ma.htm" target="_blank" rel="noopener">BLS Occupational Employment and Wage Estimates: Massachusetts</a></li>
-            <li><a href="https://www.mass.gov/info-details/learn-how-to-become-a-certified-nurse-aide-in-massachusetts" target="_blank" rel="noopener">mass.gov: Learn how to become a certified nurse aide in Massachusetts</a></li>
-            <li><a href="https://www.mass.gov/nurse-aide-registry-program" target="_blank" rel="noopener">mass.gov: Nurse Aide Registry Program</a></li>
-            <li><a href="https://www.mass.gov/info-details/information-for-nurse-aide-training-programs" target="_blank" rel="noopener">mass.gov: Information for Nurse Aide Training Programs</a></li>
-            <li><a href="https://www.mass.gov/info-details/dph-advisory-memo-new-certified-nurse-aide-cna-curriculum-framework" target="_blank" rel="noopener">mass.gov: DPH Advisory Memo, New CNA Curriculum Framework (April 2026)</a></li>
-            <li><a href="https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-483/subpart-D/section-483.152" target="_blank" rel="noopener">42 CFR 483.152: Nurse aide training and competency evaluation programs</a></li>
-            <li><a href="https://www.law.cornell.edu/cfr/text/42/483.35" target="_blank" rel="noopener">42 CFR 483.35: Nursing services</a></li>
-            <li><a href="https://www.law.cornell.edu/regulations/massachusetts/105-CMR-156-300" target="_blank" rel="noopener">105 CMR 156.300: Nurse aide training course requirements</a></li>
-            <li><a href="https://www.hdmaster.com/testing/cnatesting/Massachusetts/forms/MA%20Candidate%20Handbook%205.2026.pdf" target="_blank" rel="noopener">D&amp;S Diversified Technologies: Massachusetts Nurse Aide Candidate Handbook (May 2026)</a></li>
-            <li><a href="https://www.cms.gov/medicare/health-safety-standards/certification-compliance/five-star-quality-rating-system" target="_blank" rel="noopener">CMS: Five-Star Quality Rating System</a></li>
-            <li><a href="https://www.careeronestop.org/Toolkit/Training/find-local-training.aspx" target="_blank" rel="noopener">CareerOneStop Training Finder (U.S. Department of Labor)</a></li>
-          </ul>
-        </section>
 
 """ + related(
     ("Healthcare Jobs in Massachusetts You Can Train For", "blog/healthcare-jobs-massachusetts.html"),

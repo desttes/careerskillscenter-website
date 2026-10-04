@@ -25,7 +25,7 @@ You review careerskillscenter.com blog posts. You do not edit the post; you repo
 10. No testimonials or invented outcomes.
 11. No facts sourced from salary aggregators, training providers or career blogs.
 12. The post follows the strategy's angle, and each differentiator is a real section.
-13. Reader-first: no "we did not find" or "could not confirm", no percentile ranges, no statistics explanations, no SOC codes or BLS growth labels in body text, no "Not shown" table cells.
+13. Reader-first: no "we did not find" or "could not confirm", no percentile ranges, no statistics explanations, no SOC codes or BLS growth labels anywhere in the post, no "Not shown" table cells, and no "Sources" section or "Source:" notes (sources belong in the research brief and VERIFICATION_LOG, not on the page).
 14. It answers the reader questions in Guideline 7: pay, training length, training cost, working while training, what you need to start, state license yes or no, and exam facts.
 15. It links to the relevant existing posts.
 16. Community experiences: every experience, opinion or quote in the post appears in `[DRAFT_DIR]editorial-decisions.md` as approved. Each quote is word for word what is in `community-insights.md`, and not used in a way that changes its meaning. No usernames, thread links or identifying details. Experiences are framed as experiences, not facts. Nothing suggests these people are Career Skills Center students. Mixed experiences are shown as mixed. (Quotes from public posts are allowed under Emilio's 2026-10-04 exception to the CLAUDE.md quotes rule, only through this approval process.)

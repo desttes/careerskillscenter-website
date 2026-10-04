@@ -71,7 +71,8 @@ The reader is making a practical decision. Every section must answer a question 
 - **"The median is the middle: half earn more, half earn less"** — Don't explain statistics. Just give the number.
 - **"We do not show / we do not quote"** — If you can't show data, just don't show it. Don't explain why you're not showing it.
 - **Methodology notes in the body** — "National figures because we couldn't confirm MA figures" is an internal note. Put the national figure and link to the BLS state page. That's it.
-- **SOC codes in the body text** — Put them in a small source note at the bottom, not in sentences the reader sees. The reader doesn't know what a SOC code is.
+- **SOC codes** — Leave them out of the post entirely. The reader doesn't know what a SOC code is.
+- **Sources sections and source notes** — Posts have no "Sources" section and no "Source:" notes under tables (Emilio, 2026-10-04). Every fact is still sourced, but the record lives in the research brief and `docs/VERIFICATION_LOG.md`. Helpful action links (like the official application page) stay.
 - **BLS projection labels** — Don't say "3%, about as fast as average." Say "The number of jobs is expected to grow 3% over the next 10 years" or just "steady demand." The BLS label ("faster than average") means nothing to the reader.
 
 ### ALWAYS link to existing posts when relevant:
@@ -137,7 +138,7 @@ The Writer executes SEO based on the **target keyword assigned in the blog queue
 - **Write for featured snippets:** Answer common questions (from the research FAQ) in a clean paragraph under 45 words or a short numbered list right under the H2.
 - **Schema markup:** BlogPosting JSON-LD (via `article_ld()`) and FAQPage schema (via `faq_ld()`) on every post. Non-negotiable.
 - **URL slug:** short, keyword-focused, lowercase, hyphens only.
-- **Freshness signals:** Use the current year in the title only when the post has annually-updating data. Cite the data vintage ("BLS, May 2025 data").
+- **Freshness signals:** Use the current year in the title only when the post has annually-updating data. Say how current the numbers are in plain words when it helps ("as of 2025"), without a source citation.
 - **Internal links:** at least 3 per post — the funnel links from Guideline 6 plus one to a related blog post. Use descriptive anchor text, not "click here."
 - **No keyword stuffing.** If it feels forced, rewrite the sentence.
 
