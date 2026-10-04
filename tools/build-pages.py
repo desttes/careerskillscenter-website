@@ -341,7 +341,7 @@ def article(category, title, dek, date, read, body, author="Career Skills Center
     </section>
 
     <section class="section">
-      <div class="container prose">
+      <div class="container prose post-body">
 {body}
       </div>
     </section>"""

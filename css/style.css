@@ -830,6 +830,18 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .prose ul { list-style: disc; padding-left: 22px; margin-bottom: 1em; display: grid; gap: 8px; }
 .prose .updated { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 
+/* Blog articles only: roomier spacing so each short paragraph reads as one bite */
+.post-body p { margin: 0 0 28px; }
+.post-body h2 { font-size: 34px; line-height: 1.2; margin: 72px 0 20px; }
+.post-body h3 { font-size: 24px; line-height: 1.25; margin: 48px 0 14px; }
+.post-body ul, .post-body ol { margin-bottom: 28px; }
+.post-body > :first-child { margin-top: 0; }
+@media (max-width: 640px) {
+  .post-body p { margin-bottom: 22px; }
+  .post-body h2 { font-size: 28px; margin: 52px 0 16px; }
+  .post-body h3 { font-size: 21px; margin: 36px 0 12px; }
+}
+
 /* ---------- Inline note / disclaimer ---------- */
 .note { margin-top: 26px; padding: 16px 18px; background: var(--surface-alt); border-left: 3px solid var(--yellow); font-size: 14px; color: var(--ink-light); }
 .note:last-child { margin-bottom: 0; }
