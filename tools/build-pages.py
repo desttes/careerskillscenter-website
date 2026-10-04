@@ -4369,9 +4369,8 @@ _p6_body = """        <!-- Approved by Emilio 2026-09-28. AAPC CPC/CPB confirmed
         "no schedule"; the ones who succeed set aside regular study time and stick to it.</p>
 
         <h2>What it pays, and how to pay for it</h2>
-        <p>Medical records specialists earn a solid, middle-class wage in Massachusetts. You can look up the
-        current median for the role at <a href="https://data.bls.gov/oes/#/area/2500000/2025">data.bls.gov
-        (Massachusetts)</a>. And if cost is a concern, state funding may help — start with our
+        <p>Medical records specialists earn a solid, middle-class wage in Massachusetts.</p>
+        <p>If cost is a concern, state funding may help. Start with our
         <a href="blog/free-job-training-massachusetts.html">guide to free job training in Massachusetts</a>.</p>
 
 """ + FUNDING_NOTE + """
@@ -4521,9 +4520,8 @@ _p7_body = """        <!-- Approved by Emilio 2026-09-28. CompTIA Tech+/A+ confi
         Treat your first support job as a starting point, not the finish line.</p>
 
         <h2>What it pays, and how to pay for it</h2>
-        <p>Computer user support specialists earn a solid wage in Massachusetts. You can look up the current
-        median for the role at <a href="https://data.bls.gov/oes/#/area/2500000/2025">data.bls.gov
-        (Massachusetts)</a>. One honest note: nationally, help-desk roles are expected to hold steady rather
+        <p>Computer user support specialists earn a solid wage in Massachusetts.</p>
+        <p>One honest note: nationally, help-desk roles are expected to hold steady rather
         than grow fast, but there are still thousands of openings each year as people move up or retire. If cost
         is a worry, see our
         <a href="blog/free-job-training-massachusetts.html">guide to free job training in Massachusetts</a>.</p>
@@ -4648,9 +4646,7 @@ _p8_body = """        <!-- Approved by Emilio 2026-09-28. MA license-hour exampl
 
         <h2>Do the trades pay off?</h2>
         <p>Yes — and the work cannot be shipped overseas. In Massachusetts, electricians, plumbers, and HVAC and
-        refrigeration mechanics all earn solid middle-class wages (BLS OEWS, May 2025). You can look up the
-        current medians for any occupation at <a href="https://data.bls.gov/oes/#/area/2500000/2025">data.bls.gov
-        (Massachusetts)</a>.</p>
+        refrigeration mechanics all earn solid middle-class wages.</p>
 
         <h2>Which trade might fit you?</h2>
         <p>Each trade has a different day-to-day. A few quick contrasts to help you think it through:</p>
@@ -5036,7 +5032,7 @@ PAGES.append(dict(
       {
         "@type": "Question",
         "name": "Do I need a license to work in medical billing and coding?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No state license is required. Employers often prefer, and sometimes require, a national certification such as the CPC, CCA or CBCS, according to the U.S. Bureau of Labor Statistics." }
+        "acceptedAnswer": { "@type": "Answer", "text": "No state license is required. Employers often prefer, and sometimes require, a national certification such as the CPC, CCA or CBCS." }
       },
       {
         "@type": "Question",
@@ -5196,7 +5192,7 @@ PAGES.append(dict(
           <li><strong>Hospital and health-system career pages.</strong> Large systems often hire for billing, registration and charge-entry jobs, which can lead to coding roles.</li>
           <li><strong>Medical billing companies and staffing agencies</strong>, which often hire new billers.</li>
           <li><strong>Local AAPC chapters.</strong> <a href="https://www.aapc.com/membership/local-chapter-overview" target="_blank" rel="noopener">Chapter meetings</a> are a good way to meet working coders and hear about openings.</li>
-          <li><strong>Your local American Job Center.</strong> These free, government-funded centers help with job searches and resumes. <a href="https://www.careeronestop.org/LocalHelp/AmericanJobCenters/find-american-job-centers.aspx" target="_blank" rel="noopener">Find one near you on CareerOneStop</a>.</li>
+          <li><strong>Your local American Job Center.</strong> These free, government-funded centers help with job searches and resumes. <a href="https://www.careeronestop.org/LocalHelp/AmericanJobCenters/find-american-job-centers.aspx" target="_blank" rel="noopener">Find one near you</a>.</li>
         </ul>
 
         <p>A tip from the field: many coders start in a related job first, such as front desk, patient registration or billing. That experience counts, and it gets you inside a place that also hires coders.</p>
@@ -5219,11 +5215,11 @@ PAGES.append(dict(
         </table>
         </div>
 
-        <p>How we got these numbers:</p>
+        <p>What the totals include:</p>
         <ul>
           <li><strong>Code books:</strong> AAPC's <a href="https://www.aapc.com/medical-coding-books/bundles.aspx" target="_blank" rel="noopener">Exam Book Bundle 2026</a>, $244.99 on sale. Colleges may require other textbooks on top of this.</li>
           <li><strong>Membership + exam:</strong> $229 for individual AAPC membership plus $499 for a <a href="https://www.aapc.com/support/certification-exams/how-much-does-the-cpc-exam-cost" target="_blank" rel="noopener">two-attempt exam voucher</a>. Students at AAPC-approved schools may pay $164 and $475 instead, saving $89.</li>
-          <li><strong>Tuition:</strong> from each school's own pages, cited above. Financial aid can lower the college totals for students who qualify.</li>
+          <li><strong>Tuition:</strong> each school's listed price. Financial aid can lower the college totals for students who qualify.</li>
         </ul>
 
         <p>The exam and the books cost the same on every path. The main differences are tuition, how long the program takes, and whether classes are online, in person or hybrid. Choose the path that fits your budget, your schedule and the way you like to learn.</p>
@@ -5245,7 +5241,7 @@ PAGES.append(dict(
             <details class="faq-item"><summary>Is a college certificate the same as being certified?</summary>
             <div><p>No. A college certificate shows you finished a program. Certification, such as the CPC, comes from passing a national exam.</p></div></details>
             <details class="faq-item"><summary>Do I need a license to work in medical billing and coding?</summary>
-            <div><p>No state license is required. Employers often prefer, and sometimes require, a national certification such as the CPC, CCA or CBCS, according to the <a href="https://www.bls.gov/ooh/healthcare/medical-records-and-health-information-technicians.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a>.</p></div></details>
+            <div><p>No state license is required. Employers often prefer, and sometimes require, a national certification such as the CPC, CCA or CBCS.</p></div></details>
             <details class="faq-item"><summary>Can I find a job with no experience?</summary>
             <div><p>It's harder, but possible. Use AAPC's job board filters for CPC-A and entry-level jobs, look at the Xtern Program, and consider related starter jobs like billing or patient registration.</p></div></details>
           </div>
@@ -5263,7 +5259,7 @@ PAGES.append(dict(
     slug="blog/medical-coding-billing-salary-by-state.html", nav="blog.html",
     title="Medical Coding and Billing Salary by State (2026): What Coders and Billers Earn" + " | Career Skills Center",
     ogtitle="Medical Coding and Billing Salary by State (2026): What Coders and Billers Earn",
-    desc="Medical coders earn a median of $51,140 a year ($24.59 an hour). See pay in every state, what beginners make, and whether coders or billers earn more.",
+    desc="Most medical coders earn around $51,140 a year. See pay in every state, what beginners make, and whether coders or billers earn more.",
     extrahead=r'''  <!-- Scoped to this post: plain grey in-article links hide the source links; narrow tables don't need the 660px minimum. -->
   <script>document.addEventListener("DOMContentLoaded",function(){function o(){var e=location.hash&&document.querySelector(location.hash);if(e&&e.tagName==="DETAILS")e.open=true}o();addEventListener("hashchange",o)});</script>
   <style>.prose a:not(.btn):not(.link-yellow){color:#c24d12;text-decoration:underline;text-underline-offset:2px}.prose .table-wrap a{font-weight:500}.data-table--narrow{min-width:0}.toc ul{list-style:none;margin:0 0 24px;padding:0}.toc li{margin:0 0 8px}.prose .toc a:not(.btn):not(.link-yellow){font-weight:700;text-decoration:none}.prose h2[id]{scroll-margin-top:100px}@media(min-width:1100px){.prose{position:relative;max-width:var(--container);padding-left:calc(var(--gutter) + 250px)}.prose>*{max-width:820px}.toc{position:absolute;top:0;left:var(--gutter);right:auto;width:210px}.toc ul{margin:0}}.prose table caption{caption-side:top;text-align:left;font-weight:700;color:var(--navy);padding:0 0 10px}</style>
@@ -5272,7 +5268,7 @@ PAGES.append(dict(
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "Medical Coding and Billing Salary by State (2026): What Coders and Billers Earn",
-    "description": "Medical coders earn a median of $51,140 a year ($24.59 an hour). See pay in every state, what beginners make, and whether coders or billers earn more.",
+    "description": "Most medical coders earn around $51,140 a year. See pay in every state, what beginners make, and whether coders or billers earn more.",
     "author": { "@type": "Organization", "name": "Career Skills Center", "url": "https://careerskillscenter.com/" },
     "publisher": { "@type": "Organization", "name": "Career Skills Center", "url": "https://careerskillscenter.com/" },
     "datePublished": "2026-10-01",
@@ -5288,33 +5284,33 @@ PAGES.append(dict(
       {
         "@type": "Question",
         "name": "How much money do you make as a medical coder?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The median pay for medical coders and other medical records specialists was $51,140 a year, or $24.59 an hour, in May 2025, according to the U.S. Bureau of Labor Statistics. Most earn between $37,000 and $81,150." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Most medical coders earn around $51,140 a year across the U.S. Pay is higher in some states and for certified coders." }
       },
       {
         "@type": "Question",
         "name": "How much can a beginner medical coder make?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The government doesn't track pay by experience, but the lower end of the pay range is a good guide. A quarter of medical records specialists earned $43,490 or less in May 2025, and the lowest 10 percent earned under $37,000. That's about $18 to $21 an hour." }
+        "acceptedAnswer": { "@type": "Answer", "text": "New coders usually start around $37,000 to $43,500 a year. Getting certified and where you live can help you start higher." }
       },
       {
         "@type": "Question",
         "name": "Who gets paid more, a medical biller or a medical coder?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Coders usually earn a little more. Medical records specialists, the group that includes coders, had a median of $51,140 in May 2025. Billing and posting clerks had a median of $48,500. Many jobs combine both tasks." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Coders usually earn a little more: about $51,140 a year, compared with about $48,500 for billers. Many jobs combine both tasks." }
       },
       {
         "@type": "Question",
         "name": "Do medical coders get paid well?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Medical coding pays close to the middle of the U.S. job market. The median for medical records specialists ($51,140) is just above the median for all jobs ($50,980). Certification tends to raise pay: AAPC's 2026 report found certified members averaged $67,260, compared with $55,721 for members without a certification." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Medical coding pays close to the middle of the U.S. job market, about $51,140 a year. Certified AAPC members averaged $67,260, compared with $55,721 for members without a certification." }
       },
       {
         "@type": "Question",
         "name": "Which state pays medical coders the most?",
-        "acceptedAnswer": { "@type": "Answer", "text": "In May 2025 the highest medians were in the District of Columbia, Rhode Island, Hawaii, Washington and California, all above $61,000 a year." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The District of Columbia, Rhode Island, Hawaii, Washington and California pay the most, all above $61,000 a year." }
       }
     ]
   }
   </script>''',
     main=article("Medical", "Medical Coding and Billing Salary by State (2026): What Coders and Billers Earn",
-                 "Medical coders earn a median of $51,140 a year ($24.59 an hour). See pay in every state, what beginners make, and whether coders or billers earn more.",
+                 "Most medical coders earn around $51,140 a year. See pay in every state, what beginners make, and whether coders or billers earn more.",
                  "October 1, 2026", "7 min read", r'''
         <nav class="toc" aria-label="On this page">
           <ul>
@@ -5331,41 +5327,21 @@ PAGES.append(dict(
           </ul>
         </nav>
 
-        <p>Medical coders earn a median of <strong>$51,140 a year, or $24.59 an hour</strong>, according to the <a href="https://www.bls.gov/ooh/healthcare/medical-records-and-health-information-technicians.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a> (May 2025). Most earn between $37,000 and $81,150. Where you live, whether you're certified and where you work all make a big difference.</p>
+        <p>Most medical coders earn around <strong>$51,140 a year</strong>. Where you live, whether you're certified and where you work all make a big difference.</p>
 
         <p>Below you'll find pay at every level, what beginners make, whether coders or billers earn more, and pay in every state.</p>
 
         <h2>How much money do you make as a medical coder?</h2>
 
-        <p>Half of all medical coders earn more than $51,140 a year, and half earn less. The government counts coders under the job title "medical records specialists," which also includes some records and health information workers.</p>
-
-        <p>Here is the full pay range for May 2025:</p>
-
-        <div class="table-wrap">
-        <table class="data-table data-table--narrow">
-          <caption>Medical records specialists (includes medical coders), U.S., May 2025</caption>
-          <thead>
-            <tr><th>Pay level</th><th>Per year</th><th>Per hour</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Lowest 10%</td><td>$37,000 or less</td><td>$17.79</td></tr>
-            <tr><td>Lower 25%</td><td>$43,490</td><td>$20.91</td></tr>
-            <tr><td>Median (middle)</td><td>$51,140</td><td>$24.59</td></tr>
-            <tr><td>Upper 25%</td><td>$64,820</td><td>$31.17</td></tr>
-            <tr><td>Top 10%</td><td>$81,150 or more</td><td>$39.01</td></tr>
-          </tbody>
-        </table>
-        </div>
-
-        <p>The average (mean) was a bit higher, $56,790, because a smaller group of experienced coders earns well above the median.</p>
+        <p>Most medical coders earn around $51,140 a year. In pay data, coders are grouped with other health records workers under the title "medical records specialists."</p>
 
         <h2 id="toc-beginner">How much can a beginner coder make?</h2>
 
-        <p>Expect to start somewhere around <strong>$37,000 to $43,500 a year</strong>, or about $18 to $21 an hour. The government doesn't publish pay by years of experience, but new workers usually earn near the lower end of the range, between the lowest 10 percent and the lower 25 percent in the table above.</p>
+        <p>Expect to start somewhere around <strong>$37,000 to $43,500 a year</strong>. New workers usually earn less than the typical coder.</p>
 
         <p>A few things can move your starting pay up:</p>
         <ul>
-          <li><strong>Where you live.</strong> Starting pay in a high-wage state can be higher than the national median in a low-wage state. See the state table below.</li>
+          <li><strong>Where you live.</strong> Starting pay in a high-wage state can be higher than typical pay in a low-wage state. See the state table below.</li>
           <li><strong>Getting certified.</strong> Many employers prefer or require a certification such as the CPC. If you pass without work experience, you start as a CPC-A (apprentice), which some employers hire specifically.</li>
           <li><strong>Starting in a related job.</strong> Many coders begin in billing, patient registration or the front desk, then move into coding at the same employer.</li>
         </ul>
@@ -5374,38 +5350,38 @@ PAGES.append(dict(
 
         <h2 id="toc-billing">What pays more, medical coding or billing?</h2>
 
-        <p>Coding usually pays a little more. In May 2025:</p>
+        <p>Coding usually pays a little more:</p>
 
         <div class="table-wrap">
         <table class="data-table data-table--narrow">
-          <caption>Median pay, U.S., May 2025</caption>
+          <caption>Typical yearly pay, U.S.</caption>
           <thead>
-            <tr><th>Job</th><th>Per year</th><th>Per hour</th></tr>
+            <tr><th>Job</th><th>Per year</th></tr>
           </thead>
           <tbody>
-            <tr><td>Medical records specialists (includes medical coders)</td><td>$51,140</td><td>$24.59</td></tr>
-            <tr><td>Billing and posting clerks (includes medical billers)</td><td>$48,500</td><td>$23.32</td></tr>
+            <tr><td>Medical records specialists (includes medical coders)</td><td>$51,140</td></tr>
+            <tr><td>Billing and posting clerks (includes medical billers)</td><td>$48,500</td></tr>
           </tbody>
         </table>
         </div>
 
         <p>Two things to keep in mind:</p>
         <ul>
-          <li><strong>The billing number isn't only medical.</strong> The government's "billing and posting clerks" group includes billing jobs in every industry, not just healthcare.</li>
+          <li><strong>The billing number isn't only medical.</strong> The "billing and posting clerks" group includes billing jobs in every industry, not just healthcare.</li>
           <li><strong>Many jobs do both.</strong> In smaller medical offices, one person often codes visits and sends the claims. Job titles like "medical billing and coding specialist" are common, and they usually pay in the coder range.</li>
         </ul>
 
-        <p>Certification shows a similar pattern. In <a href="https://www.aapc.com/resources/medical-coding-salary-survey" target="_blank" rel="noopener">AAPC's 2026 salary report</a>, members holding the Certified Professional Coder (CPC) credential averaged $67,147 in 2025.</p>
+        <p>Certification shows a similar pattern. AAPC members with the Certified Professional Coder (CPC) credential averaged $67,147 in 2025.</p>
 
         <h2 id="toc-states">Medical coding salary by state</h2>
 
-        <p>Pay varies a lot by state. In May 2025, the highest median pay for medical records specialists was in:</p>
+        <p>Pay varies a lot by state. These states pay medical coders the most:</p>
 
         <div class="table-wrap">
         <table class="data-table data-table--narrow">
-          <caption>Highest-paying states for medical records specialists, median pay, May 2025</caption>
+          <caption>Highest-paying states for medical coders</caption>
           <thead>
-            <tr><th>State</th><th>Median per year</th></tr>
+            <tr><th>State</th><th>Per year</th></tr>
           </thead>
           <tbody>
             <tr><td>District of Columbia</td><td>$72,040</td></tr>
@@ -5426,7 +5402,7 @@ PAGES.append(dict(
 
         <h3>Pay in every state</h3>
 
-        <p>This table shows median yearly and hourly pay in every state for medical records specialists (which includes coders), plus median yearly pay for billing and posting clerks (which includes billers).</p>
+        <p>This table shows typical pay in every state for medical coders and for medical billers.</p>
 
         <!-- STATE-TABLE:START -->
         <div class="table-wrap">
@@ -5494,9 +5470,11 @@ PAGES.append(dict(
 
         <h2 id="toc-raise">What raises your pay</h2>
 
-        <p><strong>Certification.</strong> This is the biggest factor most people can control. In <a href="https://www.aapc.com/resources/medical-coding-salary-survey" target="_blank" rel="noopener">AAPC's 2026 salary report</a>, certified members averaged $67,260, compared with $55,721 for members without a certification, a difference of about 21 percent. Members with two AAPC certifications averaged $74,557, and those with three or more averaged $81,227.</p>
+        <p><strong>Certification.</strong> This is the biggest factor most people can control. Certified AAPC members averaged $67,260, compared with $55,721 for members without a certification.</p>
 
-        <p>AAPC's figures come from a survey of its own members, who tend to be more experienced than the average coder. That's why they run higher than the government numbers above. Use them to compare certified and non-certified pay, not as a starting salary.</p>
+        <p>Members with two AAPC certifications averaged $74,557, and those with three or more averaged $81,227.</p>
+
+        <p>These AAPC members tend to have more experience than most coders, so their pay runs higher. Use these numbers to compare, not as a starting salary.</p>
 
         <p><strong>Experience and specialty.</strong> After a few years, coders often move into specialty coding, auditing or compliance, which usually pay more.</p>
 
@@ -5504,9 +5482,11 @@ PAGES.append(dict(
 
         <h2 id="toc-paid-well">Do medical coders get paid well?</h2>
 
-        <p>Medical coding pays close to the middle of the U.S. job market. The median for medical records specialists ($51,140) is just above the median for all U.S. jobs ($50,980). What makes it attractive to many people is the combination: you can train in months rather than years, there's no state license, and experienced, certified coders can earn well above the median.</p>
+        <p>Medical coding pays close to the middle of the U.S. job market. Coders earn about $51,140 a year, just above the $50,980 typical for all U.S. jobs.</p>
 
-        <p>Demand looks steady too. The Bureau of Labor Statistics projects jobs for medical records specialists to grow about 8 percent from 2025 to 2035, much faster than the average for all occupations.</p>
+        <p>What makes it attractive is the mix. You can train in months rather than years, there's no state license, and experienced, certified coders can earn much more.</p>
+
+        <p>Demand looks steady too. Jobs for medical records specialists are expected to grow about 8 percent from 2025 to 2035.</p>
 
         <!-- COURSE-DEPENDENT: R-BLOG-MBC -->
         <div class="post-cta">
@@ -5521,15 +5501,15 @@ PAGES.append(dict(
           <h2 id="faq-heading">Frequently asked questions</h2>
           <div class="faq">
             <details class="faq-item" id="faq-1"><summary>How much money do you make as a medical coder?</summary>
-            <div><p>The median pay for medical coders and other medical records specialists was $51,140 a year, or $24.59 an hour, in May 2025, according to the U.S. Bureau of Labor Statistics. Most earn between $37,000 and $81,150.</p></div></details>
+            <div><p>Most medical coders earn around $51,140 a year across the U.S. Pay is higher in some states and for certified coders.</p></div></details>
             <details class="faq-item" id="faq-2"><summary>How much can a beginner medical coder make?</summary>
-            <div><p>The government doesn't track pay by experience, but the lower end of the pay range is a good guide. A quarter of medical records specialists earned $43,490 or less in May 2025, and the lowest 10 percent earned under $37,000. That's about $18 to $21 an hour.</p></div></details>
+            <div><p>New coders usually start around $37,000 to $43,500 a year. Getting certified and where you live can help you start higher.</p></div></details>
             <details class="faq-item" id="faq-3"><summary>Who gets paid more, a medical biller or a medical coder?</summary>
-            <div><p>Coders usually earn a little more. Medical records specialists, the group that includes coders, had a median of $51,140 in May 2025. Billing and posting clerks had a median of $48,500. Many jobs combine both tasks.</p></div></details>
+            <div><p>Coders usually earn a little more: about $51,140 a year, compared with about $48,500 for billers. Many jobs combine both tasks.</p></div></details>
             <details class="faq-item" id="faq-4"><summary>Do medical coders get paid well?</summary>
-            <div><p>Medical coding pays close to the middle of the U.S. job market. The median for medical records specialists ($51,140) is just above the median for all jobs ($50,980). Certification tends to raise pay: AAPC's 2026 report found certified members averaged $67,260, compared with $55,721 for members without a certification.</p></div></details>
+            <div><p>Medical coding pays close to the middle of the U.S. job market, about $51,140 a year. Certified AAPC members averaged $67,260, compared with $55,721 for members without a certification.</p></div></details>
             <details class="faq-item" id="faq-5"><summary>Which state pays medical coders the most?</summary>
-            <div><p>In May 2025 the highest medians were in the District of Columbia, Rhode Island, Hawaii, Washington and California, all above $61,000 a year.</p></div></details>
+            <div><p>The District of Columbia, Rhode Island, Hawaii, Washington and California pay the most, all above $61,000 a year.</p></div></details>
           </div>
         </section>
 
@@ -5546,13 +5526,13 @@ _hcj_faq = [
     ("What is the highest-paying healthcare job you can get without a degree?",
      "Medical billing and coding pays the most of the six jobs in this guide. Most medical coders earn around $51,000 a year. With experience and specialized certifications, some earn over $80,000."),
     ("How long does it take to train for a healthcare job?",
-     "It depends on the job. CNA programs must meet the federal minimum of 75 hours, and each school sets its own schedule, so ask the school how long it takes. The U.S. Bureau of Labor Statistics (BLS) says medical assistants often train for about 1 to 2 years, phlebotomists for under a year, and EKG technicians in certificate programs of under a year. BLS says pharmacy technicians often learn on the job in under a year. Medical billing and coding programs vary a lot, so ask each school how long it takes."),
+     "It depends on the job. CNA programs must meet the federal minimum of 75 hours, and each school sets its own schedule. Medical assistants often train for about 1 to 2 years. Phlebotomists, EKG technicians and pharmacy technicians often train in under a year. Medical billing and coding programs vary a lot, so ask each school how long it takes."),
     ("Do you need a license to work in healthcare in Massachusetts?",
      "It depends on the job. CNAs need to pass a state exam and be on the Massachusetts Nurse Aide Registry. Pharmacy technicians need a state license from the Board of Pharmacy. Medical assistants, phlebotomists, medical coders and EKG technicians do not need a state license, but employers often want a national certification."),
     ("Can I train for healthcare jobs while working full time?",
      "Yes, many programs offer evening and weekend classes. Medical billing and coding can be learned partly online. CNA and phlebotomy programs are shorter but require in-person practice hours. Ask any school about their schedule before you sign up."),
     ("How much does healthcare training cost?",
-     "Costs vary by program and location. CNA programs set their own prices, and some training may be free if a nursing home hires you first, so ask each school for the full price. No neutral source gives one typical price, so ask every school for the full price in writing, including exam fees. For example, Quincy College lists its Pharmacy Technician program at $1,450 and its Phlebotomy program at $2,500 (checked October 2026; exam fees are extra). You may qualify for state funding to help cover the cost."),
+     "Costs vary by program and location. Some CNA training may be free if a nursing home hires you first. Ask every school for the full price in writing, including exam fees. For example, Quincy College lists its Pharmacy Technician program at $1,450 and its Phlebotomy program at $2,500, plus exam fees. You may qualify for state funding to help cover the cost."),
 ]
 
 _hcj_faq_html = "\n".join(
@@ -5574,8 +5554,8 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
 
         <div class="note"><strong>Quick answer.</strong> Six healthcare jobs in Massachusetts are open to people
         with a high school diploma or GED: nursing assistant (CNA), medical assistant, phlebotomist, pharmacy
-        technician, medical biller/coder and EKG technician. National median pay for the first five ranges from
-        about $42,000 to $51,000 a year. CNA and pharmacy technician need a Massachusetts state license or
+        technician, medical biller/coder and EKG technician. Typical U.S. pay for the first five is about
+        $42,000 to $51,000 a year. CNA and pharmacy technician need a Massachusetts state license or
         registry. The other four do not require a state license.</div>
 
         <h2>Before you click Apply: how to read a healthcare job listing</h2>
@@ -5593,24 +5573,21 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
         <p>The six jobs below are the ones where a beginner with a high school diploma or GED has a real path in.</p>
 
         <h2>The six jobs compared</h2>
-        <p>Pay is the <strong>national</strong> median from the U.S. Bureau of Labor Statistics (BLS),
-        May 2025 data. Pay in Massachusetts may be different. You can look up Massachusetts pay on the
-        <a href="https://www.bls.gov/oes/current/oessrcst.htm" target="_blank" rel="noopener">BLS state wage
-        page</a>.</p>
+        <p>Pay below is the typical yearly pay across the U.S. Pay in Massachusetts may be different.</p>
 
         <div class="table-wrap">
         <table class="data-table">
           <caption>Six healthcare jobs you can train for with a high school diploma or GED</caption>
           <thead>
-            <tr><th>Job</th><th>What you do</th><th>Pay (national median)</th><th>Training time</th><th>Training cost</th><th>State license needed?</th></tr>
+            <tr><th>Job</th><th>What you do</th><th>Pay (U.S. typical)</th><th>Training time</th><th>Training cost</th><th>State license needed?</th></tr>
           </thead>
           <tbody>
             <tr><td>Nursing assistant (CNA)</td><td>Help patients bathe, dress, eat and move</td><td>$42,260/yr</td><td>Varies by school (federal minimum 75 hours)</td><td>Varies; may be free if an employer hires you first</td><td>Yes &mdash; state exam + DPH registry</td></tr>
-            <tr><td>Medical assistant</td><td>Check patients in, take vitals, help the doctor</td><td>$45,690/yr</td><td>About 1&ndash;2 years (BLS)</td><td>Varies by school</td><td>No</td></tr>
-            <tr><td>Phlebotomist</td><td>Draw blood for tests and donations</td><td>$45,230/yr</td><td>Under 1 year (BLS)</td><td>Varies by school</td><td>No</td></tr>
-            <tr><td>Pharmacy technician</td><td>Help pharmacists fill prescriptions</td><td>$45,750/yr</td><td>Often on-the-job, under 1 year (BLS)</td><td>Varies by school</td><td>Yes &mdash; Board of Pharmacy license</td></tr>
+            <tr><td>Medical assistant</td><td>Check patients in, take vitals, help the doctor</td><td>$45,690/yr</td><td>About 1&ndash;2 years</td><td>Varies by school</td><td>No</td></tr>
+            <tr><td>Phlebotomist</td><td>Draw blood for tests and donations</td><td>$45,230/yr</td><td>Under 1 year</td><td>Varies by school</td><td>No</td></tr>
+            <tr><td>Pharmacy technician</td><td>Help pharmacists fill prescriptions</td><td>$45,750/yr</td><td>Often on-the-job, under 1 year</td><td>Varies by school</td><td>Yes &mdash; Board of Pharmacy license</td></tr>
             <tr><td>Medical biller/coder</td><td>Turn doctor visits into codes for insurance</td><td>$51,140/yr</td><td>Varies by program</td><td>Varies by school</td><td>No</td></tr>
-            <tr><td>EKG technician</td><td>Run heart-rhythm tests (EKGs)</td><td>&mdash;</td><td>Certificate programs under 1 year (BLS)</td><td>Varies by school</td><td>No</td></tr>
+            <tr><td>EKG technician</td><td>Run heart-rhythm tests (EKGs)</td><td>&mdash;</td><td>Certificate programs under 1 year</td><td>Varies by school</td><td>No</td></tr>
           </tbody>
         </table>
         </div>
@@ -5641,9 +5618,9 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
         <h3>2. Medical assistant</h3>
         <p>A medical assistant works in a doctor&rsquo;s office or clinic. You check patients in, take vital
         signs (like blood pressure), help the doctor during exams and do some office work.</p>
-        <p><strong>How much will I make?</strong> Most medical assistants earn around $45,690 a year
-        ($21.97 an hour). New workers usually start lower.</p>
-        <p><strong>How long is training?</strong> BLS says medical assistants often train for about 1 to 2
+        <p><strong>How much will I make?</strong> Most medical assistants earn around $45,690 a year.
+        New workers usually start lower.</p>
+        <p><strong>How long is training?</strong> Medical assistants often train for about 1 to 2
         years. Each school sets its own price, so ask for the full cost in writing.</p>
         <p><strong>Is there a state license?</strong> No state license required. One rule to know: a DPH
         guidance letter says medical assistants who give shots (immunizations) in primary-care offices must
@@ -5674,7 +5651,7 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
         in Massachusetts</a>.</p>
         <p><strong>How much will I make?</strong> Most phlebotomists earn around $45,230 a year. New workers
         usually start lower.</p>
-        <p><strong>How long is training?</strong> BLS says phlebotomists often train for under a year. Each
+        <p><strong>How long is training?</strong> Phlebotomists often train for under a year. Each
         school sets its own price, so ask for the full cost in writing. You cannot learn this job fully online &mdash; you need real practice drawing
         blood from real people.</p>
         <p><strong>Is there a state license?</strong> No state license required. A few other states do
@@ -5704,7 +5681,7 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
         hospitals.</p>
         <p><strong>How much will I make?</strong> Most pharmacy technicians earn around $45,750 a year. New
         workers usually start lower.</p>
-        <p><strong>How long is training?</strong> BLS says pharmacy technicians often learn on the job in under a year.
+        <p><strong>How long is training?</strong> Pharmacy technicians often learn on the job in under a year.
         Each school sets its own price, so ask for the full cost in writing. In Massachusetts, you can also train on the job (see below).</p>
         <p><strong>Is there a state license?</strong> Yes. All pharmacy technicians in Massachusetts must be
         licensed by the state Board of Registration in Pharmacy. There are two main levels:</p>
@@ -5762,10 +5739,10 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
         <p>An EKG technician runs electrocardiograms (EKGs), tests that record the heart&rsquo;s electrical
         activity. You place small sticky pads on the patient&rsquo;s chest, arms and legs and run the
         machine.</p>
-        <p><strong>How much will I make?</strong> Pay data for EKG technicians alone is hard to pin down.
-        The BLS groups this job with cardiovascular technologists, a broader category that includes more
-        advanced roles. Check job listings in your area for current pay.</p>
-        <p><strong>How long is training?</strong> BLS says EKG technicians often finish certificate programs in under a
+        <p><strong>How much will I make?</strong> Pay for EKG technicians alone is hard to pin down, because
+        pay data groups them with more advanced heart technologist jobs.</p>
+        <p>Check job listings in your area for current pay.</p>
+        <p><strong>How long is training?</strong> EKG technicians often finish certificate programs in under a
         year. Each school sets its own price, so ask for the full cost in writing.</p>
         <p><strong>Is there a state license?</strong> No state license required.</p>
         <p><strong>What is the certification exam like?</strong> The <strong>CET</strong> (Certified EKG
@@ -5788,7 +5765,7 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
           <li><strong>Want office work, maybe from home later?</strong> Look at medical billing and
           coding.</li>
           <li><strong>Want hands-on patient care?</strong> Look at <a href="blog/cna-massachusetts.html">CNA</a> or medical assistant.</li>
-          <li><strong>Want the highest pay?</strong> Medical billing and coding has the highest median of
+          <li><strong>Want the highest pay?</strong> Medical billing and coding has the highest pay of
           the six.</li>
           <li><strong>Still learning English?</strong> Every path has a test. Ask the school and the
           testing group which languages the test is offered in.</li>
@@ -5801,11 +5778,8 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
           the state license (pharmacy tech) before you can work.</li>
           <li><strong>A certificate is not a job.</strong> National certification is optional for most of
           these jobs in Massachusetts. Employers may still want it, plus hands-on hours.</li>
-          <li><strong>New workers earn less than the median.</strong> The pay numbers above are for all
+          <li><strong>New workers earn less than these numbers.</strong> The pay numbers above are for all
           workers, including people with years of experience. Expect to start lower.</li>
-          <li><strong>Massachusetts pay is different.</strong> The table is national. Look up your job on
-          the <a href="https://www.bls.gov/oes/current/oessrcst.htm" target="_blank" rel="noopener">BLS
-          state wage page</a> before you decide.</li>
           <li><strong>Competition is real.</strong> You may compete with people who already have experience.
           Being on the registry, holding your license or credential, and having real practice hours all
           help.</li>
@@ -5846,9 +5820,6 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
           <a href="https://www.mass.gov/pharmacy-technician-licensing" target="_blank" rel="noopener">pharmacy
           technician licensing page</a>. For the others: the certifying group&rsquo;s website (NHA, AMT, ASCP,
           AAPC or AHIMA).</li>
-          <li><strong>Check Massachusetts pay</strong> on the
-          <a href="https://www.bls.gov/oes/current/oessrcst.htm" target="_blank" rel="noopener">BLS state wage
-          page</a>.</li>
           <li><strong>Contact your MassHire Career Center</strong> and register on JobQuest.</li>
           <li><strong>Ask any school:</strong> How many training hours? How long until I can work? What is the
           total cost, including exam and license fees? How many hands-on hours? Is the program accredited or
@@ -5910,15 +5881,15 @@ _phl_faq = [
     ("Do you need a license to be a phlebotomist in Massachusetts?",
      "Massachusetts is not on the list of states that require phlebotomists to be certified or licensed. Those states are California, Louisiana, Nevada and Washington. But many employers ask for national certification. Check current rules with the Massachusetts DPH Clinical Laboratory Program."),
     ("How long does it take to become a phlebotomist?",
-     "The U.S. Bureau of Labor Statistics says phlebotomy programs usually take less than one year. Class time is only part of it. Most people also need supervised blood draws on real people before they can take a national exam, and finding that clinical spot can take the longest."),
+     "Phlebotomy programs usually take less than one year. Class time is only part of it. Most people also need supervised blood draws on real people before they can take a national exam, and finding that clinical spot can take the longest."),
     ("How much do phlebotomists make?",
-     "The national median pay for phlebotomists was $45,230 a year, or $21.75 an hour, according to the U.S. Bureau of Labor Statistics (job code 31-9097). The lowest 10% earned under $35,780 and the top 10% earned over $58,780. New workers usually start below the median. Pay in Massachusetts is different."),
+     "Most phlebotomists earn around $45,230 a year across the U.S. New workers usually start lower. Pay in Massachusetts may be different."),
     ("What certification do you need to be a phlebotomist?",
      "Massachusetts is not on the list of states that require one, but many employers want one. Common national certifications are the NHA CPT, the ASCP PBT and the AMT RPT. NHA and ASCP both ask for a high school diploma or equivalent plus training or work experience. Ask local employers which ones they accept."),
     ("How much does phlebotomy certification cost?",
      "At last check, the exam fee was $134 for the NHA CPT and $155 for the ASCP PBT. Fees change, so check the official sites. Training costs vary a lot. Ask each program for the full price, including the exam fee. A MassHire Career Center may help pay if you qualify."),
     ("Is phlebotomy a good career?",
-     "It can be a short path into healthcare. The U.S. Bureau of Labor Statistics projects 7% job growth from 2025 to 2035, with about 18,000 openings a year nationwide. The hard parts: you stand a lot, many jobs include nights, weekends and holidays, and there is a risk of needlestick injuries."),
+     "It can be a short path into healthcare. Phlebotomist jobs are expected to grow 7% from 2025 to 2035, with about 18,000 openings a year nationwide. The hard parts: you stand a lot, many jobs include nights, weekends and holidays, and there is a risk of needlestick injuries."),
 ]
 
 _phl_faq_html = "\n".join(
@@ -5996,8 +5967,7 @@ _phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         also help patients stay calm. Many people are scared of needles.</p>
         <p>Small mistakes matter in this job. A wrong name on a tube can mean a wrong test result for a patient.
         So you must read carefully and follow steps exactly every time.</p>
-        <p><strong>Where phlebotomists work.</strong> In 2025, the U.S. Bureau of Labor Statistics (BLS) counted
-        these as the biggest employers:</p>
+        <p><strong>Where phlebotomists work.</strong> Here is where phlebotomists in the U.S. worked in 2025:</p>
         <ul>
           <li>Hospitals: 36%</li>
           <li>Medical and diagnostic labs: 33%</li>
@@ -6013,8 +5983,8 @@ _phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         Laboratory Program.</p>
         <p>Here is what we found:</p>
         <ul>
-          <li>BLS and the ASCP (American Society for Clinical Pathology) name four states that require
-          phlebotomists to be certified or licensed: <strong>California, Louisiana, Nevada and Washington</strong>.
+          <li>Four states require phlebotomists to be certified or licensed: <strong>California, Louisiana,
+          Nevada and Washington</strong>.
           Massachusetts is not one of them. If you plan to move, check that state&rsquo;s rules.</li>
           <li>In Massachusetts, the Department of Public Health (DPH)
           <a href="https://www.mass.gov/clinical-laboratory-program" target="_blank" rel="noopener">Clinical
@@ -6028,7 +5998,7 @@ _phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         <h2>The real gatekeepers: live blood draws and employer rules</h2>
         <p>No state license rule does not mean easy hiring. In practice, two things decide whether you get hired:</p>
         <ol>
-          <li><strong>What employers ask for.</strong> BLS says most states do not require certification, but
+          <li><strong>What employers ask for.</strong> Most states do not require certification, but
           employers may prefer it, and some require it.</li>
           <li><strong>What the certification asks for.</strong> To earn the NHA certification, for example, you
           must show at least <strong>30 blood draws from a vein and 10 capillary sticks on live people</strong>.
@@ -6050,9 +6020,9 @@ _phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         <p>Now you know what employers near you really want. Use that list when you pick a training program.</p>
 
         <h2>Phlebotomy certifications compared</h2>
-        <p>These are national certifications, so they are the same in every state. BLS also lists the National
-        Phlebotomy Association and NCCT (National Center for Competency Testing) as certifying groups. The table
-        covers the three you will see most in job ads.</p>
+        <p>These are national certifications, so they are the same in every state. Other groups, like the National
+        Phlebotomy Association and NCCT, also give certifications.</p>
+        <p>The table covers the three you will see most in job ads.</p>
 
         <div class="table-wrap">
         <table class="data-table">
@@ -6080,9 +6050,10 @@ _phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         you to free English classes (ESOL) if you want to build your English first.</p>
 
         <h2>How to become a phlebotomist in Massachusetts: the real path</h2>
-        <p>Here are the steps, with the slow part of each one marked. BLS says most phlebotomists finish a
-        certificate program at a community college, vocational school or technical school, and these programs
-        usually take less than one year. Some people get hired with a high school diploma and learn on the job.</p>
+        <p>Most phlebotomists finish a certificate program at a community college, vocational school or technical
+        school. These programs usually take less than one year.</p>
+        <p>Some people get hired with a high school diploma and learn on the job. Here are the steps, with the
+        slow part of each one marked.</p>
         <ol>
           <li><strong>Have a high school diploma or GED.</strong> NHA and ASCP both ask for one (or an equivalent).
           <em>Slow part:</em> if you don&rsquo;t have one yet, getting your GED or equivalent comes first.</li>
@@ -6116,37 +6087,29 @@ _phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         fee. Costs vary a lot from program to program.</div>
 
         <h2>How much do phlebotomists make?</h2>
-        <p>The national median pay for phlebotomists was <strong>$45,230 a year</strong>, or <strong>$21.75 an
-        hour</strong>, according to BLS (May 2025 data, the latest available as of October 2026). The median is
-        the middle: half of workers earn more, half earn less.</p>
-        <ul>
-          <li>The lowest 10% earned under <strong>$35,780</strong> a year.</li>
-          <li>The top 10% earned over <strong>$58,780</strong> a year.</li>
-        </ul>
-        <p><strong>What this means for you.</strong> New workers usually start below the median. BLS does not
-        publish a separate starting wage, so treat the lowest 10% number as a rough guide to where beginners
-        start. These are national numbers. Pay in Massachusetts is different. You can look it up on the
-        <a href="https://www.bls.gov/oes/current/oes_ma.htm" target="_blank" rel="noopener">BLS Massachusetts
-        wage page</a>.</p>
+        <p>Most phlebotomists earn around <strong>$45,230 a year</strong>. This is pay across the U.S.</p>
+        <p><strong>What this means for you.</strong> New workers usually start below this number. Pay in
+        Massachusetts may be different.</p>
 
         <h2>Job outlook</h2>
-        <p>BLS projects that phlebotomist jobs will grow <strong>7% from 2025 to 2035</strong>. There were about
-        143,900 phlebotomist jobs in the U.S. in 2025. BLS expects about <strong>18,000 openings a year</strong>
-        on average. Many of those openings come from replacing workers who change jobs or retire. These are
-        national numbers.</p>
+        <p>Phlebotomist jobs are expected to grow <strong>7% from 2025 to 2035</strong>. There were about 143,900
+        phlebotomist jobs in the U.S. in 2025.</p>
+        <p>Expect about <strong>18,000 openings a year</strong> across the U.S. Many of them come from replacing
+        workers who change jobs or retire.</p>
 
         <h2>The hard truth: is this job right for you?</h2>
-        <p>Other guides list the good parts. Here are the hard parts too, from BLS:</p>
+        <p>Other guides list the good parts. Here are the hard parts too:</p>
         <ul>
           <li><strong>You stand a lot.</strong> Many phlebotomists are on their feet for long periods.</li>
           <li><strong>The hours can be hard.</strong> Most work full time. Jobs in hospitals and labs may include
           nights, weekends and holidays.</li>
-          <li><strong>There is real risk.</strong> BLS says phlebotomists have one of the highest rates of work
+          <li><strong>There is real risk.</strong> Phlebotomists have one of the highest rates of work
           injuries and illnesses. Needlesticks and contact with blood are part of the risk. You must follow safety
           rules every time.</li>
-          <li><strong>The pay range is fairly narrow.</strong> The top 10% earned over $58,780 a year. To earn more
-          over time, many people add skills or move into a related job. Lab technologist jobs are a step up, but BLS
-          says they usually need a bachelor&rsquo;s degree.</li>
+          <li><strong>The pay range is fairly narrow.</strong> Even with experience, pay does not go up much. To earn
+          more, many people add skills or move into a related job.</li>
+          <li><strong>Moving up can take a degree.</strong> Lab technologist jobs are a step up, but they usually
+          need a bachelor&rsquo;s degree.</li>
           <li><strong>Training is not the whole timeline.</strong> A short class does not mean a fast job. Live
           draws, the exam and employer checks all take time.</li>
         </ul>
@@ -6167,13 +6130,13 @@ _phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         </ul>
 
         <h3>Phlebotomist, CNA or medical assistant?</h3>
-        <p>People often compare these three. A phlebotomist mostly draws blood. A CNA (certified nurse aide) helps
-        patients with daily care, and in Massachusetts must be on the state Nurse Aide Registry. A medical
-        assistant does a mix of patient care and office work in a doctor&rsquo;s office. BLS lists medical
-        assistant as a related job. Read <a href="blog/cna-massachusetts.html">how to become a CNA in
-        Massachusetts</a>. To compare pay, rules and training for all three, read our guide to
-        <a href="blog/healthcare-jobs-massachusetts.html">healthcare jobs in Massachusetts you can train
-        for</a>.</p>
+        <p>People often compare these three. A phlebotomist mostly draws blood.</p>
+        <p>A CNA (certified nurse aide) helps patients with daily care. In Massachusetts, a CNA must be on the
+        state Nurse Aide Registry.</p>
+        <p>A medical assistant does a mix of patient care and office work in a doctor&rsquo;s office.</p>
+        <p>Read <a href="blog/cna-massachusetts.html">how to become a CNA in Massachusetts</a>. To compare all
+        three, read our guide to <a href="blog/healthcare-jobs-massachusetts.html">healthcare jobs in
+        Massachusetts you can train for</a>.</p>
 
         <h2>How to pay for phlebotomy training in Massachusetts</h2>
         <p>Massachusetts has programs that may help pay for training for people who qualify. Funding is limited,
@@ -6271,11 +6234,11 @@ _pt_faq = [
     ("Can I become a pharmacy technician in Massachusetts without going to school?",
      "Possibly. You can start with a trainee license and learn on the job in a pharmacy. After at least 500 hours of work as a trainee and a passing score on your employer's skills test, you can apply for the full license. The catch: you first need an employer that hires trainees."),
     ("How long does it take to become a pharmacy technician in Massachusetts?",
-     "It depends on your route. The on-the-job route needs at least 500 work hours as a trainee. That is about 13 weeks at 40 hours a week, or about 25 weeks at 20 hours a week. Training programs listed on CareerOneStop run from under 12 weeks to about 2 years. Then the Board must process your license."),
+     "It depends on your route. The on-the-job route needs at least 500 work hours as a trainee. That is about 13 weeks at 40 hours a week, or about 25 weeks at 20 hours a week. Training programs run from under 12 weeks to about 2 years. Then the Board must process your license."),
     ("How much does it cost to get a pharmacy technician license in Massachusetts?",
      "The application fee for the pharmacy technician license is $150, and it is not refunded. If you take the PTCB exam, the fee is $129. Training program prices vary a lot, so ask each program for the full price. If you learn on the job as a trainee, you may not pay tuition at all."),
     ("How much do pharmacy technicians make in Massachusetts?",
-     "In Massachusetts, the median pay for pharmacy technicians was $46,470 a year in May 2025, according to the U.S. Bureau of Labor Statistics (job code 29-2052). The median means half earn more and half earn less. The national median was $45,750 (same job code and date). New technicians usually start below the median."),
+     "Most pharmacy technicians in Massachusetts earn around $46,470 a year. Across the U.S., most earn around $45,750. New technicians usually start lower."),
     ("Can I be a pharmacy technician in Massachusetts with a criminal record?",
      "Maybe. The Board requires good moral character, and a drug-related felony can stop you from getting a license. The application asks about your criminal history. Read the questions on the mass.gov application, and ask the Board, before you pay for any training."),
 ]
@@ -6368,8 +6331,7 @@ _pt_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF
         </ul>
 
         <h2>What a pharmacy technician does</h2>
-        <p>You work under a licensed pharmacist. According to the U.S. Bureau of Labor Statistics (BLS), you
-        would spend your day doing tasks like these:</p>
+        <p>You work under a licensed pharmacist. You would spend your day doing tasks like these:</p>
         <ul>
           <li>Taking information from patients and their prescriptions</li>
           <li>Measuring, counting and packaging medicine</li>
@@ -6385,8 +6347,7 @@ _pt_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF
         state <a href="https://www.mass.gov/pharmacy-technician-licensing" target="_blank" rel="noopener">Board of
         Registration in Pharmacy</a>. This is true even if you already have a national certification. A
         certification can help you qualify for the license. It does not replace it.</p>
-        <p>The rules are in a state regulation called 247 CMR 8.00. Other states have different rules. If you plan
-        to move, check that state&rsquo;s pharmacy board.</p>
+        <p>Other states have different rules. If you plan to move, check that state&rsquo;s pharmacy board.</p>
 
         <div class="note"><strong>The license levels, in plain words</strong>
         <ul>
@@ -6418,7 +6379,7 @@ _pt_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF
             <tr><td>What you do</td><td>Get hired as a trainee. Work at least 500 hours. Pass a skills test your employer gives you.</td><td>Finish a training program the Board accepts, including its final exam.</td><td>Pass a national exam the Board accepts, such as the PTCE (PTCB) or the ExCPT (NHA). The Board&rsquo;s list names the exams it accepts.</td></tr>
             <tr><td>Cost to you</td><td>Often no tuition. You still pay the $150 license fee.</td><td>Tuition varies a lot. Plus the $150 license fee.</td><td>The exam fee ($129 for the PTCE) plus the $150 license fee. Plus any study costs.</td></tr>
             <tr><td>Paid while you do it?</td><td>Yes. You earn a paycheck while you learn.</td><td>Usually not, unless you work at the same time.</td><td>Depends on how you got ready for the exam.</td></tr>
-            <tr><td>How long</td><td>At least 500 work hours. About 13 weeks at 40 hours a week, or about 25 weeks at 20 hours a week.</td><td>Programs listed on CareerOneStop run from under 12 weeks to about 2 years.</td><td>Depends on your study time and when you can test.</td></tr>
+            <tr><td>How long</td><td>At least 500 work hours. About 13 weeks at 40 hours a week, or about 25 weeks at 20 hours a week.</td><td>Programs run from under 12 weeks to about 2 years.</td><td>Depends on your study time and when you can test.</td></tr>
             <tr><td>The catch</td><td>You need an employer that hires trainees. The trainee license also has a time limit.</td><td>You pay before you earn. Make sure the Board accepts the program.</td><td>You can&rsquo;t just sign up. The PTCE needs a recognized program or 500 hours of work first.</td></tr>
           </tbody>
         </table>
@@ -6507,11 +6468,12 @@ _pt_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF
         makes sense where you live.</p>
 
         <h2>How much do pharmacy technicians make in Massachusetts?</h2>
-        <p>The median pay for pharmacy technicians in Massachusetts was <strong>$46,470 a year</strong>, according
-        to BLS (May 2025 data, job code 29-2052). The median means half earn more and half earn less. Across the
-        U.S., the median was <strong>$45,750 a year</strong>. New technicians usually start below these numbers. Pay also depends on where you work and on your skills.</p>
-        <p>BLS projects that pharmacy technician jobs will grow <strong>6% from 2025 to 2035</strong> across the
-        U.S. That points to steady demand.</p>
+        <p>Most pharmacy technicians in Massachusetts earn around <strong>$46,470 a year</strong>. Across the
+        U.S., most earn around <strong>$45,750 a year</strong>.</p>
+        <p>New technicians usually start below these numbers. Pay also depends on where you work and on your
+        skills.</p>
+        <p>Pharmacy technician jobs are expected to grow <strong>6% from 2025 to 2035</strong> across the U.S.
+        That points to steady demand.</p>
 
         <h2>The hard truth: is this job right for you?</h2>
         <p>Other guides only list the good parts. Here are the hard parts too:</p>
@@ -6524,7 +6486,7 @@ _pt_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF
           <li><strong>The pressure to be exact is real.</strong> A wrong drug or a wrong dose can hurt someone. You
           must stay focused even when it gets busy.</li>
           <li><strong>The pay ceiling is modest.</strong> To earn more, many techs add skills, like sterile
-          compounding. Becoming a pharmacist is a big step: BLS says pharmacists need a doctoral degree.</li>
+          compounding. Becoming a pharmacist is a big step: pharmacists need a doctoral degree.</li>
           <li><strong>It is not just counting pills.</strong> You learn drug names, medical abbreviations and
           dose math. You can learn this without college, but it takes real study.</li>
         </ul>
@@ -6564,9 +6526,9 @@ _pt_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOFF
           PTCE. Check NHA&rsquo;s site for the ExCPT.</li>
           <li><strong>Background check (CORI):</strong> ask the Board.</li>
           <li><strong>Training program (only if you use that route):</strong> prices vary a lot. Ask each program
-          for the total price, including the exam fee. You can compare programs on the
-          <a href="https://www.careeronestop.org/Toolkit/Training/find-local-training.aspx" target="_blank" rel="noopener">CareerOneStop
-          Training Finder</a>.</li>
+          for the total price, including the exam fee. You can
+          <a href="https://www.careeronestop.org/Toolkit/Training/find-local-training.aspx" target="_blank" rel="noopener">find
+          training programs near you</a> and compare them.</li>
         </ul>
         <p><strong>Time:</strong> at least 500 work hours on the trainee route, or the length of your program
         (from under 12 weeks to about 2 years). Then the Board needs time to process your license. Ask the Board
@@ -6679,7 +6641,7 @@ PAGES.append(dict(
 # ---------------------------------------------------------------------------
 _cna_faq = [
     ("How long does it take to become a CNA in Massachusetts?",
-     "Training must be at least 75 hours under federal rules. In April 2026 the Massachusetts Department of Public Health (DPH) announced it plans to raise the minimum to 87 hours, with 21 hours of hands-on practice. Most Massachusetts programs listed on CareerOneStop take under 12 weeks. After training you still need to pass the state exam and be listed on the Nurse Aide Registry."),
+     "Training must be at least 75 hours under federal rules. In April 2026 the Massachusetts Department of Public Health (DPH) announced it plans to raise the minimum to 87 hours, with 21 hours of hands-on practice. Most Massachusetts programs take under 12 weeks. After training you still need to pass the state exam and be listed on the Nurse Aide Registry."),
     ("How much does CNA training cost in Massachusetts?",
      "Of six Massachusetts programs we checked in October 2026, prices ran from about $1,400 to about $2,900. Prices change and depend on the school, so ask each program for the full price, including test fees, books, uniform and background check. The state exam costs $30 for the knowledge test and $70 for the skills test on each try. If a nursing home hires you or offers you a job before training starts, federal rules say it cannot charge you for the training."),
     ("Can I get CNA training for free in Massachusetts?",
@@ -6687,7 +6649,7 @@ _cna_faq = [
     ("What is on the Massachusetts CNA exam?",
      "There are two parts. The knowledge test has 60 multiple-choice questions, takes up to 60 minutes, and you need 76% to pass. The skills test has 3 or 4 tasks, picked at random, done in front of a nurse in up to 40 minutes. You can take the exam in English, Spanish, Chinese or Haitian Creole."),
     ("How much do CNAs make in Massachusetts?",
-     "Most CNAs in Massachusetts earn around $46,680 a year, according to the U.S. Bureau of Labor Statistics (May 2025). New CNAs often start lower. Pay depends on where you work and your shift."),
+     "Most CNAs in Massachusetts earn around $46,680 a year. New CNAs often start lower. Pay depends on where you work and your shift."),
     ("I'm a CNA in another state. Can I work in Massachusetts?",
      "If your certification in another state is current and in good standing, you can ask for reciprocity. That means Massachusetts lists you on its registry without new training. You do this online through D&S Diversified Technologies, the state's testing company. If you finished an approved course in another state, you may be able to take the Massachusetts exam without repeating training."),
 ]
@@ -6786,8 +6748,8 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         </ol>
 
         <h2>How long does CNA training take in Massachusetts?</h2>
-        <p>Training must be at least 75 hours today, and DPH has announced 87. Of the 37 nursing assistant
-        programs in Massachusetts listed on CareerOneStop, 29 take under 12 weeks<!-- [VERIFY: CareerOneStop counts, SEARCH SUMMARY] -->.
+        <p>Training must be at least 75 hours today, and DPH has announced 87. Of 37 nursing assistant
+        programs in Massachusetts, 29 take under 12 weeks<!-- [VERIFY: CareerOneStop counts, SEARCH SUMMARY] -->.
         A full-time class can finish in a few weeks. Evening or weekend classes take longer.</p>
         <p>Training is not the whole timeline. After class, you wait for a test date, take both parts and wait for
         your registry listing. Employers may also need time for background checks and other hiring steps.</p>
@@ -6821,8 +6783,8 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         or have a job offer, on the day training starts.</p>
 
         <h3>What Massachusetts CNA programs charge</h3>
-        <p>We looked at the public pages of six Massachusetts programs in October 2026. Their prices ran from about
-        $1,400 to about $2,900. Prices change with each class, so check the school&rsquo;s own page.<!-- [VERIFY: prices from cna-cost-research.md, opened 2026-10-04; DPH approval of each program not confirmed; re-check before publishing] --></p>
+        <p>CNA programs in Massachusetts cost about $1,400 to $2,900 as of October 2026. Prices change with
+        each class, so check the school&rsquo;s own page.<!-- [VERIFY: prices from cna-cost-research.md, opened 2026-10-04; DPH approval of each program not confirmed; re-check before publishing] --></p>
         <div class="table-wrap">
         <table class="data-table">
           <caption>What six Massachusetts CNA programs listed in October 2026</caption>
@@ -6879,8 +6841,7 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
     "Check what you may qualify for", "qualify.html") + """
 
         <h2>The Massachusetts CNA exam</h2>
-        <p>The exam has two parts. You must pass both. The facts below come from the D&amp;S candidate handbook
-        dated May 2026. A revised state exam is expected in early 2027, so check the
+        <p>The exam has two parts. You must pass both. A revised state exam is expected in early 2027, so check the
         <a href="https://hdmaster.com/testing/cnatesting/Massachusetts/MA_CNA_Home.htm" target="_blank" rel="noopener">D&amp;S
         Massachusetts page</a> for the latest rules.</p>
 
@@ -6947,9 +6908,9 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         </ul>
 
         <h2>How much do CNAs make in Massachusetts?</h2>
-        <p>Most CNAs in Massachusetts earn around <strong>$46,680 a year</strong><!-- [VERIFY: MA median, BLS OEWS May 2025; spot check data.bls.gov/oes] -->,
-        according to the U.S. Bureau of Labor Statistics (BLS, May 2025 data). New CNAs often start lower. Pay
-        depends on where you work and which shift you take. Across the whole U.S., CNAs earn around $42,260 a
+        <p>Most CNAs in Massachusetts earn around <strong>$46,680 a year</strong><!-- [VERIFY: MA median, BLS OEWS May 2025; spot check data.bls.gov/oes] -->.
+        New CNAs often start lower. Pay depends on where you work and which shift you take.</p>
+        <p>Across the whole U.S., CNAs earn around $42,260 a
         year<!-- [VERIFY: national median, BLS OOH May 2025] -->. So CNA pay in Massachusetts is higher than the national figure.</p>
         <p>The number of CNA and orderly jobs in the U.S. is expected to grow 3% from 2025 to 2035. That sounds
         small, but there are about 203,300 openings each year, mostly because people leave the job or move up.
@@ -6958,8 +6919,8 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         <h2>The hard truth: is this job right for you?</h2>
         <p>Other guides only list the good parts. Here are the hard parts too.</p>
         <ul>
-          <li><strong>It is hard on your body.</strong> BLS says: &ldquo;Nursing assistants and orderlies have one
-          of the highest rates of injuries and illnesses of all occupations.&rdquo; You lift and move people all
+          <li><strong>It is hard on your body.</strong> This job has one of the highest injury rates of any job.
+          You lift and move people all
           day. CNAs say injuries often happen when someone does a two-person move alone. Use the lift. Wait for
           help.</li>
           <li><strong>The hours.</strong> The job may include nights, weekends and holidays.</li>

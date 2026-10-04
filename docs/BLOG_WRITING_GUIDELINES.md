@@ -72,7 +72,7 @@ The reader is making a practical decision. Every section must answer a question 
 - **"We do not show / we do not quote"** — If you can't show data, just don't show it. Don't explain why you're not showing it.
 - **Methodology notes in the body** — "National figures because we couldn't confirm MA figures" is an internal note. Put the national figure and link to the BLS state page. That's it.
 - **SOC codes** — Leave them out of the post entirely. The reader doesn't know what a SOC code is.
-- **Sources sections and source notes** — Posts have no "Sources" section and no "Source:" notes under tables (Emilio, 2026-10-04). Every fact is still sourced, but the record lives in the research brief and `docs/VERIFICATION_LOG.md`. Helpful action links (like the official application page) stay.
+- **Sources, in any form** — Readers aren't interested in sources or anything complex; they want information that's easy to digest. Posts have no "Sources" section, no "Source:" notes under tables, no in-text attributions ("according to the Bureau of Labor Statistics", "BLS says"), and no links to government data pages (Emilio, 2026-10-04). Just state the fact simply. Every fact is still sourced, but the record lives in the research brief and `docs/VERIFICATION_LOG.md`. Helpful action links (like the official application page) stay.
 - **BLS projection labels** — Don't say "3%, about as fast as average." Say "The number of jobs is expected to grow 3% over the next 10 years" or just "steady demand." The BLS label ("faster than average") means nothing to the reader.
 
 ### ALWAYS link to existing posts when relevant:
