@@ -541,3 +541,6 @@ https://www.bls.gov/ooh/healthcare/nursing-assistants.htm · medical-assistants.
 
 ### Q8. Check live before deploy
 1. Pay-figure policy decision. 2. Q1 spot check on data.bls.gov/oes. 3. Open every Q6 mass.gov page; confirm Q3 DPH memo and effective date. 4. Confirm $70 skills fee and first-exam fee rule on D&S. 5. Remove the DRAFT marker and [VERIFY] comments only after Emilio approves.
+
+### Q addendum (2026-10-04): CNA program prices
+Source: `docs/blog-drafts/cna-massachusetts/cna-cost-research.md`. Six programs' own pages opened 2026-10-04 (Lunder, Quincy, MassBay, Bristol, STCC, Holyoke). Range "about $1,400 to about $2,900" is from those pages. NOT confirmed: DPH approval of each program (mass.gov blocked); what the price includes is WebFetch paraphrase, spot-check the top pages; STCC page text mentions "October 2024". Greenfield ($3,000) excluded: "not currently offered". Bunker Hill, Roxbury, Red Cross figures were summary-only and not used. Re-check prices before publishing.

@@ -6777,7 +6777,7 @@ _cna_faq = [
     ("How long does it take to become a CNA in Massachusetts?",
      "Training must be at least 75 hours under federal rules. In April 2026 the Massachusetts Department of Public Health (DPH) announced it plans to raise the minimum to 87 hours, with 21 hours of hands-on practice. Most Massachusetts programs listed on CareerOneStop take under 12 weeks. After training you still need to pass the state exam and be listed on the Nurse Aide Registry."),
     ("How much does CNA training cost in Massachusetts?",
-     "Tuition depends on the school, so ask each program for the full price, including test fees, books, uniform and background check. The state exam costs $30 for the knowledge test and $70 for the skills test on each try. If a nursing home hires you or offers you a job before training starts, federal rules say it cannot charge you for the training."),
+     "Of six Massachusetts programs we checked in October 2026, prices ran from about $1,400 to about $2,900. Prices change and depend on the school, so ask each program for the full price, including test fees, books, uniform and background check. The state exam costs $30 for the knowledge test and $70 for the skills test on each try. If a nursing home hires you or offers you a job before training starts, federal rules say it cannot charge you for the training."),
     ("Can I get CNA training for free in Massachusetts?",
      "Possibly. Federal rules say a nursing facility that has hired you, or offered you a job, before your class starts cannot charge you for the training. If you pay yourself and a nursing facility hires you within 12 months after you finish, the state must pay back part of your cost. Ask DPH how this works in Massachusetts. A MassHire Career Center can also tell you if you may qualify for funded training. Read any work contract before you sign."),
     ("What is on the Massachusetts CNA exam?",
@@ -6905,7 +6905,7 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
           </thead>
           <tbody>
             <tr><td>How it works</td><td>A nursing home hires you, or offers you a job, before your class starts. Federal rules say it cannot charge you for any part of the training, including textbooks.</td><td>A MassHire Career Center or local workforce program helps pay for training. You may qualify through WIOA (the Workforce Innovation and Opportunity Act, a federal training program).</td><td>You pay the school yourself. If a nursing home hires you within 12 months after you finish, federal rules say the state must pay back part of your cost while you work there as an aide.</td></tr>
-            <tr><td>Cost to you</td><td>Training: $0</td><td>May be $0 if you qualify</td><td>Full tuition up front</td></tr>
+            <tr><td>Cost to you</td><td>Training: $0</td><td>May be $0 if you qualify</td><td>The full price up front (see the table below for examples)</td></tr>
             <tr><td>Strings attached</td><td>Often a work contract. Read it before you sign.</td><td>Eligibility rules, paperwork and waiting time</td><td>You carry the cost until you are hired. Ask DPH how the pay-back works.</td></tr>
             <tr><td>Best for</td><td>People who want a nursing home job and need to start fast</td><td>People who need help paying and can wait for approval</td><td>People who want to choose their own school and schedule</td></tr>
           </tbody>
@@ -6915,6 +6915,30 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         <p><strong>The fine print on the federal rule.</strong> It covers nursing facilities (nursing homes). It
         does not clearly cover hospitals, home care agencies or assisted living. It only counts if you are hired,
         or have a job offer, on the day training starts.</p>
+
+        <h3>What Massachusetts CNA programs charge</h3>
+        <p>We looked at the public pages of six Massachusetts programs in October 2026. Their prices ran from about
+        $1,400 to about $2,900. Prices change with each class, so check the school&rsquo;s own page.<!-- [VERIFY: prices from cna-cost-research.md, opened 2026-10-04; DPH approval of each program not confirmed; re-check before publishing] --></p>
+        <div class="table-wrap">
+        <table class="data-table">
+          <caption>What six Massachusetts CNA programs listed in October 2026</caption>
+          <thead>
+            <tr><th>Program</th><th>Price</th><th>Length</th><th>What the price covers</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Lunder CareForce Institute (Boston)</td><td>$1,395 tuition (about $1,700 with fees)</td><td>132.5 hours</td><td>Fees are listed separately</td></tr>
+            <tr><td>Quincy College</td><td>$1,550</td><td>5&ndash;7 weeks</td><td>The $110 state exam and scrubs are extra</td></tr>
+            <tr><td>MassBay Community College</td><td>$1,600</td><td>8 weeks</td><td>Scrubs, books, CPR card and lab fee</td></tr>
+            <tr><td>Bristol Community College</td><td>$1,850</td><td>100 hours</td><td>Ask the school</td></tr>
+            <tr><td>Springfield Technical Community College</td><td>$2,648</td><td>150 hours</td><td>Books and exam fees</td></tr>
+            <tr><td>Holyoke Community College</td><td>$2,880</td><td>5 weeks</td><td>Ask the school</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>Higher prices can include extras, such as a Home Health Aide certificate or a CPR class, so compare what
+        each price covers. Some programs may be free for people who qualify. Holyoke says its program is free for
+        people who get SNAP or TAFDC benefits, and Cambridge Community Learning Center runs a free program with
+        limited spots. Check that a program is on the DPH approved list before you pay.</p>
 
         <h3>&ldquo;Free&rdquo; training and work contracts</h3>
         <p>CNAs who trained through a nursing home share mixed stories. Some say they owed nothing. Others say they
