@@ -2,7 +2,14 @@
 
 Claude Code updates this file at the end of every session. The strategy side (Cowork + the "ETPL Massachusetts" Project) reads it.
 
-## Current state (as of 2026-09-28)
+## Current state (as of 2026-10-05)
+- **Live site is up to date** with everything approved through 2026-10-05: new section color `#edeff6`, section dividers, hidden label line, left-aligned narrow sections, roomier blog spacing, form fix, and the 9 published blog posts with all sources removed. `blog.html`, `sitemap.xml` and `llms.txt` are live and list only published posts. GitHub `main` matches what's deployed, plus the drafts below.
+- **4 blog drafts awaiting Emilio's review** (built locally, not live, carrying DRAFT markers): CNA, healthcare jobs, pharmacy technician and phlebotomist (`blog/*-massachusetts.html`). The builder keeps them out of the blog index and sitemap until their DRAFT markers are removed.
+- **Blog pipeline:** six project agents in `.claude/agents/` plus the `/blog-pipeline` command. The cloud routine "Blog Manager" (`trig_01XgMjFh5eKjNm4qx8Gr9HdM`) is **paused**; turn it back on only when Emilio asks.
+- **Content rules decided on 2026-10-04** (in the writing guidelines and agents): keep it simple, with no sources or statistics talk in posts; paragraphs of 1-2 sentences, at most 210 characters; approved Reddit/Quora experiences and quotes allowed (overrides CLAUDE.md's quotes rule, so strategy should update CLAUDE.md).
+- **Next steps:** see "Open TODOs" in the 2026-10-04 (end of day) entry below.
+
+## Earlier state (as of 2026-09-28)
 - **🚀 THE FULL v1.5 SITE IS NOW LIVE at https://careerskillscenter.com (Emilio authorized the deploy, 2026-09-28).** All `[VERIFY]`/`DRAFT` were resolved in an Emilio review session, so the blog deployed too. See the "2026-09-28 — LIVE DEPLOY" entry below.
 - Now building: **`docs/SITE_STRUCTURE_SPEC.md` v1.5**, which supersedes the nav, page list and build order in GUIDE_MODE_SPEC v1.4. Everything else in v1.4 still applies (no ghost courses, funding-language rules, `[VERIFY]` sourcing, `COURSE-DEPENDENT` markers, no deploys without Emilio's OK).
 - **v1.5 is DONE and DEPLOYED.** See the 2026-09-27 (build) and 2026-09-28 (LIVE DEPLOY) session entries below.
@@ -40,7 +47,7 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 1. **Home intro divider** (`index.html` + `.what-we-do .text-center + .container` in CSS): a blue column-width line and about 64px of space between "A Straight Guide to Training and Funding" and "Funding guides". "Learn more." is joined with `&nbsp;` so it wraps as one phrase.
 2. **Related guides spacing** (`.related-title` rules): less space above a "Related guides" block in its own section (5 career and funding pages). The gap after the interest form went from about 290px to about 160px.
 3. **Dividers between same-colored sections** (Section helpers block): a blue 2px line between two white sections, a white line between two light sections (Emilio found the white one faint), and about 64px on each side instead of 120. The home page `.programs` photo section is excluded. This replaces the committed `.section--alt + .section--alt { padding-top: 0 }` rule from `896a7e7`.
-4. **Section-label accent line hidden** (`.eyebrow-line { display: none }`, marked TRIAL). Before that, the line was moved to the left edge on desktop (`margin-left: 0`). Options: keep it hidden, show it at the left edge, or restore the original (-30px).
+4. **Section-label accent line hidden** (`.eyebrow-line { display: none }`). If it's ever brought back, it now starts at the left edge on desktop (`margin-left: 0`) instead of sticking out into the margin.
 5. **Narrow text sections aligned left** (`.container.narrow:not(.text-center)`): they keep the 780px text width but start at the same left edge as other sections (about 45 sections on 17 pages). Centered blocks and the qualify quiz stay centered.
 
 **Done and pushed today (see commits 1c00c16 to 896a7e7):** removed all sources from blog posts (sections, notes, "according to BLS", job codes, percentiles, government data links); salary table says "typical pay per year"; new section color `#edeff6`; interest and employer form fields fixed (white text); roomier blog spacing; writer paragraph rules (1-2 sentences, at most 210 characters); sixth agent `community-researcher` plus an editorial round; `/blog-pipeline` command; cloud routine paused.
@@ -52,6 +59,7 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 - Older posts break the new two-line paragraph rule. Run the writer and reviewer agents over them post by post.
 - The pharmacy technician post was written under the old prompt and needs a reader-first review.
 - New Code sessions can call the project agents by name (they were created mid-session, so this session couldn't). Test with `/blog-pipeline` or one agent at a time.
+- Review and approve the 4 draft posts one at a time. Per post: remove the DRAFT and [VERIFY] markers, rebuild, add it to `llms.txt`, and deploy the post plus `blog.html`, `sitemap.xml` and `llms.txt`.
 
 ### 2026-10-04 — Blog Manager: How to Become a CNA in Massachusetts (2026): Training, Exam and Who Pays (LOCAL, not deployed)
 - **Built:** `blog/cna-massachusetts.html` (about 4,200 words including page chrome), added via `tools/build-pages.py`; `blog.html` index and `sitemap.xml` regenerated. Course-mode copy in `blog/course-mode-copy/cna-massachusetts.md`. Register row R-BLOG-04 added.
