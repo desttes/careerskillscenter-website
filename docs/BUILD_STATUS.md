@@ -29,8 +29,13 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 
 ## Session log
 
-### 2026-10-04 (end of day) — Design trials waiting on Emilio (UNCOMMITTED in the working tree)
-**Read this first in the next session.** These five changes are in `css/style.css` and `index.html` on disk but are NOT committed. Emilio is reviewing them at http://localhost:8123 (start the preview with the `site` server in `.claude/launch.json`). The other modified `.html` files and `sitemap.xml` are only rebuild version stamps. Ask Emilio which to keep, commit and push those, then revert the rest with `git restore`.
+### 2026-10-04 (end of day) — LIVE DEPLOY of today's styling and blog cleanup (Emilio authorized)
+- **Deployed over SFTP** (commit `b555e95`): 33 root pages, `.htaccess`, `css/`, `js/`, and the 9 approved blog posts with today's changes (no sources, roomier spacing). The pre-deploy grep was run first.
+- **Held back (DRAFT / [VERIFY] markers):** `blog/cna-massachusetts.html`, `blog/healthcare-jobs-massachusetts.html`, `blog/pharmacy-technician-massachusetts.html`, `blog/phlebotomist-massachusetts.html`, and `it-careers-massachusetts-draft.html`. Also held back because they link to those drafts: `blog.html`, `sitemap.xml`, `llms.txt`. The live versions of those three are unchanged (verified: live blog.html has 0 links to drafts; draft URLs return 404).
+- **Verified live:** home, career pages, WIOA page, blog index and salary post return 200; `tuition.html` still 301s; the new CSS (`#edeff6`, dividers, hidden label line, Related guides spacing) is live; the salary post has 0 source mentions; the home page shows "Learn more" joined.
+- **When a draft post is approved:** remove its DRAFT/[VERIFY] markers, rebuild, then upload that post plus `blog.html`, `sitemap.xml` and `llms.txt` (only once no other unapproved post is listed in them).
+
+**The five design changes below were approved and deployed** (originally listed as trials):
 1. **Home intro divider** (`index.html` + `.what-we-do .text-center + .container` in CSS): a blue column-width line and about 64px of space between "A Straight Guide to Training and Funding" and "Funding guides". "Learn more." is joined with `&nbsp;` so it wraps as one phrase.
 2. **Related guides spacing** (`.related-title` rules): less space above a "Related guides" block in its own section (5 career and funding pages). The gap after the interest form went from about 290px to about 160px.
 3. **Dividers between same-colored sections** (Section helpers block): a blue 2px line between two white sections, a white line between two light sections (Emilio found the white one faint), and about 64px on each side instead of 120. The home page `.programs` photo section is excluded. This replaces the committed `.section--alt + .section--alt { padding-top: 0 }` rule from `896a7e7`.
