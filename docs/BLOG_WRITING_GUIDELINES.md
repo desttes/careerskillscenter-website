@@ -38,28 +38,29 @@ Use marketing judgment: know when to inspire and when to be blunt. The reader sh
 
 ## 6. Post Structure
 
-Every post follows a predictable skeleton so readers always know where they are:
+Use this skeleton as a **menu, not a checklist** (Emilio, 2026-10-05). Include a section only when it answers a real reader question for this topic, and keep the post to **about 2,500 words of visible text, FAQ included**:
 
 1. **Hook** — follow the Content Strategist's recommended angle, not a generic intro
 2. **What the job actually is** — daily tasks in plain language ("you'd spend your day...")
-3. **Pay** — one clear number (national median annual). Entry-level estimate if available. No percentile ranges, no methodology explanations.
-4. **How to get in** — training path, **how long it takes** (weeks/months), **how much it costs** (general industry range, NOT CSC prices), whether you can do it while working. Link to existing posts about training options when relevant.
+3. **Pay** — the median plus one entry-level figure (the 10th percentile, said as "new workers often start around $X"). National for a nationwide credential, the state figure for a state license. No other percentiles, no methodology explanations.
+4. **How to get in** — training path, **how long it takes** (months, hours, externship hours), **how much it costs** (concrete ranges from public colleges, certifying bodies or official program pages, NOT CSC prices), whether you can do it while working. Name real public programs as examples when the brief has them. Link to existing posts about training options when relevant.
 5. **Certifications** — which ones matter, what the exam is like (questions, time, passing score), what it costs. Make the exam feel manageable, not scary.
 6. **The hard truth** — downsides, common surprises, who this is NOT a good fit for
 7. **How to pay for training** — funding options, link to qualify.html and existing funding posts
 8. **Next step** — one clear action (see CTA guidelines for what to link to)
 9. **FAQ** — 4–6 questions from the research brief, with FAQPage schema
 
-The Writer can reorder or merge sections if the Content Strategist's angle calls for it, but every post must hit all nine topics somewhere.
+The Writer can reorder, merge or drop sections to fit the angle and the word budget. There is no rule that every post must cover all nine topics.
 
 ## 7. What the Reader Needs (and What to Cut)
 
 The reader is making a practical decision. Every section must answer a question they actually have. Here's what to include and what to cut:
 
 ### ALWAYS include (the reader's real questions):
-- **"How much will I make?"** — Give ONE clear number: the national median annual pay. Say "Most [job title] earn around $X a year." Don't explain what a median is, don't show percentile ranges, don't show hourly unless it's the only figure available. If you know entry-level is lower, say "New [job title] often start around $X."
-- **"How long does training take?"** — Give a range: "Training programs typically run X weeks to X months." If there are different program lengths, explain the tradeoff (like 4 weeks vs 4 months for medical billing).
-- **"How much does training cost?"** — Give a general cost range from industry data (NOT CSC prices). "Programs typically cost $X to $Y." This is one of the reader's first questions — don't skip it.
+- **"How much will I make?"** — Give the median annual pay and one entry-level figure from the brief (the 10th percentile): "Most [job title] earn around $X a year. New [job title] often start around $Y." Don't explain what a median or percentile is, don't show other percentiles, don't show hourly unless it's the only figure available.
+- **"How long does training take?"** — Give concrete figures: "Certificate programs run 9 to 12 months, including a 160-hour externship." If there are different program lengths, explain the tradeoff (like 4 weeks vs 4 months for medical billing).
+- **"How much does training cost?"** — Give a concrete range from the brief (public colleges, certifying bodies, official program pages; NOT CSC prices). "Programs typically cost $X to $Y." This is one of the reader's first questions — don't skip it.
+- **Real program examples (Emilio, 2026-10-05)** — You may name public colleges, public workforce programs (like a MassHire program), nonprofits and employer training programs, with the hours, funding and dates from their own official page. Always say when the facts are from ("as of March 2026") and add "Check current enrollment with the program." Never name for-profit course sellers, and never suggest a partnership with Career Skills Center.
 - **"Can I do this while working my current job?"** — Are there evening/weekend programs? Is any of it online? How many hours per week?
 - **"What do I need to get started?"** — Be specific: GED? Background check? Immunizations? CPR cert?
 - **"Is there a state license?"** — Yes or no, plainly. If no, say "No state license required." NEVER say "we did not find one."
@@ -67,7 +68,7 @@ The reader is making a practical decision. Every section must answer a question 
 
 ### ALWAYS cut (things only we care about):
 - **"We did not find..."** / **"We could not confirm..."** — The reader doesn't care about our research process. If the data doesn't exist, don't mention it. If a license isn't required, say "No state license required" — not "We did not find a state license."
-- **Percentile ranges (10th/90th)** — Nobody asks "what does the 10th percentile earn?" They ask "what will I make?" Give them the median and an entry-level estimate if available.
+- **Percentile ranges and tables** — Give the median and the one entry-level figure, in plain words. No 25th/75th/90th figures and never the word "percentile" in the post.
 - **"The median is the middle: half earn more, half earn less"** — Don't explain statistics. Just give the number.
 - **"We do not show / we do not quote"** — If you can't show data, just don't show it. Don't explain why you're not showing it.
 - **Methodology notes in the body** — "National figures because we couldn't confirm MA figures" is an internal note. Put the national figure and link to the BLS state page. That's it.
@@ -148,7 +149,7 @@ The Writer executes SEO based on the **target keyword assigned in the blog queue
 2. **Never claim ETPL/WIOA approval**, "state-approved," or Express Course Directory listing
 3. **Never invent statistics, outcomes, testimonials, salary figures, or quotes** — only use what's in the research brief, plus community experiences and quotes approved in `editorial-decisions.md` (see Guideline 13)
 4. **Never promise funding approval** — always "may qualify"
-5. **Never source facts from training providers, career blogs, or salary aggregators** — if the research brief didn't include it, the Writer doesn't add it
+5. **Never source facts from for-profit course sellers, career blogs or salary aggregators** — official public program pages in the brief are fine for their own program facts. If the research brief didn't include it, the Writer doesn't add it
 6. **Never use a backdated publish date** — use today's actual date
 7. **Never remove or skip the `<!-- DRAFT -->` marker** — every post ships as a draft until Emilio approves
 8. **Never write "our program," "our courses," "enroll now," or "apply" in guide-mode copy** — CSC has nothing to enroll in yet. Write both guide-mode and course-mode versions of every course-dependent CTA and document the course-mode version in `blog/course-mode-copy/[post-slug].md`

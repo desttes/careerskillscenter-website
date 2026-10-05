@@ -25,6 +25,9 @@ Working adults with a high school diploma or GED: many Black Americans, immigran
 - Never copy competitor wording. Note only what they cover and what they miss.
 - Never use training-provider sites or career blogs as fact sources.
 
+## Word budget and outline (Emilio, 2026-10-05)
+Plan the outline to fit **about 2,500 words of visible text, FAQ included**. The nine-topic skeleton in the writing guidelines is a menu, not a checklist: keep only the sections that answer a real reader question for this topic, and say which you are dropping and why.
+
 ## Also include
 A table of existing careerskillscenter.com posts this post should link to (find the slugs in `tools/build-pages.py`) and where in the post each link belongs.
 

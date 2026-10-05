@@ -11,7 +11,11 @@ Use sources in this priority order:
 1. **Government:** BLS.gov (pay, outlook), mass.gov & state licensing boards (licensing), DOL.gov
 2. **Official certifying bodies** for their own credentials: AAPC (CPC/CPB), AHIMA (CCA/CCS), CompTIA (A+/Network+/Security+), OSHA (safety certs), EPA (608), etc.
 3. **Neutral career data:** O*NET, CareerOneStop
-4. **Never use:** salary aggregators (Glassdoor, Indeed, ZipRecruiter, Salary.com, Payscale), training provider or education company websites, other career/training blogs, or any source with a financial interest in steering readers toward a product or program
+4. **Official program pages (Emilio, 2026-10-05):** public colleges, public workforce programs (MassHire, state-funded training), nonprofits and employers' own training pages. Allowed **only for that program's own facts**: hours, length, externship hours, cost, funding and dates. Record the date you checked.
+5. **Never use:** salary aggregators (Glassdoor, Indeed, ZipRecruiter, Salary.com, Payscale), for-profit course sellers and lead-generation sites ("find programs near you", sponsored listings), or any source with a financial interest in steering readers toward a product or program. Career blogs may be read for leads only; a fact found only on one is marked `[SECONDARY: url]` and checked against an official page where possible.
+
+### 1b. Read the top 10 search results (Emilio, 2026-10-05)
+Search the target keyword (and close variants) and open the **first 10 results** in full, using WebFetch or the browser tools when a page blocks the fetch tool. **Skip any page that is trying to sell you a course** (enroll buttons, lead forms, "find programs near you", sponsored listings, for-profit schools) and move to the next result, so you may open many pages to reach 10 usable ones. Log every URL as read or skipped, with the reason. Use these pages to find the concrete facts readers need, then record each fact with the most official source you can find.
 
 ### 2. Entry Requirements Filter
 Only include careers/certifications that can be obtained with **no prior experience or education beyond a high school diploma or GED**. If a role requires a college degree, prior clinical experience, or any credential that itself requires higher education, exclude it from the research brief. The audience is working adults with a GED/high school diploma looking for accessible career paths.
@@ -20,11 +24,12 @@ Only include careers/certifications that can be obtained with **no prior experie
 Lead with **national data**. These are nationwide certifications and careers. For certifications managed by a national body (AAPC, AHIMA, NHA, etc.), present them as national credentials. For **state-level licenses** (like CNA registry, pharmacy tech license), note that requirements vary by state — guide readers to check their own state's licensing board, and include Massachusetts rules as a specific example. Don't center the entire post on Massachusetts, but don't ignore state-specific requirements either.
 
 ### 4. Required Data Points (every brief must include)
-1. **BLS median pay** — annual, national, with SOC code cited. Just the median — no percentile ranges unless specifically needed. Include hourly only if annual is unavailable.
+1. **BLS pay** — the median annual pay **and the 10th-percentile annual pay** (the entry-level figure), with SOC code cited. National for a nationwide credential; the state figure for a state-issued license (Emilio, 2026-10-05). No other percentiles. Include hourly only if annual is unavailable.
 2. **Job outlook** — % growth and timeframe. Skip the BLS label ("faster than average") — just give the number and let the Writer contextualize it.
 3. **Licensing/certification requirements** — what's required, what's optional, which body manages it
-4. **Typical training path and duration** (general industry info, NOT Career Skills Center specifics) — how many weeks/months, whether evening/weekend options exist, whether any part is online
-5. **Typical training cost range** — what do programs in this field generally cost? Search for general industry cost ranges from neutral sources (BLS, CareerOneStop, DOL). If multiple program lengths exist (e.g., 4-week vs 4-month for medical billing), note the range for each. This is one of the reader's first questions — don't skip it.
+4. **Typical training path and duration** (NOT Career Skills Center specifics) — concrete figures: months, total hours, externship or clinical hours, whether evening/weekend options exist, whether any part is online. When BLS or DOL give none, use what public colleges, certifying bodies and official program pages publish.
+5. **Typical training cost range** — concrete dollar ranges. Use neutral sources first (BLS, CareerOneStop, DOL); when they have none, use the published prices of public colleges and official program pages, and say which. If multiple program lengths exist (e.g., 4-week vs 4-month for medical billing), note the range for each. Use `[DATA NOT FOUND]` only when no official page publishes a figure. This is one of the reader's first questions — don't skip it.
+5b. **Example programs** — 2 to 4 named public, nonprofit or employer programs (state-relevant for a state post), each with hours, externship hours, cost or funding, and dates, taken from the program's own official page, with the date you checked.
 6. **Employer demand** — projected job openings, top industries hiring, growth drivers
 7. **4–6 FAQ questions** sourced from Google People Also Ask, autocomplete, and related searches
 
@@ -55,8 +60,8 @@ Source everything from the certifying body's official site.
 
 ### 7. Exclusions
 **Never source information from:**
-- Training providers or education company websites (they steer info toward their own products)
-- Other career/training blogs (not expert sources)
+- For-profit training providers, course sellers and lead-generation sites (they steer info toward their own products). Public colleges and public or employer programs are allowed for their own program facts (see 1.4).
+- Other career/training blogs as the only source (read them for leads; mark `[SECONDARY]`)
 - Salary aggregators (Glassdoor, Indeed, ZipRecruiter, Salary.com, Payscale)
 - Any source with a financial interest in steering the reader toward a product or program
 
