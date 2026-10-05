@@ -69,6 +69,10 @@ strong { font-weight: 700; }
 
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
 .container.narrow { max-width: 860px; }
+/* Narrow sections keep short, readable lines but start at the same left edge as every other section */
+.container.narrow:not(.text-center) { max-width: var(--container); }
+.container.narrow:not(.text-center) > * { max-width: calc(860px - 2 * var(--gutter)); }
+.container.narrow:not(.text-center) > .note { max-width: calc(860px - 2 * var(--gutter) + 80px); }
 .text-center { text-align: center; }
 .section { position: relative; padding-block: var(--section-y); }
 
@@ -92,12 +96,14 @@ strong { font-weight: 700; }
 p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .eyebrow--light { color: rgba(255,255,255,0.8); }
 @media (max-width: 1320px) { .eyebrow-line { margin-left: 0; width: 34px; } }
-/* Desktop: drop the accent dash below its label, shifted left so it sits half
-   under the word and half in the margin. Mobile keeps the inline dash above. */
+/* Desktop: drop the accent dash below its label, starting at the same left edge
+   as the text. Mobile keeps the inline dash above. */
 @media (min-width: 1025px) {
   .eyebrow { flex-direction: column-reverse; align-items: flex-start; gap: 9px; }
-  .eyebrow-line { width: 60px; margin-left: -30px; }
+  .eyebrow-line { width: 60px; margin-left: 0; }
 }
+/* Section labels show without the accent line (Emilio, 2026-10-04) */
+.eyebrow-line { display: none; }
 
 .link-yellow { color: var(--yellow-dark); font-weight: 700; }
 .link-yellow:hover { text-decoration: underline; }
@@ -266,6 +272,12 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
    ========================================================================== */
 .what-we-do { padding-top: clamp(40px, 6vw, 80px); }
 .what-we-do .container { position: relative; z-index: 1; }
+/* Home intro: breathing room and a divider between the centered statement and the guides below */
+.what-we-do .text-center + .container { margin-top: clamp(40px, 5vw, 64px); }
+.what-we-do .text-center + .container::before {
+  content: ""; display: block; height: 2px; background: var(--accent-blue);
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
 .feature-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 48px);
   margin-top: clamp(40px, 6vw, 80px);
@@ -613,7 +625,20 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 
 /* ---------- Section helpers ---------- */
 .section--alt { background: var(--surface-alt); }
-.section--alt + .section--alt { padding-top: 0; }
+/* Two sections of the same color in a row get a column-width divider between them:
+   accent blue between white sections, white between light sections */
+.section:not(.section--alt, .programs) + .section:not(.section--alt, .programs)::before,
+.section--alt + .section--alt:not(.programs)::before {
+  content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: calc(min(var(--container), 100%) - 2 * var(--gutter)); height: 2px;
+  background: var(--accent-blue);
+}
+.section--alt + .section--alt:not(.programs)::before { background: #fff; }
+/* Tighter space on both sides of the divider, so the line separates without a big empty band */
+.section:not(.section--alt, .programs):has(+ .section:not(.section--alt, .programs)),
+.section--alt:has(+ .section--alt:not(.programs)) { padding-bottom: clamp(40px, 5vw, 64px); }
+.section:not(.section--alt, .programs) + .section:not(.section--alt, .programs),
+.section--alt + .section--alt:not(.programs) { padding-top: clamp(40px, 5vw, 64px); }
 .course-overview { overflow: hidden; }
 .course-overview .container { position: relative; z-index: 1; }
 .section--tight { padding-block: clamp(48px, 6vw, 84px); }
@@ -866,6 +891,10 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
 .post-cta h2 { color: #fff; margin: 0 0 10px; font-size: clamp(20px, 2.4vw, 26px); }
 .post-cta p { color: rgba(255,255,255,.9); margin: 0 0 20px; }
 .related-title { font-size: 22px; color: var(--navy); margin: 48px 0 6px; }
+/* A "Related guides" block in its own section is a small footer, so it gets less space above it */
+.container > .related-title:first-child { margin-top: 0; }
+.section:has(> .container > .related-title:first-child) { padding-top: clamp(40px, 5vw, 64px); }
+.section:has(+ .section > .container > .related-title:first-child) { padding-bottom: clamp(48px, 6vw, 84px); }
 .post-grid--related { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 .post-grid--related .post-card h3 { margin-top: 0; }
 
