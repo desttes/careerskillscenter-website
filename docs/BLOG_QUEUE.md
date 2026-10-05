@@ -12,10 +12,10 @@ Add blog topics here for the blog agent to work on. The agent runs every 6 hours
 
 ## Done
 <!-- Completed drafts. The agent logs the file path and date. -->
-- **Healthcare Jobs in Massachusetts You Can Train For (2026)** — `blog/healthcare-jobs-massachusetts.html` — 2026-10-03 — status: draft, local, needs Emilio review (DRAFT marker blocks deploy; see VERIFICATION_LOG section N).
-- **How to Become a Phlebotomist in Massachusetts (2026)** — `blog/phlebotomist-massachusetts.html` — 2026-10-03 — status: draft, local, needs Emilio review (DRAFT marker blocks deploy; see VERIFICATION_LOG section O).
-- **How to Become a Pharmacy Technician in Massachusetts (2026)** — `blog/pharmacy-technician-massachusetts.html` — 2026-10-04 — status: draft, local, needs Emilio review (DRAFT marker blocks deploy; see VERIFICATION_LOG section P). Open decision: OK to print BLS pay figures in role-guide posts? (Rules allow pay only in the salary-by-state post; same question as sections N and O.)
-- **How to Become a CNA in Massachusetts (2026): Training, Exam and Who Pays** — `blog/cna-massachusetts.html` — 2026-10-04 — status: draft, local, needs Emilio review (DRAFT marker blocks deploy; see VERIFICATION_LOG section Q). Open decision: OK to print BLS pay figures in role-guide posts.
+- **Healthcare Jobs in Massachusetts You Can Train For (2026)** — `blog/healthcare-jobs-massachusetts.html` — 2026-10-03 — status: approved by Emilio 2026-10-05, held back from publishing (DRAFT marker blocks deploy; see VERIFICATION_LOG section N).
+- **How to Become a Phlebotomist in Massachusetts (2026)** — `blog/phlebotomist-massachusetts.html` — 2026-10-03 — status: approved by Emilio 2026-10-05, held back from publishing (DRAFT marker blocks deploy; see VERIFICATION_LOG section O).
+- **How to Become a Pharmacy Technician in Massachusetts (2026)** — `blog/pharmacy-technician-massachusetts.html` — 2026-10-04 — status: approved by Emilio 2026-10-05, held back from publishing (DRAFT marker blocks deploy; see VERIFICATION_LOG section P). Open decision: OK to print BLS pay figures in role-guide posts? (Rules allow pay only in the salary-by-state post; same question as sections N and O.)
+- **How to Become a CNA in Massachusetts (2026): Training, Exam and Who Pays** — `blog/cna-massachusetts.html` — 2026-10-04 — status: approved by Emilio 2026-10-05, held back from publishing (DRAFT marker blocks deploy; see VERIFICATION_LOG section Q). Open decision: OK to print BLS pay figures in role-guide posts.
 
 ## Notes for the Agent
 <!-- Any standing instructions: tone preferences, topics to avoid, priority order, etc. -->
