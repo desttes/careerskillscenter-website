@@ -544,3 +544,19 @@ https://www.bls.gov/ooh/healthcare/nursing-assistants.htm · medical-assistants.
 
 ### Q addendum (2026-10-04): CNA program prices
 Source: `docs/blog-drafts/cna-massachusetts/cna-cost-research.md`. Six programs' own pages opened 2026-10-04 (Lunder, Quincy, MassBay, Bristol, STCC, Holyoke). Range "about $1,400 to about $2,900" is from those pages. NOT confirmed: DPH approval of each program (mass.gov blocked); what the price includes is WebFetch paraphrase, spot-check the top pages; STCC page text mentions "October 2024". Greenfield ($3,000) excluded: "not currently offered". Bunker Hill, Roxbury, Red Cross figures were summary-only and not used. Re-check prices before publishing.
+
+### Q live check (2026-10-05, in-app browser; Emilio asked for it)
+- **Confirmed live:**
+  - D&S Massachusetts page (hdmaster.com): testing phone (888) 401-0462; MA Registry phone (617) 753-8144; exam in English, Spanish, Chinese, Haitian Creole; handbook effective May 2026.
+  - D&S handbook (translatable HTML): fees $30 knowledge, $40 audio (+$10), $70 skills, per try; $25 test-review deposit, refunded only if the finding favors the candidate; review request due within 3 business days of official scoring.
+  - mass.gov training-program page: link works; four exam languages; approved-program map and XLSX list exist (list NOT downloaded).
+  - BLS OOH nursing assistants: "one of the highest rates of injuries and illnesses of all occupations"; about 203,300 openings a year; 3% growth 2025-35; 36% in nursing care facilities. (OOH national median now shows $41,870; the post no longer prints a national pay figure.)
+- **Still not checked:** DPH 87-hour memo and effective date; reciprocity page; Registry Program page; $46,680 MA median; first-exam fee rule.
+- **Emilio, 2026-10-05:** named-school price table removed (DPH approval not confirmed). The range stays.
+
+### Q live check 2 (2026-10-05): leads from cnaclasses.com (Emilio's tip), verified on official pages
+- cnaclasses.com is a lead-generation site with sponsored ads. Its facts conflict with official pages ($93 exam fee, 5 skills, 100 hours, 60-90 min test, Red Cross as test vendor, Quincy $1,950 and MassBay $1,300). NOT used as a source; leads only.
+- **Confirmed (opened):** mass.gov how-to-become page: allow at least three weeks for results and for the name to appear on the license-check site; training waiver under 105 CMR 156.100 (also on D&S handbook); reciprocity needs current certification in good standing and never certified in MA, handled through D&S since Dec 4, 2023; knowledge 4 tries, skills 3 tries. D&S handbook: results in the TMU account the business day after the test (after 8pm ET); renewal every 24 months with 8 consecutive paid hours.
+- **Confirmed (opened):** JVS Boston lists free job training incl. "Nurse's Aide & CNA Training Programs, 6 or 14 weeks." Eligibility NOT confirmed from an opened page (search summary says Boston resident 18+ on SNAP/TAFDC), so the post says "ask JVS who can join."
+- **Confirmed (opened):** mass.edu Community College Nursing Scholarship: last-dollar aid for tuition, fees, books at public community colleges; Nursing Assistant/Aide certificate programs eligible; 6+ credits; MA resident 1 year; FAFSA or MASFA.
+- **NOT confirmed (not used):** IINE Lowell is free (search summary says only "CNA for Success", English level and 6 months U.S. work experience); Massachusetts reciprocity is free (no official page says so); Workforce Competitiveness Trust Fund for CNA; LPN bridge 12-18 months; CORI cost rules; MassBay 120-hour split.

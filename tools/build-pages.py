@@ -5554,8 +5554,8 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
 
         <div class="note"><strong>Quick answer.</strong> Six healthcare jobs in Massachusetts are open to people
         with a high school diploma or GED: nursing assistant (CNA), medical assistant, phlebotomist, pharmacy
-        technician, medical biller/coder and EKG technician. Typical U.S. pay for the first five is about
-        $42,000 to $51,000 a year. CNA and pharmacy technician need a Massachusetts state license or
+        technician, medical biller/coder and EKG technician. Typical pay for the first five is about
+        $45,000 to $51,000 a year. CNA and pharmacy technician need a Massachusetts state license or
         registry. The other four do not require a state license.</div>
 
         <h2>Before you click Apply: how to read a healthcare job listing</h2>
@@ -5579,13 +5579,13 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
         <table class="data-table">
           <caption>Six healthcare jobs you can train for with a high school diploma or GED</caption>
           <thead>
-            <tr><th>Job</th><th>What you do</th><th>Pay (U.S. typical)</th><th>Training time</th><th>Training cost</th><th>State license needed?</th></tr>
+            <tr><th>Job</th><th>What you do</th><th>Typical pay</th><th>Training time</th><th>Training cost</th><th>State license needed?</th></tr>
           </thead>
           <tbody>
-            <tr><td>Nursing assistant (CNA)</td><td>Help patients bathe, dress, eat and move</td><td>$42,260/yr</td><td>Varies by school (federal minimum 75 hours)</td><td>Varies; may be free if an employer hires you first</td><td>Yes &mdash; state exam + DPH registry</td></tr>
+            <tr><td>Nursing assistant (CNA)</td><td>Help patients bathe, dress, eat and move</td><td>$46,680/yr (Massachusetts)</td><td>Varies by school (federal minimum 75 hours)</td><td>Varies; may be free if an employer hires you first</td><td>Yes &mdash; state exam + DPH registry</td></tr>
             <tr><td>Medical assistant</td><td>Check patients in, take vitals, help the doctor</td><td>$45,690/yr</td><td>About 1&ndash;2 years</td><td>Varies by school</td><td>No</td></tr>
             <tr><td>Phlebotomist</td><td>Draw blood for tests and donations</td><td>$45,230/yr</td><td>Under 1 year</td><td>Varies by school</td><td>No</td></tr>
-            <tr><td>Pharmacy technician</td><td>Help pharmacists fill prescriptions</td><td>$45,750/yr</td><td>Often on-the-job, under 1 year</td><td>Varies by school</td><td>Yes &mdash; Board of Pharmacy license</td></tr>
+            <tr><td>Pharmacy technician</td><td>Help pharmacists fill prescriptions</td><td>$46,470/yr (Massachusetts)</td><td>Often on-the-job, under 1 year</td><td>Varies by school</td><td>Yes &mdash; Board of Pharmacy license</td></tr>
             <tr><td>Medical biller/coder</td><td>Turn doctor visits into codes for insurance</td><td>$51,140/yr</td><td>Varies by program</td><td>Varies by school</td><td>No</td></tr>
             <tr><td>EKG technician</td><td>Run heart-rhythm tests (EKGs)</td><td>&mdash;</td><td>Certificate programs under 1 year</td><td>Varies by school</td><td>No</td></tr>
           </tbody>
@@ -5597,7 +5597,7 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
         <h3>1. Nursing assistant (CNA)</h3>
         <p>A CNA (certified nurse aide) gives hands-on daily care. You help patients bathe, dress, eat,
         use the bathroom and move safely. Jobs are in nursing homes, hospitals and other care settings.</p>
-        <p><strong>How much will I make?</strong> Most CNAs earn around $42,260 a year. New workers usually
+        <p><strong>How much will I make?</strong> Most CNAs in Massachusetts earn around $46,680 a year. New workers usually
         start lower.</p>
         <p><strong>How long is training?</strong> Each school sets its own schedule and price. The federal
         minimum is 75 hours, and some training is free if a nursing home hires you first. Read our
@@ -5679,7 +5679,7 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
         <p>A pharmacy technician helps a pharmacist fill prescriptions. You count and label medicine, take
         information from customers and help with insurance questions. Jobs are in store pharmacies and
         hospitals.</p>
-        <p><strong>How much will I make?</strong> Most pharmacy technicians earn around $45,750 a year. New
+        <p><strong>How much will I make?</strong> Most pharmacy technicians in Massachusetts earn around $46,470 a year. New
         workers usually start lower.</p>
         <p><strong>How long is training?</strong> Pharmacy technicians often learn on the job in under a year.
         Each school sets its own price, so ask for the full cost in writing. In Massachusetts, you can also train on the job (see below).</p>
@@ -6643,9 +6643,9 @@ _cna_faq = [
     ("How long does it take to become a CNA in Massachusetts?",
      "Training must be at least 75 hours under federal rules. In April 2026 the Massachusetts Department of Public Health (DPH) announced it plans to raise the minimum to 87 hours, with 21 hours of hands-on practice. Most Massachusetts programs take under 12 weeks. After training you still need to pass the state exam and be listed on the Nurse Aide Registry."),
     ("How much does CNA training cost in Massachusetts?",
-     "Of six Massachusetts programs we checked in October 2026, prices ran from about $1,400 to about $2,900. Prices change and depend on the school, so ask each program for the full price, including test fees, books, uniform and background check. The state exam costs $30 for the knowledge test and $70 for the skills test on each try. If a nursing home hires you or offers you a job before training starts, federal rules say it cannot charge you for the training."),
+     "CNA programs in Massachusetts cost about $1,400 to $2,900 as of October 2026. Prices change and depend on the school, so ask each program for the full price, including test fees, books, uniform and background check. The state exam costs $30 for the knowledge test and $70 for the skills test on each try. If a nursing home hires you or offers you a job before training starts, federal rules say it cannot charge you for the training."),
     ("Can I get CNA training for free in Massachusetts?",
-     "Possibly. Federal rules say a nursing facility that has hired you, or offered you a job, before your class starts cannot charge you for the training. If you pay yourself and a nursing facility hires you within 12 months after you finish, the state must pay back part of your cost. Ask DPH how this works in Massachusetts. A MassHire Career Center can also tell you if you may qualify for funded training. Read any work contract before you sign."),
+     "Possibly. Federal rules say a nursing facility that has hired you, or offered you a job, before your class starts cannot charge you for the training. If you pay yourself and a nursing facility hires you within 12 months after you finish, federal rules say you may be paid back. Ask DPH how this works in Massachusetts. A MassHire Career Center can also tell you if you may qualify for funded training. Read any work contract before you sign."),
     ("What is on the Massachusetts CNA exam?",
      "There are two parts. The knowledge test has 60 multiple-choice questions, takes up to 60 minutes, and you need 76% to pass. The skills test has 3 or 4 tasks, picked at random, done in front of a nurse in up to 40 minutes. You can take the exam in English, Spanish, Chinese or Haitian Creole."),
     ("How much do CNAs make in Massachusetts?",
@@ -6662,8 +6662,8 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
              except the salary-by-state post; this post shows one BLS pay figure, same open question as the
              healthcare-jobs, phlebotomist and pharmacy posts. Emilio must approve or swap for a BLS link.
              (1) MA median $46,680 (BLS OEWS May 2025, SOC 31-1131, from the BLS API with decoded series IDs):
-             spot check at data.bls.gov/oes. (2) 3% growth 2025-35 and ~203,300 openings/yr (BLS OOH, opened).
-             (3) 36% nursing care facilities / 32% hospitals (BLS OOH). (4) 87-hour / 21 practical-hour DPH
+             spot check at data.bls.gov/oes. (2) 3% growth 2025-35 and ~203,300 openings/yr (BLS OOH, opened and re-confirmed 2026-10-05).
+             (3) 36% nursing care facilities / 32% hospitals (BLS OOH, 36% re-confirmed 2026-10-05). (4) 87-hour / 21 practical-hour DPH
              announcement (April 2026 memo, SEARCH SUMMARY only; effective date unknown); revised exam early 2027.
              (5) All mass.gov facts (DPH approval list, Check a License, registry phone 617-753-8144, reciprocity
              online since Dec 2023) are SEARCH SUMMARY: open the pages. (6) Exam facts from D&S May 2026 handbook
@@ -6742,7 +6742,8 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
           <li><strong>Sign up for the state exam.</strong> Your program enters your name with D&amp;S. You pay the
           test fees before you can pick a test date. Some programs pay the fees for you, so ask.</li>
           <li><strong>Pass both parts</strong> of the exam: the knowledge test and the skills test.</li>
-          <li><strong>Get listed on the Nurse Aide Registry.</strong> Now you can work as a CNA.</li>
+          <li><strong>Get listed on the Nurse Aide Registry.</strong> Now you can work as a CNA. The state says to
+          allow at least three weeks for your name to show on its license-check website.</li>
           <li><strong>Keep it active.</strong> You renew every 24 months. To renew, you must have worked for pay
           as a nurse aide for at least 8 hours in a row during those 24 months.</li>
         </ol>
@@ -6770,9 +6771,9 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
             <tr><th></th><th>1. A nursing home hires you first</th><th>2. A free public program</th><th>3. You pay first</th></tr>
           </thead>
           <tbody>
-            <tr><td>How it works</td><td>A nursing home hires you, or offers you a job, before your class starts. Federal rules say it cannot charge you for any part of the training, including textbooks.</td><td>A MassHire Career Center or local workforce program helps pay for training. You may qualify through WIOA (the Workforce Innovation and Opportunity Act, a federal training program).</td><td>You pay the school yourself. If a nursing home hires you within 12 months after you finish, federal rules say the state must pay back part of your cost while you work there as an aide.</td></tr>
+            <tr><td>How it works</td><td>A nursing home hires you, or offers you a job, before your class starts. Federal rules say it cannot charge you for any part of the training, including textbooks.</td><td>A MassHire Career Center or local workforce program helps pay for training. You may qualify through WIOA (the Workforce Innovation and Opportunity Act, a federal training program).</td><td>You pay the school yourself. Federal rules say you may be paid back if a nursing home hires you within 12 months after you finish. Ask DPH how this works in Massachusetts.</td></tr>
             <tr><td>Cost to you</td><td>Training: $0</td><td>May be $0 if you qualify</td><td>The full price up front (see the table below for examples)</td></tr>
-            <tr><td>Strings attached</td><td>Often a work contract. Read it before you sign.</td><td>Eligibility rules, paperwork and waiting time</td><td>You carry the cost until you are hired. Ask DPH how the pay-back works.</td></tr>
+            <tr><td>Strings attached</td><td>Often a work contract. Read it before you sign.</td><td>Eligibility rules, paperwork and waiting time</td><td>You carry the cost until you are hired, and you may not be paid back.</td></tr>
             <tr><td>Best for</td><td>People who want a nursing home job and need to start fast</td><td>People who need help paying and can wait for approval</td><td>People who want to choose their own school and schedule</td></tr>
           </tbody>
         </table>
@@ -6783,28 +6784,17 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         or have a job offer, on the day training starts.</p>
 
         <h3>What Massachusetts CNA programs charge</h3>
-        <p>CNA programs in Massachusetts cost about $1,400 to $2,900 as of October 2026. Prices change with
-        each class, so check the school&rsquo;s own page.<!-- [VERIFY: prices from cna-cost-research.md, opened 2026-10-04; DPH approval of each program not confirmed; re-check before publishing] --></p>
-        <div class="table-wrap">
-        <table class="data-table">
-          <caption>What six Massachusetts CNA programs listed in October 2026</caption>
-          <thead>
-            <tr><th>Program</th><th>Price</th><th>Length</th><th>What the price covers</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Lunder CareForce Institute (Boston)</td><td>$1,395 tuition (about $1,700 with fees)</td><td>132.5 hours</td><td>Fees are listed separately</td></tr>
-            <tr><td>Quincy College</td><td>$1,550</td><td>5&ndash;7 weeks</td><td>The $110 state exam and scrubs are extra</td></tr>
-            <tr><td>MassBay Community College</td><td>$1,600</td><td>8 weeks</td><td>Scrubs, books, CPR card and lab fee</td></tr>
-            <tr><td>Bristol Community College</td><td>$1,850</td><td>100 hours</td><td>Ask the school</td></tr>
-            <tr><td>Springfield Technical Community College</td><td>$2,648</td><td>150 hours</td><td>Books and exam fees</td></tr>
-            <tr><td>Holyoke Community College</td><td>$2,880</td><td>5 weeks</td><td>Ask the school</td></tr>
-          </tbody>
-        </table>
-        </div>
+        <p>CNA programs in Massachusetts cost about $1,400 to $2,900 as of October 2026. Prices change with each
+        class, so check the school&rsquo;s own page.<!-- [VERIFY: range from cna-cost-research.md (school pages opened 2026-10-04); named-school table removed by Emilio 2026-10-05; DPH approval of programs not confirmed] --></p>
         <p>Higher prices can include extras, such as a Home Health Aide certificate or a CPR class, so compare what
-        each price covers. Some programs may be free for people who qualify. Holyoke says its program is free for
-        people who get SNAP or TAFDC benefits, and Cambridge Community Learning Center runs a free program with
-        limited spots. Check that a program is on the DPH approved list before you pay.</p>
+        each price covers.</p>
+        <p>Some programs are free for people who qualify. JVS Boston, a nonprofit, lists a free Nurse&rsquo;s Aide
+        and CNA program (6 or 14 weeks). Ask JVS who can join.<!-- [VERIFY: JVS Boston page opened 2026-10-05 confirms "free job training programs" and the 6 or 14 weeks; eligibility (Boston resident, SNAP/TAFDC) is search summary only, so not stated] --></p>
+        <p>At a public community college, the state&rsquo;s Community College Nursing Scholarship can pay what is
+        left after other aid. It has rules, and it covers credit programs, so ask the college if your CNA class
+        counts.<!-- [VERIFY: mass.edu program page opened 2026-10-05; lists Nursing Assistant/Aide certificate programs, needs 6+ credits, MA residency 1 year, FAFSA or MASFA. Non-credit classes probably do not count: unconfirmed] --></p>
+        <p>Ask your MassHire Career Center about other help. Check that a program is on the DPH approved list
+        before you pay.</p>
 
         <h3>&ldquo;Free&rdquo; training and work contracts</h3>
         <p>CNAs who trained through a nursing home share mixed stories. Some say they owed nothing. Others say they
@@ -6910,8 +6900,6 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         <h2>How much do CNAs make in Massachusetts?</h2>
         <p>Most CNAs in Massachusetts earn around <strong>$46,680 a year</strong><!-- [VERIFY: MA median, BLS OEWS May 2025; spot check data.bls.gov/oes] -->.
         New CNAs often start lower. Pay depends on where you work and which shift you take.</p>
-        <p>Across the whole U.S., CNAs earn around $42,260 a
-        year<!-- [VERIFY: national median, BLS OOH May 2025] -->. So CNA pay in Massachusetts is higher than the national figure.</p>
         <p>The number of CNA and orderly jobs in the U.S. is expected to grow 3% from 2025 to 2035. That sounds
         small, but there are about 203,300 openings each year, mostly because people leave the job or move up.
         That means steady demand.</p>
@@ -6985,7 +6973,8 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         <p>If your certification is current and in good standing in another state, you can request
         reciprocity online through D&amp;S<!-- [VERIFY: mass.gov reciprocity page not opened] -->. If you finished
         an approved nurse aide course in another state, or a clinical course in an approved nursing school, you
-        may be able to take the Massachusetts exam without repeating training.</p>
+        may be able to take the Massachusetts exam without repeating training. Other training or experience may
+        qualify for a training waiver. Ask the Nurse Aide Registry.</p>
 
         <h2>What to do this week</h2>
         <ol>
@@ -7039,7 +7028,7 @@ PAGES.append(dict(
         "Medical", _CNA_TITLE,
         "If a nursing home hires you before training starts, it cannot charge you for that training. Here is "
         "that path and two others, plus the state exam, the registry and the hard parts of the job.",
-        "October 4, 2026", "14 min read", _cna_body, author="Career Skills Center")))
+        "October 4, 2026", "14 min read", _cna_body, author=None)))
 
 
 # Interest form the post's CTA points to. COURSE-DEPENDENT: R-BLOG-MBC.
