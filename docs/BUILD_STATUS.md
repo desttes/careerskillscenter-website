@@ -29,6 +29,24 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 
 ## Session log
 
+### 2026-10-04 (end of day) — Design trials waiting on Emilio (UNCOMMITTED in the working tree)
+**Read this first in the next session.** These five changes are in `css/style.css` and `index.html` on disk but are NOT committed. Emilio is reviewing them at http://localhost:8123 (start the preview with the `site` server in `.claude/launch.json`). The other modified `.html` files and `sitemap.xml` are only rebuild version stamps. Ask Emilio which to keep, commit and push those, then revert the rest with `git restore`.
+1. **Home intro divider** (`index.html` + `.what-we-do .text-center + .container` in CSS): a blue column-width line and about 64px of space between "A Straight Guide to Training and Funding" and "Funding guides". "Learn more." is joined with `&nbsp;` so it wraps as one phrase.
+2. **Related guides spacing** (`.related-title` rules): less space above a "Related guides" block in its own section (5 career and funding pages). The gap after the interest form went from about 290px to about 160px.
+3. **Dividers between same-colored sections** (Section helpers block): a blue 2px line between two white sections, a white line between two light sections (Emilio found the white one faint), and about 64px on each side instead of 120. The home page `.programs` photo section is excluded. This replaces the committed `.section--alt + .section--alt { padding-top: 0 }` rule from `896a7e7`.
+4. **Section-label accent line hidden** (`.eyebrow-line { display: none }`, marked TRIAL). Before that, the line was moved to the left edge on desktop (`margin-left: 0`). Options: keep it hidden, show it at the left edge, or restore the original (-30px).
+5. **Narrow text sections aligned left** (`.container.narrow:not(.text-center)`): they keep the 780px text width but start at the same left edge as other sections (about 45 sections on 17 pages). Centered blocks and the qualify quiz stay centered.
+
+**Done and pushed today (see commits 1c00c16 to 896a7e7):** removed all sources from blog posts (sections, notes, "according to BLS", job codes, percentiles, government data links); salary table says "typical pay per year"; new section color `#edeff6`; interest and employer form fields fixed (white text); roomier blog spacing; writer paragraph rules (1-2 sentences, at most 210 characters); sixth agent `community-researcher` plus an editorial round; `/blog-pipeline` command; cloud routine paused.
+
+**Open TODOs / questions for Emilio:**
+- Non-blog pages still show small "Source: ..." lines (`role-src`, e.g. wioa-explained.html, career guides). Remove them too, to match the no-sources rule?
+- Send the keyword analysis from the Project and save it as `docs/KEYWORD_ANALYSIS.md`.
+- The pay-figure policy question for role-guide posts is still open (see the CNA entry below).
+- Older posts break the new two-line paragraph rule. Run the writer and reviewer agents over them post by post.
+- The pharmacy technician post was written under the old prompt and needs a reader-first review.
+- New Code sessions can call the project agents by name (they were created mid-session, so this session couldn't). Test with `/blog-pipeline` or one agent at a time.
+
 ### 2026-10-04 — Blog Manager: How to Become a CNA in Massachusetts (2026): Training, Exam and Who Pays (LOCAL, not deployed)
 - **Built:** `blog/cna-massachusetts.html` (about 4,200 words including page chrome), added via `tools/build-pages.py`; `blog.html` index and `sitemap.xml` regenerated. Course-mode copy in `blog/course-mode-copy/cna-massachusetts.md`. Register row R-BLOG-04 added.
 - **Angle:** lead with who pays. If a nursing home hires you or offers you a job first, federal rules (42 CFR 483.152) say it cannot charge for training. Three ways to pay, the state exam (D&S) and registry, what changes in 2026, honest downsides, with three approved community quotes.
