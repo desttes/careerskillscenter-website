@@ -3550,7 +3550,7 @@ PAGES.append(dict(
         </a>
 
         <div class="post-grid">
-{chr(10).join(post_card(*p) for p in BLOG_POSTS)}
+@@BLOG_CARDS@@
         </div>
       </div>
     </section>
@@ -7103,6 +7103,23 @@ PAGES.append(dict(
 
 HOLD.add("medical-billing-coding-info.html")  # lead-capture page: noindex, kept out of the sitemap
 HOLD.add("it-careers-massachusetts-draft.html")  # uncommitted working draft: never list in the sitemap
+
+
+# Posts still marked DRAFT are built (so they can be reviewed locally) but stay
+# out of the blog index and the sitemap, so blog.html and sitemap.xml are always
+# safe to deploy. Remove a post's DRAFT marker to publish it in both.
+DRAFT_SLUGS = {p["slug"] for p in PAGES if p["slug"].startswith("blog/") and "<!-- DRAFT" in p["main"]}
+_cards = "\n".join(post_card(*p) for p in BLOG_POSTS if p[-1] not in DRAFT_SLUGS)
+for _p in PAGES:
+    _p["main"] = _p["main"].replace("@@BLOG_CARDS@@", _cards)
+HOLD |= DRAFT_SLUGS
+for _p in PAGES:
+    if _p["slug"] in DRAFT_SLUGS or _p["slug"] in REDIRECTS or _p["slug"] in ARCHIVED:
+        continue
+    for _d in DRAFT_SLUGS:
+        if _d in _p["main"]:
+            print("WARNING: %s links to draft %s (broken link if deployed)" % (_p["slug"], _d))
+print("draft posts kept out of blog index and sitemap:", ", ".join(sorted(DRAFT_SLUGS)) or "none")
 
 
 # ---------------------------------------------------------------------------
