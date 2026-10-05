@@ -560,3 +560,40 @@ Source: `docs/blog-drafts/cna-massachusetts/cna-cost-research.md`. Six programs'
 - **Confirmed (opened):** JVS Boston lists free job training incl. "Nurse's Aide & CNA Training Programs, 6 or 14 weeks." Eligibility NOT confirmed from an opened page (search summary says Boston resident 18+ on SNAP/TAFDC), so the post says "ask JVS who can join."
 - **Confirmed (opened):** mass.edu Community College Nursing Scholarship: last-dollar aid for tuition, fees, books at public community colleges; Nursing Assistant/Aide certificate programs eligible; 6+ credits; MA resident 1 year; FAFSA or MASFA.
 - **NOT confirmed (not used):** IINE Lowell is free (search summary says only "CNA for Success", English level and 6 months U.S. work experience); Massachusetts reciprocity is free (no official page says so); Workforce Competitiveness Trust Fund for CNA; LPN bridge 12-18 months; CORI cost rules; MassBay 120-hour split.
+
+
+## R. Medical assistant post - BLS pay and outlook, MA licensing, CMA/RMA/CCMA exam facts, paid training (2026-10-05, DRAFT, local)
+
+`blog/medical-assistant-massachusetts.html` (publish date 2026-10-05, ~3,200 visible words). Compliance review: round 1 FAIL, round 2 FAIL on one wording fix (shot rule, "primary care provider" definition), fixed and checked by the director; reviewer said no full re-review needed. Pipeline files: `docs/blog-drafts/medical-assistant-massachusetts/` (research-brief.md, community-verification.md, editorial-decisions.md, review-report.md, review-report-round2.md).
+
+**STATUS: partly verified.** Tags: OPENED = page read live; SEARCH SUMMARY = seen only in a search result summary (mass.gov returned HTTP 403 to fetch and curl). The DRAFT marker and inline [VERIFY] comments block deploy.
+
+### R1. BLS (OPENED 2026-10-05; BLS OOH and API)
+- National median $45,690/year (OEWS May 2025, SOC 31-9092), printed per Emilio's 2026-10-05 ruling (national figure for nationwide credentials). Source: https://www.bls.gov/ooh/healthcare/medical-assistants.htm
+- 13% growth 2025-35; about 109,700 openings a year; no work experience required; most states do not require certification; employers "may prefer or require" certification. CPR/BLS from the same page.
+
+### R2. Massachusetts licensing and immunization
+- No state license: MGL c.112 s.265 OPENED on malegislature.gov (nothing authorizing licensure of certified medical assistants). The mass.gov summary that medical assistants are not licensed is SEARCH SUMMARY. Needs one human check on mass.gov.
+- Shot (immunization) rule: statute OPENED; wording corrected in round 2 (primary care provider is defined by role, not only "doctor or nurse practitioner"). DPH circular DCP 17-8-102 (2017): SEARCH SUMMARY, confirm still current.
+
+### R3. Certification exams
+- AAMA CMA: $125 / $250 fees, 200 questions / 160 minutes, 69% first-time pass (Jul 2024-Apr 2025): SEARCH SUMMARY. Eligibility needs a CAAHEP/ABHES-accredited program: OPENED https://www.aama-ntl.org/certification/eligibility ; list: https://www.aama-ntl.org/medical-assisting/caahep-and-abhes-accredited-programs . Recertification 60 months: OPENED.
+- NHA CCMA: $169 fee, 2022 test plan (150 scored + 30 pretest, 3 hours): SEARCH SUMMARY. Eligibility (training program within 5 years, or diploma/GED plus 1 year of work in last 3 or 2 in last 5; no externship listed): OPENED https://www.nhanow.com/certification/nha-certifications/certified-clinical-medical-assistant-(ccma) . Renewal every 2 years: OPENED.
+- AMT RMA: 210 questions / 2 hours and 3-year renewal: SEARCH SUMMARY. $150 fee and eligibility (720 hours of instruction with at least 160 externship hours): OPENED https://americanmedtech.org/medical-assistant
+- Felony rules: AAMA waiver form (text extracted locally) and AMT Felony Information Checklist OPENED; both review case by case. NHA (CCMA) felony rule UNVERIFIABLE, not stated as "no rule."
+
+### R4. Training length, cost, paid training
+- "About 12 weeks" and "about 8 months" program lengths: Massachusetts public college pages OPENED.
+- "Several thousand dollars" at a public college: one college's 2026-27 per-credit tuition and fees (about $7,700-$8,900 for 29 credits), brief's own math. No BLS/DOL cost range exists.
+- MassEducate details: mass.edu OPENED 2026-10-05.
+- Paid employer training: one Massachusetts health center page and one college + hospital registered apprenticeship OPENED (2025); current enrollment NOT confirmed. Employers are not named in the post.
+- "What do I need to start": diploma/GED is the brief's entry point (named by NHA, not on the college pages); CORI, physical and shot records from one public college page OPENED.
+
+### R5. Other URLs in the post
+- https://jobquest.mass.gov and https://www.mass.gov/info-details/masshire-career-center-locations (links, existing site-wide references).
+
+### R6. Community material
+- Experiences paraphrased only, no quotes (editorial-decisions.md). Verification results in community-verification.md: AAMA/AMT felony review CONSISTENT; NHA UNVERIFIABLE; CCMA without externship CONSISTENT as written on the NHA page; credits-to-nursing transfer DATA NOT FOUND (post says ask the college); 2016/2017 Hosanna College AG case is real but old and about nursing, SEARCH SUMMARY on mass.gov, not used as recent.
+- FAQ questions come from the keyword question tree, NOT live People Also Ask.
+
+**Still to check by a human:** mass.gov no-license summary and DPH shot circular; AAMA and NHA fees and exam formats; AMT format and renewal; AAMA 69% pass rate; whether the paid programs are still enrolling.

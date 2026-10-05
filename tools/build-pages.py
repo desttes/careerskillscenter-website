@@ -3446,6 +3446,11 @@ def post_card(tag, date, read, title, excerpt, href="#"):
 # Real launch posts. Order = newest first in the grid (the pillar is featured
 # above the grid, so it is not repeated here). href points into /blog/.
 BLOG_POSTS = [
+    ("Medical", "Oct 5, 2026", "13 min read",
+     "How to Become a Medical Assistant in Massachusetts (2026)",
+     "No state license, three ways in (one pays you while you train), which certification each leads to, "
+     "and the hard parts of the job.",
+     "blog/medical-assistant-massachusetts.html"),
     ("Medical", "Oct 4, 2026", "14 min read",
      "How to Become a CNA in Massachusetts (2026)",
      "If a nursing home hires you before training starts, it cannot charge you for it. Three ways to pay, "
@@ -5618,6 +5623,9 @@ _hcj_body = """        <!-- DRAFT -- verify before publishing: training lengths 
         <h3>2. Medical assistant</h3>
         <p>A medical assistant works in a doctor&rsquo;s office or clinic. You check patients in, take vital
         signs (like blood pressure), help the doctor during exams and do some office work.</p>
+        <p>Read more in our
+        <a href="blog/medical-assistant-massachusetts.html">guide to becoming a medical assistant in
+        Massachusetts</a>.</p>
         <p><strong>How much will I make?</strong> Most medical assistants earn around $45,690 a year.
         New workers usually start lower.</p>
         <p><strong>How long is training?</strong> Medical assistants often train for about 1 to 2
@@ -6133,7 +6141,9 @@ _phl_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         <p>People often compare these three. A phlebotomist mostly draws blood.</p>
         <p>A CNA (certified nurse aide) helps patients with daily care. In Massachusetts, a CNA must be on the
         state Nurse Aide Registry.</p>
-        <p>A medical assistant does a mix of patient care and office work in a doctor&rsquo;s office.</p>
+        <p>A medical assistant does a mix of patient care and office work in a doctor&rsquo;s office. Read
+        <a href="blog/medical-assistant-massachusetts.html">how to become a medical assistant in
+        Massachusetts</a>.</p>
         <p>Read <a href="blog/cna-massachusetts.html">how to become a CNA in Massachusetts</a>. To compare all
         three, read our guide to <a href="blog/healthcare-jobs-massachusetts.html">healthcare jobs in
         Massachusetts you can train for</a>.</p>
@@ -6968,6 +6978,9 @@ _cna_body = """        <!-- DRAFT -- facts to verify: (0) POLICY: PROJECT-HANDOF
         Massachusetts</a>. Or compare six jobs in our guide to
         <a href="blog/healthcare-jobs-massachusetts.html">healthcare jobs in Massachusetts you can train
         for</a>.</p>
+        <p>Thinking about a medical assistant job instead? Read
+        <a href="blog/medical-assistant-massachusetts.html">how to become a medical assistant in
+        Massachusetts</a>.</p>
 
         <h2>Already a CNA in another state?</h2>
         <p>If your certification is current and in good standing in another state, you can request
@@ -7029,6 +7042,444 @@ PAGES.append(dict(
         "If a nursing home hires you before training starts, it cannot charge you for that training. Here is "
         "that path and two others, plus the state exam, the registry and the hard parts of the job.",
         "October 4, 2026", "14 min read", _cna_body, author=None)))
+
+
+# ---------------------------------------------------------------------------
+# How to Become a Medical Assistant in Massachusetts (2026). Published 2026-10-05.
+# Target keyword: "medical assistant massachusetts". Source: blog pipeline,
+# docs/blog-drafts/medical-assistant-massachusetts/ (research-brief.md, content-strategy.md,
+# community-verification.md, editorial-decisions.md).
+# Pay: BLS OEWS May 2025, NATIONAL median only (Emilio 2026-10-05: certifications are national).
+# Community items: only C1, C2, C3, C4 (with C5), C6, C7 as approved in editorial-decisions.md
+# (paraphrase only, no quotes). No named schools or employers.
+# CSC lines = COURSE-DEPENDENT: R-BLOG-05. Course-mode copy: blog/course-mode-copy/medical-assistant-massachusetts.md
+# ---------------------------------------------------------------------------
+# Each FAQ answer is a list of short paragraphs (1-2 sentences each). The FAQPage
+# schema joins them into one plain-text answer.
+# FAQ answers repeat facts that are VERIFY-flagged in the body (CMA pass rate, exam formats,
+# shot rule, cost line, paid employer training). Python strings can't hold HTML comments here.
+_ma_faq = [
+    ("Do you need a license to be a medical assistant in Massachusetts?",
+     ["No state license required. Massachusetts does not license medical assistants.",
+      "Many employers prefer or require a national certification, like the CMA, RMA or CCMA. To give shots in a "
+      "primary care office, you must finish an accredited program."]),
+    ("How long does it take to become a medical assistant?",
+     ["Most programs take from a few months to 2 years. Some employers train you on the job, which often takes "
+      "several months.",
+      "After training, plan extra time for the certification exam and your job search."]),
+    ("Is the medical assistant exam hard?",
+     ["About 7 in 10 people pass the CMA exam on their first try. It has 200 questions and takes about 2 hours "
+      "and 40 minutes.",
+      "The RMA exam has 210 questions in 2 hours, and the CCMA exam takes 3 hours. Plan real study time."]),
+    ("Can a medical assistant give shots in Massachusetts?",
+     ["Yes, in a primary care office, if you finished an accredited program and a primary care provider supervises "
+      "you. That can be a doctor or nurse practitioner, who must be in the building.",
+      "Other tasks depend on the employer, so ask what medical assistants are allowed to do there."]),
+    ("What do I need to start medical assistant training?",
+     ["You usually need a high school diploma or GED. You do not need work experience.",
+      "College programs may also ask for a CORI check, a physical exam and your shot records. Some employers "
+      "also want CPR (Basic Life Support) certification."]),
+    ("How much does medical assistant training cost, and can I get it free?",
+     ["Prices vary by school. A certificate at a public college can cost several thousand dollars, before "
+      "books and exam fees.",
+      "Some employers pay you while you train. You may also qualify for free community college or for help from "
+      "a MassHire Career Center."]),
+    ("Is a medical assistant the same as a CNA?",
+     ["No. A medical assistant works mostly in doctors' offices and clinics, does patient care and office work, "
+      "and needs no state license.",
+      "A CNA gives daily care, mostly in nursing homes and hospitals. A CNA must pass a state exam and be on the "
+      "Nurse Aide Registry."]),
+]
+
+_ma_faq_html = "\n".join(
+    f'          <details class="faq-item"><summary>{q}</summary>\n          <div>'
+    + "".join(f"<p>{p}</p>" for p in a) + "</div></details>"
+    for q, a in _ma_faq)
+
+_ma_body = """        <!-- DRAFT -- facts to verify: (1) National median $45,690 (BLS OEWS May 2025; BLS OOH and API, opened
+             2026-10-05). 13% growth 2025-35 and ~109,700 openings/yr (BLS OOH, opened). (2) "No state license":
+             MGL c.112 s.265 opened; the mass.gov summary saying medical assistants are not licensed is SEARCH
+             SUMMARY only, needs one human check on mass.gov. (3) Shot (immunization) rule: statute opened; DPH
+             circular DCP 17-8-102 (2017) is SEARCH SUMMARY, confirm it is still current. (4) AAMA CMA fees
+             $125/$250, 200 questions / 160 minutes, 69% first-time pass rate (Jul 2024-Apr 2025): SEARCH SUMMARY.
+             (5) NHA CCMA $169 fee and 2022 test plan (150 scored + 30 pretest, 3 hours): SEARCH SUMMARY.
+             (6) AMT RMA 210 questions / 2 hours and 3-year renewal: SEARCH SUMMARY; $150 fee and eligibility opened.
+             (7) Felony rules: AAMA waiver form and AMT checklist opened; NHA (CCMA) rule UNVERIFIABLE.
+             (8) Paid employer training: one Massachusetts health center page and one college + hospital
+             registered apprenticeship opened (2025); current enrollment not confirmed. (9) "Several thousand
+             dollars" at a public college rests on one college's 2026-27 per-credit tuition and fees (brief's own
+             math, about $7,700-$8,900 for 29 credits); no BLS/DOL cost range exists. (10) "About 12 weeks" and
+             "about 8 months" program lengths are from Massachusetts public college pages (opened).
+             (11) MassEducate details opened on mass.edu 2026-10-05. (12) FAQ questions come from the keyword
+             question tree, not live People Also Ask. (13) Community experiences per editorial-decisions.md:
+             paraphrase only, no quotes. (14) "What do I need to start": diploma/GED is the brief's entry point
+             (named by NHA; not stated on the college pages); CORI, physical and shot records from one public
+             college page (opened); CPR/BLS from BLS OOH (opened). -->
+
+        <p class="lead">Most guides to becoming a medical assistant in Massachusetts start with a list of
+        schools. Start here instead.</p>
+        <p>Some Massachusetts health centers and hospitals will pay you while they train you.<!-- [VERIFY: paid medical assistant trainee programs, employer pages opened 2026-10-05; current enrollment not confirmed] --> If you pay for
+        school yourself, the school you pick decides which certification you can earn.</p>
+
+        <!-- COURSE-DEPENDENT: R-BLOG-05 -->
+        <p>This guide shows the three ways in, what each costs you and the hard parts of the job. Career Skills
+        Center does not sell medical assistant training, so we can be straight with you.</p>
+        <!-- /COURSE-DEPENDENT: R-BLOG-05 -->
+
+        <div class="note"><strong>Quick answer.</strong>
+        <ul>
+          <li>No state license required. Many employers prefer or require a national certification.</li>
+          <li>There are three ways in: an employer trains you, an accredited program, or a shorter program that is
+          not accredited.</li>
+          <li>Most medical assistants earn around $45,690 a year.</li>
+          <li>The hardest part for many people is getting the first job, so plan for it.</li>
+        </ul></div>
+
+        <h2>Words to know</h2>
+        <ul>
+          <li><strong>Medical assistant:</strong> a person who helps doctors and nurses in a clinic, with patient
+          care and office work. It is not the same job as a physician assistant.</li>
+          <li><strong>Vital signs:</strong> basic body checks, like blood pressure, pulse and temperature.</li>
+          <li><strong>Externship:</strong> hands-on practice in a real clinic near the end of a program. It is
+          often unpaid.</li>
+          <li><strong>Accredited program:</strong> a program checked and approved by an outside group. For medical
+          assistants, the two main groups are CAAHEP and ABHES.</li>
+          <li><strong>Certification:</strong> a national credential you earn by passing an exam. The main ones
+          are the CMA (Certified Medical Assistant), RMA (Registered Medical Assistant) and CCMA (Certified Clinical
+          Medical Assistant).</li>
+          <li><strong>Immunization:</strong> a shot that protects against a disease, like a flu shot.</li>
+          <li><strong>CORI</strong> (Criminal Offender Record Information): the Massachusetts criminal background
+          check.</li>
+        </ul>
+
+        <h2>What is a medical assistant?</h2>
+        <p>A medical assistant helps doctors and nurses run a clinic. You do some patient care and some office
+        work, often on the same day.</p>
+        <p>This mix matters when you choose the job. You need to be good with people and also comfortable with
+        records and scheduling.</p>
+        <p>A normal day might start with bringing a patient to the exam room and taking their blood pressure.
+        Later you might answer phones or book follow-up visits.</p>
+        <p><strong>Patient care tasks</strong> can include:</p>
+        <ul>
+          <li>Taking vital signs and asking about health history</li>
+          <li>Getting patients ready for exams and helping the doctor</li>
+          <li>Collecting samples for lab tests</li>
+          <li>Giving medicines, when allowed and supervised</li>
+        </ul>
+        <p><strong>Office tasks</strong> can include:</p>
+        <ul>
+          <li>Scheduling appointments and answering phones</li>
+          <li>Keeping medical records up to date</li>
+          <li>Helping with insurance and billing paperwork</li>
+        </ul>
+        <p>More than half of medical assistants work in doctors&rsquo; offices. Others work in hospitals and
+        outpatient clinics.</p>
+        <p>Most work full time. Some clinics are open evenings, weekends or holidays, so ask about the
+        schedule.</p>
+        <p>Some medical assistants say the job changes a lot from office to office. Some offices keep you in the
+        exam room, and some move you to the front desk when the doctor is out.</p>
+        <p>In a job interview, ask: &ldquo;What would I do on a normal day?&rdquo; The answer tells you which
+        kind of office it is.</p>
+        <p>To compare this job with five others, read our guide to
+        <a href="blog/healthcare-jobs-massachusetts.html">healthcare jobs in Massachusetts you can train
+        for</a>.</p>
+
+        <h2>Do you need a license to be a medical assistant in Massachusetts?</h2>
+        <p><strong>No state license required.</strong> Massachusetts does not license medical
+        assistants.<!-- [VERIFY: MGL c.112 s.265 opened ("nothing ... authorizing the licensure of certified medical assistants"); mass.gov summary is SEARCH SUMMARY only, check once on mass.gov] --></p>
+        <p>Certification is different. No state law requires it, but many employers prefer or require it, so
+        plan for it.</p>
+
+        <h3>The one state rule: giving shots</h3>
+        <p>Massachusetts has one rule to know before you pick a school. It is about giving shots
+        (immunizations).</p>
+        <p>A primary care office may let a medical assistant give shots only if that person finished an
+        accredited program.</p>
+        <p>A primary care provider, such as a doctor or nurse practitioner, must be in the building and ready to
+        help.<!-- [VERIFY: statute opened on malegislature.gov; DPH circular DCP 17-8-102 on mass.gov is SEARCH SUMMARY, confirm still current] --></p>
+        <p>The program must be accredited by CAAHEP or ABHES, or approved by the state health department. If you
+        want to give shots, ask the school which group accredits it.</p>
+        <p>Other tasks depend on the employer and the supervising provider. Ask each employer what medical
+        assistants are allowed to do there.</p>
+
+        <h2>Three ways to become a medical assistant</h2>
+        <p>There is more than one way in. An employer can train you, you can finish an accredited program, or you
+        can take a shorter program that is not accredited.</p>
+        <p>The route you pick changes your cost, your time and which certification you can earn. It also decides
+        whether you can give shots later.</p>
+        <p>For example, some Massachusetts health centers hire beginners and pay them an hourly wage while they
+        train. Some also pay the tuition.<!-- [VERIFY: employer page opened 2026-10-05; confirm the program is still enrolling] --></p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <caption>Three ways to become a medical assistant in Massachusetts</caption>
+          <thead>
+            <tr><th></th><th>1. An employer trains you</th><th>2. An accredited program</th><th>3. A shorter program, not accredited</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>How it works</td><td>Some health centers and hospital systems hire beginners and train them. Some are registered apprenticeships: a paid job plus classes at a college.</td><td>A certificate program at a college or school, accredited by CAAHEP or ABHES. It includes hands-on labs and an externship.</td><td>A short certificate program. Some are partly or fully online.</td></tr>
+            <tr><td>Cost to you</td><td>Often no tuition, and you are paid while you learn<!-- [VERIFY: paid medical assistant trainee programs, employer pages opened 2026-10-05; current enrollment not confirmed] --></td><td>Can cost several thousand dollars at a public college. Prices vary by school.<!-- [VERIFY: rests on one college's 2026-27 tuition math only (about $7,700-$8,900 for 29 credits)] --></td><td>Prices vary a lot. Get the full price in writing.</td></tr>
+            <tr><td>Time</td><td>Often several months. Ask the employer.</td><td>About 8 months to 2 years</td><td>Some take about 12 weeks</td></tr>
+            <tr><td>Certification you can aim for</td><td>Ask which exam the program prepares you for. Work experience also counts toward the RMA and CCMA.</td><td>CMA, RMA or CCMA</td><td>Often the CCMA. Not the CMA.</td></tr>
+            <tr><td>Give shots in primary care?</td><td>Only if the training was an accredited program. Ask.</td><td>Yes, with a primary care provider in the building</td><td>Usually not, under the state rule</td></tr>
+            <tr><td>Best for</td><td>People who can&rsquo;t stop working to study</td><td>People who want the most choices later</td><td>People who need speed and have checked that local employers accept it</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h3>What do I need to start?</h3>
+        <p>To start, you usually need a high school diploma or GED. You do not need work experience.</p>
+        <p>College programs may also ask for a background (CORI) check, a physical exam and your shot
+        records.</p>
+        <p>Some employers also want CPR (Basic Life Support) certification. Ask each program and employer what
+        they need before you start.</p>
+
+        <h3>How long does it take?</h3>
+        <p>Most programs take from a few months to 2 years. Shorter programs are often not accredited, so check
+        what you give up before you choose speed.</p>
+        <p>Training is not the whole timeline. After training, you take a certification exam and look for your
+        first job, and that can take time too.</p>
+        <p><strong>Can you train while working?</strong> Many college programs are hybrid, with classes mostly
+        online and labs in person.</p>
+        <p>Some programs have evening classes. The externship is often during the day and unpaid, so ask about
+        the schedule early.</p>
+        <p><strong>Can you do it fully online?</strong> Some people say a program with no hands-on practice hurt
+        their job search.</p>
+        <p>Online classes are fine. The problem is a program with no hands-on practice at all, because two of the
+        three main certifications require hands-on training.</p>
+
+        <h2>CMA, RMA or CCMA: which certification can you get?</h2>
+        <p>A certification is a national credential you earn by passing an exam. It works the same in every
+        state, so you deal with the group that gives it, not the state.</p>
+        <p>Your training decides which exams you can take. Check this before you pay, not after.</p>
+        <p>For example, the CMA needs an accredited program. A short program that is not accredited will
+        generally not get you there.</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <caption>The three main medical assistant certifications</caption>
+          <thead>
+            <tr><th>Certification</th><th>Who gives it</th><th>Who can take the exam</th><th>The exam</th><th>Cost</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>CMA (Certified Medical Assistant)</td><td>AAMA (American Association of Medical Assistants)</td><td>Students and graduates of a CAAHEP- or ABHES-accredited program, plus a few other routes</td><td>200 questions, about 2 hours and 40 minutes<!-- [VERIFY: AAMA exam PDF, SEARCH SUMMARY] --></td><td>$125 for members, $250 for others<!-- [VERIFY: AAMA fees, SEARCH SUMMARY] --></td></tr>
+            <tr><td>RMA (Registered Medical Assistant)</td><td>AMT (American Medical Technologists)</td><td>Graduates of an accredited program with 720 hours, including 160 externship hours; or 3 years of work in the last 7; or military training</td><td>210 questions, 2 hours<!-- [VERIFY: AMT exam format, SEARCH SUMMARY] --></td><td>$150</td></tr>
+            <tr><td>CCMA (Certified Clinical Medical Assistant)</td><td>NHA (National Healthcareer Association)</td><td>High school diploma or GED, plus a training program in the last 5 years or 1 year of supervised work in the last 3</td><td>150 scored questions plus 30 unscored questions, 3 hours<!-- [VERIFY: NHA 2022 test plan, SEARCH SUMMARY; check current plan] --></td><td>$169<!-- [VERIFY: NHA fee, SEARCH SUMMARY] --></td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>You renew the CMA every 5 years, the RMA every 3 years and the CCMA every 2 years. Each one asks for
+        ongoing classes or credits.<!-- [VERIFY: RMA 3-year cycle is SEARCH SUMMARY; CMA 60 months and CCMA 2 years opened] --></p>
+        <p>Rules change, so check the group&rsquo;s own page:
+        <a href="https://www.aama-ntl.org/certification/eligibility" target="_blank" rel="noopener">AAMA (CMA)</a>,
+        <a href="https://americanmedtech.org/medical-assistant" target="_blank" rel="noopener">AMT (RMA)</a> or
+        <a href="https://www.nhanow.com/certification/nha-certifications/certified-clinical-medical-assistant-(ccma)" target="_blank" rel="noopener">NHA
+        (CCMA)</a>.</p>
+
+        <h3>Is the exam hard to pass?</h3>
+        <p>About 7 in 10 people pass the CMA on their first try.<!-- [VERIFY: AAMA 69% first-time pass rate, Jul 2024-Apr 2025, SEARCH SUMMARY] -->
+        Many people pass, but you should still plan real study time.</p>
+        <p>Each exam is timed. Ask your program which exam it prepares you for, and whether the exam fee is in
+        the price.</p>
+
+        <h3>If you have a criminal record</h3>
+        <p>A felony record can affect whether you may take the CMA or RMA exam. It is not an automatic ban,
+        because each case is reviewed one by one.</p>
+        <p>For the CMA, a drug-related conviction can block a waiver. For the CCMA, check with NHA before you
+        pay for training.<!-- [VERIFY: NHA (CCMA) felony rule UNVERIFIABLE; AAMA waiver form and AMT checklist opened] --></p>
+        <p>Community college programs may also run a CORI check. Ask the program and the certifying group how a
+        record is reviewed before you pay.</p>
+
+        <h2>How much do medical assistants make?</h2>
+        <p>Most medical assistants earn around <strong>$45,690 a year</strong>. New medical assistants often
+        start lower.</p>
+        <p>Pay depends on where you work, such as a doctor&rsquo;s office, a hospital or an outpatient
+        clinic.</p>
+        <p>The number of medical assistant jobs in the U.S. is expected to grow 13% over the next 10 years.
+        There are about 109,700 openings each year.</p>
+
+        <h2>Medical assistant or CNA?</h2>
+        <p>Both are healthcare jobs you can train for with a high school diploma or GED. But the rules in
+        Massachusetts are very different.</p>
+        <p>A CNA must pass a state exam and be listed on the state Nurse Aide Registry. A medical assistant
+        needs no state license.</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <caption>Medical assistant or CNA in Massachusetts</caption>
+          <thead>
+            <tr><th></th><th>Medical assistant</th><th>CNA</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>State rules</td><td>No state license. Certification is optional by law.</td><td>Must pass a state exam and be on the Nurse Aide Registry</td></tr>
+            <tr><td>Where most work</td><td>Doctors&rsquo; offices and clinics</td><td>Nursing homes and hospitals</td></tr>
+            <tr><td>Main tasks</td><td>Patient care plus office work</td><td>Daily care, like bathing, dressing and moving</td></tr>
+            <tr><td>Training</td><td>A few months to 2 years</td><td>At least 75 hours in a state-approved program</td></tr>
+            <tr><td>Job growth over 10 years (U.S.)</td><td>13%</td><td>3%</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>If nursing is your goal, some people say a CNA is a more direct first step. They also say a
+        medical assistant job is often daytime clinic work and easier on the body.</p>
+        <p>If you might want to be a nurse later, ask the college whether the credits count toward nursing
+        before you sign up.</p>
+        <p>For the full CNA path, read <a href="blog/cna-massachusetts.html">how to become a CNA in
+        Massachusetts</a>. If drawing blood is the part you like, read
+        <a href="blog/phlebotomist-massachusetts.html">how to become a phlebotomist in Massachusetts</a>.</p>
+
+        <h2>The hard truth: getting hired and staying</h2>
+        <p>The jobs are there, but the first one is often the hardest to get. Some people say this was the
+        hardest step, even after they finished a program and passed a certification.</p>
+        <p>Employers often ask for experience, even for beginner jobs. So plan your job search before you finish
+        training.</p>
+        <p>There is another side. Some clinics hire people with no certification and train them, and some people
+        say more doors open after that first job.</p>
+        <p>Some people say their first job came through their externship site, a classmate who was already
+        hired, or a contact at the clinic.</p>
+        <p>So treat your externship like a long job interview. Let people there know you want to stay.</p>
+
+        <h3>Why people leave, and why they stay</h3>
+        <p>Medical assistants who leave often talk about pay, short staffing, poor bosses and not feeling
+        appreciated. Some say raises are small.</p>
+        <p>Some who want much more money go back to school for nursing. Moving up usually takes more
+        training.</p>
+        <p>Many others stay, and many like their work. They talk about their coworkers, their patients and good
+        doctors.</p>
+        <p>These are personal experiences, not promises about any job. The office you pick makes a big
+        difference.</p>
+
+        <h3>Will AI replace medical assistants?</h3>
+        <p>No one can say for sure. But much of the job is hands-on with patients, like taking vital signs, and
+        that needs a person.</p>
+        <p>Office tasks, like scheduling and records, are more likely to change. Medical assistant jobs are
+        still expected to grow 13% over the next 10 years.</p>
+
+        <h3>Can you work from home?</h3>
+        <p>Most of this job is done in person, because it involves patient care. Remote jobs, when you find
+        them, are usually office work like scheduling or records.</p>
+
+        <h3>Is this job for you?</h3>
+        <p><strong>This job may fit you if:</strong></p>
+        <ul>
+          <li>You like working with people, including sick or worried patients.</li>
+          <li>You want variety: some patient care and some office work.</li>
+          <li>You want a way into healthcare without years of school.</li>
+        </ul>
+        <p><strong>It is probably not for you if:</strong></p>
+        <ul>
+          <li>Needles, blood or body fluids bother you.</li>
+          <li>You want less hands-on patient care. Read
+          <a href="blog/pharmacy-technician-massachusetts.html">how to become a pharmacy technician in
+          Massachusetts</a>.</li>
+          <li>You want work outside healthcare. Explore our <a href="career-paths.html">career paths</a>.</li>
+        </ul>
+        <p><strong>Is it worth it?</strong> It can be, if you avoid big debt and see it as a first step into
+        healthcare.</p>
+
+        <h2>Before you pay for a program, ask these questions</h2>
+        <p>Write down the answers and compare at least two options. A good program will answer every question
+        clearly.</p>
+        <div class="note"><strong>Questions to ask</strong>
+        <ol>
+          <li>Is the school licensed, and is the program accredited by CAAHEP or ABHES?</li>
+          <li>Which certification exam does it prepare me for? Is the exam fee included?</li>
+          <li>Where will I practice hands-on skills? Is there an externship, and who finds the site?</li>
+          <li>What is the full price in writing, with fees, books, exam, background check and scrubs?</li>
+          <li>What days and times are classes, labs and the externship?</li>
+          <li>Do you run a CORI check? How is a record reviewed?</li>
+          <li>Do the credits count toward nursing later?</li>
+          <li>Is the program on the state&rsquo;s list of eligible training programs (ETPL), if I want MassHire
+          help?</li>
+          <li>If an employer pays: what happens if I leave early?</li>
+        </ol></div>
+        <p>To check accreditation, use the
+        <a href="https://www.aama-ntl.org/medical-assisting/caahep-and-abhes-accredited-programs" target="_blank" rel="noopener">links
+        to the CAAHEP and ABHES program lists</a>.</p>
+
+        <h2>How to pay for medical assistant training in Massachusetts</h2>
+        <p>You have more options than paying the full price yourself. Start with the ones that cost you the
+        least.</p>
+        <h3>Employer-paid training</h3>
+        <p>Some Massachusetts health employers pay you while you train and also cover tuition.<!-- [VERIFY: paid medical assistant trainee programs, employer pages opened 2026-10-05; current enrollment not confirmed] --> Ask health centers
+        and hospitals near you if they train new medical assistants.</p>
+        <p>Read any work agreement before you sign. Ask what happens if you leave early.</p>
+        <h3>Free community college</h3>
+        <p>Through MassEducate, eligible students may get full tuition and fees covered for a community college
+        certificate.</p>
+        <p>You must take at least 6 credits a term and fill out a financial aid form (FAFSA or MASFA). Some short
+        programs carry no credits, so ask the college if yours counts.</p>
+        <h3>MassHire and WIOA</h3>
+        <p>A MassHire Career Center may help pay for training if you qualify. The program must be on the
+        state&rsquo;s list of eligible training programs (ETPL).</p>
+        <p>Learn <a href="blog/masshire-training-voucher.html">how to get a MassHire training voucher</a> and
+        <a href="blog/wioa-eligibility-massachusetts.html">who may qualify for WIOA training</a>.</p>
+        <h3>Paying yourself</h3>
+        <p>Get the full price in writing, and avoid big loans for a first job. Our
+        <a href="student-financing.html">guide to paying for training</a> covers your options.</p>
+        <p>For the bigger picture, read our
+        <a href="blog/free-job-training-massachusetts.html">guide to free job training in Massachusetts</a>.</p>
+
+""" + post_cta(
+    "Check what funding you may qualify for",
+    "Answer a few short questions to see which Massachusetts funding options you may qualify for, and where to "
+    "go next.",
+    "Check what you may qualify for", "qualify.html") + """
+
+        <h2>What to do this week</h2>
+        <ol>
+          <li><strong>Search <a href=\"""" + JOBQUEST_URL + """\" target="_blank" rel="noopener">JobQuest</a></strong>,
+          the free Massachusetts job site, for medical assistant jobs and trainee programs near you.</li>
+          <li><strong>Ask health centers near you</strong> if they train new medical assistants. Tell people you
+          know that you are looking.</li>
+          <li><strong>Read the rules</strong> for the certification you want on the AAMA, AMT or NHA site.</li>
+          <li><strong>Check any program</strong> on the CAAHEP and ABHES lists before you pay.</li>
+          <li><strong>Contact your <a href=\"""" + MASSHIRE_URL + """\" target="_blank" rel="noopener">MassHire
+          Career Center</a></strong> if you need help paying. You may qualify for funded training.</li>
+          <li><strong>Find out</strong> <a href="blog/is-wioa-training-free.html">whether WIOA training is really
+          free</a>, and what it may not cover.</li>
+          <li><strong>See the bigger picture</strong> in our
+          <a href="healthcare-careers.html">field guide to healthcare work</a>.</li>
+        </ol>
+
+        <!-- COURSE-DEPENDENT: R-BLOG-05 -->
+        <p>Career Skills Center plans to offer training in healthcare, IT and the skilled trades.
+        <a href="healthcare-careers.html#interest">Get updates when we launch</a>.</p>
+        <!-- /COURSE-DEPENDENT: R-BLOG-05 -->
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+""" + _ma_faq_html + """
+        </div>
+
+
+""" + related(
+    ("How to Become a CNA in Massachusetts", "blog/cna-massachusetts.html"),
+    ("Healthcare Jobs in Massachusetts You Can Train For", "blog/healthcare-jobs-massachusetts.html"),
+    ("Free Job Training in Massachusetts", "blog/free-job-training-massachusetts.html"),
+)
+
+_MA_TITLE = "How to Become a Medical Assistant in Massachusetts (2026): Certification, Pay and Paid Training"
+_MA_DESC = ("How to become a medical assistant in Massachusetts: no state license, three ways in (one pays you), "
+            "which certification you can get, and pay.")
+
+PAGES.append(dict(
+    slug="blog/medical-assistant-massachusetts.html", nav="blog.html",
+    title="Medical Assistant in Massachusetts: 3 Ways In (2026)",
+    ogtitle=_MA_TITLE,
+    desc=_MA_DESC,
+    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:#c24d12;text-decoration:underline;'
+               'text-underline-offset:2px}.prose table caption{caption-side:top;text-align:left;font-weight:700;'
+               'color:var(--navy);padding:0 0 10px}.prose .note ol,.prose .note ul{margin:10px 0}</style>\n'
+               + article_ld("blog/medical-assistant-massachusetts.html", _MA_TITLE, _MA_DESC,
+                            "2026-10-05", "2026-10-05", author="Career Skills Center")
+               + "\n" + faq_ld([(q, " ".join(a)) for q, a in _ma_faq])),
+    main=article(
+        "Medical", _MA_TITLE,
+        "Massachusetts has no license for medical assistants. Here are the three ways in, including one that "
+        "pays you to train, which certification each leads to, and the hard parts of the job.",
+        "October 5, 2026", "13 min read", _ma_body, author=None)))
 
 
 # Interest form the post's CTA points to. COURSE-DEPENDENT: R-BLOG-MBC.

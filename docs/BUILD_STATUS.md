@@ -36,6 +36,21 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 
 ## Session log
 
+### 2026-10-05 (later) - Medical assistant draft published to GitHub only (LOCAL, not deployed)
+- **Built:** `blog/medical-assistant-massachusetts.html` ("How to Become a Medical Assistant in Massachusetts (2026): Certification, Pay and Paid Training"), about 3,200 words, generated from `tools/build-pages.py`. Angle: do not start with a school list; start with the certification choice (CMA, RMA, CCMA), who needs which, what it costs, and paid employer training. National median pay $45,690 (Emilio's rule: national figure for nationwide credentials). Build exit 0.
+- **Compliance review:** round 1 FAIL and round 2 FAIL on small items; all fixed (round 2 shot-rule wording applied and checked by the director).
+- **Files:** `blog/medical-assistant-massachusetts.html`, `blog/course-mode-copy/medical-assistant-massachusetts.md`, `tools/build-pages.py`, sibling drafts updated with links (`blog/cna-massachusetts.html`, `blog/healthcare-jobs-massachusetts.html`, `blog/phlebotomist-massachusetts.html`), `docs/VERIFICATION_LOG.md` (new section R), `docs/BLOG_QUEUE.md` (moved to Done), `docs/COURSE_CONTENT_REGISTER.md` (R-BLOG-05, two spots), review reports. Pipeline files: docs/blog-drafts/medical-assistant-massachusetts/
+- **Status:** LOCAL (not deployed). Pre-deploy grep matches DRAFT and [VERIFY] in this post, so it is held back. It is not in `blog.html`, `sitemap.xml` or `llms.txt` (drafts are not listed until approved). The grep also matches `it-careers-massachusetts-draft.html` (existing) and the other held drafts.
+- **Open TODOs:**
+  - Live-check the mass.gov items (no-license summary, DPH shot circular DCP 17-8-102) and the AAMA CMA and NHA CCMA fees and exam formats (also AMT format, AAMA 69% pass rate).
+  - Length mismatch: healthcare-jobs says medical assistants train "about 1 to 2 years"; the new post says "a few months to 2 years". Align one.
+  - Existing healthcare-jobs paragraphs are over the 2-sentence / 210-character rule; trim.
+  - The new post is linked from three sibling drafts (CNA, healthcare jobs, phlebotomist), so publish order matters: publish it first or together, or those links break.
+  - Decide whether the post may name paid-training employers (it names none now; enrollment not confirmed).
+  - Real People Also Ask data was not pulled; FAQ comes from the keyword question tree.
+  - Massachusetts keyword volumes are still needed from strategy.
+  - Emilio review of the draft; then remove DRAFT/[VERIFY] markers only on his approval.
+
 ### 2026-10-05 — CNA draft review with Emilio (LOCAL, not deployed)
 - **Decisions (Emilio):** (1) Pay figures in role-guide posts are OK: national figure for nationwide credentials, Massachusetts figure for state-issued licenses (CNA, pharmacy tech). This closes the open pay-figure question for the four drafts. Strategy should update PROJECT-HANDOFF and the writing guidelines. (2) Easy-to-digest statistics (3% growth, 203,300 openings, 36%/32%) stay. (3) Named-school price table removed (DPH approval not confirmed); the $1,400 to $2,900 range stays. (4) "Training: $0" stays in the payment table; the pay-back claim was softened to "you may be paid back; ask DPH." (5) Publish date stays October 4, 2026 (differs from the real-publish-date rule; Emilio's call). (6) Visible "By Career Skills Center" byline removed from the CNA post only (schema still names the organization). (7) Over-long paragraphs left as they are (Emilio chose to skip the trim).
 - **CNA post changes:** removed the school table and the U.S. $42,260 pay line; added JVS Boston free program, Community College Nursing Scholarship, the three-week wait for registry listing, and the training waiver. Facts verified live on D&S, mass.gov, mass.edu, JVS and BLS pages (VERIFICATION_LOG "Q live check" and "Q live check 2"). cnaclasses.com (Emilio's tip) was used for leads only; it conflicts with official pages.

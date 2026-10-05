@@ -8,11 +8,11 @@ Add blog topics here for the blog agent to work on. The agent runs every 6 hours
 
 ## In Progress
 <!-- The agent moves items here while working on them. -->
-- **How to Become a Medical Assistant in Massachusetts** — role guide: clinical vs admin duties, MA pay (BLS SOC 31-9092), CMA/RMA certification, training path, no state license required, job outlook. Target: "medical assistant massachusetts"
 
 
 ## Done
 <!-- Completed drafts. The agent logs the file path and date. -->
+- **How to Become a Medical Assistant in Massachusetts (2026): Certification, Pay and Paid Training** — `blog/medical-assistant-massachusetts.html` — 2026-10-05 — status: draft, local/GitHub only, needs Emilio review (DRAFT marker blocks deploy; see VERIFICATION_LOG section R). Compliance review passed after round 2 fix.
 - **Healthcare Jobs in Massachusetts You Can Train For (2026)** — `blog/healthcare-jobs-massachusetts.html` — 2026-10-03 — status: approved by Emilio 2026-10-05, held back from publishing (DRAFT marker blocks deploy; see VERIFICATION_LOG section N).
 - **How to Become a Phlebotomist in Massachusetts (2026)** — `blog/phlebotomist-massachusetts.html` — 2026-10-03 — status: approved by Emilio 2026-10-05, held back from publishing (DRAFT marker blocks deploy; see VERIFICATION_LOG section O).
 - **How to Become a Pharmacy Technician in Massachusetts (2026)** — `blog/pharmacy-technician-massachusetts.html` — 2026-10-04 — status: approved by Emilio 2026-10-05, held back from publishing (DRAFT marker blocks deploy; see VERIFICATION_LOG section P). Open decision: OK to print BLS pay figures in role-guide posts? (Rules allow pay only in the salary-by-state post; same question as sections N and O.)
