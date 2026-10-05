@@ -697,8 +697,8 @@ p.eyebrow:not(.eyebrow--light) { color: var(--muted); }
   transform: translateY(-70%) rotate(45deg); transition: transform .2s var(--ease);
 }
 .faq-item[open] summary::after { transform: translateY(-30%) rotate(-135deg); }
-.faq-body { padding: 0 22px 20px; color: var(--ink-light); }
-.faq-body p:last-child { margin-bottom: 0; }
+.faq-body, .faq-item > div { padding: 0 54px 20px 22px; color: var(--ink-light); }
+.faq-body p:last-child, .faq-item > div p:last-child { margin-bottom: 0; }
 
 /* ---------- Data table (tuition, start dates) ---------- */
 .table-wrap { overflow-x: auto; margin-top: 32px; }
