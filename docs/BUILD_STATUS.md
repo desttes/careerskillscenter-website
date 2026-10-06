@@ -2,12 +2,13 @@
 
 Claude Code updates this file at the end of every session. The strategy side (Cowork + the "ETPL Massachusetts" Project) reads it.
 
-## Current state (as of 2026-10-05, end of day)
+## Current state (as of 2026-10-05, end of night)
 - **Live site:** everything approved through 2026-10-05, including today's blog FAQ indent fix (answers line up with the question text). GitHub `main` matches the live site plus the drafts below.
-- **5 blog drafts, not live (DRAFT markers keep them out of the blog index, sitemap and deploys):**
+- **6 blog drafts, not live (DRAFT markers keep them out of the blog index, sitemap and deploys):**
   - **Approved by Emilio 2026-10-05, held back from publishing:** CNA, healthcare jobs, pharmacy technician, phlebotomist (`blog/*-massachusetts.html`).
   - **Update (2026-10-05, night):** nationwide rewrite `blog/how-to-become-a-medical-assistant.html` is drafted and on GitHub (local only); it needs Emilio's review and replaces the draft below. See the session log.
-  - **Needs Emilio's review:** medical assistant (`blog/medical-assistant-massachusetts.html`, pipeline files in `docs/blog-drafts/medical-assistant-massachusetts/`). Emilio flagged two problems: it treats a **national** credential as a Massachusetts topic, and it is broader and less precise than a single-prompt Opus article he compared it with. Plan: rewrite it after the new rules below (nationwide post, Massachusetts as a section).
+  - **NEW, needs Emilio's review:** nationwide medical assistant post, `blog/how-to-become-a-medical-assistant.html` (commit `e71c7c9`; pipeline files in `docs/blog-drafts/how-to-become-a-medical-assistant/`; about 2,600 words; `[VERIFY]` marks facts that came only from search summaries; Fred Hutch January 2027 cohort and Kaiser status to re-confirm before publish). It replaces the old state-framed draft below once approved: then redirect or remove the old post and its blog card, and re-point the CNA, healthcare-jobs and phlebotomist drafts (they link to the old slug). The new post links to the CNA and phlebotomist drafts, so publish order matters.
+  - **Old draft, to be replaced:** medical assistant (`blog/medical-assistant-massachusetts.html`, pipeline files in `docs/blog-drafts/medical-assistant-massachusetts/`). Emilio flagged two problems: it treats a **national** credential as a Massachusetts topic, and it is broader and less precise than a single-prompt Opus article he compared it with. Plan: rewrite it after the new rules below (nationwide post, Massachusetts as a section).
   - The CNA, healthcare-jobs and phlebotomist drafts link to the medical assistant draft, so publish order matters.
 - **Pipeline rules changed 2026-10-05** (guidelines + agents, commit `eebf2e4`): named public programs allowed with hours/funding/dates from their own official page plus "as of" and "check current enrollment"; concrete training lengths and cost ranges from public colleges, certifying bodies and official program pages; pay = median plus one entry-level (10th percentile) figure, national for nationwide credentials and state figure for state licenses; easy statistics allowed; posts about 2,500 words and the nine sections are a menu; the data researcher reads the top 10 search results, skips course sellers, and has browser tools.
 - **Scope rule added to the pipeline (2026-10-05, later session):** the director (`/blog-pipeline`) classifies the credential first (national = nationwide post, Massachusetts as one labeled section; state-issued license = state post) and stops to ask Emilio if a queue topic names a state for a national credential. The researcher, strategist, writer and reviewer (new check 19) follow it. Pipeline Rules Editor checked: still no submissions.
@@ -18,10 +19,11 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 - **Cloud routine** "Blog Manager" (`trig_01XgMjFh5eKjNm4qx8Gr9HdM`) stays **paused**.
 
 **Next session, in order:**
-1. Read any Pipeline Rules Editor submission and apply it.
-2. (Done) scope rule added to the pipeline.
-3. Re-run the medical assistant post under the new rules (nationwide), then Emilio reviews it.
-4. When Emilio says publish: remove DRAFT/VERIFY markers on the approved posts, set real dates, rebuild, add to `llms.txt`, pre-deploy grep, upload posts plus `blog.html`, `sitemap.xml`, `llms.txt`.
+1. Emilio reviews the nationwide medical assistant post. Then: remove its DRAFT/VERIFY markers, decide the old post's redirect or removal, re-point the sibling drafts, rebuild, add to `llms.txt`, run the pre-deploy grep, upload on his OK.
+2. Read any Pipeline Rules Editor submission (none yet) and apply it.
+3. Measure the next `/blog-pipeline` run's token use against the 1.01 million baseline (the token-saving changes are untested end to end: lint script, merged editorial pass, Sonnet reviewer and community agent, 1,500-word caps).
+4. Next queue topics: electrician, then HVAC technician (state licenses, so state posts). Medical billing and coding ("worth it / AI") is recommended but not queued.
+5. When Emilio says publish the four approved drafts (CNA, healthcare jobs, pharmacy technician, phlebotomist): remove markers, set real dates, rebuild, add to `llms.txt`, pre-deploy grep, upload posts plus `blog.html`, `sitemap.xml`, `llms.txt`.
 
 **Questions for strategy:** update CLAUDE.md and PROJECT-HANDOFF for the pay rule (median plus entry-level; national vs state), named public programs, the 2,500-word cap and the community-quotes exception.
 
