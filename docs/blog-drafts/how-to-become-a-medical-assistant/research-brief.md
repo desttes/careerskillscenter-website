@@ -235,3 +235,19 @@ Existing site posts to link: blog/cna-massachusetts.html, blog/healthcare-jobs-m
 5. Do not tell readers the Quincy or Massasoit certificates lead to the CMA (AAMA) unless the college confirms CAAHEP/ABHES accreditation (pages do not say so).
 6. Do not describe Career Skills Center training details; only "plans to offer training in healthcare."
 7. Fewer than 10 usable top-10 pages existed (most results sell programs); logged above.
+
+---
+
+## Verified addendum (director, 2026-10-05)
+The editorial round's data-researcher verified the figures below against official pages on 2026-10-05. The full wording, URLs and caveats are in `community-verification.md`, section "Strategy open items" (items 1 to 6), and in `editorial-decisions.md` ("Verified figures the writer may use"). They count as sourced facts for compliance check 3.
+- **Fred Hutch (Seattle) apprenticeship:** paid full time, 2,000 paid on-the-job hours, 410 unpaid online coursework hours, $4,850 tuition covered, 2-year commitment after the program, 18+, high school diploma or equivalent, no experience needed, next cohort anticipated January 2027 (re-check before publishing).
+- **Kaiser Permanente Washington apprenticeship:** 2,000 on-the-job hours over 12 to 24 months, 288 classroom hours, paid full time, 2-year commitment, 18+, high school diploma or equivalent. Page undated.
+- **Allina Health:** tuition covered, 1-year commitment (February 2025 news page; say "as of early 2025").
+- **Anne Arundel CC (MD):** $4,112 county residents, 388 hours, 100-hour unpaid externship (25 hours a week for 4 weeks).
+- **Community College of Philadelphia (PA), non-credit:** $2,799, 180 hours, externship optional; 2026 start dates listed have passed.
+- **Central Piedmont CC (NC):** $5,376 to $14,400 total estimated expenses, diploma in about 2.5 semesters, CAAHEP accredited.
+- **NHA CCMA exam fee:** $169 (NHA store page). CCMA eligibility: diploma or GED plus a program within 5 years, or 1 year of experience in the last 3, or 2 years in the last 5.
+- **AMT RMA:** 3 years full-time work in the last 7 is one eligibility route.
+- **AAMA Alternative Pathway:** at least 560 contact hours, a 160-hour practicum (or 1,000 work hours), at least 10 injections and 10 blood draws. "Currently available," never "permanent."
+- **Washington state:** credential required before working as a medical assistant; MA-Certified fee $145, MA-Registered fee $115 (valid only with the same employer).
+- **Massachusetts c.112 s.265:** immunizations only, direct supervision with the provider immediately available; "primary care provider" defined by function; a "certified medical assistant" is a graduate of an accredited program employed by the practice.
