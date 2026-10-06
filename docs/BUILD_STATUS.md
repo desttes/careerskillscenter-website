@@ -36,6 +36,12 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 
 ## Session log
 
+### 2026-10-05 (evening) — LIVE DEPLOY: blog FAQ indent fix (Emilio authorized)
+- **Deployed over SFTP:** `css/style.css` (FAQ answers now indent to line up with the question text, commit `0748254`) plus the 29 live pages whose only change since the 2026-10-04 deploy was the new stylesheet version stamp (checked with a diff that ignored `?v=` lines). Pre-deploy grep on every uploaded file: clean.
+- **Held back:** all 5 draft posts (CNA, healthcare jobs, pharmacy technician, phlebotomist, medical assistant) and `it-careers-massachusetts-draft.html`. `blog.html`, `sitemap.xml` and `llms.txt` content is unchanged.
+- **Verified live:** the stylesheet contains the new FAQ rule; pages reference `style.css?v=1791214073`; on `blog/is-wioa-training-free.html` the question and answer text both start 165px from the left.
+- **Also today:** pipeline rules changed (named public programs with official hours/funding/dates, concrete training lengths and costs, median plus entry-level pay, about 2,500 words with the nine sections as a menu, researcher reads the top 10 search results and skips course sellers; commit `eebf2e4`). Still open: the nationwide-vs-state scope rule for national credentials.
+
 ### 2026-10-05 (later) - Medical assistant draft published to GitHub only (LOCAL, not deployed)
 - **Built:** `blog/medical-assistant-massachusetts.html` ("How to Become a Medical Assistant in Massachusetts (2026): Certification, Pay and Paid Training"), about 3,200 words, generated from `tools/build-pages.py`. Angle: do not start with a school list; start with the certification choice (CMA, RMA, CCMA), who needs which, what it costs, and paid employer training. National median pay $45,690 (Emilio's rule: national figure for nationwide credentials). Build exit 0.
 - **Compliance review:** round 1 FAIL and round 2 FAIL on small items; all fixed (round 2 shot-rule wording applied and checked by the director).
