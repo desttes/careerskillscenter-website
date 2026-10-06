@@ -2,12 +2,27 @@
 
 Claude Code updates this file at the end of every session. The strategy side (Cowork + the "ETPL Massachusetts" Project) reads it.
 
-## Current state (as of 2026-10-05)
-- **Live site is up to date** with everything approved through 2026-10-05: new section color `#edeff6`, section dividers, hidden label line, left-aligned narrow sections, roomier blog spacing, form fix, and the 9 published blog posts with all sources removed. `blog.html`, `sitemap.xml` and `llms.txt` are live and list only published posts. GitHub `main` matches what's deployed, plus the drafts below.
-- **4 blog drafts APPROVED by Emilio on 2026-10-05 but held back from publishing** (built locally, not live, carrying DRAFT markers): CNA, healthcare jobs, pharmacy technician and phlebotomist (`blog/*-massachusetts.html`). The builder keeps them out of the blog index and sitemap until their DRAFT markers are removed.
-- **Blog pipeline:** six project agents in `.claude/agents/` plus the `/blog-pipeline` command. The cloud routine "Blog Manager" (`trig_01XgMjFh5eKjNm4qx8Gr9HdM`) is **paused**; turn it back on only when Emilio asks.
-- **Content rules decided on 2026-10-04** (in the writing guidelines and agents): keep it simple, with no sources or statistics talk in posts; paragraphs of 1-2 sentences, at most 210 characters; approved Reddit/Quora experiences and quotes allowed (overrides CLAUDE.md's quotes rule, so strategy should update CLAUDE.md).
-- **Next steps:** see "Open TODOs" in the 2026-10-04 (end of day) entry below.
+## Current state (as of 2026-10-05, end of day)
+- **Live site:** everything approved through 2026-10-05, including today's blog FAQ indent fix (answers line up with the question text). GitHub `main` matches the live site plus the drafts below.
+- **5 blog drafts, not live (DRAFT markers keep them out of the blog index, sitemap and deploys):**
+  - **Approved by Emilio 2026-10-05, held back from publishing:** CNA, healthcare jobs, pharmacy technician, phlebotomist (`blog/*-massachusetts.html`).
+  - **Needs Emilio's review:** medical assistant (`blog/medical-assistant-massachusetts.html`, pipeline files in `docs/blog-drafts/medical-assistant-massachusetts/`). Emilio flagged two problems: it treats a **national** credential as a Massachusetts topic, and it is broader and less precise than a single-prompt Opus article he compared it with. Plan: rewrite it after the new rules below (nationwide post, Massachusetts as a section).
+  - The CNA, healthcare-jobs and phlebotomist drafts link to the medical assistant draft, so publish order matters.
+- **Pipeline rules changed 2026-10-05** (guidelines + agents, commit `eebf2e4`): named public programs allowed with hours/funding/dates from their own official page plus "as of" and "check current enrollment"; concrete training lengths and cost ranges from public colleges, certifying bodies and official program pages; pay = median plus one entry-level (10th percentile) figure, national for nationwide credentials and state figure for state licenses; easy statistics allowed; posts about 2,500 words and the nine sections are a menu; the data researcher reads the top 10 search results, skips course sellers, and has browser tools.
+- **Still to add to the pipeline:** the scope rule (classify the credential first; a national credential gets a nationwide post; the director asks Emilio when a queue topic names a state for a national credential).
+- **Tools for Emilio:** `docs/pipeline-rules.html` (picture of every agent's rules) and the private **Pipeline Rules Editor** artifact (https://claude.ai/artifact/DKREiEtrsL1LQyD7j4p5it): tick rules to remove, write new ones, Submit. Submissions land in its `rule-submissions` collection; none submitted yet. The editor shows the rules as of the morning of 2026-10-05 (before commit `eebf2e4`).
+- **Keyword analysis:** `docs/KEYWORD_ANALYSIS.md` (medical assistant first, then medical billing and coding). Still needed: Massachusetts-modified volumes.
+- **Blog queue:** Next Up is electrician, then HVAC technician (`docs/BLOG_QUEUE.md`). Medical billing and coding ("worth it / AI" angle) is recommended but not queued.
+- **Permissions:** Emilio switched Claude Code to manual approvals on 2026-10-05, which let the SFTP deploy run. In auto mode the classifier blocks deploys and self-edits of permissions; the fix is an `Bash(sftp *)` allow rule in `.claude/settings.local.json`, which only Emilio can add.
+- **Cloud routine** "Blog Manager" (`trig_01XgMjFh5eKjNm4qx8Gr9HdM`) stays **paused**.
+
+**Next session, in order:**
+1. Read any Pipeline Rules Editor submission and apply it.
+2. Add the scope rule to the director, researcher, strategist, writer and reviewer.
+3. Re-run the medical assistant post under the new rules (nationwide), then Emilio reviews it.
+4. When Emilio says publish: remove DRAFT/VERIFY markers on the approved posts, set real dates, rebuild, add to `llms.txt`, pre-deploy grep, upload posts plus `blog.html`, `sitemap.xml`, `llms.txt`.
+
+**Questions for strategy:** update CLAUDE.md and PROJECT-HANDOFF for the pay rule (median plus entry-level; national vs state), named public programs, the 2,500-word cap and the community-quotes exception.
 
 ## Earlier state (as of 2026-09-28)
 - **🚀 THE FULL v1.5 SITE IS NOW LIVE at https://careerskillscenter.com (Emilio authorized the deploy, 2026-09-28).** All `[VERIFY]`/`DRAFT` were resolved in an Emilio review session, so the blog deployed too. See the "2026-09-28 — LIVE DEPLOY" entry below.

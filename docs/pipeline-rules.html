@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog Pipeline Rules</title>
+<style>
+:root{
+  --bg:#f5f6fb; --card:#fff; --ink:#1d2340; --muted:#5b6283; --line:#dfe2ee;
+  --navy:#1e2b64; --orange:#ef6625; --blue:#40b0e4; --head:#455ca8;
+  --ok:#1f8a5b; --ok-bg:#e6f5ee; --no:#c0392b; --no-bg:#fbeae8; --warn:#9a6700; --warn-bg:#fff4d6;
+  --c-director:#1e2b64; --c-data:#2d7fb8; --c-strat:#7a4fb5; --c-comm:#1f8a5b; --c-write:#ef6625; --c-review:#c0392b; --c-pub:#5b6283;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#12162b; --card:#1a2040; --ink:#e8ebf8; --muted:#a3abcf; --line:#2c3466;
+    --ok:#5fd0a0; --ok-bg:#16332a; --no:#ff8a7b; --no-bg:#3a1f22; --warn:#ffd36b; --warn-bg:#3a3014; --head:#8fa6f0;}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 16px 80px}
+h1{margin:0 0 4px;font-size:28px;color:var(--head)}
+.sub{color:var(--muted);margin:0 0 20px}
+h2{font-size:20px;margin:36px 0 12px;color:var(--head)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;font-size:14px}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:13px;font-weight:600}
+.pill.ok{background:var(--ok-bg);color:var(--ok)} .pill.no{background:var(--no-bg);color:var(--no)} .pill.warn{background:var(--warn-bg);color:var(--warn)}
+.pill.info{background:var(--line);color:var(--ink)}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:10px;padding:10px 12px;text-decoration:none;color:inherit;display:block;position:relative}
+.step:hover{box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.step b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--c)}
+.step span{font-size:14px}
+.step small{display:block;color:var(--muted);margin-top:4px}
+.par{grid-column:span 1}
+
+/* cards */
+.agent{background:var(--card);border:1px solid var(--line);border-left:8px solid var(--c);border-radius:12px;margin:14px 0;overflow:hidden}
+.agent>summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.agent>summary::-webkit-details-marker{display:none}
+.agent>summary .name{font-size:19px;font-weight:700;color:var(--c)}
+.agent>summary .role{color:var(--muted);flex:1 1 260px}
+.agent>summary::after{content:"+";font-size:22px;color:var(--muted);margin-left:auto}
+.agent[open]>summary::after{content:"\2212"}
+.body{padding:4px 18px 18px;border-top:1px solid var(--line)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:6px}
+.box{border-radius:10px;padding:10px 14px}
+.box h4{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.box ul{margin:0;padding-left:18px} .box li{margin:4px 0}
+.box.must{background:var(--ok-bg)} .box.must h4{color:var(--ok)}
+.box.never{background:var(--no-bg)} .box.never h4{color:var(--no)}
+.box.plain{background:var(--bg);border:1px solid var(--line)} .box.plain h4{color:var(--muted)}
+.out{margin-top:12px;padding:8px 12px;border:1px dashed var(--line);border-radius:8px;font-size:14px}
+code{background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:0 5px;font-size:.88em}
+
+/* shared + gaps */
+.shared{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.gap{background:var(--warn-bg);border:1px solid var(--warn);border-radius:12px;padding:14px 18px}
+.gap h3{margin:0 0 8px;color:var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--bg);color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c);margin-right:6px}
+.note{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Blog Pipeline: who does what, and the rules</h1>
+<p class="sub">Snapshot of the rules as written today in <code>.claude/commands/blog-pipeline.md</code>, the six files in <code>.claude/agents/</code> and the two guideline files. Click a step or an agent to open it. Status: 2026-10-05.</p>
+<div class="legend">
+  <span class="pill ok">MUST: required rule</span>
+  <span class="pill no">NEVER: hard prohibition</span>
+  <span class="pill warn">GAP: your newer decision is not in the agent files yet</span>
+</div>
+
+<h2>The flow, step by step</h2>
+<div class="flow">
+  <a class="step" style="--c:var(--c-director)" href="#director"><b>1. Load context</b><span>Director reads the rules, pulls the latest queue</span></a>
+  <a class="step" style="--c:var(--c-director)" href="#director"><b>2. Pick the topic</b><span>Moves it to In Progress, commits, pushes</span></a>
+  <a class="step" style="--c:var(--c-data)" href="#data"><b>3a. Facts</b><span>Data researcher &rarr; research-brief.md</span><small>runs in parallel with 3b</small></a>
+  <a class="step" style="--c:var(--c-strat)" href="#strat"><b>3b. Angle</b><span>Content strategist &rarr; content-strategy.md</span><small>then Director commits both</small></a>
+  <a class="step" style="--c:var(--c-comm)" href="#comm"><b>4. Real people</b><span>Community researcher &rarr; community-insights.md</span></a>
+  <a class="step" style="--c:var(--c-data)" href="#data"><b>5a. Check facts</b><span>Data researcher verifies the candidates</span><small>parallel with 5b</small></a>
+  <a class="step" style="--c:var(--c-strat)" href="#strat"><b>5b. Judge value</b><span>Strategist: KEEP / MAYBE / CUT</span><small>Director then writes editorial-decisions.md</small></a>
+  <a class="step" style="--c:var(--c-write)" href="#write"><b>6. Write</b><span>Writer adds the post to build-pages.py</span></a>
+  <a class="step" style="--c:var(--c-review)" href="#review"><b>7. Review</b><span>Reviewer: PASS or FAIL. Up to 2 revision rounds</span></a>
+  <a class="step" style="--c:var(--c-pub)" href="#pub"><b>8. Publish to GitHub</b><span>Only after PASS. Never to the live server</span></a>
+  <a class="step" style="--c:var(--c-director)" href="#director"><b>9. Report</b><span>Director confirms and reports to Emilio</span></a>
+</div>
+
+<h2>Rules that apply to every agent (from CLAUDE.md)</h2>
+<div class="shared">
+  <div class="box never"><h4>Never</h4><ul>
+    <li>Claim ETPL/WIOA approval, "state-approved" or an Express listing</li>
+    <li>State any Career Skills Center program detail (length, hours, cost, credential, format, start dates)</li>
+    <li>Promise funding. Use "may qualify"</li>
+    <li>Invent statistics, outcomes, testimonials or salary figures</li>
+    <li>Use a backdated publish date</li>
+    <li>Deploy to the live server without Emilio's explicit OK</li>
+    <li>Remove a DRAFT marker or change a target keyword</li>
+  </ul></div>
+  <div class="box must"><h4>Must</h4><ul>
+    <li>Only line about CSC: it <em>plans to offer</em> training in healthcare, IT and the skilled trades</li>
+    <li>Mark anything that changes when courses launch: <code>COURSE-DEPENDENT: R-BLOG-xx</code></li>
+    <li>Write for readers at about an 8th-grade level, many reading English as a second language</li>
+    <li>Keep every post a draft (<code>&lt;!-- DRAFT --&gt;</code>) until Emilio approves</li>
+    <li>Funding numbers come only from <code>js/site-config.js</code></li>
+  </ul></div>
+</div>
+
+<h2>The agents</h2>
+
+<details class="agent" id="director" style="--c:var(--c-director)" open>
+  <summary><span class="name">Director (Blog Manager)</span><span class="role">Runs the pipeline, decides what goes in, never writes or reviews itself</span></summary>
+  <div class="body">
+    <div class="meta"><span class="pill info">/blog-pipeline command</span><span class="pill info">coordinates all six agents</span></div>
+    <div class="cols">
+      <div class="box must"><h4>Must</h4><ul>
+        <li>Read CLAUDE.md, BUILD_STATUS, BLOG_QUEUE, the register, both guideline files and KEYWORD_ANALYSIS.md</li>
+        <li>Run <code>git pull --rebase</code> first</li>
+        <li>Stop and report if the queue is empty, if something is already In Progress, or if the post already exists</li>
+        <li>Commit and push after picking the topic, after the briefs (step 3) and after the community files (step 5)</li>
+        <li>Confirm each agent's output file exists and has real content; re-run a missing one once</li>
+        <li>Allow at most <b>2 revision rounds</b>; after that log the open issues, commit as WIP and stop</li>
+        <li>Report: title, path, angle, DRAFT_DIR, which experiences went in and which were cut, facts from search summaries only</li>
+      </ul></div>
+      <div class="box plain"><h4>Editorial decision: an experience is APPROVED only if all four hold</h4><ul>
+        <li><b>Corroborated:</b> 2+ independent people in separate threads, or an official source</li>
+        <li><b>No CONTRADICTED facts</b>; UNVERIFIABLE claims are dropped from the item</li>
+        <li><b>Strategist said KEEP</b> (MAYBE only if it adds needed balance)</li>
+        <li><b>Current and U.S.-based</b></li>
+        <li>If the two checks disagree, the <b>stricter call wins</b>. Unsure = <b>cut</b></li>
+      </ul></div>
+      <div class="box never"><h4>Never</h4><ul>
+        <li>Deploy or upload anything to the live server</li>
+        <li>Remove DRAFT markers</li>
+        <li>Change a target keyword</li>
+        <li>Publish a post that still fails review</li>
+      </ul></div>
+    </div>
+  </div>
+</details>
+
+<details class="agent" id="data" style="--c:var(--c-data)">
+  <summary><span class="name">Data researcher</span><span class="role">Finds sourced facts. Also fact-checks community claims</span></summary>
+  <div class="body">
+    <div class="meta"><span class="pill info">model: sonnet</span><span class="pill info">tools: search, fetch, read, write, shell</span><span class="pill info">steps 3a and 5a</span></div>
+    <div class="cols">
+      <div class="box must"><h4>Must</h4><ul>
+        <li>Follow Research Guidelines Part A</li>
+        <li>Entry filter: only careers open with a high school diploma or GED and no experience</li>
+        <li>National certifications: point to the certifying body. State licenses: vary by state, give Massachusetts as the example</li>
+        <li>Cover: BLS median pay (with SOC code), job outlook, licensing and certification, exam facts, training length <b>and cost range</b>, employer demand, 4-6 FAQ questions</li>
+        <li>Source order: government, then official certifying bodies, then O*NET or CareerOneStop</li>
+        <li>Put a source URL on every number</li>
+        <li>Mark <code>[SEARCH SUMMARY]</code> when a page could not be opened; <code>[DATA NOT FOUND]</code> when missing</li>
+        <li>Say whether each FAQ came from a real People Also Ask box or is a placeholder</li>
+      </ul></div>
+      <div class="box never"><h4>Never</h4><ul>
+        <li>Use salary aggregators (Glassdoor, Indeed, ZipRecruiter, Salary.com, Payscale)</li>
+        <li>Use training-provider sites or career blogs as sources</li>
+        <li>Fill a gap with a guess</li>
+        <li>Change the target keyword</li>
+        <li>Edit any file except its own output; never commit</li>
+      </ul></div>
+    </div>
+    <div class="box plain" style="margin-top:14px"><h4>Verification mode (editorial round)</h4>
+      For every factual claim in a community candidate, give one verdict: <span class="pill ok">CONSISTENT</span> <span class="pill no">CONTRADICTED</span> <span class="pill info">UNVERIFIABLE</span>. Also flag candidates that are out of date or non-U.S.</div>
+    <div class="out">Writes: <code>research-brief.md</code>, and in verification mode <code>community-verification.md</code></div>
+  </div>
+</details>
+
+<details class="agent" id="strat" style="--c:var(--c-strat)">
+  <summary><span class="name">Content strategist</span><span class="role">Finds the angle that makes our post different. Judges community candidates</span></summary>
+  <div class="body">
+    <div class="meta"><span class="pill info">model: opus</span><span class="pill info">tools: search, fetch, read, write, shell</span><span class="pill info">steps 3b and 5b</span></div>
+    <div class="cols">
+      <div class="box must"><h4>Must</h4><ul>
+        <li>Follow Research Guidelines Part B: audit the top 10, content gaps, structure, freshness, honesty gaps, underserved audience, then the recommendation</li>
+        <li>Use only keywords from KEYWORD_ANALYSIS.md; invent none</li>
+        <li>Write for working adults with a GED, basic English: our edge is honesty, since we sell no courses</li>
+        <li>List the exact queries run and the URLs actually opened; mark snippet-only rows; mark each People Also Ask as "seen" or "inferred"</li>
+        <li>Include a table of existing posts to link to, with where each link goes</li>
+        <li>Recommend: angle, hook, 2-3 differentiators, why it wins</li>
+      </ul></div>
+      <div class="box never"><h4>Never</h4><ul>
+        <li>Copy competitor wording</li>
+        <li>Use training-provider sites or career blogs as fact sources</li>
+        <li>Change the target keyword</li>
+        <li>Edit any file except its own output; never commit</li>
+      </ul></div>
+    </div>
+    <div class="box plain" style="margin-top:14px"><h4>Editorial mode</h4>
+      For each community candidate: <span class="pill ok">KEEP</span> <span class="pill warn">MAYBE</span> <span class="pill no">CUT</span> with value, fit, balance (which critical experiences must stay so the post is honest), and quote vs. paraphrase. A quote must be clearer or more human than our words, short and easy for a basic-English reader.</div>
+    <div class="out">Writes: <code>content-strategy.md</code>, and in editorial mode <code>community-editorial.md</code></div>
+  </div>
+</details>
+
+<details class="agent" id="comm" style="--c:var(--c-comm)">
+  <summary><span class="name">Community researcher</span><span class="role">Finds what real people say: Reddit, Quora, public forums</span></summary>
+  <div class="body">
+    <div class="meta"><span class="pill info">model: opus</span><span class="pill info">tools: search, fetch, read, write, shell</span><span class="pill info">step 4</span></div>
+    <div class="cols">
+      <div class="box must"><h4>Must</h4><ul>
+        <li>Read the research brief and content strategy first: find only what is <b>not</b> already in them</li>
+        <li>Look at Reddit, Quora, public Facebook posts and public forums; prefer the last 3 years</li>
+        <li>For each candidate: count independent confirmations, report the real mix of views, list every factual claim separately, say why it matters to the reader</li>
+        <li>Quote option only if clearer than a paraphrase: exact words, <b>25 words or fewer</b>, nothing identifying</li>
+        <li>List 5 to 12 candidates, strongest first, with source URLs kept <b>internal only</b></li>
+      </ul></div>
+      <div class="box never"><h4>Never</h4><ul>
+        <li>Log in, or get around a login</li>
+        <li>Keep only the encouraging side</li>
+        <li>Include promotion by schools or companies, rants with no detail, posts about named people</li>
+        <li>Change quote words in a way that changes the meaning</li>
+        <li>Edit any file except its own output; never commit</li>
+      </ul></div>
+    </div>
+    <div class="out">Writes: <code>community-insights.md</code></div>
+  </div>
+</details>
+
+<details class="agent" id="write" style="--c:var(--c-write)">
+  <summary><span class="name">Blog writer</span><span class="role">Turns the briefs into the post inside tools/build-pages.py</span></summary>
+  <div class="body">
+    <div class="meta"><span class="pill info">model: opus</span><span class="pill info">tools: read, write, edit, search, shell</span><span class="pill info">step 6, and revisions</span></div>
+    <div class="cols">
+      <div class="box must"><h4>Must: reader first</h4><ul>
+        <li>The strategist's angle is the north star</li>
+        <li>One clear pay number per role; give training length and cost; "No state license required"</li>
+        <li><b>Keep it simple:</b> no Sources section, no "according to BLS", no government-data links, no SOC codes, no percentile ranges</li>
+        <li><b>Use only facts in the research brief</b>; if it is not there, leave it out</li>
+        <li>Link every relevant existing post</li>
+        <li>7th-8th grade level, short sentences, plain words</li>
+      </ul></div>
+      <div class="box must"><h4>Must: paragraph shape</h4><ul>
+        <li><b>1-2 sentences</b>, about 120-185 characters, <b>hard cap 210</b></li>
+        <li>Complete sentences only (no fragments)</li>
+        <li>Open sections with: what it is, why it matters, a real example</li>
+        <li>Applies to every paragraph, including FAQ answers; check each before finishing</li>
+      </ul></div>
+      <div class="box must"><h4>Must: community items</h4><ul>
+        <li>Use only items approved in <code>editorial-decisions.md</code>, where it says to put them</li>
+        <li>Present as experiences, never as facts; facts use the verified figure</li>
+        <li>Keep the real mix of views</li>
+        <li>Generic attribution only; no usernames, no thread links</li>
+      </ul></div>
+      <div class="box must"><h4>Must: technical</h4><ul>
+        <li>Add a <code>PAGES.append(...)</code> block (article, post_cta, related, faq_ld, article_ld), a blog index card and a sitemap entry</li>
+        <li>DRAFT comment at the top; COURSE-DEPENDENT markers with the next free R-BLOG number; course-mode copy file</li>
+        <li>Publish date is today's real date</li>
+      </ul></div>
+      <div class="box never"><h4>Never</h4><ul>
+        <li>State CSC program details; "our program", "our courses", "enroll"</li>
+        <li>Claim ETPL/WIOA approval; promise funding</li>
+        <li>Invent statistics, outcomes or testimonials; add an experience that was not approved</li>
+        <li>Suggest community people are CSC students</li>
+        <li>Build, commit or push</li>
+      </ul></div>
+    </div>
+    <div class="out">Writes: the post in <code>tools/build-pages.py</code>, <code>blog/course-mode-copy/&lt;slug&gt;.md</code></div>
+  </div>
+</details>
+
+<details class="agent" id="review" style="--c:var(--c-review)">
+  <summary><span class="name">Compliance reviewer</span><span class="role">Reports PASS or FAIL against 16 checks. Never edits the post</span></summary>
+  <div class="body">
+    <div class="meta"><span class="pill info">model: opus</span><span class="pill info">tools: read, write, search, shell</span><span class="pill info">step 7</span></div>
+    <table>
+      <tr><th>#</th><th>Check</th></tr>
+      <tr><td>1-2</td><td>No CSC program details. No ETPL, WIOA, "state-approved" or Express claims</td></tr>
+      <tr><td>3</td><td>Every number, training cost and duration is in the research brief with a source</td></tr>
+      <tr><td>4</td><td>"May qualify"; no funding promises</td></tr>
+      <tr><td>5</td><td>Plain language. Every paragraph 1-2 complete sentences and at most 210 characters</td></tr>
+      <tr><td>6</td><td>DRAFT marker present</td></tr>
+      <tr><td>7</td><td>CTAs: national certification &rarr; certifying body; funding &rarr; qualify.html; never "our program", "enroll", "apply"</td></tr>
+      <tr><td>8</td><td>COURSE-DEPENDENT markers present; course-mode copy file exists</td></tr>
+      <tr><td>9</td><td>BlogPosting and FAQPage JSON-LD present and valid</td></tr>
+      <tr><td>10-11</td><td>No testimonials or invented outcomes. No facts from aggregators, training providers or career blogs</td></tr>
+      <tr><td>12</td><td>Follows the strategy's angle; each differentiator is a real section</td></tr>
+      <tr><td>13</td><td>Reader-first: no "we did not find", percentile ranges, SOC codes, "Not shown" cells, Sources sections, "according to...", or government-data links</td></tr>
+      <tr><td>14</td><td>Answers: pay, training length and cost, working while training, what you need to start, state license, exam facts</td></tr>
+      <tr><td>15</td><td>Links to relevant existing posts</td></tr>
+      <tr><td>16</td><td>Community items: all approved, quotes word for word, nothing identifying, framed as experiences, mixed views shown as mixed</td></tr>
+    </table>
+    <div class="box never" style="margin-top:14px"><h4>Never</h4><ul><li>Edit the post or any file except its report; never commit</li></ul></div>
+    <div class="out">Writes: <code>review-report.md</code> (or <code>review-report-roundN.md</code>) with Result, per-check details and a specific fix list</div>
+  </div>
+</details>
+
+<details class="agent" id="pub" style="--c:var(--c-pub)">
+  <summary><span class="name">Blog publisher</span><span class="role">After PASS: builds, updates the tracking docs, commits and pushes to GitHub</span></summary>
+  <div class="body">
+    <div class="meta"><span class="pill info">model: sonnet</span><span class="pill info">tools: read, write, edit, search, shell</span><span class="pill info">step 8</span></div>
+    <div class="cols">
+      <div class="box must"><h4>Must</h4><ul>
+        <li>Run only after the review says PASS</li>
+        <li>Build with <code>python3 tools/build-pages.py</code> (must exit 0)</li>
+        <li>Run the pre-deploy grep for <code>[VERIFY</code> and <code>DRAFT</code>; log anything unexpected</li>
+        <li>Update VERIFICATION_LOG (new section), the course register, BLOG_QUEUE (move to Done) and BUILD_STATUS (newest first)</li>
+        <li>Commit <code>blog: draft [title]</code> and push; if the same post already exists on main, stop and report</li>
+      </ul></div>
+      <div class="box never"><h4>Never</h4><ul>
+        <li>Deploy, SFTP or upload to the live server (needs Emilio's explicit OK)</li>
+        <li>Remove a DRAFT marker</li>
+      </ul></div>
+    </div>
+  </div>
+</details>
+
+<h2>Your newer decisions that are not in the agent files yet</h2>
+<div class="gap">
+  <h3>These were given in the prompts this session, but the agents' own files still say the old rule</h3>
+  <table>
+    <tr><th>Decision</th><th>What the files still say</th><th>Agents to change</th></tr>
+    <tr><td><b>Pay:</b> national figure for a national credential; Massachusetts figure for a state-issued license (2026-10-05)</td><td>Writing guideline 7: "one number: the national median" for every role</td><td>Data researcher, writer, reviewer + both guideline files</td></tr>
+    <tr><td><b>Easy statistics are fine</b> (growth %, openings a year)</td><td>"Keep it simple"; growth labels discouraged</td><td>Writer, reviewer</td></tr>
+    <tr><td><b>National credential = nationwide post</b> (the medical assistant error). Classify first; ask Emilio if the queue topic names a state</td><td>Only "lead with national data"; nothing stops a state-framed title or keyword</td><td>Director, data researcher, strategist, writer, reviewer</td></tr>
+    <tr><td><b>No named schools, no price tables, no visible byline</b></td><td>Not written in any agent file</td><td>Writer, reviewer</td></tr>
+    <tr><td><b>Community quotes allowed</b> (approved only)</td><td>Already in the files (CLAUDE.md still says otherwise: strategy to update)</td><td>None. CLAUDE.md is strategy's file</td></tr>
+  </table>
+  <p class="note">Proposed next, waiting on your answers: a "must-include figures" checklist, a competitor-comparison step, browser use for research, a 2,000-2,500 word budget, named public programs with their own published hours, and bringing back entry-level (10th percentile) pay.</p>
+</div>
+
+</div>
+</body>
+</html>
