@@ -52,6 +52,21 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 
 ## Session log
 
+### 2026-10-05 (night) - Pipeline made cheaper to run (LOCAL + GitHub, not deployed)
+- **Why:** the medical assistant run cost about 1.01 million subagent tokens (10 runs) and took 2 review rounds, both failing on mechanical items. Emilio asked for a leaner pipeline (all ideas except a shared per-credential facts folder, which he declined).
+- **New `tools/blog-lint.py <slug>`:** free script run after `build-pages.py`. Checks paragraph sentence counts and length (210 characters), short fragments, the lede under the H1, word count (FAIL above 2,750), numbers that appear in no pipeline file, banned phrases, DRAFT and COURSE-DEPENDENT markers, the course-mode copy file, and JSON-LD. Tested on the live draft: 0 FAIL, and it catches a 3-sentence lede.
+- **Director (`/blog-pipeline`):** runs the lint before the reviewer; sends lint FAILs to the writer first; skips the editorial round when the community researcher finds fewer than 3 usable candidates.
+- **Writer:** must run the build and lint and fix every FAIL before it finishes.
+- **Reviewer:** now Sonnet; trusts the lint for mechanical checks; shorter reports; on a re-review it checks only the previous fix list.
+- **Community researcher:** now Sonnet; about 15 searches and 10 pages; stops early if Reddit, Quora and Facebook are blocked and fewer than 3 usable candidates turn up.
+- **Editorial round:** the separate strategist run is retired. The data-researcher's verification pass now adds KEEP/MAYBE/CUT, fit, balance and quote-vs-paraphrase for each candidate; the director still decides.
+- **Length caps:** research brief and content strategy about 1,500 words each (hard cap 2,000), because every later agent reads them.
+- **Research reading:** 5 usable pages (10 opened at most) instead of 10 usable pages, with a character limit on browser reads (`docs/BLOG_RESEARCH_GUIDELINES.md` 1b).
+- **Stays on Opus:** the strategist (angle) and the writer.
+- **Estimate, not measured:** a run should cost roughly half as many tokens. Compare the next run against the 1.01 million baseline.
+- **Stale tools:** `docs/pipeline-rules.html` and the Pipeline Rules Editor artifact still show the old rules (10 pages, editorial round, Opus reviewer). Refresh them if Emilio still uses them.
+
+
 ### 2026-10-05 (night) - Nationwide medical assistant draft published to GitHub only (LOCAL, not deployed)
 - **Built:** `blog/how-to-become-a-medical-assistant.html` ("How to Become a Medical Assistant: 4 Routes, Real Costs and the Certificate Each Leads To"), about 2,660 visible words, generated from `tools/build-pages.py` (build exit 0, 35 pages). Nationwide post with Massachusetts as one labeled section. Angle: four routes (paid employer training or apprenticeship, college program, short or online program, work experience) side by side with real times and costs, and which certificate (CMA, RMA, CCMA, CMAC) each leads to.
 - **Files:** `blog/how-to-become-a-medical-assistant.html`, `blog/course-mode-copy/how-to-become-a-medical-assistant.md`, `tools/build-pages.py`, `docs/COURSE_CONTENT_REGISTER.md` (new row R-BLOG-06), `docs/VERIFICATION_LOG.md` (section S), `docs/BLOG_QUEUE.md`, `sitemap.xml`/`blog.html` unchanged (draft not listed).

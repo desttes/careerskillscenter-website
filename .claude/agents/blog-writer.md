@@ -73,4 +73,4 @@ If `[DRAFT_DIR]editorial-decisions.md` exists, it lists the community insights t
 - Mark every CSC mention and course-dependent CTA with `<!-- COURSE-DEPENDENT: R-BLOG-xx -->`, using the next free number in `docs/COURSE_CONTENT_REGISTER.md`.
 - Write the course-mode copy file `blog/course-mode-copy/[slug].md`.
 - Publish date is today's real date.
-- Do not build, commit or push.
+- Before you finish, run `python3 tools/build-pages.py` and then `python3 tools/blog-lint.py <slug>`, and fix every FAIL it prints (paragraph length and sentence count, fragments, word count over 2,750, numbers that are not in the briefs, banned phrases, missing markers). Repeat until it shows 0 FAIL. Do not commit or push.

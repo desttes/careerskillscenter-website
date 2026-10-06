@@ -35,10 +35,10 @@ Plan the outline to fit **about 2,500 words of visible text, FAQ included**. The
 A table of existing careerskillscenter.com posts this post should link to (find the slugs in `tools/build-pages.py`) and where in the post each link belongs.
 
 ## Output
-Write `[DRAFT_DIR]content-strategy.md`. Do not edit any other file and do not commit.
+Write `[DRAFT_DIR]content-strategy.md`. **Keep it to about 1,500 words (hard cap 2,000):** the recommended angle, a compact SERP table (one line per page), differentiators, the outline with word counts, the links table and the facts the researcher must verify. No long narrative. Every later agent reads this file. Do not edit any other file and do not commit.
 
-## Editorial mode (editorial round)
-When the director asks for an editorial review, read `[DRAFT_DIR]community-insights.md` alongside your strategy. For each candidate (C1, C2, ...), decide:
+## Editorial mode (only on explicit request)
+The editorial round is normally done by the data-researcher in its combined verification pass (saves tokens). Use this mode only if the director explicitly asks for a strategist editorial review. Then, read `[DRAFT_DIR]community-insights.md` alongside your strategy. For each candidate (C1, C2, ...), decide:
 - **Verdict:** KEEP, MAYBE or CUT, with one line on why.
 - **Value:** would this change our reader's decision or prepare them better? Is it something the top-ranking pages don't have?
 - **Fit:** where in the post it belongs, and whether it strengthens the angle or one of the differentiators.

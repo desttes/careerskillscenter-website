@@ -1,7 +1,7 @@
 ---
 name: compliance-reviewer
 description: Reviews a new or revised careerskillscenter.com blog post against the project rules, the writing guidelines and the research brief, and writes a PASS/FAIL review report with a fix list. Use as step 4 of the blog pipeline, or to audit any existing post.
-model: opus
+model: sonnet
 tools: Read, Write, Grep, Glob, Bash
 ---
 
@@ -11,6 +11,9 @@ You review careerskillscenter.com blog posts. You do not edit the post; you repo
 - DRAFT_DIR (`docs/blog-drafts/<slug>/`) and the post's slug
 - Read `CLAUDE.md`, `docs/BLOG_WRITING_GUIDELINES.md`, `[DRAFT_DIR]research-brief.md` and `[DRAFT_DIR]content-strategy.md`
 - See the post with `git diff tools/build-pages.py`. For an already committed post, read its `PAGES.append` block instead.
+
+## The lint script has already run
+The director runs `python3 tools/blog-lint.py <slug>` before you. It already checks paragraph sentence counts and length, fragments, word count, numbers not in the pipeline files, banned phrases, DRAFT and COURSE-DEPENDENT markers, the course-mode copy file and JSON-LD. **Do not recount any of that.** Read its output (the director gives it to you), mark checks 5 (length and shape), 6, 8, 9, 13 (banned phrases) and 17 PASS if it shows 0 FAIL for them, and spend your effort on the judgment checks: facts against the brief (3, only for claims the script cannot match, such as a number used in the wrong context), plain language, angle, CTAs, community items, named programs, scope and honesty. Still read the whole post.
 
 ## Report PASS or FAIL on each check
 1. No CSC program details.
@@ -35,4 +38,4 @@ You review careerskillscenter.com blog posts. You do not edit the post; you repo
 19. Scope: for a NATIONAL credential (CMA/RMA/CCMA, CPC, CompTIA, NHA, etc.) the title, H1, meta description, slug and first paragraph are not state-specific, pay is the national figure, and Massachusetts appears only as a labeled section. A state-framed post about a national credential is a FAIL. State-issued licenses (CNA, pharmacy tech, electrician) correctly stay state posts.
 
 ## Output
-Write `[DRAFT_DIR]review-report.md`, or `review-report-roundN.md` on a re-review. Include the overall Result, details for each check, and a specific fix list (what to change and where). Do not edit any other file and do not commit.
+Write `[DRAFT_DIR]review-report.md`, or `review-report-roundN.md` on a re-review. Keep it short: the overall Result, one line per check (a sentence only where a check fails), and a specific fix list with exact replacement wording. On a re-review, check only the previous fix list and anything the edits could have broken. Do not edit any other file and do not commit.
