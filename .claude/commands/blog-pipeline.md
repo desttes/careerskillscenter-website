@@ -15,6 +15,7 @@ Read `CLAUDE.md` (follow it strictly), `docs/BUILD_STATUS.md`, `docs/BLOG_QUEUE.
 - If "Next Up" is empty (and no topic was requested), say "BLOG QUEUE EMPTY" and stop.
 - If "In Progress" already has an item, stop and report it. Another run may be working on it.
 - Take the requested topic, or the first "Next Up" item. Note its TOPIC and TARGET KEYWORD; never change the keyword.
+- **Classify the credential first (Emilio, 2026-10-05).** Decide whether the credential is NATIONAL (issued by a national body: CMA/RMA/CCMA, CPC, CompTIA, NHA CPT, etc.) or STATE-issued (CNA registry, pharmacy tech license, electrician, HVAC license). A national credential gets a NATIONWIDE post: title, H1, keyword framing and first paragraph are not state-specific, and Massachusetts appears only as a labeled section (licensing notes, local funding, local programs). If the queue topic or keyword names a state for a national credential, STOP and ask Emilio before running; never silently change the keyword. Record the classification (SCOPE: nationwide or state) and pass it to every agent.
 - Choose a short keyword slug (for example `cna-massachusetts`) and set DRAFT_DIR = `docs/blog-drafts/<slug>/`. Run `mkdir -p` on it.
 - If `blog/<slug>.html` or DRAFT_DIR files already exist on main, stop and report. Do not write a duplicate.
 - Move the item to "In Progress", commit `blog: pick up [topic] from queue` and push.

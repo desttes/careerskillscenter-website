@@ -9,7 +9,7 @@ Claude Code updates this file at the end of every session. The strategy side (Co
   - **Needs Emilio's review:** medical assistant (`blog/medical-assistant-massachusetts.html`, pipeline files in `docs/blog-drafts/medical-assistant-massachusetts/`). Emilio flagged two problems: it treats a **national** credential as a Massachusetts topic, and it is broader and less precise than a single-prompt Opus article he compared it with. Plan: rewrite it after the new rules below (nationwide post, Massachusetts as a section).
   - The CNA, healthcare-jobs and phlebotomist drafts link to the medical assistant draft, so publish order matters.
 - **Pipeline rules changed 2026-10-05** (guidelines + agents, commit `eebf2e4`): named public programs allowed with hours/funding/dates from their own official page plus "as of" and "check current enrollment"; concrete training lengths and cost ranges from public colleges, certifying bodies and official program pages; pay = median plus one entry-level (10th percentile) figure, national for nationwide credentials and state figure for state licenses; easy statistics allowed; posts about 2,500 words and the nine sections are a menu; the data researcher reads the top 10 search results, skips course sellers, and has browser tools.
-- **Still to add to the pipeline:** the scope rule (classify the credential first; a national credential gets a nationwide post; the director asks Emilio when a queue topic names a state for a national credential).
+- **Scope rule added to the pipeline (2026-10-05, later session):** the director (`/blog-pipeline`) classifies the credential first (national = nationwide post, Massachusetts as one labeled section; state-issued license = state post) and stops to ask Emilio if a queue topic names a state for a national credential. The researcher, strategist, writer and reviewer (new check 19) follow it. Pipeline Rules Editor checked: still no submissions.
 - **Tools for Emilio:** `docs/pipeline-rules.html` (picture of every agent's rules) and the private **Pipeline Rules Editor** artifact (https://claude.ai/artifact/DKREiEtrsL1LQyD7j4p5it): tick rules to remove, write new ones, Submit. Submissions land in its `rule-submissions` collection; none submitted yet. The editor shows the rules as of the morning of 2026-10-05 (before commit `eebf2e4`).
 - **Keyword analysis:** `docs/KEYWORD_ANALYSIS.md` (medical assistant first, then medical billing and coding). Still needed: Massachusetts-modified volumes.
 - **Blog queue:** Next Up is electrician, then HVAC technician (`docs/BLOG_QUEUE.md`). Medical billing and coding ("worth it / AI" angle) is recommended but not queued.
@@ -18,7 +18,7 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 
 **Next session, in order:**
 1. Read any Pipeline Rules Editor submission and apply it.
-2. Add the scope rule to the director, researcher, strategist, writer and reviewer.
+2. (Done) scope rule added to the pipeline.
 3. Re-run the medical assistant post under the new rules (nationwide), then Emilio reviews it.
 4. When Emilio says publish: remove DRAFT/VERIFY markers on the approved posts, set real dates, rebuild, add to `llms.txt`, pre-deploy grep, upload posts plus `blog.html`, `sitemap.xml`, `llms.txt`.
 

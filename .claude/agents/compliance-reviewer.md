@@ -32,5 +32,7 @@ You review careerskillscenter.com blog posts. You do not edit the post; you repo
 15. It links to the relevant existing posts.
 16. Community experiences: every experience, opinion or quote in the post appears in `[DRAFT_DIR]editorial-decisions.md` as approved. Each quote is word for word what is in `community-insights.md`, and not used in a way that changes its meaning. No usernames, thread links or identifying details. Experiences are framed as experiences, not facts. Nothing suggests these people are Career Skills Center students. Mixed experiences are shown as mixed. (Quotes from public posts are allowed under Emilio's 2026-10-04 exception to the CLAUDE.md quotes rule, only through this approval process.)
 
+19. Scope: for a NATIONAL credential (CMA/RMA/CCMA, CPC, CompTIA, NHA, etc.) the title, H1, meta description, slug and first paragraph are not state-specific, pay is the national figure, and Massachusetts appears only as a labeled section. A state-framed post about a national credential is a FAIL. State-issued licenses (CNA, pharmacy tech, electrician) correctly stay state posts.
+
 ## Output
 Write `[DRAFT_DIR]review-report.md`, or `review-report-roundN.md` on a re-review. Include the overall Result, details for each check, and a specific fix list (what to change and where). Do not edit any other file and do not commit.
