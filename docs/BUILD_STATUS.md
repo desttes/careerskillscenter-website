@@ -6,6 +6,7 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 - **Live site:** everything approved through 2026-10-05, including today's blog FAQ indent fix (answers line up with the question text). GitHub `main` matches the live site plus the drafts below.
 - **5 blog drafts, not live (DRAFT markers keep them out of the blog index, sitemap and deploys):**
   - **Approved by Emilio 2026-10-05, held back from publishing:** CNA, healthcare jobs, pharmacy technician, phlebotomist (`blog/*-massachusetts.html`).
+  - **Update (2026-10-05, night):** nationwide rewrite `blog/how-to-become-a-medical-assistant.html` is drafted and on GitHub (local only); it needs Emilio's review and replaces the draft below. See the session log.
   - **Needs Emilio's review:** medical assistant (`blog/medical-assistant-massachusetts.html`, pipeline files in `docs/blog-drafts/medical-assistant-massachusetts/`). Emilio flagged two problems: it treats a **national** credential as a Massachusetts topic, and it is broader and less precise than a single-prompt Opus article he compared it with. Plan: rewrite it after the new rules below (nationwide post, Massachusetts as a section).
   - The CNA, healthcare-jobs and phlebotomist drafts link to the medical assistant draft, so publish order matters.
 - **Pipeline rules changed 2026-10-05** (guidelines + agents, commit `eebf2e4`): named public programs allowed with hours/funding/dates from their own official page plus "as of" and "check current enrollment"; concrete training lengths and cost ranges from public colleges, certifying bodies and official program pages; pay = median plus one entry-level (10th percentile) figure, national for nationwide credentials and state figure for state licenses; easy statistics allowed; posts about 2,500 words and the nine sections are a menu; the data researcher reads the top 10 search results, skips course sellers, and has browser tools.
@@ -50,6 +51,21 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 **Immediate next step:** decide whether to deploy the Option A rework + interest form (blog stays excluded). Everything is committed on `main`.
 
 ## Session log
+
+### 2026-10-05 (night) - Nationwide medical assistant draft published to GitHub only (LOCAL, not deployed)
+- **Built:** `blog/how-to-become-a-medical-assistant.html` ("How to Become a Medical Assistant: 4 Routes, Real Costs and the Certificate Each Leads To"), about 2,660 visible words, generated from `tools/build-pages.py` (build exit 0, 35 pages). Nationwide post with Massachusetts as one labeled section. Angle: four routes (paid employer training or apprenticeship, college program, short or online program, work experience) side by side with real times and costs, and which certificate (CMA, RMA, CCMA, CMAC) each leads to.
+- **Files:** `blog/how-to-become-a-medical-assistant.html`, `blog/course-mode-copy/how-to-become-a-medical-assistant.md`, `tools/build-pages.py`, `docs/COURSE_CONTENT_REGISTER.md` (new row R-BLOG-06), `docs/VERIFICATION_LOG.md` (section S), `docs/BLOG_QUEUE.md`, `sitemap.xml`/`blog.html` unchanged (draft not listed).
+- Pipeline files: docs/blog-drafts/how-to-become-a-medical-assistant/
+- **Status:** LOCAL (not deployed). The DRAFT marker keeps the post out of `blog.html`, `sitemap.xml` (28 urls) and `llms.txt`; confirmed by grep. Pre-deploy grep matches DRAFT/[VERIFY] in: `blog/how-to-become-a-medical-assistant.html`, `blog/cna-massachusetts.html`, `blog/healthcare-jobs-massachusetts.html`, `blog/phlebotomist-massachusetts.html`, `blog/pharmacy-technician-massachusetts.html`, `blog/medical-assistant-massachusetts.html`, `it-careers-massachusetts-draft.html`, and `docs/pipeline-rules.html` (text mention only). The new post is expected; the rest were already held back.
+- **Compliance:** the review needed 2 rounds. Round 1 FAIL; round 2 FAIL on two small items (check 3: CCP length now in the verified addendum in research-brief.md; check 5: the summary under the H1 cut from 3 sentences to 2). The director fixed both directly.
+- **Open TODOs:**
+  - (a) The old `blog/medical-assistant-massachusetts.html` still exists and still has a blog card. Once Emilio approves the new post he must decide: 301 redirect or removal.
+  - (b) Sibling drafts (CNA, healthcare-jobs, phlebotomist) link to the old post. Re-point them to `how-to-become-a-medical-assistant.html` at publish.
+  - (c) The new post links to the CNA and phlebotomist drafts, so publish order matters (publish those first or together).
+  - (d) No American Job Center pointer in the post (no official source in the brief).
+  - (e) The AAMA Alternative Pathway is worded "currently available" (never "permanent"); re-check at publish.
+  - (f) Re-confirm before publish: Fred Hutch January 2027 cohort and Kaiser Washington status; RMA question count, CCMA exam format (2022 test plan), RMA 3-year renewal, mass.gov "not licensed" wording (all search summary only); the AAMA state-by-state page link was opened only by the strategist; BLS AI-exposure row for medical assistants not read.
+  - Remove DRAFT/[VERIFY] markers and set the real date only when Emilio approves.
 
 ### 2026-10-05 (evening) — LIVE DEPLOY: blog FAQ indent fix (Emilio authorized)
 - **Deployed over SFTP:** `css/style.css` (FAQ answers now indent to line up with the question text, commit `0748254`) plus the 29 live pages whose only change since the 2026-10-04 deploy was the new stylesheet version stamp (checked with a diff that ignored `?v=` lines). Pre-deploy grep on every uploaded file: clean.

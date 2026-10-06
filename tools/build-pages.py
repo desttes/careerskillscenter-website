@@ -3446,6 +3446,11 @@ def post_card(tag, date, read, title, excerpt, href="#"):
 # Real launch posts. Order = newest first in the grid (the pillar is featured
 # above the grid, so it is not repeated here). href points into /blog/.
 BLOG_POSTS = [
+    ("Medical", "Oct 5, 2026", "11 min read",
+     "How to Become a Medical Assistant: 4 Routes, Real Costs and the Certificate Each Leads To",
+     "Some employers pay you to train, and some cheap courses limit which certificate you can take. The four "
+     "routes side by side, with real times and costs.",
+     "blog/how-to-become-a-medical-assistant.html"),
     ("Medical", "Oct 5, 2026", "13 min read",
      "How to Become a Medical Assistant in Massachusetts (2026)",
      "No state license, three ways in (one pays you while you train), which certification each leads to, "
@@ -7480,6 +7485,382 @@ PAGES.append(dict(
         "Massachusetts has no license for medical assistants. Here are the three ways in, including one that "
         "pays you to train, which certification each leads to, and the hard parts of the job.",
         "October 5, 2026", "13 min read", _ma_body, author=None)))
+
+
+# ---------------------------------------------------------------------------
+# How to Become a Medical Assistant (nationwide). Published 2026-10-05.
+# Target keyword: "how to become a medical assistant". SCOPE: nationwide (CMA/RMA/CCMA/CMAC are
+# national credentials); Massachusetts appears only in the labeled "If you live in Massachusetts" section.
+# Source: blog pipeline, docs/blog-drafts/how-to-become-a-medical-assistant/ (research-brief.md,
+# content-strategy.md, community-verification.md, editorial-decisions.md).
+# Pay: BLS OEWS May 2025, NATIONAL median + 10th percentile only.
+# Community items: only C1, C2, C3 (official program facts), C4, C5+C9 (actions), C6, C7, C8, as approved
+# in editorial-decisions.md (paraphrase only, no quotes).
+# Does NOT link to blog/medical-assistant-massachusetts.html (this post replaces it; director decides redirect).
+# CSC lines = COURSE-DEPENDENT: R-BLOG-06. Course-mode copy: blog/course-mode-copy/how-to-become-a-medical-assistant.md
+# ---------------------------------------------------------------------------
+# Each FAQ answer is a list of short paragraphs (1-2 sentences each). The FAQPage schema joins them into
+# one plain-text answer with HTML tags stripped.
+_htbma_faq = [
+    ("Can you become a medical assistant online?",
+     ["You can take most of the classes online. But you still need hands-on practice with shots and blood "
+      "draws, in a lab and an externship.",
+      "If you want an office-only health job, "
+      "read <a href=\"blog/can-medical-billing-coding-be-learned-online.html\">whether medical billing and "
+      "coding can be learned online</a>."]),
+    ("Will AI replace medical assistants?",
+     ["No one can say for sure. Much of the job is hands-on work with patients, like taking vital signs and "
+      "collecting samples for lab tests.",
+      "Medical assistant jobs are still expected to grow 13% over the next 10 years, mostly because more "
+      "older people need care."]),
+    ("Is a medical assistant the same as a physician assistant?",
+     ["No, they are different jobs. A physician assistant needs a master's degree and a state license, and "
+      "can diagnose and treat patients.",
+      "A medical assistant can start after as little as about 8 weeks of training and does not diagnose, "
+      "prescribe or treat."]),
+    ("Medical assistant or CNA: which pays more?",
+     ["Medical assistants earn a little more. Most earn around $45,690 a year, compared with about $42,260 "
+      "for nursing assistants.",
+      "Read <a href=\"blog/cna-massachusetts.html\">how to become a CNA</a> to compare the two jobs."]),
+    ("Do you have to be certified to work as a medical assistant?",
+     ["In most states, no law requires it. But many employers prefer or require a certificate, so plan to "
+      "get one."]),
+]
+
+_htbma_faq_html = "\n".join(
+    f'          <details class="faq-item"><summary>{q}</summary>\n          <div>'
+    + "".join(f"<p>{p}</p>" for p in a) + "</div></details>"
+    for q, a in _htbma_faq)
+
+_htbma_body = """        <!-- DRAFT -- facts to verify: (1) Pay: national median $45,690 and lowest 10% $36,050 (BLS OEWS May
+             2025, opened); 13% growth 2025-35 and ~109,700 openings/yr (BLS OOH, opened); "more than half in
+             doctors' offices" (56%, opened). (2) AAMA: 200 questions / 160 minutes, passing score 405 (200-800),
+             $125/$250, 69% first-time pass (Jul 2024-Apr 2025), 60-month renewal, Alternative Pathway rules
+             (560 hours, 160-hour practicum or 1,000 work hours, 10 injections + 10 blood draws): opened. The
+             Alternative Pathway is "currently available"; it began as a 2019 pilot, so never call it permanent.
+             (3) AMT RMA: $150, 2 hours, 4 lifetime attempts / 45 days, work route 3 yrs in 7: opened; ~210
+             questions and 3-year renewal are SEARCH SUMMARY. (4) NHA CCMA: $169 (store page, opened) and
+             routes (opened); 150 scored + 30 pretest / 3 hours is from the 2022 test plan (SEARCH SUMMARY).
+             (5) AMCA CMAC: 175 questions / 2.5 hours / $139 opened; eligibility is SEARCH SUMMARY.
+             (6) Paid programs (official pages opened 2026-10-05): Fred Hutch (2,000 paid hours, 410 unpaid
+             coursework hours, $4,850 tuition covered, 2-yr commitment, next cohort Jan 2027); Kaiser WA (2,000
+             hours over 12-24 months, 288 class hours, 2-yr commitment). Allina cut in round 2 (Feb 2025 page
+             only). Confirm enrollment before publish. (7) College prices (opened 2026-10-05): CCP
+             $2,799 / 180 hours / 8 or 16 weeks / optional externship; Anne Arundel $4,112 / 388 hours / 100-hour
+             externship, 25 hrs a week for 4 weeks; Central Piedmont $5,376-$14,400, ~2.5 semesters, CAAHEP.
+             (8) Washington credential rules and fees ($145 certified, $115 registered): DOH pages opened.
+             (9) Massachusetts: MGL c.112 s.265 opened; mass.gov "not licensed" line is SEARCH SUMMARY (human
+             check). MassEducate opened. Program facts (Greenfield, Massasoit, Quincy College, QCC/UMass
+             Memorial) opened 2026-10-05. (10) Links to DRAFT posts: blog/cna-massachusetts.html and
+             blog/phlebotomist-massachusetts.html; re-check at publish. AAMA state-by-state page link opened by
+             the strategist only. (11) FAQ: AI answer uses BLS growth driver only, no AI claim. -->
+
+        <p class="lead">Most guides on how to become a medical assistant tell you to pick a school first. Pick
+        your route first instead.</p>
+        <p>Some employers will pay you while they train you. A cheap online course can get you working fast,
+        but it may lock you out of one of the main certificates.</p>
+
+        <!-- COURSE-DEPENDENT: R-BLOG-06 -->
+        <p>This guide shows the four routes side by side, with real times and costs. Career Skills Center does
+        not sell medical assistant training, so we can be straight with you.</p>
+        <!-- /COURSE-DEPENDENT: R-BLOG-06 -->
+
+        <div class="note"><strong>Quick answer: 5 steps to become a medical assistant</strong>
+        <ol>
+          <li>Finish high school or get your GED.</li>
+          <li>Pick your route: paid employer training, a college program, a short program, or a job that
+          trains you.</li>
+          <li>Train for about 8 weeks to 2 years, depending on the route.</li>
+          <li>Get certified. Most states don&rsquo;t require it by law, but many employers want it.</li>
+          <li>Find your first job. It can be the hardest step, so plan for it early.</li>
+        </ol></div>
+
+        <h2>What does a medical assistant do?</h2>
+        <p>A medical assistant helps doctors and nurses run a clinic. You work in the exam room and at the
+        front desk, often on the same day.</p>
+        <p>A normal day might start with taking a patient&rsquo;s vital signs, like blood pressure and pulse.
+        Later you might book follow-up visits or update medical records.</p>
+        <ul>
+          <li>Taking vital signs and health histories</li>
+          <li>Getting patients ready for exams</li>
+          <li>Collecting samples for lab tests</li>
+          <li>Giving medicines, when a provider directs you</li>
+          <li>Scheduling visits and keeping records up to date</li>
+        </ul>
+        <p>More than half of medical assistants work in doctors&rsquo; offices. Most work full time and in
+        person, though some clinics are open evenings or weekends.</p>
+        <p>To compare other options, see our <a href="healthcare-careers.html">guide to healthcare jobs you can train for</a>.</p>
+
+        <h2>What you need to start</h2>
+        <p>To start, you need a high school diploma or GED. You do not need any work experience.</p>
+        <p>Programs and employers may also ask for a background check, a physical, shot records and a TB test.
+        Some want a CPR card (Basic Life Support).</p>
+        <p>Some programs require you to be 18 or older. If you have a criminal record, ask the program and the
+        certifying group how it is reviewed before you pay.</p>
+
+        <h2>How to become a medical assistant: pick your route first</h2>
+        <p>The route decides what you pay, whether you are paid while you learn, and which certificate you can
+        take. So choose it before you choose a school.</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <caption>The 4 routes at a glance</caption>
+          <thead>
+            <tr><th>Route</th><th>Time</th><th>Cost to you</th><th>Paid while training?</th><th>Certificate it can lead to</th><th>Best for</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A. Paid employer training or apprenticeship</td><td>About 1 to 2 years</td><td>Tuition often covered</td><td>Yes</td><td>The exam the program prepares you for. Ask which one.</td><td>People who can&rsquo;t stop working</td></tr>
+            <tr><td>B. College program</td><td>About 8 months to 2 years</td><td>One example: $5,376 to $14,400</td><td>No. The externship is usually unpaid.</td><td>CMA (AAMA), RMA, CCMA or CMAC, if accredited</td><td>People who want the most choices later</td></tr>
+            <tr><td>C. Short or online program</td><td>As short as about 8 weeks</td><td>Examples: $2,799 to $4,112</td><td>No</td><td>Usually the CCMA</td><td>People who need speed and have checked local job ads</td></tr>
+            <tr><td>D. Hired with no training</td><td>Several months on the job</td><td>No tuition</td><td>Yes</td><td>CCMA after 1 year of work, RMA after 3. Never the CMA (AAMA).</td><td>People who find a clinic willing to train them</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h3>Route A: Paid employer training or apprenticeship</h3>
+        <p>Some hospitals and health systems hire beginners and pay them while they train. Some call it a
+        registered apprenticeship: a paid job plus classes.</p>
+        <p>For example, Fred Hutch Cancer Center in Seattle pays apprentices full time for 2,000 hours of
+        on-the-job training. It also covers the $4,850 tuition.</p>
+        <p>Its 410 hours of online coursework are unpaid and done on your own time. After the program, you
+        agree to work there for 2 more years.</p>
+        <p>Fred Hutch expects its next group to start in January 2027 (as of October 2026). Check current
+        enrollment with the program.</p>
+        <p>Kaiser Permanente Washington runs a similar paid program: 2,000 hours on the job over 12 to 24
+        months, plus 288 hours of classes.</p>
+        <p>As of October 2026, Kaiser asks for 2 years of work after the program. Check current enrollment
+        with the program.</p>
+        <p>Spots in these programs are few. Before you sign, ask what happens if you leave early.</p>
+        <p>There is also a back door. Some health systems train their own staff first, so a front-desk or
+        other non-clinical job there can lead to their medical assistant training.</p>
+
+        <h3>Route B: A college program</h3>
+        <p>A college certificate or diploma teaches you in class, in a lab and in a real clinic. It takes
+        about 8 months to 2 years.</p>
+        <p>This route keeps every door open. A program accredited (checked and approved) by CAAHEP or ABHES
+        can lead to any of the four main certificates.</p>
+        <p>You can look programs up on the
+        <a href="https://www.aama-ntl.org/medical-assisting/caahep-and-abhes-accredited-programs" target="_blank" rel="noopener">CAAHEP
+        and ABHES lists</a>. The AAMA also currently accepts some other programs at accredited colleges
+        through its Alternative Pathway.</p>
+        <p>That program needs at least 560 class hours plus a 160-hour externship (or 1,000 hours of work
+        after). You must also give at least 10 shots and do at least 10 blood draws.</p>
+        <p>For example, Central Piedmont Community College in North Carolina has a CAAHEP-accredited diploma
+        that takes about 2.5 semesters.</p>
+        <p>As of October 2026, it lists total costs of $5,376 to $14,400. Check current enrollment with the
+        program.</p>
+        <p>An <strong>externship</strong> is hands-on practice in a real clinic near the end of a program. It
+        is usually unpaid and during the day.</p>
+
+        <h3>Route C: A short or online program</h3>
+        <p>Short programs can teach the basics in as little as about 8 weeks, and many are online. They are the fastest
+        way to finish training.</p>
+        <p>The trade-off is the certificate. A short program usually leads to the CCMA, because it often
+        won&rsquo;t meet the hour rules for the CMA (AAMA) or the RMA.</p>
+        <p>For example, Community College of Philadelphia&rsquo;s non-credit course costs $2,799 for 180 hours.
+        It runs about 8 weeks by day or 16 weeks in the evening.</p>
+        <p>Anne Arundel Community College in Maryland charges county residents $4,112 for 388 hours. That
+        includes a 100-hour unpaid externship, and graduates can take the CCMA exam.</p>
+        <p>These prices are as of October 2026. Check current enrollment with the program.</p>
+        <p>Watch out for programs with no hands-on practice. Some students say you can&rsquo;t learn shots
+        and blood draws through a screen, so look for in-person labs or an externship.</p>
+
+        <h3>Route D: Get hired and learn on the job</h3>
+        <p>Some clinics hire people with a diploma or GED and train them on the job over several months. You
+        are paid while you learn.</p>
+        <p>Later, that work can count toward a certificate. One year of supervised work in the last 3 years
+        (or 2 years in the last 5) can qualify you for the CCMA.</p>
+        <p>Three years of full-time work in the last 7 can qualify you for the RMA. There is no work-only route
+        to the CMA (AAMA).</p>
+        <p>There is a catch. Some people who were hired with no training were later told to get
+        certified.</p>
+        <p>So when you get a job offer, ask these questions:</p>
+        <ul>
+          <li>Will I need a certificate?</li>
+          <li>By when?</li>
+          <li>Will you pay for the exam?</li>
+        </ul>
+
+        <div class="note"><strong>Before you pay for any program, ask:</strong>
+        <ul>
+          <li>Is it accredited, and by which group?</li>
+          <li>Which certification exam does it prepare me for? Is the exam fee in the price?</li>
+          <li>How many externship hours are there, who finds the site, and what are the hours?</li>
+          <li>What is the full price in writing, with books, scrubs, exam and background check?</li>
+        </ul></div>
+
+        <h3>How long does it take to become a medical assistant?</h3>
+        <p>For most people, it takes months, not years. A short program can take about 8 weeks, and most
+        college certificates take 8 months to a year.</p>
+        <p>An associate degree takes 2 years, and paid apprenticeships take 1 to 2 years. Then plan time for
+        the exam and your job search.</p>
+
+        <h3>How much does it cost?</h3>
+        <p>Paid training often costs you nothing. The public college programs above cost about $2,800 to
+        $14,400, and private school prices vary a lot.</p>
+        <p>The exam adds $125 to $250. Budget for scrubs, books, a background check and a CPR card too.</p>
+        <p>Public training money may help if you qualify. Find out
+        <a href="blog/is-wioa-training-free.html">whether WIOA training is really free</a>.</p>
+
+        <h3>Can you train while working?</h3>
+        <p>You can do most of the training while you work. Many programs are hybrid, with classes online and labs in person, and
+        some offer evening classes.</p>
+        <p>The externship is the hard part. At one Maryland college, it is 25 hours a week for 4 weeks, Monday
+        to Friday, so plan time off from your job.</p>
+
+        <h2>Which certification should you get? CMA, RMA, CCMA or CMAC</h2>
+        <p>A certification is a national credential you earn by passing an exam. Many employers prefer
+        or require one.</p>
+        <p>Your route decides which exam you can take. Check the job ads in your area to see which
+        certificates employers ask for.</p>
+
+        <div class="table-wrap">
+        <table class="data-table">
+          <caption>The four main medical assistant certifications</caption>
+          <thead>
+            <tr><th>Certification</th><th>Who gives it</th><th>The exam</th><th>Fee</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>CMA (Certified Medical Assistant)</td><td>AAMA (American Association of Medical Assistants)</td><td>200 questions, 160 minutes</td><td>$125 for members, $250 for others</td></tr>
+            <tr><td>RMA (Registered Medical Assistant)</td><td>AMT (American Medical Technologists)</td><td>About 210 questions, 2 hours<!-- [VERIFY: RMA question count SEARCH SUMMARY; 2 hours opened] --></td><td>$150</td></tr>
+            <tr><td>CCMA (Certified Clinical Medical Assistant)</td><td>NHA (National Healthcareer Association)</td><td>150 scored questions plus 30 unscored, 3 hours<!-- [VERIFY: NHA 2022 test plan, SEARCH SUMMARY] --></td><td>$169</td></tr>
+            <tr><td>CMAC</td><td>AMCA (American Medical Certification Association)</td><td>175 questions, 2 hours 30 minutes</td><td>$139, with study material</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <p>You renew the CMA every 5 years, the RMA every 3 years and the CCMA every 2 years. Each one asks for
+        continuing education.<!-- [VERIFY: RMA 3-year cycle SEARCH SUMMARY] --></p>
+        <p>Each one counts in any state. Rules change, so read the group&rsquo;s own page before you pay:</p>
+        <ul>
+          <li><a href="https://www.aama-ntl.org/certification/eligibility" target="_blank" rel="noopener">AAMA (CMA)</a></li>
+          <li><a href="https://americanmedtech.org/medical-assistant" target="_blank" rel="noopener">AMT (RMA)</a></li>
+          <li><a href="https://www.nhanow.com/certification/nha-certifications/certified-clinical-medical-assistant-(ccma)" target="_blank" rel="noopener">NHA (CCMA)</a></li>
+          <li><a href="https://www.amcaexams.com/certifications/clinical-medical-assistant/" target="_blank" rel="noopener">AMCA (CMAC)</a></li>
+        </ul>
+
+        <h2>How hard is it to become a medical assistant?</h2>
+        <h3>The classes</h3>
+        <p>You learn medical words, body systems, basic dosage math, and how to give shots and draw blood. Plan
+        study time every week.</p>
+        <p>If drawing blood is the part you like best, read
+        <a href="blog/phlebotomist-massachusetts.html">how to become a phlebotomist</a>.</p>
+        <h3>The exam</h3>
+        <p>About 7 in 10 people pass the CMA (AAMA) on their first try. You need a score of 405 on a scale of
+        200 to 800.</p>
+        <p>If you don&rsquo;t pass, you can try again. The RMA, for example, allows up to 4 tries, at least 45
+        days apart.</p>
+        <h3>The first job</h3>
+        <p>This can be the hardest step. Some people are hired at the site where they did their
+        externship.</p>
+        <p>Others wait months for an employer who will take a beginner. So treat your externship like a long
+        job interview, and start looking for jobs before you finish.</p>
+        <h3>The work</h3>
+        <p>Many medical assistants like the work and say they make a difference for patients. Some say the pay
+        and the workload make it hard to stay for a whole career.</p>
+        <p>If you are not sure this job is for you, explore our <a href="career-paths.html">career paths</a>.</p>
+
+        <h2>Pay, and is it worth it?</h2>
+        <p>Most medical assistants earn around <strong>$45,690 a year</strong>. New medical assistants often
+        start around <strong>$36,050</strong>.</p>
+        <p>The number of medical assistant jobs is expected to grow 13% over the next 10
+        years, with about 109,700 openings a year.</p>
+        <p>Pay in your area may be higher or lower, so read local job ads before you pay for school. It can be
+        worth it if you keep your training cost low.</p>
+        <p>If you hope to become a nurse later, ask the nursing school which classes it will count. General
+        classes, like English or biology, are the most likely to count.</p>
+
+        <h2>Rules are different in some states</h2>
+        <p>Most states have no license for medical assistants. A few have their own rules, so check yours
+        before you choose a route.</p>
+        <p>For example, Washington requires a state credential before you can work as a medical assistant. The
+        certified one costs $145 and needs approved training plus a national exam.</p>
+        <p>Its on-the-job route, the registered credential, costs $115. It only counts while you work for the
+        same employer.</p>
+        <p>To check your state, see the
+        <a href="https://www.aama-ntl.org/employers/state-scope-of-practice-laws" target="_blank" rel="noopener">AAMA&rsquo;s
+        state-by-state page</a> or ask your state medical board.</p>
+
+        <h2>If you live in Massachusetts</h2>
+        <p><strong>No state license required.</strong> Massachusetts does not license medical assistants, and
+        certification is up to each employer.<!-- [VERIFY: MGL c.112 s.265 opened; mass.gov wording SEARCH SUMMARY] --></p>
+        <p>One state law matters. A primary care provider may let a medical assistant give immunizations
+        (vaccines), but only under direct supervision.</p>
+        <p>The provider must be in the building and ready to help. You must work in that practice and have
+        finished a CAAHEP- or ABHES-accredited program, so on-the-job training alone does not count.</p>
+
+        <h3>Public programs in Massachusetts</h3>
+        <p>Here are a few public options, as of October 2026. Check current enrollment with each program.</p>
+        <ul>
+          <li><strong>Greenfield Community College:</strong> CAAHEP-accredited, about 8 months, mostly online
+          with in-person labs.</li>
+          <li><strong>Massasoit Community College:</strong> 9 months, full time by day, with a 245-hour
+          clinical practicum.</li>
+          <li><strong>Quincy College:</strong> 12 weeks of hybrid classes plus a 3-week internship, with
+          evening and weekend options. Spring 2027 groups start in January and February.</li>
+          <li><strong>Quinsigamond Community College and UMass Memorial Health:</strong> a paid apprenticeship
+          for employees, with 2,000 hours on the job and 8 weeks of classes.</li>
+        </ul>
+
+        <h3>Help paying in Massachusetts</h3>
+        <p>MassEducate may cover community college tuition and fees for eligible students. You need at least
+        6 credits a term, so short non-credit programs may not count.</p>
+        <p>A MassHire Career Center may help pay if you qualify and the program is on the state&rsquo;s training
+        list. Learn <a href="blog/masshire-training-voucher.html">how a MassHire training voucher works</a>.</p>
+
+""" + post_cta(
+    "Check what funding you may qualify for",
+    "If you live in Massachusetts, answer a few short questions to see which funding options you may qualify for, "
+    "and where to go next.",
+    "Check what you may qualify for", "qualify.html") + """
+
+        <!-- COURSE-DEPENDENT: R-BLOG-06 -->
+        <p>Career Skills Center plans to offer training in healthcare, IT and the skilled trades.
+        <a href="healthcare-careers.html#interest">Get updates when we launch</a>.</p>
+        <!-- /COURSE-DEPENDENT: R-BLOG-06 -->
+
+        <h2>What to do this week</h2>
+        <ol>
+          <li><strong>Check your state&rsquo;s rules</strong> on the AAMA state-by-state page.</li>
+          <li><strong>Search hospital and health center job pages</strong> for medical assistant apprentice or
+          trainee jobs near you.</li>
+          <li><strong>Read local job ads</strong> to see what they pay and which certificate they ask for.</li>
+        </ol>
+
+        <h2>Frequently asked questions</h2>
+        <div class="faq">
+""" + _htbma_faq_html + """
+        </div>
+
+
+""" + related(
+    ("How to Become a CNA in Massachusetts", "blog/cna-massachusetts.html"),
+    ("How to Become a Phlebotomist in Massachusetts", "blog/phlebotomist-massachusetts.html"),
+    ("Can Medical Billing and Coding Be Learned Online?", "blog/can-medical-billing-coding-be-learned-online.html"),
+    ("Who Qualifies for WIOA Training in Massachusetts?", "blog/wioa-eligibility-massachusetts.html"),
+    ("Free Job Training in Massachusetts (full guide)", "blog/free-job-training-massachusetts.html"),
+)
+
+_HTBMA_TITLE = "How to Become a Medical Assistant: 4 Routes, Real Costs and the Certificate Each Leads To"
+_HTBMA_DESC = ("How to become a medical assistant: four routes (one pays you), how long each takes, what it costs "
+               "and which certification it leads to.")
+
+PAGES.append(dict(
+    slug="blog/how-to-become-a-medical-assistant.html", nav="blog.html",
+    title="How to Become a Medical Assistant: Pick Your Route (2026)",
+    ogtitle=_HTBMA_TITLE,
+    desc=_HTBMA_DESC,
+    extrahead=('  <style>.prose a:not(.btn):not(.link-yellow){color:#c24d12;text-decoration:underline;'
+               'text-underline-offset:2px}.prose table caption{caption-side:top;text-align:left;font-weight:700;'
+               'color:var(--navy);padding:0 0 10px}.prose .note ol,.prose .note ul{margin:10px 0}</style>\n'
+               + article_ld("blog/how-to-become-a-medical-assistant.html", _HTBMA_TITLE, _HTBMA_DESC,
+                            "2026-10-05", "2026-10-05", author="Career Skills Center")
+               + "\n" + faq_ld([(q, re.sub(r"<[^>]+>", "", " ".join(a))) for q, a in _htbma_faq])),
+    main=article(
+        "Medical", _HTBMA_TITLE,
+        "Some employers pay you to train, and some cheap courses limit which certificate you can take. Here are "
+        "the four routes, with real times, costs and the hard parts.",
+        "October 5, 2026", "11 min read", _htbma_body, author=None)))
 
 
 # Interest form the post's CTA points to. COURSE-DEPENDENT: R-BLOG-MBC.

@@ -244,7 +244,7 @@ The editorial round's data-researcher verified the figures below against officia
 - **Kaiser Permanente Washington apprenticeship:** 2,000 on-the-job hours over 12 to 24 months, 288 classroom hours, paid full time, 2-year commitment, 18+, high school diploma or equivalent. Page undated.
 - **Allina Health:** tuition covered, 1-year commitment (February 2025 news page; say "as of early 2025").
 - **Anne Arundel CC (MD):** $4,112 county residents, 388 hours, 100-hour unpaid externship (25 hours a week for 4 weeks).
-- **Community College of Philadelphia (PA), non-credit:** $2,799, 180 hours, externship optional; 2026 start dates listed have passed.
+- **Community College of Philadelphia (PA), non-credit:** $2,799, 180 hours, about 8 weeks by day or about 16 weeks in the evening (online self-paced option $2,599), externship optional; 2026 start dates listed have passed. Source: ccp.edu clinical medical assisting page, opened 2026-10-05.
 - **Central Piedmont CC (NC):** $5,376 to $14,400 total estimated expenses, diploma in about 2.5 semesters, CAAHEP accredited.
 - **NHA CCMA exam fee:** $169 (NHA store page). CCMA eligibility: diploma or GED plus a program within 5 years, or 1 year of experience in the last 3, or 2 years in the last 5.
 - **AMT RMA:** 3 years full-time work in the last 7 is one eligibility route.

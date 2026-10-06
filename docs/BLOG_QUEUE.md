@@ -8,11 +8,11 @@ Add blog topics here for the blog agent to work on. The agent runs every 6 hours
 
 ## In Progress
 <!-- The agent moves items here while working on them. -->
-- **Medical assistant (nationwide rewrite)** — NATIONAL credential (CMA/RMA/CCMA), so a NATIONWIDE post: Massachusetts only as a labeled section. Emilio (2026-10-05) left the title, angle and outline to the pipeline. Replaces the state-framed draft `blog/medical-assistant-massachusetts.html` (keep it until Emilio approves the new one; the three sibling drafts link to it). Target: "how to become a medical assistant". Also cover, where they fit: how many years, how hard is it, CMA vs RMA certification (AAMA, AMT, NHA, AMCA), salary, worth it, will AI replace MAs, part time. Full analysis in `docs/KEYWORD_ANALYSIS.md`, section "Medical assistant, round 2". Do NOT target physician/doctor's assistant terms. SCOPE: nationwide. Slug: how-to-become-a-medical-assistant.
 
 
 ## Done
 <!-- Completed drafts. The agent logs the file path and date. -->
+- **How to Become a Medical Assistant: 4 Routes, Real Costs and the Certificate Each Leads To** (nationwide) — `blog/how-to-become-a-medical-assistant.html` — 2026-10-05 — status: draft, local/GitHub only, needs Emilio review (DRAFT marker blocks deploy; see VERIFICATION_LOG section S). Compliance review needed 2 rounds. Replaces `blog/medical-assistant-massachusetts.html`, which stays until Emilio approves the new post.
 - **How to Become a Medical Assistant in Massachusetts (2026): Certification, Pay and Paid Training** — `blog/medical-assistant-massachusetts.html` — 2026-10-05 — status: draft, local/GitHub only, needs Emilio review (DRAFT marker blocks deploy; see VERIFICATION_LOG section R). Compliance review passed after round 2 fix.
 - **Healthcare Jobs in Massachusetts You Can Train For (2026)** — `blog/healthcare-jobs-massachusetts.html` — 2026-10-03 — status: approved by Emilio 2026-10-05, held back from publishing (DRAFT marker blocks deploy; see VERIFICATION_LOG section N).
 - **How to Become a Phlebotomist in Massachusetts (2026)** — `blog/phlebotomist-massachusetts.html` — 2026-10-03 — status: approved by Emilio 2026-10-05, held back from publishing (DRAFT marker blocks deploy; see VERIFICATION_LOG section O).

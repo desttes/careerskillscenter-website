@@ -597,3 +597,61 @@ Source: `docs/blog-drafts/cna-massachusetts/cna-cost-research.md`. Six programs'
 - FAQ questions come from the keyword question tree, NOT live People Also Ask.
 
 **Still to check by a human:** mass.gov no-license summary and DPH shot circular; AAMA and NHA fees and exam formats; AMT format and renewal; AAMA 69% pass rate; whether the paid programs are still enrolling.
+
+
+## S. Medical assistant post (nationwide) - BLS pay and outlook, four routes, CMA/RMA/CCMA/CMAC exam facts, real program costs (2026-10-05, DRAFT, local)
+
+`blog/how-to-become-a-medical-assistant.html` ("How to Become a Medical Assistant: 4 Routes, Real Costs and the Certificate Each Leads To"; publish date 2026-10-05; about 2,660 visible words). Pipeline files: `docs/blog-drafts/how-to-become-a-medical-assistant/`. Compliance review: round 1 FAIL, round 2 FAIL on two small items (check 3: CCP length added to the verified addendum in research-brief.md; check 5: the summary under the H1 cut from 3 sentences to 2). The director fixed both directly. Replaces the state-framed draft in section R once Emilio approves.
+
+**STATUS: partly verified.** OPENED = page read live on 2026-10-05. SEARCH SUMMARY = seen only in a search-result summary. The DRAFT marker and inline [VERIFY] comments block deploy.
+
+### S1. BLS (OPENED 2026-10-05; OOH and public API)
+- National median $45,690 a year; entry-level (10th percentile) $36,050 (OEWS May 2025, SOC 31-9092). Three sources agree (OOH, API, CareerOneStop). https://www.bls.gov/ooh/healthcare/medical-assistants.htm
+- Growth 13% (2025-35); about 109,700 openings a year; 833,900 jobs (2025).
+- Nursing assistants median $42,260 (https://www.bls.gov/ooh/healthcare/nursing-assistants.htm); physician assistant is a master's-level role (https://www.bls.gov/ooh/healthcare/physician-assistants.htm).
+- Most states do not require certification; employers may prefer or require it.
+- Do NOT use $44,200 (older figure printed by Coursera and the AMT blog).
+- AI: no BLS statement that AI will replace clinical medical assistants. The BLS AI-exposure category for 31-9092 sits in an Excel file nobody has opened (https://www.bls.gov/emp/publications/ai-exposure-categories.htm). Post makes only the BLS 13% growth claim.
+
+### S2. Certification facts
+OPENED:
+- AAMA CMA: $125 members / $250 non-members; 200 questions, four 40-minute segments (160 minutes); 69% first-time pass (Jul 2024-Apr 2025); recertify every 60 months; Alternative Pathway = at least 560 contact hours, 160-hour practicum or 1,000 work hours after, 10 injections and 10 blood draws. Worded "currently available", never "permanent." https://www.aama-ntl.org/certification/eligibility and /alternative-pathway
+- AMT RMA: $150 (application, exam, first annual fee); 720 hours including 160 externship; 3 years full-time work in the last 7; 4 lifetime attempts. https://americanmedtech.org/medical-assistant
+- NHA CCMA eligibility (diploma/GED plus program within 5 years, or 1 year supervised work in the last 3, or 2 in the last 5). https://www.nhanow.com/certification/nha-certifications/certified-clinical-medical-assistant-(ccma)
+- AMCA CMAC: $139, 175 questions, 2 hours 30 minutes. https://www.amcaexams.com/certifications/clinical-medical-assistant/
+- Accredited program list (link only): https://www.aama-ntl.org/medical-assisting/caahep-and-abhes-accredited-programs
+
+SEARCH SUMMARY only (re-confirm before publish):
+- RMA question count (about 210) and pass score. Check whether the post states a count.
+- CCMA exam format (150 scored + 30 pretest, 3 hours) came from the 2022 NHA test plan (the NHA exam-details page returned 404). CCMA $169 fee is from the NHA store page summary.
+- RMA 3-year renewal, 30 points, $75 annual fee (AMT Certification Continuation Program FAQ; the CCP length was added to the verified addendum in the research brief during compliance round 2).
+- AAMA state-by-state scope-of-practice page (https://www.aama-ntl.org/employers/state-scope-of-practice-laws) is linked in the post but was opened only by the strategist, not the writer or reviewer.
+
+### S3. Training length and cost (official program pages, OPENED 2026-10-05 unless noted)
+- Quincy College Medical Clinical Assistant: 12 weeks hybrid + 3-week internship; accreditation and tuition not stated. https://quincycollege.edu/program/medical-clinical-assistant-certificate/
+- Greenfield CC: 29 credits, about 8 months, CAAHEP-accredited, mostly online with in-person labs. https://www.gcc.mass.edu/academics/programs/medical-assistant/
+- Massasoit CC: 9 months full time, 245-hour practicum; page does not say CAAHEP/ABHES. https://massasoit.edu/academics/academic-programs/health-sciences/medical-assistant-certificate.html
+- Quinsigamond CC + UMass Memorial registered apprenticeship: 2,000 on-the-job hours + 8 weeks of classes (first cohort graduated Oct 2025). https://www.qcc.edu/news/2025/10/02/first-registered-healthcare-apprentices-graduate-qcc-umass-memorial-program
+- Community College of Philadelphia (non-credit): $2,799, 180 hours, about 8 weeks by day or 16 weeks evening; externship optional; 2026 start dates listed have passed (ccp.edu clinical medical assisting page).
+- Anne Arundel CC (MD): $4,112 county residents, 388 hours, 100-hour unpaid externship (25 hours a week for 4 weeks).
+- Central Piedmont CC (NC): $5,376 to $14,400 total estimated expenses, about 2.5 semesters, CAAHEP accredited (post says "As of October 2026").
+- "About $2,800 to $14,400" in the summary is derived from the Philadelphia and Central Piedmont figures; no BLS cost range exists.
+- Fred Hutch (Seattle) apprenticeship: paid full time, 2,000 paid hours, 410 unpaid online coursework hours, $4,850 tuition covered, 2-year commitment, 18+, diploma or equivalent. **Next cohort "January 2027" must be re-confirmed before publish.**
+- Kaiser Permanente Washington apprenticeship: 2,000 hours over 12 to 24 months, 288 classroom hours, paid, 2-year commitment. Page undated; post says "As of October 2026". **Re-confirm status before publish.**
+- Allina Health: tuition covered, 1-year commitment (Feb 2025 news page; say "as of early 2025").
+- Washington state: credential required to work as a medical assistant; MA-Certified $145, MA-Registered $115 (same employer only).
+
+### S4. Massachusetts section
+- No state license: MGL c.112 s.265 OPENED (https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXVI/Chapter112/Section265). The mass.gov wording "Medical assistants are not licensed in Massachusetts" is SEARCH SUMMARY only (mass.gov returned 403). A human must confirm on mass.gov.
+- Shot rule: statute OPENED (immunizations only, direct supervision, provider immediately available, "primary care provider" defined by function). DPH circular DCP 17-8-102 is SEARCH SUMMARY.
+- MassEducate/MassReconnect: at least 6 credits a term, so short non-credit programs may not count (hedged "may"). https://www.mass.edu/osfa/programs/massreconnect.asp
+- Massachusetts pay and employment figures ($49,460 median, $43,280 entry, 14,880 jobs) are in the brief (OPENED); check whether the post uses them.
+
+### S5. Other URLs and internal links
+- Internal: CNA and phlebotomist drafts, free-job-training, masshire-training-voucher, wioa-eligibility, is-wioa-training-free, can-medical-billing-coding-be-learned-online. The CNA and phlebotomist links point to drafts, so publish order matters.
+- No American Job Center pointer (no official source in the brief).
+
+### S6. Community material
+- Experiences paraphrased per editorial-decisions.md; verification in community-verification.md.
+
+**Still to check by a human before publish:** the SEARCH SUMMARY items in S2 and S4; Fred Hutch January 2027 cohort and Kaiser status; BLS AI exposure row; Greenfield per-credit total (not used as a figure unless the post states it).
