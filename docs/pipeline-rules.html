@@ -70,24 +70,24 @@ th{background:var(--bg);color:var(--muted);font-size:12px;text-transform:upperca
 <div class="wrap">
 
 <h1>Blog Pipeline: who does what, and the rules</h1>
-<p class="sub">Snapshot of the rules as written today in <code>.claude/commands/blog-pipeline.md</code>, the six files in <code>.claude/agents/</code> and the two guideline files. Click a step or an agent to open it. Status: 2026-10-05.</p>
+<p class="sub">Snapshot of the rules as written today in <code>.claude/commands/blog-pipeline.md</code>, the six files in <code>.claude/agents/</code> and the two guideline files. Click a step or an agent to open it. Status: 2026-10-05, after the token-saving changes (commit <code>973c41d</code>).</p>
 <div class="legend">
   <span class="pill ok">MUST: required rule</span>
   <span class="pill no">NEVER: hard prohibition</span>
-  <span class="pill warn">GAP: your newer decision is not in the agent files yet</span>
+  <span class="pill warn">OPEN: decided but not in the agent files</span>
 </div>
 
 <h2>The flow, step by step</h2>
 <div class="flow">
   <a class="step" style="--c:var(--c-director)" href="#director"><b>1. Load context</b><span>Director reads the rules, pulls the latest queue</span></a>
-  <a class="step" style="--c:var(--c-director)" href="#director"><b>2. Pick the topic</b><span>Moves it to In Progress, commits, pushes</span></a>
-  <a class="step" style="--c:var(--c-data)" href="#data"><b>3a. Facts</b><span>Data researcher &rarr; research-brief.md</span><small>runs in parallel with 3b</small></a>
-  <a class="step" style="--c:var(--c-strat)" href="#strat"><b>3b. Angle</b><span>Content strategist &rarr; content-strategy.md</span><small>then Director commits both</small></a>
-  <a class="step" style="--c:var(--c-comm)" href="#comm"><b>4. Real people</b><span>Community researcher &rarr; community-insights.md</span></a>
-  <a class="step" style="--c:var(--c-data)" href="#data"><b>5a. Check facts</b><span>Data researcher verifies the candidates</span><small>parallel with 5b</small></a>
-  <a class="step" style="--c:var(--c-strat)" href="#strat"><b>5b. Judge value</b><span>Strategist: KEEP / MAYBE / CUT</span><small>Director then writes editorial-decisions.md</small></a>
-  <a class="step" style="--c:var(--c-write)" href="#write"><b>6. Write</b><span>Writer adds the post to build-pages.py</span></a>
-  <a class="step" style="--c:var(--c-review)" href="#review"><b>7. Review</b><span>Reviewer: PASS or FAIL. Up to 2 revision rounds</span></a>
+  <a class="step" style="--c:var(--c-director)" href="#director"><b>2. Pick the topic</b><span>Classifies the credential (national = nationwide post), moves it to In Progress, commits, pushes</span></a>
+  <a class="step" style="--c:var(--c-data)" href="#data"><b>3a. Facts</b><span>Data researcher &rarr; research-brief.md (about 1,500 words)</span><small>runs in parallel with 3b</small></a>
+  <a class="step" style="--c:var(--c-strat)" href="#strat"><b>3b. Angle</b><span>Content strategist &rarr; content-strategy.md (about 1,500 words)</span><small>then Director commits both</small></a>
+  <a class="step" style="--c:var(--c-comm)" href="#comm"><b>4. Real people</b><span>Community researcher (Sonnet, about 15 searches) &rarr; community-insights.md</span><small>fewer than 3 usable candidates: skip step 5</small></a>
+  <a class="step" style="--c:var(--c-data)" href="#data"><b>5. Check and judge</b><span>Data researcher verifies the facts and gives KEEP / MAYBE / CUT</span><small>Director then writes editorial-decisions.md</small></a>
+  <a class="step" style="--c:var(--c-write)" href="#write"><b>6. Write</b><span>Writer adds the post to build-pages.py and must pass the lint</span></a>
+  <a class="step" style="--c:var(--c-director)" href="#director"><b>7a. Lint</b><span>Director runs tools/blog-lint.py (free). Fails go back to the writer first</span></a>
+  <a class="step" style="--c:var(--c-review)" href="#review"><b>7b. Review</b><span>Reviewer (Sonnet): PASS or FAIL. Up to 2 revision rounds</span></a>
   <a class="step" style="--c:var(--c-pub)" href="#pub"><b>8. Publish to GitHub</b><span>Only after PASS. Never to the live server</span></a>
   <a class="step" style="--c:var(--c-director)" href="#director"><b>9. Report</b><span>Director confirms and reports to Emilio</span></a>
 </div>
@@ -122,16 +122,20 @@ th{background:var(--bg);color:var(--muted);font-size:12px;text-transform:upperca
       <div class="box must"><h4>Must</h4><ul>
         <li>Read CLAUDE.md, BUILD_STATUS, BLOG_QUEUE, the register, both guideline files and KEYWORD_ANALYSIS.md</li>
         <li>Run <code>git pull --rebase</code> first</li>
+        <li><b>Classify the credential first:</b> national (CMA, CPC, CompTIA) = nationwide post with Massachusetts as one labeled section; state-issued (CNA, pharmacy tech, electrician) = state post. If the queue topic names a state for a national credential, stop and ask Emilio</li>
+        <li><b>Run the lint</b> (<code>tools/blog-lint.py</code>) before the reviewer; send any FAIL to the writer first</li>
+        <li><b>Skip the editorial round</b> if the community researcher finds fewer than 3 usable candidates</li>
         <li>Stop and report if the queue is empty, if something is already In Progress, or if the post already exists</li>
         <li>Commit and push after picking the topic, after the briefs (step 3) and after the community files (step 5)</li>
         <li>Confirm each agent's output file exists and has real content; re-run a missing one once</li>
         <li>Allow at most <b>2 revision rounds</b>; after that log the open issues, commit as WIP and stop</li>
+        <li>Tell the researcher and strategist to keep their files to about 1,500 words (hard cap 2,000)</li>
         <li>Report: title, path, angle, DRAFT_DIR, which experiences went in and which were cut, facts from search summaries only</li>
       </ul></div>
       <div class="box plain"><h4>Editorial decision: an experience is APPROVED only if all four hold</h4><ul>
         <li><b>Corroborated:</b> 2+ independent people in separate threads, or an official source</li>
         <li><b>No CONTRADICTED facts</b>; UNVERIFIABLE claims are dropped from the item</li>
-        <li><b>Strategist said KEEP</b> (MAYBE only if it adds needed balance)</li>
+        <li><b>Editorial view said KEEP</b> (MAYBE only if it adds needed balance)</li>
         <li><b>Current and U.S.-based</b></li>
         <li>If the two checks disagree, the <b>stricter call wins</b>. Unsure = <b>cut</b></li>
       </ul></div>
@@ -148,13 +152,17 @@ th{background:var(--bg);color:var(--muted);font-size:12px;text-transform:upperca
 <details class="agent" id="data" style="--c:var(--c-data)">
   <summary><span class="name">Data researcher</span><span class="role">Finds sourced facts. Also fact-checks community claims</span></summary>
   <div class="body">
-    <div class="meta"><span class="pill info">model: sonnet</span><span class="pill info">tools: search, fetch, read, write, shell</span><span class="pill info">steps 3a and 5a</span></div>
+    <div class="meta"><span class="pill info">model: sonnet</span><span class="pill info">tools: search, fetch, read, write, shell, browser</span><span class="pill info">steps 3a and 5</span></div>
     <div class="cols">
       <div class="box must"><h4>Must</h4><ul>
         <li>Follow Research Guidelines Part A</li>
         <li>Entry filter: only careers open with a high school diploma or GED and no experience</li>
         <li>National certifications: point to the certifying body. State licenses: vary by state, give Massachusetts as the example</li>
-        <li>Cover: BLS median pay (with SOC code), job outlook, licensing and certification, exam facts, training length <b>and cost range</b>, employer demand, 4-6 FAQ questions</li>
+        <li>Read <b>5 usable pages</b> (10 opened at most) and skip any page selling a course; browser reads capped at about 8,000 characters</li>
+        <li>Keep the research brief to <b>about 1,500 words</b> (hard cap 2,000): facts, figures and URLs only</li>
+        <li>Pay: median <b>and</b> entry-level (10th percentile). National for a national credential, the state figure for a state license</li>
+        <li>Named public programs (colleges, MassHire, nonprofits, employers) with their own official hours, cost, funding and dates, plus the date checked</li>
+        <li>Cover: BLS pay, job outlook, licensing and certification, exam facts, training length <b>and cost range</b>, employer demand, 4-6 FAQ questions</li>
         <li>Source order: government, then official certifying bodies, then O*NET or CareerOneStop</li>
         <li>Put a source URL on every number</li>
         <li>Mark <code>[SEARCH SUMMARY]</code> when a page could not be opened; <code>[DATA NOT FOUND]</code> when missing</li>
@@ -168,20 +176,22 @@ th{background:var(--bg);color:var(--muted);font-size:12px;text-transform:upperca
         <li>Edit any file except its own output; never commit</li>
       </ul></div>
     </div>
-    <div class="box plain" style="margin-top:14px"><h4>Verification mode (editorial round)</h4>
-      For every factual claim in a community candidate, give one verdict: <span class="pill ok">CONSISTENT</span> <span class="pill no">CONTRADICTED</span> <span class="pill info">UNVERIFIABLE</span>. Also flag candidates that are out of date or non-U.S.</div>
+    <div class="box plain" style="margin-top:14px"><h4>Verification and editorial mode (one pass, replaces the strategist's editorial run)</h4>
+      For every factual claim in a community candidate, give one verdict: <span class="pill ok">CONSISTENT</span> <span class="pill no">CONTRADICTED</span> <span class="pill info">UNVERIFIABLE</span>. Flag candidates that are out of date or non-U.S. Then give each candidate <span class="pill ok">KEEP</span> <span class="pill warn">MAYBE</span> <span class="pill no">CUT</span> with value and fit, balance, and quote vs. paraphrase (a quote must come from an opened page, not a snippet). About 100 words per candidate. The director decides.</div>
     <div class="out">Writes: <code>research-brief.md</code>, and in verification mode <code>community-verification.md</code></div>
   </div>
 </details>
 
 <details class="agent" id="strat" style="--c:var(--c-strat)">
-  <summary><span class="name">Content strategist</span><span class="role">Finds the angle that makes our post different. Judges community candidates</span></summary>
+  <summary><span class="name">Content strategist</span><span class="role">Finds the angle that makes our post different</span></summary>
   <div class="body">
-    <div class="meta"><span class="pill info">model: opus</span><span class="pill info">tools: search, fetch, read, write, shell</span><span class="pill info">steps 3b and 5b</span></div>
+    <div class="meta"><span class="pill info">model: opus</span><span class="pill info">tools: search, fetch, read, write, shell</span><span class="pill info">step 3b</span></div>
     <div class="cols">
       <div class="box must"><h4>Must</h4><ul>
         <li>Follow Research Guidelines Part B: audit the top 10, content gaps, structure, freshness, honesty gaps, underserved audience, then the recommendation</li>
         <li>Use only keywords from KEYWORD_ANALYSIS.md; invent none</li>
+        <li>Follow the SCOPE the director gives: a nationwide post has no state in the title, H1 or hook</li>
+        <li>Keep content-strategy.md to <b>about 1,500 words</b> (hard cap 2,000) and plan the outline for about 2,500 words of post</li>
         <li>Write for working adults with a GED, basic English: our edge is honesty, since we sell no courses</li>
         <li>List the exact queries run and the URLs actually opened; mark snippet-only rows; mark each People Also Ask as "seen" or "inferred"</li>
         <li>Include a table of existing posts to link to, with where each link goes</li>
@@ -194,23 +204,25 @@ th{background:var(--bg);color:var(--muted);font-size:12px;text-transform:upperca
         <li>Edit any file except its own output; never commit</li>
       </ul></div>
     </div>
-    <div class="box plain" style="margin-top:14px"><h4>Editorial mode</h4>
+    <div class="box plain" style="margin-top:14px"><h4>Editorial mode (only if the director asks; normally done by the data researcher)</h4>
       For each community candidate: <span class="pill ok">KEEP</span> <span class="pill warn">MAYBE</span> <span class="pill no">CUT</span> with value, fit, balance (which critical experiences must stay so the post is honest), and quote vs. paraphrase. A quote must be clearer or more human than our words, short and easy for a basic-English reader.</div>
-    <div class="out">Writes: <code>content-strategy.md</code>, and in editorial mode <code>community-editorial.md</code></div>
+    <div class="out">Writes: <code>content-strategy.md</code> (and <code>community-editorial.md</code> only on request)</div>
   </div>
 </details>
 
 <details class="agent" id="comm" style="--c:var(--c-comm)">
   <summary><span class="name">Community researcher</span><span class="role">Finds what real people say: Reddit, Quora, public forums</span></summary>
   <div class="body">
-    <div class="meta"><span class="pill info">model: opus</span><span class="pill info">tools: search, fetch, read, write, shell</span><span class="pill info">step 4</span></div>
+    <div class="meta"><span class="pill info">model: sonnet</span><span class="pill info">tools: search, fetch, read, write, shell</span><span class="pill info">step 4</span></div>
     <div class="cols">
       <div class="box must"><h4>Must</h4><ul>
+        <li><b>Budget:</b> about 15 searches and 10 pages. If Reddit, Quora and Facebook block the first 3 attempts, try 2 or 3 other public forums, then stop</li>
+        <li>If fewer than 3 usable candidates turn up, say so and stop; the director skips the editorial round</li>
         <li>Read the research brief and content strategy first: find only what is <b>not</b> already in them</li>
         <li>Look at Reddit, Quora, public Facebook posts and public forums; prefer the last 3 years</li>
         <li>For each candidate: count independent confirmations, report the real mix of views, list every factual claim separately, say why it matters to the reader</li>
         <li>Quote option only if clearer than a paraphrase: exact words, <b>25 words or fewer</b>, nothing identifying</li>
-        <li>List 5 to 12 candidates, strongest first, with source URLs kept <b>internal only</b></li>
+        <li>List up to 12 candidates (about 80 words each), strongest first, with source URLs kept <b>internal only</b></li>
       </ul></div>
       <div class="box never"><h4>Never</h4><ul>
         <li>Log in, or get around a login</li>
@@ -231,7 +243,11 @@ th{background:var(--bg);color:var(--muted);font-size:12px;text-transform:upperca
     <div class="cols">
       <div class="box must"><h4>Must: reader first</h4><ul>
         <li>The strategist's angle is the north star</li>
-        <li>One clear pay number per role; give training length and cost; "No state license required"</li>
+        <li>Pay: the median plus one entry-level figure ("new workers often start around $X"); national for a national credential, state for a state license</li>
+        <li>Concrete training length and cost range from the brief; "No state license required"</li>
+        <li><b>Scope:</b> a national credential gets a nationwide title, H1, meta and first paragraph; Massachusetts is one labeled section</li>
+        <li>About <b>2,500 words</b>; the nine-topic skeleton is a menu</li>
+        <li>Named public programs allowed with "as of [date]" and "Check current enrollment"; never for-profit course sellers</li>
         <li><b>Keep it simple:</b> no Sources section, no "according to BLS", no government-data links, no SOC codes, no percentile ranges</li>
         <li><b>Use only facts in the research brief</b>; if it is not there, leave it out</li>
         <li>Link every relevant existing post</li>
@@ -253,13 +269,14 @@ th{background:var(--bg);color:var(--muted);font-size:12px;text-transform:upperca
         <li>Add a <code>PAGES.append(...)</code> block (article, post_cta, related, faq_ld, article_ld), a blog index card and a sitemap entry</li>
         <li>DRAFT comment at the top; COURSE-DEPENDENT markers with the next free R-BLOG number; course-mode copy file</li>
         <li>Publish date is today's real date</li>
+        <li><b>Before finishing: build, then run <code>tools/blog-lint.py</code> and fix every FAIL</b></li>
       </ul></div>
       <div class="box never"><h4>Never</h4><ul>
         <li>State CSC program details; "our program", "our courses", "enroll"</li>
         <li>Claim ETPL/WIOA approval; promise funding</li>
         <li>Invent statistics, outcomes or testimonials; add an experience that was not approved</li>
         <li>Suggest community people are CSC students</li>
-        <li>Build, commit or push</li>
+        <li>Commit or push</li>
       </ul></div>
     </div>
     <div class="out">Writes: the post in <code>tools/build-pages.py</code>, <code>blog/course-mode-copy/&lt;slug&gt;.md</code></div>
@@ -267,9 +284,10 @@ th{background:var(--bg);color:var(--muted);font-size:12px;text-transform:upperca
 </details>
 
 <details class="agent" id="review" style="--c:var(--c-review)">
-  <summary><span class="name">Compliance reviewer</span><span class="role">Reports PASS or FAIL against 16 checks. Never edits the post</span></summary>
+  <summary><span class="name">Compliance reviewer</span><span class="role">Reports PASS or FAIL against 19 checks. Never edits the post</span></summary>
   <div class="body">
-    <div class="meta"><span class="pill info">model: opus</span><span class="pill info">tools: read, write, search, shell</span><span class="pill info">step 7</span></div>
+    <div class="meta"><span class="pill info">model: sonnet</span><span class="pill info">tools: read, write, search, shell</span><span class="pill info">step 7b</span></div>
+    <div class="box plain" style="margin-bottom:14px"><h4>The lint script runs first (free)</h4>It already checks sentence counts, paragraph length, fragments, word count, numbers missing from the pipeline files, banned phrases, markers, the course-mode copy file and JSON-LD. The reviewer trusts it for those and spends its effort on judgment checks. On a re-review it checks only the previous fix list.</div>
     <table>
       <tr><th>#</th><th>Check</th></tr>
       <tr><td>1-2</td><td>No CSC program details. No ETPL, WIOA, "state-approved" or Express claims</td></tr>
@@ -282,9 +300,12 @@ th{background:var(--bg);color:var(--muted);font-size:12px;text-transform:upperca
       <tr><td>9</td><td>BlogPosting and FAQPage JSON-LD present and valid</td></tr>
       <tr><td>10-11</td><td>No testimonials or invented outcomes. No facts from aggregators, training providers or career blogs</td></tr>
       <tr><td>12</td><td>Follows the strategy's angle; each differentiator is a real section</td></tr>
-      <tr><td>13</td><td>Reader-first: no "we did not find", percentile ranges, SOC codes, "Not shown" cells, Sources sections, "according to...", or government-data links</td></tr>
-      <tr><td>14</td><td>Answers: pay, training length and cost, working while training, what you need to start, state license, exam facts</td></tr>
+      <tr><td>13</td><td>Reader-first: no "we did not find", the word "percentile" (one entry-level pay figure next to the median is expected), SOC codes, "Not shown" cells, Sources sections, "according to...", or government-data links</td></tr>
+      <tr><td>14</td><td>Answers: pay (median and entry-level), concrete training length and cost, working while training, what you need to start, state license, exam facts</td></tr>
       <tr><td>15</td><td>Links to relevant existing posts</td></tr>
+      <tr><td>17</td><td>Word budget about 2,500 (FAIL above about 2,750)</td></tr>
+      <tr><td>18</td><td>Named programs are public or nonprofit or employer programs, match the brief, carry an "as of" date and "check current enrollment"</td></tr>
+      <tr><td>19</td><td>Scope: a national credential has no state in the title, H1, meta, slug or first paragraph; pay is national; Massachusetts is one labeled section</td></tr>
       <tr><td>16</td><td>Community items: all approved, quotes word for word, nothing identifying, framed as experiences, mixed views shown as mixed</td></tr>
     </table>
     <div class="box never" style="margin-top:14px"><h4>Never</h4><ul><li>Edit the post or any file except its report; never commit</li></ul></div>
@@ -312,18 +333,17 @@ th{background:var(--bg);color:var(--muted);font-size:12px;text-transform:upperca
   </div>
 </details>
 
-<h2>Your newer decisions that are not in the agent files yet</h2>
+<h2>Still not in the agent files</h2>
 <div class="gap">
-  <h3>These were given in the prompts this session, but the agents' own files still say the old rule</h3>
+  <h3>Decided or proposed in chat, but no agent file says it</h3>
   <table>
-    <tr><th>Decision</th><th>What the files still say</th><th>Agents to change</th></tr>
-    <tr><td><b>Pay:</b> national figure for a national credential; Massachusetts figure for a state-issued license (2026-10-05)</td><td>Writing guideline 7: "one number: the national median" for every role</td><td>Data researcher, writer, reviewer + both guideline files</td></tr>
-    <tr><td><b>Easy statistics are fine</b> (growth %, openings a year)</td><td>"Keep it simple"; growth labels discouraged</td><td>Writer, reviewer</td></tr>
-    <tr><td><b>National credential = nationwide post</b> (the medical assistant error). Classify first; ask Emilio if the queue topic names a state</td><td>Only "lead with national data"; nothing stops a state-framed title or keyword</td><td>Director, data researcher, strategist, writer, reviewer</td></tr>
-    <tr><td><b>No named schools, no price tables, no visible byline</b></td><td>Not written in any agent file</td><td>Writer, reviewer</td></tr>
-    <tr><td><b>Community quotes allowed</b> (approved only)</td><td>Already in the files (CLAUDE.md still says otherwise: strategy to update)</td><td>None. CLAUDE.md is strategy's file</td></tr>
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td><b>No visible byline</b> on posts</td><td>Applied to the CNA post only. Not a pipeline rule</td></tr>
+    <tr><td><b>Compare the draft with the best competing pages</b> before review</td><td>Proposed earlier, never decided</td></tr>
+    <tr><td><b>A shared facts folder per credential</b> (reuse BLS and certification facts across posts)</td><td>Declined by Emilio, 2026-10-05</td></tr>
+    <tr><td><b>Community quotes allowed</b> (approved only)</td><td>In the agent files. CLAUDE.md still says otherwise: strategy to update</td></tr>
   </table>
-  <p class="note">Proposed next, waiting on your answers: a "must-include figures" checklist, a competitor-comparison step, browser use for research, a 2,000-2,500 word budget, named public programs with their own published hours, and bringing back entry-level (10th percentile) pay.</p>
+  <p class="note">Now in the agent files (2026-10-05): median plus entry-level pay, national vs state pay, nationwide posts for national credentials, named public programs, easy statistics, the 2,500-word budget, browser use for research, the lint script, and the token-saving changes.</p>
 </div>
 
 </div>

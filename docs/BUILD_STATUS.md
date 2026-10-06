@@ -64,7 +64,7 @@ Claude Code updates this file at the end of every session. The strategy side (Co
 - **Research reading:** 5 usable pages (10 opened at most) instead of 10 usable pages, with a character limit on browser reads (`docs/BLOG_RESEARCH_GUIDELINES.md` 1b).
 - **Stays on Opus:** the strategist (angle) and the writer.
 - **Estimate, not measured:** a run should cost roughly half as many tokens. Compare the next run against the 1.01 million baseline.
-- **Stale tools:** `docs/pipeline-rules.html` and the Pipeline Rules Editor artifact still show the old rules (10 pages, editorial round, Opus reviewer). Refresh them if Emilio still uses them.
+- **Rules tools refreshed (same night):** `docs/pipeline-rules.html` and the Pipeline Rules Editor artifact (https://claude.ai/artifact/DKREiEtrsL1LQyD7j4p5it, version 3) now show the current rules: the lint step, the merged editorial pass, Sonnet reviewer and community agent, 1,500-word caps, 5-page reading, scope rule and 19 review checks. The editor's draft key was bumped to v2, so any ticks saved in a browser before this are gone. No submissions exist yet.
 
 
 ### 2026-10-05 (night) - Nationwide medical assistant draft published to GitHub only (LOCAL, not deployed)
